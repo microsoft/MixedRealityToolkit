@@ -2,9 +2,12 @@ using UnityEngine;
 
 namespace HoloToolkit
 {
+    /// <summary>
+    /// A MonoBehaviour that interpolates a transform's Position, Rotation or Scale.
+    /// </summary>
     public class Interpolator : MonoBehaviour
     {
-        public const float SmallNumber = 0.0000001f;
+        private const float SmallNumber = 0.0000001f;
 
         // The movement speed in meters per second
         [HideInInspector]
@@ -35,26 +38,50 @@ namespace HoloToolkit
 
         // Position data
         private Vector3 targetPosition;
+        /// <summary>
+        /// True if the transform's position is animating; false otherwise.
+        /// </summary>
         public bool AnimatingPosition { get; private set; }
 
         // Rotation data
         private Quaternion targetRotation;
+        /// <summary>
+        /// True if the transform's rotation is animating; false otherwise.
+        /// </summary>
         public bool AnimatingRotation { get; private set; }
 
         // Local Rotation data
         private Quaternion targetLocalRotation;
+        /// <summary>
+        /// True if the transform's local rotation is animating; false otherwise.
+        /// </summary>
         public bool AnimatingLocalRotation { get; private set; }
 
         // Scale data
         private Vector3 targetLocalScale;
+        /// <summary>
+        /// True if the transform's scale is animating; false otherwise.
+        /// </summary>
         public bool AnimatingLocalScale { get; private set; }
 
+        /// <summary>
+        /// The event fired when an Interpolation is started.
+        /// </summary>
         public event System.Action InterpolationStarted;
+        /// <summary>
+        /// The event fired when an Interpolation is completed.
+        /// </summary>
         public event System.Action InterpolationDone;
 
+        /// <summary>
+        /// The velocity of a transform whose position is being interpolated.
+        /// </summary>
         public Vector3 PositionVelocity { get; private set; }
         private Vector3 oldPosition = Vector3.zero;
 
+        /// <summary>
+        /// True if Position, Rotation or Scale are animating; false otherwise.
+        /// </summary>
         public bool Running
         {
             get
@@ -73,6 +100,11 @@ namespace HoloToolkit
             enabled = false;
         }
 
+        /// <summary>
+        /// Sets the target position for the transform and if position wasn't
+        /// already animating, fires the InterpolationStarted event.
+        /// </summary>
+        /// <param name="target">The new target position to for the transform.</param>
         public void SetTargetPosition(Vector3 target)
         {
             bool wasRunning = Running;
@@ -98,6 +130,11 @@ namespace HoloToolkit
             }
         }
 
+        /// <summary>
+        /// Sets the target rotation for the transform and if rotation wasn't
+        /// already animating, fires the InterpolationStarted event.
+        /// </summary>
+        /// <param name="target">The new target rotation for the transform.</param>
         public void SetTargetRotation(Quaternion target)
         {
             bool wasRunning = Running;
@@ -122,6 +159,11 @@ namespace HoloToolkit
             }
         }
 
+        /// <summary>
+        /// Sets the target local rotation for the transform and if rotation
+        /// wasn't already animating, fires the InterpolationStarted event.
+        /// </summary>
+        /// <param name="target">The new target local rotation for the transform.</param>
         public void SetTargetLocalRotation(Quaternion target)
         {
             bool wasRunning = Running;
@@ -147,6 +189,11 @@ namespace HoloToolkit
 
         }
 
+        /// <summary>
+        /// Sets the target local scale for the transform and if scale
+        /// wasn't already animating, fires the InterpolationStarted event.
+        /// </summary>
+        /// <param name="target">The new target local rotation for the transform.</param>
         public void SetTargetLocalScale(Vector3 target)
         {
             bool wasRunning = Running;
@@ -362,6 +409,9 @@ namespace HoloToolkit
             }
         }
 
+        /// <summary>
+        /// Stops the transform in place and terminates any animations.
+        /// </summary>
         public void Reset()
         {
             targetPosition = transform.position;
@@ -377,6 +427,11 @@ namespace HoloToolkit
             enabled = false;
         }
 
+        /// <summary>
+        /// If animating position, specfies the target position as specified
+        /// by SetTargetPosition. Otherwise returns the current position of
+        /// the transform.
+        /// </summary>
         public Vector3 TargetPosition
         {
             get
@@ -389,6 +444,11 @@ namespace HoloToolkit
             }
         }
 
+        /// <summary>
+        /// If animating rotation, specfies the target rotation as specified
+        /// by SetTargetRotation. Otherwise returns the current rotation of
+        /// the transform.
+        /// </summary>
         public Quaternion TargetRotation
         {
             get
@@ -401,6 +461,11 @@ namespace HoloToolkit
             }
         }
 
+        /// <summary>
+        /// If animating local rotation, specfies the target local rotation as
+        /// specified by SetTargetLocalRotation. Otherwise returns the current
+        /// local rotation of the transform.
+        /// </summary>
         public Quaternion TargetLocalRotation
         {
             get
@@ -413,6 +478,11 @@ namespace HoloToolkit
             }
         }
 
+        /// <summary>
+        /// If animating local scale, specfies the target local scale as
+        /// specified by SetTargetLocalScale. Otherwise returns the current
+        /// local scale of the transform.
+        /// </summary>
         public Vector3 TargetLocalScale
         {
             get

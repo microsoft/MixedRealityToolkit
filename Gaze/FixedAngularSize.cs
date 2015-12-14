@@ -2,6 +2,11 @@
 
 namespace HoloToolkit
 {
+    /// <summary>
+    /// Causes a Hologram to maintain a fixed angular size, which is to say it
+    /// occupies the same pixels in the view regardless of its distance from
+    /// the camera.
+    /// </summary>
     public class FixedAngularSize : MonoBehaviour
     {
         Vector3 defaultSizeRatios;
