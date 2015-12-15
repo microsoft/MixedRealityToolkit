@@ -5,12 +5,12 @@ namespace HoloToolkit
     /// <summary>
     /// CursorManager takes GameObjects for cursors:
     /// One that is visible when the user gazes at a hologram,
-	/// and another that is visible when the user is not gazing
-	/// at a hologram.  CursorManager then determines which cursor
-	/// should be visible based on the user's gaze and places this
-	/// cursor at the intersection of the gaze view vector and any
-	/// holograms in the scene. This class also orients the cursor
-	/// to match the normal of this hologram.
+    /// and another that is visible when the user is not gazing
+    /// at a hologram.  CursorManager then determines which cursor
+    /// should be visible based on the user's gaze and places this
+    /// cursor at the intersection of the gaze view vector and any
+    /// holograms in the scene. This class also orients the cursor
+    /// to match the normal of this hologram.
     /// </summary>
     public class CursorManager : Singleton<CursorManager>
     {
@@ -23,9 +23,9 @@ namespace HoloToolkit
         [Tooltip("Distance, in meters, to offset the cursor from the collision point.")]
         public float DistanceFromCollision = 0.01f;
 
-		private Quaternion cursorOnHologramsDefaultRotation;
+        private Quaternion cursorOnHologramsDefaultRotation;
         private Quaternion cursorOffHologramsDefaultRotation;
-		
+        
         void Awake()
         {
             if (CursorOnHolograms == null || CursorOffHolograms == null)
@@ -48,10 +48,10 @@ namespace HoloToolkit
             // Hide the Cursors to begin with.
             CursorOnHolograms.SetActive(false);
             CursorOffHolograms.SetActive(false);
-			
-			// Cache the cursor default rotations so the cursors can be rotated with respect to the original orientation.
-			cursorOnHologramsDefaultRotation = CursorOnHolograms.transform.rotation;
-			cursorOffHologramsDefaultRotation = CursorOffHolograms.transform.rotation;
+            
+            // Cache the cursor default rotations so the cursors can be rotated with respect to the original orientation.
+            cursorOnHologramsDefaultRotation = CursorOnHolograms.transform.rotation;
+            cursorOffHologramsDefaultRotation = CursorOffHolograms.transform.rotation;
         }
 
         void Update()
@@ -60,27 +60,27 @@ namespace HoloToolkit
             {
                 return;
             }
-			
-			// Ensure that the cursor to display is set to active at the end of each block below, so that
-			// the visible cursor will always be shown, even in the case where CursorOffHolograms is the 
-			// same GameObject as CursorOnHolograms.
+            
+            // Ensure that the cursor to display is set to active at the end of each block below, so that
+            // the visible cursor will always be shown, even in the case where CursorOffHolograms is the 
+            // same GameObject as CursorOnHolograms.
             if (GazeManager.Instance.Hit)
             {
-				// If the user's gaze vector intersects with a hologram,
-				// hide the CursorOffHolograms and show the CursorOnHolograms.
+                // If the user's gaze vector intersects with a hologram,
+                // hide the CursorOffHolograms and show the CursorOnHolograms.
                 CursorOffHolograms.SetActive(false);
                 CursorOnHolograms.SetActive(true);
             }
             else
             {
-				// If the user's gaze vector does not intersect with a hologram,
-				// hide the CursorOnHolograms and show the CursorOffHolograms.
+                // If the user's gaze vector does not intersect with a hologram,
+                // hide the CursorOnHolograms and show the CursorOffHolograms.
                 CursorOnHolograms.SetActive(false);
                 CursorOffHolograms.SetActive(true);
             }
 
-			// Update the position and normal of both cursor objects so other scripts that rely on the cursor position
-			// can use either GameObject as a dependency.
+            // Update the position and normal of both cursor objects so other scripts that rely on the cursor position
+            // can use either GameObject as a dependency.
             // Place the cursor at the calculated position.
             CursorOnHolograms.transform.position = GazeManager.Instance.Position + GazeManager.Instance.Normal * DistanceFromCollision;
             CursorOffHolograms.transform.position = GazeManager.Instance.Position;
