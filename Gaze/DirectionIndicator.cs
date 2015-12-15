@@ -87,9 +87,6 @@ namespace HoloToolkit
             indicatorMaterial.color = DirectionIndicatorColor;
             indicatorMaterial.SetColor("_TintColor", DirectionIndicatorColor);
 
-            // Make this indicator a child of the targeted GameObject.
-            indicator.transform.SetParent(gameObject.transform);
-
             return indicator;
         }
 

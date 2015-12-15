@@ -28,6 +28,8 @@ You must provide GameObjects for the **_CursorOnHologram_** and **_CursorOffHolo
 
 **_CursorOffHologram_** Cursor object to display when you are not gazing at a hologram.
 
+**DistanceFromCollision** Distance, in meters, to offset the cursor from a collision with a hologram in the scene.  This is to prevent the cursor from being occluded.
+
 ### DirectionIndicator.cs
 Show a GameObject around the cursor that points in the direction of the GameObject which this script is attached to.
 

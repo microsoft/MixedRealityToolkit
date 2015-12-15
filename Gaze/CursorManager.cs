@@ -20,6 +20,9 @@ namespace HoloToolkit
         [Tooltip("The cursor GameObject to show when the user's gaze does not hit a hologram.")]
         public GameObject CursorOffHolograms;
 
+        [Tooltip("Distance, in meters, to offset the cursor from the collision point.")]
+        public float DistanceFromCollision = 0.01f;
+
 		private Quaternion cursorOnHologramsDefaultRotation;
         private Quaternion cursorOffHologramsDefaultRotation;
 		
@@ -38,7 +41,7 @@ namespace HoloToolkit
             if ((GazeManager.Instance.RaycastLayerMask & CursorOnHolograms.layer) == 0 ||
                 (GazeManager.Instance.RaycastLayerMask & CursorOffHolograms.layer) == 0)
             {
-                Debug.LogError("One or both of the cursors have layers that are checked in the GazeManager's Raycast Layer Mask.  Please uncheck these layers: " + 
+                Debug.LogError("One or both of the cursors have layers that are checked in the GazeManager's Raycast Layer Mask.  Please change the cursor layers (eg: to Ignore Raycast) or uncheck these layers in GazeManager: " + 
                     LayerMask.LayerToName(CursorOnHolograms.layer) + ", " + LayerMask.LayerToName(CursorOffHolograms.layer));
             }
 
@@ -79,7 +82,7 @@ namespace HoloToolkit
 			// Update the position and normal of both cursor objects so other scripts that rely on the cursor position
 			// can use either GameObject as a dependency.
             // Place the cursor at the calculated position.
-            CursorOnHolograms.transform.position = GazeManager.Instance.Position;
+            CursorOnHolograms.transform.position = GazeManager.Instance.Position + GazeManager.Instance.Normal * DistanceFromCollision;
             CursorOffHolograms.transform.position = GazeManager.Instance.Position;
 
             // Reorient the cursors to match the hit object normal.
