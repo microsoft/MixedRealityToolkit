@@ -14,7 +14,7 @@ Any scripts that are referenced from multiple subdirectories within the HoloTool
 
 ### Interpolator.cs
 
-A MonoBehaviour that interpolates a transform's Position, Rotation or Scale.
+A MonoBehaviour that interpolates a transform's position, rotation or scale.
 
 ### Singleton.cs
 A base class to make a MonoBehaviour follow the singleton design pattern.
@@ -24,7 +24,7 @@ A base class to make a MonoBehaviour follow the singleton design pattern.
 Any scripts that are based on the user's gaze.
 
 ### Billboard.cs
-Causes a Hologram to rotate so it is always facing towards the camera.
+Rotates a hologram so it is always facing towards the camera.
 
 ### CursorManager.cs
 Control the position and rotation of a cursor that follows the user's gaze.
@@ -34,6 +34,8 @@ You must provide GameObjects for the **_CursorOnHologram_** and **_CursorOffHolo
 **_CursorOnHologram_** Cursor object to display when you are gazing at a hologram.
 
 **_CursorOffHologram_** Cursor object to display when you are not gazing at a hologram.
+
+**DistanceFromCollision** Distance, in meters, to offset the cursor from a collision with a hologram in the scene.  This is to prevent the cursor from being occluded.
 
 ### DirectionIndicator.cs
 Show a GameObject around the cursor that points in the direction of the GameObject which this script is attached to.
@@ -49,7 +51,7 @@ You must provide GameObjects for the **_Cursor_** and **_DirectionIndicatorObjec
 **TitleSafeFactor** The percentage the GameObject can be within the view frustum for the DirectionIndicatorObject to start appearing.  A value of 0 will display the DirectionIndicatorObject when the GameObject leaves the view.  0.1 will display when the GameObject is 10% away from the edge of the view.  -0.1 will display when the GameObject is 10% out of view.
 
 ### FixedAngularSize.cs
-Causes a Hologram to maintain a fixed angular size, which is to say it occupies the same pixels in the view regardless of its distance from the camera.
+Causes a hologram to maintain a fixed angular size, which is to say it occupies the same pixels in the view regardless of its distance from the camera.
 
 ### GazeManager.cs
 Perform raycasts in the user's gaze direction to get the position and normals of any collisions.
@@ -90,6 +92,6 @@ You must provide GameObjects for the **_Cursor_** and **_HandGuidanceIndicator_*
 A Tagalong that stays at a fixed distance from the camera and always seeks to have a part of itself in the view frustum of the camera.
 
 ### Tagalong.cs
-A Tagalong that extends SimpleTagalong that allows for specifying the minimum and target percentage of the object to keep in the view frustum of the camera and that keeps the Tagalong object in front of other Holograms including the Spatial Mapping Mesh.
+A Tagalong that extends SimpleTagalong that allows for specifying the minimum and target percentage of the object to keep in the view frustum of the camera and that keeps the Tagalong object in front of other holograms including the Spatial Mapping Mesh.
 
 ---

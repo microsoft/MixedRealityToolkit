@@ -3,10 +3,12 @@ using UnityEngine;
 namespace HoloToolkit
 {
     /// <summary>
-    /// A MonoBehaviour that interpolates a transform's Position, Rotation or Scale.
+    /// A MonoBehaviour that interpolates a transform's position, rotation or scale.
     /// </summary>
     public class Interpolator : MonoBehaviour
     {
+        // A very small number that is used in determining if the Interpolator
+        // needs to run at all.
         private const float SmallNumber = 0.0000001f;
 
         // The movement speed in meters per second
@@ -30,11 +32,11 @@ namespace HoloToolkit
         [HideInInspector]
         public bool SmoothLerpToTarget = false;
         [HideInInspector]
-        public float SmoothPositionLerpRatio = .5f;
+        public float SmoothPositionLerpRatio = 0.5f;
         [HideInInspector]
-        public float SmoothRotationLerpRatio = .5f;
+        public float SmoothRotationLerpRatio = 0.5f;
         [HideInInspector]
-        public float SmoothScaleLerpRatio = .5f;
+        public float SmoothScaleLerpRatio = 0.5f;
 
         // Position data
         private Vector3 targetPosition;
@@ -80,7 +82,7 @@ namespace HoloToolkit
         private Vector3 oldPosition = Vector3.zero;
 
         /// <summary>
-        /// True if Position, Rotation or Scale are animating; false otherwise.
+        /// True if position, rotation or scale are animating; false otherwise.
         /// </summary>
         public bool Running
         {
@@ -124,7 +126,7 @@ namespace HoloToolkit
             }
             else
             {
-                // set immediately to prevent accumulation of error
+                // Set immediately to prevent accumulation of error.
                 transform.position = target;
                 AnimatingPosition = false;
             }
@@ -153,7 +155,7 @@ namespace HoloToolkit
             }
             else
             {
-                // set immediately to prevent accumulation of error
+                // Set immediately to prevent accumulation of error.
                 transform.rotation = target;
                 AnimatingRotation = false;
             }
@@ -182,7 +184,7 @@ namespace HoloToolkit
             }
             else
             {
-                // set immediately to prevent accumulation of error
+                // Set immediately to prevent accumulation of error.
                 transform.localRotation = target;
                 AnimatingLocalRotation = false;
             }
@@ -222,10 +224,10 @@ namespace HoloToolkit
         /// <summary>
         /// Interpolates smoothly to a target position.
         /// </summary>
-        /// <param name="start"></param>
-        /// <param name="target"></param>
-        /// <param name="deltaTime"></param>
-        /// <param name="speed"></param>
+        /// <param name="start">The starting position.</param>
+        /// <param name="target">The destination position.</param>
+        /// <param name="deltaTime">Caller-provided Time.deltaTime.</param>
+        /// <param name="speed">The speed to to apply to the interpolation.</param>
         /// <returns>New interpolated position closer to target</returns>
         public static Vector3 NonLinearInterpolateTo(Vector3 start, Vector3 target, float deltaTime, float speed)
         {
@@ -331,7 +333,6 @@ namespace HoloToolkit
                     interpOccuredThisFrame = true;
                 }
             }
-
 
             if (AnimatingLocalScale)
             {

@@ -2,6 +2,11 @@
 
 namespace HoloToolkit
 {
+    /// <summary>
+    /// A Tagalong that stays at a fixed distance from the camera and always
+    /// seeks to have a part of itself in the view frustum of the camera.
+    /// </summary>
+    [RequireComponent(typeof(BoxCollider))]
     public class SimpleTagalong : MonoBehaviour
     {
         // Simple Tagalongs seek to stay at a fixed distance from the Camera.
@@ -42,7 +47,7 @@ namespace HoloToolkit
             if (!tagalongCollider)
             {
                 // If we can't find one, disable the script.
-                Debug.Log("BoxCollider not found; disabling Tagalong");
+                Debug.LogWarning("BoxCollider not found; disabling Tagalong");
                 enabled = false;
             }
 
@@ -57,10 +62,6 @@ namespace HoloToolkit
         {
             // Retrieve the frustum planes from the camera.
             frustumPlanes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
-            //for (int i=0; i<frustumPlanes.Length; i++)
-            //{
-            //    Debug.Log(frustumPlanes[i].normal);
-            //}
 
             // Determine if the Tagalong needs to move based on whether its
             // BoxCollider is in or out of the camera's view frustum.

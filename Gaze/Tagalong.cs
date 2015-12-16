@@ -7,11 +7,12 @@ namespace HoloToolkit
     /// A Tagalong that extends SimpleTagalong that allows for specifying the
     /// minimum and target percentage of the object to keep in the view frustum
     /// of the camera and that keeps the Tagalong object in front of other
-    /// Holograms including the Spatial Mapping Mesh.
+    /// holograms including the Spatial Mapping Mesh.
     /// </summary>
     public class Tagalong : SimpleTagalong
     {
-        // These members allow for specifying target and minimum percentage in the FOV
+        // These members allow for specifying target and minimum percentage in
+        // the FOV.
         [Range(0.0f, 1.0f), Tooltip("The minimum horizontal percentage visible before the object starts tagging along.")]
         public float MinimumHorizontalOverlap = 0.1f;
         [Range(0.0f, 1.0f), Tooltip("The target horizontal percentage the Tagalong attempts to achieve.")]
@@ -30,11 +31,11 @@ namespace HoloToolkit
 
         [Tooltip("Don't allow the Tagalong to come closer than this distance.")]
         public float MinimumTagalongDistance = 1.0f;
-        [Tooltip("If true, the Tagalong object maintains a fixed angular size.")]
+        [Tooltip("When true, the Tagalong object maintains a fixed angular size.")]
         public bool MaintainFixedSize = true;
 
         [Tooltip("The speed to update the Tagalong's distance when compensating for depth (meters/second).")]
-        public float DistanceUpdateSpeed = 4.0f;
+        public float DepthUpdateSpeed = 4.0f;
 
         private float defaultTagalongDistance;
 
@@ -43,33 +44,33 @@ namespace HoloToolkit
         [Tooltip("Set to true to draw lines of interest in Unity's scene view during play-mode.")]
         public bool debug_drawLines = false;
         [Tooltip("Useful for visualizing the Raycasts used for determining the depth to place the Tagalong. Set to 'None' to disable.")]
-        public Light DebugPointLight;
+        public Light debug_pointLight;
 
         protected override void Start()
         {
+            base.Start();
+
             // Remember the default for distance.
             defaultTagalongDistance = TagalongDistance;
 
             // If the specified minumum distance for the tagalong would be within the 
             // camera's near clipping plane, adjust it to be 10% beyond the near
-            // clipping plane
+            // clipping plane.
             if (Camera.main.nearClipPlane > MinimumTagalongDistance)
             {
                 MinimumTagalongDistance = Camera.main.nearClipPlane * 1.1f;
             }
 
-            // The EnforceDistance functionality of the SimmpleTagalong would have
-            // a detrimental effect on the ComplexTagalong's desired behavior.
-            // Disable that flag here.
+            // The EnforceDistance functionality of the SimmpleTagalong has a
+            // detrimental effect on this Tagalong's desired behavior.
+            // Disable that behavior here.
             EnforceDistance = false;
 
-            // Add the FixedAngularSize script if MaintainFixedSize is true
+            // Add the FixedAngularSize script if MaintainFixedSize is true.
             if (MaintainFixedSize)
             {
                 gameObject.AddComponent<FixedAngularSize>();
             }
-
-            base.Start();
         }
 
         protected override void Update()
@@ -84,7 +85,7 @@ namespace HoloToolkit
                 Vector3 newPosition;
                 if (AdjustTagalongDistance(out newPosition))
                 {
-                    interpolator.PositionPerSecond = DistanceUpdateSpeed;
+                    interpolator.PositionPerSecond = DepthUpdateSpeed;
                     interpolator.SetTargetPosition(newPosition);
                     TagalongDistance = Mathf.Min(defaultTagalongDistance, Vector3.Distance(Camera.main.transform.position, newPosition));
                 }
@@ -95,13 +96,13 @@ namespace HoloToolkit
         {
             bool needsToMoveX = false;
             bool needsToMoveY = false;
-            toPosition = Vector3.zero;
+            toPosition = fromPosition;
 
-            // Cache some things that we will need later
+            // Cache some things that we will need later.
             Transform cameraTransform = Camera.main.transform;
             Vector3 cameraPosition = cameraTransform.position;
 
-            // Get the bounds of the Tagalong's collider
+            // Get the bounds of the Tagalong's collider.
             Bounds colliderBounds = tagalongCollider.bounds;
 
             // Default the new position to be the current position.
@@ -117,7 +118,7 @@ namespace HoloToolkit
             Debug_DrawColliderBox(debug_drawLines, colliderBounds);
 #endif // UNITY_EDITOR
 
-            // Get the actual width and height of the Tagalong's BoxCollider
+            // Get the actual width and height of the Tagalong's BoxCollider.
             float width = tagalongCollider.size.x * transform.lossyScale.x;
             float height = tagalongCollider.size.y * transform.lossyScale.y;
 
@@ -209,8 +210,8 @@ namespace HoloToolkit
             Transform cameraTransform = Camera.main.transform;
             Vector3 cameraPosition = cameraTransform.position;
 
-            // The target overlap can't be < the minimum overlap. Pick the bigger
-            // of the two.
+            // The target overlap can't be less than the minimum overlap. Pick
+            // the bigger of the two.
             float desiredOverlap = isHorizontal
                 ? Mathf.Max(MinimumHorizontalOverlap, TargetHorizontalOverlap)
                 : Mathf.Max(MinimumVerticalOverlap, TargetVerticalOverlap);
@@ -255,7 +256,7 @@ namespace HoloToolkit
         {
             bool needsUpdating = false;
 
-            // Get the actual width and height of the Tagalong's BoxCollider
+            // Get the actual width and height of the Tagalong's BoxCollider.
             float width = tagalongCollider.size.x * transform.lossyScale.x;
             float height = tagalongCollider.size.y * transform.lossyScale.y;
 
@@ -286,9 +287,9 @@ namespace HoloToolkit
                         {
                             closestHit = allHits[h];
                             closestHitDistance = closestHit.distance;
-                            if (DebugPointLight != null)
+                            if (debug_pointLight != null)
                             {
-                                Light clonedLight = Instantiate(DebugPointLight, closestHit.point, Quaternion.identity) as Light;
+                                Light clonedLight = Instantiate(debug_pointLight, closestHit.point, Quaternion.identity) as Light;
                                 clonedLight.color = Color.red;
                                 DestroyObject(clonedLight, 1.0f);
                             }
@@ -300,7 +301,7 @@ namespace HoloToolkit
                 }
             }
 
-            // If we hit something, the closestHitDistance will be < infinity
+            // If we hit something, the closestHitDistance will be < infinity.
             needsUpdating = closestHitDistance < float.PositiveInfinity;
             if (needsUpdating)
             {
@@ -335,6 +336,7 @@ namespace HoloToolkit
         {
             Debug_DrawLine(draw, start, end, Color.white);
         }
+
         protected void Debug_DrawLine(bool draw, Vector3 start, Vector3 end, Color color)
         {
             if (draw)
@@ -343,6 +345,11 @@ namespace HoloToolkit
             }
         }
 
+        /// <summary>
+        /// This function draws a box at the bounds provided.
+        /// </summary>
+        /// <param name="draw">If true, drawing happens.</param>
+        /// <param name="colliderBounds">The bounds to draw the box.</param>
         void Debug_DrawColliderBox(bool draw, Bounds colliderBounds)
         {
             Vector3 extents = colliderBounds.extents;

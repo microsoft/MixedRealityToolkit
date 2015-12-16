@@ -48,10 +48,13 @@ namespace HoloToolkit
             // Stabilize the gaze ray.
             gazeOrigin = Camera.main.transform.position;
             gazeDirection = Camera.main.transform.forward;
-            gazeStabilizer.UpdateHeadStability(gazeOrigin, Camera.main.transform.rotation);
+            if (gazeStabilizer != null)
+            {
+                gazeStabilizer.UpdateHeadStability(gazeOrigin, Camera.main.transform.rotation);
 
-            // Update the gazeOrigin with the stabilized position.
-            gazeOrigin = gazeStabilizer.StableHeadPosition;
+                // Update the gazeOrigin with the stabilized position.
+                gazeOrigin = gazeStabilizer.StableHeadPosition;
+            }
 
             UpdateRaycast();
         }

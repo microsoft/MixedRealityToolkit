@@ -9,7 +9,9 @@ namespace HoloToolkit
     /// </summary>
     public class FixedAngularSize : MonoBehaviour
     {
-        Vector3 defaultSizeRatios;
+        // The ratio between the transform's local scale and its starting
+        // distance from the camera.
+        private Vector3 defaultSizeRatios;
 
         void Start()
         {
@@ -22,12 +24,13 @@ namespace HoloToolkit
             }
             else
             {
-                // If the transform and the camera are both in the same position
-                // (that is, the distance between them is zero), all bets are off.
-                // Disable this Behaviour.
+                // If the transform and the camera are both in the same
+                // position (that is, the distance between them is zero),
+                // disable this Behaviour so we don't get a DivdeByZero
+                // error later on.
                 enabled = false;
 #if UNITY_EDITOR
-                Debug.Log("The object and the camera are in the same position at Start(). The attached FixedAngularSize Behaviour is now disabled.");
+                Debug.LogWarning("The object and the camera are in the same position at Start(). The attached FixedAngularSize Behaviour is now disabled.");
 #endif // UNITY_EDITOR
             }
         }

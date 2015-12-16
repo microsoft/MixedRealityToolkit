@@ -39,7 +39,7 @@ namespace HoloToolkit
         /// </summary>
         private void Update()
         {
-            // Get a Vector that points from the Camera to the Target.
+            // Get a Vector that points from the Camera to the target.
             Vector3 directionToTarget = Camera.main.transform.position - gameObject.transform.position;
 
             // If we are right next to the camera the rotation is undefined. 
