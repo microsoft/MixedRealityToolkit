@@ -95,3 +95,17 @@ A Tagalong that stays at a fixed distance from the camera and always seeks to ha
 A Tagalong that extends SimpleTagalong that allows for specifying the minimum and target percentage of the object to keep in the view frustum of the camera and that keeps the Tagalong object in front of other holograms including the Spatial Mapping Mesh.
 
 ---
+## Voice
+Any scripts that are based on the user's voice input.
+
+### KeywordManager.cs
+Allows you to specify keywords and methods in the Unity Inspector, instead of registering them explicitly in code.  
+**IMPORTANT**: Please make sure to add the microphone capability in your app, in Unity under  
+Edit -> Project Settings -> Player -> Settings for Windows Store -> Publishing Settings -> Capabilities  
+or in your Visual Studio Package.appxmanifest capabilities.
+
+**_KeywordsAndResponses_** Set the size as the number of keywords you'd like to listen for, then specify the keywords and method responses to complete the array.
+
+**RecognizerStart** Set this to determine whether the keyword recognizer will start immediately or if it should wait for your code to tell it to start.
+
+---
