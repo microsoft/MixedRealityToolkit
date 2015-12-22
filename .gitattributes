@@ -1,0 +1,6 @@
+*.cs text diff=csharp
+
+*.txt text
+*.md text
+
+.gitattributes text
