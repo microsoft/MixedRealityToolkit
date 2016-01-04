@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using UnityEngine.WSA.Input;
+using UnityEngine.VR.WSA.Input;
 
 namespace HoloToolkit
 {
