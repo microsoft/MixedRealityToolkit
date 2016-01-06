@@ -95,6 +95,40 @@ A Tagalong that stays at a fixed distance from the camera and always seeks to ha
 A Tagalong that extends SimpleTagalong that allows for specifying the minimum and target percentage of the object to keep in the view frustum of the camera and that keeps the Tagalong object in front of other holograms including the Spatial Mapping Mesh.
 
 ---
+## Shaders
+
+### LambertianConfigurable.cginc
+Code shared between LambertianConfigurable.shader and LambertianConfigurableTransparent.shader.
+
+### LambertianConfigurable.shader
+Feature configurable per-pixel lambertian shader.  Use when higher quality lighting is desired, but specular highlights are not needed.
+
+### LambertianConfigurableTransparent.shader
+Feature configurable per-pixel lambertian transparent shader.  Use when higher quality lighting and transparency are desired, but specular highlights are not needed.
+
+### StandardFast.shader
+Higher performance drop-in replacement for the Unity Standard Shader.  Use when very high quality lighting (including reflections) is needed.
+
+### UnlitConfigurable.cginc
+Code shared between UnlitConfigurable.shader and UnlitConfigurableTransparent.shader.
+
+### UnlitConfigurable.shader
+Feature configurable unlit shader.  Use when no lighting is desired.
+
+### UnlitConfigurableTransparent.shader
+Feature configurable unlit transparent shader.  Use when transprency and no lighting are desired.
+
+### VertexLitConfigurable.cginc
+Code shared between VertexLitConfigurable.shader and VertexLitConfigurableTransparent.shader.
+
+### VertexLitConfigurable.shader
+Feature configurable vertex lit shader.  Use when a higher performance but lower precision lighting tradeoff is acceptable.
+
+### VertexLitConfigurableTransparent.shader
+Feature configurable vertex lit transparent shader.  Use when a higher performance but lower precision lighting tradeoff is acceptable, and transprency is needed.
+
+
+---
 ## Voice
 Any scripts that are based on the user's voice input.
 
