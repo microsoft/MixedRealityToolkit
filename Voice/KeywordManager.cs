@@ -67,7 +67,7 @@ namespace HoloToolkit
         {
             if (keywordRecognizer != null)
             {
-                keywordRecognizer.Stop();
+                StopKeywordRecognizer();
                 keywordRecognizer.OnPhraseRecognized -= KeywordRecognizer_OnPhraseRecognized;
                 keywordRecognizer.Dispose();
             }
