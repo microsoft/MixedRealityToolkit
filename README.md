@@ -95,6 +95,23 @@ A Tagalong that stays at a fixed distance from the camera and always seeks to ha
 A Tagalong that extends SimpleTagalong that allows for specifying the minimum and target percentage of the object to keep in the view frustum of the camera and that keeps the Tagalong object in front of other holograms including the Spatial Mapping Mesh.
 
 ---
+## PlaneFinding
+PlaneFinding addon that can be used to find planar surfaces (ie: walls/floors/tables/etc) in the mesh data returned by Spatial Mapping.
+
+### PlaneFinding.cs
+Unity script that wraps the native PlaneFinding DLL
+
+### Plugins
+Folder containing the native PlaneFinding.dll.  There are two version of the DLL: one for use in the UnityEditor (x86), and another for use on the HoloLens.
+
+### Example
+This folder contains sample code that demonstrates how to use PlaneFinding.  To use this sample code, start by creating a new Unity scene.  Create an empty GameObject and attach the PlaneFindingTest script to it. Then drag the FakeSpatialMappingMesh onto this GameObject to create a child object that renders the mesh.
+
+Now hit Play. The PlaneFinding algorithm will run in a loop, visualing the planes found via Unity editor gizmos. The PlaneFindingTest component exposes a couple of properties that let you manipulate the PlaneFinding API parameters in realtime and observe their impact on the algorithm.
+
+NOTE: In the interest of simplicity, this test script calls the PlaneFinding APIs directly from the main Unity thread in Update(). In a real application, the PlaneFinding APIs **MUST** be called from a background thread in order to avoid stalling the rendering thread and causing a drop in framerate.
+
+---
 ## Shaders
 
 ### LambertianConfigurable.cginc
