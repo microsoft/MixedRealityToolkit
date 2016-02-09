@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Generated Files">
+      <UniqueIdentifier>{f62c3eca-6852-4075-99d0-7ca874ee21b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scripts">
+      <UniqueIdentifier>{0d7bc2e3-02b4-4764-b670-6bc800de7f2b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\Source\JavaTestApp\Manifest.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="..\..\Source\JavaTestApp\JavaTestApp.java">
+      <Filter>Source Files</Filter>
+    </Object>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Source\JavaTestApp\CopyDependencies.bat">
+      <Filter>Scripts</Filter>
+    </None>
+    <None Include="..\..\Source\JavaTestApp\SyncSphere.java">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="..\..\Source\JavaTestApp\SyncRoot.java">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="..\..\Source\JavaTestApp\VersionInfo.java">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\ClientConfig.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\ClientRole.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\Element.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\ElementType.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\FloatElement.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\IntElement.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\Listener.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\LogWriter.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\MachineSessionState.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\MessageChannel.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\MessageID.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\MessagePriority.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\MessageReliability.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\NetworkConnection.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\NetworkInMessage.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\NetworkOutMessage.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\ObjectElement.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\ObjectElementListener.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\Receipt.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\Session.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\SessionListener.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\SessionManager.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\SessionManagerListener.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\SessionType.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\Settings.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\StringElement.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\SyncListener.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\User.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\UserPresenceManager.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\UserPresenceManagerListener.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\XString.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\XToolsClient.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\XToolsClientJNI.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\XToolsManager.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\AudioManager.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\DirectPairConnector.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\DirectPairReceiver.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\PairingListener.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\PairingManager.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\PairMaker.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\TagImage.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\VisualPairConnector.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\VisualPairReceiver.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\PairingResult.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\NetworkConnectionListener.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\ProfileManager.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>

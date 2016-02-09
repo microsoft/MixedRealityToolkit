@@ -1,0 +1,40 @@
+<Project ToolsVersion="4.0" DefaultTargets="Build" TreatAsLocalProperty="OutDir;BaseOutputPath" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition="'$(Configuration)' == ''">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">Win32</Platform>
+
+    <!--
+	From C:\Windows\Microsoft.NET\Framework\v4.0.30319\Microsoft.Common.targets
+
+    OutDir:
+    Indicates the final output location for the project or solution. When building a solution,
+    OutDir can be used to gather multiple project outputs in one location. In addition,
+    OutDir is included in AssemblySearchPaths used for resolving references.
+
+    OutputPath:
+    This property is usually specified in the project file and is used to initialize OutDir.
+    OutDir and OutputPath are distinguished for legacy reasons, and OutDir should be used if at all possible.
+
+    BaseIntermediateOutputPath:
+    This is the top level folder where all configuration specific intermediate output folders will be created.
+    Default value is obj\
+
+    IntermediateOutputPath:
+    This is the full intermediate Output Path, and is derived from BaseIntermediateOutputPath, if none specified
+    (eg. obj\debug). If this property is overridden, then setting BaseIntermediateOutputPath has no effect.
+    -->
+
+    <BranchRoot>$(MSBuildThisFileDirectory)..\</BranchRoot>
+	<SDKRoot>$(MSBuildThisFileDirectory)..\..\SDK\</SDKRoot>
+
+    <OutDir Condition="'$(OutDir)' != '' AND !HasTrailingSlash('$(OutDir)')">$(OutDir)\</OutDir>
+    <BaseOutputPath Condition="'$(BaseOutputPath)' != '' AND !HasTrailingSlash('$(BaseOutputPath)')">$(BaseOutputPath)\</BaseOutputPath>
+    <BaseOutputPath Condition="'$(BaseOutputPath)' == '' AND '$(OutDir)' != ''">$(OutDir)</BaseOutputPath>
+    <BaseOutputPath Condition="'$(BaseOutputPath)' == ''">$(BranchRoot)bin\$(Configuration)\$(Platform)\</BaseOutputPath>
+    <BaseIntermediateOutputPath>$(BranchRoot)tmp\</BaseIntermediateOutputPath>
+	
+	<ProjectRootDirectory>$(MSBuildThisFileDirectory)..\</ProjectRootDirectory>
+
+    <PropertyFileImported>true</PropertyFileImported>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\..\XTools.props" />
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{1FDCC5CD-B561-46DD-9015-35AC9D4A3853}</ProjectGuid>
+    <SccProjectName>SAK</SccProjectName>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccProvider>SAK</SccProvider>
+    <RootNamespace>ClientWindows</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.10240.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(BaseOutputPath)$(ProjectName)\</OutDir>
+    <IntDir>$(BaseIntermediateOutputPath)$(Configuration)\$(Platform)\$(ProjectName)\</IntDir>
+    <TargetName>XToolsClient</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(BaseOutputPath)$(ProjectName)\</OutDir>
+    <IntDir>$(BaseIntermediateOutputPath)$(Configuration)\$(Platform)\$(ProjectName)\</IntDir>
+    <TargetName>XToolsClient</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(BaseOutputPath)$(ProjectName)\</OutDir>
+    <IntDir>$(BaseIntermediateOutputPath)$(Configuration)\$(Platform)\$(ProjectName)\</IntDir>
+    <TargetName>XToolsClient</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(BaseOutputPath)$(ProjectName)\</OutDir>
+    <IntDir>$(BaseIntermediateOutputPath)$(Configuration)\$(Platform)\$(ProjectName)\</IntDir>
+    <TargetName>XToolsClient</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>..\..\..\..\Source\Common;..\..\..\..\External\zxing-cpp\include;..\..\..\..\External\zint-2.4.3\include;..\..\..\..\External\apriltag-2015-03-18\src</AdditionalIncludeDirectories>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <BrowseInformation>true</BrowseInformation>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Lib>
+      <AdditionalDependencies>apriltag_WinDesktop_$(PlatformTarget)_$(Configuration).lib;zxing_WinDesktop_$(PlatformTarget)_$(Configuration).lib;zint_WinDesktop_$(PlatformTarget)_$(Configuration).lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\..\External\zxing-cpp\lib\Windows;..\..\..\..\External\zint-2.4.3\lib;..\..\..\..\External\apriltag-2015-03-18\lib\</AdditionalLibraryDirectories>
+      <AdditionalOptions>/ignore:4006 /ignore:4221 %(AdditionalOptions)</AdditionalOptions>
+    </Lib>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
+    <Bscmake>
+      <PreserveSbr>true</PreserveSbr>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>..\..\..\..\Source\Common;..\..\..\..\External\zxing-cpp\include;..\..\..\..\External\zint-2.4.3\include;..\..\..\..\External\apriltag-2015-03-18\src</AdditionalIncludeDirectories>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Lib>
+      <AdditionalDependencies>apriltag_WinDesktop_$(PlatformTarget)_$(Configuration).lib;zxing_WinDesktop_$(PlatformTarget)_$(Configuration).lib;zint_WinDesktop_$(PlatformTarget)_$(Configuration).lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\..\External\zxing-cpp\lib\Windows;..\..\..\..\External\zint-2.4.3\lib;..\..\..\..\External\apriltag-2015-03-18\lib\</AdditionalLibraryDirectories>
+      <AdditionalOptions>/ignore:4006 /ignore:4221 %(AdditionalOptions)</AdditionalOptions>
+    </Lib>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>..\..\..\..\Source\Common;..\..\..\..\External\zxing-cpp\include;..\..\..\..\External\zint-2.4.3\include;..\..\..\..\External\apriltag-2015-03-18\src</AdditionalIncludeDirectories>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <Lib>
+      <AdditionalDependencies>apriltag_WinDesktop_$(PlatformTarget)_$(Configuration).lib;zxing_WinDesktop_$(PlatformTarget)_$(Configuration).lib;zint_WinDesktop_$(PlatformTarget)_$(Configuration).lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\..\External\zxing-cpp\lib\Windows;..\..\..\..\External\zint-2.4.3\lib;..\..\..\..\External\apriltag-2015-03-18\lib\</AdditionalLibraryDirectories>
+      <AdditionalOptions>/ignore:4006 /ignore:4221 %(AdditionalOptions)</AdditionalOptions>
+    </Lib>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>..\..\..\..\Source\Common;..\..\..\..\External\zxing-cpp\include;..\..\..\..\External\zint-2.4.3\include;..\..\..\..\External\apriltag-2015-03-18\src</AdditionalIncludeDirectories>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <Lib>
+      <AdditionalDependencies>apriltag_WinDesktop_$(PlatformTarget)_$(Configuration).lib;zxing_WinDesktop_$(PlatformTarget)_$(Configuration).lib;zint_WinDesktop_$(PlatformTarget)_$(Configuration).lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\..\External\zxing-cpp\lib\Windows;..\..\..\..\External\zint-2.4.3\lib;..\..\..\..\External\apriltag-2015-03-18\lib\</AdditionalLibraryDirectories>
+      <AdditionalOptions>/ignore:4006 /ignore:4221 %(AdditionalOptions)</AdditionalOptions>
+    </Lib>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\CommonDesktop\CommonDesktop.vcxproj">
+      <Project>{58299519-1341-48ce-a3c4-e76a1531ffbf}</Project>
+      <Private>false</Private>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+      <CopyLocalSatelliteAssemblies>false</CopyLocalSatelliteAssemblies>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+      <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\Source\Client\AprilTagIncludes.h" />
+    <ClInclude Include="..\..\..\..\Source\Client\ClientWrapperAPI.h" />
+    <ClInclude Include="..\..\..\..\Source\Client\DirectPairConnector.h" />
+    <ClInclude Include="..\..\..\..\Source\Client\DirectPairReceiver.h" />
+    <ClInclude Include="..\..\..\..\Source\Client\DynamicLibrary.h" />
+    <ClInclude Include="..\..\..\..\Source\Client\ImageData.h" />
+    <ClInclude Include="..\..\..\..\Source\Client\ImageLuminanceSource.h" />
+    <ClInclude Include="..\..\..\..\Source\Client\ImageTagLocation.h" />
+    <ClInclude Include="..\..\..\..\Source\Client\ImageTagLocationListener.h" />
+    <ClInclude Include="..\..\..\..\Source\Client\ImageTagLocationImpl.h" />
+    <ClInclude Include="..\..\..\..\Source\Client\ImageTagLocator.h" />
+    <ClInclude Include="..\..\..\..\Source\Client\ImageTagManager.h" />
+    <ClInclude Include="..\..\..\..\Source\Client\ImageTagManagerImpl.h" />
+    <ClInclude Include="..\..\..\..\Source\Client\PairingInfo.h" />
+    <ClInclude Include="..\..\..\..\Source\Client\PairingListener.h" />
+    <ClInclude Include="..\..\..\..\Source\Client\PairingManager.h" />
+    <ClInclude Include="..\..\..\..\Source\Client\PairingManagerImpl.h" />
+    <ClInclude Include="..\..\..\..\Source\Client\PairingResult.h" />
+    <ClInclude Include="..\..\..\..\Source\Client\PairMaker.h" />
+    <ClInclude Include="..\..\..\..\Source\Client\Settings.h" />
+    <ClInclude Include="..\..\..\..\Source\Client\SideCarContextImpl.h" />
+    <ClInclude Include="..\..\..\..\Source\Client\stdafx.h" />
+    <ClInclude Include="..\..\..\..\Source\Client\TagImage.h" />
+    <ClInclude Include="..\..\..\..\Source\Client\TagImageImpl.h" />
+    <ClInclude Include="..\..\..\..\Source\Client\VisualPairConnector.h" />
+    <ClInclude Include="..\..\..\..\Source\Client\VisualPairConnectorImpl.h" />
+    <ClInclude Include="..\..\..\..\Source\Client\VisualPairReceiver.h" />
+    <ClInclude Include="..\..\..\..\Source\Client\VisualPairReceiverImpl.h" />
+    <ClInclude Include="..\..\..\..\Source\Client\XToolsManager.h" />
+    <ClInclude Include="..\..\..\..\Source\Client\XToolsManagerImpl.h" />
+    <ClInclude Include="..\..\..\..\Source\Client\ZXingIncludes.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\Source\Client\DirectPairConnector.cpp" />
+    <ClCompile Include="..\..\..\..\Source\Client\DirectPairReceiver.cpp" />
+    <ClCompile Include="..\..\..\..\Source\Client\DynamicLibrary.cpp" />
+    <ClCompile Include="..\..\..\..\Source\Client\ImageData.cpp" />
+    <ClCompile Include="..\..\..\..\Source\Client\ImageLuminanceSource.cpp" />
+    <ClCompile Include="..\..\..\..\Source\Client\ImageTagLocationImpl.cpp" />
+    <ClCompile Include="..\..\..\..\Source\Client\ImageTagLocator.cpp" />
+    <ClCompile Include="..\..\..\..\Source\Client\ImageTagManagerImpl.cpp" />
+    <ClCompile Include="..\..\..\..\Source\Client\PairingInfo.cpp" />
+    <ClCompile Include="..\..\..\..\Source\Client\PairingManagerImpl.cpp" />
+    <ClCompile Include="..\..\..\..\Source\Client\Settings.cpp" />
+    <ClCompile Include="..\..\..\..\Source\Client\SideCarContextImpl.cpp" />
+    <ClCompile Include="..\..\..\..\Source\Client\stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Client\TagImageImpl.cpp" />
+    <ClCompile Include="..\..\..\..\Source\Client\VisualPairConnectorImpl.cpp" />
+    <ClCompile Include="..\..\..\..\Source\Client\VisualPairReceiverImpl.cpp" />
+    <ClCompile Include="..\..\..\..\Source\Client\XToolsManagerImpl.cpp" />
+  </ItemGroup>
+  <Import Project="..\..\..\XTools.targets" />
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

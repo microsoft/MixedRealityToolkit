@@ -1,0 +1,17 @@
+//////////////////////////////////////////////////////////////////////////
+// SystemDescription.h
+//
+// Copyright (C) 2015 Microsoft Corp.  All Rights Reserved
+//////////////////////////////////////////////////////////////////////////
+
+#pragma once
+
+XTOOLS_NAMESPACE_BEGIN
+
+struct SystemDescription
+{
+	char m_name[128];
+	SystemRole m_role;
+};
+
+XTOOLS_NAMESPACE_END

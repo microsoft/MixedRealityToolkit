@@ -1,0 +1,17 @@
+//////////////////////////////////////////////////////////////////////////
+// IUpdateable.cpp
+//
+// 
+//
+// Copyright (C) 2015 Microsoft Corp.  All Rights Reserved
+//////////////////////////////////////////////////////////////////////////
+
+#include "stdafx.h"
+#include <Public/Utils/IUpdateable.h>
+
+XTOOLS_NAMESPACE_BEGIN
+
+XTOOLS_REFLECTION_DEFINE(IUpdateable);
+
+XTOOLS_NAMESPACE_END
+

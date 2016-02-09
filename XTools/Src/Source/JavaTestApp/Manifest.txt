@@ -1,0 +1,7 @@
+Main-Class: XTools.JavaTestApp
+Specification-Title: XTools Console Application
+Specification-Version: 1.0.0.0
+Specification-Vendor: Microsoft Corporation
+Implementation-Title: XTools Console Application
+Implementation-Version: 1.0.0.0
+Implementation-Vendor: Microsoft Corporation

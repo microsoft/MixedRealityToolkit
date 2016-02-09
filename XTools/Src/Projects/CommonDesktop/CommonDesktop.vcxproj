@@ -1,0 +1,524 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\XTools.props" />
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Source\Common\Private\AckOperation.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\AudioConnection.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\AudioConnectionClient.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\AudioManagerImpl.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\AudioSessionProcessor.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\AudioPacket.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\AudioPacketPool.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\AudioSessionProcessorClient.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\AudioWavFile.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\Buffer.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\BufferQueue.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\ClientConfig.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\ClientContext.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\CreateCreateTransform.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\CreateDeleteTransform.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\CreateModifyTransform.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\DeleteCreateTransform.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\DeleteDeleteTransform.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\DeleteModifyTransform.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\DiscoveredSystem.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\DiscoveryClientImpl.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\DiscoveryServerImpl.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\DownloadBufferImpl.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\DownloadManagerImpl.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\CreateOperation.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\DeleteOperation.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\ElementFactory.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\Environment.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\FloatElementImpl.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\IntElementImpl.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\IPAddress.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\JoinSessionReply.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\JoinSessionRequest.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\ListSessionsReply.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\ListSessionsRequest.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\Message.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\MessageInterceptor.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\MessageQueue.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\ModifyDeleteTransform.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\ModifyModifyTransform.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\JSONMessage.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\json\json.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\json\json_parsing.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\json\json_serialization.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\json\utilities\asyncrt_utils.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\ModifyOperation.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\Peer.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\Profile.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\ProfileEntry.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\ProfileManagerImpl.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\Reflection.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\ResampleProcessor.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\SpeexProcessor.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\UserPresenceManagerFollowerImpl.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\NetworkConnectionImpl.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\NetworkHandshake.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\NetworkInMessageImpl.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\NetworkMessagePool.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\NetworkOutMessageImpl.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\NoopOperation.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\ObjectElementImpl.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\Operation.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\OperationFactory.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\PairingHandshakeLogic.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\NewSessionReply.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\NewSessionRequest.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\SessionAddedMsg.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\SessionClosedMsg.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\SessionDescriptorImpl.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\SessionHandshakeLogic.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\SessionImpl.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\SessionListHandshakeLogic.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\SessionManagerImpl.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\SessionMessageRouter.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\StringElementImpl.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\TunnelBridge.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\TunnelConnection.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\UserChangedSessionMsg.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\UserImpl.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\SyncContext.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\SyncManagerImpl.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\TransformManager.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\UserJoinedSessionMsg.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\UserLeftSessionMsg.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\UserPresenceManagerLeaderImpl.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\Utils\ClassThreadRunner.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\Utils\Event.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\Utils\FileLogWriter.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\Utils\Hash.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\Utils\IUpdateable.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\Utils\LFQueue.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\Utils\Log.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\Utils\Logger.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\Utils\MemberFuncThread.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\Utils\MemoryManager.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\Utils\Mutex.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\Utils\PlatformUtils.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\Utils\RegistrationReceipt.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\Utils\ScopedLock.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\Utils\StringUtils.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\Utils\XThread.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\XSocketImpl.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\XSocketManagerImpl.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\XString.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\XValue.cpp" />
+    <ClCompile Include="..\..\Source\Common\stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Source\Common\Common.h" />
+    <ClInclude Include="..\..\Source\Common\CommonPrivate.h" />
+    <ClInclude Include="..\..\Source\Common\Private\AckOperation.h" />
+    <ClInclude Include="..\..\Source\Common\Private\AudioConnection.h" />
+    <ClInclude Include="..\..\Source\Common\Private\AudioConnectionClient.h" />
+    <ClInclude Include="..\..\Source\Common\Private\AudioManagerImpl.h" />
+    <ClInclude Include="..\..\Source\Common\Private\AudioPacket.h" />
+    <ClInclude Include="..\..\Source\Common\Private\AudioPacketPool.h" />
+    <ClInclude Include="..\..\Source\Common\Private\AudioProcessor.h" />
+    <ClInclude Include="..\..\Source\Common\Private\AudioSessionProcessorClient.h" />
+    <ClInclude Include="..\..\Source\Common\Private\AudioWavFile.h" />
+    <ClInclude Include="..\..\Source\Common\Private\Buffer.h" />
+    <ClInclude Include="..\..\Source\Common\Private\BufferQueue.h" />
+    <ClInclude Include="..\..\Source\Common\Private\CreateCreateTransform.h" />
+    <ClInclude Include="..\..\Source\Common\Private\CreateDeleteTransform.h" />
+    <ClInclude Include="..\..\Source\Common\Private\CreateModifyTransform.h" />
+    <ClInclude Include="..\..\Source\Common\Private\DeleteCreateTransform.h" />
+    <ClInclude Include="..\..\Source\Common\Private\DeleteDeleteTransform.h" />
+    <ClInclude Include="..\..\Source\Common\Private\DeleteModifyTransform.h" />
+    <ClInclude Include="..\..\Source\Common\Private\DiscoveryClientImpl.h" />
+    <ClInclude Include="..\..\Source\Common\Private\DiscoveryServerImpl.h" />
+    <ClInclude Include="..\..\Source\Common\Private\DownloadBufferImpl.h" />
+    <ClInclude Include="..\..\Source\Common\Private\DownloadManagerImpl.h" />
+    <ClInclude Include="..\..\Source\Common\Private\CreateOperation.h" />
+    <ClInclude Include="..\..\Source\Common\Private\DeleteOperation.h" />
+    <ClInclude Include="..\..\Source\Common\Private\ElementFactory.h" />
+    <ClInclude Include="..\..\Source\Common\Private\FloatElementImpl.h" />
+    <ClInclude Include="..\..\Source\Common\Private\IntElementImpl.h" />
+    <ClInclude Include="..\..\Source\Common\Private\JoinSessionReply.h" />
+    <ClInclude Include="..\..\Source\Common\Private\JoinSessionRequest.h" />
+    <ClInclude Include="..\..\Source\Common\Private\ListSessionsReply.h" />
+    <ClInclude Include="..\..\Source\Common\Private\ListSessionsRequest.h" />
+    <ClInclude Include="..\..\Source\Common\Private\Message.h" />
+    <ClInclude Include="..\..\Source\Common\Private\MessageInterceptor.h" />
+    <ClInclude Include="..\..\Source\Common\Private\MessageQueue.h" />
+    <ClInclude Include="..\..\Source\Common\Private\ModifyDeleteTransform.h" />
+    <ClInclude Include="..\..\Source\Common\Private\ModifyModifyTransform.h" />
+    <ClInclude Include="..\..\Source\Common\Private\JSONMessage.h" />
+    <ClInclude Include="..\..\Source\Common\Private\json\compat\SafeInt3.hpp" />
+    <ClInclude Include="..\..\Source\Common\Private\json\compat\windows_compat.h" />
+    <ClInclude Include="..\..\Source\Common\Private\json\cpprest\asyncrt_utils.h" />
+    <ClInclude Include="..\..\Source\Common\Private\json\cpprest\basic_types.h" />
+    <ClInclude Include="..\..\Source\Common\Private\json\cpprest\json.h" />
+    <ClInclude Include="..\..\Source\Common\Private\json\cpprest\xxpublic.h" />
+    <ClInclude Include="..\..\Source\Common\Private\ModifyOperation.h" />
+    <ClInclude Include="..\..\Source\Common\Private\PacketWrapper.h" />
+    <ClInclude Include="..\..\Source\Common\Private\Peer.h" />
+    <ClInclude Include="..\..\Source\Common\Private\ProfileEntry.h" />
+    <ClInclude Include="..\..\Source\Common\Private\ProfileManagerImpl.h" />
+    <ClInclude Include="..\..\Source\Common\Private\ResampleProcessor.h" />
+    <ClInclude Include="..\..\Source\Common\Private\SpeexProcessor.h" />
+    <ClInclude Include="..\..\Source\Common\Private\SystemDescription.h" />
+    <ClInclude Include="..\..\Source\Common\Private\UserPresenceManagerFollowerImpl.h" />
+    <ClInclude Include="..\..\Source\Common\Private\NetworkCommonPrivate.h" />
+    <ClInclude Include="..\..\Source\Common\Private\NetworkConnectionImpl.h" />
+    <ClInclude Include="..\..\Source\Common\Private\NetworkInMessageImpl.h" />
+    <ClInclude Include="..\..\Source\Common\Private\NetworkMessagePool.h" />
+    <ClInclude Include="..\..\Source\Common\Private\NetworkOutMessageImpl.h" />
+    <ClInclude Include="..\..\Source\Common\Private\NoopOperation.h" />
+    <ClInclude Include="..\..\Source\Common\Private\ObjectElementImpl.h" />
+    <ClInclude Include="..\..\Source\Common\Private\Operation.h" />
+    <ClInclude Include="..\..\Source\Common\Private\OperationFactory.h" />
+    <ClInclude Include="..\..\Source\Common\Private\OpTransform.h" />
+    <ClInclude Include="..\..\Source\Common\Private\RakNetIncludes.h" />
+    <ClInclude Include="..\..\Source\Common\Private\NewSessionReply.h" />
+    <ClInclude Include="..\..\Source\Common\Private\NewSessionRequest.h" />
+    <ClInclude Include="..\..\Source\Common\Private\SessionAddedMsg.h" />
+    <ClInclude Include="..\..\Source\Common\Private\SessionClosedMsg.h" />
+    <ClInclude Include="..\..\Source\Common\Private\SessionImpl.h" />
+    <ClInclude Include="..\..\Source\Common\Private\SessionDescriptorImpl.h" />
+    <ClInclude Include="..\..\Source\Common\Private\SessionManagerImpl.h" />
+    <ClInclude Include="..\..\Source\Common\Private\SessionMessageRouter.h" />
+    <ClInclude Include="..\..\Source\Common\Private\StringElementImpl.h" />
+    <ClInclude Include="..\..\Source\Common\Private\TunnelBridge.h" />
+    <ClInclude Include="..\..\Source\Common\Private\TunnelConnection.h" />
+    <ClInclude Include="..\..\Source\Common\Private\UserChangedSessionMsg.h" />
+    <ClInclude Include="..\..\Source\Common\Private\UserImpl.h" />
+    <ClInclude Include="..\..\Source\Common\Private\SyncManagerImpl.h" />
+    <ClInclude Include="..\..\Source\Common\Private\TransformManager.h" />
+    <ClInclude Include="..\..\Source\Common\Private\UserJoinedSessionMsg.h" />
+    <ClInclude Include="..\..\Source\Common\Private\UserLeftSessionMsg.h" />
+    <ClInclude Include="..\..\Source\Common\Private\UserPresenceManagerLeaderImpl.h" />
+    <ClInclude Include="..\..\Source\Common\Private\Utils\CleanupNotifier.h" />
+    <ClInclude Include="..\..\Source\Common\Private\Utils\LFQueue.h" />
+    <ClInclude Include="..\..\Source\Common\Private\Utils\FileLogWriter.h" />
+    <ClInclude Include="..\..\Source\Common\Private\Utils\RegistrationReceipt.h" />
+    <ClInclude Include="..\..\Source\Common\Private\Utils\ScopedLock.h" />
+    <ClInclude Include="..\..\Source\Common\Private\Utils\TypedLFQueue.h" />
+    <ClInclude Include="..\..\Source\Common\Private\XSocketImpl.h" />
+    <ClInclude Include="..\..\Source\Common\Private\XSocketManagerImpl.h" />
+    <ClInclude Include="..\..\Source\Common\Public\AudioManager.h" />
+    <ClInclude Include="..\..\Source\Common\Public\AudioSessionProcessor.h" />
+    <ClInclude Include="..\..\Source\Common\Public\BasicTypes.h" />
+    <ClInclude Include="..\..\Source\Common\Public\ClientConfig.h" />
+    <ClInclude Include="..\..\Source\Common\Public\ClientContext.h" />
+    <ClInclude Include="..\..\Source\Common\Public\CommonSettings.h" />
+    <ClInclude Include="..\..\Source\Common\Public\DiscoveredSystem.h" />
+    <ClInclude Include="..\..\Source\Common\Public\DiscoveryClient.h" />
+    <ClInclude Include="..\..\Source\Common\Public\DiscoveryClientListener.h" />
+    <ClInclude Include="..\..\Source\Common\Public\DiscoveryServer.h" />
+    <ClInclude Include="..\..\Source\Common\Public\DownloadBuffer.h" />
+    <ClInclude Include="..\..\Source\Common\Public\DownloadCallback.h" />
+    <ClInclude Include="..\..\Source\Common\Public\DownloadCommon.h" />
+    <ClInclude Include="..\..\Source\Common\Public\DownloadManager.h" />
+    <ClInclude Include="..\..\Source\Common\Public\Element.h" />
+    <ClInclude Include="..\..\Source\Common\Public\Environment.h" />
+    <ClInclude Include="..\..\Source\Common\Public\FloatElement.h" />
+    <ClInclude Include="..\..\Source\Common\Public\HandshakeLogic.h" />
+    <ClInclude Include="..\..\Source\Common\Public\IncomingXSocketListener.h" />
+    <ClInclude Include="..\..\Source\Common\Public\IntElement.h" />
+    <ClInclude Include="..\..\Source\Common\Public\IPAddress.h" />
+    <ClInclude Include="..\..\Source\Common\Public\Listener.h" />
+    <ClInclude Include="..\..\Source\Common\Public\NetworkConnectionListener.h" />
+    <ClInclude Include="..\..\Source\Common\Public\Platform.h" />
+    <ClInclude Include="..\..\Source\Common\Public\Profile.h" />
+    <ClInclude Include="..\..\Source\Common\Public\ProfileManager.h" />
+    <ClInclude Include="..\..\Source\Common\Public\Reflection.h" />
+    <ClInclude Include="..\..\Source\Common\Public\ScopedProfile.h" />
+    <ClInclude Include="..\..\Source\Common\Public\SideCarFunctions.h" />
+    <ClInclude Include="..\..\Source\Common\Public\SideCarMacros.h" />
+    <ClInclude Include="..\..\Source\Common\Public\SyncListener.h" />
+    <ClInclude Include="..\..\Source\Common\Public\SystemRole.h" />
+    <ClInclude Include="..\..\Source\Common\Public\UserPresenceManager.h" />
+    <ClInclude Include="..\..\Source\Common\Public\UserPresenceManagerListener.h" />
+    <ClInclude Include="..\..\Source\Common\Public\NetworkConnection.h" />
+    <ClInclude Include="..\..\Source\Common\Public\NetworkHandshake.h" />
+    <ClInclude Include="..\..\Source\Common\Public\NetworkInMessage.h" />
+    <ClInclude Include="..\..\Source\Common\Public\NetworkOutMessage.h" />
+    <ClInclude Include="..\..\Source\Common\Public\ObjectElement.h" />
+    <ClInclude Include="..\..\Source\Common\Public\ObjectElementListener.h" />
+    <ClInclude Include="..\..\Source\Common\Public\PairingHandshakeLogic.h" />
+    <ClInclude Include="..\..\Source\Common\Public\Session.h" />
+    <ClInclude Include="..\..\Source\Common\Public\SessionDescriptor.h" />
+    <ClInclude Include="..\..\Source\Common\Public\SessionHandshakeLogic.h" />
+    <ClInclude Include="..\..\Source\Common\Public\SessionListener.h" />
+    <ClInclude Include="..\..\Source\Common\Public\SessionListHandshakeLogic.h" />
+    <ClInclude Include="..\..\Source\Common\Public\SessionManager.h" />
+    <ClInclude Include="..\..\Source\Common\Public\SessionManagerListener.h" />
+    <ClInclude Include="..\..\Source\Common\Public\SideCar.h" />
+    <ClInclude Include="..\..\Source\Common\Public\SideCarContext.h" />
+    <ClInclude Include="..\..\Source\Common\Public\StringElement.h" />
+    <ClInclude Include="..\..\Source\Common\Public\AuthorityLevel.h" />
+    <ClInclude Include="..\..\Source\Common\Public\SyncManager.h" />
+    <ClInclude Include="..\..\Source\Common\Public\User.h" />
+    <ClInclude Include="..\..\Source\Common\Public\Utils\AtomicRefCounted.h" />
+    <ClInclude Include="..\..\Source\Common\Public\Utils\Callback.h" />
+    <ClInclude Include="..\..\Source\Common\Public\Utils\Callback2.h" />
+    <ClInclude Include="..\..\Source\Common\Public\Utils\Callback3.h" />
+    <ClInclude Include="..\..\Source\Common\Public\Utils\ClassThreadRunner.h" />
+    <ClInclude Include="..\..\Source\Common\Public\Utils\Event.h" />
+    <ClInclude Include="..\..\Source\Common\Public\Utils\GetPointer.h" />
+    <ClInclude Include="..\..\Source\Common\Public\Utils\Hash.h" />
+    <ClInclude Include="..\..\Source\Common\Public\Utils\IUpdateable.h" />
+    <ClInclude Include="..\..\Source\Common\Public\Utils\ListenerList.h" />
+    <ClInclude Include="..\..\Source\Common\Public\Utils\Log.h" />
+    <ClInclude Include="..\..\Source\Common\Public\Utils\Logger.h" />
+    <ClInclude Include="..\..\Source\Common\Public\Utils\LogManager.h" />
+    <ClInclude Include="..\..\Source\Common\Public\Utils\LogWriter.h" />
+    <ClInclude Include="..\..\Source\Common\Public\Utils\MemberFuncThread.h" />
+    <ClInclude Include="..\..\Source\Common\Public\Utils\MemoryManager.h" />
+    <ClInclude Include="..\..\Source\Common\Public\Utils\Mutex.h" />
+    <ClInclude Include="..\..\Source\Common\Public\Utils\NotifyList.h" />
+    <ClInclude Include="..\..\Source\Common\Public\Utils\PlatformUtils.h" />
+    <ClInclude Include="..\..\Source\Common\Public\Utils\Receipt.h" />
+    <ClInclude Include="..\..\Source\Common\Public\Utils\RefCounted.h" />
+    <ClInclude Include="..\..\Source\Common\Public\Utils\RefPtr.h" />
+    <ClInclude Include="..\..\Source\Common\Public\Utils\RefPtrProxy.h" />
+    <ClInclude Include="..\..\Source\Common\Public\Utils\RefPtrTS.h" />
+    <ClInclude Include="..\..\Source\Common\Public\Utils\ScopedArray.h" />
+    <ClInclude Include="..\..\Source\Common\Public\Utils\ScopedPtr.h" />
+    <ClInclude Include="..\..\Source\Common\Public\Utils\StringUtils.h" />
+    <ClInclude Include="..\..\Source\Common\Public\Utils\SwigHelperMacros.h" />
+    <ClInclude Include="..\..\Source\Common\Public\Utils\XThread.h" />
+    <ClInclude Include="..\..\Source\Common\Public\Utils\XThreadId.h" />
+    <ClInclude Include="..\..\Source\Common\Public\XGuid.h" />
+    <ClInclude Include="..\..\Source\Common\Public\XSocket.h" />
+    <ClInclude Include="..\..\Source\Common\Public\XSocketListener.h" />
+    <ClInclude Include="..\..\Source\Common\Public\XSocketManager.h" />
+    <ClInclude Include="..\..\Source\Common\Public\XString.h" />
+    <ClInclude Include="..\..\Source\Common\Public\XToolsMessageTypes.h" />
+    <ClInclude Include="..\..\Source\Common\Public\XToolsTypes.h" />
+    <ClInclude Include="..\..\Source\Common\Public\XToolsVersion.h" />
+    <ClInclude Include="..\..\Source\Common\Public\XValue.h" />
+    <ClInclude Include="..\..\Source\Common\SideCarAPI.h" />
+    <ClInclude Include="..\..\Source\Common\stdafx.h" />
+    <ClInclude Include="..\..\Source\Common\WrapperAPIs.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <RakNetSymbols Include="..\..\External\RakNet-4.081\lib\*.pdb" />
+    <CurlSymbols Include="..\..\External\curl-7.39.0\lib\$(Configuration)\$(Platform)\*.pdb" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{58299519-1341-48CE-A3C4-E76A1531FFBF}</ProjectGuid>
+    <RootNamespace>CommonDesktop</RootNamespace>
+    <SccProjectName>SAK</SccProjectName>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccProvider>SAK</SccProvider>
+    <WindowsTargetPlatformVersion>10.0.10240.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(BaseOutputPath)$(ProjectName)\</OutDir>
+    <IntDir>$(BaseIntermediateOutputPath)$(Configuration)\$(Platform)\$(ProjectName)\</IntDir>
+    <TargetName>XTools.Common</TargetName>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);../../External/speex-1.2rc1/include</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(BaseOutputPath)$(ProjectName)\</OutDir>
+    <IntDir>$(BaseIntermediateOutputPath)$(Configuration)\$(Platform)\$(ProjectName)\</IntDir>
+    <TargetName>XTools.Common</TargetName>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);../../External/speex-1.2rc1/include</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(BaseOutputPath)$(ProjectName)\</OutDir>
+    <IntDir>$(BaseIntermediateOutputPath)$(Configuration)\$(Platform)\$(ProjectName)\</IntDir>
+    <TargetName>XTools.Common</TargetName>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);../../External/speex-1.2rc1/include</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(BaseOutputPath)$(ProjectName)\</OutDir>
+    <IntDir>$(BaseIntermediateOutputPath)$(Configuration)\$(Platform)\$(ProjectName)\</IntDir>
+    <TargetName>XTools.Common</TargetName>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);../../External/speex-1.2rc1/include</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <AdditionalUsingDirectories>
+      </AdditionalUsingDirectories>
+      <AdditionalIncludeDirectories>..\..\Source\Common;..\..\External\RakNet-4.081\include\Source;..\..\External\curl-7.39.0\include</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <BrowseInformation>true</BrowseInformation>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
+    <Lib>
+      <AdditionalDependencies>RakNet_WinDesktop_$(PlatformTarget)_$(Configuration).lib;libcurld.lib;libspeex_libstatic_$(Configuration)_$(Platform).lib;libspeexdsp_libstatic_$(Configuration)_$(Platform).lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\External\RakNet-4.081\lib;..\..\External\curl-7.39.0\lib\$(Configuration)\$(PlatformName);..\..\External\speex-1.2rc1\lib</AdditionalLibraryDirectories>
+      <AdditionalOptions>/ignore:4006 /ignore:4221 %(AdditionalOptions)</AdditionalOptions>
+    </Lib>
+    <Bscmake>
+      <PreserveSbr>true</PreserveSbr>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <AdditionalUsingDirectories>
+      </AdditionalUsingDirectories>
+      <AdditionalIncludeDirectories>..\..\Source\Common;..\..\External\RakNet-4.081\include\Source;..\..\External\curl-7.39.0\include</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
+    <Lib>
+      <AdditionalLibraryDirectories>..\..\External\RakNet-4.081\lib;..\..\External\curl-7.39.0\lib\$(Configuration)\$(PlatformName);..\..\External\speex-1.2rc1\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>RakNet_WinDesktop_$(PlatformTarget)_$(Configuration).lib;libcurld.lib;libspeex_libstatic_$(Configuration)_$(Platform).lib;libspeexdsp_libstatic_$(Configuration)_$(Platform).lib</AdditionalDependencies>
+      <AdditionalOptions>/ignore:4006 /ignore:4221 %(AdditionalOptions)</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <AdditionalUsingDirectories>
+      </AdditionalUsingDirectories>
+      <AdditionalIncludeDirectories>..\..\Source\Common;..\..\External\RakNet-4.081\include\Source;..\..\External\curl-7.39.0\include</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
+    <Lib>
+      <AdditionalLibraryDirectories>..\..\External\RakNet-4.081\lib;..\..\External\curl-7.39.0\lib\$(Configuration)\$(PlatformName);..\..\External\speex-1.2rc1\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>RakNet_WinDesktop_$(PlatformTarget)_$(Configuration).lib;ws2_32.lib;libcurl.lib;libspeex_libstatic_$(Configuration)_$(Platform).lib;libspeexdsp_libstatic_$(Configuration)_$(Platform).lib</AdditionalDependencies>
+      <AdditionalOptions>/ignore:4006 /ignore:4221 %(AdditionalOptions)</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <AdditionalUsingDirectories>
+      </AdditionalUsingDirectories>
+      <AdditionalIncludeDirectories>..\..\Source\Common;..\..\External\RakNet-4.081\include\Source;..\..\External\curl-7.39.0\include</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
+    <Lib>
+      <AdditionalLibraryDirectories>..\..\External\RakNet-4.081\lib;..\..\External\curl-7.39.0\lib\$(Configuration)\$(PlatformName);..\..\External\speex-1.2rc1\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>RakNet_WinDesktop_$(PlatformTarget)_$(Configuration).lib;libcurl.lib;libspeex_libstatic_$(Configuration)_$(Platform).lib;libspeexdsp_libstatic_$(Configuration)_$(Platform).lib</AdditionalDependencies>
+      <AdditionalOptions>/ignore:4006 /ignore:4221 %(AdditionalOptions)</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <Import Project="..\XTools.targets" />
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <Target Name="CopyExternalSymbols" AfterTargets="Build">
+    <Copy SourceFiles="@(RakNetSymbols)" DestinationFolder="$(OutDir)" />
+    <Copy SourceFiles="@(CurlSymbols)" DestinationFolder="$(OutDir)" />
+  </Target>
+</Project>

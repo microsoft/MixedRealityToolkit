@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <Import Project="..\XTools.props" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0D8049FE-4099-481B-B117-71CC6FFEB2D7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ClientWrapper.UAP</RootNamespace>
+    <AssemblyName>ClientWrapper.UAP</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion>10.0.10551.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\Debug\Win32\ClientWrapper.UAP\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NETFX_CORE;WINDOWS_UWP;UNITY_METRO</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\Release\Win32\ClientWrapper.UAP\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP;UNITY_METRO;WINDOWS_APP</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\Solutions\FullSolution\packages\Newtonsoft.Json.6.0.8\lib\netcore45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <None Include="project.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\..\Assets\XTools\Scripts\Adapters\NetworkConnectionAdapter.cs">
+      <Link>NetworkConnectionAdapter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\assets\xtools\scripts\automation\RpcClient.cs">
+      <Link>RPC\RpcClient.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\assets\xtools\scripts\automation\RpcEndpointInfo.cs">
+      <Link>RPC\RpcEndpointInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\assets\xtools\scripts\automation\RpcErrorCode.cs">
+      <Link>RPC\RpcErrorCode.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\assets\xtools\scripts\automation\RpcMethodAttribute.cs">
+      <Link>RPC\RpcMethodAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\assets\xtools\scripts\automation\RpcMethodInfo.cs">
+      <Link>RPC\RpcMethodInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\assets\xtools\scripts\automation\RpcRequestState.cs">
+      <Link>RPC\RpcRequestState.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\assets\xtools\scripts\automation\XToolsRpcPacket.cs">
+      <Link>RPC\XToolsRpcPacket.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\assets\xtools\scripts\automation\XToolsRpcRequest.cs">
+      <Link>RPC\XToolsRpcRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\assets\xtools\scripts\automation\XToolsRpcResponse.cs">
+      <Link>RPC\XToolsRpcResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\AudioManager.cs">
+      <Link>Core\AudioManager.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\ClientConfig.cs">
+      <Link>Core\ClientConfig.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\ClientRole.cs">
+      <Link>Core\ClientRole.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\DirectPairConnector.cs">
+      <Link>Core\DirectPairConnector.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\DirectPairReceiver.cs">
+      <Link>Core\DirectPairReceiver.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\Element.cs">
+      <Link>Core\Element.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\ElementType.cs">
+      <Link>Core\ElementType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\FloatElement.cs">
+      <Link>Core\FloatElement.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\ImageTagLocation.cs">
+      <Link>Core\ImageTagLocation.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\ImageTagLocationListener.cs">
+      <Link>Core\ImageTagLocationListener.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\ImageTagLocationType.cs">
+      <Link>Core\ImageTagLocationType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\ImageTagManager.cs">
+      <Link>Core\ImageTagManager.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\IntElement.cs">
+      <Link>Core\IntElement.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\Listener.cs">
+      <Link>Core\Listener.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\Log.cs">
+      <Link>Core\Log.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\LogManager.cs">
+      <Link>Core\LogManager.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\LogSeverity.cs">
+      <Link>Core\LogSeverity.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\LogWriter.cs">
+      <Link>Core\LogWriter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\MachineSessionState.cs">
+      <Link>Core\MachineSessionState.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\MessageChannel.cs">
+      <Link>Core\MessageChannel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\MessageID.cs">
+      <Link>Core\MessageID.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\MessagePriority.cs">
+      <Link>Core\MessagePriority.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\MessageReliability.cs">
+      <Link>Core\MessageReliability.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\NetworkConnection.cs">
+      <Link>Core\NetworkConnection.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\NetworkConnectionListener.cs">
+      <Link>Core\NetworkConnectionListener.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\NetworkInMessage.cs">
+      <Link>Core\NetworkInMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\NetworkOutMessage.cs">
+      <Link>Core\NetworkOutMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\ObjectElement.cs">
+      <Link>Core\ObjectElement.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\ObjectElementListener.cs">
+      <Link>Core\ObjectElementListener.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\PairingListener.cs">
+      <Link>Core\PairingListener.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\PairingManager.cs">
+      <Link>Core\PairingManager.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\PairingResult.cs">
+      <Link>Core\PairingResult.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\PairMaker.cs">
+      <Link>Core\PairMaker.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\Profile.cs">
+      <Link>Core\Profile.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\Receipt.cs">
+      <Link>Core\Receipt.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\Session.cs">
+      <Link>Core\Session.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\SessionListener.cs">
+      <Link>Core\SessionListener.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\SessionManager.cs">
+      <Link>Core\SessionManager.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\SessionManagerListener.cs">
+      <Link>Core\SessionManagerListener.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\SessionType.cs">
+      <Link>Core\SessionType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\Settings.cs">
+      <Link>Core\Settings.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\StringElement.cs">
+      <Link>Core\StringElement.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\SyncListener.cs">
+      <Link>Core\SyncListener.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\TagImage.cs">
+      <Link>Core\TagImage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\User.cs">
+      <Link>Core\User.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\UserPresenceManager.cs">
+      <Link>Core\UserPresenceManager.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\UserPresenceManagerListener.cs">
+      <Link>Core\UserPresenceManagerListener.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\VisualPairConnector.cs">
+      <Link>Core\VisualPairConnector.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\VisualPairReceiver.cs">
+      <Link>Core\VisualPairReceiver.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\XString.cs">
+      <Link>Core\XString.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\XToolsClient.cs">
+      <Link>Core\XToolsClient.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\XToolsClientPINVOKE.cs">
+      <Link>Core\XToolsClientPINVOKE.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\XToolsManager.cs">
+      <Link>Core\XToolsManager.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Common\Tests\ClientWrapper\Modern\CrossPlatform\Reflection\ReflectionExtensions.cs">
+      <Link>CrossPlatform\Reflection\ReflectionExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Common\Tests\ClientWrapper\Modern\CrossPlatform\Reflection\TypeUtils.cs">
+      <Link>CrossPlatform\Reflection\TypeUtils.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Common\Tests\ClientWrapper\Modern\MetroHandleRef.cs">
+      <Link>MetroHandleRef.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Properties\ClientWrapper.UAP.rd.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(BaseOutputPath)ClientUniversalCSharp\XtoolsClient.dll">
+      <Link>XtoolsClient.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="..\XTools.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
