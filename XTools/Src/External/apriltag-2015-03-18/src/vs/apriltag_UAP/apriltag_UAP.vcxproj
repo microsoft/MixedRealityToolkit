@@ -27,63 +27,63 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\apriltag.c" />
-    <ClCompile Include="..\..\..\apriltag_quad_thresh.c" />
-    <ClCompile Include="..\..\..\common\getopt.c" />
-    <ClCompile Include="..\..\..\common\homography.c" />
-    <ClCompile Include="..\..\..\common\image_f32.c" />
-    <ClCompile Include="..\..\..\common\image_u32.c" />
-    <ClCompile Include="..\..\..\common\image_u8.c" />
-    <ClCompile Include="..\..\..\common\matd.c" />
-    <ClCompile Include="..\..\..\common\pnm.c" />
-    <ClCompile Include="..\..\..\common\string_util.c" />
-    <ClCompile Include="..\..\..\common\svd22.c" />
-    <ClCompile Include="..\..\..\common\threading.c" />
-    <ClCompile Include="..\..\..\common\timeprofile.c" />
-    <ClCompile Include="..\..\..\common\time_util.c" />
-    <ClCompile Include="..\..\..\common\unionfind.c" />
-    <ClCompile Include="..\..\..\common\workerpool.c" />
-    <ClCompile Include="..\..\..\common\zarray.c" />
-    <ClCompile Include="..\..\..\common\zhash.c" />
-    <ClCompile Include="..\..\..\common\zmaxheap.c" />
-    <ClCompile Include="..\..\..\g2d.c" />
-    <ClCompile Include="..\..\..\tag16h5.c" />
-    <ClCompile Include="..\..\..\tag25h7.c" />
-    <ClCompile Include="..\..\..\tag25h9.c" />
-    <ClCompile Include="..\..\..\tag36artoolkit.c" />
-    <ClCompile Include="..\..\..\tag36h10.c" />
-    <ClCompile Include="..\..\..\tag36h11.c" />
+    <ClCompile Include="..\..\apriltag.c" />
+    <ClCompile Include="..\..\apriltag_quad_thresh.c" />
+    <ClCompile Include="..\..\common\getopt.c" />
+    <ClCompile Include="..\..\common\homography.c" />
+    <ClCompile Include="..\..\common\image_f32.c" />
+    <ClCompile Include="..\..\common\image_u32.c" />
+    <ClCompile Include="..\..\common\image_u8.c" />
+    <ClCompile Include="..\..\common\matd.c" />
+    <ClCompile Include="..\..\common\pnm.c" />
+    <ClCompile Include="..\..\common\string_util.c" />
+    <ClCompile Include="..\..\common\svd22.c" />
+    <ClCompile Include="..\..\common\threading.c" />
+    <ClCompile Include="..\..\common\timeprofile.c" />
+    <ClCompile Include="..\..\common\time_util.c" />
+    <ClCompile Include="..\..\common\unionfind.c" />
+    <ClCompile Include="..\..\common\workerpool.c" />
+    <ClCompile Include="..\..\common\zarray.c" />
+    <ClCompile Include="..\..\common\zhash.c" />
+    <ClCompile Include="..\..\common\zmaxheap.c" />
+    <ClCompile Include="..\..\g2d.c" />
+    <ClCompile Include="..\..\tag16h5.c" />
+    <ClCompile Include="..\..\tag25h7.c" />
+    <ClCompile Include="..\..\tag25h9.c" />
+    <ClCompile Include="..\..\tag36artoolkit.c" />
+    <ClCompile Include="..\..\tag36h10.c" />
+    <ClCompile Include="..\..\tag36h11.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\apriltag.h" />
-    <ClInclude Include="..\..\..\common\getopt.h" />
-    <ClInclude Include="..\..\..\common\homography.h" />
-    <ClInclude Include="..\..\..\common\image_f32.h" />
-    <ClInclude Include="..\..\..\common\image_u32.h" />
-    <ClInclude Include="..\..\..\common\image_u8.h" />
-    <ClInclude Include="..\..\..\common\matd.h" />
-    <ClInclude Include="..\..\..\common\math_util.h" />
-    <ClInclude Include="..\..\..\common\pnm.h" />
-    <ClInclude Include="..\..\..\common\postscript_utils.h" />
-    <ClInclude Include="..\..\..\common\stackalloc.h" />
-    <ClInclude Include="..\..\..\common\string_util.h" />
-    <ClInclude Include="..\..\..\common\svd22.h" />
-    <ClInclude Include="..\..\..\common\thash_impl.h" />
-    <ClInclude Include="..\..\..\common\threading.h" />
-    <ClInclude Include="..\..\..\common\timeprofile.h" />
-    <ClInclude Include="..\..\..\common\time_util.h" />
-    <ClInclude Include="..\..\..\common\unionfind.h" />
-    <ClInclude Include="..\..\..\common\workerpool.h" />
-    <ClInclude Include="..\..\..\common\zarray.h" />
-    <ClInclude Include="..\..\..\common\zhash.h" />
-    <ClInclude Include="..\..\..\common\zmaxheap.h" />
-    <ClInclude Include="..\..\..\g2d.h" />
-    <ClInclude Include="..\..\..\tag16h5.h" />
-    <ClInclude Include="..\..\..\tag25h7.h" />
-    <ClInclude Include="..\..\..\tag25h9.h" />
-    <ClInclude Include="..\..\..\tag36artoolkit.h" />
-    <ClInclude Include="..\..\..\tag36h10.h" />
-    <ClInclude Include="..\..\..\tag36h11.h" />
+    <ClInclude Include="..\..\apriltag.h" />
+    <ClInclude Include="..\..\common\getopt.h" />
+    <ClInclude Include="..\..\common\homography.h" />
+    <ClInclude Include="..\..\common\image_f32.h" />
+    <ClInclude Include="..\..\common\image_u32.h" />
+    <ClInclude Include="..\..\common\image_u8.h" />
+    <ClInclude Include="..\..\common\matd.h" />
+    <ClInclude Include="..\..\common\math_util.h" />
+    <ClInclude Include="..\..\common\pnm.h" />
+    <ClInclude Include="..\..\common\postscript_utils.h" />
+    <ClInclude Include="..\..\common\stackalloc.h" />
+    <ClInclude Include="..\..\common\string_util.h" />
+    <ClInclude Include="..\..\common\svd22.h" />
+    <ClInclude Include="..\..\common\thash_impl.h" />
+    <ClInclude Include="..\..\common\threading.h" />
+    <ClInclude Include="..\..\common\timeprofile.h" />
+    <ClInclude Include="..\..\common\time_util.h" />
+    <ClInclude Include="..\..\common\unionfind.h" />
+    <ClInclude Include="..\..\common\workerpool.h" />
+    <ClInclude Include="..\..\common\zarray.h" />
+    <ClInclude Include="..\..\common\zhash.h" />
+    <ClInclude Include="..\..\common\zmaxheap.h" />
+    <ClInclude Include="..\..\g2d.h" />
+    <ClInclude Include="..\..\tag16h5.h" />
+    <ClInclude Include="..\..\tag25h7.h" />
+    <ClInclude Include="..\..\tag25h9.h" />
+    <ClInclude Include="..\..\tag36artoolkit.h" />
+    <ClInclude Include="..\..\tag36h10.h" />
+    <ClInclude Include="..\..\tag36h11.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{eb900fda-1c99-4726-a7e0-c2ac33605bdd}</ProjectGuid>
@@ -203,7 +203,7 @@
       <CompileAsWinRT>false</CompileAsWinRT>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;inline=__inline;random=rand;srandom=srand;_UNICODE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)..\..\Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4244;4756;4056;4018;4334;4305;4267</DisableSpecificWarnings>
       <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
     </ClCompile>
@@ -219,7 +219,7 @@
       <CompileAsWinRT>false</CompileAsWinRT>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;inline=__inline;random=rand;srandom=srand;_UNICODE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)..\..\Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4244;4756;4056;4018;4334;4305;4267</DisableSpecificWarnings>
       <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
     </ClCompile>
@@ -235,7 +235,7 @@
       <CompileAsWinRT>false</CompileAsWinRT>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_UNICODE;UNICODE;inline=__inline;random=rand;srandom=srand;_ARM_WINAPI_PARTITION_DESKTOP_SDK_AVAILABLE=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)..\..\Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4244;4756;4056;4018;4334;4305;4267</DisableSpecificWarnings>
       <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
     </ClCompile>
@@ -251,7 +251,7 @@
       <CompileAsWinRT>false</CompileAsWinRT>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_UNICODE;UNICODE;inline=__inline;random=rand;srandom=srand;_ARM_WINAPI_PARTITION_DESKTOP_SDK_AVAILABLE=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)..\..\Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4244;4756;4056;4018;4334;4305;4267</DisableSpecificWarnings>
       <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
     </ClCompile>
@@ -267,7 +267,7 @@
       <CompileAsWinRT>false</CompileAsWinRT>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_UNICODE;UNICODE;inline=__inline;random=rand;srandom=srand;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)..\..\Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4244;4756;4056;4018;4334;4305;4267</DisableSpecificWarnings>
       <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
     </ClCompile>
@@ -283,7 +283,7 @@
       <CompileAsWinRT>false</CompileAsWinRT>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_UNICODE;UNICODE;inline=__inline;random=rand;srandom=srand;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)..\..\Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4244;4756;4056;4018;4334;4305;4267</DisableSpecificWarnings>
       <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
     </ClCompile>

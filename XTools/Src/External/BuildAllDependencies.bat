@@ -6,23 +6,35 @@ echo ************************************************
 echo
 echo
 
-call apriltag-2015-03-18\BuildLibs.bat
+pushd apriltag-2015-03-18
+call BuildLibs.bat
 IF NOT %ERRORLEVEL% == 0 goto BuildError
+popd
 
-call curl-7.39.0\Source\BuildAll.bat
+pushd curl-7.39.0\Source
+call BuildAll.bat
 IF NOT %ERRORLEVEL% == 0 goto BuildError
+popd
 
-call RakNet-4.081\src\BuildLibs.bat
+pushd RakNet-4.081\src
+call BuildLibs.bat
 IF NOT %ERRORLEVEL% == 0 goto BuildError
+popd
 
-call speex-1.2rc1\BuildLibs.bat
+pushd speex-1.2rc1
+call BuildLibs.bat
 IF NOT %ERRORLEVEL% == 0 goto BuildError
+popd
 
-call zint-2.4.3\src\BuildLibs.bat
+pushd zint-2.4.3\src
+call BuildLibs.bat
 IF NOT %ERRORLEVEL% == 0 goto BuildError
+popd
 
-call zxing-cpp\src\BuildLibs.bat
+pushd zxing-cpp\src
+call BuildLibs.bat
 IF NOT %ERRORLEVEL% == 0 goto BuildError
+popd
 
 :End
 echo ************************************************
@@ -34,5 +46,4 @@ exit /b 0
 echo ************************************************
 echo ********** Dependencies Build Failed ***********
 echo ************************************************
-pause
 exit /b 1
