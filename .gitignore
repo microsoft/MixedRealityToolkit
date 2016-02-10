@@ -1,0 +1,15 @@
+*.ipch
+*.opensdf
+*.sdf
+*.obj
+*.suo
+*.tlog
+*.log
+/XTools/Src/bin
+/XTools/Src/tmp
+/XTools/Src/External/apriltag-2015-03-18/lib
+/XTools/Src/External/curl-7.39.0/lib
+/XTools/Src/External/RakNet-4.081/lib
+/XTools/Src/External/zint-2.4.3/lib
+/XTools/Src/External/zxing-cpp/lib
+/XTools/Src/External/speex-1.2rc1/lib

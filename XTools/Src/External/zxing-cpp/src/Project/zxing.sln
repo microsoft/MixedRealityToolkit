@@ -1,0 +1,85 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libzxing", "libzxing.vcxproj", "{F17D3705-CDE3-4EAB-8BE4-EC0F86B8CF67}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libzxing_UAP", "libzxing_UAP\libzxing_UAP.vcxproj", "{E4A1AEFD-10B1-4719-A916-84D3C81B25CF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ARM = Debug|ARM
+		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
+		MinSizeRel|ARM = MinSizeRel|ARM
+		MinSizeRel|Win32 = MinSizeRel|Win32
+		MinSizeRel|x64 = MinSizeRel|x64
+		Release|ARM = Release|ARM
+		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
+		RelWithDebInfo|ARM = RelWithDebInfo|ARM
+		RelWithDebInfo|Win32 = RelWithDebInfo|Win32
+		RelWithDebInfo|x64 = RelWithDebInfo|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F17D3705-CDE3-4EAB-8BE4-EC0F86B8CF67}.Debug|ARM.ActiveCfg = Debug|Win32
+		{F17D3705-CDE3-4EAB-8BE4-EC0F86B8CF67}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F17D3705-CDE3-4EAB-8BE4-EC0F86B8CF67}.Debug|Win32.Build.0 = Debug|Win32
+		{F17D3705-CDE3-4EAB-8BE4-EC0F86B8CF67}.Debug|x64.ActiveCfg = Debug|x64
+		{F17D3705-CDE3-4EAB-8BE4-EC0F86B8CF67}.Debug|x64.Build.0 = Debug|x64
+		{F17D3705-CDE3-4EAB-8BE4-EC0F86B8CF67}.MinSizeRel|ARM.ActiveCfg = Release|Win32
+		{F17D3705-CDE3-4EAB-8BE4-EC0F86B8CF67}.MinSizeRel|Win32.ActiveCfg = Release|Win32
+		{F17D3705-CDE3-4EAB-8BE4-EC0F86B8CF67}.MinSizeRel|Win32.Build.0 = Release|Win32
+		{F17D3705-CDE3-4EAB-8BE4-EC0F86B8CF67}.MinSizeRel|x64.ActiveCfg = Release|x64
+		{F17D3705-CDE3-4EAB-8BE4-EC0F86B8CF67}.MinSizeRel|x64.Build.0 = Release|x64
+		{F17D3705-CDE3-4EAB-8BE4-EC0F86B8CF67}.Release|ARM.ActiveCfg = Release|Win32
+		{F17D3705-CDE3-4EAB-8BE4-EC0F86B8CF67}.Release|Win32.ActiveCfg = Release|Win32
+		{F17D3705-CDE3-4EAB-8BE4-EC0F86B8CF67}.Release|Win32.Build.0 = Release|Win32
+		{F17D3705-CDE3-4EAB-8BE4-EC0F86B8CF67}.Release|x64.ActiveCfg = Release|x64
+		{F17D3705-CDE3-4EAB-8BE4-EC0F86B8CF67}.Release|x64.Build.0 = Release|x64
+		{F17D3705-CDE3-4EAB-8BE4-EC0F86B8CF67}.RelWithDebInfo|ARM.ActiveCfg = Release|Win32
+		{F17D3705-CDE3-4EAB-8BE4-EC0F86B8CF67}.RelWithDebInfo|Win32.ActiveCfg = Release|Win32
+		{F17D3705-CDE3-4EAB-8BE4-EC0F86B8CF67}.RelWithDebInfo|Win32.Build.0 = Release|Win32
+		{F17D3705-CDE3-4EAB-8BE4-EC0F86B8CF67}.RelWithDebInfo|x64.ActiveCfg = Release|x64
+		{F17D3705-CDE3-4EAB-8BE4-EC0F86B8CF67}.RelWithDebInfo|x64.Build.0 = Release|x64
+		{E4A1AEFD-10B1-4719-A916-84D3C81B25CF}.Debug|ARM.ActiveCfg = Debug|ARM
+		{E4A1AEFD-10B1-4719-A916-84D3C81B25CF}.Debug|ARM.Build.0 = Debug|ARM
+		{E4A1AEFD-10B1-4719-A916-84D3C81B25CF}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E4A1AEFD-10B1-4719-A916-84D3C81B25CF}.Debug|Win32.Build.0 = Debug|Win32
+		{E4A1AEFD-10B1-4719-A916-84D3C81B25CF}.Debug|x64.ActiveCfg = Debug|x64
+		{E4A1AEFD-10B1-4719-A916-84D3C81B25CF}.Debug|x64.Build.0 = Debug|x64
+		{E4A1AEFD-10B1-4719-A916-84D3C81B25CF}.MinSizeRel|ARM.ActiveCfg = Release|ARM
+		{E4A1AEFD-10B1-4719-A916-84D3C81B25CF}.MinSizeRel|ARM.Build.0 = Release|ARM
+		{E4A1AEFD-10B1-4719-A916-84D3C81B25CF}.MinSizeRel|Win32.ActiveCfg = Release|Win32
+		{E4A1AEFD-10B1-4719-A916-84D3C81B25CF}.MinSizeRel|Win32.Build.0 = Release|Win32
+		{E4A1AEFD-10B1-4719-A916-84D3C81B25CF}.MinSizeRel|x64.ActiveCfg = Release|x64
+		{E4A1AEFD-10B1-4719-A916-84D3C81B25CF}.MinSizeRel|x64.Build.0 = Release|x64
+		{E4A1AEFD-10B1-4719-A916-84D3C81B25CF}.Release|ARM.ActiveCfg = Release|ARM
+		{E4A1AEFD-10B1-4719-A916-84D3C81B25CF}.Release|ARM.Build.0 = Release|ARM
+		{E4A1AEFD-10B1-4719-A916-84D3C81B25CF}.Release|Win32.ActiveCfg = Release|Win32
+		{E4A1AEFD-10B1-4719-A916-84D3C81B25CF}.Release|Win32.Build.0 = Release|Win32
+		{E4A1AEFD-10B1-4719-A916-84D3C81B25CF}.Release|x64.ActiveCfg = Release|x64
+		{E4A1AEFD-10B1-4719-A916-84D3C81B25CF}.Release|x64.Build.0 = Release|x64
+		{E4A1AEFD-10B1-4719-A916-84D3C81B25CF}.RelWithDebInfo|ARM.ActiveCfg = Release|ARM
+		{E4A1AEFD-10B1-4719-A916-84D3C81B25CF}.RelWithDebInfo|ARM.Build.0 = Release|ARM
+		{E4A1AEFD-10B1-4719-A916-84D3C81B25CF}.RelWithDebInfo|Win32.ActiveCfg = Release|Win32
+		{E4A1AEFD-10B1-4719-A916-84D3C81B25CF}.RelWithDebInfo|Win32.Build.0 = Release|Win32
+		{E4A1AEFD-10B1-4719-A916-84D3C81B25CF}.RelWithDebInfo|x64.ActiveCfg = Release|x64
+		{E4A1AEFD-10B1-4719-A916-84D3C81B25CF}.RelWithDebInfo|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://vstfpn.partners.extranet.microsoft.com:8443/tfs/platformnext
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = libzxing.vcxproj
+		SccLocalPath1 = .
+		SccProjectUniqueName2 = libzxing_UAP\\libzxing_UAP.vcxproj
+		SccProjectName2 = libzxing_UAP
+		SccLocalPath2 = libzxing_UAP
+	EndGlobalSection
+EndGlobal

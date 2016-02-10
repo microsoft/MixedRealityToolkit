@@ -1,0 +1,296 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|ARM">
+      <Configuration>Debug</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|ARM">
+      <Configuration>Release</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\backend\aztec.h" />
+    <ClInclude Include="..\backend\code1.h" />
+    <ClInclude Include="..\backend\code49.h" />
+    <ClInclude Include="..\backend\common.h" />
+    <ClInclude Include="..\backend\composite.h" />
+    <ClInclude Include="..\backend\dmatrix.h" />
+    <ClInclude Include="..\backend\font.h" />
+    <ClInclude Include="..\backend\gb2312.h" />
+    <ClInclude Include="..\backend\gridmtx.h" />
+    <ClInclude Include="..\backend\gs1.h" />
+    <ClInclude Include="..\backend\large.h" />
+    <ClInclude Include="..\backend\maxicode.h" />
+    <ClInclude Include="..\backend\maxipng.h" />
+    <ClInclude Include="..\backend\ms_stdint.h" />
+    <ClInclude Include="..\backend\pdf417.h" />
+    <ClInclude Include="..\backend\qr.h" />
+    <ClInclude Include="..\backend\reedsol.h" />
+    <ClInclude Include="..\backend\rss.h" />
+    <ClInclude Include="..\backend\sjis.h" />
+    <ClInclude Include="..\backend\zint.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\backend\2of5.c" />
+    <ClCompile Include="..\backend\auspost.c" />
+    <ClCompile Include="..\backend\aztec.c" />
+    <ClCompile Include="..\backend\code.c" />
+    <ClCompile Include="..\backend\code1.c" />
+    <ClCompile Include="..\backend\code128.c" />
+    <ClCompile Include="..\backend\code16k.c" />
+    <ClCompile Include="..\backend\code49.c" />
+    <ClCompile Include="..\backend\common.c" />
+    <ClCompile Include="..\backend\composite.c" />
+    <ClCompile Include="..\backend\dllversion.c" />
+    <ClCompile Include="..\backend\dmatrix.c" />
+    <ClCompile Include="..\backend\gridmtx.c" />
+    <ClCompile Include="..\backend\gs1.c" />
+    <ClCompile Include="..\backend\imail.c" />
+    <ClCompile Include="..\backend\large.c" />
+    <ClCompile Include="..\backend\library.c" />
+    <ClCompile Include="..\backend\maxicode.c" />
+    <ClCompile Include="..\backend\medical.c" />
+    <ClCompile Include="..\backend\pdf417.c" />
+    <ClCompile Include="..\backend\plessey.c" />
+    <ClCompile Include="..\backend\png.c" />
+    <ClCompile Include="..\backend\postal.c" />
+    <ClCompile Include="..\backend\ps.c" />
+    <ClCompile Include="..\backend\qr.c" />
+    <ClCompile Include="..\backend\reedsol.c" />
+    <ClCompile Include="..\backend\render.c" />
+    <ClCompile Include="..\backend\rss.c" />
+    <ClCompile Include="..\backend\svg.c" />
+    <ClCompile Include="..\backend\telepen.c" />
+    <ClCompile Include="..\backend\upcean.c" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{e1557233-4420-47a5-a468-94da16481747}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectName>libzintRT</ProjectName>
+    <RootNamespace>libzintRT</RootNamespace>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
+    <AppContainerApplication>true</AppContainerApplication>
+    <ApplicationType>Windows Store</ApplicationType>
+    <ApplicationTypeRevision>8.1</ApplicationTypeRevision>
+    <SccProjectName>SAK</SccProjectName>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <GenerateManifest>false</GenerateManifest>
+    <OutDir>$(SolutionDir)..\build\</OutDir>
+    <IntDir>$(SolutionDir)..\tmp\$(Configuration)\$(Platform)\$(ProjectName)\</IntDir>
+    <TargetName>$(SolutionName)_$(Configuration)_WinRT$(PlatformArchitecture)</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <GenerateManifest>false</GenerateManifest>
+    <OutDir>$(SolutionDir)..\build\</OutDir>
+    <IntDir>$(SolutionDir)..\tmp\$(Configuration)\$(Platform)\$(ProjectName)\</IntDir>
+    <TargetName>$(SolutionName)_$(Configuration)_WinRT$(PlatformArchitecture)</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+    <GenerateManifest>false</GenerateManifest>
+    <OutDir>$(SolutionDir)..\build\</OutDir>
+    <IntDir>$(SolutionDir)..\tmp\$(Configuration)\$(Platform)\$(ProjectName)\</IntDir>
+    <TargetName>$(SolutionName)_$(Configuration)_WinRT$(PlatformArchitecture)</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
+    <GenerateManifest>false</GenerateManifest>
+    <OutDir>$(SolutionDir)..\build\</OutDir>
+    <IntDir>$(SolutionDir)..\tmp\$(Configuration)\$(Platform)\$(ProjectName)\</IntDir>
+    <TargetName>$(SolutionName)_$(Configuration)_WinRT$(PlatformArchitecture)</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <GenerateManifest>false</GenerateManifest>
+    <OutDir>$(SolutionDir)..\build\</OutDir>
+    <IntDir>$(SolutionDir)..\tmp\$(Configuration)\$(Platform)\$(ProjectName)\</IntDir>
+    <TargetName>$(SolutionName)_$(Configuration)_WinRT$(PlatformArchitecture)</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <GenerateManifest>false</GenerateManifest>
+    <OutDir>$(SolutionDir)..\build\</OutDir>
+    <IntDir>$(SolutionDir)..\tmp\$(Configuration)\$(Platform)\$(ProjectName)\</IntDir>
+    <TargetName>$(SolutionName)_$(Configuration)_WinRT$(PlatformArchitecture)</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <CompileAsWinRT>false</CompileAsWinRT>
+      <SDLCheck>true</SDLCheck>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <PreprocessorDefinitions>_DEBUG;_WINDOWS;_LIB;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;ZINT_VERSION="2.4.4";NO_PNG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <WarningLevel>Level2</WarningLevel>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DisableSpecificWarnings>4018;4244;4305;</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <CompileAsWinRT>false</CompileAsWinRT>
+      <SDLCheck>true</SDLCheck>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <PreprocessorDefinitions>NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;ZINT_VERSION="2.4.4";NO_PNG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level2</WarningLevel>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DisableSpecificWarnings>4018;4244;4305;</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|arm'">
+    <ClCompile>
+      <CompileAsWinRT>false</CompileAsWinRT>
+      <SDLCheck>true</SDLCheck>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <PreprocessorDefinitions>_DEBUG;_WINDOWS;_LIB;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;ZINT_VERSION="2.4.4";NO_PNG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level2</WarningLevel>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DisableSpecificWarnings>4018;4244;4305;</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|arm'">
+    <ClCompile>
+      <CompileAsWinRT>false</CompileAsWinRT>
+      <SDLCheck>true</SDLCheck>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <PreprocessorDefinitions>NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;ZINT_VERSION="2.4.4";NO_PNG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level2</WarningLevel>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DisableSpecificWarnings>4018;4244;4305;</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <CompileAsWinRT>false</CompileAsWinRT>
+      <SDLCheck>true</SDLCheck>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <PreprocessorDefinitions>_DEBUG;_WINDOWS;_LIB;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;ZINT_VERSION="2.4.4";NO_PNG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level2</WarningLevel>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DisableSpecificWarnings>4018;4244;4305;</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <CompileAsWinRT>false</CompileAsWinRT>
+      <SDLCheck>true</SDLCheck>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <PreprocessorDefinitions>NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;ZINT_VERSION="2.4.4";NO_PNG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level2</WarningLevel>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DisableSpecificWarnings>4018;4244;4305;</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
