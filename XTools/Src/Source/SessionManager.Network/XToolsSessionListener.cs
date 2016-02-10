@@ -5,11 +5,7 @@
 //------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-
-using XTools;
+using HoloToolkit.XTools;
 
 namespace SessionManager.Network
 {
@@ -20,9 +16,9 @@ namespace SessionManager.Network
         public event Action<Session> JoinFailed;
         public event Action<Session> SessionDisconnected;
 
-        private XTools.Session session;
+        private Session session;
 
-        public XToolsSessionListener(XTools.Session session)
+        public XToolsSessionListener(Session session)
         {
             this.session = session;
         }

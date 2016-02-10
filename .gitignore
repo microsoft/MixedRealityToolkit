@@ -6,6 +6,7 @@
 *.tlog
 *.log
 *.idb
+*.opendb
 /XTools/Src/bin
 /XTools/Src/tmp
 /XTools/Src/External/apriltag-2015-03-18/lib
@@ -20,3 +21,4 @@
 /XTools/Src/External/zxing-cpp/lib
 /XTools/Src/External/zxing-cpp/src/tmp
 /XTools/Src/External/speex-1.2rc1/lib
+/XTools/Src/GeneratedInterface

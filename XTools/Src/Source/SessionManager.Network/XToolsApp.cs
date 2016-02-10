@@ -6,10 +6,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-
-using XTools;
+using HoloToolkit.XTools;
 
 namespace SessionManager.Network
 {
@@ -23,7 +20,7 @@ namespace SessionManager.Network
         private ConsoleLogWriter logWriter;
         private Dictionary<string, string> parsedArguments;
 
-        public XTools.SessionManager SessionManager { get; private set; }
+        public HoloToolkit.XTools.SessionManager SessionManager { get; private set; }
 
         public XToolsManager Manager { get; private set; }
 
@@ -232,7 +229,7 @@ namespace SessionManager.Network
 
         public void LeaveSession()
         {
-            XTools.Session currentSession = this.SessionManager.GetCurrentSession();
+            Session currentSession = this.SessionManager.GetCurrentSession();
             if (currentSession != null)
             {
                 currentSession.Leave();

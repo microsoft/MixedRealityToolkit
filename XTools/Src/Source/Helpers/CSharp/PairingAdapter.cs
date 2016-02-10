@@ -1,6 +1,6 @@
 ﻿
 
-namespace XTools
+namespace HoloToolkit.XTools
 {
     /// <summary>
     /// Allows users of the pairing API to register to receive pairing event callbacks without

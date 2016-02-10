@@ -2,7 +2,7 @@
 // Copyright (C) Microsoft. All rights reserved.
 //
 
-namespace XTools
+namespace HoloToolkit.XTools
 {
     /// <summary>
     /// Allows users of UserPresenceManager to register to receive event callbacks without

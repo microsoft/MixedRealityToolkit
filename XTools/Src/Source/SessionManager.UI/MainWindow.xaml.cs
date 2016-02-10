@@ -68,7 +68,7 @@ namespace SessionManager.UI
             }), new object[] { this });
         }
 
-        private void SessionManagerListener_SessionAdded(XTools.Session session)
+        private void SessionManagerListener_SessionAdded(HoloToolkit.XTools.Session session)
         {
             UpdateCurrentSession();
         }

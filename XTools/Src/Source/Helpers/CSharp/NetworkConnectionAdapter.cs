@@ -2,7 +2,7 @@
 // Copyright (C) Microsoft. All rights reserved.
 //
 
-namespace XTools
+namespace HoloToolkit.XTools
 {
     /// <summary>
     /// Allows users of NetworkConnection to register to receive event callbacks without
@@ -27,42 +27,42 @@ namespace XTools
 
         public override void OnConnected(NetworkConnection connection)
         {
-            XTools.Profile.BeginRange("OnConnected");
+            Profile.BeginRange("OnConnected");
             if (this.ConnectedCallback != null)
             {
                 this.ConnectedCallback(connection);
             }
-            XTools.Profile.EndRange();
+            Profile.EndRange();
         }
 
         public override void OnConnectFailed(NetworkConnection connection)
         {
-            XTools.Profile.BeginRange("OnConnectFailed");
+            Profile.BeginRange("OnConnectFailed");
             if (this.ConnectionFailedCallback != null)
             {
                 this.ConnectionFailedCallback(connection);
             }
-            XTools.Profile.EndRange();
+            Profile.EndRange();
         }
 
         public override void OnDisconnected(NetworkConnection connection)
         {
-            XTools.Profile.BeginRange("OnDisconnected");
+            Profile.BeginRange("OnDisconnected");
             if (this.DisconnectedCallback != null)
             {
                 this.DisconnectedCallback(connection);
             }
-            XTools.Profile.EndRange();
+            Profile.EndRange();
         }
 
         public override void OnMessageReceived(NetworkConnection connection, NetworkInMessage message)
         {
-            XTools.Profile.BeginRange("OnMessageReceived");
+            Profile.BeginRange("OnMessageReceived");
             if (this.MessageReceivedCallback != null)
             {
                 this.MessageReceivedCallback(connection, message);
             }
-            XTools.Profile.EndRange();
+            Profile.EndRange();
         }
     }
 }
