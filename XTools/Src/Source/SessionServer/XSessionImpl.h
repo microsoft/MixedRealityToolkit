@@ -9,6 +9,7 @@
 #pragma once
 
 #include "BroadcastForwarder.h"
+#include "SendToForwarder.h"
 #include "SessionChangeCallback.h"
 #include "PortMachinePool.h"
 #include "AudioSessionProcessorServer.h"
@@ -78,6 +79,7 @@ private:
 
 	NetworkMessagePoolPtr			m_messagePool;
 	BroadcastForwarderPtr			m_broadcaster;
+	SendToForwarderPtr				m_sendToForwarder;
 	AudioSessionProcessorPtr		m_audioSessionProcessor;
 	std::vector<RemoteClientPtr>	m_clients;
 	std::vector<RemoteClientPtr>	m_pendingClients;

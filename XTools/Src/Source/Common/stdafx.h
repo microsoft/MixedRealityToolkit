@@ -19,5 +19,6 @@
 #endif
 
 #include <string>
+#include <stddef.h>
 #include "Common.h"
 #include "CommonPrivate.h"

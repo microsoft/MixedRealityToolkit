@@ -19,9 +19,22 @@ struct NetworkHeader
 	MessageChannel		m_channel;
 };
 
+// Extended header with additional information only used by SendTo messages
+struct SendToNetworkHeader : public NetworkHeader
+{
+	UserID		m_userID;
+	ClientRole	m_deviceRole;
+};
+
+
 // The enums in the header should all use only one byte, making the total header size 4 bytes.
 // Use a static assert to make sure this is always the case.  
 static_assert(sizeof(NetworkHeader) == 4, "NetworkHeader is not the expected size");
+
+static_assert(sizeof(SendToNetworkHeader) == 12, "NetworkHeader is not the expected size");
+
+// Ensure that SendToNetworkHeader can be safely cast to a NetworkHeader with a reinterpret_cast
+static_assert(offsetof(SendToNetworkHeader, m_messageID) == 0, "Memory alignment of SendToNetworkHeader does not have the base class first");
 
 
 enum TunnelMsgType : byte

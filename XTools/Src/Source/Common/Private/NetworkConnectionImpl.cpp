@@ -129,6 +129,48 @@ void NetworkConnectionImpl::Send(const NetworkOutMessagePtr& msg, MessagePriorit
 }
 
 
+void NetworkConnectionImpl::SendTo(const UserPtr& user, ClientRole deviceRole, const NetworkOutMessagePtr& msg, MessagePriority priority, MessageReliability reliability, MessageChannel channel, bool releaseMessage)
+{
+	if (IsConnected())
+	{
+		// Append a sendto header to the outgoing message
+
+		const uint32 msgSize = msg->GetSize();
+
+		const uint32 sendPacketSize = msgSize + sizeof(SendToNetworkHeader);
+		if (m_messageBufferSize < sendPacketSize)
+		{
+			m_messageBuffer = new byte[sendPacketSize];
+		}
+
+		// Write a header onto the front of the buffer
+		SendToNetworkHeader* header = reinterpret_cast<SendToNetworkHeader*>(m_messageBuffer.get());
+		header->m_messageID = MessageID::SendTo;
+		header->m_priority = priority;
+		header->m_reliability = reliability;
+		header->m_channel = channel;
+		header->m_userID = user->GetID();
+		header->m_deviceRole = deviceRole;
+
+		// Write the message onto the rest of the buffer
+		byte* payload = m_messageBuffer.get() + sizeof(SendToNetworkHeader);
+		memcpy(payload, msg->GetData(), msgSize);
+
+		// Send the constructed packet
+		m_socket->Send(m_messageBuffer.get(), sendPacketSize, priority, reliability, channel);
+	}
+	else
+	{
+		LogError("Trying to send a message to a remote host that is not connected");
+	}
+
+	if (releaseMessage)
+	{
+		m_messagePool->ReturnMessage(msg);
+	}
+}
+
+
 // Instruct the recipient to sent this messages on to all other connected peers
 void NetworkConnectionImpl::Broadcast(const NetworkOutMessagePtr& msg, MessagePriority priority, MessageReliability reliability, MessageChannel channel, bool releaseMessage)
 {

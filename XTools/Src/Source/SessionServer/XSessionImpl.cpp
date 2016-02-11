@@ -25,17 +25,17 @@ struct XSessionImpl::RemoteClient : public RefCounted
 {
 public:
 	RemoteClient(const NetworkConnectionImplPtr& connection)
-		: m_desktopConnection(connection)
-		, m_barabooConnection(new TunnelConnection(connection))
+		: m_primaryConnection(connection)
+		, m_secondaryConnection(new TunnelConnection(connection))
 		, m_userID(0)
 		, m_userMuteState(false)
 	{}
 
-	NetworkConnectionPtr	m_desktopConnection;
-	NetworkConnectionPtr	m_barabooConnection;
+	NetworkConnectionPtr	m_primaryConnection;
+	NetworkConnectionPtr	m_secondaryConnection;
 	ReceiptPtr				m_listenerReceipt;
 	std::string				m_userName;
-	uint32					m_userID;
+	UserID					m_userID;
 	bool                    m_userMuteState;
 };
 
@@ -45,6 +45,7 @@ public:
 XSessionImpl::XSessionImpl(const std::string& name, PortMachinePair pmp, SessionType type, unsigned int id)
 : m_messagePool(new NetworkMessagePool(kDefaultMessagePoolSize))
 , m_broadcaster(new BroadcastForwarder())
+, m_sendToForwarder(new SendToForwarder())
 , m_audioSessionProcessor(new AudioSessionProcessorServer())
 , m_socketMgr(XSocketManager::Create())
 , m_name(name)
@@ -150,8 +151,8 @@ void XSessionImpl::AddConnection(const XSocketPtr& socket)
 	RemoteClientPtr remoteClient = new RemoteClient(netConnection);
 
 	// Register for callbacks with the SessionStatus id
-	remoteClient->m_desktopConnection->AddListener(MessageID::SessionControl, this);
-	remoteClient->m_listenerReceipt = CreateRegistrationReceipt(remoteClient->m_desktopConnection, &NetworkConnection::RemoveListener, MessageID::SessionControl, this);
+	remoteClient->m_primaryConnection->AddListener(MessageID::SessionControl, this);
+	remoteClient->m_listenerReceipt = CreateRegistrationReceipt(remoteClient->m_primaryConnection, &NetworkConnection::RemoveListener, MessageID::SessionControl, this);
 
 	// Add it to the pending list until we receive the a join request message from it
 	m_pendingClients.push_back(remoteClient);
@@ -165,15 +166,16 @@ void XSessionImpl::OnDisconnected(const NetworkConnectionPtr& connection)
 	// Find the remote client with the given connection and remove it
 	for (size_t i = 0; i < m_clients.size(); ++i)
 	{
-		if (m_clients[i]->m_desktopConnection == connection)
+		if (m_clients[i]->m_primaryConnection == connection)
 		{
 			RemoteClientPtr remoteClient = m_clients[i];
 
 			m_clients.erase(m_clients.begin() + i);
 
-			m_broadcaster->RemoveConnection(remoteClient->m_desktopConnection);
-			m_broadcaster->RemoveConnection(remoteClient->m_barabooConnection);
-			m_audioSessionProcessor->RemoveConnection(remoteClient->m_barabooConnection);
+			m_broadcaster->RemoveConnection(remoteClient->m_primaryConnection);
+			m_broadcaster->RemoveConnection(remoteClient->m_secondaryConnection);
+			m_sendToForwarder->RemoveConnection(remoteClient->m_userID);
+			m_audioSessionProcessor->RemoveConnection(remoteClient->m_secondaryConnection);
 			m_syncMgr->RemoveConnection(connection);
 
 			// Notify the session server to tell all the clients that this user has left the session
@@ -192,7 +194,7 @@ void XSessionImpl::OnDisconnected(const NetworkConnectionPtr& connection)
 	{
 		for (size_t i = 0; i < m_pendingClients.size(); ++i)
 		{
-			if (m_pendingClients[i]->m_desktopConnection == connection)
+			if (m_pendingClients[i]->m_primaryConnection == connection)
 			{
 				m_pendingClients.erase(m_pendingClients.begin() + i);
 				break;
@@ -380,14 +382,17 @@ void XSessionImpl::OnJoinSessionRequest(const JoinSessionRequest& request, const
 			}
 
 			// Add the remoteClient to the list that can send and receive broadcasts
-			m_broadcaster->AddConnection(remoteClient->m_desktopConnection);
-			m_broadcaster->AddConnection(remoteClient->m_barabooConnection);
+			m_broadcaster->AddConnection(remoteClient->m_primaryConnection);
+			m_broadcaster->AddConnection(remoteClient->m_secondaryConnection);
+
+			// Add the remoteClient to the sendto forwarder
+			m_sendToForwarder->AddConnection(remoteClient->m_userID, remoteClient->m_primaryConnection, remoteClient->m_secondaryConnection);
 
 			// Add the remoteClient to the audio packet processor
-			m_audioSessionProcessor->AddConnection(remoteClient->m_barabooConnection);
+			m_audioSessionProcessor->AddConnection(remoteClient->m_secondaryConnection);
 
 			// Add the remoteClient to the list that can share the session's sync data
-			m_syncMgr->AddConnection(remoteClient->m_desktopConnection);
+			m_syncMgr->AddConnection(remoteClient->m_primaryConnection);
 
 			// Notify the session server to tell all the clients that the new user has joined this session
 			m_callback->OnUserJoinedSession(m_id, remoteClient->m_userName, remoteClient->m_userID, remoteClient->m_userMuteState);
@@ -402,7 +407,7 @@ XSessionImpl::RemoteClientPtr XSessionImpl::GetPendingClientForConnection(const 
 	RemoteClientPtr remoteClient = NULL;
 	for (size_t i = 0; i < m_pendingClients.size(); ++i)
 	{
-		if (m_pendingClients[i]->m_desktopConnection == connection)
+		if (m_pendingClients[i]->m_primaryConnection == connection)
 		{
 			remoteClient = m_pendingClients[i];
 
@@ -422,7 +427,7 @@ XSessionImpl::RemoteClientPtr XSessionImpl::GetExistingClientForConnection(const
 	RemoteClientPtr remoteClient = NULL;
 	for (size_t i = 0; i < m_clients.size(); ++i)
 	{
-		if (m_clients[i]->m_desktopConnection == connection)
+		if (m_clients[i]->m_primaryConnection == connection)
 		{
 			remoteClient = m_clients[i];
 			break;

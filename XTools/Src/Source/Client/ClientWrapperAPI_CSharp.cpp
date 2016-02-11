@@ -1966,6 +1966,80 @@ SWIGEXPORT void SWIGSTDCALL CSharp_NetworkConnectionListener_director_connect(vo
 }
 
 
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_User_kInvalidUserID_get() {
+  unsigned int jresult ;
+  unsigned __int32 result;
+  
+  result = XTools::User::kInvalidUserID;
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_User_GetName(void * jarg1) {
+  void * jresult ;
+  XTools::User *arg1 = (XTools::User *) 0 ;
+  XTools::XStringPtr *result = 0 ;
+  
+  arg1 = (XTools::User *)jarg1; 
+  result = (XTools::XStringPtr *) &((XTools::User const *)arg1)->GetName();
+  
+  // ref_ptr by reference out
+  if (*result) {
+    result->get()->AddRef();
+    *( XString **)&jresult = result->get();
+  } else {
+    *( XString **)&jresult = 0;
+  }
+  
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_User_GetID(void * jarg1) {
+  unsigned int jresult ;
+  XTools::User *arg1 = (XTools::User *) 0 ;
+  XTools::UserID result;
+  
+  arg1 = (XTools::User *)jarg1; 
+  result = ((XTools::User const *)arg1)->GetID();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_User_IsValid(void * jarg1) {
+  unsigned int jresult ;
+  XTools::User *arg1 = (XTools::User *) 0 ;
+  bool result;
+  
+  arg1 = (XTools::User *)jarg1; 
+  result = (bool)((XTools::User const *)arg1)->IsValid();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_User_GetMuteState(void * jarg1) {
+  unsigned int jresult ;
+  XTools::User *arg1 = (XTools::User *) 0 ;
+  bool result;
+  
+  arg1 = (XTools::User *)jarg1; 
+  result = (bool)((XTools::User const *)arg1)->GetMuteState();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_User(void * jarg1) {
+  XTools::User *arg1 = (XTools::User *) 0 ;
+  
+  arg1 = (XTools::User *)jarg1; 
+  if(arg1) arg1->RemoveRef();
+}
+
+
 SWIGEXPORT unsigned int SWIGSTDCALL CSharp_NetworkConnection_IsConnected(void * jarg1) {
   unsigned int jresult ;
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
@@ -2117,6 +2191,216 @@ SWIGEXPORT void SWIGSTDCALL CSharp_NetworkConnection_Send__SWIG_4(void * jarg1, 
   }
   
   (arg1)->Send((XTools::NetworkOutMessagePtr const &)*arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_NetworkConnection_SendTo__SWIG_0(void * jarg1, void * jarg2, int jarg3, void * jarg4, int jarg5, int jarg6, int jarg7, unsigned int jarg8) {
+  XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
+  XTools::UserPtr *arg2 = 0 ;
+  XTools::ClientRole arg3 ;
+  XTools::NetworkOutMessagePtr *arg4 = 0 ;
+  XTools::MessagePriority arg5 ;
+  XTools::MessageReliability arg6 ;
+  XTools::MessageChannel arg7 ;
+  bool arg8 ;
+  XTools::UserPtr tempnull2 ;
+  XTools::UserPtr temp2 ;
+  XTools::User *smartarg2 ;
+  XTools::NetworkOutMessagePtr tempnull4 ;
+  XTools::NetworkOutMessagePtr temp4 ;
+  XTools::NetworkOutMessage *smartarg4 ;
+  
+  arg1 = (XTools::NetworkConnection *)jarg1; 
+  
+  // ref_ptr by reference in
+  if ( jarg2 ) {
+    smartarg2 = *( User **)&jarg2; 
+    temp2 = XTools::ref_ptr<  User >(smartarg2);
+    arg2 = &temp2;
+  } else {
+    arg2 = &tempnull2;
+  }
+  
+  arg3 = (XTools::ClientRole)jarg3; 
+  
+  // ref_ptr by reference in
+  if ( jarg4 ) {
+    smartarg4 = *( NetworkOutMessage **)&jarg4; 
+    temp4 = XTools::ref_ptr<  NetworkOutMessage >(smartarg4);
+    arg4 = &temp4;
+  } else {
+    arg4 = &tempnull4;
+  }
+  
+  arg5 = (XTools::MessagePriority)jarg5; 
+  arg6 = (XTools::MessageReliability)jarg6; 
+  arg7 = (XTools::MessageChannel)jarg7; 
+  arg8 = jarg8 ? true : false; 
+  (arg1)->SendTo((XTools::UserPtr const &)*arg2,arg3,(XTools::NetworkOutMessagePtr const &)*arg4,arg5,arg6,arg7,arg8);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_NetworkConnection_SendTo__SWIG_1(void * jarg1, void * jarg2, int jarg3, void * jarg4, int jarg5, int jarg6, int jarg7) {
+  XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
+  XTools::UserPtr *arg2 = 0 ;
+  XTools::ClientRole arg3 ;
+  XTools::NetworkOutMessagePtr *arg4 = 0 ;
+  XTools::MessagePriority arg5 ;
+  XTools::MessageReliability arg6 ;
+  XTools::MessageChannel arg7 ;
+  XTools::UserPtr tempnull2 ;
+  XTools::UserPtr temp2 ;
+  XTools::User *smartarg2 ;
+  XTools::NetworkOutMessagePtr tempnull4 ;
+  XTools::NetworkOutMessagePtr temp4 ;
+  XTools::NetworkOutMessage *smartarg4 ;
+  
+  arg1 = (XTools::NetworkConnection *)jarg1; 
+  
+  // ref_ptr by reference in
+  if ( jarg2 ) {
+    smartarg2 = *( User **)&jarg2; 
+    temp2 = XTools::ref_ptr<  User >(smartarg2);
+    arg2 = &temp2;
+  } else {
+    arg2 = &tempnull2;
+  }
+  
+  arg3 = (XTools::ClientRole)jarg3; 
+  
+  // ref_ptr by reference in
+  if ( jarg4 ) {
+    smartarg4 = *( NetworkOutMessage **)&jarg4; 
+    temp4 = XTools::ref_ptr<  NetworkOutMessage >(smartarg4);
+    arg4 = &temp4;
+  } else {
+    arg4 = &tempnull4;
+  }
+  
+  arg5 = (XTools::MessagePriority)jarg5; 
+  arg6 = (XTools::MessageReliability)jarg6; 
+  arg7 = (XTools::MessageChannel)jarg7; 
+  (arg1)->SendTo((XTools::UserPtr const &)*arg2,arg3,(XTools::NetworkOutMessagePtr const &)*arg4,arg5,arg6,arg7);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_NetworkConnection_SendTo__SWIG_2(void * jarg1, void * jarg2, int jarg3, void * jarg4, int jarg5, int jarg6) {
+  XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
+  XTools::UserPtr *arg2 = 0 ;
+  XTools::ClientRole arg3 ;
+  XTools::NetworkOutMessagePtr *arg4 = 0 ;
+  XTools::MessagePriority arg5 ;
+  XTools::MessageReliability arg6 ;
+  XTools::UserPtr tempnull2 ;
+  XTools::UserPtr temp2 ;
+  XTools::User *smartarg2 ;
+  XTools::NetworkOutMessagePtr tempnull4 ;
+  XTools::NetworkOutMessagePtr temp4 ;
+  XTools::NetworkOutMessage *smartarg4 ;
+  
+  arg1 = (XTools::NetworkConnection *)jarg1; 
+  
+  // ref_ptr by reference in
+  if ( jarg2 ) {
+    smartarg2 = *( User **)&jarg2; 
+    temp2 = XTools::ref_ptr<  User >(smartarg2);
+    arg2 = &temp2;
+  } else {
+    arg2 = &tempnull2;
+  }
+  
+  arg3 = (XTools::ClientRole)jarg3; 
+  
+  // ref_ptr by reference in
+  if ( jarg4 ) {
+    smartarg4 = *( NetworkOutMessage **)&jarg4; 
+    temp4 = XTools::ref_ptr<  NetworkOutMessage >(smartarg4);
+    arg4 = &temp4;
+  } else {
+    arg4 = &tempnull4;
+  }
+  
+  arg5 = (XTools::MessagePriority)jarg5; 
+  arg6 = (XTools::MessageReliability)jarg6; 
+  (arg1)->SendTo((XTools::UserPtr const &)*arg2,arg3,(XTools::NetworkOutMessagePtr const &)*arg4,arg5,arg6);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_NetworkConnection_SendTo__SWIG_3(void * jarg1, void * jarg2, int jarg3, void * jarg4, int jarg5) {
+  XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
+  XTools::UserPtr *arg2 = 0 ;
+  XTools::ClientRole arg3 ;
+  XTools::NetworkOutMessagePtr *arg4 = 0 ;
+  XTools::MessagePriority arg5 ;
+  XTools::UserPtr tempnull2 ;
+  XTools::UserPtr temp2 ;
+  XTools::User *smartarg2 ;
+  XTools::NetworkOutMessagePtr tempnull4 ;
+  XTools::NetworkOutMessagePtr temp4 ;
+  XTools::NetworkOutMessage *smartarg4 ;
+  
+  arg1 = (XTools::NetworkConnection *)jarg1; 
+  
+  // ref_ptr by reference in
+  if ( jarg2 ) {
+    smartarg2 = *( User **)&jarg2; 
+    temp2 = XTools::ref_ptr<  User >(smartarg2);
+    arg2 = &temp2;
+  } else {
+    arg2 = &tempnull2;
+  }
+  
+  arg3 = (XTools::ClientRole)jarg3; 
+  
+  // ref_ptr by reference in
+  if ( jarg4 ) {
+    smartarg4 = *( NetworkOutMessage **)&jarg4; 
+    temp4 = XTools::ref_ptr<  NetworkOutMessage >(smartarg4);
+    arg4 = &temp4;
+  } else {
+    arg4 = &tempnull4;
+  }
+  
+  arg5 = (XTools::MessagePriority)jarg5; 
+  (arg1)->SendTo((XTools::UserPtr const &)*arg2,arg3,(XTools::NetworkOutMessagePtr const &)*arg4,arg5);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_NetworkConnection_SendTo__SWIG_4(void * jarg1, void * jarg2, int jarg3, void * jarg4) {
+  XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
+  XTools::UserPtr *arg2 = 0 ;
+  XTools::ClientRole arg3 ;
+  XTools::NetworkOutMessagePtr *arg4 = 0 ;
+  XTools::UserPtr tempnull2 ;
+  XTools::UserPtr temp2 ;
+  XTools::User *smartarg2 ;
+  XTools::NetworkOutMessagePtr tempnull4 ;
+  XTools::NetworkOutMessagePtr temp4 ;
+  XTools::NetworkOutMessage *smartarg4 ;
+  
+  arg1 = (XTools::NetworkConnection *)jarg1; 
+  
+  // ref_ptr by reference in
+  if ( jarg2 ) {
+    smartarg2 = *( User **)&jarg2; 
+    temp2 = XTools::ref_ptr<  User >(smartarg2);
+    arg2 = &temp2;
+  } else {
+    arg2 = &tempnull2;
+  }
+  
+  arg3 = (XTools::ClientRole)jarg3; 
+  
+  // ref_ptr by reference in
+  if ( jarg4 ) {
+    smartarg4 = *( NetworkOutMessage **)&jarg4; 
+    temp4 = XTools::ref_ptr<  NetworkOutMessage >(smartarg4);
+    arg4 = &temp4;
+  } else {
+    arg4 = &tempnull4;
+  }
+  
+  (arg1)->SendTo((XTools::UserPtr const &)*arg2,arg3,(XTools::NetworkOutMessagePtr const &)*arg4);
 }
 
 
@@ -2376,80 +2660,6 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_NetworkConnection(void * jarg1) {
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   
   arg1 = (XTools::NetworkConnection *)jarg1; 
-  if(arg1) arg1->RemoveRef();
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_User_kInvalidUserID_get() {
-  unsigned int jresult ;
-  unsigned __int32 result;
-  
-  result = XTools::User::kInvalidUserID;
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_User_GetName(void * jarg1) {
-  void * jresult ;
-  XTools::User *arg1 = (XTools::User *) 0 ;
-  XTools::XStringPtr *result = 0 ;
-  
-  arg1 = (XTools::User *)jarg1; 
-  result = (XTools::XStringPtr *) &((XTools::User const *)arg1)->GetName();
-  
-  // ref_ptr by reference out
-  if (*result) {
-    result->get()->AddRef();
-    *( XString **)&jresult = result->get();
-  } else {
-    *( XString **)&jresult = 0;
-  }
-  
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_User_GetID(void * jarg1) {
-  unsigned int jresult ;
-  XTools::User *arg1 = (XTools::User *) 0 ;
-  XTools::UserID result;
-  
-  arg1 = (XTools::User *)jarg1; 
-  result = ((XTools::User const *)arg1)->GetID();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_User_IsValid(void * jarg1) {
-  unsigned int jresult ;
-  XTools::User *arg1 = (XTools::User *) 0 ;
-  bool result;
-  
-  arg1 = (XTools::User *)jarg1; 
-  result = (bool)((XTools::User const *)arg1)->IsValid();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_User_GetMuteState(void * jarg1) {
-  unsigned int jresult ;
-  XTools::User *arg1 = (XTools::User *) 0 ;
-  bool result;
-  
-  arg1 = (XTools::User *)jarg1; 
-  result = (bool)((XTools::User const *)arg1)->GetMuteState();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_delete_User(void * jarg1) {
-  XTools::User *arg1 = (XTools::User *) 0 ;
-  
-  arg1 = (XTools::User *)jarg1; 
   if(arg1) arg1->RemoveRef();
 }
 

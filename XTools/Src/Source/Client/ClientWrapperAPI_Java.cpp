@@ -3886,6 +3886,84 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnect
 }
 
 
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_User_1GetName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  XTools::User *arg1 = (XTools::User *) 0 ;
+  XTools::XStringPtr *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(XTools::User **)&jarg1; 
+  result = (XTools::XStringPtr *) &((XTools::User const *)arg1)->GetName();
+  
+  // ref_ptr by reference out
+  if (*result) {
+    result->get()->AddRef();
+    *( XString **)&jresult = result->get();
+  } else {
+    *( XString **)&jresult = 0;
+  }
+  
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_User_1GetID(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  XTools::User *arg1 = (XTools::User *) 0 ;
+  XTools::UserID result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(XTools::User **)&jarg1; 
+  result = ((XTools::User const *)arg1)->GetID();
+  jresult = (jlong)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_User_1IsValid(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jboolean jresult = 0 ;
+  XTools::User *arg1 = (XTools::User *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(XTools::User **)&jarg1; 
+  result = (bool)((XTools::User const *)arg1)->IsValid();
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_User_1GetMuteState(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jboolean jresult = 0 ;
+  XTools::User *arg1 = (XTools::User *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(XTools::User **)&jarg1; 
+  result = (bool)((XTools::User const *)arg1)->GetMuteState();
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1User(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  XTools::User *arg1 = (XTools::User *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(XTools::User **)&jarg1; 
+  if(arg1) arg1->RemoveRef();
+}
+
+
 SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnection_1IsConnected(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
@@ -4079,6 +4157,241 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnect
   }
   
   (arg1)->Send((XTools::NetworkOutMessagePtr const &)*arg2);
+}
+
+
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnection_1SendTo_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3, jlong jarg4, jobject jarg4_, jint jarg5, jint jarg6, jint jarg7, jboolean jarg8) {
+  XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
+  XTools::UserPtr *arg2 = 0 ;
+  XTools::ClientRole arg3 ;
+  XTools::NetworkOutMessagePtr *arg4 = 0 ;
+  XTools::MessagePriority arg5 ;
+  XTools::MessageReliability arg6 ;
+  XTools::MessageChannel arg7 ;
+  bool arg8 ;
+  XTools::UserPtr tempnull2 ;
+  XTools::UserPtr temp2 ;
+  XTools::User *smartarg2 ;
+  XTools::NetworkOutMessagePtr tempnull4 ;
+  XTools::NetworkOutMessagePtr temp4 ;
+  XTools::NetworkOutMessage *smartarg4 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  (void)jarg4_;
+  arg1 = *(XTools::NetworkConnection **)&jarg1; 
+  
+  // ref_ptr by reference in
+  if ( jarg2 ) {
+    smartarg2 = *( User **)&jarg2; 
+    temp2 = XTools::ref_ptr<  User >(smartarg2);
+    arg2 = &temp2;
+  } else {
+    arg2 = &tempnull2;
+  }
+  
+  arg3 = (XTools::ClientRole)jarg3; 
+  
+  // ref_ptr by reference in
+  if ( jarg4 ) {
+    smartarg4 = *( NetworkOutMessage **)&jarg4; 
+    temp4 = XTools::ref_ptr<  NetworkOutMessage >(smartarg4);
+    arg4 = &temp4;
+  } else {
+    arg4 = &tempnull4;
+  }
+  
+  arg5 = (XTools::MessagePriority)jarg5; 
+  arg6 = (XTools::MessageReliability)jarg6; 
+  arg7 = (XTools::MessageChannel)jarg7; 
+  arg8 = jarg8 ? true : false; 
+  (arg1)->SendTo((XTools::UserPtr const &)*arg2,arg3,(XTools::NetworkOutMessagePtr const &)*arg4,arg5,arg6,arg7,arg8);
+}
+
+
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnection_1SendTo_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3, jlong jarg4, jobject jarg4_, jint jarg5, jint jarg6, jint jarg7) {
+  XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
+  XTools::UserPtr *arg2 = 0 ;
+  XTools::ClientRole arg3 ;
+  XTools::NetworkOutMessagePtr *arg4 = 0 ;
+  XTools::MessagePriority arg5 ;
+  XTools::MessageReliability arg6 ;
+  XTools::MessageChannel arg7 ;
+  XTools::UserPtr tempnull2 ;
+  XTools::UserPtr temp2 ;
+  XTools::User *smartarg2 ;
+  XTools::NetworkOutMessagePtr tempnull4 ;
+  XTools::NetworkOutMessagePtr temp4 ;
+  XTools::NetworkOutMessage *smartarg4 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  (void)jarg4_;
+  arg1 = *(XTools::NetworkConnection **)&jarg1; 
+  
+  // ref_ptr by reference in
+  if ( jarg2 ) {
+    smartarg2 = *( User **)&jarg2; 
+    temp2 = XTools::ref_ptr<  User >(smartarg2);
+    arg2 = &temp2;
+  } else {
+    arg2 = &tempnull2;
+  }
+  
+  arg3 = (XTools::ClientRole)jarg3; 
+  
+  // ref_ptr by reference in
+  if ( jarg4 ) {
+    smartarg4 = *( NetworkOutMessage **)&jarg4; 
+    temp4 = XTools::ref_ptr<  NetworkOutMessage >(smartarg4);
+    arg4 = &temp4;
+  } else {
+    arg4 = &tempnull4;
+  }
+  
+  arg5 = (XTools::MessagePriority)jarg5; 
+  arg6 = (XTools::MessageReliability)jarg6; 
+  arg7 = (XTools::MessageChannel)jarg7; 
+  (arg1)->SendTo((XTools::UserPtr const &)*arg2,arg3,(XTools::NetworkOutMessagePtr const &)*arg4,arg5,arg6,arg7);
+}
+
+
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnection_1SendTo_1_1SWIG_12(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3, jlong jarg4, jobject jarg4_, jint jarg5, jint jarg6) {
+  XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
+  XTools::UserPtr *arg2 = 0 ;
+  XTools::ClientRole arg3 ;
+  XTools::NetworkOutMessagePtr *arg4 = 0 ;
+  XTools::MessagePriority arg5 ;
+  XTools::MessageReliability arg6 ;
+  XTools::UserPtr tempnull2 ;
+  XTools::UserPtr temp2 ;
+  XTools::User *smartarg2 ;
+  XTools::NetworkOutMessagePtr tempnull4 ;
+  XTools::NetworkOutMessagePtr temp4 ;
+  XTools::NetworkOutMessage *smartarg4 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  (void)jarg4_;
+  arg1 = *(XTools::NetworkConnection **)&jarg1; 
+  
+  // ref_ptr by reference in
+  if ( jarg2 ) {
+    smartarg2 = *( User **)&jarg2; 
+    temp2 = XTools::ref_ptr<  User >(smartarg2);
+    arg2 = &temp2;
+  } else {
+    arg2 = &tempnull2;
+  }
+  
+  arg3 = (XTools::ClientRole)jarg3; 
+  
+  // ref_ptr by reference in
+  if ( jarg4 ) {
+    smartarg4 = *( NetworkOutMessage **)&jarg4; 
+    temp4 = XTools::ref_ptr<  NetworkOutMessage >(smartarg4);
+    arg4 = &temp4;
+  } else {
+    arg4 = &tempnull4;
+  }
+  
+  arg5 = (XTools::MessagePriority)jarg5; 
+  arg6 = (XTools::MessageReliability)jarg6; 
+  (arg1)->SendTo((XTools::UserPtr const &)*arg2,arg3,(XTools::NetworkOutMessagePtr const &)*arg4,arg5,arg6);
+}
+
+
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnection_1SendTo_1_1SWIG_13(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3, jlong jarg4, jobject jarg4_, jint jarg5) {
+  XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
+  XTools::UserPtr *arg2 = 0 ;
+  XTools::ClientRole arg3 ;
+  XTools::NetworkOutMessagePtr *arg4 = 0 ;
+  XTools::MessagePriority arg5 ;
+  XTools::UserPtr tempnull2 ;
+  XTools::UserPtr temp2 ;
+  XTools::User *smartarg2 ;
+  XTools::NetworkOutMessagePtr tempnull4 ;
+  XTools::NetworkOutMessagePtr temp4 ;
+  XTools::NetworkOutMessage *smartarg4 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  (void)jarg4_;
+  arg1 = *(XTools::NetworkConnection **)&jarg1; 
+  
+  // ref_ptr by reference in
+  if ( jarg2 ) {
+    smartarg2 = *( User **)&jarg2; 
+    temp2 = XTools::ref_ptr<  User >(smartarg2);
+    arg2 = &temp2;
+  } else {
+    arg2 = &tempnull2;
+  }
+  
+  arg3 = (XTools::ClientRole)jarg3; 
+  
+  // ref_ptr by reference in
+  if ( jarg4 ) {
+    smartarg4 = *( NetworkOutMessage **)&jarg4; 
+    temp4 = XTools::ref_ptr<  NetworkOutMessage >(smartarg4);
+    arg4 = &temp4;
+  } else {
+    arg4 = &tempnull4;
+  }
+  
+  arg5 = (XTools::MessagePriority)jarg5; 
+  (arg1)->SendTo((XTools::UserPtr const &)*arg2,arg3,(XTools::NetworkOutMessagePtr const &)*arg4,arg5);
+}
+
+
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnection_1SendTo_1_1SWIG_14(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3, jlong jarg4, jobject jarg4_) {
+  XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
+  XTools::UserPtr *arg2 = 0 ;
+  XTools::ClientRole arg3 ;
+  XTools::NetworkOutMessagePtr *arg4 = 0 ;
+  XTools::UserPtr tempnull2 ;
+  XTools::UserPtr temp2 ;
+  XTools::User *smartarg2 ;
+  XTools::NetworkOutMessagePtr tempnull4 ;
+  XTools::NetworkOutMessagePtr temp4 ;
+  XTools::NetworkOutMessage *smartarg4 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  (void)jarg4_;
+  arg1 = *(XTools::NetworkConnection **)&jarg1; 
+  
+  // ref_ptr by reference in
+  if ( jarg2 ) {
+    smartarg2 = *( User **)&jarg2; 
+    temp2 = XTools::ref_ptr<  User >(smartarg2);
+    arg2 = &temp2;
+  } else {
+    arg2 = &tempnull2;
+  }
+  
+  arg3 = (XTools::ClientRole)jarg3; 
+  
+  // ref_ptr by reference in
+  if ( jarg4 ) {
+    smartarg4 = *( NetworkOutMessage **)&jarg4; 
+    temp4 = XTools::ref_ptr<  NetworkOutMessage >(smartarg4);
+    arg4 = &temp4;
+  } else {
+    arg4 = &tempnull4;
+  }
+  
+  (arg1)->SendTo((XTools::UserPtr const &)*arg2,arg3,(XTools::NetworkOutMessagePtr const &)*arg4);
 }
 
 
@@ -4388,84 +4701,6 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1Networ
   (void)jenv;
   (void)jcls;
   arg1 = *(XTools::NetworkConnection **)&jarg1; 
-  if(arg1) arg1->RemoveRef();
-}
-
-
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_User_1GetName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jlong jresult = 0 ;
-  XTools::User *arg1 = (XTools::User *) 0 ;
-  XTools::XStringPtr *result = 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(XTools::User **)&jarg1; 
-  result = (XTools::XStringPtr *) &((XTools::User const *)arg1)->GetName();
-  
-  // ref_ptr by reference out
-  if (*result) {
-    result->get()->AddRef();
-    *( XString **)&jresult = result->get();
-  } else {
-    *( XString **)&jresult = 0;
-  }
-  
-  return jresult;
-}
-
-
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_User_1GetID(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jlong jresult = 0 ;
-  XTools::User *arg1 = (XTools::User *) 0 ;
-  XTools::UserID result;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(XTools::User **)&jarg1; 
-  result = ((XTools::User const *)arg1)->GetID();
-  jresult = (jlong)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_User_1IsValid(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jboolean jresult = 0 ;
-  XTools::User *arg1 = (XTools::User *) 0 ;
-  bool result;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(XTools::User **)&jarg1; 
-  result = (bool)((XTools::User const *)arg1)->IsValid();
-  jresult = (jboolean)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_User_1GetMuteState(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jboolean jresult = 0 ;
-  XTools::User *arg1 = (XTools::User *) 0 ;
-  bool result;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(XTools::User **)&jarg1; 
-  result = (bool)((XTools::User const *)arg1)->GetMuteState();
-  jresult = (jboolean)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1User(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  XTools::User *arg1 = (XTools::User *) 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  arg1 = *(XTools::User **)&jarg1; 
   if(arg1) arg1->RemoveRef();
 }
 

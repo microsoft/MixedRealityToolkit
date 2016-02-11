@@ -28,6 +28,7 @@
 #include <Public/NetworkOutMessage.h>
 #include <Public/NetworkInMessage.h>
 #include <Public/NetworkConnectionListener.h>
+#include <Public/User.h>
 #include <Public/NetworkConnection.h>
 #include <Public/DownloadCommon.h>
 #include <Public/DownloadBuffer.h>

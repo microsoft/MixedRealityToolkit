@@ -85,6 +85,55 @@ void TunnelConnection::Send(const NetworkOutMessagePtr& msg, MessagePriority pri
 }
 
 
+void TunnelConnection::SendTo(const UserPtr& user, ClientRole deviceRole, const NetworkOutMessagePtr& msg, MessagePriority priority, MessageReliability reliability, MessageChannel channel, bool releaseMessage)
+{
+	if (IsConnected())
+	{
+		// Append a tunnel header AND a sendto header to the outgoing message
+
+		const uint32 msgSize = msg->GetSize();
+		const uint32 totalHeaderSize = sizeof(NetworkHeader) + sizeof(SendToNetworkHeader);
+
+		const uint32 sendPacketSize = msgSize + totalHeaderSize;
+		if (m_messageBufferSize < sendPacketSize)
+		{
+			m_messageBuffer = new byte[sendPacketSize];
+		}
+
+		// Write a header onto the front of the buffer
+		NetworkHeader* tunnelHeader = reinterpret_cast<NetworkHeader*>(m_messageBuffer.get());
+		tunnelHeader->m_messageID = MessageID::Tunnel;
+		tunnelHeader->m_priority = priority;
+		tunnelHeader->m_reliability = reliability;
+		tunnelHeader->m_channel = channel;
+
+		SendToNetworkHeader* sendToHeader = reinterpret_cast<SendToNetworkHeader*>(m_messageBuffer.get() + sizeof(NetworkHeader));
+		sendToHeader->m_messageID = MessageID::SendTo;
+		sendToHeader->m_priority = priority;
+		sendToHeader->m_reliability = reliability;
+		sendToHeader->m_channel = channel;
+		sendToHeader->m_userID = user->GetID();
+		sendToHeader->m_deviceRole = deviceRole;
+
+		// Write the message onto the rest of the buffer
+		byte* payload = m_messageBuffer.get() + totalHeaderSize;
+		memcpy(payload, msg->GetData(), msgSize);
+
+		// Send the constructed packet
+		m_netConnection->GetSocket()->Send(m_messageBuffer.get(), sendPacketSize, priority, reliability, channel);
+	}
+	else
+	{
+		LogError("Trying to send a message to a remote host that is not connected");
+	}
+
+	if (releaseMessage)
+	{
+		m_netConnection->ReturnMessage(msg);
+	}
+}
+
+
 void TunnelConnection::Broadcast(const NetworkOutMessagePtr& msg, MessagePriority priority, MessageReliability reliability, MessageChannel channel, bool releaseMessage)
 {
 	if (IsConnected())

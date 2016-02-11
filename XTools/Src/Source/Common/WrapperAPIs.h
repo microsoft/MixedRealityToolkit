@@ -29,9 +29,9 @@
 #include <Public/NetworkOutMessage.h>
 #include <Public/NetworkInMessage.h>
 #include <Public/NetworkConnectionListener.h>
+#include <Public/User.h>
 #include <Public/NetworkConnection.h>
 #include <Public/XValue.h>
-#include <Public/User.h>
 #include <Public/Element.h>
 #include <Public/FloatElement.h>
 #include <Public/IntElement.h>

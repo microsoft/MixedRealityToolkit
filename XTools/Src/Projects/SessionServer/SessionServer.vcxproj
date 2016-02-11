@@ -121,6 +121,7 @@
     <ClCompile Include="..\..\Source\SessionServer\BroadcastForwarder.cpp" />
     <ClCompile Include="..\..\Source\SessionServer\Main.cpp" />
     <ClCompile Include="..\..\Source\SessionServer\PortMachinePool.cpp" />
+    <ClCompile Include="..\..\Source\SessionServer\SendToForwarder.cpp" />
     <ClCompile Include="..\..\Source\SessionServer\ServiceBase.cpp" />
     <ClCompile Include="..\..\Source\SessionServer\ServiceInstaller.cpp" />
     <ClCompile Include="..\..\Source\SessionServer\SessionServer.cpp" />
@@ -136,6 +137,7 @@
     <ClInclude Include="..\..\Source\SessionServer\AudioRouterWithMixer.h" />
     <ClInclude Include="..\..\Source\SessionServer\BroadcastForwarder.h" />
     <ClInclude Include="..\..\Source\SessionServer\PortMachinePool.h" />
+    <ClInclude Include="..\..\Source\SessionServer\SendToForwarder.h" />
     <ClInclude Include="..\..\Source\SessionServer\ServiceBase.h" />
     <ClInclude Include="..\..\Source\SessionServer\ServiceInstaller.h" />
     <ClInclude Include="..\..\Source\SessionServer\SessionChangeCallback.h" />

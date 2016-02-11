@@ -27,6 +27,11 @@ public:
 	/// and return it to the message pool for later reuse.  
 	virtual void Send(const NetworkOutMessagePtr& msg, MessagePriority priority = MessagePriority::Medium, MessageReliability reliability = MessageReliability::ReliableOrdered, MessageChannel channel = MessageChannel::Default, bool releaseMessage = true) = 0;
 
+	/// Send the given message to the device of devices of a particular user.  
+	/// \param user The User to send the message to
+	/// \param deviceRole Specifies which of the user's devices to send the message to based on the devices' roles.  A roll of "Unspecified" will cause to the message to be sent to all of the user's devices.  
+	virtual void SendTo(const UserPtr& user, ClientRole deviceRole, const NetworkOutMessagePtr& msg, MessagePriority priority = MessagePriority::Medium, MessageReliability reliability = MessageReliability::ReliableOrdered, MessageChannel channel = MessageChannel::Default, bool releaseMessage = true) = 0;
+
 	/// Instruct the recipient to sent this messages on to all other connected peers
 	virtual void Broadcast(const NetworkOutMessagePtr& msg, MessagePriority priority = MessagePriority::Medium, MessageReliability reliability = MessageReliability::ReliableOrdered, MessageChannel channel = MessageChannel::Default, bool releaseMessage = true) = 0;
 

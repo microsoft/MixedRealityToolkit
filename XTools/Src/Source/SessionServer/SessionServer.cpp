@@ -72,7 +72,6 @@ void SessionServer::OnStart(DWORD dwArgc, PWSTR *pszArgv)
 
 	// TODO: Read from a configuration file for persistent sessions. 
 	XTVERIFY(CreateNewSession("Default", SessionType::PERSISTENT) != NULL);
-	XTVERIFY(CreateNewSession("Theme Group Meeting", SessionType::PERSISTENT) != NULL);
 
 	// Start a thread to run the main service logic. 
 	m_serverThread = new MemberFuncThread(&SessionServer::ServerThreadFunc, this);

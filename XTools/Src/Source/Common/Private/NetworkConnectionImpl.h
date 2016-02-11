@@ -25,6 +25,8 @@ public:
 
 	virtual void					Send(const NetworkOutMessagePtr& msg, MessagePriority priority, MessageReliability reliability, MessageChannel channel, bool releaseMessage) XTOVERRIDE;
 
+	virtual void					SendTo(const UserPtr& user, ClientRole deviceRole, const NetworkOutMessagePtr& msg, MessagePriority priority, MessageReliability reliability, MessageChannel channel, bool releaseMessage) XTOVERRIDE;
+
 	virtual void					Broadcast(const NetworkOutMessagePtr& msg, MessagePriority priority, MessageReliability reliability, MessageChannel channel, bool releaseMessage) XTOVERRIDE;
 
 	virtual void					AddListener(byte messageType, NetworkConnectionListener* newListener) XTOVERRIDE;

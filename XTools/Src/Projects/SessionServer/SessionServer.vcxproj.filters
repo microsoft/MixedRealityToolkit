@@ -44,6 +44,9 @@
     <ClCompile Include="..\..\Source\SessionServer\AudioSessionProcessorServer.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\SessionServer\SendToForwarder.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\SessionServer\stdafx.h">
@@ -80,6 +83,9 @@
       <Filter>Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\SessionServer\AudioSessionProcessorServer.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\SessionServer\SendToForwarder.h">
       <Filter>Source</Filter>
     </ClInclude>
   </ItemGroup>

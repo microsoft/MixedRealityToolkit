@@ -26,4 +26,5 @@ Public\ScopedProfile.h
 Public\SideCarFunctions.h
 Public\SideCarMacros.h
 Public\Listener.h
+Public\User.h
 SideCarAPI.h
