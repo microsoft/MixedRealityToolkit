@@ -1,0 +1,98 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PlaneFinding", "PlaneFinding", "{80CA6884-704F-409A-A755-8F4A686D1F39}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PlaneFinding", "PlaneFinding\PlaneFinding.vcxitems", "{45D41ACC-2C3C-43D2-BC10-02AA73FFC7C7}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PlaneFinding.Editor", "PlaneFinding\PlaneFinding.Editor\PlaneFinding.Editor.vcxproj", "{C656849B-7572-451D-BF74-73F78FE50D37}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PlaneFinding.UAP", "PlaneFinding\PlaneFinding.UAP\PlaneFinding.UAP.vcxproj", "{2E563EFB-6B7D-43D5-90EE-455924EDC1B5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{391FA9C5-4555-461F-9DB0-6B7027443FDA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlaneFinding.TestHelpers", "Tests\TestHelpers\PlaneFinding.TestHelpers.csproj", "{8572DC8C-6BE5-4D03-8AFC-6F0C6935E58E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlaneFinding.UnitTests", "Tests\UnitTests\PlaneFinding.UnitTests.csproj", "{802C2120-AF1A-43B7-B5F6-785031354472}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C656849B-7572-451D-BF74-73F78FE50D37} = {C656849B-7572-451D-BF74-73F78FE50D37}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlaneFinding.TestApp", "Tests\TestApp\PlaneFinding.TestApp.csproj", "{C230DD35-BAD6-4770-91B4-1974A8ACD9A9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C656849B-7572-451D-BF74-73F78FE50D37} = {C656849B-7572-451D-BF74-73F78FE50D37}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnityAddon", "UnityAddon", "{D15BAFA1-9CCC-454D-AC3F-8C550CF5F35C}"
+	ProjectSection(SolutionItems) = preProject
+		UnityAddon\PlaneFinding.cs = UnityAddon\PlaneFinding.cs
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		PlaneFinding\PlaneFinding.vcxitems*{c656849b-7572-451d-bf74-73f78fe50d37}*SharedItemsImports = 4
+		PlaneFinding\PlaneFinding.vcxitems*{2e563efb-6b7d-43d5-90ee-455924edc1b5}*SharedItemsImports = 4
+		PlaneFinding\PlaneFinding.vcxitems*{45d41acc-2c3c-43d2-bc10-02aa73ffc7c7}*SharedItemsImports = 9
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C656849B-7572-451D-BF74-73F78FE50D37}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{C656849B-7572-451D-BF74-73F78FE50D37}.Debug|Any CPU.Build.0 = Debug|Win32
+		{C656849B-7572-451D-BF74-73F78FE50D37}.Debug|x86.ActiveCfg = Debug|Win32
+		{C656849B-7572-451D-BF74-73F78FE50D37}.Debug|x86.Build.0 = Debug|Win32
+		{C656849B-7572-451D-BF74-73F78FE50D37}.Release|Any CPU.ActiveCfg = Release|Win32
+		{C656849B-7572-451D-BF74-73F78FE50D37}.Release|Any CPU.Build.0 = Release|Win32
+		{C656849B-7572-451D-BF74-73F78FE50D37}.Release|x86.ActiveCfg = Release|Win32
+		{C656849B-7572-451D-BF74-73F78FE50D37}.Release|x86.Build.0 = Release|Win32
+		{2E563EFB-6B7D-43D5-90EE-455924EDC1B5}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{2E563EFB-6B7D-43D5-90EE-455924EDC1B5}.Debug|Any CPU.Build.0 = Debug|Win32
+		{2E563EFB-6B7D-43D5-90EE-455924EDC1B5}.Debug|x86.ActiveCfg = Debug|Win32
+		{2E563EFB-6B7D-43D5-90EE-455924EDC1B5}.Debug|x86.Build.0 = Debug|Win32
+		{2E563EFB-6B7D-43D5-90EE-455924EDC1B5}.Release|Any CPU.ActiveCfg = Release|Win32
+		{2E563EFB-6B7D-43D5-90EE-455924EDC1B5}.Release|Any CPU.Build.0 = Release|Win32
+		{2E563EFB-6B7D-43D5-90EE-455924EDC1B5}.Release|x86.ActiveCfg = Release|Win32
+		{2E563EFB-6B7D-43D5-90EE-455924EDC1B5}.Release|x86.Build.0 = Release|Win32
+		{8572DC8C-6BE5-4D03-8AFC-6F0C6935E58E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8572DC8C-6BE5-4D03-8AFC-6F0C6935E58E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8572DC8C-6BE5-4D03-8AFC-6F0C6935E58E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8572DC8C-6BE5-4D03-8AFC-6F0C6935E58E}.Debug|x86.Build.0 = Debug|Any CPU
+		{8572DC8C-6BE5-4D03-8AFC-6F0C6935E58E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8572DC8C-6BE5-4D03-8AFC-6F0C6935E58E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8572DC8C-6BE5-4D03-8AFC-6F0C6935E58E}.Release|x86.ActiveCfg = Release|Any CPU
+		{8572DC8C-6BE5-4D03-8AFC-6F0C6935E58E}.Release|x86.Build.0 = Release|Any CPU
+		{802C2120-AF1A-43B7-B5F6-785031354472}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{802C2120-AF1A-43B7-B5F6-785031354472}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{802C2120-AF1A-43B7-B5F6-785031354472}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{802C2120-AF1A-43B7-B5F6-785031354472}.Debug|x86.Build.0 = Debug|Any CPU
+		{802C2120-AF1A-43B7-B5F6-785031354472}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{802C2120-AF1A-43B7-B5F6-785031354472}.Release|Any CPU.Build.0 = Release|Any CPU
+		{802C2120-AF1A-43B7-B5F6-785031354472}.Release|x86.ActiveCfg = Release|Any CPU
+		{802C2120-AF1A-43B7-B5F6-785031354472}.Release|x86.Build.0 = Release|Any CPU
+		{C230DD35-BAD6-4770-91B4-1974A8ACD9A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C230DD35-BAD6-4770-91B4-1974A8ACD9A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C230DD35-BAD6-4770-91B4-1974A8ACD9A9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C230DD35-BAD6-4770-91B4-1974A8ACD9A9}.Debug|x86.Build.0 = Debug|Any CPU
+		{C230DD35-BAD6-4770-91B4-1974A8ACD9A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C230DD35-BAD6-4770-91B4-1974A8ACD9A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C230DD35-BAD6-4770-91B4-1974A8ACD9A9}.Release|x86.ActiveCfg = Release|Any CPU
+		{C230DD35-BAD6-4770-91B4-1974A8ACD9A9}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{45D41ACC-2C3C-43D2-BC10-02AA73FFC7C7} = {80CA6884-704F-409A-A755-8F4A686D1F39}
+		{C656849B-7572-451D-BF74-73F78FE50D37} = {80CA6884-704F-409A-A755-8F4A686D1F39}
+		{2E563EFB-6B7D-43D5-90EE-455924EDC1B5} = {80CA6884-704F-409A-A755-8F4A686D1F39}
+		{8572DC8C-6BE5-4D03-8AFC-6F0C6935E58E} = {391FA9C5-4555-461F-9DB0-6B7027443FDA}
+		{802C2120-AF1A-43B7-B5F6-785031354472} = {391FA9C5-4555-461F-9DB0-6B7027443FDA}
+		{C230DD35-BAD6-4770-91B4-1974A8ACD9A9} = {391FA9C5-4555-461F-9DB0-6B7027443FDA}
+	EndGlobalSection
+EndGlobal
