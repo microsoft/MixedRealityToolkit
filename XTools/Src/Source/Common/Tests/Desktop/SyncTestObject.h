@@ -11,16 +11,16 @@
 using namespace XTools;
 using namespace XTools::Sync;
 
-class SyncObject : public RefCounted, public ObjectElementListener
+class SyncTestObject : public RefCounted, public ObjectElementListener
 {
 public:
-	SyncObject(const ObjectElementPtr& element, bool bCreatedLocally = true);
+	SyncTestObject(const ObjectElementPtr& element, bool bCreatedLocally = true);
 
-	ref_ptr<SyncObject> AddChild(const std::string& name);
+	ref_ptr<SyncTestObject> AddChild(const std::string& name);
 	void RemoveChild(const std::string& name);
 
-	ref_ptr<SyncObject> GetChild(int index);
-	ref_ptr<SyncObject> GetChild(const std::string& name);
+	ref_ptr<SyncTestObject> GetChild(int index);
+	ref_ptr<SyncTestObject> GetChild(const std::string& name);
 
 	std::string GetName() const;
 
@@ -37,7 +37,15 @@ public:
 	void SetStringValue(const std::string& value);
 	void RemoveStringValue();
 
-	bool Equals(const ref_ptr<const SyncObject>& otherObj) const;
+	int64 GetLongValue() const;
+	void SetLongValue(int64 value);
+	void RemoveLongValue();
+
+	double GetDoubleValue() const;
+	void SetDoubleValue(double value);
+	void RemoveDoubleValue();
+
+	bool Equals(const ref_ptr<const SyncTestObject>& otherObj) const;
 
 	uint32 GetIncomingIntChanges() const { return m_incomingIntChangeCount; }
 	uint32 GetIncomingFloatChanges() const { return m_incomingFloatChangeCount; }
@@ -48,24 +56,32 @@ public:
 	virtual void OnIntElementChanged(XGuid elementID, int32 newValue) XTOVERRIDE;
 	virtual void OnFloatElementChanged(XGuid elementID, float newValue) XTOVERRIDE;
 	virtual void OnStringElementChanged(XGuid elementID, const XStringPtr& newValue) XTOVERRIDE;
+	virtual void OnLongElementChanged(XGuid elementID, int64 newValue) XTOVERRIDE;
+	virtual void OnDoubleElementChanged(XGuid elementID, double newValue) XTOVERRIDE;
 
 	virtual void OnElementAdded(const ElementPtr& element) XTOVERRIDE;
 	virtual void OnElementDeleted(const ElementPtr& element) XTOVERRIDE;
 
 private:
-	std::vector<ref_ptr<SyncObject> >	m_children;
+	std::vector<ref_ptr<SyncTestObject> >	m_children;
 
 	std::string							m_name;
 	ObjectElementPtr					m_element;
 
-	FloatElementPtr m_floatElement;
-	float			m_floatMember;
+	FloatElementPtr		m_floatElement;
+	float				m_floatMember;
 
-	IntElementPtr	m_intElement;
-	int32			m_intMember;
+	IntElementPtr		m_intElement;
+	int32				m_intMember;
 
 	StringElementPtr	m_stringElement;
 	std::string			m_stringMember;
+
+	LongElementPtr		m_longElement;
+	int64				m_longMember;
+
+	DoubleElementPtr	m_doubleElement;
+	double				m_doubleMember;
 
 	uint32				m_incomingIntChangeCount;
 	uint32				m_incomingFloatChangeCount;
@@ -74,4 +90,4 @@ private:
 	uint32				m_incomingRemoveCount;
 };
 
-DECLARE_PTR(SyncObject)
+DECLARE_PTR(SyncTestObject)

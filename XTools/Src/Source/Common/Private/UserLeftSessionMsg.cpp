@@ -16,7 +16,7 @@ const std::string UserLeftSessionMsg::gSessionIDKey("sessionID");
 const std::string UserLeftSessionMsg::gUserIDKey("userID");
 
 
-UserLeftSessionMsg::UserLeftSessionMsg(uint32 sessionID, uint32 userID)
+UserLeftSessionMsg::UserLeftSessionMsg(uint32 sessionID, UserID userID)
 	: m_message(JSONMessage::Create(gMessageType))
 {
 	m_message->SetValue(gSessionIDKey, sessionID);
@@ -50,9 +50,9 @@ uint32 UserLeftSessionMsg::GetSessionID() const
 }
 
 
-uint32 UserLeftSessionMsg::GetUserID() const
+UserID UserLeftSessionMsg::GetUserID() const
 {
-	return m_message->GetUIntValue(gUserIDKey);
+	return m_message->GetIntValue(gUserIDKey);
 }
 
 XTOOLS_NAMESPACE_END

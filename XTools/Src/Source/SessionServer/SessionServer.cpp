@@ -97,7 +97,7 @@ void SessionServer::OnStop()
 }
 
 
-void SessionServer::OnUserJoinedSession(uint32 sessionID, const std::string& userName, uint32 userID, bool muteState)
+void SessionServer::OnUserJoinedSession(uint32 sessionID, const std::string& userName, UserID userID, bool muteState)
 {
 	// Hold the lock during callbacks from the sessions, which run in their own threads 
 	ScopedLock lock(m_mutex);
@@ -107,7 +107,7 @@ void SessionServer::OnUserJoinedSession(uint32 sessionID, const std::string& use
 }
 
 
-void SessionServer::OnUserLeftSession(uint32 sessionID, uint32 userID)
+void SessionServer::OnUserLeftSession(uint32 sessionID, UserID userID)
 {
 	// Hold the lock during callbacks from the sessions, which run in their own threads 
 	ScopedLock lock(m_mutex);
@@ -117,7 +117,7 @@ void SessionServer::OnUserLeftSession(uint32 sessionID, uint32 userID)
 }
 
 
-void SessionServer::OnUserChanged(uint32 sessionID, const std::string& userName, uint32 userID, bool muteState)
+void SessionServer::OnUserChanged(uint32 sessionID, const std::string& userName, UserID userID, bool muteState)
 {
     ScopedLock lock(m_mutex);
 

@@ -73,6 +73,14 @@ uint32 JSONMessage::GetUIntValue(const std::string& key) const
 }
 
 
+int64 JSONMessage::GetLongValue(const std::string& key) const
+{
+	utility::string_t typeKey = utility::conversions::to_string_t(key);
+
+	return m_content.at(typeKey).as_number().to_int64();
+}
+
+
 float JSONMessage::GetFloatValue(const std::string& key) const
 {
 	utility::string_t typeKey = utility::conversions::to_string_t(key);
@@ -115,6 +123,14 @@ void JSONMessage::SetValue(const std::string& key, int32 value)
 
 
 void JSONMessage::SetValue(const std::string& key, uint32 value)
+{
+	utility::string_t keyWString = utility::conversions::to_string_t(key);
+
+	m_content[keyWString] = web::json::value(value);
+}
+
+
+void JSONMessage::SetValue(const std::string& key, int64 value)
 {
 	utility::string_t keyWString = utility::conversions::to_string_t(key);
 

@@ -93,7 +93,7 @@ bool PairingHandshakeLogic::ValidateMessageFromReceiver(NetworkInMessage& msg) c
 	}
 
 	// UserID
-	uint32 userID = msg.ReadUInt32();
+	UserID userID = msg.ReadInt32();
 	if (userID == User::kInvalidUserID)
 	{
 		LogWarning("Handshake Failed: Invalid User ID");

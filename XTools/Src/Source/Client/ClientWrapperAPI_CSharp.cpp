@@ -561,6 +561,20 @@ void SwigDirector_ObjectElementListener::OnIntElementChanged(XTools::XGuid eleme
   }
 }
 
+void SwigDirector_ObjectElementListener::OnLongElementChanged(XTools::XGuid elementID, XTools::int64 newValue) {
+  long long jelementID  ;
+  long long jnewValue  ;
+  
+  if (!swig_callbackOnLongElementChanged) {
+    XTools::ObjectElementListener::OnLongElementChanged(elementID,newValue);
+    return;
+  } else {
+    jelementID = elementID;
+    jnewValue = newValue;
+    swig_callbackOnLongElementChanged(jelementID, jnewValue);
+  }
+}
+
 void SwigDirector_ObjectElementListener::OnFloatElementChanged(XTools::XGuid elementID, float newValue) {
   long long jelementID  ;
   float jnewValue  ;
@@ -572,6 +586,20 @@ void SwigDirector_ObjectElementListener::OnFloatElementChanged(XTools::XGuid ele
     jelementID = elementID;
     jnewValue = newValue;
     swig_callbackOnFloatElementChanged(jelementID, jnewValue);
+  }
+}
+
+void SwigDirector_ObjectElementListener::OnDoubleElementChanged(XTools::XGuid elementID, double newValue) {
+  long long jelementID  ;
+  double jnewValue  ;
+  
+  if (!swig_callbackOnDoubleElementChanged) {
+    XTools::ObjectElementListener::OnDoubleElementChanged(elementID,newValue);
+    return;
+  } else {
+    jelementID = elementID;
+    jnewValue = newValue;
+    swig_callbackOnDoubleElementChanged(jelementID, jnewValue);
   }
 }
 
@@ -629,9 +657,11 @@ void SwigDirector_ObjectElementListener::OnElementDeleted(XTools::ElementPtr con
   }
 }
 
-void SwigDirector_ObjectElementListener::swig_connect_director(SWIG_Callback0_t callbackOnIntElementChanged, SWIG_Callback1_t callbackOnFloatElementChanged, SWIG_Callback2_t callbackOnStringElementChanged, SWIG_Callback3_t callbackOnElementAdded, SWIG_Callback4_t callbackOnElementDeleted) {
+void SwigDirector_ObjectElementListener::swig_connect_director(SWIG_Callback0_t callbackOnIntElementChanged, SWIG_Callback1_t callbackOnLongElementChanged, SWIG_Callback2_t callbackOnFloatElementChanged, SWIG_Callback3_t callbackOnDoubleElementChanged, SWIG_Callback4_t callbackOnStringElementChanged, SWIG_Callback5_t callbackOnElementAdded, SWIG_Callback6_t callbackOnElementDeleted) {
   swig_callbackOnIntElementChanged = callbackOnIntElementChanged;
+  swig_callbackOnLongElementChanged = callbackOnLongElementChanged;
   swig_callbackOnFloatElementChanged = callbackOnFloatElementChanged;
+  swig_callbackOnDoubleElementChanged = callbackOnDoubleElementChanged;
   swig_callbackOnStringElementChanged = callbackOnStringElementChanged;
   swig_callbackOnElementAdded = callbackOnElementAdded;
   swig_callbackOnElementDeleted = callbackOnElementDeleted;
@@ -639,7 +669,9 @@ void SwigDirector_ObjectElementListener::swig_connect_director(SWIG_Callback0_t 
 
 void SwigDirector_ObjectElementListener::swig_init_callbacks() {
   swig_callbackOnIntElementChanged = 0;
+  swig_callbackOnLongElementChanged = 0;
   swig_callbackOnFloatElementChanged = 0;
+  swig_callbackOnDoubleElementChanged = 0;
   swig_callbackOnStringElementChanged = 0;
   swig_callbackOnElementAdded = 0;
   swig_callbackOnElementDeleted = 0;
@@ -969,6 +1001,170 @@ void SwigDirector_UserPresenceManagerListener::swig_init_callbacks() {
   swig_callbackOnUserPresenceChanged = 0;
 }
 
+SwigDirector_RoomManagerListener::SwigDirector_RoomManagerListener() : XTools::RoomManagerListener(), Swig::Director() {
+  swig_init_callbacks();
+}
+
+SwigDirector_RoomManagerListener::~SwigDirector_RoomManagerListener() {
+  
+}
+
+
+void SwigDirector_RoomManagerListener::OnRoomCreated(XTools::RoomPtr const &newRoom) {
+  void * jnewRoom = 0 ;
+  
+  if (!swig_callbackOnRoomCreated) {
+    XTools::RoomManagerListener::OnRoomCreated(newRoom);
+    return;
+  } else {
+    // ref_ptr by reference directorin
+    if (newRoom) {
+      newRoom->AddRef(); 
+    }
+    jnewRoom = (&newRoom)->get();
+    
+    swig_callbackOnRoomCreated(jnewRoom);
+  }
+}
+
+void SwigDirector_RoomManagerListener::OnRoomClosed(XTools::RoomPtr const &room) {
+  void * jroom = 0 ;
+  
+  if (!swig_callbackOnRoomClosed) {
+    XTools::RoomManagerListener::OnRoomClosed(room);
+    return;
+  } else {
+    // ref_ptr by reference directorin
+    if (room) {
+      room->AddRef(); 
+    }
+    jroom = (&room)->get();
+    
+    swig_callbackOnRoomClosed(jroom);
+  }
+}
+
+void SwigDirector_RoomManagerListener::OnUserJoinedRoom(XTools::RoomPtr const &room, XTools::UserPtr const &user) {
+  void * jroom = 0 ;
+  void * juser = 0 ;
+  
+  if (!swig_callbackOnUserJoinedRoom) {
+    XTools::RoomManagerListener::OnUserJoinedRoom(room,user);
+    return;
+  } else {
+    // ref_ptr by reference directorin
+    if (room) {
+      room->AddRef(); 
+    }
+    jroom = (&room)->get();
+    
+    
+    // ref_ptr by reference directorin
+    if (user) {
+      user->AddRef(); 
+    }
+    juser = (&user)->get();
+    
+    swig_callbackOnUserJoinedRoom(jroom, juser);
+  }
+}
+
+void SwigDirector_RoomManagerListener::OnUserLeftRoom(XTools::RoomPtr const &room, XTools::UserPtr const &user) {
+  void * jroom = 0 ;
+  void * juser = 0 ;
+  
+  if (!swig_callbackOnUserLeftRoom) {
+    XTools::RoomManagerListener::OnUserLeftRoom(room,user);
+    return;
+  } else {
+    // ref_ptr by reference directorin
+    if (room) {
+      room->AddRef(); 
+    }
+    jroom = (&room)->get();
+    
+    
+    // ref_ptr by reference directorin
+    if (user) {
+      user->AddRef(); 
+    }
+    juser = (&user)->get();
+    
+    swig_callbackOnUserLeftRoom(jroom, juser);
+  }
+}
+
+void SwigDirector_RoomManagerListener::OnAnchorsChanged(XTools::RoomPtr const &room) {
+  void * jroom = 0 ;
+  
+  if (!swig_callbackOnAnchorsChanged) {
+    XTools::RoomManagerListener::OnAnchorsChanged(room);
+    return;
+  } else {
+    // ref_ptr by reference directorin
+    if (room) {
+      room->AddRef(); 
+    }
+    jroom = (&room)->get();
+    
+    swig_callbackOnAnchorsChanged(jroom);
+  }
+}
+
+void SwigDirector_RoomManagerListener::OnAnchorsDownloaded(XTools::RoomPtr const &room, XTools::AnchorDownloadRequestPtr const &request) {
+  void * jroom = 0 ;
+  void * jrequest = 0 ;
+  
+  if (!swig_callbackOnAnchorsDownloaded) {
+    XTools::RoomManagerListener::OnAnchorsDownloaded(room,request);
+    return;
+  } else {
+    // ref_ptr by reference directorin
+    if (room) {
+      room->AddRef(); 
+    }
+    jroom = (&room)->get();
+    
+    
+    // ref_ptr by reference directorin
+    if (request) {
+      request->AddRef(); 
+    }
+    jrequest = (&request)->get();
+    
+    swig_callbackOnAnchorsDownloaded(jroom, jrequest);
+  }
+}
+
+void SwigDirector_RoomManagerListener::OnAnchorUploadComplete() {
+  if (!swig_callbackOnAnchorUploadComplete) {
+    XTools::RoomManagerListener::OnAnchorUploadComplete();
+    return;
+  } else {
+    swig_callbackOnAnchorUploadComplete();
+  }
+}
+
+void SwigDirector_RoomManagerListener::swig_connect_director(SWIG_Callback0_t callbackOnRoomCreated, SWIG_Callback1_t callbackOnRoomClosed, SWIG_Callback2_t callbackOnUserJoinedRoom, SWIG_Callback3_t callbackOnUserLeftRoom, SWIG_Callback4_t callbackOnAnchorsChanged, SWIG_Callback5_t callbackOnAnchorsDownloaded, SWIG_Callback6_t callbackOnAnchorUploadComplete) {
+  swig_callbackOnRoomCreated = callbackOnRoomCreated;
+  swig_callbackOnRoomClosed = callbackOnRoomClosed;
+  swig_callbackOnUserJoinedRoom = callbackOnUserJoinedRoom;
+  swig_callbackOnUserLeftRoom = callbackOnUserLeftRoom;
+  swig_callbackOnAnchorsChanged = callbackOnAnchorsChanged;
+  swig_callbackOnAnchorsDownloaded = callbackOnAnchorsDownloaded;
+  swig_callbackOnAnchorUploadComplete = callbackOnAnchorUploadComplete;
+}
+
+void SwigDirector_RoomManagerListener::swig_init_callbacks() {
+  swig_callbackOnRoomCreated = 0;
+  swig_callbackOnRoomClosed = 0;
+  swig_callbackOnUserJoinedRoom = 0;
+  swig_callbackOnUserLeftRoom = 0;
+  swig_callbackOnAnchorsChanged = 0;
+  swig_callbackOnAnchorsDownloaded = 0;
+  swig_callbackOnAnchorUploadComplete = 0;
+}
+
 SwigDirector_PairMaker::SwigDirector_PairMaker() : XTools::PairMaker(), Swig::Director() {
   swig_init_callbacks();
 }
@@ -1200,7 +1396,7 @@ SWIGEXPORT unsigned long long SWIGSTDCALL CSharp_kInvalidSocketID_get() {
   unsigned long long jresult ;
   XTools::SocketID result;
   
-  result = (XTools::SocketID)XTools::kInvalidSocketID;
+  result = (XTools::SocketID)(XTools::SocketID)XTools::kInvalidSocketID;
   jresult = result; 
   return jresult;
 }
@@ -1210,7 +1406,7 @@ SWIGEXPORT unsigned long long SWIGSTDCALL CSharp_kInvalidConnectionGUID_get() {
   unsigned long long jresult ;
   XTools::ConnectionGUID result;
   
-  result = (XTools::ConnectionGUID)XTools::kInvalidConnectionGUID;
+  result = (XTools::ConnectionGUID)(XTools::ConnectionGUID)XTools::kInvalidConnectionGUID;
   jresult = result; 
   return jresult;
 }
@@ -1408,7 +1604,7 @@ SWIGEXPORT long long SWIGSTDCALL CSharp_kInvalidXGuid_get() {
   long long jresult ;
   XTools::XGuid result;
   
-  result = (XTools::XGuid)XTools::kInvalidXGuid;
+  result = (XTools::XGuid)(XTools::XGuid)XTools::kInvalidXGuid;
   jresult = result; 
   return jresult;
 }
@@ -1457,7 +1653,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_XString_GetLength(void * jarg1) {
   XTools::uint32 result;
   
   arg1 = (XTools::XString *)jarg1; 
-  result = ((XTools::XString const *)arg1)->GetLength();
+  result = (XTools::uint32)((XTools::XString const *)arg1)->GetLength();
   jresult = result; 
   return jresult;
 }
@@ -1651,7 +1847,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_NetworkInMessage_ReadInt32(void * jarg1) {
   XTools::int32 result;
   
   arg1 = (XTools::NetworkInMessage *)jarg1; 
-  result = (arg1)->ReadInt32();
+  result = (XTools::int32)(arg1)->ReadInt32();
   jresult = result; 
   return jresult;
 }
@@ -1663,7 +1859,7 @@ SWIGEXPORT long long SWIGSTDCALL CSharp_NetworkInMessage_ReadInt64(void * jarg1)
   XTools::int64 result;
   
   arg1 = (XTools::NetworkInMessage *)jarg1; 
-  result = (arg1)->ReadInt64();
+  result = (XTools::int64)(arg1)->ReadInt64();
   jresult = result; 
   return jresult;
 }
@@ -1733,7 +1929,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_NetworkInMessage_GetUnreadBitsCount(void * jar
   XTools::int32 result;
   
   arg1 = (XTools::NetworkInMessage *)jarg1; 
-  result = ((XTools::NetworkInMessage const *)arg1)->GetUnreadBitsCount();
+  result = (XTools::int32)((XTools::NetworkInMessage const *)arg1)->GetUnreadBitsCount();
   jresult = result; 
   return jresult;
 }
@@ -1745,7 +1941,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_NetworkInMessage_GetSize(void * jarg1) {
   XTools::int32 result;
   
   arg1 = (XTools::NetworkInMessage *)jarg1; 
-  result = ((XTools::NetworkInMessage const *)arg1)->GetSize();
+  result = (XTools::int32)((XTools::NetworkInMessage const *)arg1)->GetSize();
   jresult = result; 
   return jresult;
 }
@@ -1966,16 +2162,6 @@ SWIGEXPORT void SWIGSTDCALL CSharp_NetworkConnectionListener_director_connect(vo
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_User_kInvalidUserID_get() {
-  unsigned int jresult ;
-  unsigned __int32 result;
-  
-  result = XTools::User::kInvalidUserID;
-  jresult = result; 
-  return jresult;
-}
-
-
 SWIGEXPORT void * SWIGSTDCALL CSharp_User_GetName(void * jarg1) {
   void * jresult ;
   XTools::User *arg1 = (XTools::User *) 0 ;
@@ -1996,13 +2182,13 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_User_GetName(void * jarg1) {
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_User_GetID(void * jarg1) {
-  unsigned int jresult ;
+SWIGEXPORT int SWIGSTDCALL CSharp_User_GetID(void * jarg1) {
+  int jresult ;
   XTools::User *arg1 = (XTools::User *) 0 ;
   XTools::UserID result;
   
   arg1 = (XTools::User *)jarg1; 
-  result = ((XTools::User const *)arg1)->GetID();
+  result = (XTools::UserID)((XTools::User const *)arg1)->GetID();
   jresult = result; 
   return jresult;
 }
@@ -2058,7 +2244,7 @@ SWIGEXPORT unsigned long long SWIGSTDCALL CSharp_NetworkConnection_GetConnection
   XTools::ConnectionGUID result;
   
   arg1 = (XTools::NetworkConnection *)jarg1; 
-  result = ((XTools::NetworkConnection const *)arg1)->GetConnectionGUID();
+  result = (XTools::ConnectionGUID)((XTools::NetworkConnection const *)arg1)->GetConnectionGUID();
   jresult = result; 
   return jresult;
 }
@@ -2682,7 +2868,7 @@ SWIGEXPORT long long SWIGSTDCALL CSharp_Element_GetGUID(void * jarg1) {
   XTools::XGuid result;
   
   arg1 = (XTools::Element *)jarg1; 
-  result = ((XTools::Element const *)arg1)->GetGUID();
+  result = (XTools::XGuid)((XTools::Element const *)arg1)->GetGUID();
   jresult = result; 
   return jresult;
 }
@@ -2744,6 +2930,130 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_Element(void * jarg1) {
   XTools::Element *arg1 = (XTools::Element *) 0 ;
   
   arg1 = (XTools::Element *)jarg1; 
+  if(arg1) arg1->RemoveRef();
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_IntElement_Cast(void * jarg1) {
+  void * jresult ;
+  XTools::ElementPtr *arg1 = 0 ;
+  XTools::ElementPtr tempnull1 ;
+  XTools::ElementPtr temp1 ;
+  XTools::Element *smartarg1 ;
+  XTools::ref_ptr< XTools::IntElement > result;
+  
+  
+  // ref_ptr by reference in
+  if ( jarg1 ) {
+    smartarg1 = *( Element **)&jarg1; 
+    temp1 = XTools::ref_ptr<  Element >(smartarg1);
+    arg1 = &temp1;
+  } else {
+    arg1 = &tempnull1;
+  }
+  
+  result = XTools::IntElement::Cast((XTools::ref_ptr< XTools::Element > const &)*arg1);
+  
+  // ref_ptr by value out
+  if (result) {
+    result->AddRef();
+    *( IntElement **)&jresult = (&result)->get();
+  } else {
+    *( IntElement **)&jresult = 0; 
+  }
+  
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_IntElement_GetValue(void * jarg1) {
+  int jresult ;
+  XTools::IntElement *arg1 = (XTools::IntElement *) 0 ;
+  XTools::int32 result;
+  
+  arg1 = (XTools::IntElement *)jarg1; 
+  result = (XTools::int32)((XTools::IntElement const *)arg1)->GetValue();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_IntElement_SetValue(void * jarg1, int jarg2) {
+  XTools::IntElement *arg1 = (XTools::IntElement *) 0 ;
+  XTools::int32 arg2 ;
+  
+  arg1 = (XTools::IntElement *)jarg1; 
+  arg2 = (XTools::int32)jarg2; 
+  (arg1)->SetValue(arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_IntElement(void * jarg1) {
+  XTools::IntElement *arg1 = (XTools::IntElement *) 0 ;
+  
+  arg1 = (XTools::IntElement *)jarg1; 
+  if(arg1) arg1->RemoveRef();
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_LongElement_Cast(void * jarg1) {
+  void * jresult ;
+  XTools::ElementPtr *arg1 = 0 ;
+  XTools::ElementPtr tempnull1 ;
+  XTools::ElementPtr temp1 ;
+  XTools::Element *smartarg1 ;
+  XTools::ref_ptr< XTools::LongElement > result;
+  
+  
+  // ref_ptr by reference in
+  if ( jarg1 ) {
+    smartarg1 = *( Element **)&jarg1; 
+    temp1 = XTools::ref_ptr<  Element >(smartarg1);
+    arg1 = &temp1;
+  } else {
+    arg1 = &tempnull1;
+  }
+  
+  result = XTools::LongElement::Cast((XTools::ref_ptr< XTools::Element > const &)*arg1);
+  
+  // ref_ptr by value out
+  if (result) {
+    result->AddRef();
+    *( LongElement **)&jresult = (&result)->get();
+  } else {
+    *( LongElement **)&jresult = 0; 
+  }
+  
+  return jresult;
+}
+
+
+SWIGEXPORT long long SWIGSTDCALL CSharp_LongElement_GetValue(void * jarg1) {
+  long long jresult ;
+  XTools::LongElement *arg1 = (XTools::LongElement *) 0 ;
+  XTools::int64 result;
+  
+  arg1 = (XTools::LongElement *)jarg1; 
+  result = (XTools::int64)((XTools::LongElement const *)arg1)->GetValue();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_LongElement_SetValue(void * jarg1, long long jarg2) {
+  XTools::LongElement *arg1 = (XTools::LongElement *) 0 ;
+  XTools::int64 arg2 ;
+  
+  arg1 = (XTools::LongElement *)jarg1; 
+  arg2 = (XTools::int64)jarg2; 
+  (arg1)->SetValue(arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_LongElement(void * jarg1) {
+  XTools::LongElement *arg1 = (XTools::LongElement *) 0 ;
+  
+  arg1 = (XTools::LongElement *)jarg1; 
   if(arg1) arg1->RemoveRef();
 }
 
@@ -2810,13 +3120,13 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_FloatElement(void * jarg1) {
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_IntElement_Cast(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_DoubleElement_Cast(void * jarg1) {
   void * jresult ;
   XTools::ElementPtr *arg1 = 0 ;
   XTools::ElementPtr tempnull1 ;
   XTools::ElementPtr temp1 ;
   XTools::Element *smartarg1 ;
-  XTools::ref_ptr< XTools::IntElement > result;
+  XTools::ref_ptr< XTools::DoubleElement > result;
   
   
   // ref_ptr by reference in
@@ -2828,46 +3138,46 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_IntElement_Cast(void * jarg1) {
     arg1 = &tempnull1;
   }
   
-  result = XTools::IntElement::Cast((XTools::ref_ptr< XTools::Element > const &)*arg1);
+  result = XTools::DoubleElement::Cast((XTools::ref_ptr< XTools::Element > const &)*arg1);
   
   // ref_ptr by value out
   if (result) {
     result->AddRef();
-    *( IntElement **)&jresult = (&result)->get();
+    *( DoubleElement **)&jresult = (&result)->get();
   } else {
-    *( IntElement **)&jresult = 0; 
+    *( DoubleElement **)&jresult = 0; 
   }
   
   return jresult;
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_IntElement_GetValue(void * jarg1) {
-  int jresult ;
-  XTools::IntElement *arg1 = (XTools::IntElement *) 0 ;
-  XTools::int32 result;
+SWIGEXPORT double SWIGSTDCALL CSharp_DoubleElement_GetValue(void * jarg1) {
+  double jresult ;
+  XTools::DoubleElement *arg1 = (XTools::DoubleElement *) 0 ;
+  double result;
   
-  arg1 = (XTools::IntElement *)jarg1; 
-  result = ((XTools::IntElement const *)arg1)->GetValue();
+  arg1 = (XTools::DoubleElement *)jarg1; 
+  result = (double)((XTools::DoubleElement const *)arg1)->GetValue();
   jresult = result; 
   return jresult;
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_IntElement_SetValue(void * jarg1, int jarg2) {
-  XTools::IntElement *arg1 = (XTools::IntElement *) 0 ;
-  XTools::int32 arg2 ;
+SWIGEXPORT void SWIGSTDCALL CSharp_DoubleElement_SetValue(void * jarg1, double jarg2) {
+  XTools::DoubleElement *arg1 = (XTools::DoubleElement *) 0 ;
+  double arg2 ;
   
-  arg1 = (XTools::IntElement *)jarg1; 
-  arg2 = (XTools::int32)jarg2; 
+  arg1 = (XTools::DoubleElement *)jarg1; 
+  arg2 = (double)jarg2; 
   (arg1)->SetValue(arg2);
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_delete_IntElement(void * jarg1) {
-  XTools::IntElement *arg1 = (XTools::IntElement *) 0 ;
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_DoubleElement(void * jarg1) {
+  XTools::DoubleElement *arg1 = (XTools::DoubleElement *) 0 ;
   
-  arg1 = (XTools::IntElement *)jarg1; 
+  arg1 = (XTools::DoubleElement *)jarg1; 
   if(arg1) arg1->RemoveRef();
 }
 
@@ -2986,6 +3296,30 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ObjectElementListener_OnIntElementChangedSwig
 }
 
 
+SWIGEXPORT void SWIGSTDCALL CSharp_ObjectElementListener_OnLongElementChanged(void * jarg1, long long jarg2, long long jarg3) {
+  XTools::ObjectElementListener *arg1 = (XTools::ObjectElementListener *) 0 ;
+  XTools::XGuid arg2 ;
+  XTools::int64 arg3 ;
+  
+  arg1 = (XTools::ObjectElementListener *)jarg1; 
+  arg2 = (XTools::XGuid)jarg2; 
+  arg3 = (XTools::int64)jarg3; 
+  (arg1)->OnLongElementChanged(arg2,arg3);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ObjectElementListener_OnLongElementChangedSwigExplicitObjectElementListener(void * jarg1, long long jarg2, long long jarg3) {
+  XTools::ObjectElementListener *arg1 = (XTools::ObjectElementListener *) 0 ;
+  XTools::XGuid arg2 ;
+  XTools::int64 arg3 ;
+  
+  arg1 = (XTools::ObjectElementListener *)jarg1; 
+  arg2 = (XTools::XGuid)jarg2; 
+  arg3 = (XTools::int64)jarg3; 
+  (arg1)->XTools::ObjectElementListener::OnLongElementChanged(arg2,arg3);
+}
+
+
 SWIGEXPORT void SWIGSTDCALL CSharp_ObjectElementListener_OnFloatElementChanged(void * jarg1, long long jarg2, float jarg3) {
   XTools::ObjectElementListener *arg1 = (XTools::ObjectElementListener *) 0 ;
   XTools::XGuid arg2 ;
@@ -3007,6 +3341,30 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ObjectElementListener_OnFloatElementChangedSw
   arg2 = (XTools::XGuid)jarg2; 
   arg3 = (float)jarg3; 
   (arg1)->XTools::ObjectElementListener::OnFloatElementChanged(arg2,arg3);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ObjectElementListener_OnDoubleElementChanged(void * jarg1, long long jarg2, double jarg3) {
+  XTools::ObjectElementListener *arg1 = (XTools::ObjectElementListener *) 0 ;
+  XTools::XGuid arg2 ;
+  double arg3 ;
+  
+  arg1 = (XTools::ObjectElementListener *)jarg1; 
+  arg2 = (XTools::XGuid)jarg2; 
+  arg3 = (double)jarg3; 
+  (arg1)->OnDoubleElementChanged(arg2,arg3);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ObjectElementListener_OnDoubleElementChangedSwigExplicitObjectElementListener(void * jarg1, long long jarg2, double jarg3) {
+  XTools::ObjectElementListener *arg1 = (XTools::ObjectElementListener *) 0 ;
+  XTools::XGuid arg2 ;
+  double arg3 ;
+  
+  arg1 = (XTools::ObjectElementListener *)jarg1; 
+  arg2 = (XTools::XGuid)jarg2; 
+  arg3 = (double)jarg3; 
+  (arg1)->XTools::ObjectElementListener::OnDoubleElementChanged(arg2,arg3);
 }
 
 
@@ -3156,11 +3514,11 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_new_ObjectElementListener() {
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_ObjectElementListener_director_connect(void *objarg, SwigDirector_ObjectElementListener::SWIG_Callback0_t callback0, SwigDirector_ObjectElementListener::SWIG_Callback1_t callback1, SwigDirector_ObjectElementListener::SWIG_Callback2_t callback2, SwigDirector_ObjectElementListener::SWIG_Callback3_t callback3, SwigDirector_ObjectElementListener::SWIG_Callback4_t callback4) {
+SWIGEXPORT void SWIGSTDCALL CSharp_ObjectElementListener_director_connect(void *objarg, SwigDirector_ObjectElementListener::SWIG_Callback0_t callback0, SwigDirector_ObjectElementListener::SWIG_Callback1_t callback1, SwigDirector_ObjectElementListener::SWIG_Callback2_t callback2, SwigDirector_ObjectElementListener::SWIG_Callback3_t callback3, SwigDirector_ObjectElementListener::SWIG_Callback4_t callback4, SwigDirector_ObjectElementListener::SWIG_Callback5_t callback5, SwigDirector_ObjectElementListener::SWIG_Callback6_t callback6) {
   XTools::ObjectElementListener *obj = (XTools::ObjectElementListener *)objarg;
   SwigDirector_ObjectElementListener *director = dynamic_cast<SwigDirector_ObjectElementListener *>(obj);
   if (director) {
-    director->swig_connect_director(callback0, callback1, callback2, callback3, callback4);
+    director->swig_connect_director(callback0, callback1, callback2, callback3, callback4, callback5, callback6);
   }
 }
 
@@ -3233,6 +3591,42 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_ObjectElement_CreateIntElement(void * jarg1
 }
 
 
+SWIGEXPORT void * SWIGSTDCALL CSharp_ObjectElement_CreateLongElement(void * jarg1, void * jarg2, long long jarg3) {
+  void * jresult ;
+  XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
+  XTools::XStringPtr *arg2 = 0 ;
+  XTools::int64 arg3 ;
+  XTools::XStringPtr tempnull2 ;
+  XTools::XStringPtr temp2 ;
+  XTools::XString *smartarg2 ;
+  XTools::LongElementPtr result;
+  
+  arg1 = (XTools::ObjectElement *)jarg1; 
+  
+  // ref_ptr by reference in
+  if ( jarg2 ) {
+    smartarg2 = *( XString **)&jarg2; 
+    temp2 = XTools::ref_ptr<  XString >(smartarg2);
+    arg2 = &temp2;
+  } else {
+    arg2 = &tempnull2;
+  }
+  
+  arg3 = (XTools::int64)jarg3; 
+  result = (arg1)->CreateLongElement((XTools::XStringPtr const &)*arg2,arg3);
+  
+  // ref_ptr by value out
+  if (result) {
+    result->AddRef();
+    *( LongElement **)&jresult = (&result)->get();
+  } else {
+    *( LongElement **)&jresult = 0; 
+  }
+  
+  return jresult;
+}
+
+
 SWIGEXPORT void * SWIGSTDCALL CSharp_ObjectElement_CreateFloatElement(void * jarg1, void * jarg2, float jarg3) {
   void * jresult ;
   XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
@@ -3263,6 +3657,42 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_ObjectElement_CreateFloatElement(void * jar
     *( FloatElement **)&jresult = (&result)->get();
   } else {
     *( FloatElement **)&jresult = 0; 
+  }
+  
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_ObjectElement_CreateDoubleElement(void * jarg1, void * jarg2, double jarg3) {
+  void * jresult ;
+  XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
+  XTools::XStringPtr *arg2 = 0 ;
+  double arg3 ;
+  XTools::XStringPtr tempnull2 ;
+  XTools::XStringPtr temp2 ;
+  XTools::XString *smartarg2 ;
+  XTools::DoubleElementPtr result;
+  
+  arg1 = (XTools::ObjectElement *)jarg1; 
+  
+  // ref_ptr by reference in
+  if ( jarg2 ) {
+    smartarg2 = *( XString **)&jarg2; 
+    temp2 = XTools::ref_ptr<  XString >(smartarg2);
+    arg2 = &temp2;
+  } else {
+    arg2 = &tempnull2;
+  }
+  
+  arg3 = (double)jarg3; 
+  result = (arg1)->CreateDoubleElement((XTools::XStringPtr const &)*arg2,arg3);
+  
+  // ref_ptr by value out
+  if (result) {
+    result->AddRef();
+    *( DoubleElement **)&jresult = (&result)->get();
+  } else {
+    *( DoubleElement **)&jresult = 0; 
   }
   
   return jresult;
@@ -3393,7 +3823,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_ObjectElement_GetElementCount(void * jarg1) {
   XTools::int32 result;
   
   arg1 = (XTools::ObjectElement *)jarg1; 
-  result = ((XTools::ObjectElement const *)arg1)->GetElementCount();
+  result = (XTools::int32)((XTools::ObjectElement const *)arg1)->GetElementCount();
   jresult = result; 
   return jresult;
 }
@@ -3539,13 +3969,13 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ObjectElement_RemoveListener(void * jarg1, vo
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_ObjectElement_GetOwnerID(void * jarg1) {
-  unsigned int jresult ;
+SWIGEXPORT int SWIGSTDCALL CSharp_ObjectElement_GetOwnerID(void * jarg1) {
+  int jresult ;
   XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
   XTools::UserID result;
   
   arg1 = (XTools::ObjectElement *)jarg1; 
-  result = ((XTools::ObjectElement const *)arg1)->GetOwnerID();
+  result = (XTools::UserID)((XTools::ObjectElement const *)arg1)->GetOwnerID();
   jresult = result; 
   return jresult;
 }
@@ -3779,7 +4209,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_Session_GetUserCount(void * jarg1) {
   XTools::int32 result;
   
   arg1 = (XTools::Session *)jarg1; 
-  result = ((XTools::Session const *)arg1)->GetUserCount();
+  result = (XTools::int32)((XTools::Session const *)arg1)->GetUserCount();
   jresult = result; 
   return jresult;
 }
@@ -4370,7 +4800,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_SessionManager_GetSessionCount(void * jarg1) {
   XTools::int32 result;
   
   arg1 = (XTools::SessionManager *)jarg1; 
-  result = ((XTools::SessionManager const *)arg1)->GetSessionCount();
+  result = (XTools::int32)((XTools::SessionManager const *)arg1)->GetSessionCount();
   jresult = result; 
   return jresult;
 }
@@ -4705,7 +5135,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_ClientConfig_GetServerPort(void * jarg1) {
   XTools::int32 result;
   
   arg1 = (XTools::ClientConfig *)jarg1; 
-  result = ((XTools::ClientConfig const *)arg1)->GetServerPort();
+  result = (XTools::int32)((XTools::ClientConfig const *)arg1)->GetServerPort();
   jresult = result; 
   return jresult;
 }
@@ -4879,6 +5309,923 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_Profile(void * jarg1) {
 }
 
 
+SWIGEXPORT void * SWIGSTDCALL CSharp_Room_GetName(void * jarg1) {
+  void * jresult ;
+  XTools::Room *arg1 = (XTools::Room *) 0 ;
+  XTools::XStringPtr result;
+  
+  arg1 = (XTools::Room *)jarg1; 
+  result = ((XTools::Room const *)arg1)->GetName();
+  
+  // ref_ptr by value out
+  if (result) {
+    result->AddRef();
+    *( XString **)&jresult = (&result)->get();
+  } else {
+    *( XString **)&jresult = 0; 
+  }
+  
+  return jresult;
+}
+
+
+SWIGEXPORT long long SWIGSTDCALL CSharp_Room_GetID(void * jarg1) {
+  long long jresult ;
+  XTools::Room *arg1 = (XTools::Room *) 0 ;
+  XTools::RoomID result;
+  
+  arg1 = (XTools::Room *)jarg1; 
+  result = (XTools::RoomID)((XTools::Room const *)arg1)->GetID();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_Room(void * jarg1) {
+  XTools::Room *arg1 = (XTools::Room *) 0 ;
+  
+  arg1 = (XTools::Room *)jarg1; 
+  if(arg1) arg1->RemoveRef();
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_AnchorDownloadRequest_GetAnchorName(void * jarg1) {
+  void * jresult ;
+  XTools::AnchorDownloadRequest *arg1 = (XTools::AnchorDownloadRequest *) 0 ;
+  XTools::XStringPtr result;
+  
+  arg1 = (XTools::AnchorDownloadRequest *)jarg1; 
+  result = ((XTools::AnchorDownloadRequest const *)arg1)->GetAnchorName();
+  
+  // ref_ptr by value out
+  if (result) {
+    result->AddRef();
+    *( XString **)&jresult = (&result)->get();
+  } else {
+    *( XString **)&jresult = 0; 
+  }
+  
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_AnchorDownloadRequest_GetRoom(void * jarg1) {
+  void * jresult ;
+  XTools::AnchorDownloadRequest *arg1 = (XTools::AnchorDownloadRequest *) 0 ;
+  XTools::RoomPtr result;
+  
+  arg1 = (XTools::AnchorDownloadRequest *)jarg1; 
+  result = ((XTools::AnchorDownloadRequest const *)arg1)->GetRoom();
+  
+  // ref_ptr by value out
+  if (result) {
+    result->AddRef();
+    *( Room **)&jresult = (&result)->get();
+  } else {
+    *( Room **)&jresult = 0; 
+  }
+  
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_AnchorDownloadRequest_IsDownloading(void * jarg1) {
+  unsigned int jresult ;
+  XTools::AnchorDownloadRequest *arg1 = (XTools::AnchorDownloadRequest *) 0 ;
+  bool result;
+  
+  arg1 = (XTools::AnchorDownloadRequest *)jarg1; 
+  result = (bool)((XTools::AnchorDownloadRequest const *)arg1)->IsDownloading();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_AnchorDownloadRequest_CancelDownload(void * jarg1) {
+  XTools::AnchorDownloadRequest *arg1 = (XTools::AnchorDownloadRequest *) 0 ;
+  
+  arg1 = (XTools::AnchorDownloadRequest *)jarg1; 
+  (arg1)->CancelDownload();
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_AnchorDownloadRequest_GetDataSize(void * jarg1) {
+  int jresult ;
+  XTools::AnchorDownloadRequest *arg1 = (XTools::AnchorDownloadRequest *) 0 ;
+  XTools::int32 result;
+  
+  arg1 = (XTools::AnchorDownloadRequest *)jarg1; 
+  result = (XTools::int32)((XTools::AnchorDownloadRequest const *)arg1)->GetDataSize();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_AnchorDownloadRequest_GetData(void * jarg1, unsigned char* jarg2, int jarg3) {
+  unsigned int jresult ;
+  XTools::AnchorDownloadRequest *arg1 = (XTools::AnchorDownloadRequest *) 0 ;
+  XTools::byte *arg2 = (XTools::byte *) 0 ;
+  XTools::int32 arg3 ;
+  bool result;
+  
+  arg1 = (XTools::AnchorDownloadRequest *)jarg1; 
+  arg2 = jarg2;
+  arg3 = (XTools::int32)jarg3; 
+  result = (bool)((XTools::AnchorDownloadRequest const *)arg1)->GetData(arg2,arg3);
+  jresult = result; 
+  
+  
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_AnchorDownloadRequest(void * jarg1) {
+  XTools::AnchorDownloadRequest *arg1 = (XTools::AnchorDownloadRequest *) 0 ;
+  
+  arg1 = (XTools::AnchorDownloadRequest *)jarg1; 
+  if(arg1) arg1->RemoveRef();
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_RoomManagerListener(void * jarg1) {
+  XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
+  
+  arg1 = (XTools::RoomManagerListener *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_RoomManagerListener_OnRoomCreated(void * jarg1, void * jarg2) {
+  XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
+  XTools::RoomPtr *arg2 = 0 ;
+  XTools::RoomPtr tempnull2 ;
+  XTools::RoomPtr temp2 ;
+  XTools::Room *smartarg2 ;
+  
+  arg1 = (XTools::RoomManagerListener *)jarg1; 
+  
+  // ref_ptr by reference in
+  if ( jarg2 ) {
+    smartarg2 = *( Room **)&jarg2; 
+    temp2 = XTools::ref_ptr<  Room >(smartarg2);
+    arg2 = &temp2;
+  } else {
+    arg2 = &tempnull2;
+  }
+  
+  (arg1)->OnRoomCreated((XTools::RoomPtr const &)*arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_RoomManagerListener_OnRoomCreatedSwigExplicitRoomManagerListener(void * jarg1, void * jarg2) {
+  XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
+  XTools::RoomPtr *arg2 = 0 ;
+  XTools::RoomPtr tempnull2 ;
+  XTools::RoomPtr temp2 ;
+  XTools::Room *smartarg2 ;
+  
+  arg1 = (XTools::RoomManagerListener *)jarg1; 
+  
+  // ref_ptr by reference in
+  if ( jarg2 ) {
+    smartarg2 = *( Room **)&jarg2; 
+    temp2 = XTools::ref_ptr<  Room >(smartarg2);
+    arg2 = &temp2;
+  } else {
+    arg2 = &tempnull2;
+  }
+  
+  (arg1)->XTools::RoomManagerListener::OnRoomCreated((XTools::RoomPtr const &)*arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_RoomManagerListener_OnRoomClosed(void * jarg1, void * jarg2) {
+  XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
+  XTools::RoomPtr *arg2 = 0 ;
+  XTools::RoomPtr tempnull2 ;
+  XTools::RoomPtr temp2 ;
+  XTools::Room *smartarg2 ;
+  
+  arg1 = (XTools::RoomManagerListener *)jarg1; 
+  
+  // ref_ptr by reference in
+  if ( jarg2 ) {
+    smartarg2 = *( Room **)&jarg2; 
+    temp2 = XTools::ref_ptr<  Room >(smartarg2);
+    arg2 = &temp2;
+  } else {
+    arg2 = &tempnull2;
+  }
+  
+  (arg1)->OnRoomClosed((XTools::RoomPtr const &)*arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_RoomManagerListener_OnRoomClosedSwigExplicitRoomManagerListener(void * jarg1, void * jarg2) {
+  XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
+  XTools::RoomPtr *arg2 = 0 ;
+  XTools::RoomPtr tempnull2 ;
+  XTools::RoomPtr temp2 ;
+  XTools::Room *smartarg2 ;
+  
+  arg1 = (XTools::RoomManagerListener *)jarg1; 
+  
+  // ref_ptr by reference in
+  if ( jarg2 ) {
+    smartarg2 = *( Room **)&jarg2; 
+    temp2 = XTools::ref_ptr<  Room >(smartarg2);
+    arg2 = &temp2;
+  } else {
+    arg2 = &tempnull2;
+  }
+  
+  (arg1)->XTools::RoomManagerListener::OnRoomClosed((XTools::RoomPtr const &)*arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_RoomManagerListener_OnUserJoinedRoom(void * jarg1, void * jarg2, void * jarg3) {
+  XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
+  XTools::RoomPtr *arg2 = 0 ;
+  XTools::UserPtr *arg3 = 0 ;
+  XTools::RoomPtr tempnull2 ;
+  XTools::RoomPtr temp2 ;
+  XTools::Room *smartarg2 ;
+  XTools::UserPtr tempnull3 ;
+  XTools::UserPtr temp3 ;
+  XTools::User *smartarg3 ;
+  
+  arg1 = (XTools::RoomManagerListener *)jarg1; 
+  
+  // ref_ptr by reference in
+  if ( jarg2 ) {
+    smartarg2 = *( Room **)&jarg2; 
+    temp2 = XTools::ref_ptr<  Room >(smartarg2);
+    arg2 = &temp2;
+  } else {
+    arg2 = &tempnull2;
+  }
+  
+  
+  // ref_ptr by reference in
+  if ( jarg3 ) {
+    smartarg3 = *( User **)&jarg3; 
+    temp3 = XTools::ref_ptr<  User >(smartarg3);
+    arg3 = &temp3;
+  } else {
+    arg3 = &tempnull3;
+  }
+  
+  (arg1)->OnUserJoinedRoom((XTools::RoomPtr const &)*arg2,(XTools::UserPtr const &)*arg3);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_RoomManagerListener_OnUserJoinedRoomSwigExplicitRoomManagerListener(void * jarg1, void * jarg2, void * jarg3) {
+  XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
+  XTools::RoomPtr *arg2 = 0 ;
+  XTools::UserPtr *arg3 = 0 ;
+  XTools::RoomPtr tempnull2 ;
+  XTools::RoomPtr temp2 ;
+  XTools::Room *smartarg2 ;
+  XTools::UserPtr tempnull3 ;
+  XTools::UserPtr temp3 ;
+  XTools::User *smartarg3 ;
+  
+  arg1 = (XTools::RoomManagerListener *)jarg1; 
+  
+  // ref_ptr by reference in
+  if ( jarg2 ) {
+    smartarg2 = *( Room **)&jarg2; 
+    temp2 = XTools::ref_ptr<  Room >(smartarg2);
+    arg2 = &temp2;
+  } else {
+    arg2 = &tempnull2;
+  }
+  
+  
+  // ref_ptr by reference in
+  if ( jarg3 ) {
+    smartarg3 = *( User **)&jarg3; 
+    temp3 = XTools::ref_ptr<  User >(smartarg3);
+    arg3 = &temp3;
+  } else {
+    arg3 = &tempnull3;
+  }
+  
+  (arg1)->XTools::RoomManagerListener::OnUserJoinedRoom((XTools::RoomPtr const &)*arg2,(XTools::UserPtr const &)*arg3);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_RoomManagerListener_OnUserLeftRoom(void * jarg1, void * jarg2, void * jarg3) {
+  XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
+  XTools::RoomPtr *arg2 = 0 ;
+  XTools::UserPtr *arg3 = 0 ;
+  XTools::RoomPtr tempnull2 ;
+  XTools::RoomPtr temp2 ;
+  XTools::Room *smartarg2 ;
+  XTools::UserPtr tempnull3 ;
+  XTools::UserPtr temp3 ;
+  XTools::User *smartarg3 ;
+  
+  arg1 = (XTools::RoomManagerListener *)jarg1; 
+  
+  // ref_ptr by reference in
+  if ( jarg2 ) {
+    smartarg2 = *( Room **)&jarg2; 
+    temp2 = XTools::ref_ptr<  Room >(smartarg2);
+    arg2 = &temp2;
+  } else {
+    arg2 = &tempnull2;
+  }
+  
+  
+  // ref_ptr by reference in
+  if ( jarg3 ) {
+    smartarg3 = *( User **)&jarg3; 
+    temp3 = XTools::ref_ptr<  User >(smartarg3);
+    arg3 = &temp3;
+  } else {
+    arg3 = &tempnull3;
+  }
+  
+  (arg1)->OnUserLeftRoom((XTools::RoomPtr const &)*arg2,(XTools::UserPtr const &)*arg3);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_RoomManagerListener_OnUserLeftRoomSwigExplicitRoomManagerListener(void * jarg1, void * jarg2, void * jarg3) {
+  XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
+  XTools::RoomPtr *arg2 = 0 ;
+  XTools::UserPtr *arg3 = 0 ;
+  XTools::RoomPtr tempnull2 ;
+  XTools::RoomPtr temp2 ;
+  XTools::Room *smartarg2 ;
+  XTools::UserPtr tempnull3 ;
+  XTools::UserPtr temp3 ;
+  XTools::User *smartarg3 ;
+  
+  arg1 = (XTools::RoomManagerListener *)jarg1; 
+  
+  // ref_ptr by reference in
+  if ( jarg2 ) {
+    smartarg2 = *( Room **)&jarg2; 
+    temp2 = XTools::ref_ptr<  Room >(smartarg2);
+    arg2 = &temp2;
+  } else {
+    arg2 = &tempnull2;
+  }
+  
+  
+  // ref_ptr by reference in
+  if ( jarg3 ) {
+    smartarg3 = *( User **)&jarg3; 
+    temp3 = XTools::ref_ptr<  User >(smartarg3);
+    arg3 = &temp3;
+  } else {
+    arg3 = &tempnull3;
+  }
+  
+  (arg1)->XTools::RoomManagerListener::OnUserLeftRoom((XTools::RoomPtr const &)*arg2,(XTools::UserPtr const &)*arg3);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_RoomManagerListener_OnAnchorsChanged(void * jarg1, void * jarg2) {
+  XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
+  XTools::RoomPtr *arg2 = 0 ;
+  XTools::RoomPtr tempnull2 ;
+  XTools::RoomPtr temp2 ;
+  XTools::Room *smartarg2 ;
+  
+  arg1 = (XTools::RoomManagerListener *)jarg1; 
+  
+  // ref_ptr by reference in
+  if ( jarg2 ) {
+    smartarg2 = *( Room **)&jarg2; 
+    temp2 = XTools::ref_ptr<  Room >(smartarg2);
+    arg2 = &temp2;
+  } else {
+    arg2 = &tempnull2;
+  }
+  
+  (arg1)->OnAnchorsChanged((XTools::RoomPtr const &)*arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_RoomManagerListener_OnAnchorsChangedSwigExplicitRoomManagerListener(void * jarg1, void * jarg2) {
+  XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
+  XTools::RoomPtr *arg2 = 0 ;
+  XTools::RoomPtr tempnull2 ;
+  XTools::RoomPtr temp2 ;
+  XTools::Room *smartarg2 ;
+  
+  arg1 = (XTools::RoomManagerListener *)jarg1; 
+  
+  // ref_ptr by reference in
+  if ( jarg2 ) {
+    smartarg2 = *( Room **)&jarg2; 
+    temp2 = XTools::ref_ptr<  Room >(smartarg2);
+    arg2 = &temp2;
+  } else {
+    arg2 = &tempnull2;
+  }
+  
+  (arg1)->XTools::RoomManagerListener::OnAnchorsChanged((XTools::RoomPtr const &)*arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_RoomManagerListener_OnAnchorsDownloaded(void * jarg1, void * jarg2, void * jarg3) {
+  XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
+  XTools::RoomPtr *arg2 = 0 ;
+  XTools::AnchorDownloadRequestPtr *arg3 = 0 ;
+  XTools::RoomPtr tempnull2 ;
+  XTools::RoomPtr temp2 ;
+  XTools::Room *smartarg2 ;
+  XTools::AnchorDownloadRequestPtr tempnull3 ;
+  XTools::AnchorDownloadRequestPtr temp3 ;
+  XTools::AnchorDownloadRequest *smartarg3 ;
+  
+  arg1 = (XTools::RoomManagerListener *)jarg1; 
+  
+  // ref_ptr by reference in
+  if ( jarg2 ) {
+    smartarg2 = *( Room **)&jarg2; 
+    temp2 = XTools::ref_ptr<  Room >(smartarg2);
+    arg2 = &temp2;
+  } else {
+    arg2 = &tempnull2;
+  }
+  
+  
+  // ref_ptr by reference in
+  if ( jarg3 ) {
+    smartarg3 = *( AnchorDownloadRequest **)&jarg3; 
+    temp3 = XTools::ref_ptr<  AnchorDownloadRequest >(smartarg3);
+    arg3 = &temp3;
+  } else {
+    arg3 = &tempnull3;
+  }
+  
+  (arg1)->OnAnchorsDownloaded((XTools::RoomPtr const &)*arg2,(XTools::AnchorDownloadRequestPtr const &)*arg3);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_RoomManagerListener_OnAnchorsDownloadedSwigExplicitRoomManagerListener(void * jarg1, void * jarg2, void * jarg3) {
+  XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
+  XTools::RoomPtr *arg2 = 0 ;
+  XTools::AnchorDownloadRequestPtr *arg3 = 0 ;
+  XTools::RoomPtr tempnull2 ;
+  XTools::RoomPtr temp2 ;
+  XTools::Room *smartarg2 ;
+  XTools::AnchorDownloadRequestPtr tempnull3 ;
+  XTools::AnchorDownloadRequestPtr temp3 ;
+  XTools::AnchorDownloadRequest *smartarg3 ;
+  
+  arg1 = (XTools::RoomManagerListener *)jarg1; 
+  
+  // ref_ptr by reference in
+  if ( jarg2 ) {
+    smartarg2 = *( Room **)&jarg2; 
+    temp2 = XTools::ref_ptr<  Room >(smartarg2);
+    arg2 = &temp2;
+  } else {
+    arg2 = &tempnull2;
+  }
+  
+  
+  // ref_ptr by reference in
+  if ( jarg3 ) {
+    smartarg3 = *( AnchorDownloadRequest **)&jarg3; 
+    temp3 = XTools::ref_ptr<  AnchorDownloadRequest >(smartarg3);
+    arg3 = &temp3;
+  } else {
+    arg3 = &tempnull3;
+  }
+  
+  (arg1)->XTools::RoomManagerListener::OnAnchorsDownloaded((XTools::RoomPtr const &)*arg2,(XTools::AnchorDownloadRequestPtr const &)*arg3);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_RoomManagerListener_OnAnchorUploadComplete(void * jarg1) {
+  XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
+  
+  arg1 = (XTools::RoomManagerListener *)jarg1; 
+  (arg1)->OnAnchorUploadComplete();
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_RoomManagerListener_OnAnchorUploadCompleteSwigExplicitRoomManagerListener(void * jarg1) {
+  XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
+  
+  arg1 = (XTools::RoomManagerListener *)jarg1; 
+  (arg1)->XTools::RoomManagerListener::OnAnchorUploadComplete();
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_RoomManagerListener() {
+  void * jresult ;
+  XTools::RoomManagerListener *result = 0 ;
+  
+  result = (XTools::RoomManagerListener *)new SwigDirector_RoomManagerListener();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_RoomManagerListener_director_connect(void *objarg, SwigDirector_RoomManagerListener::SWIG_Callback0_t callback0, SwigDirector_RoomManagerListener::SWIG_Callback1_t callback1, SwigDirector_RoomManagerListener::SWIG_Callback2_t callback2, SwigDirector_RoomManagerListener::SWIG_Callback3_t callback3, SwigDirector_RoomManagerListener::SWIG_Callback4_t callback4, SwigDirector_RoomManagerListener::SWIG_Callback5_t callback5, SwigDirector_RoomManagerListener::SWIG_Callback6_t callback6) {
+  XTools::RoomManagerListener *obj = (XTools::RoomManagerListener *)objarg;
+  SwigDirector_RoomManagerListener *director = dynamic_cast<SwigDirector_RoomManagerListener *>(obj);
+  if (director) {
+    director->swig_connect_director(callback0, callback1, callback2, callback3, callback4, callback5, callback6);
+  }
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_RoomManager_AddListener(void * jarg1, void * jarg2) {
+  XTools::RoomManager *arg1 = (XTools::RoomManager *) 0 ;
+  XTools::RoomManagerListener *arg2 = (XTools::RoomManagerListener *) 0 ;
+  
+  arg1 = (XTools::RoomManager *)jarg1; 
+  arg2 = (XTools::RoomManagerListener *)jarg2; 
+  (arg1)->AddListener(arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_RoomManager_RemoveListener(void * jarg1, void * jarg2) {
+  XTools::RoomManager *arg1 = (XTools::RoomManager *) 0 ;
+  XTools::RoomManagerListener *arg2 = (XTools::RoomManagerListener *) 0 ;
+  
+  arg1 = (XTools::RoomManager *)jarg1; 
+  arg2 = (XTools::RoomManagerListener *)jarg2; 
+  (arg1)->RemoveListener(arg2);
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_RoomManager_GetRoomCount(void * jarg1) {
+  int jresult ;
+  XTools::RoomManager *arg1 = (XTools::RoomManager *) 0 ;
+  XTools::int32 result;
+  
+  arg1 = (XTools::RoomManager *)jarg1; 
+  result = (XTools::int32)((XTools::RoomManager const *)arg1)->GetRoomCount();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_RoomManager_GetRoom(void * jarg1, int jarg2) {
+  void * jresult ;
+  XTools::RoomManager *arg1 = (XTools::RoomManager *) 0 ;
+  XTools::int32 arg2 ;
+  XTools::RoomPtr result;
+  
+  arg1 = (XTools::RoomManager *)jarg1; 
+  arg2 = (XTools::int32)jarg2; 
+  result = (arg1)->GetRoom(arg2);
+  
+  // ref_ptr by value out
+  if (result) {
+    result->AddRef();
+    *( Room **)&jresult = (&result)->get();
+  } else {
+    *( Room **)&jresult = 0; 
+  }
+  
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_RoomManager_GetCurrentRoom(void * jarg1) {
+  void * jresult ;
+  XTools::RoomManager *arg1 = (XTools::RoomManager *) 0 ;
+  XTools::RoomPtr result;
+  
+  arg1 = (XTools::RoomManager *)jarg1; 
+  result = (arg1)->GetCurrentRoom();
+  
+  // ref_ptr by value out
+  if (result) {
+    result->AddRef();
+    *( Room **)&jresult = (&result)->get();
+  } else {
+    *( Room **)&jresult = 0; 
+  }
+  
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_RoomManager_CreateRoom(void * jarg1, void * jarg2, long long jarg3) {
+  void * jresult ;
+  XTools::RoomManager *arg1 = (XTools::RoomManager *) 0 ;
+  XTools::XStringPtr *arg2 = 0 ;
+  XTools::RoomID arg3 ;
+  XTools::XStringPtr tempnull2 ;
+  XTools::XStringPtr temp2 ;
+  XTools::XString *smartarg2 ;
+  XTools::RoomPtr result;
+  
+  arg1 = (XTools::RoomManager *)jarg1; 
+  
+  // ref_ptr by reference in
+  if ( jarg2 ) {
+    smartarg2 = *( XString **)&jarg2; 
+    temp2 = XTools::ref_ptr<  XString >(smartarg2);
+    arg2 = &temp2;
+  } else {
+    arg2 = &tempnull2;
+  }
+  
+  arg3 = (XTools::RoomID)jarg3; 
+  result = (arg1)->CreateRoom((XTools::XStringPtr const &)*arg2,arg3);
+  
+  // ref_ptr by value out
+  if (result) {
+    result->AddRef();
+    *( Room **)&jresult = (&result)->get();
+  } else {
+    *( Room **)&jresult = 0; 
+  }
+  
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_RoomManager_JoinRoom(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  XTools::RoomManager *arg1 = (XTools::RoomManager *) 0 ;
+  XTools::RoomPtr *arg2 = 0 ;
+  XTools::RoomPtr tempnull2 ;
+  XTools::RoomPtr temp2 ;
+  XTools::Room *smartarg2 ;
+  bool result;
+  
+  arg1 = (XTools::RoomManager *)jarg1; 
+  
+  // ref_ptr by reference in
+  if ( jarg2 ) {
+    smartarg2 = *( Room **)&jarg2; 
+    temp2 = XTools::ref_ptr<  Room >(smartarg2);
+    arg2 = &temp2;
+  } else {
+    arg2 = &tempnull2;
+  }
+  
+  result = (bool)(arg1)->JoinRoom((XTools::RoomPtr const &)*arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_RoomManager_LeaveRoom(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  XTools::RoomManager *arg1 = (XTools::RoomManager *) 0 ;
+  XTools::RoomPtr *arg2 = 0 ;
+  XTools::RoomPtr tempnull2 ;
+  XTools::RoomPtr temp2 ;
+  XTools::Room *smartarg2 ;
+  bool result;
+  
+  arg1 = (XTools::RoomManager *)jarg1; 
+  
+  // ref_ptr by reference in
+  if ( jarg2 ) {
+    smartarg2 = *( Room **)&jarg2; 
+    temp2 = XTools::ref_ptr<  Room >(smartarg2);
+    arg2 = &temp2;
+  } else {
+    arg2 = &tempnull2;
+  }
+  
+  result = (bool)(arg1)->LeaveRoom((XTools::RoomPtr const &)*arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_RoomManager_GetUserCount(void * jarg1, void * jarg2) {
+  int jresult ;
+  XTools::RoomManager *arg1 = (XTools::RoomManager *) 0 ;
+  XTools::RoomPtr *arg2 = 0 ;
+  XTools::RoomPtr tempnull2 ;
+  XTools::RoomPtr temp2 ;
+  XTools::Room *smartarg2 ;
+  XTools::int32 result;
+  
+  arg1 = (XTools::RoomManager *)jarg1; 
+  
+  // ref_ptr by reference in
+  if ( jarg2 ) {
+    smartarg2 = *( Room **)&jarg2; 
+    temp2 = XTools::ref_ptr<  Room >(smartarg2);
+    arg2 = &temp2;
+  } else {
+    arg2 = &tempnull2;
+  }
+  
+  result = (XTools::int32)(arg1)->GetUserCount((XTools::RoomPtr const &)*arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_RoomManager_GetUser(void * jarg1, void * jarg2, int jarg3) {
+  void * jresult ;
+  XTools::RoomManager *arg1 = (XTools::RoomManager *) 0 ;
+  XTools::RoomPtr *arg2 = 0 ;
+  XTools::int32 arg3 ;
+  XTools::RoomPtr tempnull2 ;
+  XTools::RoomPtr temp2 ;
+  XTools::Room *smartarg2 ;
+  XTools::UserPtr result;
+  
+  arg1 = (XTools::RoomManager *)jarg1; 
+  
+  // ref_ptr by reference in
+  if ( jarg2 ) {
+    smartarg2 = *( Room **)&jarg2; 
+    temp2 = XTools::ref_ptr<  Room >(smartarg2);
+    arg2 = &temp2;
+  } else {
+    arg2 = &tempnull2;
+  }
+  
+  arg3 = (XTools::int32)jarg3; 
+  result = (arg1)->GetUser((XTools::RoomPtr const &)*arg2,arg3);
+  
+  // ref_ptr by value out
+  if (result) {
+    result->AddRef();
+    *( User **)&jresult = (&result)->get();
+  } else {
+    *( User **)&jresult = 0; 
+  }
+  
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_RoomManager_GetAnchorCount(void * jarg1, void * jarg2) {
+  int jresult ;
+  XTools::RoomManager *arg1 = (XTools::RoomManager *) 0 ;
+  XTools::RoomPtr *arg2 = 0 ;
+  XTools::RoomPtr tempnull2 ;
+  XTools::RoomPtr temp2 ;
+  XTools::Room *smartarg2 ;
+  XTools::int32 result;
+  
+  arg1 = (XTools::RoomManager *)jarg1; 
+  
+  // ref_ptr by reference in
+  if ( jarg2 ) {
+    smartarg2 = *( Room **)&jarg2; 
+    temp2 = XTools::ref_ptr<  Room >(smartarg2);
+    arg2 = &temp2;
+  } else {
+    arg2 = &tempnull2;
+  }
+  
+  result = (XTools::int32)(arg1)->GetAnchorCount((XTools::RoomPtr const &)*arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_RoomManager_GetAnchorName(void * jarg1, void * jarg2, int jarg3) {
+  void * jresult ;
+  XTools::RoomManager *arg1 = (XTools::RoomManager *) 0 ;
+  XTools::RoomPtr *arg2 = 0 ;
+  XTools::int32 arg3 ;
+  XTools::RoomPtr tempnull2 ;
+  XTools::RoomPtr temp2 ;
+  XTools::Room *smartarg2 ;
+  XTools::XStringPtr result;
+  
+  arg1 = (XTools::RoomManager *)jarg1; 
+  
+  // ref_ptr by reference in
+  if ( jarg2 ) {
+    smartarg2 = *( Room **)&jarg2; 
+    temp2 = XTools::ref_ptr<  Room >(smartarg2);
+    arg2 = &temp2;
+  } else {
+    arg2 = &tempnull2;
+  }
+  
+  arg3 = (XTools::int32)jarg3; 
+  result = (arg1)->GetAnchorName((XTools::RoomPtr const &)*arg2,arg3);
+  
+  // ref_ptr by value out
+  if (result) {
+    result->AddRef();
+    *( XString **)&jresult = (&result)->get();
+  } else {
+    *( XString **)&jresult = 0; 
+  }
+  
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_RoomManager_DownloadAnchor(void * jarg1, void * jarg2, void * jarg3) {
+  void * jresult ;
+  XTools::RoomManager *arg1 = (XTools::RoomManager *) 0 ;
+  XTools::RoomPtr *arg2 = 0 ;
+  XTools::XStringPtr *arg3 = 0 ;
+  XTools::RoomPtr tempnull2 ;
+  XTools::RoomPtr temp2 ;
+  XTools::Room *smartarg2 ;
+  XTools::XStringPtr tempnull3 ;
+  XTools::XStringPtr temp3 ;
+  XTools::XString *smartarg3 ;
+  XTools::AnchorDownloadRequestPtr result;
+  
+  arg1 = (XTools::RoomManager *)jarg1; 
+  
+  // ref_ptr by reference in
+  if ( jarg2 ) {
+    smartarg2 = *( Room **)&jarg2; 
+    temp2 = XTools::ref_ptr<  Room >(smartarg2);
+    arg2 = &temp2;
+  } else {
+    arg2 = &tempnull2;
+  }
+  
+  
+  // ref_ptr by reference in
+  if ( jarg3 ) {
+    smartarg3 = *( XString **)&jarg3; 
+    temp3 = XTools::ref_ptr<  XString >(smartarg3);
+    arg3 = &temp3;
+  } else {
+    arg3 = &tempnull3;
+  }
+  
+  result = (arg1)->DownloadAnchor((XTools::RoomPtr const &)*arg2,(XTools::XStringPtr const &)*arg3);
+  
+  // ref_ptr by value out
+  if (result) {
+    result->AddRef();
+    *( AnchorDownloadRequest **)&jresult = (&result)->get();
+  } else {
+    *( AnchorDownloadRequest **)&jresult = 0; 
+  }
+  
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_RoomManager_UploadAnchor(void * jarg1, void * jarg2, void * jarg3, unsigned char* jarg4, int jarg5) {
+  unsigned int jresult ;
+  XTools::RoomManager *arg1 = (XTools::RoomManager *) 0 ;
+  XTools::RoomPtr *arg2 = 0 ;
+  XTools::XStringPtr *arg3 = 0 ;
+  XTools::byte *arg4 = (XTools::byte *) 0 ;
+  XTools::int32 arg5 ;
+  XTools::RoomPtr tempnull2 ;
+  XTools::RoomPtr temp2 ;
+  XTools::Room *smartarg2 ;
+  XTools::XStringPtr tempnull3 ;
+  XTools::XStringPtr temp3 ;
+  XTools::XString *smartarg3 ;
+  bool result;
+  
+  arg1 = (XTools::RoomManager *)jarg1; 
+  
+  // ref_ptr by reference in
+  if ( jarg2 ) {
+    smartarg2 = *( Room **)&jarg2; 
+    temp2 = XTools::ref_ptr<  Room >(smartarg2);
+    arg2 = &temp2;
+  } else {
+    arg2 = &tempnull2;
+  }
+  
+  
+  // ref_ptr by reference in
+  if ( jarg3 ) {
+    smartarg3 = *( XString **)&jarg3; 
+    temp3 = XTools::ref_ptr<  XString >(smartarg3);
+    arg3 = &temp3;
+  } else {
+    arg3 = &tempnull3;
+  }
+  
+  arg4 = jarg4;
+  arg5 = (XTools::int32)jarg5; 
+  result = (bool)(arg1)->UploadAnchor((XTools::RoomPtr const &)*arg2,(XTools::XStringPtr const &)*arg3,(XTools::byte const *)arg4,arg5);
+  jresult = result; 
+  
+  
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_RoomManager(void * jarg1) {
+  XTools::RoomManager *arg1 = (XTools::RoomManager *) 0 ;
+  
+  arg1 = (XTools::RoomManager *)jarg1; 
+  if(arg1) arg1->RemoveRef();
+}
+
+
 SWIGEXPORT void * SWIGSTDCALL CSharp_new_Settings() {
   void * jresult ;
   XTools::Settings *result = 0 ;
@@ -4916,7 +6263,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_Settings_GetServerPort(void * jarg1) {
   XTools::int32 result;
   
   arg1 = (XTools::Settings *)jarg1; 
-  result = ((XTools::Settings const *)arg1)->GetServerPort();
+  result = (XTools::int32)((XTools::Settings const *)arg1)->GetServerPort();
   jresult = result; 
   return jresult;
 }
@@ -4948,7 +6295,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_Settings_GetViewerPort(void * jarg1) {
   XTools::int32 result;
   
   arg1 = (XTools::Settings *)jarg1; 
-  result = ((XTools::Settings const *)arg1)->GetViewerPort();
+  result = (XTools::int32)((XTools::Settings const *)arg1)->GetViewerPort();
   jresult = result; 
   return jresult;
 }
@@ -5012,7 +6359,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_PairMaker_GetAddressCount(void * jarg1) {
   XTools::int32 result;
   
   arg1 = (XTools::PairMaker *)jarg1; 
-  result = (arg1)->GetAddressCount();
+  result = (XTools::int32)(arg1)->GetAddressCount();
   jresult = result; 
   return jresult;
 }
@@ -5132,7 +6479,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_PairMaker_GetLocalKey(void * jarg1) {
   XTools::int32 result;
   
   arg1 = (XTools::PairMaker *)jarg1; 
-  result = (arg1)->GetLocalKey();
+  result = (XTools::int32)(arg1)->GetLocalKey();
   jresult = result; 
   return jresult;
 }
@@ -5144,7 +6491,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_PairMaker_GetLocalKeySwigExplicitPairMaker(voi
   XTools::int32 result;
   
   arg1 = (XTools::PairMaker *)jarg1; 
-  result = (arg1)->XTools::PairMaker::GetLocalKey();
+  result = (XTools::int32)(arg1)->XTools::PairMaker::GetLocalKey();
   jresult = result; 
   return jresult;
 }
@@ -5156,7 +6503,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_PairMaker_GetRemoteKey(void * jarg1) {
   XTools::int32 result;
   
   arg1 = (XTools::PairMaker *)jarg1; 
-  result = (arg1)->GetRemoteKey();
+  result = (XTools::int32)(arg1)->GetRemoteKey();
   jresult = result; 
   return jresult;
 }
@@ -5168,7 +6515,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_PairMaker_GetRemoteKeySwigExplicitPairMaker(vo
   XTools::int32 result;
   
   arg1 = (XTools::PairMaker *)jarg1; 
-  result = (arg1)->XTools::PairMaker::GetRemoteKey();
+  result = (XTools::int32)(arg1)->XTools::PairMaker::GetRemoteKey();
   jresult = result; 
   return jresult;
 }
@@ -5481,6 +6828,26 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_XToolsManager_GetPairingManager(void * jarg
     *( PairingManager **)&jresult = result->get();
   } else {
     *( PairingManager **)&jresult = 0;
+  }
+  
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_XToolsManager_GetRoomManager(void * jarg1) {
+  void * jresult ;
+  XTools::XToolsManager *arg1 = (XTools::XToolsManager *) 0 ;
+  XTools::RoomManagerPtr *result = 0 ;
+  
+  arg1 = (XTools::XToolsManager *)jarg1; 
+  result = (XTools::RoomManagerPtr *) &((XTools::XToolsManager const *)arg1)->GetRoomManager();
+  
+  // ref_ptr by reference out
+  if (*result) {
+    result->get()->AddRef();
+    *( RoomManager **)&jresult = result->get();
+  } else {
+    *( RoomManager **)&jresult = 0;
   }
   
   return jresult;
@@ -5832,7 +7199,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_TagImage_GetWidth(void * jarg1) {
   XTools::int32 result;
   
   arg1 = (XTools::TagImage *)jarg1; 
-  result = ((XTools::TagImage const *)arg1)->GetWidth();
+  result = (XTools::int32)((XTools::TagImage const *)arg1)->GetWidth();
   jresult = result; 
   return jresult;
 }
@@ -5844,7 +7211,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_TagImage_GetHeight(void * jarg1) {
   XTools::int32 result;
   
   arg1 = (XTools::TagImage *)jarg1; 
-  result = ((XTools::TagImage const *)arg1)->GetHeight();
+  result = (XTools::int32)((XTools::TagImage const *)arg1)->GetHeight();
   jresult = result; 
   return jresult;
 }
@@ -6035,7 +7402,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_DirectPairConnector_GetAddressCount(void * jar
   XTools::int32 result;
   
   arg1 = (XTools::DirectPairConnector *)jarg1; 
-  result = (arg1)->GetAddressCount();
+  result = (XTools::int32)(arg1)->GetAddressCount();
   jresult = result; 
   return jresult;
 }
@@ -6177,7 +7544,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_DirectPairReceiver_GetAddressCount(void * jarg
   XTools::int32 result;
   
   arg1 = (XTools::DirectPairReceiver *)jarg1; 
-  result = (arg1)->GetAddressCount();
+  result = (XTools::int32)(arg1)->GetAddressCount();
   jresult = result; 
   return jresult;
 }
@@ -6365,11 +7732,19 @@ SWIGEXPORT XTools::Listener * SWIGSTDCALL CSharp_NetworkConnectionListener_SWIGU
     return (XTools::Listener *)jarg1;
 }
 
+SWIGEXPORT XTools::Element * SWIGSTDCALL CSharp_IntElement_SWIGUpcast(XTools::IntElement *jarg1) {
+    return (XTools::Element *)jarg1;
+}
+
+SWIGEXPORT XTools::Element * SWIGSTDCALL CSharp_LongElement_SWIGUpcast(XTools::LongElement *jarg1) {
+    return (XTools::Element *)jarg1;
+}
+
 SWIGEXPORT XTools::Element * SWIGSTDCALL CSharp_FloatElement_SWIGUpcast(XTools::FloatElement *jarg1) {
     return (XTools::Element *)jarg1;
 }
 
-SWIGEXPORT XTools::Element * SWIGSTDCALL CSharp_IntElement_SWIGUpcast(XTools::IntElement *jarg1) {
+SWIGEXPORT XTools::Element * SWIGSTDCALL CSharp_DoubleElement_SWIGUpcast(XTools::DoubleElement *jarg1) {
     return (XTools::Element *)jarg1;
 }
 
@@ -6398,6 +7773,10 @@ SWIGEXPORT XTools::Listener * SWIGSTDCALL CSharp_SessionManagerListener_SWIGUpca
 }
 
 SWIGEXPORT XTools::Listener * SWIGSTDCALL CSharp_UserPresenceManagerListener_SWIGUpcast(XTools::UserPresenceManagerListener *jarg1) {
+    return (XTools::Listener *)jarg1;
+}
+
+SWIGEXPORT XTools::Listener * SWIGSTDCALL CSharp_RoomManagerListener_SWIGUpcast(XTools::RoomManagerListener *jarg1) {
     return (XTools::Listener *)jarg1;
 }
 

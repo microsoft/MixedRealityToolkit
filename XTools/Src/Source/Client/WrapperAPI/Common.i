@@ -28,7 +28,7 @@
 %apply unsigned short { XTools::uint16 };
 %apply signed int { XTools::int32 };
 %apply unsigned int { XTools::uint32 };
-%apply signed long long { XTools::int64 };
+%apply long long { XTools::int64 };
 %apply unsigned long long { XTools::uint64 };
 
 %ignore XTools::NetworkOutMessage::Write(uint16 value);

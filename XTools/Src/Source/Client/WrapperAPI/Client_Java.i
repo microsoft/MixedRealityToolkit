@@ -13,6 +13,7 @@ using namespace XTools;
 
 %include <windows.i>
 %include "arrays_java.i"
+%include "typemaps.i"
 %include "various.i"
 %include "Common.i"
 

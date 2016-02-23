@@ -173,5 +173,23 @@
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\ProfileManager.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\AnchorDownloadRequest.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\DoubleElement.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\LongElement.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\Room.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\RoomManager.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\RoomManagerListener.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

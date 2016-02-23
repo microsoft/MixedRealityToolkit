@@ -14,7 +14,9 @@ enum ElementType : byte
 {
 	UnknownType = 0,
 	Int32Type,
+	Int64Type,
 	FloatType,
+	DoubleType,
 	StringType,
 	ObjectType
 };

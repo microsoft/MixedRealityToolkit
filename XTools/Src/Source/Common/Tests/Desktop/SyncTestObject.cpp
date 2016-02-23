@@ -9,12 +9,14 @@
 #include "stdafx.h"
 #include "SyncTestObject.h"
 
-SyncObject::SyncObject(const ObjectElementPtr& element, bool bCreatedLocally)
+SyncTestObject::SyncTestObject(const ObjectElementPtr& element, bool bCreatedLocally)
 	: m_name(element->GetName()->GetString())
 	, m_element(element)
 	, m_floatMember(0.f)
 	, m_intMember(0)
 	, m_stringMember("TestString")
+	, m_longMember(0L)
+	, m_doubleMember(0.0)
 	, m_incomingIntChangeCount(0)
 	, m_incomingFloatChangeCount(0)
 	, m_incomingStringChangeCount(0)
@@ -28,15 +30,17 @@ SyncObject::SyncObject(const ObjectElementPtr& element, bool bCreatedLocally)
 		m_floatElement = m_element->CreateFloatElement(new XString("floatMember"), m_floatMember);
 		m_intElement = m_element->CreateIntElement(new XString("intMember"), m_intMember);
 		m_stringElement = m_element->CreateStringElement(new XString("stringMember"), new XString(m_stringMember));
+		m_longElement = m_element->CreateLongElement(new XString("longMember"), m_longMember);
+		m_doubleElement = m_element->CreateDoubleElement(new XString("doubleMember"), m_doubleMember);
 	}
 }
 
 
-ref_ptr<SyncObject> SyncObject::AddChild(const std::string& name)
+ref_ptr<SyncTestObject> SyncTestObject::AddChild(const std::string& name)
 {
 	ObjectElementPtr childElement = m_element->CreateObjectElement(new XString(name));
 
-	SyncObject* newChild = new SyncObject(childElement, true);
+	SyncTestObject* newChild = new SyncTestObject(childElement, true);
 
 	m_children.push_back(newChild);
 
@@ -44,7 +48,7 @@ ref_ptr<SyncObject> SyncObject::AddChild(const std::string& name)
 }
 
 
-void SyncObject::RemoveChild(const std::string& name)
+void SyncTestObject::RemoveChild(const std::string& name)
 {
 	for (size_t i = 0; i < m_children.size(); ++i)
 	{
@@ -58,13 +62,13 @@ void SyncObject::RemoveChild(const std::string& name)
 }
 
 
-ref_ptr<SyncObject> SyncObject::GetChild(int index)
+ref_ptr<SyncTestObject> SyncTestObject::GetChild(int index)
 {
 	return m_children[index];
 }
 
 
-ref_ptr<SyncObject> SyncObject::GetChild(const std::string& name)
+ref_ptr<SyncTestObject> SyncTestObject::GetChild(const std::string& name)
 {
 	for (size_t i = 0; i < m_children.size(); ++i)
 	{
@@ -78,79 +82,119 @@ ref_ptr<SyncObject> SyncObject::GetChild(const std::string& name)
 }
 
 
-std::string SyncObject::GetName() const
+std::string SyncTestObject::GetName() const
 {
 	return m_element->GetName()->GetString();
 }
 
 
-float SyncObject::GetFloatValue() const
+float SyncTestObject::GetFloatValue() const
 { 
 	return m_floatMember; 
 }
 
 
-void SyncObject::SetFloatValue(float value)
+void SyncTestObject::SetFloatValue(float value)
 {
 	m_floatMember = value;
 	m_floatElement->SetValue(value);
 }
 
 
-void SyncObject::RemoveFloatValue()
+void SyncTestObject::RemoveFloatValue()
 {
 	m_element->RemoveElement(m_floatElement.get());
 	m_floatElement = NULL;
 }
 
 
-bool SyncObject::IsFloatValid() const
+bool SyncTestObject::IsFloatValid() const
 {
 	return (m_floatElement != NULL);
 }
 
 
-int32 SyncObject::GetIntValue() const
+int32 SyncTestObject::GetIntValue() const
 {
 	return m_intMember;
 }
 
 
-void SyncObject::SetIntValue(int32 value)
+void SyncTestObject::SetIntValue(int32 value)
 {
 	m_intMember = value;
 	m_intElement->SetValue(value);
 }
 
 
-void SyncObject::RemoveIntValue()
+void SyncTestObject::RemoveIntValue()
 {
 	m_element->RemoveElement(m_intElement.get());
 	m_intElement = NULL;
 }
 
 
-std::string SyncObject::GetStringValue() const
+std::string SyncTestObject::GetStringValue() const
 {
 	return m_stringMember;
 }
 
 
-void SyncObject::SetStringValue(const std::string& value)
+void SyncTestObject::SetStringValue(const std::string& value)
 {
 	m_stringMember = value;
 	m_stringElement->SetValue(new XString(m_stringMember));
 }
 
 
-void SyncObject::RemoveStringValue()
+void SyncTestObject::RemoveStringValue()
 {
 	m_element->RemoveElement(m_stringElement.get());
 	m_stringElement = NULL;
 }
 
 
-bool SyncObject::Equals(const ref_ptr<const SyncObject>& otherObj) const
+int64 SyncTestObject::GetLongValue() const
+{
+	return m_longMember;
+}
+
+
+void SyncTestObject::SetLongValue(int64 value)
+{
+	m_longMember = value;
+	m_longElement->SetValue(value);
+}
+
+
+void SyncTestObject::RemoveLongValue()
+{
+	m_element->RemoveElement(m_longElement.get());
+	m_longElement = NULL;
+}
+
+
+double SyncTestObject::GetDoubleValue() const
+{
+	return m_doubleMember;
+}
+
+
+void SyncTestObject::SetDoubleValue(double value)
+{
+	m_doubleMember = value;
+	m_doubleElement->SetValue(value);
+}
+
+
+void SyncTestObject::RemoveDoubleValue()
+{
+	m_element->RemoveElement(m_doubleElement.get());
+	m_doubleElement = NULL;
+}
+
+
+bool SyncTestObject::Equals(const ref_ptr<const SyncTestObject>& otherObj) const
 {
 	if (!m_element->IsValid())
 	{
@@ -200,6 +244,30 @@ bool SyncObject::Equals(const ref_ptr<const SyncObject>& otherObj) const
 		}
 	}
 
+	if ((m_longElement == NULL) != (otherObj->m_longElement == NULL)) return false;
+	if (m_longElement != NULL)
+	{
+		if (otherObj->m_longElement == NULL ||
+			m_longMember != otherObj->m_longMember ||
+			m_longElement->GetGUID() != otherObj->m_longElement->GetGUID() ||
+			!m_longElement->GetName()->IsEqual(otherObj->m_longElement->GetName()))
+		{
+			return false;
+		}
+	}
+
+	if ((m_doubleElement == NULL) != (otherObj->m_doubleElement == NULL)) return false;
+	if (m_doubleElement != NULL)
+	{
+		if (otherObj->m_doubleElement == NULL ||
+			m_doubleMember != otherObj->m_doubleMember ||
+			m_doubleElement->GetGUID() != otherObj->m_doubleElement->GetGUID() ||
+			!m_doubleElement->GetName()->IsEqual(otherObj->m_doubleElement->GetName()))
+		{
+			return false;
+		}
+	}
+
 	// Check that the number of children is the same
 	if (m_children.size() != otherObj->m_children.size()) return false;
 
@@ -237,7 +305,7 @@ bool SyncObject::Equals(const ref_ptr<const SyncObject>& otherObj) const
 }
 
 
-void SyncObject::OnIntElementChanged(XGuid elementID, int32 newValue)
+void SyncTestObject::OnIntElementChanged(XGuid elementID, int32 newValue)
 {
 	XTASSERT(m_intElement);
 	XTASSERT(m_intElement->GetGUID() == elementID);
@@ -247,7 +315,7 @@ void SyncObject::OnIntElementChanged(XGuid elementID, int32 newValue)
 }
 
 
-void SyncObject::OnFloatElementChanged(XGuid elementID, float newValue)
+void SyncTestObject::OnFloatElementChanged(XGuid elementID, float newValue)
 {
 	XTASSERT(m_floatElement);
 	XTASSERT(m_floatElement->GetGUID() == elementID);
@@ -257,7 +325,7 @@ void SyncObject::OnFloatElementChanged(XGuid elementID, float newValue)
 }
 
 
-void SyncObject::OnStringElementChanged(XGuid elementID, const XStringPtr& newValue)
+void SyncTestObject::OnStringElementChanged(XGuid elementID, const XStringPtr& newValue)
 {
 	XTASSERT(m_stringElement);
 	XTASSERT(m_stringElement->GetGUID() == elementID);
@@ -268,7 +336,25 @@ void SyncObject::OnStringElementChanged(XGuid elementID, const XStringPtr& newVa
 }
 
 
-void SyncObject::OnElementAdded(const ElementPtr& element)
+void SyncTestObject::OnLongElementChanged(XGuid elementID, int64 newValue)
+{
+	XTASSERT(m_longElement);
+	XTASSERT(m_longElement->GetGUID() == elementID);
+
+	m_longMember = newValue;
+}
+
+
+void SyncTestObject::OnDoubleElementChanged(XGuid elementID, double newValue)
+{
+	XTASSERT(m_doubleElement);
+	XTASSERT(m_doubleElement->GetGUID() == elementID);
+
+	m_doubleMember = newValue;
+}
+
+
+void SyncTestObject::OnElementAdded(const ElementPtr& element)
 {
 	++m_incomingAddCount;
 
@@ -278,7 +364,7 @@ void SyncObject::OnElementAdded(const ElementPtr& element)
 		{
 			ObjectElementPtr objElement = ObjectElement::Cast(element);
 			XTASSERT(objElement);
-			m_children.push_back(new SyncObject(objElement, false));
+			m_children.push_back(new SyncTestObject(objElement, false));
 		}
 		
 	}
@@ -300,10 +386,22 @@ void SyncObject::OnElementAdded(const ElementPtr& element)
 		m_stringElement = StringElement::Cast(element);
 		m_stringMember = m_stringElement->GetValue()->GetString();
 	}
+	else if (element->GetElementType() == ElementType::Int64Type)
+	{
+		XTASSERT(m_longElement == NULL);
+		m_longElement = LongElement::Cast(element);
+		m_longMember = m_longElement->GetValue();
+	}
+	else if (element->GetElementType() == ElementType::DoubleType)
+	{
+		XTASSERT(m_doubleElement == NULL);
+		m_doubleElement = DoubleElement::Cast(element);
+		m_doubleMember = m_doubleElement->GetValue();
+	}
 }
 
 
-void SyncObject::OnElementDeleted(const ElementPtr& element)
+void SyncTestObject::OnElementDeleted(const ElementPtr& element)
 {
 	XTASSERT(m_element->GetGUID() != element->GetGUID());
 
@@ -320,6 +418,14 @@ void SyncObject::OnElementDeleted(const ElementPtr& element)
 	else if (m_stringElement && m_stringElement->GetGUID() == element->GetGUID())
 	{
 		m_stringElement = NULL;
+	}
+	else if (m_longElement && m_longElement->GetGUID() == element->GetGUID())
+	{
+		m_longElement = NULL;
+	}
+	else if (m_doubleElement && m_doubleElement->GetGUID() == element->GetGUID())
+	{
+		m_doubleElement = NULL;
 	}
 	else
 	{

@@ -123,11 +123,11 @@ namespace CommonDesktopTests
 			Assert::IsTrue(m_onsightConnection2->IsConnected(), L"Timed out waiting for the operation to complete.", LINE_INFO());
 		}
 
-		m_serverSyncMgr = SyncManager::Create(AuthorityLevel::High, m_userServer);
-		m_client1SyncMgr = SyncManager::Create(AuthorityLevel::Medium, m_userClient1);
-		m_client2SyncMgr = SyncManager::Create(AuthorityLevel::Medium, m_userClient2);
-		m_onsight1SyncMgr = SyncManager::Create(AuthorityLevel::Low, m_userOnSight1);
-		m_onsight2SyncMgr = SyncManager::Create(AuthorityLevel::Low, m_userOnSight2);
+		m_serverSyncMgr = SyncManager::Create(MessageID::SyncMessage, AuthorityLevel::High, m_userServer);
+		m_client1SyncMgr = SyncManager::Create(MessageID::SyncMessage, AuthorityLevel::Medium, m_userClient1);
+		m_client2SyncMgr = SyncManager::Create(MessageID::SyncMessage, AuthorityLevel::Medium, m_userClient2);
+		m_onsight1SyncMgr = SyncManager::Create(MessageID::SyncMessage, AuthorityLevel::Low, m_userOnSight1);
+		m_onsight2SyncMgr = SyncManager::Create(MessageID::SyncMessage, AuthorityLevel::Low, m_userOnSight2);
 
 		m_serverSyncMgr->AddConnection(m_serverConnection1);
 		m_serverSyncMgr->AddConnection(m_serverConnection2);
@@ -156,11 +156,11 @@ namespace CommonDesktopTests
 		}
 
 		// Setup objects to wrap the root of the synced data set
-		m_serverRoot = new SyncObject(m_serverSyncMgr->GetRootObject());
-		m_client1Root = new SyncObject(m_client1SyncMgr->GetRootObject());
-		m_client2Root = new SyncObject(m_client2SyncMgr->GetRootObject());
-		m_onsight1Root = new SyncObject(m_onsight1SyncMgr->GetRootObject());
-		m_onsight2Root = new SyncObject(m_onsight2SyncMgr->GetRootObject());
+		m_serverRoot = new SyncTestObject(m_serverSyncMgr->GetRootObject());
+		m_client1Root = new SyncTestObject(m_client1SyncMgr->GetRootObject());
+		m_client2Root = new SyncTestObject(m_client2SyncMgr->GetRootObject());
+		m_onsight1Root = new SyncTestObject(m_onsight1SyncMgr->GetRootObject());
+		m_onsight2Root = new SyncTestObject(m_onsight2SyncMgr->GetRootObject());
 	}
 
 	void SyncTestbed::WaitTillFullySynced()
@@ -211,7 +211,7 @@ namespace CommonDesktopTests
 		}
 	}
 
-	void SyncTestbed::ValidatePair(const Sync::SyncManagerPtr& syncMgr1, const SyncObjectPtr& syncObj1, const Sync::SyncManagerPtr& syncMgr2, const SyncObjectPtr& syncObj2) const
+	void SyncTestbed::ValidatePair(const Sync::SyncManagerPtr& syncMgr1, const SyncTestObjectPtr& syncObj1, const Sync::SyncManagerPtr& syncMgr2, const SyncTestObjectPtr& syncObj2) const
 	{
 		if (!syncObj1->Equals(syncObj2))
 		{

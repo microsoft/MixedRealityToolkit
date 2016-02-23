@@ -33,8 +33,10 @@
 #include <Public/NetworkConnection.h>
 #include <Public/XValue.h>
 #include <Public/Element.h>
-#include <Public/FloatElement.h>
 #include <Public/IntElement.h>
+#include <Public/LongElement.h>
+#include <Public/FloatElement.h>
+#include <Public/DoubleElement.h>
 #include <Public/StringElement.h>
 #include <Public/ObjectElementListener.h>
 #include <Public/ObjectElement.h>
@@ -49,3 +51,7 @@
 #include <Public/AudioManager.h>
 #include <Public/ProfileManager.h>
 #include <Public/Profile.h>
+#include <Public/Room.h>
+#include <Public/AnchorDownloadRequest.h>
+#include <Public/RoomManagerListener.h>
+#include <Public/RoomManager.h>

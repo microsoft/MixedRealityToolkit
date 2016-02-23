@@ -27,8 +27,14 @@ void XValue::Deserialize(NetworkInMessage& msg)
 		case XTools::XValue::UInt:
 			*this = XValue(msg.ReadUInt32());
 			break;
+		case XTools::XValue::Int64:
+			*this = XValue(msg.ReadInt64());
+			break;
 		case XTools::XValue::Float:
 			*this = XValue(msg.ReadFloat());
+			break;
+		case XTools::XValue::Double:
+			*this = XValue(msg.ReadDouble());
 			break;
 		case XTools::XValue::String:
 			*this = XValue(msg.ReadStdString());
@@ -55,8 +61,14 @@ std::string XValue::ToString() const
 	case XTools::XValue::UInt:
 		sprintf_s(buffer, sizeof(buffer), "%u", *Get<uint32>());
 		break;
+	case XTools::XValue::Int64:
+		sprintf_s(buffer, sizeof(buffer), "%lld", *Get<int64>());
+		break;
 	case XTools::XValue::Float:
 		sprintf_s(buffer, sizeof(buffer), "%f", *Get<float>());
+		break;
+	case XTools::XValue::Double:
+		sprintf_s(buffer, sizeof(buffer), "%f", *Get<double>());
 		break;
 	case XTools::XValue::String:
 		sprintf_s(buffer, sizeof(buffer), "%s", Get<std::string>()->c_str());

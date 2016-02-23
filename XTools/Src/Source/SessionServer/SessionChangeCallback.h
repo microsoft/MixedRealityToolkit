@@ -23,13 +23,13 @@ class SessionChangeCallback XTABSTRACT
 public:
 	virtual ~SessionChangeCallback() {}
 
-	virtual void OnUserJoinedSession(uint32 sessionID, const std::string& userName, uint32 userID, bool muteState) = 0;
+	virtual void OnUserJoinedSession(uint32 sessionID, const std::string& userName, UserID userID, bool muteState) = 0;
 
-	virtual void OnUserLeftSession(uint32 sessionID, uint32 userID) = 0;
+	virtual void OnUserLeftSession(uint32 sessionID, UserID userID) = 0;
 
 	virtual void OnSessionEmpty(const XSessionConstPtr& session) = 0;
 
-    virtual void OnUserChanged(uint32 sessionID, const std::string& userName, uint32 userId, bool muteState) = 0;
+    virtual void OnUserChanged(uint32 sessionID, const std::string& userName, UserID userId, bool muteState) = 0;
 };
 
 XTOOLS_NAMESPACE_END

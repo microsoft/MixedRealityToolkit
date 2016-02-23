@@ -28,7 +28,7 @@ UserImpl::UserImpl()
 
 }
 
-UserImpl::UserImpl(const std::string& name, uint32 id, bool muteState)
+UserImpl::UserImpl(const std::string& name, UserID id, bool muteState)
 	: m_name(new XString(name))
 	, m_id(id)
 	, m_muteState(muteState)

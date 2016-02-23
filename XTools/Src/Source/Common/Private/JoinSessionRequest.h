@@ -13,7 +13,7 @@ XTOOLS_NAMESPACE_BEGIN
 class JoinSessionRequest
 {
 public:
-    JoinSessionRequest(const std::string& userName, uint32 userID, bool muteState);
+    JoinSessionRequest(const std::string& userName, UserID userID, bool muteState);
 	JoinSessionRequest(const JSONMessagePtr& message);
 
 	static const std::string& GetMessageType();
@@ -21,7 +21,7 @@ public:
 	std::string		ToJSONString() const;
 
 	std::string		GetUserName() const;
-	uint32			GetUserID() const;
+	UserID			GetUserID() const;
 
     bool            GetMuteState() const;
 

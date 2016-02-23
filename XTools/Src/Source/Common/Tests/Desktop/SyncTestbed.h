@@ -37,7 +37,7 @@ namespace CommonDesktopTests
 
 		void ValidateSyncState();
 
-		void ValidatePair(const Sync::SyncManagerPtr& syncMgr1, const SyncObjectPtr& syncObj1, const Sync::SyncManagerPtr& syncMgr2, const SyncObjectPtr& syncObj2) const;
+		void ValidatePair(const Sync::SyncManagerPtr& syncMgr1, const SyncTestObjectPtr& syncObj1, const Sync::SyncManagerPtr& syncMgr2, const SyncTestObjectPtr& syncObj2) const;
 
 		virtual void WriteLogEntry(const std::string& message) const;
 
@@ -53,11 +53,11 @@ namespace CommonDesktopTests
 		Sync::SyncManagerPtr m_onsight1SyncMgr;
 		Sync::SyncManagerPtr m_onsight2SyncMgr;
 
-		SyncObjectPtr m_serverRoot;
-		SyncObjectPtr m_client1Root;
-		SyncObjectPtr m_client2Root;
-		SyncObjectPtr m_onsight1Root;
-		SyncObjectPtr m_onsight2Root;
+		SyncTestObjectPtr m_serverRoot;
+		SyncTestObjectPtr m_client1Root;
+		SyncTestObjectPtr m_client2Root;
+		SyncTestObjectPtr m_onsight1Root;
+		SyncTestObjectPtr m_onsight2Root;
 
 		UserPtr m_userServer;
 		UserPtr m_userClient1;

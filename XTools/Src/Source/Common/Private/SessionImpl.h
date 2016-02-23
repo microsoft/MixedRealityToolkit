@@ -53,13 +53,13 @@ public:
 	void SetState(MachineSessionState newState);
 
 	void AddUser(const UserPtr& newUser);
-	UserPtr RemoveUser(uint32 userID);
+	UserPtr RemoveUser(UserID userID);
 
     void UpdateUser(const UserPtr& existingUser);
 
 private: 
 
-    UserPtr FindUser(uint32 userID) const;
+    UserPtr FindUser(UserID userID) const;
 
 	// NetworkConnectionListener Functions:
 	virtual void OnConnected(const NetworkConnectionPtr& connection) XTOVERRIDE;

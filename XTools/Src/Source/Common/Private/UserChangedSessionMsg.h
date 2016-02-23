@@ -13,7 +13,7 @@ XTOOLS_NAMESPACE_BEGIN
 class UserChangedSessionMsg
 {
 public:
-    UserChangedSessionMsg(uint32 sessionID, const std::string& userName, uint32 userID, bool muteState);
+    UserChangedSessionMsg(uint32 sessionID, const std::string& userName, UserID userID, bool muteState);
     UserChangedSessionMsg(const JSONMessagePtr& message);
 
 	static const std::string& GetMessageType();
@@ -22,7 +22,7 @@ public:
 
 	uint32			GetSessionID() const;
 	std::string		GetSessionUserName() const;
-    uint32			GetSessionUserID() const;
+    UserID			GetSessionUserID() const;
     bool			GetSessionUserMuteState() const;
 
 private:

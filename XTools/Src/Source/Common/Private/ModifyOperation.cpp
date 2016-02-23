@@ -10,7 +10,9 @@
 #include "ModifyOperation.h"
 #include "ObjectElementImpl.h"
 #include "IntElementImpl.h"
+#include "LongElementImpl.h"
 #include "FloatElementImpl.h"
+#include "DoubleElementImpl.h"
 #include "StringElementImpl.h"
 
 XTOOLS_NAMESPACE_BEGIN
@@ -124,10 +126,24 @@ void ModifyOperation::Notify(const SyncContextPtr& context) const
 					break;
 				}
 
+				case XValue::Int64:
+				{
+					int64 int64Value = *(m_newValue.Get<int64>());
+					parentObjectElement->GetListeners()->NotifyListeners(&ObjectElementListener::OnLongElementChanged, m_elementGuid, int64Value);
+					break;
+				}
+
 				case XValue::Float:
 				{
 					float floatValue = *(m_newValue.Get<float>());
 					parentObjectElement->GetListeners()->NotifyListeners(&ObjectElementListener::OnFloatElementChanged, m_elementGuid, floatValue);
+					break;
+				}
+
+				case XValue::Double:
+				{
+					double doubleValue = *(m_newValue.Get<double>());
+					parentObjectElement->GetListeners()->NotifyListeners(&ObjectElementListener::OnDoubleElementChanged, m_elementGuid, doubleValue);
 					break;
 				}
 

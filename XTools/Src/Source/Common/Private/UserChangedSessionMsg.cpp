@@ -18,7 +18,7 @@ const std::string UserChangedSessionMsg::gUserIDKey("userID");
 const std::string UserChangedSessionMsg::gUserMuteStateKey("muteState");
 
 
-UserChangedSessionMsg::UserChangedSessionMsg(uint32 sessionID, const std::string& userName, uint32 userID, bool muteState)
+UserChangedSessionMsg::UserChangedSessionMsg(uint32 sessionID, const std::string& userName, UserID userID, bool muteState)
 	: m_message(JSONMessage::Create(gMessageType))
 {
 	m_message->SetValue(gSessionIDKey, sessionID);
@@ -60,7 +60,7 @@ std::string UserChangedSessionMsg::GetSessionUserName() const
 }
 
 
-uint32 UserChangedSessionMsg::GetSessionUserID() const
+UserID UserChangedSessionMsg::GetSessionUserID() const
 {
 	return m_message->GetUIntValue(gUserIDKey);
 }

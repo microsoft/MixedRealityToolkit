@@ -88,6 +88,15 @@
     <Filter Include="Source\Private\Networking\Discovery">
       <UniqueIdentifier>{6abcbb75-8111-40c5-8e8e-e897748866bc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Public\Rooms">
+      <UniqueIdentifier>{bff50664-4861-4c15-b4d1-026688e018d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Private\Rooms">
+      <UniqueIdentifier>{2a07a111-2c59-4e5c-8471-589ee06ef72c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Private\Sync\Utils">
+      <UniqueIdentifier>{6b37e562-9e43-4023-8777-f0b836f3817c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Common\Private\XString.cpp">
@@ -410,6 +419,27 @@
     </ClCompile>
     <ClCompile Include="..\..\Source\Common\Private\Utils\RegistrationReceipt.cpp">
       <Filter>Source\Private\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\AnchorDownloadRequestImpl.cpp">
+      <Filter>Source\Private\Rooms</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\RoomImpl.cpp">
+      <Filter>Source\Private\Rooms</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\RoomManagerImpl.cpp">
+      <Filter>Source\Private\Rooms</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\Syncable.cpp">
+      <Filter>Source\Private\Sync\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\SyncObject.cpp">
+      <Filter>Source\Private\Sync\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\LongElementImpl.cpp">
+      <Filter>Source\Private\Sync\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\DoubleElementImpl.cpp">
+      <Filter>Source\Private\Sync\Elements</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -988,6 +1018,54 @@
     </ClInclude>
     <ClInclude Include="..\..\Source\Common\Public\Utils\ListenerList.h">
       <Filter>Source\Public\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\RoomManager.h">
+      <Filter>Source\Public\Rooms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\RoomManagerListener.h">
+      <Filter>Source\Public\Rooms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\Room.h">
+      <Filter>Source\Public\Rooms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\AnchorDownloadRequest.h">
+      <Filter>Source\Public\Rooms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\AnchorDownloadRequestImpl.h">
+      <Filter>Source\Private\Rooms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\RoomImpl.h">
+      <Filter>Source\Private\Rooms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\RoomManagerImpl.h">
+      <Filter>Source\Private\Rooms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\Syncable.h">
+      <Filter>Source\Private\Sync\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\SyncEnum.h">
+      <Filter>Source\Private\Sync\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\SyncObject.h">
+      <Filter>Source\Private\Sync\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\SyncPrimitives.h">
+      <Filter>Source\Private\Sync\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\RoomUserList.h">
+      <Filter>Source\Private\Rooms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\LongElement.h">
+      <Filter>Source\Public\Sync\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\DoubleElement.h">
+      <Filter>Source\Public\Sync\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\LongElementImpl.h">
+      <Filter>Source\Private\Sync\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\DoubleElementImpl.h">
+      <Filter>Source\Private\Sync\Elements</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

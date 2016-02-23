@@ -18,7 +18,9 @@ public:
 		Unknown = 0,
 		Int,
 		UInt,
+		Int64,
 		Float,
+		Double,
 		String
 	};
 
@@ -85,11 +87,16 @@ private:
 #if !defined(XTOOLS_PLATFORM_OSX)
 	template<> struct ValueMapper < int32 >			{ static const Type value = Int; };
 	template<> struct ValueMapper < uint32 >		{ static const Type value = UInt; };
+	template<> struct ValueMapper < int64 >			{ static const Type value = Int64; };
 	template<> struct ValueMapper < float >			{ static const Type value = Float; };
+	template<> struct ValueMapper < double >		{ static const Type value = Double; };
 	template<> struct ValueMapper < std::string >	{ static const Type value = String; };
+
 	template<> struct TypeMapper<Int>				{ typedef int32 ValueType; };
 	template<> struct TypeMapper<UInt>				{ typedef uint32 ValueType; };
+	template<> struct TypeMapper<Int64>				{ typedef int64 ValueType; };
 	template<> struct TypeMapper<Float>				{ typedef float ValueType; };
+	template<> struct TypeMapper<Double>			{ typedef double ValueType; };
 	template<> struct TypeMapper<String>			{ typedef std::string ValueType; };
 #endif
 	
@@ -133,12 +140,16 @@ inline XValue::XValue(const XStringPtr& value)
 
 template<> struct XValue::ValueMapper < int32 >			{ static const Type value = Int; };
 template<> struct XValue::ValueMapper < uint32 >		{ static const Type value = UInt; };
+template<> struct XValue::ValueMapper < int64 >			{ static const Type value = Int64; };
 template<> struct XValue::ValueMapper < float >			{ static const Type value = Float; };
+template<> struct XValue::ValueMapper < double >		{ static const Type value = Double; };
 template<> struct XValue::ValueMapper < std::string >	{ static const Type value = String; };
 
 template<> struct XValue::TypeMapper< XValue::Type::Int >		{ typedef int32 ValueType; };
 template<> struct XValue::TypeMapper< XValue::Type::UInt >      { typedef uint32 ValueType; };
+template<> struct XValue::TypeMapper< XValue::Type::Int64 >		{ typedef int64 ValueType; };
 template<> struct XValue::TypeMapper< XValue::Type::Float >     { typedef float ValueType; };
+template<> struct XValue::TypeMapper< XValue::Type::Double >	{ typedef double ValueType; };
 template<> struct XValue::TypeMapper< XValue::Type::String >	{ typedef std::string ValueType; };
 #endif
 

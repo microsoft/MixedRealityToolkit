@@ -28,17 +28,20 @@
     <Text Include="..\..\Source\JavaTestApp\Manifest.txt" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\AnchorDownloadRequest.java" />
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\AudioManager.java" />
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\ClientConfig.java" />
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\ClientRole.java" />
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\DirectPairConnector.java" />
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\DirectPairReceiver.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\DoubleElement.java" />
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\Element.java" />
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\ElementType.java" />
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\FloatElement.java" />
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\IntElement.java" />
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\Listener.java" />
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\LogWriter.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\LongElement.java" />
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\MachineSessionState.java" />
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\MessageChannel.java" />
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\MessageID.java" />
@@ -56,6 +59,9 @@
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\PairMaker.java" />
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\ProfileManager.java" />
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\Receipt.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\Room.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\RoomManager.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\RoomManagerListener.java" />
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\Session.java" />
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\SessionListener.java" />
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\SessionManager.java" />

@@ -25,21 +25,22 @@ enum MessageID : byte
 
 	///////////////////////////////////////
 	// Ok to change these
-	StatusOnly = Start,	/// Use this only if you want to know about connects and disconnects but don't want to pass messages
-	Broadcast,			/// The message should be forwarded to all other users
-    SendTo,				/// The message should be forward to a particular user that is not the one that we are directly connected to
-    SessionControl,		/// Session related messages. 
+	StatusOnly = Start,		/// Use this only if you want to know about connects and disconnects but don't want to pass messages
+	Broadcast,				/// The message should be forwarded to all other users
+    SendTo,					/// The message should be forward to a particular user that is not the one that we are directly connected to
+    SessionControl,			/// Session related messages. 
 	MouseXToClient,
 	MouseXToServer,
-	SyncMessage,		/// Messages related to the sync system
-	Tunnel,				/// Tunneled message
-	TunnelControl,		/// Tunneling state updates
+	SyncMessage,			/// Messages related to the sync system
+	Tunnel,					/// Tunneled message
+	TunnelControl,			/// Tunneling state updates
 	AudioSamples,
-	Handshake,			/// Messages related to the network handshake when connecting
+	Handshake,				/// Messages related to the network handshake when connecting
     UserPresenceChange,
 	AvatarBroadcast,
-	TestAutomation,		/// Messages used for coordinating multiple remote XTools devices for automated testing
+	TestAutomation,			/// Messages used for coordinating multiple remote XTools devices for automated testing
 	Profiling,
+	InternalSyncMessage,	/// Messages used by the internal sync system
 
 	///////////////////////////////////////
 	// DO NOT CHANGE!!!

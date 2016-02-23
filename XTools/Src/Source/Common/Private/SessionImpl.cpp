@@ -213,7 +213,7 @@ void SessionImpl::AddUser(const UserPtr& newUser)
 }
 
 
-UserPtr SessionImpl::RemoveUser(uint32 userID)
+UserPtr SessionImpl::RemoveUser(UserID userID)
 {
 	for (size_t i = 0; i < m_users.size(); ++i)
 	{
@@ -249,7 +249,7 @@ void SessionImpl::UpdateUser(const UserPtr& updatedUser)
 }
 
 
-UserPtr SessionImpl::FindUser(uint32 userID) const
+UserPtr SessionImpl::FindUser(UserID userID) const
 {
     for (size_t i = 0; i < m_users.size(); ++i)
     {
@@ -327,6 +327,7 @@ void SessionImpl::OnJoinSessionReply(const JoinSessionReply& reply, const Networ
 
 		// Add the connection to the session to the Sync manager
 		m_context->GetSyncManager()->AddConnection(m_sessionConnection);
+		m_context->GetInternalSyncManager()->AddConnection(m_sessionConnection);
 
 		// Connect the tunnel between the secondary client and the session
 		m_tunnelBridge = new TunnelBridge(m_sessionConnection, m_context->GetPairedConnection());
@@ -378,6 +379,7 @@ void SessionImpl::TeardownConnection()
 	m_tunnelBridge = nullptr;
 	m_sessionConnection->RemoveListener(MessageID::SessionControl, this);
 	m_context->GetSyncManager()->RemoveConnection(m_sessionConnection);
+	m_context->GetInternalSyncManager()->RemoveConnection(m_sessionConnection);
 	m_sessionMgr->SetCurrentSession(NULL);
 
 	// Notify the listeners

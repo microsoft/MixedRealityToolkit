@@ -574,7 +574,7 @@ SWIGEXPORT unsigned long long SWIGSTDCALL CSharp_kInvalidSocketID_get() {
   unsigned long long jresult ;
   XTools::SocketID result;
   
-  result = (XTools::SocketID)XTools::kInvalidSocketID;
+  result = (XTools::SocketID)(XTools::SocketID)XTools::kInvalidSocketID;
   jresult = result; 
   return jresult;
 }
@@ -584,7 +584,7 @@ SWIGEXPORT unsigned long long SWIGSTDCALL CSharp_kInvalidConnectionGUID_get() {
   unsigned long long jresult ;
   XTools::ConnectionGUID result;
   
-  result = (XTools::ConnectionGUID)XTools::kInvalidConnectionGUID;
+  result = (XTools::ConnectionGUID)(XTools::ConnectionGUID)XTools::kInvalidConnectionGUID;
   jresult = result; 
   return jresult;
 }
@@ -741,7 +741,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_XString_GetLength(void * jarg1) {
   XTools::uint32 result;
   
   arg1 = (XTools::XString *)jarg1; 
-  result = ((XTools::XString const *)arg1)->GetLength();
+  result = (XTools::uint32)((XTools::XString const *)arg1)->GetLength();
   jresult = result; 
   return jresult;
 }
@@ -1041,7 +1041,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_DiscoveryClient_GetDiscoveredCount(vo
   XTools::uint32 result;
   
   arg1 = (XTools::DiscoveryClient *)jarg1; 
-  result = ((XTools::DiscoveryClient const *)arg1)->GetDiscoveredCount();
+  result = (XTools::uint32)((XTools::DiscoveryClient const *)arg1)->GetDiscoveredCount();
   jresult = result; 
   return jresult;
 }
@@ -1179,7 +1179,7 @@ SWIGEXPORT unsigned long long SWIGSTDCALL CSharp_ProfileSample_GetStartTime(void
   XTools::uint64 result;
   
   arg1 = (XTools::ProfileSample *)jarg1; 
-  result = ((XTools::ProfileSample const *)arg1)->GetStartTime();
+  result = (XTools::uint64)((XTools::ProfileSample const *)arg1)->GetStartTime();
   jresult = result; 
   return jresult;
 }
@@ -1191,7 +1191,7 @@ SWIGEXPORT unsigned long long SWIGSTDCALL CSharp_ProfileSample_GetDuration(void 
   XTools::uint64 result;
   
   arg1 = (XTools::ProfileSample *)jarg1; 
-  result = ((XTools::ProfileSample const *)arg1)->GetDuration();
+  result = (XTools::uint64)((XTools::ProfileSample const *)arg1)->GetDuration();
   jresult = result; 
   return jresult;
 }
@@ -1203,7 +1203,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_ProfileSample_GetParentIndex(void * jarg1) {
   XTools::int32 result;
   
   arg1 = (XTools::ProfileSample *)jarg1; 
-  result = ((XTools::ProfileSample const *)arg1)->GetParentIndex();
+  result = (XTools::int32)((XTools::ProfileSample const *)arg1)->GetParentIndex();
   jresult = result; 
   return jresult;
 }
@@ -1238,7 +1238,7 @@ SWIGEXPORT unsigned long long SWIGSTDCALL CSharp_ProfileThread_GetThreadID(void 
   XTools::uint64 result;
   
   arg1 = (XTools::ProfileThread *)jarg1; 
-  result = ((XTools::ProfileThread const *)arg1)->GetThreadID();
+  result = (XTools::uint64)((XTools::ProfileThread const *)arg1)->GetThreadID();
   jresult = result; 
   return jresult;
 }
@@ -1250,7 +1250,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_ProfileThread_GetSampleCount(void * jarg1) {
   XTools::int32 result;
   
   arg1 = (XTools::ProfileThread *)jarg1; 
-  result = ((XTools::ProfileThread const *)arg1)->GetSampleCount();
+  result = (XTools::int32)((XTools::ProfileThread const *)arg1)->GetSampleCount();
   jresult = result; 
   return jresult;
 }
@@ -1325,7 +1325,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_ProfileFrame_GetThreadCount(void * jarg1) {
   XTools::int32 result;
   
   arg1 = (XTools::ProfileFrame *)jarg1; 
-  result = ((XTools::ProfileFrame const *)arg1)->GetThreadCount();
+  result = (XTools::int32)((XTools::ProfileFrame const *)arg1)->GetThreadCount();
   jresult = result; 
   return jresult;
 }
@@ -1359,7 +1359,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_ProfileFrame_GetLogMessageCount(void * jarg1) 
   XTools::int32 result;
   
   arg1 = (XTools::ProfileFrame *)jarg1; 
-  result = ((XTools::ProfileFrame const *)arg1)->GetLogMessageCount();
+  result = (XTools::int32)((XTools::ProfileFrame const *)arg1)->GetLogMessageCount();
   jresult = result; 
   return jresult;
 }

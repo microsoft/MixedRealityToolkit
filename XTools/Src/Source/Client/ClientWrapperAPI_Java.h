@@ -51,16 +51,18 @@ public:
     SwigDirector_ObjectElementListener(JNIEnv *jenv);
     virtual ~SwigDirector_ObjectElementListener();
     virtual void OnIntElementChanged(XTools::XGuid elementID, XTools::int32 newValue);
+    virtual void OnLongElementChanged(XTools::XGuid elementID, XTools::int64 newValue);
     virtual void OnFloatElementChanged(XTools::XGuid elementID, float newValue);
+    virtual void OnDoubleElementChanged(XTools::XGuid elementID, double newValue);
     virtual void OnStringElementChanged(XTools::XGuid elementID, XTools::XStringPtr const &newValue);
     virtual void OnElementAdded(XTools::ElementPtr const &element);
     virtual void OnElementDeleted(XTools::ElementPtr const &element);
 public:
     bool swig_overrides(int n) {
-      return (n < 5 ? swig_override[n] : false);
+      return (n < 7 ? swig_override[n] : false);
     }
 protected:
-    bool swig_override[5];
+    bool swig_override[7];
 };
 
 class SwigDirector_SyncListener : public XTools::SyncListener, public Swig::Director {
@@ -133,6 +135,27 @@ public:
     }
 protected:
     bool swig_override[1];
+};
+
+class SwigDirector_RoomManagerListener : public XTools::RoomManagerListener, public Swig::Director {
+
+public:
+    void swig_connect_director(JNIEnv *jenv, jobject jself, jclass jcls, bool swig_mem_own, bool weak_global);
+    SwigDirector_RoomManagerListener(JNIEnv *jenv);
+    virtual ~SwigDirector_RoomManagerListener();
+    virtual void OnRoomCreated(XTools::RoomPtr const &newRoom);
+    virtual void OnRoomClosed(XTools::RoomPtr const &room);
+    virtual void OnUserJoinedRoom(XTools::RoomPtr const &room, XTools::UserPtr const &user);
+    virtual void OnUserLeftRoom(XTools::RoomPtr const &room, XTools::UserPtr const &user);
+    virtual void OnAnchorsChanged(XTools::RoomPtr const &room);
+    virtual void OnAnchorsDownloaded(XTools::RoomPtr const &room, XTools::AnchorDownloadRequestPtr const &request);
+    virtual void OnAnchorUploadComplete();
+public:
+    bool swig_overrides(int n) {
+      return (n < 7 ? swig_override[n] : false);
+    }
+protected:
+    bool swig_override[7];
 };
 
 class SwigDirector_PairMaker : public XTools::PairMaker, public Swig::Director {

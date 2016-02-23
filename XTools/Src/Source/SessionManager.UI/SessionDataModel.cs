@@ -14,10 +14,10 @@ namespace SessionManager.DataModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private string userName;
-        private uint id;
+        private int id;
         private bool muteState;
 
-        public User(HoloToolkit.XTools.User XUser, string userName, uint id, bool muteState)
+        public User(HoloToolkit.XTools.User XUser, string userName, int id, bool muteState)
         {
             this.XUser = XUser;
             this.userName = userName;
@@ -41,7 +41,7 @@ namespace SessionManager.DataModel
         }
 
         // Unique id for user
-        public uint Id
+        public int Id
         {
             get { return id; }
 
@@ -237,7 +237,7 @@ namespace SessionManager.DataModel
         private void AddUser(HoloToolkit.XTools.User XUser)
         {
             string userName = XUser.GetName().GetString();
-            uint id = XUser.GetID();
+            int id = XUser.GetID();
             bool muteState = XUser.GetMuteState();
 
             App.Current.Dispatcher.BeginInvoke(new Action<SessionData>((sender) =>
@@ -252,7 +252,7 @@ namespace SessionManager.DataModel
 
         private void RemoveUser(HoloToolkit.XTools.User XUser)
         {
-            uint id = XUser.GetID();
+            int id = XUser.GetID();
 
             App.Current.Dispatcher.BeginInvoke(new Action<SessionData>((sender) =>
             {
@@ -267,7 +267,7 @@ namespace SessionManager.DataModel
         private void UpdateUser(HoloToolkit.XTools.User XUser)
         {
             string userName = XUser.GetName().GetString();
-            uint id = XUser.GetID();
+            int id = XUser.GetID();
             bool muteState = XUser.GetMuteState();
 
             App.Current.Dispatcher.BeginInvoke(new Action<SessionData>((sender) =>

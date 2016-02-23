@@ -11,6 +11,7 @@
 #include "PairingManagerImpl.h"
 #include <Private/ProfileManagerImpl.h>
 #include <Private/SessionManagerImpl.h>
+#include <Private/RoomManagerImpl.h>
 #include <exception>
 
 #if defined(XTOOLS_PLATFORM_WINDOWS_ANY)
@@ -83,6 +84,8 @@ XToolsManagerImpl::XToolsManagerImpl(const ClientConfigPtr& config)
 	// Allocate the context for the sidecars
 	m_sidecarContext = new SideCarContextImpl(m_clientContext->GetPairedConnection());
 
+	m_roomManager = new RoomManagerImpl(m_clientContext);
+
 	// Load and initialize the 'sidecar' plug-ins
 	//SetupSideCars(); // TODO: No SideCar support for BUILD 2016.
 
@@ -101,6 +104,8 @@ XToolsManagerImpl::XToolsManagerImpl(const ClientConfigPtr& config)
 
 	// Add the update-able subsystems in the order they should get updated
 	m_updateableSubsystems.push_back(m_clientContext->GetXSocketManager().get());
+
+	m_updateableSubsystems.push_back(m_clientContext->GetInternalSyncManager().get());
 
 	m_updateableSubsystems.push_back(reflection_cast<IUpdateable>(m_sidecarContext));
 
@@ -164,6 +169,12 @@ const PairingManagerPtr& XToolsManagerImpl::GetPairingManager() const
 ObjectElementPtr XToolsManagerImpl::GetRootSyncObject()
 {
 	return m_clientContext->GetSyncManager()->GetRootObject();
+}
+
+
+const RoomManagerPtr& XToolsManagerImpl::GetRoomManager() const
+{
+	return m_roomManager;
 }
 
 

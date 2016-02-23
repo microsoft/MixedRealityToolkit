@@ -85,6 +85,15 @@
     <Filter Include="Source\Public\Audio">
       <UniqueIdentifier>{583bf461-2491-405c-a5f1-fbcfb6f68ffe}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Private\Sync\Utils">
+      <UniqueIdentifier>{c7418a90-def7-48e9-ac1c-ded4794a54c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Private\Rooms">
+      <UniqueIdentifier>{2103e195-52d5-4971-8dad-e8c5958e3c61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Public\Rooms">
+      <UniqueIdentifier>{626c4881-f007-4a32-b6d0-46271e5c26d6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Common\stdafx.cpp">
@@ -389,6 +398,27 @@
     </ClCompile>
     <ClCompile Include="..\..\Source\Common\Private\UserLeftSessionMsg.cpp">
       <Filter>Source\Private\Sessions\Messages</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\Syncable.cpp">
+      <Filter>Source\Private\Sync\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\SyncObject.cpp">
+      <Filter>Source\Private\Sync\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\DoubleElementImpl.cpp">
+      <Filter>Source\Private\Sync\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\LongElementImpl.cpp">
+      <Filter>Source\Private\Sync\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\AnchorDownloadRequestImpl.cpp">
+      <Filter>Source\Private\Rooms</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\RoomImpl.cpp">
+      <Filter>Source\Private\Rooms</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\RoomManagerImpl.cpp">
+      <Filter>Source\Private\Rooms</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -872,59 +902,56 @@
     <ClInclude Include="..\..\Source\Common\Public\AudioSessionProcessor.h">
       <Filter>Source\Public\Audio</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\Syncable.h">
+      <Filter>Source\Private\Sync\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\SyncEnum.h">
+      <Filter>Source\Private\Sync\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\SyncObject.h">
+      <Filter>Source\Private\Sync\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\SyncPrimitives.h">
+      <Filter>Source\Private\Sync\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\DoubleElementImpl.h">
+      <Filter>Source\Private\Sync\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\LongElementImpl.h">
+      <Filter>Source\Private\Sync\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\AnchorDownloadRequestImpl.h">
+      <Filter>Source\Private\Rooms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\RoomImpl.h">
+      <Filter>Source\Private\Rooms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\RoomManagerImpl.h">
+      <Filter>Source\Private\Rooms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\RoomUserList.h">
+      <Filter>Source\Private\Rooms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\AnchorDownloadRequest.h">
+      <Filter>Source\Public\Rooms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\Room.h">
+      <Filter>Source\Public\Rooms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\RoomManager.h">
+      <Filter>Source\Public\Rooms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\RoomManagerListener.h">
+      <Filter>Source\Public\Rooms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\DoubleElement.h">
+      <Filter>Source\Public\Sync\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\LongElement.h">
+      <Filter>Source\Public\Sync\Elements</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <RakNetSymbols Include="..\..\External\RakNet-4.081\lib\raknet_libstatic_debug_winrt32.pdb">
-      <Filter>Symbols</Filter>
-    </RakNetSymbols>
-    <RakNetSymbols Include="..\..\External\RakNet-4.081\lib\raknet_libstatic_debug_winrt64.pdb">
-      <Filter>Symbols</Filter>
-    </RakNetSymbols>
-    <RakNetSymbols Include="..\..\External\RakNet-4.081\lib\raknet_libstatic_debug_x64.pdb">
-      <Filter>Symbols</Filter>
-    </RakNetSymbols>
-    <RakNetSymbols Include="..\..\External\RakNet-4.081\lib\raknet_libstatic_release_win32.pdb">
-      <Filter>Symbols</Filter>
-    </RakNetSymbols>
-    <RakNetSymbols Include="..\..\External\RakNet-4.081\lib\raknet_libstatic_release_winrt32.pdb">
-      <Filter>Symbols</Filter>
-    </RakNetSymbols>
-    <RakNetSymbols Include="..\..\External\RakNet-4.081\lib\raknet_libstatic_release_winrt64.pdb">
-      <Filter>Symbols</Filter>
-    </RakNetSymbols>
-    <RakNetSymbols Include="..\..\External\RakNet-4.081\lib\raknet_libstatic_release_x64.pdb">
-      <Filter>Symbols</Filter>
-    </RakNetSymbols>
-    <RakNetSymbols Include="..\..\External\RakNet-4.081\lib\RakNet_UAP_ARM_Debug.pdb">
-      <Filter>Symbols</Filter>
-    </RakNetSymbols>
-    <RakNetSymbols Include="..\..\External\RakNet-4.081\lib\RakNet_UAP_ARM_Release.pdb">
-      <Filter>Symbols</Filter>
-    </RakNetSymbols>
-    <RakNetSymbols Include="..\..\External\RakNet-4.081\lib\RakNet_UAP_x64_Debug.pdb">
-      <Filter>Symbols</Filter>
-    </RakNetSymbols>
-    <RakNetSymbols Include="..\..\External\RakNet-4.081\lib\RakNet_UAP_x64_Release.pdb">
-      <Filter>Symbols</Filter>
-    </RakNetSymbols>
-    <RakNetSymbols Include="..\..\External\RakNet-4.081\lib\RakNet_UAP_x86_Debug.pdb">
-      <Filter>Symbols</Filter>
-    </RakNetSymbols>
-    <RakNetSymbols Include="..\..\External\RakNet-4.081\lib\RakNet_UAP_x86_Release.pdb">
-      <Filter>Symbols</Filter>
-    </RakNetSymbols>
-    <RakNetSymbols Include="..\..\External\RakNet-4.081\lib\raknet_windesktop_x64_debug.pdb">
-      <Filter>Symbols</Filter>
-    </RakNetSymbols>
-    <RakNetSymbols Include="..\..\External\RakNet-4.081\lib\raknet_windesktop_x64_release.pdb">
-      <Filter>Symbols</Filter>
-    </RakNetSymbols>
-    <RakNetSymbols Include="..\..\External\RakNet-4.081\lib\raknet_windesktop_x86_debug.pdb">
-      <Filter>Symbols</Filter>
-    </RakNetSymbols>
-    <RakNetSymbols Include="..\..\External\RakNet-4.081\lib\raknet_windesktop_x86_release.pdb">
-      <Filter>Symbols</Filter>
-    </RakNetSymbols>
     <RakNetSymbols Include="..\..\External\RakNet-4.081\lib\*.pdb" />
   </ItemGroup>
 </Project>

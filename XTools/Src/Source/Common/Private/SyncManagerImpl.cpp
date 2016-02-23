@@ -23,9 +23,9 @@ XTOOLS_REFLECTION_DEFINE(SyncManagerImpl)
 .BaseClass<SyncManager>();
 
 
-SyncManagerPtr SyncManager::Create(AuthorityLevel authorityLevel, const UserPtr& localUser)
+SyncManagerPtr SyncManager::Create(MessageID messageID, AuthorityLevel authorityLevel, const UserPtr& localUser)
 {
-	return new SyncManagerImpl(authorityLevel, localUser);
+	return new SyncManagerImpl(messageID, authorityLevel, localUser);
 }
 
 
@@ -82,8 +82,9 @@ void SyncManagerImpl::RemoteSyncPeer::SendOp(const OperationConstPtr& op)
 }
 
 
-SyncManagerImpl::SyncManagerImpl(AuthorityLevel authorityLevel, const UserPtr& localUser)
+SyncManagerImpl::SyncManagerImpl(MessageID messageID, AuthorityLevel authorityLevel, const UserPtr& localUser)
 	: m_listener(NULL)
+	, m_messageID(messageID)
 {
 	XTASSERT(localUser);
 
@@ -147,7 +148,7 @@ void SyncManagerImpl::AddConnection(const NetworkConnectionPtr& newConnection)
 	LogInfo("%s Adding Connection", m_syncContext->GetLocalUser()->GetName().GetString().c_str());
 #endif
 
-	newConnection->AddListener(MessageID::SyncMessage, this);
+	newConnection->AddListener(m_messageID, this);
 
 	m_remoteHosts.resize(m_remoteHosts.size() + 1, RemoteSyncPeer());
 
@@ -155,7 +156,7 @@ void SyncManagerImpl::AddConnection(const NetworkConnectionPtr& newConnection)
 	newPeer.m_connection = newConnection;
 
 	// Automatically remove this object as a listener when newPeer is destroyed
-	newPeer.m_listenerReceipt = CreateRegistrationReceipt(newConnection, &NetworkConnection::RemoveListener, MessageID::SyncMessage, this);
+	newPeer.m_listenerReceipt = CreateRegistrationReceipt(newConnection, &NetworkConnection::RemoveListener, m_messageID, this);
 
 	if (newConnection->IsConnected())
 	{
@@ -537,7 +538,7 @@ void SyncManagerImpl::OnIdentityInfoReceived(const NetworkConnectionPtr& connect
 		remotePeer.m_authorityLevel = static_cast<AuthorityLevel>(msg.ReadByte());
 		remotePeer.m_systemID = msg.ReadInt32();
 		remotePeer.m_userName = msg.ReadStdString();
-		remotePeer.m_userID = msg.ReadUInt32();
+		remotePeer.m_userID = msg.ReadInt32();
 
 
 		// Verify that this systemID is not already in use by another machine.  If so, force a disconnection
@@ -667,7 +668,7 @@ void SyncManagerImpl::SendSyncMessage(RemoteSyncPeer& remotePeer)
 			LogInfo("Sending messages to %s", remotePeer.m_userName.c_str());
 #endif
 
-			NetworkOutMessagePtr msg = remotePeer.m_connection->CreateMessage(MessageID::SyncMessage);
+			NetworkOutMessagePtr msg = remotePeer.m_connection->CreateMessage(m_messageID);
 
 			// Add the sub-type of the message
 			msg->Write((byte)SyncChanges);
@@ -717,7 +718,7 @@ void SyncManagerImpl::SendHandshakeMessage(RemoteSyncPeer& remotePeer)
 	XTASSERT(remotePeer.m_bHandshakeComplete == false);
 
 	// Ask the remote machine to send over its systemID and its sync auth level
-	NetworkOutMessagePtr identityMsg = remotePeer.m_connection->CreateMessage(MessageID::SyncMessage);
+	NetworkOutMessagePtr identityMsg = remotePeer.m_connection->CreateMessage(m_messageID);
 	identityMsg->Write((byte)IdentityInfo);
 	identityMsg->Write((byte)m_syncContext->GetAuthorityLevel());
 	identityMsg->Write(m_syncContext->GetLocalSystemID());

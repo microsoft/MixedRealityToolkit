@@ -260,7 +260,7 @@ void SessionManagerImpl::OnNewSessionReply(const NewSessionReply& reply, const N
 void SessionManagerImpl::OnUserJoinedSession(const UserJoinedSessionMsg& msg, const NetworkConnectionPtr&)
 {
 	uint32 sessionID = msg.GetSessionID();
-	uint32 userId = msg.GetSessionUserID();
+	UserID userId = msg.GetSessionUserID();
 
 	// If this session has the current user joined, use that object instead. 
 	if (userId == m_context->GetLocalUser()->GetID())
@@ -284,7 +284,7 @@ void SessionManagerImpl::OnUserJoinedSession(const UserJoinedSessionMsg& msg, co
 	}
 	else
 	{
-		LogError("OnUserJoinedSession: failed to find session %u for user %u", msg.GetSessionID(), msg.GetSessionUserID());
+		LogError("OnUserJoinedSession: failed to find session %u for user %i", msg.GetSessionID(), msg.GetSessionUserID());
 	}
 }
 
@@ -292,7 +292,7 @@ void SessionManagerImpl::OnUserJoinedSession(const UserJoinedSessionMsg& msg, co
 void SessionManagerImpl::OnUserLeftSession(const UserLeftSessionMsg& msg, const NetworkConnectionPtr&)
 {
 	uint32 sessionID = msg.GetSessionID();
-	uint32 userID = msg.GetUserID();
+	UserID userID = msg.GetUserID();
 
 	// Find the session that the user us leaving
 	
@@ -311,7 +311,7 @@ void SessionManagerImpl::OnUserLeftSession(const UserLeftSessionMsg& msg, const 
 		}
 		else
 		{
-			LogError("OnUserLeftSession: failed to find user %u for session %u", msg.GetUserID(), msg.GetSessionID());
+			LogError("OnUserLeftSession: failed to find user %u for session %i", msg.GetUserID(), msg.GetSessionID());
 		}
 	}
 	else
@@ -371,7 +371,7 @@ void SessionManagerImpl::OnListSessionsReply(const ListSessionsReply& msg, const
 
 			int32 startingNumUsers = currentSession->GetUserCount();
 
-			uint32 localUserId = m_context->GetLocalUser()->GetID();
+			UserID localUserId = m_context->GetLocalUser()->GetID();
 
 			std::vector<bool> usersMatched;
 			usersMatched.resize(startingNumUsers, false);
@@ -379,7 +379,7 @@ void SessionManagerImpl::OnListSessionsReply(const ListSessionsReply& msg, const
 			for (int32 descUserIndex = 0; descUserIndex < currentDesc->GetUserCount(); ++descUserIndex)
 			{
 				User* descUser = currentDesc->GetUser(descUserIndex);
-				uint32 descId = descUser->GetID();
+				UserID descId = descUser->GetID();
 
 				XTASSERT(descId != User::kInvalidUserID);
 
@@ -559,7 +559,7 @@ void SessionManagerImpl::OnSessionClosed(const SessionClosedMsg& msg, const Netw
 void SessionManagerImpl::OnUserChanged(const UserChangedSessionMsg& msg, const NetworkConnectionPtr&)
 {
 	uint32 sessionID = msg.GetSessionID();
-	uint32 userId = msg.GetSessionUserID();
+	UserID userId = msg.GetSessionUserID();
 
 	// Find the session that the user is joining
 	UserPtr user = NULL;

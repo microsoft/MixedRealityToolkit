@@ -28,6 +28,7 @@ public:
 	std::string GetStringValue(const std::string& key) const;
 	int32		GetIntValue(const std::string& key) const;
 	uint32		GetUIntValue(const std::string& key) const;
+	int64		GetLongValue(const std::string& key) const;
 	float		GetFloatValue(const std::string& key) const;
 	bool		GetBoolValue(const std::string& key) const;
 	web::json::value	GetObjectValue(const std::string& key) const;
@@ -36,6 +37,7 @@ public:
 	void SetValue(const std::string& key, const std::string& value);
 	void SetValue(const std::string& key, int32 value);
 	void SetValue(const std::string& key, uint32 value);
+	void SetValue(const std::string& key, int64 value);
 	void SetValue(const std::string& key, float value);
 	void SetValue(const std::string& key, bool value);
 	void SetValue(const std::string& key, web::json::value obj);

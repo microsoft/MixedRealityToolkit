@@ -13,7 +13,7 @@ XTOOLS_NAMESPACE_BEGIN
 class UserLeftSessionMsg
 {
 public:
-	UserLeftSessionMsg(uint32 sessionID, uint32 userID);
+	UserLeftSessionMsg(uint32 sessionID, UserID userID);
 	UserLeftSessionMsg(const JSONMessagePtr& message);
 
 	static const std::string& GetMessageType();
@@ -21,7 +21,7 @@ public:
 	std::string		ToJSONString() const;
 
 	uint32			GetSessionID() const;
-	uint32			GetUserID() const;
+	UserID			GetUserID() const;
 
 private:
 	JSONMessagePtr	m_message;

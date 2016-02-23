@@ -73,8 +73,8 @@ namespace CommonDesktopTests
 				clientConnection1->SetSocket(connection1);
 			}
 
-			SyncManagerPtr serverSyncMgr = SyncManager::Create(AuthorityLevel::High, new UserImpl("Server", User::kInvalidUserID, false));
-			SyncManagerPtr client1SyncMgr = SyncManager::Create(AuthorityLevel::Medium, new UserImpl("Client", User::kInvalidUserID, false));
+			SyncManagerPtr serverSyncMgr = SyncManager::Create(MessageID::SyncMessage, AuthorityLevel::High, new UserImpl("Server", User::kInvalidUserID, false));
+			SyncManagerPtr client1SyncMgr = SyncManager::Create(MessageID::SyncMessage, AuthorityLevel::Medium, new UserImpl("Client", User::kInvalidUserID, false));
 
 			serverSyncMgr->AddConnection(serverConnection1);
 			client1SyncMgr->AddConnection(clientConnection1);
@@ -88,8 +88,8 @@ namespace CommonDesktopTests
 			}
 
 			// Setup objects to wrap the root of the synced data set
-			SyncObjectPtr serverRoot = new SyncObject(serverSyncMgr->GetRootObject());
-			SyncObjectPtr client1Root = new SyncObject(client1SyncMgr->GetRootObject());
+			SyncTestObjectPtr serverRoot = new SyncTestObject(serverSyncMgr->GetRootObject());
+			SyncTestObjectPtr client1Root = new SyncTestObject(client1SyncMgr->GetRootObject());
 
 			// Add a new (but different) child object to both the server and client at the same time
 			serverRoot->AddChild("ServerChild_0");
@@ -284,11 +284,11 @@ namespace CommonDesktopTests
 				onsightConnection2->SetSocket(connection4);
 			}
 
-			SyncManagerPtr serverSyncMgr = SyncManager::Create(AuthorityLevel::High, new UserImpl("Server", User::kInvalidUserID, false));
-			SyncManagerPtr client1SyncMgr = SyncManager::Create(AuthorityLevel::Medium, new UserImpl("Client1", 1, false));
-			SyncManagerPtr client2SyncMgr = SyncManager::Create(AuthorityLevel::Medium, new UserImpl("Client2", 2, false));
-			SyncManagerPtr onsight1SyncMgr = SyncManager::Create(AuthorityLevel::Low, new UserImpl("OnSight1", 1, false));
-			SyncManagerPtr onsight2SyncMgr = SyncManager::Create(AuthorityLevel::Low, new UserImpl("OnSight2", 2, false));
+			SyncManagerPtr serverSyncMgr = SyncManager::Create(MessageID::SyncMessage, AuthorityLevel::High, new UserImpl("Server", User::kInvalidUserID, false));
+			SyncManagerPtr client1SyncMgr = SyncManager::Create(MessageID::SyncMessage, AuthorityLevel::Medium, new UserImpl("Client1", 1, false));
+			SyncManagerPtr client2SyncMgr = SyncManager::Create(MessageID::SyncMessage, AuthorityLevel::Medium, new UserImpl("Client2", 2, false));
+			SyncManagerPtr onsight1SyncMgr = SyncManager::Create(MessageID::SyncMessage, AuthorityLevel::Low, new UserImpl("OnSight1", 1, false));
+			SyncManagerPtr onsight2SyncMgr = SyncManager::Create(MessageID::SyncMessage, AuthorityLevel::Low, new UserImpl("OnSight2", 2, false));
 
 			serverSyncMgr->AddConnection(serverConnection1);
 			serverSyncMgr->AddConnection(serverConnection2);
@@ -315,11 +315,11 @@ namespace CommonDesktopTests
 			}
 
 			// Setup objects to wrap the root of the synced data set
-			SyncObjectPtr serverRoot = new SyncObject(serverSyncMgr->GetRootObject());
-			SyncObjectPtr client1Root = new SyncObject(client1SyncMgr->GetRootObject());
-			SyncObjectPtr client2Root = new SyncObject(client2SyncMgr->GetRootObject());
-			SyncObjectPtr onsight1Root = new SyncObject(onsight1SyncMgr->GetRootObject());
-			SyncObjectPtr onsight2Root = new SyncObject(onsight2SyncMgr->GetRootObject());
+			SyncTestObjectPtr serverRoot = new SyncTestObject(serverSyncMgr->GetRootObject());
+			SyncTestObjectPtr client1Root = new SyncTestObject(client1SyncMgr->GetRootObject());
+			SyncTestObjectPtr client2Root = new SyncTestObject(client2SyncMgr->GetRootObject());
+			SyncTestObjectPtr onsight1Root = new SyncTestObject(onsight1SyncMgr->GetRootObject());
+			SyncTestObjectPtr onsight2Root = new SyncTestObject(onsight2SyncMgr->GetRootObject());
 
 			// Add a single child to test on
 			onsight1Root->AddChild("Client1Child_0");
@@ -364,6 +364,12 @@ namespace CommonDesktopTests
 
 			onsight1Root->GetChild(0)->SetStringValue("Go");
 			onsight2Root->GetChild(0)->SetStringValue("Bears");
+
+			onsight1Root->GetChild(0)->SetLongValue(0xDEADBEEFDEADBEEF);
+			onsight2Root->GetChild(0)->SetLongValue(0xEFEFEFEFEFEFEFEF);
+
+			onsight1Root->GetChild(0)->SetDoubleValue(567890.0);
+			onsight2Root->GetChild(0)->SetDoubleValue(12345678.0);
 
 			MicrosoftTest::WaitForCompletion(
 				[&]() {

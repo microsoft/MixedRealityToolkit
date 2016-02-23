@@ -41,10 +41,10 @@ public:
 
 private:
 	// SessionChangeCallback Functions:
-    virtual void OnUserJoinedSession(uint32 sessionID, const std::string& userName, uint32 userID, bool muteState) XTOVERRIDE;
-	virtual void OnUserLeftSession(uint32 sessionID, uint32 userID) XTOVERRIDE;
+    virtual void OnUserJoinedSession(uint32 sessionID, const std::string& userName, UserID userID, bool muteState) XTOVERRIDE;
+	virtual void OnUserLeftSession(uint32 sessionID, UserID userID) XTOVERRIDE;
 	virtual void OnSessionEmpty(const XSessionConstPtr& session) XTOVERRIDE;
-    virtual void OnUserChanged(uint32 sessionID, const std::string& userName, uint32 userId, bool muteState) XTOVERRIDE;
+    virtual void OnUserChanged(uint32 sessionID, const std::string& userName, UserID userId, bool muteState) XTOVERRIDE;
 
 	// IncomingConnectionListener Functions:
 	virtual void OnNewConnection(const XSocketPtr& newConnection) XTOVERRIDE;

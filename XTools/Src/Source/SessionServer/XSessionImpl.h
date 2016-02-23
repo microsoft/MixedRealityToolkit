@@ -100,6 +100,7 @@ private:
 	SessionChangeCallback*			m_callback;
 	PortMachinePair					m_portMachinePair;
 	Sync::SyncManagerPtr			m_syncMgr;
+	Sync::SyncManagerPtr			m_internalSyncMgr;
 	MemberFuncThreadPtr				m_serverThread;
 
 	std::chrono::high_resolution_clock::time_point	m_lastEmptyCheckTime;

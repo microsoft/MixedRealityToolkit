@@ -56,24 +56,30 @@ public:
     SwigDirector_ObjectElementListener();
     virtual ~SwigDirector_ObjectElementListener();
     virtual void OnIntElementChanged(XTools::XGuid elementID, XTools::int32 newValue);
+    virtual void OnLongElementChanged(XTools::XGuid elementID, XTools::int64 newValue);
     virtual void OnFloatElementChanged(XTools::XGuid elementID, float newValue);
+    virtual void OnDoubleElementChanged(XTools::XGuid elementID, double newValue);
     virtual void OnStringElementChanged(XTools::XGuid elementID, XTools::XStringPtr const &newValue);
     virtual void OnElementAdded(XTools::ElementPtr const &element);
     virtual void OnElementDeleted(XTools::ElementPtr const &element);
 
     typedef void (SWIGSTDCALL* SWIG_Callback0_t)(long long, int);
-    typedef void (SWIGSTDCALL* SWIG_Callback1_t)(long long, float);
-    typedef void (SWIGSTDCALL* SWIG_Callback2_t)(long long, void *);
-    typedef void (SWIGSTDCALL* SWIG_Callback3_t)(void *);
-    typedef void (SWIGSTDCALL* SWIG_Callback4_t)(void *);
-    void swig_connect_director(SWIG_Callback0_t callbackOnIntElementChanged, SWIG_Callback1_t callbackOnFloatElementChanged, SWIG_Callback2_t callbackOnStringElementChanged, SWIG_Callback3_t callbackOnElementAdded, SWIG_Callback4_t callbackOnElementDeleted);
+    typedef void (SWIGSTDCALL* SWIG_Callback1_t)(long long, long long);
+    typedef void (SWIGSTDCALL* SWIG_Callback2_t)(long long, float);
+    typedef void (SWIGSTDCALL* SWIG_Callback3_t)(long long, double);
+    typedef void (SWIGSTDCALL* SWIG_Callback4_t)(long long, void *);
+    typedef void (SWIGSTDCALL* SWIG_Callback5_t)(void *);
+    typedef void (SWIGSTDCALL* SWIG_Callback6_t)(void *);
+    void swig_connect_director(SWIG_Callback0_t callbackOnIntElementChanged, SWIG_Callback1_t callbackOnLongElementChanged, SWIG_Callback2_t callbackOnFloatElementChanged, SWIG_Callback3_t callbackOnDoubleElementChanged, SWIG_Callback4_t callbackOnStringElementChanged, SWIG_Callback5_t callbackOnElementAdded, SWIG_Callback6_t callbackOnElementDeleted);
 
 private:
     SWIG_Callback0_t swig_callbackOnIntElementChanged;
-    SWIG_Callback1_t swig_callbackOnFloatElementChanged;
-    SWIG_Callback2_t swig_callbackOnStringElementChanged;
-    SWIG_Callback3_t swig_callbackOnElementAdded;
-    SWIG_Callback4_t swig_callbackOnElementDeleted;
+    SWIG_Callback1_t swig_callbackOnLongElementChanged;
+    SWIG_Callback2_t swig_callbackOnFloatElementChanged;
+    SWIG_Callback3_t swig_callbackOnDoubleElementChanged;
+    SWIG_Callback4_t swig_callbackOnStringElementChanged;
+    SWIG_Callback5_t swig_callbackOnElementAdded;
+    SWIG_Callback6_t swig_callbackOnElementDeleted;
     void swig_init_callbacks();
 };
 
@@ -170,6 +176,39 @@ public:
 
 private:
     SWIG_Callback0_t swig_callbackOnUserPresenceChanged;
+    void swig_init_callbacks();
+};
+
+class SwigDirector_RoomManagerListener : public XTools::RoomManagerListener, public Swig::Director {
+
+public:
+    SwigDirector_RoomManagerListener();
+    virtual ~SwigDirector_RoomManagerListener();
+    virtual void OnRoomCreated(XTools::RoomPtr const &newRoom);
+    virtual void OnRoomClosed(XTools::RoomPtr const &room);
+    virtual void OnUserJoinedRoom(XTools::RoomPtr const &room, XTools::UserPtr const &user);
+    virtual void OnUserLeftRoom(XTools::RoomPtr const &room, XTools::UserPtr const &user);
+    virtual void OnAnchorsChanged(XTools::RoomPtr const &room);
+    virtual void OnAnchorsDownloaded(XTools::RoomPtr const &room, XTools::AnchorDownloadRequestPtr const &request);
+    virtual void OnAnchorUploadComplete();
+
+    typedef void (SWIGSTDCALL* SWIG_Callback0_t)(void *);
+    typedef void (SWIGSTDCALL* SWIG_Callback1_t)(void *);
+    typedef void (SWIGSTDCALL* SWIG_Callback2_t)(void *, void *);
+    typedef void (SWIGSTDCALL* SWIG_Callback3_t)(void *, void *);
+    typedef void (SWIGSTDCALL* SWIG_Callback4_t)(void *);
+    typedef void (SWIGSTDCALL* SWIG_Callback5_t)(void *, void *);
+    typedef void (SWIGSTDCALL* SWIG_Callback6_t)();
+    void swig_connect_director(SWIG_Callback0_t callbackOnRoomCreated, SWIG_Callback1_t callbackOnRoomClosed, SWIG_Callback2_t callbackOnUserJoinedRoom, SWIG_Callback3_t callbackOnUserLeftRoom, SWIG_Callback4_t callbackOnAnchorsChanged, SWIG_Callback5_t callbackOnAnchorsDownloaded, SWIG_Callback6_t callbackOnAnchorUploadComplete);
+
+private:
+    SWIG_Callback0_t swig_callbackOnRoomCreated;
+    SWIG_Callback1_t swig_callbackOnRoomClosed;
+    SWIG_Callback2_t swig_callbackOnUserJoinedRoom;
+    SWIG_Callback3_t swig_callbackOnUserLeftRoom;
+    SWIG_Callback4_t swig_callbackOnAnchorsChanged;
+    SWIG_Callback5_t swig_callbackOnAnchorsDownloaded;
+    SWIG_Callback6_t swig_callbackOnAnchorUploadComplete;
     void swig_init_callbacks();
 };
 

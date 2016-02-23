@@ -19,7 +19,7 @@ class SyncManager : public RefCounted, public Reflection::XTObject, public IUpda
 public:
 	// Create a new SyncManager.  Pass in the level of authority that this sync manager should have
 	// relative to the other sync managers it connects to
-	static ref_ptr<SyncManager> Create(AuthorityLevel authorityLevel, const UserPtr& localUser);
+	static ref_ptr<SyncManager> Create(MessageID messageID, AuthorityLevel authorityLevel, const UserPtr& localUser);
 
 	// Register a listener to receive notifications before and after remote changes to sync data are applied.
 	// Returns true if successfully registered, false if another listener is already registered

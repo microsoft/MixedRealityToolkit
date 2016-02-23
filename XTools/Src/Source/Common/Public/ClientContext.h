@@ -21,6 +21,7 @@ public:
 	const NetworkConnectionPtr&		GetSessionConnection() const;
 	const NetworkConnectionPtr&		GetPairedConnection() const;
 	const Sync::SyncManagerPtr&		GetSyncManager() const;
+	const Sync::SyncManagerPtr&		GetInternalSyncManager() const;
 	const UserPresenceManagerPtr&	GetUserPresenceManager() const;
 
 	// May be NULL if ClientConfig wasn't set to enable audio endpoint.
@@ -37,6 +38,7 @@ private:
 	NetworkConnectionPtr		m_sessionConnection;	// Connection to the current session.  Will be disconnected if NOT in a session
 	NetworkConnectionPtr		m_pairedConnection;		// Connection to the other client that this client is paired to
 	Sync::SyncManagerPtr		m_syncMgr;
+	Sync::SyncManagerPtr		m_internalSyncMgr;
 	UserPresenceManagerPtr      m_userPresenceMgr;
 	AudioManagerPtr				m_audioManager;
 

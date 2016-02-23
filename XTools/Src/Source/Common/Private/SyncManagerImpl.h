@@ -16,7 +16,7 @@ class SyncManagerImpl : public SyncManager, public NetworkConnectionListener
 	XTOOLS_REFLECTION_DECLARE(SyncManagerImpl)
 
 public:
-	SyncManagerImpl(AuthorityLevel authorityLevel, const UserPtr& localUser);
+	SyncManagerImpl(MessageID messageID, AuthorityLevel authorityLevel, const UserPtr& localUser);
 
 	// SyncManager Functions:
 	virtual bool RegisterListener(SyncListener* listener) XTOVERRIDE;
@@ -126,6 +126,9 @@ private:
 
 	// Object to notify before and after we apply remote sync changes
 	SyncListener*					m_listener;
+
+	// The ID to use for messages passed between remote devices
+	MessageID						m_messageID;
 };
 
 DECLARE_PTR(SyncManagerImpl)

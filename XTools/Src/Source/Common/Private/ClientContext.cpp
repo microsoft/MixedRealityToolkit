@@ -62,11 +62,13 @@ ClientContext::ClientContext(const ClientConfigPtr& config)
 
 
 	Sync::AuthorityLevel authLevel = (m_clientRole == ClientRole::Primary) ? Sync::AuthorityLevel::Medium : Sync::AuthorityLevel::Low;
-	m_syncMgr = Sync::SyncManager::Create(authLevel, m_localUser);
+	m_syncMgr = Sync::SyncManager::Create(MessageID::SyncMessage, authLevel, m_localUser);
+	m_internalSyncMgr = Sync::SyncManager::Create(MessageID::InternalSyncMessage, authLevel, m_localUser);
 
 	// Add the paired connection to the sync manager.  
 	// The sessions will have to connect the sync manager to their individual session connections
 	m_syncMgr->AddConnection(m_pairedConnection);
+	m_internalSyncMgr->AddConnection(m_pairedConnection);
 
 	// Setup the user presence manager
 	if (m_clientRole == ClientRole::Primary)
@@ -114,6 +116,12 @@ const NetworkConnectionPtr& ClientContext::GetPairedConnection() const
 const Sync::SyncManagerPtr& ClientContext::GetSyncManager() const
 {
 	return m_syncMgr;
+}
+
+
+const Sync::SyncManagerPtr& ClientContext::GetInternalSyncManager() const
+{
+	return m_internalSyncMgr;
 }
 
 

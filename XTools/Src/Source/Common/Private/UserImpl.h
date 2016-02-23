@@ -14,7 +14,7 @@ class UserImpl : public User
 {
 public:
 	UserImpl();
-	UserImpl(const std::string& name, uint32 id, bool muteState);
+	UserImpl(const std::string& name, UserID id, bool muteState);
 
 	// Returns the name of the user
 	virtual const XStringPtr& GetName() const XTOVERRIDE;

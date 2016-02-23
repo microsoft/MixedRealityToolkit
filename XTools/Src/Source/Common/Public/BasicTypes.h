@@ -22,10 +22,10 @@ XTOOLS_NAMESPACE_BEGIN
 typedef unsigned char		byte;
 typedef signed short		int16;
 typedef unsigned short		uint16;
-typedef signed __int32		int32;
-typedef unsigned __int32	uint32;
-typedef signed __int64		int64;
-typedef unsigned __int64	uint64;
+typedef signed int			int32;
+typedef unsigned int		uint32;
+typedef long long			int64;
+typedef unsigned long long	uint64;
 
 #elif defined(XTOOLS_PLATFORM_OSX)
 

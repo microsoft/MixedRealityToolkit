@@ -46,7 +46,7 @@ ObjectElementImpl::ObjectElementImpl(SyncContext* syncContext, const XStringPtr&
 {
 	XTASSERT(name);
 
-	const uint32* ownerID = value.Get<uint32>();
+	const UserID* ownerID = value.Get<int32>();
 	if (XTVERIFY(ownerID))
 	{
 		m_ownerID = *ownerID;
@@ -71,6 +71,19 @@ IntElementPtr ObjectElementImpl::CreateIntElement(const XStringPtr& name, int va
 }
 
 
+LongElementPtr ObjectElementImpl::CreateLongElement(const XStringPtr& name, int64 value)
+{
+	if (!name)
+	{
+		LogError("Null name passed to CreateLongElement");
+		return NULL;
+	}
+
+	ElementPtr newElement = CreateElement(ElementType::Int64Type, name, value);
+	return LongElement::Cast(newElement);
+}
+
+
 FloatElementPtr ObjectElementImpl::CreateFloatElement(const XStringPtr& name, float value)
 {
 	if (!name)
@@ -81,6 +94,19 @@ FloatElementPtr ObjectElementImpl::CreateFloatElement(const XStringPtr& name, fl
 
 	ElementPtr newElement = CreateElement(ElementType::FloatType, name, value);
 	return FloatElement::Cast(newElement);
+}
+
+
+DoubleElementPtr ObjectElementImpl::CreateDoubleElement(const XStringPtr& name, double value)
+{
+	if (!name)
+	{
+		LogError("Null name passed to CreateDoubleElement");
+		return NULL;
+	}
+
+	ElementPtr newElement = CreateElement(ElementType::DoubleType, name, value);
+	return DoubleElement::Cast(newElement);
 }
 
 
@@ -282,7 +308,7 @@ void ObjectElementImpl::SetXValue(const XValue& value)
 {
 	XTASSERT(IsValid());
 
-	const uint32* ownerID = value.Get<uint32>();
+	const UserID* ownerID = value.Get<int32>();
 	if (XTVERIFY(ownerID))
 	{
 		m_ownerID = *ownerID;

@@ -10,12 +10,12 @@
 
 XTOOLS_NAMESPACE_BEGIN
 
-typedef uint32 UserID;
+typedef ::XTools::int32 UserID;
 
 class User : public AtomicRefCounted
 {
 public:
-	static const UserID kInvalidUserID = 0xFFFFFFFFL;
+	static const UserID kInvalidUserID = -1;
 	
 	// Returns the name of the user
 	virtual const XStringPtr& GetName() const = 0;

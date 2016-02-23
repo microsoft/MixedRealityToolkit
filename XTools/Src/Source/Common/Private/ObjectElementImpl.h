@@ -28,9 +28,17 @@ public:
 	/// Creating this element will cause the same element to automatically be created on all the remote systems
 	virtual IntElementPtr CreateIntElement(const XStringPtr& name, int value) XTOVERRIDE;
 
+	/// Create a LongElement as a child of this object.  The element will have the given starting value.  
+	/// Creating this element will cause the same element to automatically be created on all the remote systems
+	virtual LongElementPtr CreateLongElement(const XStringPtr& name, int64 value) XTOVERRIDE;
+
 	/// Create a FloatElement as a child of this object.  The element will have the given starting value.  
 	/// Creating this element will cause the same element to automatically be created on all the remote systems
 	virtual FloatElementPtr CreateFloatElement(const XStringPtr& name, float value) XTOVERRIDE;
+
+	/// Create a DoubleElement as a child of this object.  The element will have the given starting value.  
+	/// Creating this element will cause the same element to automatically be created on all the remote systems
+	virtual DoubleElementPtr CreateDoubleElement(const XStringPtr& name, double value) XTOVERRIDE;
 
 	/// Create a StringElement as a child of this object.  The element will have the given starting value.  
 	/// Creating this element will cause the same element to automatically be created on all the remote systems
@@ -124,7 +132,7 @@ private:
 	XStringPtr							m_name;
 	XGuid								m_guid;
 	ListenerListPtr						m_listenerList;
-	uint32								m_ownerID;
+	UserID								m_ownerID;
 };
 
 DECLARE_PTR(ObjectElementImpl)

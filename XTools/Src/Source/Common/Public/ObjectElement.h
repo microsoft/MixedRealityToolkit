@@ -25,9 +25,17 @@ public:
 	/// Creating this element will cause the same element to automatically be created on all the remote systems
 	virtual IntElementPtr CreateIntElement(const XStringPtr& name, int value) = 0;
 
+	/// Create a LongElement as a child of this object.  The element will have the given starting value.  
+	/// Creating this element will cause the same element to automatically be created on all the remote systems
+	virtual LongElementPtr CreateLongElement(const XStringPtr& name, int64 value) = 0;
+
 	/// Create a FloatElement as a child of this object.  The element will have the given starting value.  
 	/// Creating this element will cause the same element to automatically be created on all the remote systems
 	virtual FloatElementPtr CreateFloatElement(const XStringPtr& name, float value) = 0;
+
+	/// Create a DoubleElement as a child of this object.  The element will have the given starting value.  
+	/// Creating this element will cause the same element to automatically be created on all the remote systems
+	virtual DoubleElementPtr CreateDoubleElement(const XStringPtr& name, double value) = 0;
 
 	/// Create a StringElement as a child of this object.  The element will have the given starting value.  
 	/// Creating this element will cause the same element to automatically be created on all the remote systems

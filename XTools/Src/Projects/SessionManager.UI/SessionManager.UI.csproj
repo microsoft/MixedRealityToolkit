@@ -104,6 +104,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="..\..\GeneratedInterface\CSharpAPI\AnchorDownloadRequest.cs">
+      <Link>Generated Files\AnchorDownloadRequest.cs</Link>
+    </Compile>
     <Compile Include="..\..\GeneratedInterface\CSharpAPI\AudioManager.cs">
       <Link>Generated Files\AudioManager.cs</Link>
     </Compile>
@@ -118,6 +121,9 @@
     </Compile>
     <Compile Include="..\..\GeneratedInterface\CSharpAPI\DirectPairReceiver.cs">
       <Link>Generated Files\DirectPairReceiver.cs</Link>
+    </Compile>
+    <Compile Include="..\..\GeneratedInterface\CSharpAPI\DoubleElement.cs">
+      <Link>Generated Files\DoubleElement.cs</Link>
     </Compile>
     <Compile Include="..\..\GeneratedInterface\CSharpAPI\Element.cs">
       <Link>Generated Files\Element.cs</Link>
@@ -157,6 +163,9 @@
     </Compile>
     <Compile Include="..\..\GeneratedInterface\CSharpAPI\LogWriter.cs">
       <Link>Generated Files\LogWriter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\GeneratedInterface\CSharpAPI\LongElement.cs">
+      <Link>Generated Files\LongElement.cs</Link>
     </Compile>
     <Compile Include="..\..\GeneratedInterface\CSharpAPI\MachineSessionState.cs">
       <Link>Generated Files\MachineSessionState.cs</Link>
@@ -208,6 +217,15 @@
     </Compile>
     <Compile Include="..\..\GeneratedInterface\CSharpAPI\Receipt.cs">
       <Link>Generated Files\Receipt.cs</Link>
+    </Compile>
+    <Compile Include="..\..\GeneratedInterface\CSharpAPI\Room.cs">
+      <Link>Generated Files\Room.cs</Link>
+    </Compile>
+    <Compile Include="..\..\GeneratedInterface\CSharpAPI\RoomManager.cs">
+      <Link>Generated Files\RoomManager.cs</Link>
+    </Compile>
+    <Compile Include="..\..\GeneratedInterface\CSharpAPI\RoomManagerListener.cs">
+      <Link>Generated Files\RoomManagerListener.cs</Link>
     </Compile>
     <Compile Include="..\..\GeneratedInterface\CSharpAPI\Session.cs">
       <Link>Generated Files\Session.cs</Link>

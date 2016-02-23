@@ -56,7 +56,8 @@ XSessionImpl::XSessionImpl(const std::string& name, PortMachinePair pmp, Session
 , m_emptyTime(0)
 , m_bEmptyCheckApplied(false)
 {
-	m_syncMgr = Sync::SyncManager::Create(Sync::AuthorityLevel::High, new UserImpl("SessionServer", User::kInvalidUserID, false));
+	m_syncMgr = Sync::SyncManager::Create(MessageID::SyncMessage, Sync::AuthorityLevel::High, new UserImpl("SessionServer", User::kInvalidUserID, false));
+	m_internalSyncMgr = Sync::SyncManager::Create(MessageID::InternalSyncMessage, Sync::AuthorityLevel::High, new UserImpl("SessionServer", User::kInvalidUserID, false));
 
 	// Start listening for new connections
 	m_listenerReceipt = m_socketMgr->AcceptConnections(pmp.portID, kSessionServerMaxConnections, this);
@@ -177,6 +178,7 @@ void XSessionImpl::OnDisconnected(const NetworkConnectionPtr& connection)
 			m_sendToForwarder->RemoveConnection(remoteClient->m_userID);
 			m_audioSessionProcessor->RemoveConnection(remoteClient->m_secondaryConnection);
 			m_syncMgr->RemoveConnection(connection);
+			m_internalSyncMgr->RemoveConnection(connection);
 
 			// Notify the session server to tell all the clients that this user has left the session
 			if (m_callback)
@@ -295,6 +297,7 @@ void XSessionImpl::ServerThreadFunc()
 	while (m_stopping == 0)
 	{
 		m_socketMgr->Update();
+		m_internalSyncMgr->Update();
 		m_syncMgr->Update();
 
 		CheckIfEmpty(false);
@@ -393,6 +396,7 @@ void XSessionImpl::OnJoinSessionRequest(const JoinSessionRequest& request, const
 
 			// Add the remoteClient to the list that can share the session's sync data
 			m_syncMgr->AddConnection(remoteClient->m_primaryConnection);
+			m_internalSyncMgr->AddConnection(remoteClient->m_primaryConnection);
 
 			// Notify the session server to tell all the clients that the new user has joined this session
 			m_callback->OnUserJoinedSession(m_id, remoteClient->m_userName, remoteClient->m_userID, remoteClient->m_userMuteState);
@@ -456,7 +460,8 @@ void XSessionImpl::CheckIfEmpty(bool resetImmediately)
 			// Delete the old sync manager and create a new one to ensure that all the old
 			// sync data is cleaned up
 			UserPtr serverUser = m_syncMgr->GetLocalUser();
-			m_syncMgr = Sync::SyncManager::Create(Sync::AuthorityLevel::High, serverUser);
+			m_syncMgr = Sync::SyncManager::Create(MessageID::SyncMessage, Sync::AuthorityLevel::High, serverUser);
+			m_internalSyncMgr = Sync::SyncManager::Create(MessageID::InternalSyncMessage, Sync::AuthorityLevel::High, serverUser);
 
 			m_callback->OnSessionEmpty(this);
 

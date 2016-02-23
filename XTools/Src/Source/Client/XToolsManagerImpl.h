@@ -28,6 +28,11 @@ public:
 	// Returns the root element in the sync data set.  There is always a root object
 	virtual ObjectElementPtr GetRootSyncObject() XTOVERRIDE;
 
+	/// Returns the RoomManager, which allows users to define which physical real-world rooms they
+	/// are in, which allows for appropriate sharing of spatial tracking anchors on HoloLens and 
+	/// ensures voice audio gets sent to only people who are not in the same room.  
+	virtual const RoomManagerPtr& GetRoomManager() const XTOVERRIDE;
+
 	// Register a listener object to receive notifications before and after the sync system
 	// sends notifications that sync elements have been changed by remote peers.
 	// Returns true if successful, false if registration fails
@@ -99,6 +104,7 @@ private:
 	SessionManagerPtr			m_sessionManager;
 	PairingManagerPtr			m_paringManager;
 	ProfileManagerPtr			m_profileManager;
+	RoomManagerPtr				m_roomManager;
 
 	SettingsPtr					m_settings;
 	LoggerPtr					m_logManager;
