@@ -146,6 +146,12 @@
     <Compile Include="..\..\GeneratedInterface\CSharpAPI\ImageTagManager.cs">
       <Link>Generated Files\ImageTagManager.cs</Link>
     </Compile>
+    <Compile Include="..\..\GeneratedInterface\CSharpAPI\IntArrayElement.cs">
+      <Link>Generated Files\IntArrayElement.cs</Link>
+    </Compile>
+    <Compile Include="..\..\GeneratedInterface\CSharpAPI\IntArrayListener.cs">
+      <Link>Generated Files\IntArrayListener.cs</Link>
+    </Compile>
     <Compile Include="..\..\GeneratedInterface\CSharpAPI\IntElement.cs">
       <Link>Generated Files\IntElement.cs</Link>
     </Compile>

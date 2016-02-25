@@ -32,10 +32,15 @@
 #include <Private/CreateOperation.h>
 #include <Private/ModifyOperation.h>
 #include <Private/DeleteOperation.h>
+#include <Private/UpdateOperation.h>
+#include <Private/InsertOperation.h>
+#include <Private/RemoveOperation.h>
+#include <Private/ArrayElement.h>
 #include <Private/IntElementImpl.h>
 #include <Private/FloatElementImpl.h>
 #include <Private/StringElementImpl.h>
 #include <Private/ObjectElementImpl.h>
+#include <Private/IntArrayElementImpl.h>
 #include <Private/OperationFactory.h>
 #include <Private/ElementFactory.h>
 #include <Private/OpTransform.h>

@@ -740,17 +740,19 @@ void SyncManagerImpl::AddCreateOpForElementRecurs(RemoteSyncPeer& peer, const El
 		parentGuid = parent->GetGUID();
 	}
 
-	CreateOperationPtr createOp = new CreateOperation(
-		element->GetElementType(), 
-		element->GetName(), 
-		element->GetGUID(), 
-		parentGuid, 
-		element->GetXValue(), 
-		m_syncContext->GetAuthorityLevel(), 
-		m_syncContext);
+	{
+		CreateOperationPtr createOp = new CreateOperation(
+			element->GetElementType(),
+			element->GetName(),
+			element->GetGUID(),
+			parentGuid,
+			element->GetXValue(),
+			m_syncContext->GetAuthorityLevel(),
+			m_syncContext);
 
-	// Add to the list of outgoing ops
-	peer.SendOp(createOp);
+		// Add to the list of outgoing ops
+		peer.SendOp(createOp);
+	}
 
 	// If this is an object element...
 	ObjectElementPtr objElement = ObjectElement::Cast(element);
@@ -760,6 +762,27 @@ void SyncManagerImpl::AddCreateOpForElementRecurs(RemoteSyncPeer& peer, const El
 		for (int32 i = 0; i < objElement->GetElementCount(); ++i)
 		{
 			AddCreateOpForElementRecurs(peer, objElement->GetElementAt(i));
+		}
+	}
+	else
+	{
+		// If the element is an array, add Insert operations for all its entries
+		ArrayElement* arrayElement = reflection_cast<ArrayElement>(element);
+		if (arrayElement != nullptr)
+		{
+			int32 numEntries = arrayElement->GetCount();
+			for (int32 i = 0; i < numEntries; ++i)
+			{
+				InsertOperationPtr insertOp = new InsertOperation(
+					element->GetGUID(),
+					i,
+					arrayElement->GetXValue(i),
+					m_syncContext->GetAuthorityLevel(),
+					m_syncContext);
+
+				// Add to the list of outgoing ops
+				peer.SendOp(insertOp);
+			}
 		}
 	}
 }

@@ -27,7 +27,10 @@ namespace CommonDesktopTests
 
 	SyncTestbed::SyncTestbed(bool bConnectOnSight)
 		: m_bConnectOnSight(bConnectOnSight)
+		, m_logManager(new ::XTools::Logger())
 	{
+		m_logManager->SetWriter(this);
+
 		m_userServer = new UserImpl("Server", User::kInvalidUserID, false);
 		m_userClient1 = new UserImpl("Client1", 1, false);
 		m_userOnSight1 = new UserImpl("OnSight1", 1, false);
@@ -226,6 +229,11 @@ namespace CommonDesktopTests
 	}
 
 	void SyncTestbed::WriteLogEntry(const std::string& message) const
+	{
+		Microsoft::VisualStudio::CppUnitTestFramework::Logger::WriteMessage(message.c_str());
+	}
+
+	void SyncTestbed::WriteLogEntry(LogSeverity , const std::string& message)
 	{
 		Microsoft::VisualStudio::CppUnitTestFramework::Logger::WriteMessage(message.c_str());
 	}

@@ -44,6 +44,23 @@ protected:
     bool swig_override[4];
 };
 
+class SwigDirector_IntArrayListener : public XTools::IntArrayListener, public Swig::Director {
+
+public:
+    void swig_connect_director(JNIEnv *jenv, jobject jself, jclass jcls, bool swig_mem_own, bool weak_global);
+    SwigDirector_IntArrayListener(JNIEnv *jenv);
+    virtual ~SwigDirector_IntArrayListener();
+    virtual void OnValueChanged(XTools::int32 index, XTools::int32 newValue);
+    virtual void OnValueInserted(XTools::int32 index, XTools::int32 value);
+    virtual void OnValueRemoved(XTools::int32 index);
+public:
+    bool swig_overrides(int n) {
+      return (n < 3 ? swig_override[n] : false);
+    }
+protected:
+    bool swig_override[3];
+};
+
 class SwigDirector_ObjectElementListener : public XTools::ObjectElementListener, public Swig::Director {
 
 public:

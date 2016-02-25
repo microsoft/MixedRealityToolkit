@@ -37,11 +37,17 @@ NAMESPACE_BEGIN(Reflection)
 struct ToBase
 {
 	virtual void* operator()(void* derived) = 0;
+	virtual const void* operator()(const void* derived) = 0;
 };
 
 template<typename DerivedType, typename BaseType>
 struct ToBaseT : public ToBase
 {
+	virtual const void* operator()(const void* derived)
+	{
+		return static_cast<const BaseType*>(reinterpret_cast<const DerivedType*>(derived));
+	}
+
 	virtual void* operator()(void* derived)
 	{
 		return static_cast<BaseType*>(reinterpret_cast<DerivedType*>(derived));
@@ -66,6 +72,7 @@ public:
 
 protected:
 	void* CastToBase(void* derived, int baseTypeID) const;
+	const void* CastToBase(const void* derived, int baseTypeID) const;
 
 	// Returns the next available type ID, and then increments.
 	static int GetNextTypeID();
@@ -139,6 +146,13 @@ public:
 		XTASSERT(IsA<T>(derived));
 		return CastToBase(derived, baseTypeInfo);
 	}
+
+	const void* CastTo(const T* derived, int baseTypeInfo)
+	{
+		// Make sure this is the end of the inheritance chain
+		XTASSERT(IsA<T>(derived));
+		return CastToBase(derived, baseTypeInfo);
+	}
 };
 
 
@@ -153,10 +167,15 @@ public:\
 	static const ::XTools::Reflection::TypeInfo& MyTypeInfo() { return TYPEINFO_MEMBERNAME(typeName); }\
 	virtual const ::XTools::Reflection::TypeInfo& GetTypeInfo() const { return TYPEINFO_MEMBERNAME(typeName); }\
 	virtual void* CastToBase(int typeID); \
+	virtual const void* CastToBase(int typeID) const; \
 private:
 
 #define XTOOLS_REFLECTION_DEFINE(typeName)\
 	void* typeName::CastToBase(int typeID)\
+	{\
+		return TYPEINFO_MEMBERNAME(typeName).CastTo(this, typeID);\
+	}\
+	const void* typeName::CastToBase(int typeID) const\
 	{\
 		return TYPEINFO_MEMBERNAME(typeName).CastTo(this, typeID);\
 	}\

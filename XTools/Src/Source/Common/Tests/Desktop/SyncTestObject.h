@@ -11,7 +11,7 @@
 using namespace XTools;
 using namespace XTools::Sync;
 
-class SyncTestObject : public RefCounted, public ObjectElementListener
+class SyncTestObject : public RefCounted, public ObjectElementListener, public IntArrayListener
 {
 public:
 	SyncTestObject(const ObjectElementPtr& element, bool bCreatedLocally = true);
@@ -45,6 +45,12 @@ public:
 	void SetDoubleValue(double value);
 	void RemoveDoubleValue();
 
+	int32 GetIntArrayLength() const;
+	int32 GetIntArrayValue(int32 index) const;
+	void SetIntArrayValue(int32 index, int32 value);
+	void InsertIntArrayValue(int32 index, int32 value);
+	void RemoveIntArrayValue(int32 index);
+
 	bool Equals(const ref_ptr<const SyncTestObject>& otherObj) const;
 
 	uint32 GetIncomingIntChanges() const { return m_incomingIntChangeCount; }
@@ -61,6 +67,11 @@ public:
 
 	virtual void OnElementAdded(const ElementPtr& element) XTOVERRIDE;
 	virtual void OnElementDeleted(const ElementPtr& element) XTOVERRIDE;
+
+	// IntArrayListener Functions:
+	virtual void OnValueChanged(int32 index, int32 newValue) XTOVERRIDE;
+	virtual void OnValueInserted(int32 index, int32 value) XTOVERRIDE;
+	virtual void OnValueRemoved(int32 index) XTOVERRIDE;
 
 private:
 	std::vector<ref_ptr<SyncTestObject> >	m_children;
@@ -82,6 +93,9 @@ private:
 
 	DoubleElementPtr	m_doubleElement;
 	double				m_doubleMember;
+
+	IntArrayElementPtr	m_intArrayElement;
+	std::vector<int32>	m_intArrayMember;
 
 	uint32				m_incomingIntChangeCount;
 	uint32				m_incomingFloatChangeCount;

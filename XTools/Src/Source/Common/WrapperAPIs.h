@@ -38,6 +38,8 @@
 #include <Public/FloatElement.h>
 #include <Public/DoubleElement.h>
 #include <Public/StringElement.h>
+#include <Public/IntArrayListener.h>
+#include <Public/IntArrayElement.h>
 #include <Public/ObjectElementListener.h>
 #include <Public/ObjectElement.h>
 #include <Public/SyncListener.h>

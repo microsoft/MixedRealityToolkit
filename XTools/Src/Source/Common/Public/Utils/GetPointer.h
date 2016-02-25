@@ -19,4 +19,10 @@ T* get_pointer(T* p)
 	return p;
 }
 
+template<class T>
+const T* get_pointer(const T* p)
+{
+	return p;
+}
+
 XTOOLS_NAMESPACE_END

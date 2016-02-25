@@ -30,6 +30,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\Source\Common\Private\AckOperation.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\AnchorDownloadRequestImpl.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\ArrayTransforms.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\AudioConnection.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\AudioConnectionClient.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\AudioManagerImpl.cpp" />
@@ -57,6 +58,8 @@
     <ClCompile Include="..\..\Source\Common\Private\ElementFactory.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\Environment.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\FloatElementImpl.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\InsertOperation.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\IntArrayElementImpl.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\IntElementImpl.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\IPAddress.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\JoinSessionReply.cpp" />
@@ -92,6 +95,7 @@
     <ClCompile Include="..\..\Source\Common\Private\ProfileEntry.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\ProfileManagerImpl.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\Reflection.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\RemoveOperation.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\ResampleProcessor.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\RoomImpl.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\RoomManagerImpl.cpp" />
@@ -111,6 +115,7 @@
     <ClCompile Include="..\..\Source\Common\Private\TransformManager.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\TunnelBridge.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\TunnelConnection.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\UpdateOperation.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\UserChangedSessionMsg.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\UserImpl.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\UserJoinedSessionMsg.cpp" />
@@ -149,6 +154,8 @@
     <ClInclude Include="..\..\Source\Common\CommonPrivate.h" />
     <ClInclude Include="..\..\Source\Common\Private\AckOperation.h" />
     <ClInclude Include="..\..\Source\Common\Private\AnchorDownloadRequestImpl.h" />
+    <ClInclude Include="..\..\Source\Common\Private\ArrayElement.h" />
+    <ClInclude Include="..\..\Source\Common\Private\ArrayTransforms.h" />
     <ClInclude Include="..\..\Source\Common\Private\AudioConnection.h" />
     <ClInclude Include="..\..\Source\Common\Private\AudioConnectionClient.h" />
     <ClInclude Include="..\..\Source\Common\Private\AudioManagerImpl.h" />
@@ -172,7 +179,10 @@
     <ClInclude Include="..\..\Source\Common\Private\DoubleElementImpl.h" />
     <ClInclude Include="..\..\Source\Common\Private\ElementFactory.h" />
     <ClInclude Include="..\..\Source\Common\Private\FloatElementImpl.h" />
+    <ClInclude Include="..\..\Source\Common\Private\InsertOperation.h" />
+    <ClInclude Include="..\..\Source\Common\Private\IntArrayElementImpl.h" />
     <ClInclude Include="..\..\Source\Common\Private\IntElementImpl.h" />
+    <ClInclude Include="..\..\Source\Common\Private\InverseTransform.h" />
     <ClInclude Include="..\..\Source\Common\Private\JoinSessionReply.h" />
     <ClInclude Include="..\..\Source\Common\Private\JoinSessionRequest.h" />
     <ClInclude Include="..\..\Source\Common\Private\JSONMessage.h" />
@@ -206,6 +216,7 @@
     <ClInclude Include="..\..\Source\Common\Private\ProfileEntry.h" />
     <ClInclude Include="..\..\Source\Common\Private\ProfileManagerImpl.h" />
     <ClInclude Include="..\..\Source\Common\Private\RakNetIncludes.h" />
+    <ClInclude Include="..\..\Source\Common\Private\RemoveOperation.h" />
     <ClInclude Include="..\..\Source\Common\Private\ResampleProcessor.h" />
     <ClInclude Include="..\..\Source\Common\Private\RoomImpl.h" />
     <ClInclude Include="..\..\Source\Common\Private\RoomManagerImpl.h" />
@@ -227,6 +238,7 @@
     <ClInclude Include="..\..\Source\Common\Private\TransformManager.h" />
     <ClInclude Include="..\..\Source\Common\Private\TunnelBridge.h" />
     <ClInclude Include="..\..\Source\Common\Private\TunnelConnection.h" />
+    <ClInclude Include="..\..\Source\Common\Private\UpdateOperation.h" />
     <ClInclude Include="..\..\Source\Common\Private\UserChangedSessionMsg.h" />
     <ClInclude Include="..\..\Source\Common\Private\UserImpl.h" />
     <ClInclude Include="..\..\Source\Common\Private\UserJoinedSessionMsg.h" />
@@ -256,6 +268,8 @@
     <ClInclude Include="..\..\Source\Common\Public\FloatElement.h" />
     <ClInclude Include="..\..\Source\Common\Public\HandshakeLogic.h" />
     <ClInclude Include="..\..\Source\Common\Public\IncomingXSocketListener.h" />
+    <ClInclude Include="..\..\Source\Common\Public\IntArrayElement.h" />
+    <ClInclude Include="..\..\Source\Common\Public\IntArrayListener.h" />
     <ClInclude Include="..\..\Source\Common\Public\IntElement.h" />
     <ClInclude Include="..\..\Source\Common\Public\IPAddress.h" />
     <ClInclude Include="..\..\Source\Common\Public\LongElement.h" />

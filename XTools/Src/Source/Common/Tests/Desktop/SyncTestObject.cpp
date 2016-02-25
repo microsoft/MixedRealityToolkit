@@ -32,6 +32,8 @@ SyncTestObject::SyncTestObject(const ObjectElementPtr& element, bool bCreatedLoc
 		m_stringElement = m_element->CreateStringElement(new XString("stringMember"), new XString(m_stringMember));
 		m_longElement = m_element->CreateLongElement(new XString("longMember"), m_longMember);
 		m_doubleElement = m_element->CreateDoubleElement(new XString("doubleMember"), m_doubleMember);
+		m_intArrayElement = m_element->CreateIntArrayElement(new XString("intArrayMember"));
+		m_intArrayElement->AddListener(this);
 	}
 }
 
@@ -194,6 +196,39 @@ void SyncTestObject::RemoveDoubleValue()
 }
 
 
+int32 SyncTestObject::GetIntArrayLength() const
+{
+	return (int32)m_intArrayMember.size();
+}
+
+
+int32 SyncTestObject::GetIntArrayValue(int32 index) const
+{
+	return m_intArrayMember[index];
+}
+
+
+void SyncTestObject::SetIntArrayValue(int32 index, int32 value)
+{
+	m_intArrayMember[index] = value;
+	m_intArrayElement->SetValue(index, value);
+}
+
+
+void SyncTestObject::InsertIntArrayValue(int32 index, int32 value)
+{
+	m_intArrayMember.insert(m_intArrayMember.begin() + index, value);
+	m_intArrayElement->InsertValue(index, value);
+}
+
+
+void SyncTestObject::RemoveIntArrayValue(int32 index)
+{
+	m_intArrayMember.erase(m_intArrayMember.begin() + index);
+	m_intArrayElement->RemoveValue(index);
+}
+
+
 bool SyncTestObject::Equals(const ref_ptr<const SyncTestObject>& otherObj) const
 {
 	if (!m_element->IsValid())
@@ -265,6 +300,30 @@ bool SyncTestObject::Equals(const ref_ptr<const SyncTestObject>& otherObj) const
 			!m_doubleElement->GetName()->IsEqual(otherObj->m_doubleElement->GetName()))
 		{
 			return false;
+		}
+	}
+
+	if ((m_intArrayElement == NULL) != (otherObj->m_intArrayElement == NULL)) return false;
+	if (m_intArrayElement != NULL)
+	{
+		if (otherObj->m_intArrayElement == NULL ||
+			m_intArrayElement->GetGUID() != otherObj->m_intArrayElement->GetGUID() ||
+			!m_intArrayElement->GetName()->IsEqual(otherObj->m_intArrayElement->GetName()))
+		{
+			return false;
+		}
+
+		if (m_intArrayMember.size() != otherObj->m_intArrayMember.size())
+		{
+			return false;
+		}
+
+		for (size_t i = 0; i < m_intArrayMember.size(); ++i)
+		{
+			if (m_intArrayMember[i] != otherObj->m_intArrayMember[i])
+			{
+				return false;
+			}
 		}
 	}
 
@@ -398,6 +457,13 @@ void SyncTestObject::OnElementAdded(const ElementPtr& element)
 		m_doubleElement = DoubleElement::Cast(element);
 		m_doubleMember = m_doubleElement->GetValue();
 	}
+	else if (element->GetElementType() == ElementType::Int32ArrayType)
+	{
+		XTASSERT(m_intArrayElement == NULL);
+		m_intArrayElement = IntArrayElement::Cast(element);
+		m_intArrayElement->AddListener(this);
+		m_intArrayMember.clear();
+	}
 }
 
 
@@ -443,4 +509,22 @@ void SyncTestObject::OnElementDeleted(const ElementPtr& element)
 		// NOTE: deleted elements won't have been added in OnElementAdded, but we'll
 		// still get deleted notifications
 	}
+}
+
+
+void SyncTestObject::OnValueChanged(int32 index, int32 newValue)
+{
+	m_intArrayMember[index] = newValue;
+}
+
+
+void SyncTestObject::OnValueInserted(int32 index, int32 value)
+{
+	m_intArrayMember.insert(m_intArrayMember.begin() + index, value);
+}
+
+
+void SyncTestObject::OnValueRemoved(int32 index)
+{
+	m_intArrayMember.erase(m_intArrayMember.begin() + index);
 }

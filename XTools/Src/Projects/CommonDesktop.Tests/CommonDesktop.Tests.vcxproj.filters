@@ -45,6 +45,9 @@
     <ClCompile Include="..\..\Source\Common\Tests\Desktop\ReflectionTests.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Tests\Desktop\SyncArrayTests.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source">

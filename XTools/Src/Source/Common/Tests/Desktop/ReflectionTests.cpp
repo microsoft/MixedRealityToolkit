@@ -87,6 +87,16 @@ namespace CommonDesktopTests
 			XTObject* ab1 = new Ab1();
 			XTObject* ac1 = new Ac1();
 
+
+			const XTObject* const_x = new XTObject();
+			const XTObject* const_a = new A();
+			const XTObject* const_b = new B();
+			const XTObject* const_aa = new Aa();
+			const XTObject* const_ab = new Ab();
+			const XTObject* const_ac = new Ac();
+			const XTObject* const_ab1 = new Ab1();
+			const XTObject* const_ac1 = new Ac1();
+
 			// Test that self-type casting works correctly
 			Assert::IsNotNull(reflection_cast<XTObject>(x));
 			Assert::IsNotNull(reflection_cast<A>(a));
@@ -133,6 +143,15 @@ namespace CommonDesktopTests
 			Assert::IsNull(reflection_cast<Aa>(a));
 			Assert::IsNull(reflection_cast<Ab>(a));
 
+			// Casting works for const pointers
+			Assert::IsNotNull(reflection_cast<const XTObject>(const_a));
+			Assert::IsNotNull(reflection_cast<const XTObject>(const_b));
+			Assert::IsNotNull(reflection_cast<const XTObject>(const_aa));
+			Assert::IsNotNull(reflection_cast<const XTObject>(const_ab));
+			Assert::IsNotNull(reflection_cast<const XTObject>(const_ab1));
+			Assert::IsNotNull(reflection_cast<const XTObject>(const_ac));
+			Assert::IsNotNull(reflection_cast<const XTObject>(const_ac1));
+
 			delete x;
 			delete a;
 			delete b;
@@ -141,6 +160,15 @@ namespace CommonDesktopTests
 			delete ac;
 			delete ab1;
 			delete ac1;
+
+			delete const_x;
+			delete const_a;
+			delete const_b;
+			delete const_aa;
+			delete const_ab;
+			delete const_ac;
+			delete const_ab1;
+			delete const_ac1;
 		}
 
 		TEST_METHOD(TestReflectionIsA)

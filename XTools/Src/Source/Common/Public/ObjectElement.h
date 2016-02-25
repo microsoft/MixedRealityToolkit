@@ -46,6 +46,10 @@ public:
 	/// Set the User parameter to your local User ID to have this object removed from remote systems when you disconnect
 	virtual ref_ptr<ObjectElement> CreateObjectElement(const XStringPtr& name, const User* owner = NULL) = 0;
 
+	/// Create an IntArrayElement as a child of this object.    
+	/// Creating this element will cause the same element to automatically be created on all the remote systems
+	virtual IntArrayElementPtr CreateIntArrayElement(const XStringPtr& name) = 0;
+
 	/// Returns the number of elements that are immediate children of this element
 	virtual int32 GetElementCount() const = 0;
 
@@ -74,11 +78,11 @@ public:
 	/// Register an object to receive notifications when the elements of this object change.  
 	/// Multiple listeners can be registered.  The wrapper class will hold a reference to the listener
 	/// to ensure it is not garbage collected until this class is destroyed or the listener is removed. 
-	/// \param newListener The listener object that will receive callbacks from this SessionManager
+	/// \param newListener The listener object that will receive callbacks 
 	virtual void AddListener(ObjectElementListener* newListener) = 0;
 
 	/// Remove a previously registered listener.  The wrapper class will release its reference to the given listener.  
-	/// \param newListener The listener object that will no longer receive callbacks from this SessionManager.  
+	/// \param newListener The listener object that will no longer receive callbacks  
 	virtual void RemoveListener(ObjectElementListener* oldListener) = 0;
 
 	/// Return the ID of the user who 'owns' this element.  Owned elements will be deleted from the 

@@ -538,6 +538,67 @@ void SwigDirector_NetworkConnectionListener::swig_init_callbacks() {
   swig_callbackOnMessageReceived = 0;
 }
 
+SwigDirector_IntArrayListener::SwigDirector_IntArrayListener() : XTools::IntArrayListener(), Swig::Director() {
+  swig_init_callbacks();
+}
+
+SwigDirector_IntArrayListener::~SwigDirector_IntArrayListener() {
+  
+}
+
+
+void SwigDirector_IntArrayListener::OnValueChanged(XTools::int32 index, XTools::int32 newValue) {
+  int jindex  ;
+  int jnewValue  ;
+  
+  if (!swig_callbackOnValueChanged) {
+    XTools::IntArrayListener::OnValueChanged(index,newValue);
+    return;
+  } else {
+    jindex = index;
+    jnewValue = newValue;
+    swig_callbackOnValueChanged(jindex, jnewValue);
+  }
+}
+
+void SwigDirector_IntArrayListener::OnValueInserted(XTools::int32 index, XTools::int32 value) {
+  int jindex  ;
+  int jvalue  ;
+  
+  if (!swig_callbackOnValueInserted) {
+    XTools::IntArrayListener::OnValueInserted(index,value);
+    return;
+  } else {
+    jindex = index;
+    jvalue = value;
+    swig_callbackOnValueInserted(jindex, jvalue);
+  }
+}
+
+void SwigDirector_IntArrayListener::OnValueRemoved(XTools::int32 index) {
+  int jindex  ;
+  
+  if (!swig_callbackOnValueRemoved) {
+    XTools::IntArrayListener::OnValueRemoved(index);
+    return;
+  } else {
+    jindex = index;
+    swig_callbackOnValueRemoved(jindex);
+  }
+}
+
+void SwigDirector_IntArrayListener::swig_connect_director(SWIG_Callback0_t callbackOnValueChanged, SWIG_Callback1_t callbackOnValueInserted, SWIG_Callback2_t callbackOnValueRemoved) {
+  swig_callbackOnValueChanged = callbackOnValueChanged;
+  swig_callbackOnValueInserted = callbackOnValueInserted;
+  swig_callbackOnValueRemoved = callbackOnValueRemoved;
+}
+
+void SwigDirector_IntArrayListener::swig_init_callbacks() {
+  swig_callbackOnValueChanged = 0;
+  swig_callbackOnValueInserted = 0;
+  swig_callbackOnValueRemoved = 0;
+}
+
 SwigDirector_ObjectElementListener::SwigDirector_ObjectElementListener() : XTools::ObjectElementListener(), Swig::Director() {
   swig_init_callbacks();
 }
@@ -3264,6 +3325,221 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_StringElement(void * jarg1) {
 }
 
 
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_IntArrayListener(void * jarg1) {
+  XTools::IntArrayListener *arg1 = (XTools::IntArrayListener *) 0 ;
+  
+  arg1 = (XTools::IntArrayListener *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_IntArrayListener_OnValueChanged(void * jarg1, int jarg2, int jarg3) {
+  XTools::IntArrayListener *arg1 = (XTools::IntArrayListener *) 0 ;
+  XTools::int32 arg2 ;
+  XTools::int32 arg3 ;
+  
+  arg1 = (XTools::IntArrayListener *)jarg1; 
+  arg2 = (XTools::int32)jarg2; 
+  arg3 = (XTools::int32)jarg3; 
+  (arg1)->OnValueChanged(arg2,arg3);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_IntArrayListener_OnValueChangedSwigExplicitIntArrayListener(void * jarg1, int jarg2, int jarg3) {
+  XTools::IntArrayListener *arg1 = (XTools::IntArrayListener *) 0 ;
+  XTools::int32 arg2 ;
+  XTools::int32 arg3 ;
+  
+  arg1 = (XTools::IntArrayListener *)jarg1; 
+  arg2 = (XTools::int32)jarg2; 
+  arg3 = (XTools::int32)jarg3; 
+  (arg1)->XTools::IntArrayListener::OnValueChanged(arg2,arg3);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_IntArrayListener_OnValueInserted(void * jarg1, int jarg2, int jarg3) {
+  XTools::IntArrayListener *arg1 = (XTools::IntArrayListener *) 0 ;
+  XTools::int32 arg2 ;
+  XTools::int32 arg3 ;
+  
+  arg1 = (XTools::IntArrayListener *)jarg1; 
+  arg2 = (XTools::int32)jarg2; 
+  arg3 = (XTools::int32)jarg3; 
+  (arg1)->OnValueInserted(arg2,arg3);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_IntArrayListener_OnValueInsertedSwigExplicitIntArrayListener(void * jarg1, int jarg2, int jarg3) {
+  XTools::IntArrayListener *arg1 = (XTools::IntArrayListener *) 0 ;
+  XTools::int32 arg2 ;
+  XTools::int32 arg3 ;
+  
+  arg1 = (XTools::IntArrayListener *)jarg1; 
+  arg2 = (XTools::int32)jarg2; 
+  arg3 = (XTools::int32)jarg3; 
+  (arg1)->XTools::IntArrayListener::OnValueInserted(arg2,arg3);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_IntArrayListener_OnValueRemoved(void * jarg1, int jarg2) {
+  XTools::IntArrayListener *arg1 = (XTools::IntArrayListener *) 0 ;
+  XTools::int32 arg2 ;
+  
+  arg1 = (XTools::IntArrayListener *)jarg1; 
+  arg2 = (XTools::int32)jarg2; 
+  (arg1)->OnValueRemoved(arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_IntArrayListener_OnValueRemovedSwigExplicitIntArrayListener(void * jarg1, int jarg2) {
+  XTools::IntArrayListener *arg1 = (XTools::IntArrayListener *) 0 ;
+  XTools::int32 arg2 ;
+  
+  arg1 = (XTools::IntArrayListener *)jarg1; 
+  arg2 = (XTools::int32)jarg2; 
+  (arg1)->XTools::IntArrayListener::OnValueRemoved(arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_IntArrayListener() {
+  void * jresult ;
+  XTools::IntArrayListener *result = 0 ;
+  
+  result = (XTools::IntArrayListener *)new SwigDirector_IntArrayListener();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_IntArrayListener_director_connect(void *objarg, SwigDirector_IntArrayListener::SWIG_Callback0_t callback0, SwigDirector_IntArrayListener::SWIG_Callback1_t callback1, SwigDirector_IntArrayListener::SWIG_Callback2_t callback2) {
+  XTools::IntArrayListener *obj = (XTools::IntArrayListener *)objarg;
+  SwigDirector_IntArrayListener *director = dynamic_cast<SwigDirector_IntArrayListener *>(obj);
+  if (director) {
+    director->swig_connect_director(callback0, callback1, callback2);
+  }
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_IntArrayElement_Cast(void * jarg1) {
+  void * jresult ;
+  XTools::ElementPtr *arg1 = 0 ;
+  XTools::ElementPtr tempnull1 ;
+  XTools::ElementPtr temp1 ;
+  XTools::Element *smartarg1 ;
+  XTools::ref_ptr< XTools::IntArrayElement > result;
+  
+  
+  // ref_ptr by reference in
+  if ( jarg1 ) {
+    smartarg1 = *( Element **)&jarg1; 
+    temp1 = XTools::ref_ptr<  Element >(smartarg1);
+    arg1 = &temp1;
+  } else {
+    arg1 = &tempnull1;
+  }
+  
+  result = XTools::IntArrayElement::Cast((XTools::ref_ptr< XTools::Element > const &)*arg1);
+  
+  // ref_ptr by value out
+  if (result) {
+    result->AddRef();
+    *( IntArrayElement **)&jresult = (&result)->get();
+  } else {
+    *( IntArrayElement **)&jresult = 0; 
+  }
+  
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_IntArrayElement_GetCount(void * jarg1) {
+  int jresult ;
+  XTools::IntArrayElement *arg1 = (XTools::IntArrayElement *) 0 ;
+  XTools::int32 result;
+  
+  arg1 = (XTools::IntArrayElement *)jarg1; 
+  result = (XTools::int32)((XTools::IntArrayElement const *)arg1)->GetCount();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_IntArrayElement_GetValue(void * jarg1, int jarg2) {
+  int jresult ;
+  XTools::IntArrayElement *arg1 = (XTools::IntArrayElement *) 0 ;
+  XTools::int32 arg2 ;
+  XTools::int32 result;
+  
+  arg1 = (XTools::IntArrayElement *)jarg1; 
+  arg2 = (XTools::int32)jarg2; 
+  result = (XTools::int32)((XTools::IntArrayElement const *)arg1)->GetValue(arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_IntArrayElement_SetValue(void * jarg1, int jarg2, int jarg3) {
+  XTools::IntArrayElement *arg1 = (XTools::IntArrayElement *) 0 ;
+  XTools::int32 arg2 ;
+  XTools::int32 arg3 ;
+  
+  arg1 = (XTools::IntArrayElement *)jarg1; 
+  arg2 = (XTools::int32)jarg2; 
+  arg3 = (XTools::int32)jarg3; 
+  (arg1)->SetValue(arg2,arg3);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_IntArrayElement_InsertValue(void * jarg1, int jarg2, int jarg3) {
+  XTools::IntArrayElement *arg1 = (XTools::IntArrayElement *) 0 ;
+  XTools::int32 arg2 ;
+  int arg3 ;
+  
+  arg1 = (XTools::IntArrayElement *)jarg1; 
+  arg2 = (XTools::int32)jarg2; 
+  arg3 = (int)jarg3; 
+  (arg1)->InsertValue(arg2,arg3);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_IntArrayElement_RemoveValue(void * jarg1, int jarg2) {
+  XTools::IntArrayElement *arg1 = (XTools::IntArrayElement *) 0 ;
+  XTools::int32 arg2 ;
+  
+  arg1 = (XTools::IntArrayElement *)jarg1; 
+  arg2 = (XTools::int32)jarg2; 
+  (arg1)->RemoveValue(arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_IntArrayElement_AddListener(void * jarg1, void * jarg2) {
+  XTools::IntArrayElement *arg1 = (XTools::IntArrayElement *) 0 ;
+  XTools::IntArrayListener *arg2 = (XTools::IntArrayListener *) 0 ;
+  
+  arg1 = (XTools::IntArrayElement *)jarg1; 
+  arg2 = (XTools::IntArrayListener *)jarg2; 
+  (arg1)->AddListener(arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_IntArrayElement_RemoveListener(void * jarg1, void * jarg2) {
+  XTools::IntArrayElement *arg1 = (XTools::IntArrayElement *) 0 ;
+  XTools::IntArrayListener *arg2 = (XTools::IntArrayListener *) 0 ;
+  
+  arg1 = (XTools::IntArrayElement *)jarg1; 
+  arg2 = (XTools::IntArrayListener *)jarg2; 
+  (arg1)->RemoveListener(arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_IntArrayElement(void * jarg1) {
+  XTools::IntArrayElement *arg1 = (XTools::IntArrayElement *) 0 ;
+  
+  arg1 = (XTools::IntArrayElement *)jarg1; 
+  if(arg1) arg1->RemoveRef();
+}
+
+
 SWIGEXPORT void SWIGSTDCALL CSharp_delete_ObjectElementListener(void * jarg1) {
   XTools::ObjectElementListener *arg1 = (XTools::ObjectElementListener *) 0 ;
   
@@ -3811,6 +4087,40 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_ObjectElement_CreateObjectElement__SWIG_1(v
     *( ObjectElement **)&jresult = (&result)->get();
   } else {
     *( ObjectElement **)&jresult = 0; 
+  }
+  
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_ObjectElement_CreateIntArrayElement(void * jarg1, void * jarg2) {
+  void * jresult ;
+  XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
+  XTools::XStringPtr *arg2 = 0 ;
+  XTools::XStringPtr tempnull2 ;
+  XTools::XStringPtr temp2 ;
+  XTools::XString *smartarg2 ;
+  XTools::IntArrayElementPtr result;
+  
+  arg1 = (XTools::ObjectElement *)jarg1; 
+  
+  // ref_ptr by reference in
+  if ( jarg2 ) {
+    smartarg2 = *( XString **)&jarg2; 
+    temp2 = XTools::ref_ptr<  XString >(smartarg2);
+    arg2 = &temp2;
+  } else {
+    arg2 = &tempnull2;
+  }
+  
+  result = (arg1)->CreateIntArrayElement((XTools::XStringPtr const &)*arg2);
+  
+  // ref_ptr by value out
+  if (result) {
+    result->AddRef();
+    *( IntArrayElement **)&jresult = (&result)->get();
+  } else {
+    *( IntArrayElement **)&jresult = 0; 
   }
   
   return jresult;
@@ -7749,6 +8059,14 @@ SWIGEXPORT XTools::Element * SWIGSTDCALL CSharp_DoubleElement_SWIGUpcast(XTools:
 }
 
 SWIGEXPORT XTools::Element * SWIGSTDCALL CSharp_StringElement_SWIGUpcast(XTools::StringElement *jarg1) {
+    return (XTools::Element *)jarg1;
+}
+
+SWIGEXPORT XTools::Listener * SWIGSTDCALL CSharp_IntArrayListener_SWIGUpcast(XTools::IntArrayListener *jarg1) {
+    return (XTools::Listener *)jarg1;
+}
+
+SWIGEXPORT XTools::Element * SWIGSTDCALL CSharp_IntArrayElement_SWIGUpcast(XTools::IntArrayElement *jarg1) {
     return (XTools::Element *)jarg1;
 }
 
