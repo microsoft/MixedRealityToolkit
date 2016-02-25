@@ -148,6 +148,19 @@ ObjectElementPtr ObjectElementImpl::CreateObjectElement(const XStringPtr& name, 
 }
 
 
+IntArrayElementPtr ObjectElementImpl::CreateIntArrayElement(const XStringPtr& name)
+{
+	if (!name)
+	{
+		LogError("Null name passed to CreateIntArrayElement");
+		return NULL;
+	}
+
+	ElementPtr newElement = CreateElement(ElementType::Int32ArrayType, name, XValue());
+	return IntArrayElement::Cast(newElement);
+}
+
+
 int32 ObjectElementImpl::GetElementCount() const
 {
 	return static_cast<int32>(m_children.size());

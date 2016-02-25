@@ -39,7 +39,8 @@ namespace CommonDesktopTests
 
 		void ValidatePair(const Sync::SyncManagerPtr& syncMgr1, const SyncTestObjectPtr& syncObj1, const Sync::SyncManagerPtr& syncMgr2, const SyncTestObjectPtr& syncObj2) const;
 
-		virtual void WriteLogEntry(const std::string& message) const;
+		void WriteLogEntry(const std::string& message) const;
+		virtual void WriteLogEntry(LogSeverity severity, const std::string& message) XTOVERRIDE;
 
 		XSocketManagerPtr m_serverSocketMgr;
 		XSocketManagerPtr m_mslice1SocketMgr;
@@ -64,6 +65,8 @@ namespace CommonDesktopTests
 		UserPtr m_userOnSight1;
 		UserPtr m_userClient2;
 		UserPtr m_userOnSight2;
+
+		LoggerPtr	m_logManager;
 
 		bool m_bConnectOnSight;
 

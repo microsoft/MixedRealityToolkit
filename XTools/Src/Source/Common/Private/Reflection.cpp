@@ -73,6 +73,27 @@ void* TypeInfo::CastToBase(void* derived, int baseTypeID) const
 	return nullptr;
 }
 
+const void* TypeInfo::CastToBase(const void* derived, int baseTypeID) const
+{
+	if (!derived)
+	{
+		return nullptr;
+	}
+
+	if (m_typeID == baseTypeID) return derived;
+
+	for (auto it = m_baseTypes.begin(); it != m_baseTypes.end(); ++it)
+	{
+		if (it->m_typeInfo->IsDerivedFrom(baseTypeID))
+		{
+			const void* immediateBase = (*it->m_baseCaster)(derived);
+			return it->m_typeInfo->CastToBase(immediateBase, baseTypeID);
+		}
+	}
+
+	return nullptr;
+}
+
 XTOOLS_REFLECTION_DEFINE(XTObject);
 
 NAMESPACE_END(Reflection)

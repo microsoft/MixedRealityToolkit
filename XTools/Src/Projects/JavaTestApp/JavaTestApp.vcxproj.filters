@@ -191,5 +191,11 @@
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\RoomManagerListener.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\IntArrayElement.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\IntArrayListener.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

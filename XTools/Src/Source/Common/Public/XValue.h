@@ -74,7 +74,10 @@ public:
 
 	bool Equals(const XValue& other) const
 	{
-		return m_wrappedValue->Equals(other.m_wrappedValue.get());
+		return (
+			((m_wrappedValue == nullptr) == (other.m_wrappedValue == nullptr)) && 
+			( m_wrappedValue == nullptr || m_wrappedValue->Equals(other.m_wrappedValue.get()))
+			);
 	}
 
 	std::string ToString() const;

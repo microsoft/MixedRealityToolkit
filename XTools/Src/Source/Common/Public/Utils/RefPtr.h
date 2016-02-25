@@ -179,6 +179,12 @@ T* get_pointer(ref_ptr<T> const & p)
 	return p.get();
 }
 
+template <typename T>
+const T* get_pointer(ref_ptr<const T> const & p)
+{
+	return p.get();
+}
+
 XTOOLS_NAMESPACE_END
 
 

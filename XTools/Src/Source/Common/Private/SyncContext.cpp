@@ -14,11 +14,12 @@
 #include "FloatElementImpl.h"
 #include "DoubleElementImpl.h"
 #include "StringElementImpl.h"
+#include "IntArrayElementImpl.h"
 
 XTOOLS_NAMESPACE_BEGIN
 NAMESPACE_BEGIN(Sync)
 
-const char* kElementTypeNames[ElementType::ObjectType + 1] =
+const char* kElementTypeNames[ElementType::Int32ArrayType + 1] =
 {
 	"UnknownType",
 	"Int32Type",
@@ -26,7 +27,8 @@ const char* kElementTypeNames[ElementType::ObjectType + 1] =
 	"FloatType",
 	"DoubleType",
 	"StringType",
-	"ObjectType"
+	"ObjectType",
+	"Int32ArrayType"
 };
 
 SyncContext::SyncContext(AuthorityLevel authorityLevel, SystemID localSystemID, const UserPtr& localUser)
@@ -46,6 +48,9 @@ SyncContext::SyncContext(AuthorityLevel authorityLevel, SystemID localSystemID, 
 	m_opFactory.RegisterMaker(Operation::Create, new OpMakerT<CreateOperation>());
 	m_opFactory.RegisterMaker(Operation::Modify, new OpMakerT<ModifyOperation>());
 	m_opFactory.RegisterMaker(Operation::Delete, new OpMakerT<DeleteOperation>());
+	m_opFactory.RegisterMaker(Operation::Insert, new OpMakerT<InsertOperation>());
+	m_opFactory.RegisterMaker(Operation::Update, new OpMakerT<UpdateOperation>());
+	m_opFactory.RegisterMaker(Operation::Remove, new OpMakerT<RemoveOperation>());
 
 	// Add makers for all the element types
 	m_elementFactory.RegisterMaker(ElementType::Int32Type, new ElementMakerT<IntElementImpl>());
@@ -54,6 +59,7 @@ SyncContext::SyncContext(AuthorityLevel authorityLevel, SystemID localSystemID, 
 	m_elementFactory.RegisterMaker(ElementType::DoubleType, new ElementMakerT<DoubleElementImpl>());
 	m_elementFactory.RegisterMaker(ElementType::StringType, new ElementMakerT<StringElementImpl>());
 	m_elementFactory.RegisterMaker(ElementType::ObjectType, new ElementMakerT<ObjectElementImpl>());
+	m_elementFactory.RegisterMaker(ElementType::Int32ArrayType, new ElementMakerT<IntArrayElementImpl>());
 }
 
 
@@ -257,7 +263,16 @@ void SyncContext::PrintElementRecurs(const ElementConstPtr& element, int depth) 
 	//preamble[offset++] = '-';
 	preamble[offset++] = '\0';
 
-	LogInfo("%s%s (%s, %s)", preamble, element->GetName()->GetString().c_str(), kElementTypeNames[element->GetElementType()], element->GetXValue().ToString().c_str());
+	const ArrayElement* arrayElement = reflection_cast<const ArrayElement>(element.get());
+	if (arrayElement)
+	{
+		LogInfo("%s%s (%s)", preamble, element->GetName()->GetString().c_str(), kElementTypeNames[element->GetElementType()]);
+	}
+	else
+	{
+		LogInfo("%s%s (%s, %s)", preamble, element->GetName()->GetString().c_str(), kElementTypeNames[element->GetElementType()], element->GetXValue().ToString().c_str());
+	}
+	
 
 	if (element->GetElementType() == ElementType::ObjectType)
 	{
@@ -268,6 +283,14 @@ void SyncContext::PrintElementRecurs(const ElementConstPtr& element, int depth) 
 			{
 				PrintElementRecurs(objectElement->GetElementAt(i), depth + 1);
 			}
+		}
+	}
+	else if (arrayElement != nullptr)
+	{
+		int32 numArrayElements = arrayElement->GetCount();
+		for (int i = 0; i < numArrayElements; ++i)
+		{
+			LogInfo("%s %i) %s", preamble, i, arrayElement->GetXValue(i).ToString().c_str());
 		}
 	}
 }

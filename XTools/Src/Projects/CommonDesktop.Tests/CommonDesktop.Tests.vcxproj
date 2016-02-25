@@ -217,6 +217,7 @@
     </ClCompile>
     <ClCompile Include="..\..\Source\Common\Tests\Desktop\NetworkMessageTests.cpp" />
     <ClCompile Include="..\..\Source\Common\Tests\Desktop\ConnectionManagerTests.cpp" />
+    <ClCompile Include="..\..\Source\Common\Tests\Desktop\SyncArrayTests.cpp" />
     <ClCompile Include="..\..\Source\Common\Tests\Desktop\SyncDeleteTests.cpp" />
     <ClCompile Include="..\..\Source\Common\Tests\Desktop\SyncHandshakeTests.cpp" />
     <ClCompile Include="..\..\Source\Common\Tests\Desktop\SyncTestbed.cpp" />

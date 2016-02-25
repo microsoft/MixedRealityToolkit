@@ -17,7 +17,7 @@ NAMESPACE_BEGIN(Sync)
 TransformedPair DeleteModifyTransform::Apply(const OperationConstPtr& localOp, const OperationConstPtr& remoteOp) const
 {
 	// This operation should only be applied against a certain pair of operations
-	XTASSERT(localOp->GetType() == Operation::Delete && remoteOp->GetType() == Operation::Modify);
+	XTASSERT(localOp->GetType() == Operation::Delete);
 
 	// By default assume no conflict
 	TransformedPair result(localOp, remoteOp);

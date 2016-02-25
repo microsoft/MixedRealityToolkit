@@ -601,7 +601,7 @@ namespace Swig {
 namespace Swig {
   namespace {
     jclass jclass_XToolsClientJNI = NULL;
-    jmethodID director_methids[47];
+    jmethodID director_methids[50];
   }
 }
 
@@ -1492,6 +1492,138 @@ void SwigDirector_NetworkConnectionListener::swig_connect_director(JNIEnv *jenv,
 }
 
 
+SwigDirector_IntArrayListener::SwigDirector_IntArrayListener(JNIEnv *jenv) : XTools::IntArrayListener(), Swig::Director(jenv) {
+}
+
+SwigDirector_IntArrayListener::~SwigDirector_IntArrayListener() {
+  swig_disconnect_director_self("swigDirectorDisconnect");
+}
+
+
+void SwigDirector_IntArrayListener::OnValueChanged(XTools::int32 index, XTools::int32 newValue) {
+  JNIEnvWrapper swigjnienv(this) ;
+  JNIEnv * jenv = swigjnienv.getJNIEnv() ;
+  jobject swigjobj = (jobject) NULL ;
+  jint jindex  ;
+  jint jnewValue  ;
+  
+  if (!swig_override[0]) {
+    XTools::IntArrayListener::OnValueChanged(index,newValue);
+    return;
+  }
+  swigjobj = swig_get_self(jenv);
+  if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
+    jindex = (jint) index;
+    jnewValue = (jint) newValue;
+    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[5], swigjobj, jindex, jnewValue);
+    jthrowable swigerror = jenv->ExceptionOccurred();
+    if (swigerror) {
+      jenv->ExceptionClear();
+      throw Swig::DirectorException(jenv, swigerror);
+    }
+    
+  } else {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in XTools::IntArrayListener::OnValueChanged ");
+  }
+  if (swigjobj) jenv->DeleteLocalRef(swigjobj);
+}
+
+void SwigDirector_IntArrayListener::OnValueInserted(XTools::int32 index, XTools::int32 value) {
+  JNIEnvWrapper swigjnienv(this) ;
+  JNIEnv * jenv = swigjnienv.getJNIEnv() ;
+  jobject swigjobj = (jobject) NULL ;
+  jint jindex  ;
+  jint jvalue  ;
+  
+  if (!swig_override[1]) {
+    XTools::IntArrayListener::OnValueInserted(index,value);
+    return;
+  }
+  swigjobj = swig_get_self(jenv);
+  if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
+    jindex = (jint) index;
+    jvalue = (jint) value;
+    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[6], swigjobj, jindex, jvalue);
+    jthrowable swigerror = jenv->ExceptionOccurred();
+    if (swigerror) {
+      jenv->ExceptionClear();
+      throw Swig::DirectorException(jenv, swigerror);
+    }
+    
+  } else {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in XTools::IntArrayListener::OnValueInserted ");
+  }
+  if (swigjobj) jenv->DeleteLocalRef(swigjobj);
+}
+
+void SwigDirector_IntArrayListener::OnValueRemoved(XTools::int32 index) {
+  JNIEnvWrapper swigjnienv(this) ;
+  JNIEnv * jenv = swigjnienv.getJNIEnv() ;
+  jobject swigjobj = (jobject) NULL ;
+  jint jindex  ;
+  
+  if (!swig_override[2]) {
+    XTools::IntArrayListener::OnValueRemoved(index);
+    return;
+  }
+  swigjobj = swig_get_self(jenv);
+  if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
+    jindex = (jint) index;
+    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[7], swigjobj, jindex);
+    jthrowable swigerror = jenv->ExceptionOccurred();
+    if (swigerror) {
+      jenv->ExceptionClear();
+      throw Swig::DirectorException(jenv, swigerror);
+    }
+    
+  } else {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in XTools::IntArrayListener::OnValueRemoved ");
+  }
+  if (swigjobj) jenv->DeleteLocalRef(swigjobj);
+}
+
+void SwigDirector_IntArrayListener::swig_connect_director(JNIEnv *jenv, jobject jself, jclass jcls, bool swig_mem_own, bool weak_global) {
+  static struct {
+    const char *mname;
+    const char *mdesc;
+    jmethodID base_methid;
+  } methods[] = {
+    {
+      "OnValueChanged", "(II)V", NULL 
+    },
+    {
+      "OnValueInserted", "(II)V", NULL 
+    },
+    {
+      "OnValueRemoved", "(I)V", NULL 
+    }
+  };
+  
+  static jclass baseclass = 0 ;
+  
+  if (swig_set_self(jenv, jself, swig_mem_own, weak_global)) {
+    if (!baseclass) {
+      baseclass = jenv->FindClass("com/microsoft/xtools/IntArrayListener");
+      if (!baseclass) return;
+      baseclass = (jclass) jenv->NewGlobalRef(baseclass);
+    }
+    bool derived = (jenv->IsSameObject(baseclass, jcls) ? false : true);
+    for (int i = 0; i < 3; ++i) {
+      if (!methods[i].base_methid) {
+        methods[i].base_methid = jenv->GetMethodID(baseclass, methods[i].mname, methods[i].mdesc);
+        if (!methods[i].base_methid) return;
+      }
+      swig_override[i] = false;
+      if (derived) {
+        jmethodID methid = jenv->GetMethodID(jcls, methods[i].mname, methods[i].mdesc);
+        swig_override[i] = (methid != methods[i].base_methid);
+        jenv->ExceptionClear();
+      }
+    }
+  }
+}
+
+
 SwigDirector_ObjectElementListener::SwigDirector_ObjectElementListener(JNIEnv *jenv) : XTools::ObjectElementListener(), Swig::Director(jenv) {
 }
 
@@ -1515,7 +1647,7 @@ void SwigDirector_ObjectElementListener::OnIntElementChanged(XTools::XGuid eleme
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
     jelementID = (jlong) elementID;
     jnewValue = (jint) newValue;
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[5], swigjobj, jelementID, jnewValue);
+    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[8], swigjobj, jelementID, jnewValue);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -1543,7 +1675,7 @@ void SwigDirector_ObjectElementListener::OnLongElementChanged(XTools::XGuid elem
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
     jelementID = (jlong) elementID;
     jnewValue = (jlong) newValue;
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[6], swigjobj, jelementID, jnewValue);
+    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[9], swigjobj, jelementID, jnewValue);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -1571,7 +1703,7 @@ void SwigDirector_ObjectElementListener::OnFloatElementChanged(XTools::XGuid ele
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
     jelementID = (jlong) elementID;
     jnewValue = (jfloat) newValue;
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[7], swigjobj, jelementID, jnewValue);
+    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[10], swigjobj, jelementID, jnewValue);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -1599,7 +1731,7 @@ void SwigDirector_ObjectElementListener::OnDoubleElementChanged(XTools::XGuid el
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
     jelementID = (jlong) elementID;
     jnewValue = (jdouble) newValue;
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[8], swigjobj, jelementID, jnewValue);
+    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[11], swigjobj, jelementID, jnewValue);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -1633,7 +1765,7 @@ void SwigDirector_ObjectElementListener::OnStringElementChanged(XTools::XGuid el
     }
     *( XString **)&jnewValue = (&newValue)->get();
     
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[9], swigjobj, jelementID, jnewValue);
+    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[12], swigjobj, jelementID, jnewValue);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -1664,7 +1796,7 @@ void SwigDirector_ObjectElementListener::OnElementAdded(XTools::ElementPtr const
     }
     *( Element **)&jelement = (&element)->get();
     
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[10], swigjobj, jelement);
+    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[13], swigjobj, jelement);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -1695,7 +1827,7 @@ void SwigDirector_ObjectElementListener::OnElementDeleted(XTools::ElementPtr con
     }
     *( Element **)&jelement = (&element)->get();
     
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[11], swigjobj, jelement);
+    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[14], swigjobj, jelement);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -1781,7 +1913,7 @@ void SwigDirector_SyncListener::OnSyncChangesBegin() {
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[12], swigjobj);
+    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[15], swigjobj);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -1805,7 +1937,7 @@ void SwigDirector_SyncListener::OnSyncChangesEnd() {
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[13], swigjobj);
+    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[16], swigjobj);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -1876,7 +2008,7 @@ void SwigDirector_SessionListener::OnJoiningSession() {
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[14], swigjobj);
+    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[17], swigjobj);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -1900,7 +2032,7 @@ void SwigDirector_SessionListener::OnJoinSucceeded() {
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[15], swigjobj);
+    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[18], swigjobj);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -1924,7 +2056,7 @@ void SwigDirector_SessionListener::OnJoinFailed() {
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[16], swigjobj);
+    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[19], swigjobj);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -1948,7 +2080,7 @@ void SwigDirector_SessionListener::OnSessionDisconnected() {
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[17], swigjobj);
+    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[20], swigjobj);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2032,7 +2164,7 @@ void SwigDirector_SessionManagerListener::OnCreateSucceeded(XTools::SessionPtr c
     }
     *( Session **)&jnewSession = (&newSession)->get();
     
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[18], swigjobj, jnewSession);
+    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[21], swigjobj, jnewSession);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2063,7 +2195,7 @@ void SwigDirector_SessionManagerListener::OnCreateFailed(XTools::XStringPtr cons
     }
     *( XString **)&jreason = (&reason)->get();
     
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[19], swigjobj, jreason);
+    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[22], swigjobj, jreason);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2094,7 +2226,7 @@ void SwigDirector_SessionManagerListener::OnSessionAdded(XTools::SessionPtr cons
     }
     *( Session **)&jnewSession = (&newSession)->get();
     
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[20], swigjobj, jnewSession);
+    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[23], swigjobj, jnewSession);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2125,7 +2257,7 @@ void SwigDirector_SessionManagerListener::OnSessionClosed(XTools::SessionPtr con
     }
     *( Session **)&jsession = (&session)->get();
     
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[21], swigjobj, jsession);
+    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[24], swigjobj, jsession);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2164,7 +2296,7 @@ void SwigDirector_SessionManagerListener::OnUserJoinedSession(XTools::SessionPtr
     }
     *( User **)&jnewUser = (&newUser)->get();
     
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[22], swigjobj, jsession, jnewUser);
+    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[25], swigjobj, jsession, jnewUser);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2203,7 +2335,7 @@ void SwigDirector_SessionManagerListener::OnUserLeftSession(XTools::SessionPtr c
     }
     *( User **)&juser = (&user)->get();
     
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[23], swigjobj, jsession, juser);
+    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[26], swigjobj, jsession, juser);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2242,7 +2374,7 @@ void SwigDirector_SessionManagerListener::OnUserChanged(XTools::SessionPtr const
     }
     *( User **)&juser = (&user)->get();
     
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[24], swigjobj, jsession, juser);
+    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[27], swigjobj, jsession, juser);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2266,7 +2398,7 @@ void SwigDirector_SessionManagerListener::OnServerConnected() {
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[25], swigjobj);
+    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[28], swigjobj);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2290,7 +2422,7 @@ void SwigDirector_SessionManagerListener::OnServerDisconnected() {
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[26], swigjobj);
+    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[29], swigjobj);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2389,7 +2521,7 @@ void SwigDirector_UserPresenceManagerListener::OnUserPresenceChanged(XTools::Use
     }
     *( User **)&juser = (&user)->get();
     
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[27], swigjobj, juser);
+    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[30], swigjobj, juser);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2464,7 +2596,7 @@ void SwigDirector_RoomManagerListener::OnRoomCreated(XTools::RoomPtr const &newR
     }
     *( Room **)&jnewRoom = (&newRoom)->get();
     
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[28], swigjobj, jnewRoom);
+    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[31], swigjobj, jnewRoom);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2495,7 +2627,7 @@ void SwigDirector_RoomManagerListener::OnRoomClosed(XTools::RoomPtr const &room)
     }
     *( Room **)&jroom = (&room)->get();
     
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[29], swigjobj, jroom);
+    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[32], swigjobj, jroom);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2534,7 +2666,7 @@ void SwigDirector_RoomManagerListener::OnUserJoinedRoom(XTools::RoomPtr const &r
     }
     *( User **)&juser = (&user)->get();
     
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[30], swigjobj, jroom, juser);
+    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[33], swigjobj, jroom, juser);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2573,7 +2705,7 @@ void SwigDirector_RoomManagerListener::OnUserLeftRoom(XTools::RoomPtr const &roo
     }
     *( User **)&juser = (&user)->get();
     
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[31], swigjobj, jroom, juser);
+    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[34], swigjobj, jroom, juser);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2604,7 +2736,7 @@ void SwigDirector_RoomManagerListener::OnAnchorsChanged(XTools::RoomPtr const &r
     }
     *( Room **)&jroom = (&room)->get();
     
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[32], swigjobj, jroom);
+    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[35], swigjobj, jroom);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2643,7 +2775,7 @@ void SwigDirector_RoomManagerListener::OnAnchorsDownloaded(XTools::RoomPtr const
     }
     *( AnchorDownloadRequest **)&jrequest = (&request)->get();
     
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[33], swigjobj, jroom, jrequest);
+    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[36], swigjobj, jroom, jrequest);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2667,7 +2799,7 @@ void SwigDirector_RoomManagerListener::OnAnchorUploadComplete() {
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[34], swigjobj);
+    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[37], swigjobj);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2754,7 +2886,7 @@ bool SwigDirector_PairMaker::IsReceiver() {
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    jresult = (jboolean) jenv->CallStaticBooleanMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[35], swigjobj);
+    jresult = (jboolean) jenv->CallStaticBooleanMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[38], swigjobj);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2782,7 +2914,7 @@ XTools::int32 SwigDirector_PairMaker::GetAddressCount() {
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[36], swigjobj);
+    jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[39], swigjobj);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2812,7 +2944,7 @@ XTools::XStringPtr SwigDirector_PairMaker::GetAddress(XTools::int32 index) {
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
     jindex = (jint) index;
-    jresult = (jlong) jenv->CallStaticLongMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[37], swigjobj, jindex);
+    jresult = (jlong) jenv->CallStaticLongMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[40], swigjobj, jindex);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2844,7 +2976,7 @@ XTools::uint16 SwigDirector_PairMaker::GetPort() {
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[38], swigjobj);
+    jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[41], swigjobj);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2870,7 +3002,7 @@ void SwigDirector_PairMaker::Update() {
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[39], swigjobj);
+    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[42], swigjobj);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2895,7 +3027,7 @@ bool SwigDirector_PairMaker::IsReadyToConnect() {
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    jresult = (jboolean) jenv->CallStaticBooleanMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[40], swigjobj);
+    jresult = (jboolean) jenv->CallStaticBooleanMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[43], swigjobj);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2922,7 +3054,7 @@ XTools::int32 SwigDirector_PairMaker::GetLocalKey() {
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[41], swigjobj);
+    jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[44], swigjobj);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2949,7 +3081,7 @@ XTools::int32 SwigDirector_PairMaker::GetRemoteKey() {
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[42], swigjobj);
+    jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[45], swigjobj);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -3040,7 +3172,7 @@ void SwigDirector_PairingListener::PairingConnectionSucceeded() {
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[43], swigjobj);
+    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[46], swigjobj);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -3066,7 +3198,7 @@ void SwigDirector_PairingListener::PairingConnectionFailed(XTools::PairingResult
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
     jreason = (jint) reason;
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[44], swigjobj, jreason);
+    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[47], swigjobj, jreason);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -3144,7 +3276,7 @@ void SwigDirector_ImageTagLocationListener::OnTagLocated(XTools::ImageTagLocatio
     }
     *( ImageTagLocation **)&jlocation = (&location)->get();
     
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[45], swigjobj, jlocation);
+    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[48], swigjobj, jlocation);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -3168,7 +3300,7 @@ void SwigDirector_ImageTagLocationListener::OnTagLocatingCompleted() {
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[46], swigjobj);
+    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[49], swigjobj);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -5550,6 +5682,282 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1String
 }
 
 
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1IntArrayListener(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  XTools::IntArrayListener *arg1 = (XTools::IntArrayListener *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(XTools::IntArrayListener **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayListener_1OnValueChanged(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3) {
+  XTools::IntArrayListener *arg1 = (XTools::IntArrayListener *) 0 ;
+  XTools::int32 arg2 ;
+  XTools::int32 arg3 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(XTools::IntArrayListener **)&jarg1; 
+  arg2 = (XTools::int32)jarg2; 
+  arg3 = (XTools::int32)jarg3; 
+  (arg1)->OnValueChanged(arg2,arg3);
+}
+
+
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayListener_1OnValueChangedSwigExplicitIntArrayListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3) {
+  XTools::IntArrayListener *arg1 = (XTools::IntArrayListener *) 0 ;
+  XTools::int32 arg2 ;
+  XTools::int32 arg3 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(XTools::IntArrayListener **)&jarg1; 
+  arg2 = (XTools::int32)jarg2; 
+  arg3 = (XTools::int32)jarg3; 
+  (arg1)->XTools::IntArrayListener::OnValueChanged(arg2,arg3);
+}
+
+
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayListener_1OnValueInserted(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3) {
+  XTools::IntArrayListener *arg1 = (XTools::IntArrayListener *) 0 ;
+  XTools::int32 arg2 ;
+  XTools::int32 arg3 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(XTools::IntArrayListener **)&jarg1; 
+  arg2 = (XTools::int32)jarg2; 
+  arg3 = (XTools::int32)jarg3; 
+  (arg1)->OnValueInserted(arg2,arg3);
+}
+
+
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayListener_1OnValueInsertedSwigExplicitIntArrayListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3) {
+  XTools::IntArrayListener *arg1 = (XTools::IntArrayListener *) 0 ;
+  XTools::int32 arg2 ;
+  XTools::int32 arg3 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(XTools::IntArrayListener **)&jarg1; 
+  arg2 = (XTools::int32)jarg2; 
+  arg3 = (XTools::int32)jarg3; 
+  (arg1)->XTools::IntArrayListener::OnValueInserted(arg2,arg3);
+}
+
+
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayListener_1OnValueRemoved(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  XTools::IntArrayListener *arg1 = (XTools::IntArrayListener *) 0 ;
+  XTools::int32 arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(XTools::IntArrayListener **)&jarg1; 
+  arg2 = (XTools::int32)jarg2; 
+  (arg1)->OnValueRemoved(arg2);
+}
+
+
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayListener_1OnValueRemovedSwigExplicitIntArrayListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  XTools::IntArrayListener *arg1 = (XTools::IntArrayListener *) 0 ;
+  XTools::int32 arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(XTools::IntArrayListener **)&jarg1; 
+  arg2 = (XTools::int32)jarg2; 
+  (arg1)->XTools::IntArrayListener::OnValueRemoved(arg2);
+}
+
+
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_new_1IntArrayListener(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  XTools::IntArrayListener *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (XTools::IntArrayListener *)new SwigDirector_IntArrayListener(jenv);
+  *(XTools::IntArrayListener **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayListener_1director_1connect(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jswig_mem_own, jboolean jweak_global) {
+  XTools::IntArrayListener *obj = *((XTools::IntArrayListener **)&objarg);
+  (void)jcls;
+  SwigDirector_IntArrayListener *director = dynamic_cast<SwigDirector_IntArrayListener *>(obj);
+  if (director) {
+    director->swig_connect_director(jenv, jself, jenv->GetObjectClass(jself), (jswig_mem_own == JNI_TRUE), (jweak_global == JNI_TRUE));
+  }
+}
+
+
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayListener_1change_1ownership(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jtake_or_release) {
+  XTools::IntArrayListener *obj = *((XTools::IntArrayListener **)&objarg);
+  SwigDirector_IntArrayListener *director = dynamic_cast<SwigDirector_IntArrayListener *>(obj);
+  (void)jcls;
+  if (director) {
+    director->swig_java_change_ownership(jenv, jself, jtake_or_release ? true : false);
+  }
+}
+
+
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayElement_1Cast(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  XTools::ElementPtr *arg1 = 0 ;
+  XTools::ElementPtr tempnull1 ;
+  XTools::ElementPtr temp1 ;
+  XTools::Element *smartarg1 ;
+  XTools::ref_ptr< XTools::IntArrayElement > result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  
+  // ref_ptr by reference in
+  if ( jarg1 ) {
+    smartarg1 = *( Element **)&jarg1; 
+    temp1 = XTools::ref_ptr<  Element >(smartarg1);
+    arg1 = &temp1;
+  } else {
+    arg1 = &tempnull1;
+  }
+  
+  result = XTools::IntArrayElement::Cast((XTools::ref_ptr< XTools::Element > const &)*arg1);
+  
+  // ref_ptr by value out
+  if (result) {
+    result->AddRef();
+    *( IntArrayElement **)&jresult = result.get();
+  } else {
+    *( IntArrayElement **)&jresult = 0; 
+  }
+  
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayElement_1GetCount(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jint jresult = 0 ;
+  XTools::IntArrayElement *arg1 = (XTools::IntArrayElement *) 0 ;
+  XTools::int32 result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(XTools::IntArrayElement **)&jarg1; 
+  result = (XTools::int32)((XTools::IntArrayElement const *)arg1)->GetCount();
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayElement_1GetValue(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  jint jresult = 0 ;
+  XTools::IntArrayElement *arg1 = (XTools::IntArrayElement *) 0 ;
+  XTools::int32 arg2 ;
+  XTools::int32 result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(XTools::IntArrayElement **)&jarg1; 
+  arg2 = (XTools::int32)jarg2; 
+  result = (XTools::int32)((XTools::IntArrayElement const *)arg1)->GetValue(arg2);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayElement_1SetValue(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3) {
+  XTools::IntArrayElement *arg1 = (XTools::IntArrayElement *) 0 ;
+  XTools::int32 arg2 ;
+  XTools::int32 arg3 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(XTools::IntArrayElement **)&jarg1; 
+  arg2 = (XTools::int32)jarg2; 
+  arg3 = (XTools::int32)jarg3; 
+  (arg1)->SetValue(arg2,arg3);
+}
+
+
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayElement_1InsertValue(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3) {
+  XTools::IntArrayElement *arg1 = (XTools::IntArrayElement *) 0 ;
+  XTools::int32 arg2 ;
+  int arg3 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(XTools::IntArrayElement **)&jarg1; 
+  arg2 = (XTools::int32)jarg2; 
+  arg3 = (int)jarg3; 
+  (arg1)->InsertValue(arg2,arg3);
+}
+
+
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayElement_1RemoveValue(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  XTools::IntArrayElement *arg1 = (XTools::IntArrayElement *) 0 ;
+  XTools::int32 arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(XTools::IntArrayElement **)&jarg1; 
+  arg2 = (XTools::int32)jarg2; 
+  (arg1)->RemoveValue(arg2);
+}
+
+
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayElement_1AddListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+  XTools::IntArrayElement *arg1 = (XTools::IntArrayElement *) 0 ;
+  XTools::IntArrayListener *arg2 = (XTools::IntArrayListener *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  arg1 = *(XTools::IntArrayElement **)&jarg1; 
+  arg2 = *(XTools::IntArrayListener **)&jarg2; 
+  (arg1)->AddListener(arg2);
+}
+
+
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayElement_1RemoveListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+  XTools::IntArrayElement *arg1 = (XTools::IntArrayElement *) 0 ;
+  XTools::IntArrayListener *arg2 = (XTools::IntArrayListener *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  arg1 = *(XTools::IntArrayElement **)&jarg1; 
+  arg2 = *(XTools::IntArrayListener **)&jarg2; 
+  (arg1)->RemoveListener(arg2);
+}
+
+
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1IntArrayElement(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  XTools::IntArrayElement *arg1 = (XTools::IntArrayElement *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(XTools::IntArrayElement **)&jarg1; 
+  if(arg1) arg1->RemoveRef();
+}
+
+
 SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1ObjectElementListener(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::ObjectElementListener *arg1 = (XTools::ObjectElementListener *) 0 ;
   
@@ -6193,6 +6601,44 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElement
     *( ObjectElement **)&jresult = result.get();
   } else {
     *( ObjectElement **)&jresult = 0; 
+  }
+  
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElement_1CreateIntArrayElement(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+  jlong jresult = 0 ;
+  XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
+  XTools::XStringPtr *arg2 = 0 ;
+  XTools::XStringPtr tempnull2 ;
+  XTools::XStringPtr temp2 ;
+  XTools::XString *smartarg2 ;
+  XTools::IntArrayElementPtr result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  arg1 = *(XTools::ObjectElement **)&jarg1; 
+  
+  // ref_ptr by reference in
+  if ( jarg2 ) {
+    smartarg2 = *( XString **)&jarg2; 
+    temp2 = XTools::ref_ptr<  XString >(smartarg2);
+    arg2 = &temp2;
+  } else {
+    arg2 = &tempnull2;
+  }
+  
+  result = (arg1)->CreateIntArrayElement((XTools::XStringPtr const &)*arg2);
+  
+  // ref_ptr by value out
+  if (result) {
+    result->AddRef();
+    *( IntArrayElement **)&jresult = result.get();
+  } else {
+    *( IntArrayElement **)&jresult = 0; 
   }
   
   return jresult;
@@ -11030,6 +11476,22 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_StringElement
     return baseptr;
 }
 
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayListener_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+    jlong baseptr = 0;
+    (void)jenv;
+    (void)jcls;
+    *(XTools::Listener **)&baseptr = *(XTools::IntArrayListener **)&jarg1;
+    return baseptr;
+}
+
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayElement_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+    jlong baseptr = 0;
+    (void)jenv;
+    (void)jcls;
+    *(XTools::Element **)&baseptr = *(XTools::IntArrayElement **)&jarg1;
+    return baseptr;
+}
+
 SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElementListener_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
     jlong baseptr = 0;
     (void)jenv;
@@ -11140,7 +11602,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_swig_1module_1
   static struct {
     const char *method;
     const char *signature;
-  } methods[47] = {
+  } methods[50] = {
     {
       "SwigDirector_LogWriter_WriteLogEntry", "(Lcom/microsoft/xtools/LogWriter;ILjava/lang/String;)V" 
     },
@@ -11155,6 +11617,15 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_swig_1module_1
     },
     {
       "SwigDirector_NetworkConnectionListener_OnMessageReceived", "(Lcom/microsoft/xtools/NetworkConnectionListener;JJ)V" 
+    },
+    {
+      "SwigDirector_IntArrayListener_OnValueChanged", "(Lcom/microsoft/xtools/IntArrayListener;II)V" 
+    },
+    {
+      "SwigDirector_IntArrayListener_OnValueInserted", "(Lcom/microsoft/xtools/IntArrayListener;II)V" 
+    },
+    {
+      "SwigDirector_IntArrayListener_OnValueRemoved", "(Lcom/microsoft/xtools/IntArrayListener;I)V" 
     },
     {
       "SwigDirector_ObjectElementListener_OnIntElementChanged", "(Lcom/microsoft/xtools/ObjectElementListener;JI)V" 

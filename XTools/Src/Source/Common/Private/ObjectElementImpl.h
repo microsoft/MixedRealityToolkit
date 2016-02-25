@@ -48,6 +48,10 @@ public:
 	/// Creating this element will cause the same element to automatically be created on all the remote systems
 	virtual ObjectElementPtr CreateObjectElement(const XStringPtr& name, const User* owner) XTOVERRIDE;
 
+	/// Create an IntArrayElement as a child of this object.    
+	/// Creating this element will cause the same element to automatically be created on all the remote systems
+	virtual IntArrayElementPtr CreateIntArrayElement(const XStringPtr& name) XTOVERRIDE;
+
 	/// Returns the number of elements that are immediate children of this element
 	virtual int32 GetElementCount() const XTOVERRIDE;
 

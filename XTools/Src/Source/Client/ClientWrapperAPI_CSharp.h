@@ -50,6 +50,27 @@ private:
     void swig_init_callbacks();
 };
 
+class SwigDirector_IntArrayListener : public XTools::IntArrayListener, public Swig::Director {
+
+public:
+    SwigDirector_IntArrayListener();
+    virtual ~SwigDirector_IntArrayListener();
+    virtual void OnValueChanged(XTools::int32 index, XTools::int32 newValue);
+    virtual void OnValueInserted(XTools::int32 index, XTools::int32 value);
+    virtual void OnValueRemoved(XTools::int32 index);
+
+    typedef void (SWIGSTDCALL* SWIG_Callback0_t)(int, int);
+    typedef void (SWIGSTDCALL* SWIG_Callback1_t)(int, int);
+    typedef void (SWIGSTDCALL* SWIG_Callback2_t)(int);
+    void swig_connect_director(SWIG_Callback0_t callbackOnValueChanged, SWIG_Callback1_t callbackOnValueInserted, SWIG_Callback2_t callbackOnValueRemoved);
+
+private:
+    SWIG_Callback0_t swig_callbackOnValueChanged;
+    SWIG_Callback1_t swig_callbackOnValueInserted;
+    SWIG_Callback2_t swig_callbackOnValueRemoved;
+    void swig_init_callbacks();
+};
+
 class SwigDirector_ObjectElementListener : public XTools::ObjectElementListener, public Swig::Director {
 
 public:

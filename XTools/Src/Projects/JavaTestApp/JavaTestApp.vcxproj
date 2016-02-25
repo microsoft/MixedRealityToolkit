@@ -38,6 +38,8 @@
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\Element.java" />
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\ElementType.java" />
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\FloatElement.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\IntArrayElement.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\IntArrayListener.java" />
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\IntElement.java" />
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\Listener.java" />
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\xtools\LogWriter.java" />
