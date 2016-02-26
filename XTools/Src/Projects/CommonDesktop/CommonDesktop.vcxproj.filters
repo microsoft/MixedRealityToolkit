@@ -1115,6 +1115,9 @@
     <ClInclude Include="..\..\Source\Common\Private\IntArrayAdapter.h">
       <Filter>Source\Private\Sync\Utils</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\RoomMessageID.h">
+      <Filter>Source\Private\Rooms</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <RakNetSymbols Include="..\..\External\RakNet-4.081\lib\*.pdb">

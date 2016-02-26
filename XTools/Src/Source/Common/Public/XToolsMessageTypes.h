@@ -41,6 +41,7 @@ enum MessageID : byte
 	TestAutomation,			/// Messages used for coordinating multiple remote XTools devices for automated testing
 	Profiling,
 	InternalSyncMessage,	/// Messages used by the internal sync system
+	RoomAnchor,				/// Messages related to sharing room anchors
 
 	///////////////////////////////////////
 	// DO NOT CHANGE!!!
@@ -87,6 +88,7 @@ enum MessageChannel : byte
 	Avatar,				/// Traffic related to avatar position and movement
 	Audio,				/// Voice audio traffic
 	ProfileChannel,		/// Traffic with updates for the profiler
+	RoomAnchorChannel,	/// Traffic related to uploading and downloading anchor data
 
 	///////////////////////////////////////
 	// DO NOT CHANGE!!!

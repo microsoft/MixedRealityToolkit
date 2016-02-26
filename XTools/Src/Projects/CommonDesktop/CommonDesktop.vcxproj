@@ -208,6 +208,7 @@
     <ClInclude Include="..\..\Source\Common\Private\ResampleProcessor.h" />
     <ClInclude Include="..\..\Source\Common\Private\RoomImpl.h" />
     <ClInclude Include="..\..\Source\Common\Private\RoomManagerImpl.h" />
+    <ClInclude Include="..\..\Source\Common\Private\RoomMessageID.h" />
     <ClInclude Include="..\..\Source\Common\Private\SpeexProcessor.h" />
     <ClInclude Include="..\..\Source\Common\Private\Syncable.h" />
     <ClInclude Include="..\..\Source\Common\Private\SyncArray.h" />

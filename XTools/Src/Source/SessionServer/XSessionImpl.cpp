@@ -58,6 +58,7 @@ XSessionImpl::XSessionImpl(const std::string& name, PortMachinePair pmp, Session
 {
 	m_syncMgr = Sync::SyncManager::Create(MessageID::SyncMessage, Sync::AuthorityLevel::High, new UserImpl("SessionServer", User::kInvalidUserID, false));
 	m_internalSyncMgr = Sync::SyncManager::Create(MessageID::InternalSyncMessage, Sync::AuthorityLevel::High, new UserImpl("SessionServer", User::kInvalidUserID, false));
+	m_roomMgr = new ServerRoomManager(m_internalSyncMgr);
 
 	// Start listening for new connections
 	m_listenerReceipt = m_socketMgr->AcceptConnections(pmp.portID, kSessionServerMaxConnections, this);
@@ -177,8 +178,11 @@ void XSessionImpl::OnDisconnected(const NetworkConnectionPtr& connection)
 			m_broadcaster->RemoveConnection(remoteClient->m_secondaryConnection);
 			m_sendToForwarder->RemoveConnection(remoteClient->m_userID);
 			m_audioSessionProcessor->RemoveConnection(remoteClient->m_secondaryConnection);
+			m_roomMgr->RemoveConnection(remoteClient->m_primaryConnection);
+			m_roomMgr->RemoveConnection(remoteClient->m_secondaryConnection);
 			m_syncMgr->RemoveConnection(connection);
 			m_internalSyncMgr->RemoveConnection(connection);
+			
 
 			// Notify the session server to tell all the clients that this user has left the session
 			if (m_callback)
@@ -394,6 +398,10 @@ void XSessionImpl::OnJoinSessionRequest(const JoinSessionRequest& request, const
 			// Add the remoteClient to the audio packet processor
 			m_audioSessionProcessor->AddConnection(remoteClient->m_secondaryConnection);
 
+			// Add the connections to the room manager
+			m_roomMgr->AddConnection(remoteClient->m_primaryConnection);
+			m_roomMgr->AddConnection(remoteClient->m_secondaryConnection);
+
 			// Add the remoteClient to the list that can share the session's sync data
 			m_syncMgr->AddConnection(remoteClient->m_primaryConnection);
 			m_internalSyncMgr->AddConnection(remoteClient->m_primaryConnection);
@@ -462,6 +470,7 @@ void XSessionImpl::CheckIfEmpty(bool resetImmediately)
 			UserPtr serverUser = m_syncMgr->GetLocalUser();
 			m_syncMgr = Sync::SyncManager::Create(MessageID::SyncMessage, Sync::AuthorityLevel::High, serverUser);
 			m_internalSyncMgr = Sync::SyncManager::Create(MessageID::InternalSyncMessage, Sync::AuthorityLevel::High, serverUser);
+			m_roomMgr = new ServerRoomManager(m_internalSyncMgr);
 
 			m_callback->OnSessionEmpty(this);
 

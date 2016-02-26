@@ -13,6 +13,7 @@
 #include "SessionChangeCallback.h"
 #include "PortMachinePool.h"
 #include "AudioSessionProcessorServer.h"
+#include "ServerRoomManager.h"
 #include <Private/NetworkConnectionImpl.h>
 
 XTOOLS_NAMESPACE_BEGIN
@@ -101,6 +102,8 @@ private:
 	PortMachinePair					m_portMachinePair;
 	Sync::SyncManagerPtr			m_syncMgr;
 	Sync::SyncManagerPtr			m_internalSyncMgr;
+	ServerRoomManagerPtr			m_roomMgr;
+
 	MemberFuncThreadPtr				m_serverThread;
 
 	std::chrono::high_resolution_clock::time_point	m_lastEmptyCheckTime;

@@ -166,7 +166,7 @@ public:
     virtual void OnUserLeftRoom(XTools::RoomPtr const &room, XTools::UserID user);
     virtual void OnAnchorsChanged(XTools::RoomPtr const &room);
     virtual void OnAnchorsDownloaded(XTools::RoomPtr const &room, XTools::AnchorDownloadRequestPtr const &request);
-    virtual void OnAnchorUploadComplete();
+    virtual void OnAnchorUploadComplete(bool successful, XTools::XStringPtr const &failureReason);
 public:
     bool swig_overrides(int n) {
       return (n < 7 ? swig_override[n] : false);

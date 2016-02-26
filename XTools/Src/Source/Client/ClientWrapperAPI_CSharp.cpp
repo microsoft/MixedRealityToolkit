@@ -1187,12 +1187,23 @@ void SwigDirector_RoomManagerListener::OnAnchorsDownloaded(XTools::RoomPtr const
   }
 }
 
-void SwigDirector_RoomManagerListener::OnAnchorUploadComplete() {
+void SwigDirector_RoomManagerListener::OnAnchorUploadComplete(bool successful, XTools::XStringPtr const &failureReason) {
+  unsigned int jsuccessful  ;
+  void * jfailureReason = 0 ;
+  
   if (!swig_callbackOnAnchorUploadComplete) {
-    XTools::RoomManagerListener::OnAnchorUploadComplete();
+    XTools::RoomManagerListener::OnAnchorUploadComplete(successful,failureReason);
     return;
   } else {
-    swig_callbackOnAnchorUploadComplete();
+    jsuccessful = successful;
+    
+    // ref_ptr by reference directorin
+    if (failureReason) {
+      failureReason->AddRef(); 
+    }
+    jfailureReason = (&failureReason)->get();
+    
+    swig_callbackOnAnchorUploadComplete(jsuccessful, jfailureReason);
   }
 }
 
@@ -6085,19 +6096,51 @@ SWIGEXPORT void SWIGSTDCALL CSharp_RoomManagerListener_OnAnchorsDownloadedSwigEx
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_RoomManagerListener_OnAnchorUploadComplete(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_RoomManagerListener_OnAnchorUploadComplete(void * jarg1, unsigned int jarg2, void * jarg3) {
   XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
+  bool arg2 ;
+  XTools::XStringPtr *arg3 = 0 ;
+  XTools::XStringPtr tempnull3 ;
+  XTools::XStringPtr temp3 ;
+  XTools::XString *smartarg3 ;
   
   arg1 = (XTools::RoomManagerListener *)jarg1; 
-  (arg1)->OnAnchorUploadComplete();
+  arg2 = jarg2 ? true : false; 
+  
+  // ref_ptr by reference in
+  if ( jarg3 ) {
+    smartarg3 = *( XString **)&jarg3; 
+    temp3 = XTools::ref_ptr<  XString >(smartarg3);
+    arg3 = &temp3;
+  } else {
+    arg3 = &tempnull3;
+  }
+  
+  (arg1)->OnAnchorUploadComplete(arg2,(XTools::XStringPtr const &)*arg3);
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_RoomManagerListener_OnAnchorUploadCompleteSwigExplicitRoomManagerListener(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_RoomManagerListener_OnAnchorUploadCompleteSwigExplicitRoomManagerListener(void * jarg1, unsigned int jarg2, void * jarg3) {
   XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
+  bool arg2 ;
+  XTools::XStringPtr *arg3 = 0 ;
+  XTools::XStringPtr tempnull3 ;
+  XTools::XStringPtr temp3 ;
+  XTools::XString *smartarg3 ;
   
   arg1 = (XTools::RoomManagerListener *)jarg1; 
-  (arg1)->XTools::RoomManagerListener::OnAnchorUploadComplete();
+  arg2 = jarg2 ? true : false; 
+  
+  // ref_ptr by reference in
+  if ( jarg3 ) {
+    smartarg3 = *( XString **)&jarg3; 
+    temp3 = XTools::ref_ptr<  XString >(smartarg3);
+    arg3 = &temp3;
+  } else {
+    arg3 = &tempnull3;
+  }
+  
+  (arg1)->XTools::RoomManagerListener::OnAnchorUploadComplete(arg2,(XTools::XStringPtr const &)*arg3);
 }
 
 

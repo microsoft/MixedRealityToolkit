@@ -36,6 +36,9 @@ public:
 	// Reserve the given size and set the size used to zero
 	void Reset(uint32 newSize);
 
+	// Reserve the given size and mark it as the used size
+	void Resize(uint32 newSize);
+
 	// Set the used size to zero, but do not resize the reserved buffer
 	void Clear();
 

@@ -2778,18 +2778,28 @@ void SwigDirector_RoomManagerListener::OnAnchorsDownloaded(XTools::RoomPtr const
   if (swigjobj) jenv->DeleteLocalRef(swigjobj);
 }
 
-void SwigDirector_RoomManagerListener::OnAnchorUploadComplete() {
+void SwigDirector_RoomManagerListener::OnAnchorUploadComplete(bool successful, XTools::XStringPtr const &failureReason) {
   JNIEnvWrapper swigjnienv(this) ;
   JNIEnv * jenv = swigjnienv.getJNIEnv() ;
   jobject swigjobj = (jobject) NULL ;
+  jboolean jsuccessful  ;
+  jlong jfailureReason = 0 ;
   
   if (!swig_override[6]) {
-    XTools::RoomManagerListener::OnAnchorUploadComplete();
+    XTools::RoomManagerListener::OnAnchorUploadComplete(successful,failureReason);
     return;
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[37], swigjobj);
+    jsuccessful = (jboolean) successful;
+    
+    // ref_ptr by reference directorin
+    if (failureReason) {
+      failureReason->AddRef(); 
+    }
+    *( XString **)&jfailureReason = (&failureReason)->get();
+    
+    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[37], swigjobj, jsuccessful, jfailureReason);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2827,7 +2837,7 @@ void SwigDirector_RoomManagerListener::swig_connect_director(JNIEnv *jenv, jobje
       "OnAnchorsDownloaded", "(Lcom/microsoft/xtools/Room;Lcom/microsoft/xtools/AnchorDownloadRequest;)V", NULL 
     },
     {
-      "OnAnchorUploadComplete", "()V", NULL 
+      "OnAnchorUploadComplete", "(ZLcom/microsoft/xtools/XString;)V", NULL 
     }
   };
   
@@ -9065,25 +9075,59 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerLis
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerListener_1OnAnchorUploadComplete(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerListener_1OnAnchorUploadComplete(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2, jlong jarg3, jobject jarg3_) {
   XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
+  bool arg2 ;
+  XTools::XStringPtr *arg3 = 0 ;
+  XTools::XStringPtr tempnull3 ;
+  XTools::XStringPtr temp3 ;
+  XTools::XString *smartarg3 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
+  (void)jarg3_;
   arg1 = *(XTools::RoomManagerListener **)&jarg1; 
-  (arg1)->OnAnchorUploadComplete();
+  arg2 = jarg2 ? true : false; 
+  
+  // ref_ptr by reference in
+  if ( jarg3 ) {
+    smartarg3 = *( XString **)&jarg3; 
+    temp3 = XTools::ref_ptr<  XString >(smartarg3);
+    arg3 = &temp3;
+  } else {
+    arg3 = &tempnull3;
+  }
+  
+  (arg1)->OnAnchorUploadComplete(arg2,(XTools::XStringPtr const &)*arg3);
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerListener_1OnAnchorUploadCompleteSwigExplicitRoomManagerListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerListener_1OnAnchorUploadCompleteSwigExplicitRoomManagerListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2, jlong jarg3, jobject jarg3_) {
   XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
+  bool arg2 ;
+  XTools::XStringPtr *arg3 = 0 ;
+  XTools::XStringPtr tempnull3 ;
+  XTools::XStringPtr temp3 ;
+  XTools::XString *smartarg3 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
+  (void)jarg3_;
   arg1 = *(XTools::RoomManagerListener **)&jarg1; 
-  (arg1)->XTools::RoomManagerListener::OnAnchorUploadComplete();
+  arg2 = jarg2 ? true : false; 
+  
+  // ref_ptr by reference in
+  if ( jarg3 ) {
+    smartarg3 = *( XString **)&jarg3; 
+    temp3 = XTools::ref_ptr<  XString >(smartarg3);
+    arg3 = &temp3;
+  } else {
+    arg3 = &tempnull3;
+  }
+  
+  (arg1)->XTools::RoomManagerListener::OnAnchorUploadComplete(arg2,(XTools::XStringPtr const &)*arg3);
 }
 
 
@@ -11604,7 +11648,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_swig_1module_1
       "SwigDirector_RoomManagerListener_OnAnchorsDownloaded", "(Lcom/microsoft/xtools/RoomManagerListener;JJ)V" 
     },
     {
-      "SwigDirector_RoomManagerListener_OnAnchorUploadComplete", "(Lcom/microsoft/xtools/RoomManagerListener;)V" 
+      "SwigDirector_RoomManagerListener_OnAnchorUploadComplete", "(Lcom/microsoft/xtools/RoomManagerListener;ZJ)V" 
     },
     {
       "SwigDirector_PairMaker_IsReceiver", "(Lcom/microsoft/xtools/PairMaker;)Z" 

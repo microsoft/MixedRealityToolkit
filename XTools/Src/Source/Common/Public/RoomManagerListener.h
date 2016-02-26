@@ -44,7 +44,7 @@ public:
 	virtual void OnAnchorsDownloaded(const RoomPtr& room, const AnchorDownloadRequestPtr& request) {}
 
 	/// Notification that the upload from this device to the server of new anchor data has finished.  
-	virtual void OnAnchorUploadComplete() {}
+	virtual void OnAnchorUploadComplete(bool successful, const XStringPtr& failureReason) {}
 };
 
 #pragma warning( pop )

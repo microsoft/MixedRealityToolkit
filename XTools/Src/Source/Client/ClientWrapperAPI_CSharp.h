@@ -211,7 +211,7 @@ public:
     virtual void OnUserLeftRoom(XTools::RoomPtr const &room, XTools::UserID user);
     virtual void OnAnchorsChanged(XTools::RoomPtr const &room);
     virtual void OnAnchorsDownloaded(XTools::RoomPtr const &room, XTools::AnchorDownloadRequestPtr const &request);
-    virtual void OnAnchorUploadComplete();
+    virtual void OnAnchorUploadComplete(bool successful, XTools::XStringPtr const &failureReason);
 
     typedef void (SWIGSTDCALL* SWIG_Callback0_t)(void *);
     typedef void (SWIGSTDCALL* SWIG_Callback1_t)(void *);
@@ -219,7 +219,7 @@ public:
     typedef void (SWIGSTDCALL* SWIG_Callback3_t)(void *, int);
     typedef void (SWIGSTDCALL* SWIG_Callback4_t)(void *);
     typedef void (SWIGSTDCALL* SWIG_Callback5_t)(void *, void *);
-    typedef void (SWIGSTDCALL* SWIG_Callback6_t)();
+    typedef void (SWIGSTDCALL* SWIG_Callback6_t)(unsigned int, void *);
     void swig_connect_director(SWIG_Callback0_t callbackOnRoomAdded, SWIG_Callback1_t callbackOnRoomClosed, SWIG_Callback2_t callbackOnUserJoinedRoom, SWIG_Callback3_t callbackOnUserLeftRoom, SWIG_Callback4_t callbackOnAnchorsChanged, SWIG_Callback5_t callbackOnAnchorsDownloaded, SWIG_Callback6_t callbackOnAnchorUploadComplete);
 
 private:

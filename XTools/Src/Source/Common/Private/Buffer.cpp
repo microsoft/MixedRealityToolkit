@@ -90,6 +90,18 @@ void Buffer::Reset(uint32 newSize)
 }
 
 
+void Buffer::Resize(uint32 newSize)
+{
+	if (newSize > m_allocSize)
+	{
+		m_buffer = new byte[newSize];
+		m_allocSize = newSize;
+	}
+
+	m_usedSize = newSize;
+}
+
+
 void Buffer::Clear()
 {
 	m_usedSize = 0;

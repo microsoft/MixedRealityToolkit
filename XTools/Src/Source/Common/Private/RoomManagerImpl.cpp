@@ -223,6 +223,12 @@ void RoomManagerImpl::OnElementDeleted(const ElementPtr& element)
 	{
 		if (m_roomList[i]->GetGUID() == element->GetGUID())
 		{
+			if (m_currentRoom != nullptr &&
+				m_currentRoom->GetID() == m_roomList[i]->GetID())
+			{
+				m_currentRoom = nullptr;
+			}
+
 			closedRoom = m_roomList[i];
 			m_roomList.erase(m_roomList.begin() + i);
 			break;

@@ -12,6 +12,9 @@
       <UniqueIdentifier>{63c7b351-96cf-465a-b91a-d3fd6dbbf6da}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source\Rooms">
+      <UniqueIdentifier>{e174820b-ddba-4ff8-86d5-b3a484359316}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\SessionServer\stdafx.cpp">
@@ -46,6 +49,12 @@
     </ClCompile>
     <ClCompile Include="..\..\Source\SessionServer\SendToForwarder.cpp">
       <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\SessionServer\ServerRoomManager.cpp">
+      <Filter>Source\Rooms</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\SessionServer\ServerRoom.cpp">
+      <Filter>Source\Rooms</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -87,6 +96,12 @@
     </ClInclude>
     <ClInclude Include="..\..\Source\SessionServer\SendToForwarder.h">
       <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\SessionServer\ServerRoomManager.h">
+      <Filter>Source\Rooms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\SessionServer\ServerRoom.h">
+      <Filter>Source\Rooms</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
