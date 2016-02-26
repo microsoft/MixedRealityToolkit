@@ -57,11 +57,11 @@ public:
     virtual ~SwigDirector_IntArrayListener();
     virtual void OnValueChanged(XTools::int32 index, XTools::int32 newValue);
     virtual void OnValueInserted(XTools::int32 index, XTools::int32 value);
-    virtual void OnValueRemoved(XTools::int32 index);
+    virtual void OnValueRemoved(XTools::int32 index, XTools::int32 value);
 
     typedef void (SWIGSTDCALL* SWIG_Callback0_t)(int, int);
     typedef void (SWIGSTDCALL* SWIG_Callback1_t)(int, int);
-    typedef void (SWIGSTDCALL* SWIG_Callback2_t)(int);
+    typedef void (SWIGSTDCALL* SWIG_Callback2_t)(int, int);
     void swig_connect_director(SWIG_Callback0_t callbackOnValueChanged, SWIG_Callback1_t callbackOnValueInserted, SWIG_Callback2_t callbackOnValueRemoved);
 
 private:
@@ -205,25 +205,25 @@ class SwigDirector_RoomManagerListener : public XTools::RoomManagerListener, pub
 public:
     SwigDirector_RoomManagerListener();
     virtual ~SwigDirector_RoomManagerListener();
-    virtual void OnRoomCreated(XTools::RoomPtr const &newRoom);
+    virtual void OnRoomAdded(XTools::RoomPtr const &newRoom);
     virtual void OnRoomClosed(XTools::RoomPtr const &room);
-    virtual void OnUserJoinedRoom(XTools::RoomPtr const &room, XTools::UserPtr const &user);
-    virtual void OnUserLeftRoom(XTools::RoomPtr const &room, XTools::UserPtr const &user);
+    virtual void OnUserJoinedRoom(XTools::RoomPtr const &room, XTools::UserID user);
+    virtual void OnUserLeftRoom(XTools::RoomPtr const &room, XTools::UserID user);
     virtual void OnAnchorsChanged(XTools::RoomPtr const &room);
     virtual void OnAnchorsDownloaded(XTools::RoomPtr const &room, XTools::AnchorDownloadRequestPtr const &request);
     virtual void OnAnchorUploadComplete();
 
     typedef void (SWIGSTDCALL* SWIG_Callback0_t)(void *);
     typedef void (SWIGSTDCALL* SWIG_Callback1_t)(void *);
-    typedef void (SWIGSTDCALL* SWIG_Callback2_t)(void *, void *);
-    typedef void (SWIGSTDCALL* SWIG_Callback3_t)(void *, void *);
+    typedef void (SWIGSTDCALL* SWIG_Callback2_t)(void *, int);
+    typedef void (SWIGSTDCALL* SWIG_Callback3_t)(void *, int);
     typedef void (SWIGSTDCALL* SWIG_Callback4_t)(void *);
     typedef void (SWIGSTDCALL* SWIG_Callback5_t)(void *, void *);
     typedef void (SWIGSTDCALL* SWIG_Callback6_t)();
-    void swig_connect_director(SWIG_Callback0_t callbackOnRoomCreated, SWIG_Callback1_t callbackOnRoomClosed, SWIG_Callback2_t callbackOnUserJoinedRoom, SWIG_Callback3_t callbackOnUserLeftRoom, SWIG_Callback4_t callbackOnAnchorsChanged, SWIG_Callback5_t callbackOnAnchorsDownloaded, SWIG_Callback6_t callbackOnAnchorUploadComplete);
+    void swig_connect_director(SWIG_Callback0_t callbackOnRoomAdded, SWIG_Callback1_t callbackOnRoomClosed, SWIG_Callback2_t callbackOnUserJoinedRoom, SWIG_Callback3_t callbackOnUserLeftRoom, SWIG_Callback4_t callbackOnAnchorsChanged, SWIG_Callback5_t callbackOnAnchorsDownloaded, SWIG_Callback6_t callbackOnAnchorUploadComplete);
 
 private:
-    SWIG_Callback0_t swig_callbackOnRoomCreated;
+    SWIG_Callback0_t swig_callbackOnRoomAdded;
     SWIG_Callback1_t swig_callbackOnRoomClosed;
     SWIG_Callback2_t swig_callbackOnUserJoinedRoom;
     SWIG_Callback3_t swig_callbackOnUserLeftRoom;

@@ -18,14 +18,14 @@ public:
 
 	virtual ElementType GetType() const { return ElementType::UnknownType; }
 
-protected:
-	Syncable() {}
-
 	// Create a new element for this instance in the sync system
-	virtual void BindLocal(const ObjectElementPtr& parent, const std::string& name, const UserPtr& owner) = 0;
+	virtual bool BindLocal(const ObjectElementPtr& parent, const std::string& name, const UserPtr& owner) = 0;
 
 	// Bind this instance to an element that already exists in the sync system
 	virtual void BindRemote(const ElementPtr& element) = 0;
+
+protected:
+	Syncable() {}
 
 	// Set the value of this instance in response to the value being changed remotely
 	virtual void SetValue(int ) {}

@@ -31,7 +31,7 @@ public:
 
 	virtual void NotifyInserted(int32 index, const XValue& newValue) = 0;
 
-	virtual void NotifyRemoved(int32 index) = 0;
+	virtual void NotifyRemoved(int32 index, const XValue& value) = 0;
 };
 
 NAMESPACE_END(Sync)

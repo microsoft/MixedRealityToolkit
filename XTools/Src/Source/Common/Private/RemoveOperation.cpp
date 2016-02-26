@@ -51,6 +51,7 @@ void RemoveOperation::Apply(const SyncContextPtr& context)
 		ArrayElement* arrayElement = reflection_cast<ArrayElement>(modifiedElement);
 		if (XTVERIFY(arrayElement))
 		{
+			m_removedValue = arrayElement->GetXValue(m_index);
 			arrayElement->RemoveXValue(m_index);
 		}
 	}
@@ -101,7 +102,7 @@ void RemoveOperation::Notify(const SyncContextPtr& context) const
 		if (XTVERIFY(arrayElement))
 		{
 			// Notify the listener that the value was updated
-			arrayElement->NotifyRemoved(m_index);
+			arrayElement->NotifyRemoved(m_index, m_removedValue);
 		}
 	}
 }

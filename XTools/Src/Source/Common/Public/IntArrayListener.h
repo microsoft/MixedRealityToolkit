@@ -28,7 +28,7 @@ public:
 	virtual void OnValueInserted(int32 index, int32 value) {}
 
 	/// Called when an element is removed from the array
-	virtual void OnValueRemoved(int32 index) {}
+	virtual void OnValueRemoved(int32 index, int32 value) {}
 };
 
 XTOOLS_NAMESPACE_END

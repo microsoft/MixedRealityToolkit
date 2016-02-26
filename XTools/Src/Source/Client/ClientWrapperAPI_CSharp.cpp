@@ -575,15 +575,17 @@ void SwigDirector_IntArrayListener::OnValueInserted(XTools::int32 index, XTools:
   }
 }
 
-void SwigDirector_IntArrayListener::OnValueRemoved(XTools::int32 index) {
+void SwigDirector_IntArrayListener::OnValueRemoved(XTools::int32 index, XTools::int32 value) {
   int jindex  ;
+  int jvalue  ;
   
   if (!swig_callbackOnValueRemoved) {
-    XTools::IntArrayListener::OnValueRemoved(index);
+    XTools::IntArrayListener::OnValueRemoved(index,value);
     return;
   } else {
     jindex = index;
-    swig_callbackOnValueRemoved(jindex);
+    jvalue = value;
+    swig_callbackOnValueRemoved(jindex, jvalue);
   }
 }
 
@@ -1071,11 +1073,11 @@ SwigDirector_RoomManagerListener::~SwigDirector_RoomManagerListener() {
 }
 
 
-void SwigDirector_RoomManagerListener::OnRoomCreated(XTools::RoomPtr const &newRoom) {
+void SwigDirector_RoomManagerListener::OnRoomAdded(XTools::RoomPtr const &newRoom) {
   void * jnewRoom = 0 ;
   
-  if (!swig_callbackOnRoomCreated) {
-    XTools::RoomManagerListener::OnRoomCreated(newRoom);
+  if (!swig_callbackOnRoomAdded) {
+    XTools::RoomManagerListener::OnRoomAdded(newRoom);
     return;
   } else {
     // ref_ptr by reference directorin
@@ -1084,7 +1086,7 @@ void SwigDirector_RoomManagerListener::OnRoomCreated(XTools::RoomPtr const &newR
     }
     jnewRoom = (&newRoom)->get();
     
-    swig_callbackOnRoomCreated(jnewRoom);
+    swig_callbackOnRoomAdded(jnewRoom);
   }
 }
 
@@ -1105,9 +1107,9 @@ void SwigDirector_RoomManagerListener::OnRoomClosed(XTools::RoomPtr const &room)
   }
 }
 
-void SwigDirector_RoomManagerListener::OnUserJoinedRoom(XTools::RoomPtr const &room, XTools::UserPtr const &user) {
+void SwigDirector_RoomManagerListener::OnUserJoinedRoom(XTools::RoomPtr const &room, XTools::UserID user) {
   void * jroom = 0 ;
-  void * juser = 0 ;
+  int juser  ;
   
   if (!swig_callbackOnUserJoinedRoom) {
     XTools::RoomManagerListener::OnUserJoinedRoom(room,user);
@@ -1119,20 +1121,14 @@ void SwigDirector_RoomManagerListener::OnUserJoinedRoom(XTools::RoomPtr const &r
     }
     jroom = (&room)->get();
     
-    
-    // ref_ptr by reference directorin
-    if (user) {
-      user->AddRef(); 
-    }
-    juser = (&user)->get();
-    
+    juser = user;
     swig_callbackOnUserJoinedRoom(jroom, juser);
   }
 }
 
-void SwigDirector_RoomManagerListener::OnUserLeftRoom(XTools::RoomPtr const &room, XTools::UserPtr const &user) {
+void SwigDirector_RoomManagerListener::OnUserLeftRoom(XTools::RoomPtr const &room, XTools::UserID user) {
   void * jroom = 0 ;
-  void * juser = 0 ;
+  int juser  ;
   
   if (!swig_callbackOnUserLeftRoom) {
     XTools::RoomManagerListener::OnUserLeftRoom(room,user);
@@ -1144,13 +1140,7 @@ void SwigDirector_RoomManagerListener::OnUserLeftRoom(XTools::RoomPtr const &roo
     }
     jroom = (&room)->get();
     
-    
-    // ref_ptr by reference directorin
-    if (user) {
-      user->AddRef(); 
-    }
-    juser = (&user)->get();
-    
+    juser = user;
     swig_callbackOnUserLeftRoom(jroom, juser);
   }
 }
@@ -1206,8 +1196,8 @@ void SwigDirector_RoomManagerListener::OnAnchorUploadComplete() {
   }
 }
 
-void SwigDirector_RoomManagerListener::swig_connect_director(SWIG_Callback0_t callbackOnRoomCreated, SWIG_Callback1_t callbackOnRoomClosed, SWIG_Callback2_t callbackOnUserJoinedRoom, SWIG_Callback3_t callbackOnUserLeftRoom, SWIG_Callback4_t callbackOnAnchorsChanged, SWIG_Callback5_t callbackOnAnchorsDownloaded, SWIG_Callback6_t callbackOnAnchorUploadComplete) {
-  swig_callbackOnRoomCreated = callbackOnRoomCreated;
+void SwigDirector_RoomManagerListener::swig_connect_director(SWIG_Callback0_t callbackOnRoomAdded, SWIG_Callback1_t callbackOnRoomClosed, SWIG_Callback2_t callbackOnUserJoinedRoom, SWIG_Callback3_t callbackOnUserLeftRoom, SWIG_Callback4_t callbackOnAnchorsChanged, SWIG_Callback5_t callbackOnAnchorsDownloaded, SWIG_Callback6_t callbackOnAnchorUploadComplete) {
+  swig_callbackOnRoomAdded = callbackOnRoomAdded;
   swig_callbackOnRoomClosed = callbackOnRoomClosed;
   swig_callbackOnUserJoinedRoom = callbackOnUserJoinedRoom;
   swig_callbackOnUserLeftRoom = callbackOnUserLeftRoom;
@@ -1217,7 +1207,7 @@ void SwigDirector_RoomManagerListener::swig_connect_director(SWIG_Callback0_t ca
 }
 
 void SwigDirector_RoomManagerListener::swig_init_callbacks() {
-  swig_callbackOnRoomCreated = 0;
+  swig_callbackOnRoomAdded = 0;
   swig_callbackOnRoomClosed = 0;
   swig_callbackOnUserJoinedRoom = 0;
   swig_callbackOnUserLeftRoom = 0;
@@ -3381,23 +3371,27 @@ SWIGEXPORT void SWIGSTDCALL CSharp_IntArrayListener_OnValueInsertedSwigExplicitI
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_IntArrayListener_OnValueRemoved(void * jarg1, int jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_IntArrayListener_OnValueRemoved(void * jarg1, int jarg2, int jarg3) {
   XTools::IntArrayListener *arg1 = (XTools::IntArrayListener *) 0 ;
   XTools::int32 arg2 ;
+  XTools::int32 arg3 ;
   
   arg1 = (XTools::IntArrayListener *)jarg1; 
   arg2 = (XTools::int32)jarg2; 
-  (arg1)->OnValueRemoved(arg2);
+  arg3 = (XTools::int32)jarg3; 
+  (arg1)->OnValueRemoved(arg2,arg3);
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_IntArrayListener_OnValueRemovedSwigExplicitIntArrayListener(void * jarg1, int jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_IntArrayListener_OnValueRemovedSwigExplicitIntArrayListener(void * jarg1, int jarg2, int jarg3) {
   XTools::IntArrayListener *arg1 = (XTools::IntArrayListener *) 0 ;
   XTools::int32 arg2 ;
+  XTools::int32 arg3 ;
   
   arg1 = (XTools::IntArrayListener *)jarg1; 
   arg2 = (XTools::int32)jarg2; 
-  (arg1)->XTools::IntArrayListener::OnValueRemoved(arg2);
+  arg3 = (XTools::int32)jarg3; 
+  (arg1)->XTools::IntArrayListener::OnValueRemoved(arg2,arg3);
 }
 
 
@@ -5651,6 +5645,32 @@ SWIGEXPORT long long SWIGSTDCALL CSharp_Room_GetID(void * jarg1) {
 }
 
 
+SWIGEXPORT int SWIGSTDCALL CSharp_Room_GetUserCount(void * jarg1) {
+  int jresult ;
+  XTools::Room *arg1 = (XTools::Room *) 0 ;
+  XTools::int32 result;
+  
+  arg1 = (XTools::Room *)jarg1; 
+  result = (XTools::int32)(arg1)->GetUserCount();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_Room_GetUserID(void * jarg1, int jarg2) {
+  int jresult ;
+  XTools::Room *arg1 = (XTools::Room *) 0 ;
+  XTools::int32 arg2 ;
+  XTools::UserID result;
+  
+  arg1 = (XTools::Room *)jarg1; 
+  arg2 = (XTools::int32)jarg2; 
+  result = (XTools::UserID)(arg1)->GetUserID(arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
 SWIGEXPORT void SWIGSTDCALL CSharp_delete_Room(void * jarg1) {
   XTools::Room *arg1 = (XTools::Room *) 0 ;
   
@@ -5765,7 +5785,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_RoomManagerListener(void * jarg1) {
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_RoomManagerListener_OnRoomCreated(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_RoomManagerListener_OnRoomAdded(void * jarg1, void * jarg2) {
   XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
   XTools::RoomPtr *arg2 = 0 ;
   XTools::RoomPtr tempnull2 ;
@@ -5783,11 +5803,11 @@ SWIGEXPORT void SWIGSTDCALL CSharp_RoomManagerListener_OnRoomCreated(void * jarg
     arg2 = &tempnull2;
   }
   
-  (arg1)->OnRoomCreated((XTools::RoomPtr const &)*arg2);
+  (arg1)->OnRoomAdded((XTools::RoomPtr const &)*arg2);
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_RoomManagerListener_OnRoomCreatedSwigExplicitRoomManagerListener(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_RoomManagerListener_OnRoomAddedSwigExplicitRoomManagerListener(void * jarg1, void * jarg2) {
   XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
   XTools::RoomPtr *arg2 = 0 ;
   XTools::RoomPtr tempnull2 ;
@@ -5805,7 +5825,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_RoomManagerListener_OnRoomCreatedSwigExplicit
     arg2 = &tempnull2;
   }
   
-  (arg1)->XTools::RoomManagerListener::OnRoomCreated((XTools::RoomPtr const &)*arg2);
+  (arg1)->XTools::RoomManagerListener::OnRoomAdded((XTools::RoomPtr const &)*arg2);
 }
 
 
@@ -5853,16 +5873,13 @@ SWIGEXPORT void SWIGSTDCALL CSharp_RoomManagerListener_OnRoomClosedSwigExplicitR
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_RoomManagerListener_OnUserJoinedRoom(void * jarg1, void * jarg2, void * jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_RoomManagerListener_OnUserJoinedRoom(void * jarg1, void * jarg2, int jarg3) {
   XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
   XTools::RoomPtr *arg2 = 0 ;
-  XTools::UserPtr *arg3 = 0 ;
+  XTools::UserID arg3 ;
   XTools::RoomPtr tempnull2 ;
   XTools::RoomPtr temp2 ;
   XTools::Room *smartarg2 ;
-  XTools::UserPtr tempnull3 ;
-  XTools::UserPtr temp3 ;
-  XTools::User *smartarg3 ;
   
   arg1 = (XTools::RoomManagerListener *)jarg1; 
   
@@ -5875,30 +5892,18 @@ SWIGEXPORT void SWIGSTDCALL CSharp_RoomManagerListener_OnUserJoinedRoom(void * j
     arg2 = &tempnull2;
   }
   
-  
-  // ref_ptr by reference in
-  if ( jarg3 ) {
-    smartarg3 = *( User **)&jarg3; 
-    temp3 = XTools::ref_ptr<  User >(smartarg3);
-    arg3 = &temp3;
-  } else {
-    arg3 = &tempnull3;
-  }
-  
-  (arg1)->OnUserJoinedRoom((XTools::RoomPtr const &)*arg2,(XTools::UserPtr const &)*arg3);
+  arg3 = (XTools::UserID)jarg3; 
+  (arg1)->OnUserJoinedRoom((XTools::RoomPtr const &)*arg2,arg3);
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_RoomManagerListener_OnUserJoinedRoomSwigExplicitRoomManagerListener(void * jarg1, void * jarg2, void * jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_RoomManagerListener_OnUserJoinedRoomSwigExplicitRoomManagerListener(void * jarg1, void * jarg2, int jarg3) {
   XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
   XTools::RoomPtr *arg2 = 0 ;
-  XTools::UserPtr *arg3 = 0 ;
+  XTools::UserID arg3 ;
   XTools::RoomPtr tempnull2 ;
   XTools::RoomPtr temp2 ;
   XTools::Room *smartarg2 ;
-  XTools::UserPtr tempnull3 ;
-  XTools::UserPtr temp3 ;
-  XTools::User *smartarg3 ;
   
   arg1 = (XTools::RoomManagerListener *)jarg1; 
   
@@ -5911,30 +5916,18 @@ SWIGEXPORT void SWIGSTDCALL CSharp_RoomManagerListener_OnUserJoinedRoomSwigExpli
     arg2 = &tempnull2;
   }
   
-  
-  // ref_ptr by reference in
-  if ( jarg3 ) {
-    smartarg3 = *( User **)&jarg3; 
-    temp3 = XTools::ref_ptr<  User >(smartarg3);
-    arg3 = &temp3;
-  } else {
-    arg3 = &tempnull3;
-  }
-  
-  (arg1)->XTools::RoomManagerListener::OnUserJoinedRoom((XTools::RoomPtr const &)*arg2,(XTools::UserPtr const &)*arg3);
+  arg3 = (XTools::UserID)jarg3; 
+  (arg1)->XTools::RoomManagerListener::OnUserJoinedRoom((XTools::RoomPtr const &)*arg2,arg3);
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_RoomManagerListener_OnUserLeftRoom(void * jarg1, void * jarg2, void * jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_RoomManagerListener_OnUserLeftRoom(void * jarg1, void * jarg2, int jarg3) {
   XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
   XTools::RoomPtr *arg2 = 0 ;
-  XTools::UserPtr *arg3 = 0 ;
+  XTools::UserID arg3 ;
   XTools::RoomPtr tempnull2 ;
   XTools::RoomPtr temp2 ;
   XTools::Room *smartarg2 ;
-  XTools::UserPtr tempnull3 ;
-  XTools::UserPtr temp3 ;
-  XTools::User *smartarg3 ;
   
   arg1 = (XTools::RoomManagerListener *)jarg1; 
   
@@ -5947,30 +5940,18 @@ SWIGEXPORT void SWIGSTDCALL CSharp_RoomManagerListener_OnUserLeftRoom(void * jar
     arg2 = &tempnull2;
   }
   
-  
-  // ref_ptr by reference in
-  if ( jarg3 ) {
-    smartarg3 = *( User **)&jarg3; 
-    temp3 = XTools::ref_ptr<  User >(smartarg3);
-    arg3 = &temp3;
-  } else {
-    arg3 = &tempnull3;
-  }
-  
-  (arg1)->OnUserLeftRoom((XTools::RoomPtr const &)*arg2,(XTools::UserPtr const &)*arg3);
+  arg3 = (XTools::UserID)jarg3; 
+  (arg1)->OnUserLeftRoom((XTools::RoomPtr const &)*arg2,arg3);
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_RoomManagerListener_OnUserLeftRoomSwigExplicitRoomManagerListener(void * jarg1, void * jarg2, void * jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_RoomManagerListener_OnUserLeftRoomSwigExplicitRoomManagerListener(void * jarg1, void * jarg2, int jarg3) {
   XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
   XTools::RoomPtr *arg2 = 0 ;
-  XTools::UserPtr *arg3 = 0 ;
+  XTools::UserID arg3 ;
   XTools::RoomPtr tempnull2 ;
   XTools::RoomPtr temp2 ;
   XTools::Room *smartarg2 ;
-  XTools::UserPtr tempnull3 ;
-  XTools::UserPtr temp3 ;
-  XTools::User *smartarg3 ;
   
   arg1 = (XTools::RoomManagerListener *)jarg1; 
   
@@ -5983,17 +5964,8 @@ SWIGEXPORT void SWIGSTDCALL CSharp_RoomManagerListener_OnUserLeftRoomSwigExplici
     arg2 = &tempnull2;
   }
   
-  
-  // ref_ptr by reference in
-  if ( jarg3 ) {
-    smartarg3 = *( User **)&jarg3; 
-    temp3 = XTools::ref_ptr<  User >(smartarg3);
-    arg3 = &temp3;
-  } else {
-    arg3 = &tempnull3;
-  }
-  
-  (arg1)->XTools::RoomManagerListener::OnUserLeftRoom((XTools::RoomPtr const &)*arg2,(XTools::UserPtr const &)*arg3);
+  arg3 = (XTools::UserID)jarg3; 
+  (arg1)->XTools::RoomManagerListener::OnUserLeftRoom((XTools::RoomPtr const &)*arg2,arg3);
 }
 
 
@@ -6284,90 +6256,14 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_RoomManager_JoinRoom(void * jarg1, vo
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_RoomManager_LeaveRoom(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_RoomManager_LeaveRoom(void * jarg1) {
   unsigned int jresult ;
   XTools::RoomManager *arg1 = (XTools::RoomManager *) 0 ;
-  XTools::RoomPtr *arg2 = 0 ;
-  XTools::RoomPtr tempnull2 ;
-  XTools::RoomPtr temp2 ;
-  XTools::Room *smartarg2 ;
   bool result;
   
   arg1 = (XTools::RoomManager *)jarg1; 
-  
-  // ref_ptr by reference in
-  if ( jarg2 ) {
-    smartarg2 = *( Room **)&jarg2; 
-    temp2 = XTools::ref_ptr<  Room >(smartarg2);
-    arg2 = &temp2;
-  } else {
-    arg2 = &tempnull2;
-  }
-  
-  result = (bool)(arg1)->LeaveRoom((XTools::RoomPtr const &)*arg2);
+  result = (bool)(arg1)->LeaveRoom();
   jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_RoomManager_GetUserCount(void * jarg1, void * jarg2) {
-  int jresult ;
-  XTools::RoomManager *arg1 = (XTools::RoomManager *) 0 ;
-  XTools::RoomPtr *arg2 = 0 ;
-  XTools::RoomPtr tempnull2 ;
-  XTools::RoomPtr temp2 ;
-  XTools::Room *smartarg2 ;
-  XTools::int32 result;
-  
-  arg1 = (XTools::RoomManager *)jarg1; 
-  
-  // ref_ptr by reference in
-  if ( jarg2 ) {
-    smartarg2 = *( Room **)&jarg2; 
-    temp2 = XTools::ref_ptr<  Room >(smartarg2);
-    arg2 = &temp2;
-  } else {
-    arg2 = &tempnull2;
-  }
-  
-  result = (XTools::int32)(arg1)->GetUserCount((XTools::RoomPtr const &)*arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_RoomManager_GetUser(void * jarg1, void * jarg2, int jarg3) {
-  void * jresult ;
-  XTools::RoomManager *arg1 = (XTools::RoomManager *) 0 ;
-  XTools::RoomPtr *arg2 = 0 ;
-  XTools::int32 arg3 ;
-  XTools::RoomPtr tempnull2 ;
-  XTools::RoomPtr temp2 ;
-  XTools::Room *smartarg2 ;
-  XTools::UserPtr result;
-  
-  arg1 = (XTools::RoomManager *)jarg1; 
-  
-  // ref_ptr by reference in
-  if ( jarg2 ) {
-    smartarg2 = *( Room **)&jarg2; 
-    temp2 = XTools::ref_ptr<  Room >(smartarg2);
-    arg2 = &temp2;
-  } else {
-    arg2 = &tempnull2;
-  }
-  
-  arg3 = (XTools::int32)jarg3; 
-  result = (arg1)->GetUser((XTools::RoomPtr const &)*arg2,arg3);
-  
-  // ref_ptr by value out
-  if (result) {
-    result->AddRef();
-    *( User **)&jresult = (&result)->get();
-  } else {
-    *( User **)&jresult = 0; 
-  }
-  
   return jresult;
 }
 

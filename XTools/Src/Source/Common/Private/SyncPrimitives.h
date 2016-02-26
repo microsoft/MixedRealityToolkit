@@ -57,15 +57,16 @@ public:
 
 	operator const primitiveType() const { return Get(); }
 
-
-protected:
-	virtual void BindLocal(const ObjectElementPtr& parent, const std::string& name, const UserPtr&) XTOVERRIDE
+	virtual bool BindLocal(const ObjectElementPtr& parent, const std::string& name, const UserPtr&) XTOVERRIDE
 	{
 		m_element = CreateElement(parent, name, m_value);
 		if (!XTVERIFY(m_element != nullptr))
 		{
 			LogError("Failed to create sync element for object %s", name.c_str());
+			return false;
 		}
+
+		return true;
 	}
 
 
@@ -82,6 +83,7 @@ protected:
 		}
 	}
 
+protected:
 
 	virtual void SetValue(primitiveType newValue) 
 	{

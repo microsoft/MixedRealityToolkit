@@ -30,6 +30,7 @@ public:
 private:
 	XGuid					m_elementGuid;
 	int32					m_index;
+	XValue					m_removedValue;
 };
 
 DECLARE_PTR(RemoveOperation)

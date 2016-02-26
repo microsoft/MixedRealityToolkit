@@ -71,7 +71,7 @@ public:
 	// IntArrayListener Functions:
 	virtual void OnValueChanged(int32 index, int32 newValue) XTOVERRIDE;
 	virtual void OnValueInserted(int32 index, int32 value) XTOVERRIDE;
-	virtual void OnValueRemoved(int32 index) XTOVERRIDE;
+	virtual void OnValueRemoved(int32 index, int32 value) XTOVERRIDE;
 
 private:
 	std::vector<ref_ptr<SyncTestObject> >	m_children;

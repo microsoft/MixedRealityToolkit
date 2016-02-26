@@ -89,7 +89,7 @@ public:
 
 	virtual void NotifyInserted(int32 index, const XValue& newValue) XTOVERRIDE;
 
-	virtual void NotifyRemoved(int32 index) XTOVERRIDE;
+	virtual void NotifyRemoved(int32 index, const XValue& value) XTOVERRIDE;
 
 private:
 	SyncContext*		m_syncContext;

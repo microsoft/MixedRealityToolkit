@@ -524,7 +524,7 @@ void SyncTestObject::OnValueInserted(int32 index, int32 value)
 }
 
 
-void SyncTestObject::OnValueRemoved(int32 index)
+void SyncTestObject::OnValueRemoved(int32 index, int32 )
 {
 	m_intArrayMember.erase(m_intArrayMember.begin() + index);
 }

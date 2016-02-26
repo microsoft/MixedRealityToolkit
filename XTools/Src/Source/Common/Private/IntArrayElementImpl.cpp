@@ -271,9 +271,9 @@ void IntArrayElementImpl::NotifyInserted(int32 index, const XValue& newValue)
 }
 
 
-void IntArrayElementImpl::NotifyRemoved(int32 index)
+void IntArrayElementImpl::NotifyRemoved(int32 index, const XValue& value)
 {
-	m_listenerList->NotifyListeners(&IntArrayListener::OnValueRemoved, index);
+	m_listenerList->NotifyListeners(&IntArrayListener::OnValueRemoved, index, *(value.Get<int32>()));
 }
 
 

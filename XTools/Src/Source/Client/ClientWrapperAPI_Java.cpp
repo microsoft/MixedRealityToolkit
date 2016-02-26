@@ -1556,20 +1556,22 @@ void SwigDirector_IntArrayListener::OnValueInserted(XTools::int32 index, XTools:
   if (swigjobj) jenv->DeleteLocalRef(swigjobj);
 }
 
-void SwigDirector_IntArrayListener::OnValueRemoved(XTools::int32 index) {
+void SwigDirector_IntArrayListener::OnValueRemoved(XTools::int32 index, XTools::int32 value) {
   JNIEnvWrapper swigjnienv(this) ;
   JNIEnv * jenv = swigjnienv.getJNIEnv() ;
   jobject swigjobj = (jobject) NULL ;
   jint jindex  ;
+  jint jvalue  ;
   
   if (!swig_override[2]) {
-    XTools::IntArrayListener::OnValueRemoved(index);
+    XTools::IntArrayListener::OnValueRemoved(index,value);
     return;
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
     jindex = (jint) index;
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[7], swigjobj, jindex);
+    jvalue = (jint) value;
+    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[7], swigjobj, jindex, jvalue);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -1595,7 +1597,7 @@ void SwigDirector_IntArrayListener::swig_connect_director(JNIEnv *jenv, jobject 
       "OnValueInserted", "(II)V", NULL 
     },
     {
-      "OnValueRemoved", "(I)V", NULL 
+      "OnValueRemoved", "(II)V", NULL 
     }
   };
   
@@ -2578,14 +2580,14 @@ SwigDirector_RoomManagerListener::~SwigDirector_RoomManagerListener() {
 }
 
 
-void SwigDirector_RoomManagerListener::OnRoomCreated(XTools::RoomPtr const &newRoom) {
+void SwigDirector_RoomManagerListener::OnRoomAdded(XTools::RoomPtr const &newRoom) {
   JNIEnvWrapper swigjnienv(this) ;
   JNIEnv * jenv = swigjnienv.getJNIEnv() ;
   jobject swigjobj = (jobject) NULL ;
   jlong jnewRoom = 0 ;
   
   if (!swig_override[0]) {
-    XTools::RoomManagerListener::OnRoomCreated(newRoom);
+    XTools::RoomManagerListener::OnRoomAdded(newRoom);
     return;
   }
   swigjobj = swig_get_self(jenv);
@@ -2604,7 +2606,7 @@ void SwigDirector_RoomManagerListener::OnRoomCreated(XTools::RoomPtr const &newR
     }
     
   } else {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in XTools::RoomManagerListener::OnRoomCreated ");
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in XTools::RoomManagerListener::OnRoomAdded ");
   }
   if (swigjobj) jenv->DeleteLocalRef(swigjobj);
 }
@@ -2640,12 +2642,12 @@ void SwigDirector_RoomManagerListener::OnRoomClosed(XTools::RoomPtr const &room)
   if (swigjobj) jenv->DeleteLocalRef(swigjobj);
 }
 
-void SwigDirector_RoomManagerListener::OnUserJoinedRoom(XTools::RoomPtr const &room, XTools::UserPtr const &user) {
+void SwigDirector_RoomManagerListener::OnUserJoinedRoom(XTools::RoomPtr const &room, XTools::UserID user) {
   JNIEnvWrapper swigjnienv(this) ;
   JNIEnv * jenv = swigjnienv.getJNIEnv() ;
   jobject swigjobj = (jobject) NULL ;
   jlong jroom = 0 ;
-  jlong juser = 0 ;
+  jint juser  ;
   
   if (!swig_override[2]) {
     XTools::RoomManagerListener::OnUserJoinedRoom(room,user);
@@ -2659,13 +2661,7 @@ void SwigDirector_RoomManagerListener::OnUserJoinedRoom(XTools::RoomPtr const &r
     }
     *( Room **)&jroom = (&room)->get();
     
-    
-    // ref_ptr by reference directorin
-    if (user) {
-      user->AddRef(); 
-    }
-    *( User **)&juser = (&user)->get();
-    
+    juser = (jint) user;
     jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[33], swigjobj, jroom, juser);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
@@ -2679,12 +2675,12 @@ void SwigDirector_RoomManagerListener::OnUserJoinedRoom(XTools::RoomPtr const &r
   if (swigjobj) jenv->DeleteLocalRef(swigjobj);
 }
 
-void SwigDirector_RoomManagerListener::OnUserLeftRoom(XTools::RoomPtr const &room, XTools::UserPtr const &user) {
+void SwigDirector_RoomManagerListener::OnUserLeftRoom(XTools::RoomPtr const &room, XTools::UserID user) {
   JNIEnvWrapper swigjnienv(this) ;
   JNIEnv * jenv = swigjnienv.getJNIEnv() ;
   jobject swigjobj = (jobject) NULL ;
   jlong jroom = 0 ;
-  jlong juser = 0 ;
+  jint juser  ;
   
   if (!swig_override[3]) {
     XTools::RoomManagerListener::OnUserLeftRoom(room,user);
@@ -2698,13 +2694,7 @@ void SwigDirector_RoomManagerListener::OnUserLeftRoom(XTools::RoomPtr const &roo
     }
     *( Room **)&jroom = (&room)->get();
     
-    
-    // ref_ptr by reference directorin
-    if (user) {
-      user->AddRef(); 
-    }
-    *( User **)&juser = (&user)->get();
-    
+    juser = (jint) user;
     jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[34], swigjobj, jroom, juser);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
@@ -2819,16 +2809,16 @@ void SwigDirector_RoomManagerListener::swig_connect_director(JNIEnv *jenv, jobje
     jmethodID base_methid;
   } methods[] = {
     {
-      "OnRoomCreated", "(Lcom/microsoft/xtools/Room;)V", NULL 
+      "OnRoomAdded", "(Lcom/microsoft/xtools/Room;)V", NULL 
     },
     {
       "OnRoomClosed", "(Lcom/microsoft/xtools/Room;)V", NULL 
     },
     {
-      "OnUserJoinedRoom", "(Lcom/microsoft/xtools/Room;Lcom/microsoft/xtools/User;)V", NULL 
+      "OnUserJoinedRoom", "(Lcom/microsoft/xtools/Room;I)V", NULL 
     },
     {
-      "OnUserLeftRoom", "(Lcom/microsoft/xtools/Room;Lcom/microsoft/xtools/User;)V", NULL 
+      "OnUserLeftRoom", "(Lcom/microsoft/xtools/Room;I)V", NULL 
     },
     {
       "OnAnchorsChanged", "(Lcom/microsoft/xtools/Room;)V", NULL 
@@ -5752,29 +5742,33 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayListen
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayListener_1OnValueRemoved(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayListener_1OnValueRemoved(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3) {
   XTools::IntArrayListener *arg1 = (XTools::IntArrayListener *) 0 ;
   XTools::int32 arg2 ;
+  XTools::int32 arg3 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(XTools::IntArrayListener **)&jarg1; 
   arg2 = (XTools::int32)jarg2; 
-  (arg1)->OnValueRemoved(arg2);
+  arg3 = (XTools::int32)jarg3; 
+  (arg1)->OnValueRemoved(arg2,arg3);
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayListener_1OnValueRemovedSwigExplicitIntArrayListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayListener_1OnValueRemovedSwigExplicitIntArrayListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3) {
   XTools::IntArrayListener *arg1 = (XTools::IntArrayListener *) 0 ;
   XTools::int32 arg2 ;
+  XTools::int32 arg3 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(XTools::IntArrayListener **)&jarg1; 
   arg2 = (XTools::int32)jarg2; 
-  (arg1)->XTools::IntArrayListener::OnValueRemoved(arg2);
+  arg3 = (XTools::int32)jarg3; 
+  (arg1)->XTools::IntArrayListener::OnValueRemoved(arg2,arg3);
 }
 
 
@@ -8550,6 +8544,38 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Room_1GetID(J
 }
 
 
+SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Room_1GetUserCount(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jint jresult = 0 ;
+  XTools::Room *arg1 = (XTools::Room *) 0 ;
+  XTools::int32 result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(XTools::Room **)&jarg1; 
+  result = (XTools::int32)(arg1)->GetUserCount();
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Room_1GetUserID(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  jint jresult = 0 ;
+  XTools::Room *arg1 = (XTools::Room *) 0 ;
+  XTools::int32 arg2 ;
+  XTools::UserID result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(XTools::Room **)&jarg1; 
+  arg2 = (XTools::int32)jarg2; 
+  result = (XTools::UserID)(arg1)->GetUserID(arg2);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
 SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1Room(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::Room *arg1 = (XTools::Room *) 0 ;
   
@@ -8689,7 +8715,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1RoomMa
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerListener_1OnRoomCreated(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerListener_1OnRoomAdded(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
   XTools::RoomPtr *arg2 = 0 ;
   XTools::RoomPtr tempnull2 ;
@@ -8711,11 +8737,11 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerLis
     arg2 = &tempnull2;
   }
   
-  (arg1)->OnRoomCreated((XTools::RoomPtr const &)*arg2);
+  (arg1)->OnRoomAdded((XTools::RoomPtr const &)*arg2);
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerListener_1OnRoomCreatedSwigExplicitRoomManagerListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerListener_1OnRoomAddedSwigExplicitRoomManagerListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
   XTools::RoomPtr *arg2 = 0 ;
   XTools::RoomPtr tempnull2 ;
@@ -8737,7 +8763,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerLis
     arg2 = &tempnull2;
   }
   
-  (arg1)->XTools::RoomManagerListener::OnRoomCreated((XTools::RoomPtr const &)*arg2);
+  (arg1)->XTools::RoomManagerListener::OnRoomAdded((XTools::RoomPtr const &)*arg2);
 }
 
 
@@ -8793,22 +8819,18 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerLis
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerListener_1OnUserJoinedRoom(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerListener_1OnUserJoinedRoom(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3) {
   XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
   XTools::RoomPtr *arg2 = 0 ;
-  XTools::UserPtr *arg3 = 0 ;
+  XTools::UserID arg3 ;
   XTools::RoomPtr tempnull2 ;
   XTools::RoomPtr temp2 ;
   XTools::Room *smartarg2 ;
-  XTools::UserPtr tempnull3 ;
-  XTools::UserPtr temp3 ;
-  XTools::User *smartarg3 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   (void)jarg2_;
-  (void)jarg3_;
   arg1 = *(XTools::RoomManagerListener **)&jarg1; 
   
   // ref_ptr by reference in
@@ -8820,36 +8842,23 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerLis
     arg2 = &tempnull2;
   }
   
-  
-  // ref_ptr by reference in
-  if ( jarg3 ) {
-    smartarg3 = *( User **)&jarg3; 
-    temp3 = XTools::ref_ptr<  User >(smartarg3);
-    arg3 = &temp3;
-  } else {
-    arg3 = &tempnull3;
-  }
-  
-  (arg1)->OnUserJoinedRoom((XTools::RoomPtr const &)*arg2,(XTools::UserPtr const &)*arg3);
+  arg3 = (XTools::UserID)jarg3; 
+  (arg1)->OnUserJoinedRoom((XTools::RoomPtr const &)*arg2,arg3);
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerListener_1OnUserJoinedRoomSwigExplicitRoomManagerListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerListener_1OnUserJoinedRoomSwigExplicitRoomManagerListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3) {
   XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
   XTools::RoomPtr *arg2 = 0 ;
-  XTools::UserPtr *arg3 = 0 ;
+  XTools::UserID arg3 ;
   XTools::RoomPtr tempnull2 ;
   XTools::RoomPtr temp2 ;
   XTools::Room *smartarg2 ;
-  XTools::UserPtr tempnull3 ;
-  XTools::UserPtr temp3 ;
-  XTools::User *smartarg3 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   (void)jarg2_;
-  (void)jarg3_;
   arg1 = *(XTools::RoomManagerListener **)&jarg1; 
   
   // ref_ptr by reference in
@@ -8861,36 +8870,23 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerLis
     arg2 = &tempnull2;
   }
   
-  
-  // ref_ptr by reference in
-  if ( jarg3 ) {
-    smartarg3 = *( User **)&jarg3; 
-    temp3 = XTools::ref_ptr<  User >(smartarg3);
-    arg3 = &temp3;
-  } else {
-    arg3 = &tempnull3;
-  }
-  
-  (arg1)->XTools::RoomManagerListener::OnUserJoinedRoom((XTools::RoomPtr const &)*arg2,(XTools::UserPtr const &)*arg3);
+  arg3 = (XTools::UserID)jarg3; 
+  (arg1)->XTools::RoomManagerListener::OnUserJoinedRoom((XTools::RoomPtr const &)*arg2,arg3);
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerListener_1OnUserLeftRoom(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerListener_1OnUserLeftRoom(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3) {
   XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
   XTools::RoomPtr *arg2 = 0 ;
-  XTools::UserPtr *arg3 = 0 ;
+  XTools::UserID arg3 ;
   XTools::RoomPtr tempnull2 ;
   XTools::RoomPtr temp2 ;
   XTools::Room *smartarg2 ;
-  XTools::UserPtr tempnull3 ;
-  XTools::UserPtr temp3 ;
-  XTools::User *smartarg3 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   (void)jarg2_;
-  (void)jarg3_;
   arg1 = *(XTools::RoomManagerListener **)&jarg1; 
   
   // ref_ptr by reference in
@@ -8902,36 +8898,23 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerLis
     arg2 = &tempnull2;
   }
   
-  
-  // ref_ptr by reference in
-  if ( jarg3 ) {
-    smartarg3 = *( User **)&jarg3; 
-    temp3 = XTools::ref_ptr<  User >(smartarg3);
-    arg3 = &temp3;
-  } else {
-    arg3 = &tempnull3;
-  }
-  
-  (arg1)->OnUserLeftRoom((XTools::RoomPtr const &)*arg2,(XTools::UserPtr const &)*arg3);
+  arg3 = (XTools::UserID)jarg3; 
+  (arg1)->OnUserLeftRoom((XTools::RoomPtr const &)*arg2,arg3);
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerListener_1OnUserLeftRoomSwigExplicitRoomManagerListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerListener_1OnUserLeftRoomSwigExplicitRoomManagerListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3) {
   XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
   XTools::RoomPtr *arg2 = 0 ;
-  XTools::UserPtr *arg3 = 0 ;
+  XTools::UserID arg3 ;
   XTools::RoomPtr tempnull2 ;
   XTools::RoomPtr temp2 ;
   XTools::Room *smartarg2 ;
-  XTools::UserPtr tempnull3 ;
-  XTools::UserPtr temp3 ;
-  XTools::User *smartarg3 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   (void)jarg2_;
-  (void)jarg3_;
   arg1 = *(XTools::RoomManagerListener **)&jarg1; 
   
   // ref_ptr by reference in
@@ -8943,17 +8926,8 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerLis
     arg2 = &tempnull2;
   }
   
-  
-  // ref_ptr by reference in
-  if ( jarg3 ) {
-    smartarg3 = *( User **)&jarg3; 
-    temp3 = XTools::ref_ptr<  User >(smartarg3);
-    arg3 = &temp3;
-  } else {
-    arg3 = &tempnull3;
-  }
-  
-  (arg1)->XTools::RoomManagerListener::OnUserLeftRoom((XTools::RoomPtr const &)*arg2,(XTools::UserPtr const &)*arg3);
+  arg3 = (XTools::UserID)jarg3; 
+  (arg1)->XTools::RoomManagerListener::OnUserLeftRoom((XTools::RoomPtr const &)*arg2,arg3);
 }
 
 
@@ -9306,102 +9280,17 @@ SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManage
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManager_1LeaveRoom(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManager_1LeaveRoom(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   XTools::RoomManager *arg1 = (XTools::RoomManager *) 0 ;
-  XTools::RoomPtr *arg2 = 0 ;
-  XTools::RoomPtr tempnull2 ;
-  XTools::RoomPtr temp2 ;
-  XTools::Room *smartarg2 ;
   bool result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  (void)jarg2_;
   arg1 = *(XTools::RoomManager **)&jarg1; 
-  
-  // ref_ptr by reference in
-  if ( jarg2 ) {
-    smartarg2 = *( Room **)&jarg2; 
-    temp2 = XTools::ref_ptr<  Room >(smartarg2);
-    arg2 = &temp2;
-  } else {
-    arg2 = &tempnull2;
-  }
-  
-  result = (bool)(arg1)->LeaveRoom((XTools::RoomPtr const &)*arg2);
+  result = (bool)(arg1)->LeaveRoom();
   jresult = (jboolean)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManager_1GetUserCount(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
-  jint jresult = 0 ;
-  XTools::RoomManager *arg1 = (XTools::RoomManager *) 0 ;
-  XTools::RoomPtr *arg2 = 0 ;
-  XTools::RoomPtr tempnull2 ;
-  XTools::RoomPtr temp2 ;
-  XTools::Room *smartarg2 ;
-  XTools::int32 result;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  (void)jarg2_;
-  arg1 = *(XTools::RoomManager **)&jarg1; 
-  
-  // ref_ptr by reference in
-  if ( jarg2 ) {
-    smartarg2 = *( Room **)&jarg2; 
-    temp2 = XTools::ref_ptr<  Room >(smartarg2);
-    arg2 = &temp2;
-  } else {
-    arg2 = &tempnull2;
-  }
-  
-  result = (XTools::int32)(arg1)->GetUserCount((XTools::RoomPtr const &)*arg2);
-  jresult = (jint)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManager_1GetUser(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3) {
-  jlong jresult = 0 ;
-  XTools::RoomManager *arg1 = (XTools::RoomManager *) 0 ;
-  XTools::RoomPtr *arg2 = 0 ;
-  XTools::int32 arg3 ;
-  XTools::RoomPtr tempnull2 ;
-  XTools::RoomPtr temp2 ;
-  XTools::Room *smartarg2 ;
-  XTools::UserPtr result;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  (void)jarg2_;
-  arg1 = *(XTools::RoomManager **)&jarg1; 
-  
-  // ref_ptr by reference in
-  if ( jarg2 ) {
-    smartarg2 = *( Room **)&jarg2; 
-    temp2 = XTools::ref_ptr<  Room >(smartarg2);
-    arg2 = &temp2;
-  } else {
-    arg2 = &tempnull2;
-  }
-  
-  arg3 = (XTools::int32)jarg3; 
-  result = (arg1)->GetUser((XTools::RoomPtr const &)*arg2,arg3);
-  
-  // ref_ptr by value out
-  if (result) {
-    result->AddRef();
-    *( User **)&jresult = result.get();
-  } else {
-    *( User **)&jresult = 0; 
-  }
-  
   return jresult;
 }
 
@@ -11625,7 +11514,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_swig_1module_1
       "SwigDirector_IntArrayListener_OnValueInserted", "(Lcom/microsoft/xtools/IntArrayListener;II)V" 
     },
     {
-      "SwigDirector_IntArrayListener_OnValueRemoved", "(Lcom/microsoft/xtools/IntArrayListener;I)V" 
+      "SwigDirector_IntArrayListener_OnValueRemoved", "(Lcom/microsoft/xtools/IntArrayListener;II)V" 
     },
     {
       "SwigDirector_ObjectElementListener_OnIntElementChanged", "(Lcom/microsoft/xtools/ObjectElementListener;JI)V" 
@@ -11697,16 +11586,16 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_swig_1module_1
       "SwigDirector_UserPresenceManagerListener_OnUserPresenceChanged", "(Lcom/microsoft/xtools/UserPresenceManagerListener;J)V" 
     },
     {
-      "SwigDirector_RoomManagerListener_OnRoomCreated", "(Lcom/microsoft/xtools/RoomManagerListener;J)V" 
+      "SwigDirector_RoomManagerListener_OnRoomAdded", "(Lcom/microsoft/xtools/RoomManagerListener;J)V" 
     },
     {
       "SwigDirector_RoomManagerListener_OnRoomClosed", "(Lcom/microsoft/xtools/RoomManagerListener;J)V" 
     },
     {
-      "SwigDirector_RoomManagerListener_OnUserJoinedRoom", "(Lcom/microsoft/xtools/RoomManagerListener;JJ)V" 
+      "SwigDirector_RoomManagerListener_OnUserJoinedRoom", "(Lcom/microsoft/xtools/RoomManagerListener;JI)V" 
     },
     {
-      "SwigDirector_RoomManagerListener_OnUserLeftRoom", "(Lcom/microsoft/xtools/RoomManagerListener;JJ)V" 
+      "SwigDirector_RoomManagerListener_OnUserLeftRoom", "(Lcom/microsoft/xtools/RoomManagerListener;JI)V" 
     },
     {
       "SwigDirector_RoomManagerListener_OnAnchorsChanged", "(Lcom/microsoft/xtools/RoomManagerListener;J)V" 

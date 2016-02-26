@@ -84,3 +84,4 @@
 #include <Private/SyncObject.h>
 #include <Private/SyncPrimitives.h>
 #include <Private/SyncEnum.h>
+#include <Private/SyncArray.h>

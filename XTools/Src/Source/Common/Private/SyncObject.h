@@ -15,7 +15,10 @@ class SyncObject : public Syncable, public ObjectElementListener
 	XTOOLS_REFLECTION_DECLARE(SyncObject)
 
 public:
-	 
+	// Syncable Functions
+	virtual bool BindLocal(const ObjectElementPtr& parent, const std::string& name, const UserPtr& owner) XTOVERRIDE;
+	virtual void BindRemote(const ElementPtr& element) XTOVERRIDE;
+
 protected:
 	typedef Callback<XGuid> MemberCallback;
 
@@ -25,10 +28,6 @@ protected:
 
 	void AddMember(Syncable* memberSyncable, const std::string& name);
 	void AddMember(Syncable* memberSyncable, const std::string& name, MemberCallback onChangeCallback);
-
-	// Syncable Functions
-	virtual void BindLocal(const ObjectElementPtr& parent, const std::string& name, const UserPtr& owner) XTOVERRIDE;
-	virtual void BindRemote(const ElementPtr& element) XTOVERRIDE;
 
 private:
 	// ObjectElementListener Functions:

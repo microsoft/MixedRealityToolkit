@@ -7,7 +7,6 @@
 #pragma once
 
 #include "RoomImpl.h"
-#include "RoomUserList.h"
 
 XTOOLS_NAMESPACE_BEGIN
 
@@ -50,13 +49,7 @@ public:
 
 	/// Remove the local user from the given room.  
 	/// Returns true on success
-	virtual bool LeaveRoom(const RoomPtr& room) XTOVERRIDE;
-
-	/// Returns the total number of users in the given room
-	virtual int32 GetUserCount(const RoomPtr& room) XTOVERRIDE;
-
-	/// Returns the user at the given index in the given room
-	virtual UserPtr GetUser(const RoomPtr& room, int32 userIndex) XTOVERRIDE;
+	virtual bool LeaveRoom() XTOVERRIDE;
 
 	/// Returns the number of anchors for a particular room
 	virtual int32 GetAnchorCount(const RoomPtr& room) XTOVERRIDE;
@@ -88,8 +81,7 @@ private:
 	RoomListenerListPtr						m_listenerList;
 	ObjectElementPtr						m_element;
 	std::vector<RoomImplPtr>				m_roomList;
-
-
+	RoomImplPtr								m_currentRoom;
 };
 
 DECLARE_PTR(RoomManagerImpl)

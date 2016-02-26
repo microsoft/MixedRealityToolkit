@@ -23,6 +23,12 @@ public:
 
 	/// Returns the unique ID of the room
 	virtual RoomID GetID() const = 0;
+
+	/// Returns the total number of users in the room
+	virtual int32 GetUserCount() = 0;
+
+	/// Returns the user at the given index in the room
+	virtual UserID GetUserID(int32 userIndex) = 0;
 };
 
 DECLARE_PTR(Room)

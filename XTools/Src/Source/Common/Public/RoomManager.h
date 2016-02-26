@@ -40,15 +40,9 @@ public:
 	/// Returns true on success
 	virtual bool JoinRoom(const RoomPtr& room) = 0;
 
-	/// Remove the local user from the given room.  
+	/// Remove the local user from their current room.  
 	/// Returns true on success
-	virtual bool LeaveRoom(const RoomPtr& room) = 0;
-	
-	/// Returns the total number of users in the given room
-	virtual int32 GetUserCount(const RoomPtr& room) = 0;
-
-	/// Returns the user at the given index in the given room
-	virtual UserPtr GetUser(const RoomPtr& room, int32 userIndex) = 0;
+	virtual bool LeaveRoom() = 0;
 
 	/// Returns the number of anchors for a particular room
 	virtual int32 GetAnchorCount(const RoomPtr& room) = 0;

@@ -109,7 +109,7 @@ void SyncObject::OnElementValueChanged(XGuid elementID, T newValue)
 }
 
 
-void SyncObject::BindLocal(const ObjectElementPtr& parent, const std::string& name, const UserPtr& owner)
+bool SyncObject::BindLocal(const ObjectElementPtr& parent, const std::string& name, const UserPtr& owner)
 {
 	m_element = parent->CreateObjectElement(new XString(name), owner.get());
 	if (XTVERIFY(m_element != nullptr))
@@ -127,10 +127,13 @@ void SyncObject::BindLocal(const ObjectElementPtr& parent, const std::string& na
 			// Register the member's new XGuid with the callback maps
 			m_memberMap[currentSyncable->GetGUID()] = currentSyncable;
 		}
+
+		return true;
 	}
 	else
 	{
 		LogError("Failed to create sync element for object %s", name.c_str());
+		return false;
 	}
 }
 

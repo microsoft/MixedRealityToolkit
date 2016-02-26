@@ -435,6 +435,9 @@
     <ClCompile Include="..\..\Source\Common\Private\ArrayTransforms.cpp">
       <Filter>Source\Private\Sync\Transforms</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\IntArrayAdapter.cpp">
+      <Filter>Source\Private\Sync\Utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\Common\Common.h">
@@ -991,6 +994,12 @@
     </ClInclude>
     <ClInclude Include="..\..\Source\Common\Public\IntArrayListener.h">
       <Filter>Source\Public\Sync\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\IntArrayAdapter.h">
+      <Filter>Source\Private\Sync\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\SyncArray.h">
+      <Filter>Source\Private\Sync\Utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

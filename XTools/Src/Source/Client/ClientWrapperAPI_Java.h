@@ -52,7 +52,7 @@ public:
     virtual ~SwigDirector_IntArrayListener();
     virtual void OnValueChanged(XTools::int32 index, XTools::int32 newValue);
     virtual void OnValueInserted(XTools::int32 index, XTools::int32 value);
-    virtual void OnValueRemoved(XTools::int32 index);
+    virtual void OnValueRemoved(XTools::int32 index, XTools::int32 value);
 public:
     bool swig_overrides(int n) {
       return (n < 3 ? swig_override[n] : false);
@@ -160,10 +160,10 @@ public:
     void swig_connect_director(JNIEnv *jenv, jobject jself, jclass jcls, bool swig_mem_own, bool weak_global);
     SwigDirector_RoomManagerListener(JNIEnv *jenv);
     virtual ~SwigDirector_RoomManagerListener();
-    virtual void OnRoomCreated(XTools::RoomPtr const &newRoom);
+    virtual void OnRoomAdded(XTools::RoomPtr const &newRoom);
     virtual void OnRoomClosed(XTools::RoomPtr const &room);
-    virtual void OnUserJoinedRoom(XTools::RoomPtr const &room, XTools::UserPtr const &user);
-    virtual void OnUserLeftRoom(XTools::RoomPtr const &room, XTools::UserPtr const &user);
+    virtual void OnUserJoinedRoom(XTools::RoomPtr const &room, XTools::UserID user);
+    virtual void OnUserLeftRoom(XTools::RoomPtr const &room, XTools::UserID user);
     virtual void OnAnchorsChanged(XTools::RoomPtr const &room);
     virtual void OnAnchorsDownloaded(XTools::RoomPtr const &room, XTools::AnchorDownloadRequestPtr const &request);
     virtual void OnAnchorUploadComplete();
