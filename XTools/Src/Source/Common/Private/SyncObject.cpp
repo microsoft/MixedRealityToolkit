@@ -68,16 +68,12 @@ void SyncObject::OnElementAdded(const ElementPtr& element)
 	{
 		// A member exists for this element; attempt to bind it
 		Syncable* syncable = memberIt->second;
-		if (XTVERIFY(syncable->GetGUID() == kInvalidXGuid))
+		if (syncable->GetGUID() == kInvalidXGuid)
 		{
 			syncable->BindRemote(element);
 
 			// Register the member's new XGuid with the callback maps
 			m_memberMap[syncable->GetGUID()] = syncable;
-		}
-		else
-		{
-			LogError("Cannot bind remote element %s because it has already been bound", memberIt->first.c_str());
 		}
 	}
 }
@@ -146,8 +142,25 @@ void SyncObject::BindRemote(const ElementPtr& element)
 		// Register this object as a listener for change events of its children
 		m_element->AddListener(this);
 
-		// NOTE: Expect that OnElementAdded should now get called for each member,
-		// so handle the member setup in that function
+		int32 childCount = m_element->GetElementCount();
+		for (int32 i = 0; i < childCount; ++i)
+		{
+			ElementPtr childElement = m_element->GetElementAt(i);
+
+			auto memberIt = m_members.find(childElement->GetName()->GetString());
+			if (memberIt != m_members.end())
+			{
+				// A member exists for this element; attempt to bind it
+				Syncable* syncable = memberIt->second;
+				if (syncable->GetGUID() == kInvalidXGuid)
+				{
+					syncable->BindRemote(childElement);
+
+					// Register the member's new XGuid with the callback maps
+					m_memberMap[syncable->GetGUID()] = syncable;
+				}
+			}
+		}
 	}
 	else
 	{

@@ -13,6 +13,7 @@ XTOOLS_NAMESPACE_BEGIN
 
 RoomManagerImpl::RoomManagerImpl(const ClientContextConstPtr& context)
 	: m_context(context)
+	, m_listenerList(RoomListenerList::Create())
 	, m_bUploadInProgress(false)
 {
 	// Create the sync element representing this object.  

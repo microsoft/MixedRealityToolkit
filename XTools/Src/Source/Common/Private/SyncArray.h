@@ -51,7 +51,7 @@ public:
 	void Insert(int32 index, int32 value)
 	{
 		XTASSERT(index >= 0);
-		XTASSERT(index < GetCount());
+		XTASSERT(index <= GetCount());
 		m_array.insert(m_array.begin() + index, value);
 		if (m_element) m_element->InsertValue(index, value);
 	}
