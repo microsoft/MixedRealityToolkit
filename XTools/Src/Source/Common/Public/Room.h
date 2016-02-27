@@ -29,6 +29,12 @@ public:
 
 	/// Returns the user at the given index in the room
 	virtual UserID GetUserID(int32 userIndex) = 0;
+
+	/// Return the number of unique anchor names associated with this room
+	virtual int32 GetAnchorCount() const = 0;
+
+	/// Returns the name of the anchor at the given index
+	virtual const XStringPtr& GetAnchorName(int32 index) const = 0;
 };
 
 DECLARE_PTR(Room)

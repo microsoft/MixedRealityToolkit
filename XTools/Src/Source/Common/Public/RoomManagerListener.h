@@ -41,7 +41,7 @@ public:
 	virtual void OnAnchorsChanged(const RoomPtr& room) {}
 
 	/// Notification that an anchor download request has completed
-	virtual void OnAnchorsDownloaded(const RoomPtr& room, const AnchorDownloadRequestPtr& request) {}
+	virtual void OnAnchorsDownloaded(bool successful, const AnchorDownloadRequestPtr& request, const XStringPtr& failureReason) {}
 
 	/// Notification that the upload from this device to the server of new anchor data has finished.  
 	virtual void OnAnchorUploadComplete(bool successful, const XStringPtr& failureReason) {}

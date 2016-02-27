@@ -15,6 +15,7 @@ ServerRoom::ServerRoom()
 {
 	AddMember(&m_name, "Name");
 	AddMember(&m_id, "ID");
+	AddMember(&m_anchors, "Anchors");
 }
 
 
@@ -30,42 +31,21 @@ RoomID ServerRoom::GetID() const
 }
 
 
-bool ServerRoom::AddAnchor(const std::string& name, const BufferPtr& data)
+void ServerRoom::SetAnchor(const std::string& name, const BufferPtr& data)
 {
-	auto mapIter = m_anchors.find(name);
-	if (mapIter == m_anchors.end())
-	{
-		m_anchors[name] = data;
-		return true;
-	}
-	else
-	{
-		return false;
-	}
+	m_anchors.SetAnchor(name, data);
 }
 
 
 void ServerRoom::RemoveAnchor(const std::string& name)
 {
-	auto mapIter = m_anchors.find(name);
-	if (mapIter != m_anchors.end())
-	{
-		m_anchors.erase(mapIter);
-	}
+	m_anchors.RemoveAnchor(name);
 }
 
 
-ServerRoom::BufferPtr ServerRoom::GetAnchorData(const std::string& name)
+BufferPtr ServerRoom::GetAnchorData(const std::string& name)
 {
-	auto mapIter = m_anchors.find(name);
-	if (mapIter != m_anchors.end())
-	{
-		return mapIter->second;
-	}
-	else
-	{
-		return nullptr;
-	}
+	return m_anchors.GetAnchorData(name);
 }
 
 XTOOLS_NAMESPACE_END

@@ -29,7 +29,7 @@ protected:
 	void AddMember(Syncable* memberSyncable, const std::string& name);
 	void AddMember(Syncable* memberSyncable, const std::string& name, MemberCallback onChangeCallback);
 
-private:
+
 	// ObjectElementListener Functions:
 	virtual void OnIntElementChanged(XGuid elementID, int32 newValue) XTOVERRIDE;
 	virtual void OnFloatElementChanged(XGuid elementID, float newValue) XTOVERRIDE;
@@ -37,6 +37,7 @@ private:
 	virtual void OnElementAdded(const ElementPtr& element) XTOVERRIDE;
 	virtual void OnElementDeleted(const ElementPtr& element) XTOVERRIDE;
 
+private:
 	template<typename T>
 	void OnElementValueChanged(XGuid elementID, T newValue);
 

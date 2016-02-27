@@ -122,6 +122,7 @@
     <ClCompile Include="..\..\Source\SessionServer\Main.cpp" />
     <ClCompile Include="..\..\Source\SessionServer\PortMachinePool.cpp" />
     <ClCompile Include="..\..\Source\SessionServer\SendToForwarder.cpp" />
+    <ClCompile Include="..\..\Source\SessionServer\ServerAnchorList.cpp" />
     <ClCompile Include="..\..\Source\SessionServer\ServerRoom.cpp" />
     <ClCompile Include="..\..\Source\SessionServer\ServerRoomManager.cpp" />
     <ClCompile Include="..\..\Source\SessionServer\ServiceBase.cpp" />
@@ -140,6 +141,7 @@
     <ClInclude Include="..\..\Source\SessionServer\BroadcastForwarder.h" />
     <ClInclude Include="..\..\Source\SessionServer\PortMachinePool.h" />
     <ClInclude Include="..\..\Source\SessionServer\SendToForwarder.h" />
+    <ClInclude Include="..\..\Source\SessionServer\ServerAnchorList.h" />
     <ClInclude Include="..\..\Source\SessionServer\ServerRoom.h" />
     <ClInclude Include="..\..\Source\SessionServer\ServerRoomManager.h" />
     <ClInclude Include="..\..\Source\SessionServer\ServiceBase.h" />

@@ -6,11 +6,14 @@
 
 #include "stdafx.h"
 #include "RoomManagerImpl.h"
+#include "RoomMessageID.h"
+
 
 XTOOLS_NAMESPACE_BEGIN
 
 RoomManagerImpl::RoomManagerImpl(const ClientContextConstPtr& context)
 	: m_context(context)
+	, m_bUploadInProgress(false)
 {
 	// Create the sync element representing this object.  
 	// NOTE: the room manager should be constructed before a connection to another device is made, so there should never 
@@ -19,6 +22,9 @@ RoomManagerImpl::RoomManagerImpl(const ClientContextConstPtr& context)
 	XTASSERT(m_element);
 
 	m_element->AddListener(this);
+
+	// Add a listener for room messages from the server
+	m_context->GetSessionConnection()->AddListener(MessageID::RoomAnchor, this);
 }
 
 
@@ -167,36 +173,53 @@ bool RoomManagerImpl::LeaveRoom()
 }
 
 
-int32 RoomManagerImpl::GetAnchorCount(const RoomPtr& room)
-{
-	XT_UNREFERENCED_PARAM(room);
-	return 0;
-}
-
-
-XStringPtr RoomManagerImpl::GetAnchorName(const RoomPtr& room, int32 anchorIndex)
-{
-	XT_UNREFERENCED_PARAM(room);
-	XT_UNREFERENCED_PARAM(anchorIndex);
-	return nullptr;
-}
-
-
 AnchorDownloadRequestPtr RoomManagerImpl::DownloadAnchor(const RoomPtr& room, const XStringPtr& anchorName)
 {
-	XT_UNREFERENCED_PARAM(room);
-	XT_UNREFERENCED_PARAM(anchorName);
-	return nullptr;
+	if (m_currentDownloadRequest != nullptr)
+	{
+		LogError("Anchor download already in progress");
+		return nullptr;
+	}
+
+	// Create a new object to represent this request
+	m_currentDownloadRequest = new AnchorDownloadRequestImpl(anchorName, room);
+
+	// Build the request message and send it
+	NetworkConnectionPtr serverConnection = m_context->GetSessionConnection();
+
+	NetworkOutMessagePtr outMsg = serverConnection->CreateMessage(MessageID::RoomAnchor);
+
+	outMsg->Write((byte)RoomMessageID::AnchorDownloadRequest);
+	outMsg->Write(room->GetID());
+	outMsg->Write(anchorName);
+	serverConnection->Send(outMsg, MessagePriority::Low, MessageReliability::ReliableOrdered, MessageChannel::RoomAnchorChannel, true);
+
+	return m_currentDownloadRequest;
 }
 
  
 bool RoomManagerImpl::UploadAnchor(const RoomPtr& room, const XStringPtr& anchorName, const byte* data, int32 dataSize)
 {
-	XT_UNREFERENCED_PARAM(room);
-	XT_UNREFERENCED_PARAM(anchorName);
-	XT_UNREFERENCED_PARAM(data);
-	XT_UNREFERENCED_PARAM(dataSize);
-	return false;
+	if (m_bUploadInProgress)
+	{
+		LogError("Anchor upload already in progress");
+		return false;
+	}
+
+	m_bUploadInProgress = true;
+
+	// Build the request message and send it
+	NetworkConnectionPtr serverConnection = m_context->GetSessionConnection();
+
+	NetworkOutMessagePtr outMsg = serverConnection->CreateMessage(MessageID::RoomAnchor);
+	outMsg->Write((byte)RoomMessageID::AnchorUploadRequest);
+	outMsg->Write(room->GetID());
+	outMsg->Write(anchorName);
+	outMsg->Write(dataSize);
+	outMsg->WriteArray(data, dataSize);
+	serverConnection->Send(outMsg, MessagePriority::Low, MessageReliability::ReliableOrdered, MessageChannel::RoomAnchorChannel, true);
+
+	return true;
 }
 
 
@@ -238,6 +261,96 @@ void RoomManagerImpl::OnElementDeleted(const ElementPtr& element)
 	if (closedRoom != nullptr)
 	{
 		m_listenerList->NotifyListeners(&RoomManagerListener::OnRoomClosed, closedRoom);
+	}
+}
+
+
+void RoomManagerImpl::OnMessageReceived(const NetworkConnectionPtr& , NetworkInMessage& message)
+{
+	RoomMessageID msgType = (RoomMessageID)message.ReadByte();
+
+	switch (msgType)
+	{
+	case XTools::AnchorUploadResponse:
+		OnUploadResponse(message);
+		break;
+
+	case XTools::AnchorDownloadResponse:
+		OnDownloadResponse(message);
+		break;
+
+	case XTools::AnchorsChangedNotification:
+		OnAnchorsChanged(message);
+		break;
+
+	default:
+		break;
+	}
+}
+
+
+void RoomManagerImpl::OnUploadResponse(NetworkInMessage& message)
+{
+	bool bSuccess = (message.ReadByte() != 0);
+	XStringPtr failureReason;
+
+	if (!bSuccess)
+	{
+		failureReason = new XString(message.ReadStdString());
+	}
+
+	m_bUploadInProgress = false;
+
+	m_listenerList->NotifyListeners(&RoomManagerListener::OnAnchorUploadComplete, bSuccess, failureReason);
+}
+
+
+void RoomManagerImpl::OnDownloadResponse(NetworkInMessage& message)
+{
+	bool bSuccess = (message.ReadByte() != 0);
+	XStringPtr failureReason;
+
+	if (bSuccess)
+	{
+		const int32 dataSize = message.ReadInt32();
+
+		BufferPtr buffer(new Buffer(dataSize));
+		buffer->Resize(dataSize);
+
+		message.ReadArray(buffer->GetData(), buffer->GetSize());
+
+		m_currentDownloadRequest->SetData(buffer);
+	}
+	else
+	{
+		failureReason = new XString(message.ReadStdString());
+	}
+
+	// Clear the current request, so that the user can start a new request as part of the callback if they'd like
+	AnchorDownloadRequestPtr request = m_currentDownloadRequest;
+	m_currentDownloadRequest = nullptr;
+
+	m_listenerList->NotifyListeners(&RoomManagerListener::OnAnchorsDownloaded, bSuccess, request, failureReason);
+}
+
+
+void RoomManagerImpl::OnAnchorsChanged(NetworkInMessage& message)
+{
+	RoomID roomID = message.ReadInt64();
+
+	RoomPtr room = nullptr;
+	for (size_t i = 0; i < m_roomList.size(); ++i)
+	{
+		if (m_roomList[i]->GetID() == roomID)
+		{
+			room = m_roomList[i];
+			break;
+		}
+	}
+
+	if (room)
+	{
+		m_listenerList->NotifyListeners(&RoomManagerListener::OnAnchorsChanged, room);
 	}
 }
 

@@ -12,7 +12,6 @@ XTOOLS_NAMESPACE_BEGIN
 AnchorDownloadRequestImpl::AnchorDownloadRequestImpl(const XStringPtr& anchorName, const RoomPtr& room)
 	: m_name(anchorName)
 	, m_room(room)
-	, m_data(0)
 	, m_status(Status::Downloading)
 {
 
@@ -42,13 +41,13 @@ void AnchorDownloadRequestImpl::CancelDownload()
 	// TODO!!!
 
 	m_status = Status::Cancelled;
-	m_data.Clear();
+	m_data = nullptr;
 }
 
 
 int32 AnchorDownloadRequestImpl::GetDataSize() const
 {
-	return m_data.GetSize();
+	return (m_data != nullptr) ? m_data->GetSize() : 0;
 }
 
  
@@ -60,7 +59,7 @@ bool AnchorDownloadRequestImpl::GetData(byte* data, int32 dataSize) const
 		return false;
 	}
 
-	if (m_data.GetSize() == 0 || m_status == Status::Downloading)
+	if (m_data == nullptr || m_data->GetSize() == 0 || m_status == Status::Downloading)
 	{
 		LogError("Tried to retrieve anchor data before it has finished downloading");
 		return false;
@@ -73,21 +72,22 @@ bool AnchorDownloadRequestImpl::GetData(byte* data, int32 dataSize) const
 	}
 
 	// NOTE: promote to 64-bit int to allow for safe comparison of signed-vs-unsigned
-	if ((int64)dataSize < (int64)m_data.GetSize())
+	if ((int64)dataSize < (int64)m_data->GetSize())
 	{
-		LogError("Data buffer is not big enough.  Got %i, expected %%i", dataSize, m_data.GetSize());
+		LogError("Data buffer is not big enough.  Got %i, expected %%i", dataSize, m_data->GetSize());
 		return false;
 	}
 
-	memcpy(data, m_data.GetData(), m_data.GetSize());
+	memcpy(data, m_data->GetData(), m_data->GetSize());
 
 	return true;
 }
 
 
-void AnchorDownloadRequestImpl::SetData(byte* data, int32 dataSize)
+void AnchorDownloadRequestImpl::SetData(const BufferPtr& data)
 {
-	m_data.Set(data, dataSize);
+	m_data = data;
+	m_status = Status::Downloaded;
 }
 
 XTOOLS_NAMESPACE_END

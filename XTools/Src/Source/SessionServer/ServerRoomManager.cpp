@@ -104,12 +104,12 @@ void ServerRoomManager::OnUploadRequest(const NetworkConnectionPtr& connection, 
 	// Read the size of the anchor data
 	int32 dataSize = message.ReadInt32();
 
-	ServerRoom::BufferPtr buffer(new Buffer(dataSize));
+	BufferPtr buffer(new Buffer(dataSize));
 	buffer->Resize(dataSize);
 
 	message.ReadArray(buffer->GetData(), dataSize);
 
-	room->AddAnchor(anchorName->GetString(), buffer);
+	room->SetAnchor(anchorName->GetString(), buffer);
 
 	// Send a response to the sender that the upload was successful
 	SendUploadResponse(connection, true);
@@ -152,7 +152,7 @@ void ServerRoomManager::OnDownloadRequest(const NetworkConnectionPtr& connection
 	// Read the name of the anchor
 	XStringPtr anchorName = message.ReadString();
 
-	ServerRoom::BufferPtr anchorBuffer = room->GetAnchorData(anchorName->GetString());
+	BufferPtr anchorBuffer = room->GetAnchorData(anchorName->GetString());
 	if (anchorBuffer == nullptr)
 	{
 		SendDownloadResponse(connection, false, nullptr, "Anchor name not found");
@@ -180,7 +180,7 @@ void ServerRoomManager::SendUploadResponse(const NetworkConnectionPtr& connectio
 }
 
 
-void ServerRoomManager::SendDownloadResponse(const NetworkConnectionPtr& connection, bool bSucceeded, const ServerRoom::BufferPtr& buffer, const std::string& failureReason)
+void ServerRoomManager::SendDownloadResponse(const NetworkConnectionPtr& connection, bool bSucceeded, const BufferPtr& buffer, const std::string& failureReason)
 {
 	NetworkOutMessagePtr outMsg = connection->CreateMessage(MessageID::RoomAnchor);
 

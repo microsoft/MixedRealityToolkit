@@ -6,6 +6,8 @@
 
 #pragma once
 
+#include <Private/Buffer.h>
+
 XTOOLS_NAMESPACE_BEGIN
 
 class AnchorDownloadRequestImpl : public AnchorDownloadRequest
@@ -34,7 +36,7 @@ public:
 	virtual bool GetData(byte* data, int32 dataSize) const XTOVERRIDE;
 
 	// Set the downloaded data so that the user can retrieve it by calling GetData
-	void SetData(byte* data, int32 dataSize);
+	void SetData(const BufferPtr& data);
 
 private:
 	enum Status
@@ -46,7 +48,7 @@ private:
 
 	XStringPtr	m_name;
 	RoomPtr		m_room;
-	Buffer		m_data;
+	BufferPtr	m_data;
 	Status		m_status;
 };
 

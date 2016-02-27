@@ -34,7 +34,7 @@ private:
 	void OnDownloadRequest(const NetworkConnectionPtr& connection, NetworkInMessage& message);
 
 	void SendUploadResponse(const NetworkConnectionPtr& connection, bool bSucceeded, const std::string& failureReason = std::string());
-	void SendDownloadResponse(const NetworkConnectionPtr& connection, bool bSucceeded, const ServerRoom::BufferPtr& buffer, const std::string& failureReason = std::string());
+	void SendDownloadResponse(const NetworkConnectionPtr& connection, bool bSucceeded, const BufferPtr& buffer, const std::string& failureReason = std::string());
 
 	ObjectElementPtr m_element;
 

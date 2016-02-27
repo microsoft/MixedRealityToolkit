@@ -7,10 +7,11 @@
 #pragma once
 
 #include "RoomImpl.h"
+#include "AnchorDownloadRequestImpl.h"
 
 XTOOLS_NAMESPACE_BEGIN
 
-class RoomManagerImpl : public RoomManager, public ObjectElementListener
+class RoomManagerImpl : public RoomManager, public ObjectElementListener, public NetworkConnectionListener
 {
 public:
 	RoomManagerImpl(const ClientContextConstPtr& context);
@@ -51,12 +52,6 @@ public:
 	/// Returns true on success
 	virtual bool LeaveRoom() XTOVERRIDE;
 
-	/// Returns the number of anchors for a particular room
-	virtual int32 GetAnchorCount(const RoomPtr& room) XTOVERRIDE;
-
-	/// Returns the name of the anchor at the given index for the given room
-	virtual XStringPtr GetAnchorName(const RoomPtr& room, int32 anchorIndex) XTOVERRIDE;
-
 	/// Begins the asynchronous download of an anchor in the given room from the session server.  
 	/// Returns an AnchorDownloadRequest object that allows the user to track or cancel the download and retrieve the
 	/// data once its finished downloading
@@ -74,6 +69,14 @@ private:
 	virtual void OnElementAdded(const ElementPtr& element) XTOVERRIDE;
 	virtual void OnElementDeleted(const ElementPtr& element) XTOVERRIDE;
 
+	//////////////////////////////////////////////////////////////////////////
+	// NetworkConnectionListener Functions:
+	virtual void OnMessageReceived(const NetworkConnectionPtr& connection, NetworkInMessage& message) XTOVERRIDE;
+
+	void OnUploadResponse(NetworkInMessage& message);
+	void OnDownloadResponse(NetworkInMessage& message);
+	void OnAnchorsChanged(NetworkInMessage& message);
+
 	typedef ListenerList<RoomManagerListener> RoomListenerList;
 	DECLARE_PTR(RoomListenerList);
 
@@ -82,6 +85,8 @@ private:
 	ObjectElementPtr						m_element;
 	std::vector<RoomImplPtr>				m_roomList;
 	RoomImplPtr								m_currentRoom;
+	AnchorDownloadRequestImplPtr			m_currentDownloadRequest;
+	bool									m_bUploadInProgress;
 };
 
 DECLARE_PTR(RoomManagerImpl)

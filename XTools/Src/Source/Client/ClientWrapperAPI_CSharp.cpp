@@ -1162,20 +1162,16 @@ void SwigDirector_RoomManagerListener::OnAnchorsChanged(XTools::RoomPtr const &r
   }
 }
 
-void SwigDirector_RoomManagerListener::OnAnchorsDownloaded(XTools::RoomPtr const &room, XTools::AnchorDownloadRequestPtr const &request) {
-  void * jroom = 0 ;
+void SwigDirector_RoomManagerListener::OnAnchorsDownloaded(bool successful, XTools::AnchorDownloadRequestPtr const &request, XTools::XStringPtr const &failureReason) {
+  unsigned int jsuccessful  ;
   void * jrequest = 0 ;
+  void * jfailureReason = 0 ;
   
   if (!swig_callbackOnAnchorsDownloaded) {
-    XTools::RoomManagerListener::OnAnchorsDownloaded(room,request);
+    XTools::RoomManagerListener::OnAnchorsDownloaded(successful,request,failureReason);
     return;
   } else {
-    // ref_ptr by reference directorin
-    if (room) {
-      room->AddRef(); 
-    }
-    jroom = (&room)->get();
-    
+    jsuccessful = successful;
     
     // ref_ptr by reference directorin
     if (request) {
@@ -1183,7 +1179,14 @@ void SwigDirector_RoomManagerListener::OnAnchorsDownloaded(XTools::RoomPtr const
     }
     jrequest = (&request)->get();
     
-    swig_callbackOnAnchorsDownloaded(jroom, jrequest);
+    
+    // ref_ptr by reference directorin
+    if (failureReason) {
+      failureReason->AddRef(); 
+    }
+    jfailureReason = (&failureReason)->get();
+    
+    swig_callbackOnAnchorsDownloaded(jsuccessful, jrequest, jfailureReason);
   }
 }
 
@@ -5682,6 +5685,40 @@ SWIGEXPORT int SWIGSTDCALL CSharp_Room_GetUserID(void * jarg1, int jarg2) {
 }
 
 
+SWIGEXPORT int SWIGSTDCALL CSharp_Room_GetAnchorCount(void * jarg1) {
+  int jresult ;
+  XTools::Room *arg1 = (XTools::Room *) 0 ;
+  XTools::int32 result;
+  
+  arg1 = (XTools::Room *)jarg1; 
+  result = (XTools::int32)((XTools::Room const *)arg1)->GetAnchorCount();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_Room_GetAnchorName(void * jarg1, int jarg2) {
+  void * jresult ;
+  XTools::Room *arg1 = (XTools::Room *) 0 ;
+  XTools::int32 arg2 ;
+  XTools::XStringPtr *result = 0 ;
+  
+  arg1 = (XTools::Room *)jarg1; 
+  arg2 = (XTools::int32)jarg2; 
+  result = (XTools::XStringPtr *) &((XTools::Room const *)arg1)->GetAnchorName(arg2);
+  
+  // ref_ptr by reference out
+  if (*result) {
+    result->get()->AddRef();
+    *( XString **)&jresult = result->get();
+  } else {
+    *( XString **)&jresult = 0;
+  }
+  
+  return jresult;
+}
+
+
 SWIGEXPORT void SWIGSTDCALL CSharp_delete_Room(void * jarg1) {
   XTools::Room *arg1 = (XTools::Room *) 0 ;
   
@@ -6024,28 +6061,20 @@ SWIGEXPORT void SWIGSTDCALL CSharp_RoomManagerListener_OnAnchorsChangedSwigExpli
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_RoomManagerListener_OnAnchorsDownloaded(void * jarg1, void * jarg2, void * jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_RoomManagerListener_OnAnchorsDownloaded(void * jarg1, unsigned int jarg2, void * jarg3, void * jarg4) {
   XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
-  XTools::RoomPtr *arg2 = 0 ;
+  bool arg2 ;
   XTools::AnchorDownloadRequestPtr *arg3 = 0 ;
-  XTools::RoomPtr tempnull2 ;
-  XTools::RoomPtr temp2 ;
-  XTools::Room *smartarg2 ;
+  XTools::XStringPtr *arg4 = 0 ;
   XTools::AnchorDownloadRequestPtr tempnull3 ;
   XTools::AnchorDownloadRequestPtr temp3 ;
   XTools::AnchorDownloadRequest *smartarg3 ;
+  XTools::XStringPtr tempnull4 ;
+  XTools::XStringPtr temp4 ;
+  XTools::XString *smartarg4 ;
   
   arg1 = (XTools::RoomManagerListener *)jarg1; 
-  
-  // ref_ptr by reference in
-  if ( jarg2 ) {
-    smartarg2 = *( Room **)&jarg2; 
-    temp2 = XTools::ref_ptr<  Room >(smartarg2);
-    arg2 = &temp2;
-  } else {
-    arg2 = &tempnull2;
-  }
-  
+  arg2 = jarg2 ? true : false; 
   
   // ref_ptr by reference in
   if ( jarg3 ) {
@@ -6056,32 +6085,34 @@ SWIGEXPORT void SWIGSTDCALL CSharp_RoomManagerListener_OnAnchorsDownloaded(void 
     arg3 = &tempnull3;
   }
   
-  (arg1)->OnAnchorsDownloaded((XTools::RoomPtr const &)*arg2,(XTools::AnchorDownloadRequestPtr const &)*arg3);
+  
+  // ref_ptr by reference in
+  if ( jarg4 ) {
+    smartarg4 = *( XString **)&jarg4; 
+    temp4 = XTools::ref_ptr<  XString >(smartarg4);
+    arg4 = &temp4;
+  } else {
+    arg4 = &tempnull4;
+  }
+  
+  (arg1)->OnAnchorsDownloaded(arg2,(XTools::AnchorDownloadRequestPtr const &)*arg3,(XTools::XStringPtr const &)*arg4);
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_RoomManagerListener_OnAnchorsDownloadedSwigExplicitRoomManagerListener(void * jarg1, void * jarg2, void * jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_RoomManagerListener_OnAnchorsDownloadedSwigExplicitRoomManagerListener(void * jarg1, unsigned int jarg2, void * jarg3, void * jarg4) {
   XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
-  XTools::RoomPtr *arg2 = 0 ;
+  bool arg2 ;
   XTools::AnchorDownloadRequestPtr *arg3 = 0 ;
-  XTools::RoomPtr tempnull2 ;
-  XTools::RoomPtr temp2 ;
-  XTools::Room *smartarg2 ;
+  XTools::XStringPtr *arg4 = 0 ;
   XTools::AnchorDownloadRequestPtr tempnull3 ;
   XTools::AnchorDownloadRequestPtr temp3 ;
   XTools::AnchorDownloadRequest *smartarg3 ;
+  XTools::XStringPtr tempnull4 ;
+  XTools::XStringPtr temp4 ;
+  XTools::XString *smartarg4 ;
   
   arg1 = (XTools::RoomManagerListener *)jarg1; 
-  
-  // ref_ptr by reference in
-  if ( jarg2 ) {
-    smartarg2 = *( Room **)&jarg2; 
-    temp2 = XTools::ref_ptr<  Room >(smartarg2);
-    arg2 = &temp2;
-  } else {
-    arg2 = &tempnull2;
-  }
-  
+  arg2 = jarg2 ? true : false; 
   
   // ref_ptr by reference in
   if ( jarg3 ) {
@@ -6092,7 +6123,17 @@ SWIGEXPORT void SWIGSTDCALL CSharp_RoomManagerListener_OnAnchorsDownloadedSwigEx
     arg3 = &tempnull3;
   }
   
-  (arg1)->XTools::RoomManagerListener::OnAnchorsDownloaded((XTools::RoomPtr const &)*arg2,(XTools::AnchorDownloadRequestPtr const &)*arg3);
+  
+  // ref_ptr by reference in
+  if ( jarg4 ) {
+    smartarg4 = *( XString **)&jarg4; 
+    temp4 = XTools::ref_ptr<  XString >(smartarg4);
+    arg4 = &temp4;
+  } else {
+    arg4 = &tempnull4;
+  }
+  
+  (arg1)->XTools::RoomManagerListener::OnAnchorsDownloaded(arg2,(XTools::AnchorDownloadRequestPtr const &)*arg3,(XTools::XStringPtr const &)*arg4);
 }
 
 
@@ -6307,68 +6348,6 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_RoomManager_LeaveRoom(void * jarg1) {
   arg1 = (XTools::RoomManager *)jarg1; 
   result = (bool)(arg1)->LeaveRoom();
   jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_RoomManager_GetAnchorCount(void * jarg1, void * jarg2) {
-  int jresult ;
-  XTools::RoomManager *arg1 = (XTools::RoomManager *) 0 ;
-  XTools::RoomPtr *arg2 = 0 ;
-  XTools::RoomPtr tempnull2 ;
-  XTools::RoomPtr temp2 ;
-  XTools::Room *smartarg2 ;
-  XTools::int32 result;
-  
-  arg1 = (XTools::RoomManager *)jarg1; 
-  
-  // ref_ptr by reference in
-  if ( jarg2 ) {
-    smartarg2 = *( Room **)&jarg2; 
-    temp2 = XTools::ref_ptr<  Room >(smartarg2);
-    arg2 = &temp2;
-  } else {
-    arg2 = &tempnull2;
-  }
-  
-  result = (XTools::int32)(arg1)->GetAnchorCount((XTools::RoomPtr const &)*arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_RoomManager_GetAnchorName(void * jarg1, void * jarg2, int jarg3) {
-  void * jresult ;
-  XTools::RoomManager *arg1 = (XTools::RoomManager *) 0 ;
-  XTools::RoomPtr *arg2 = 0 ;
-  XTools::int32 arg3 ;
-  XTools::RoomPtr tempnull2 ;
-  XTools::RoomPtr temp2 ;
-  XTools::Room *smartarg2 ;
-  XTools::XStringPtr result;
-  
-  arg1 = (XTools::RoomManager *)jarg1; 
-  
-  // ref_ptr by reference in
-  if ( jarg2 ) {
-    smartarg2 = *( Room **)&jarg2; 
-    temp2 = XTools::ref_ptr<  Room >(smartarg2);
-    arg2 = &temp2;
-  } else {
-    arg2 = &tempnull2;
-  }
-  
-  arg3 = (XTools::int32)jarg3; 
-  result = (arg1)->GetAnchorName((XTools::RoomPtr const &)*arg2,arg3);
-  
-  // ref_ptr by value out
-  if (result) {
-    result->AddRef();
-    *( XString **)&jresult = (&result)->get();
-  } else {
-    *( XString **)&jresult = 0; 
-  }
-  
   return jresult;
 }
 

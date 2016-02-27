@@ -60,6 +60,18 @@ UserID RoomImpl::GetUserID(int32 userIndex)
 }
 
 
+int32 RoomImpl::GetAnchorCount() const
+{
+	return m_anchors.GetAnchorCount();
+}
+
+
+const XStringPtr& RoomImpl::GetAnchorName(int32 index) const
+{
+	return m_anchors.GetAnchorName(index);
+}
+
+
 SyncArray& RoomImpl::GetUserArray()
 {
 	return m_users;
@@ -77,6 +89,7 @@ void RoomImpl::SetupMembers()
 	AddMember(&m_name, "Name");
 	AddMember(&m_id, "ID");
 	AddMember(&m_users, "users");
+	AddMember(&m_anchors, "Anchors");
 
 	m_userListenerAdapter->SetValueInsertedCallback(CreateCallback2(this, &RoomImpl::OnUserAdded));
 	m_userListenerAdapter->SetValueRemovedCallback(CreateCallback2(this, &RoomImpl::OnUserRemoved));

@@ -165,7 +165,7 @@ public:
     virtual void OnUserJoinedRoom(XTools::RoomPtr const &room, XTools::UserID user);
     virtual void OnUserLeftRoom(XTools::RoomPtr const &room, XTools::UserID user);
     virtual void OnAnchorsChanged(XTools::RoomPtr const &room);
-    virtual void OnAnchorsDownloaded(XTools::RoomPtr const &room, XTools::AnchorDownloadRequestPtr const &request);
+    virtual void OnAnchorsDownloaded(bool successful, XTools::AnchorDownloadRequestPtr const &request, XTools::XStringPtr const &failureReason);
     virtual void OnAnchorUploadComplete(bool successful, XTools::XStringPtr const &failureReason);
 public:
     bool swig_overrides(int n) {

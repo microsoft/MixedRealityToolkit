@@ -16,4 +16,5 @@
 #include <tchar.h>
 
 #include <windows.h>
+#include <map>
 #include "Common.h"

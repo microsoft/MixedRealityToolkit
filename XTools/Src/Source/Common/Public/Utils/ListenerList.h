@@ -84,6 +84,15 @@ public:
 		}
 	}
 
+	template<typename P1, typename P2, typename P3, typename T1, typename T2, typename T3>
+	void NotifyListeners(void (T::* func) (P1, P2, P3), T1 param1, T2& param2, T3& param3)
+	{
+		for (int32 i = (int32)m_listeners.size() - 1; i >= 0; --i)
+		{
+			(m_listeners[i].m_listener->*func)(param1, param2, param3);
+		}
+	}
+
 	template<typename P1, typename P2, typename T1, typename T2>
 	void NotifyListener(int i, void (T::* func) (P1, P2), T1 param1, T2& param2)
 	{

@@ -30,6 +30,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\Source\Common\Private\AckOperation.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\AnchorDownloadRequestImpl.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\AnchorList.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\ArrayTransforms.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\AudioConnection.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\AudioConnectionClient.cpp" />
@@ -155,6 +156,7 @@
     <ClInclude Include="..\..\Source\Common\CommonPrivate.h" />
     <ClInclude Include="..\..\Source\Common\Private\AckOperation.h" />
     <ClInclude Include="..\..\Source\Common\Private\AnchorDownloadRequestImpl.h" />
+    <ClInclude Include="..\..\Source\Common\Private\AnchorList.h" />
     <ClInclude Include="..\..\Source\Common\Private\ArrayElement.h" />
     <ClInclude Include="..\..\Source\Common\Private\ArrayTransforms.h" />
     <ClInclude Include="..\..\Source\Common\Private\AudioConnection.h" />

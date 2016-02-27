@@ -56,6 +56,9 @@
     <ClCompile Include="..\..\Source\SessionServer\ServerRoom.cpp">
       <Filter>Source\Rooms</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\SessionServer\ServerAnchorList.cpp">
+      <Filter>Source\Rooms</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\SessionServer\stdafx.h">
@@ -101,6 +104,9 @@
       <Filter>Source\Rooms</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\SessionServer\ServerRoom.h">
+      <Filter>Source\Rooms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\SessionServer\ServerAnchorList.h">
       <Filter>Source\Rooms</Filter>
     </ClInclude>
   </ItemGroup>

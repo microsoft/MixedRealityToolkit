@@ -65,4 +65,6 @@ private:
 	uint32				m_allocSize;
 };
 
+typedef std::shared_ptr<Buffer> BufferPtr;
+
 XTOOLS_NAMESPACE_END

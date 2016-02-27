@@ -14,7 +14,6 @@
 #include "SessionChangeCallback.h"
 #include "Private/Utils/FileLogWriter.h"
 #include "BroadcastForwarder.h"
-#include <map>
 
 XTOOLS_NAMESPACE_BEGIN
 

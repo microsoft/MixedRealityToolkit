@@ -7,6 +7,7 @@
 #pragma once
 
 #include "IntArrayAdapter.h"
+#include "AnchorList.h"
 
 XTOOLS_NAMESPACE_BEGIN
 
@@ -31,6 +32,12 @@ public:
 	/// Returns the user at the given index in the room
 	virtual UserID		GetUserID(int32 userIndex) XTOVERRIDE;
 
+	/// Return the number of unique anchor names associated with this room
+	virtual int32		GetAnchorCount() const XTOVERRIDE;
+
+	/// Returns the name of the anchor at the given index
+	virtual const XStringPtr& GetAnchorName(int32 index) const XTOVERRIDE;
+
 	SyncArray&			GetUserArray();
 	const SyncArray&	GetUserArray() const;
 
@@ -44,6 +51,7 @@ private:
 	SyncString			m_name;
 	SyncLong			m_id;
 	SyncArray			m_users;	// Array of all the UserIDs of the users in this room
+	AnchorList			m_anchors;
 	IntArrayAdapterPtr	m_userListenerAdapter;
 };
 

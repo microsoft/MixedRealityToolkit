@@ -1,37 +1,39 @@
 //////////////////////////////////////////////////////////////////////////
-// ServerRoom.h
+// ServerAnchorList.h
 //
 // Copyright (C) 2016 Microsoft Corp.  All Rights Reserved
 //////////////////////////////////////////////////////////////////////////
 
 #pragma once
 
-#include <memory>
 #include <Private/Buffer.h>
-#include "ServerAnchorList.h"
 
 XTOOLS_NAMESPACE_BEGIN
 
-class ServerRoom : public AtomicRefCounted, public SyncObject
+class ServerAnchorList : public SyncObject
 {
 public:
-	ServerRoom();
+	ServerAnchorList();
 
-	XStringPtr	GetName() const;
-	RoomID GetID() const;
+	BufferPtr GetAnchorData(const std::string& name) const;
 
 	void SetAnchor(const std::string& name, const BufferPtr& data);
-
 	void RemoveAnchor(const std::string& name);
 
-	BufferPtr GetAnchorData(const std::string& name);
-
 private:
-	SyncString			m_name;
-	SyncLong			m_id;
-	ServerAnchorList	m_anchors;
-};
 
-DECLARE_PTR(ServerRoom)
+	struct Anchor
+	{
+		Anchor() {}
+		Anchor(const ObjectElementPtr& element, const BufferPtr& data)
+			: m_element(element)
+			, m_data(data) {}
+
+		ObjectElementPtr m_element;
+		BufferPtr m_data;
+	};
+
+	std::map<std::string, Anchor> m_anchors;
+};
 
 XTOOLS_NAMESPACE_END

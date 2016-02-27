@@ -44,12 +44,6 @@ public:
 	/// Returns true on success
 	virtual bool LeaveRoom() = 0;
 
-	/// Returns the number of anchors for a particular room
-	virtual int32 GetAnchorCount(const RoomPtr& room) = 0;
-
-	/// Returns the name of the anchor at the given index for the given room
-	virtual XStringPtr GetAnchorName(const RoomPtr& room, int32 anchorIndex) = 0;
-
 	/// Begins the asynchronous download of an anchor in the given room from the session server.  
 	/// Returns an AnchorDownloadRequest object that allows the user to track or cancel the download and retrieve the
 	/// data once its finished downloading
