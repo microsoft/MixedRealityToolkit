@@ -22,12 +22,12 @@ void LogNative(::XTools::LogSeverity severity, const char* file, int line, const
 	{
 	case Warning:
 	case Error:
-		sprintf_s(logEntryBuffer, sizeof(logEntryBuffer), "XTools [%s (%i)]: %s", file, line, message);
+		sprintf_s(logEntryBuffer, sizeof(logEntryBuffer), "SharingService [%s (%i)]: %s", file, line, message);
 		break;
 
 	case Info:
 	default:
-		sprintf_s(logEntryBuffer, sizeof(logEntryBuffer), "XTools: %s", message);
+		sprintf_s(logEntryBuffer, sizeof(logEntryBuffer), "SharingService: %s", message);
 		break;
 	}
 

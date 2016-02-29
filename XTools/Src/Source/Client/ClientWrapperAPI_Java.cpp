@@ -600,7 +600,7 @@ namespace Swig {
 
 namespace Swig {
   namespace {
-    jclass jclass_XToolsClientJNI = NULL;
+    jclass jclass_SharingClientJNI = NULL;
     jmethodID director_methids[50];
   }
 }
@@ -1264,7 +1264,7 @@ void SwigDirector_LogWriter::WriteLogEntry(XTools::LogSeverity severity, std::st
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
     jseverity = (jint) severity;
     jmessage = jenv->NewStringUTF((&message)->c_str()); 
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[0], swigjobj, jseverity, jmessage);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[0], swigjobj, jseverity, jmessage);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -1339,7 +1339,7 @@ void SwigDirector_NetworkConnectionListener::OnConnected(XTools::NetworkConnecti
     }
     *( NetworkConnection **)&jconnection = (&connection)->get();
     
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[1], swigjobj, jconnection);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[1], swigjobj, jconnection);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -1370,7 +1370,7 @@ void SwigDirector_NetworkConnectionListener::OnConnectFailed(XTools::NetworkConn
     }
     *( NetworkConnection **)&jconnection = (&connection)->get();
     
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[2], swigjobj, jconnection);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[2], swigjobj, jconnection);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -1401,7 +1401,7 @@ void SwigDirector_NetworkConnectionListener::OnDisconnected(XTools::NetworkConne
     }
     *( NetworkConnection **)&jconnection = (&connection)->get();
     
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[3], swigjobj, jconnection);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[3], swigjobj, jconnection);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -1434,7 +1434,7 @@ void SwigDirector_NetworkConnectionListener::OnMessageReceived(XTools::NetworkCo
     *( NetworkConnection **)&jconnection = (&connection)->get();
     
     *(XTools::NetworkInMessage **)&jmessage = (XTools::NetworkInMessage *) &message; 
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[4], swigjobj, jconnection, jmessage);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[4], swigjobj, jconnection, jmessage);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -1515,7 +1515,7 @@ void SwigDirector_IntArrayListener::OnValueChanged(XTools::int32 index, XTools::
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
     jindex = (jint) index;
     jnewValue = (jint) newValue;
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[5], swigjobj, jindex, jnewValue);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[5], swigjobj, jindex, jnewValue);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -1543,7 +1543,7 @@ void SwigDirector_IntArrayListener::OnValueInserted(XTools::int32 index, XTools:
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
     jindex = (jint) index;
     jvalue = (jint) value;
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[6], swigjobj, jindex, jvalue);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[6], swigjobj, jindex, jvalue);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -1571,7 +1571,7 @@ void SwigDirector_IntArrayListener::OnValueRemoved(XTools::int32 index, XTools::
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
     jindex = (jint) index;
     jvalue = (jint) value;
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[7], swigjobj, jindex, jvalue);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[7], swigjobj, jindex, jvalue);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -1649,7 +1649,7 @@ void SwigDirector_ObjectElementListener::OnIntElementChanged(XTools::XGuid eleme
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
     jelementID = (jlong) elementID;
     jnewValue = (jint) newValue;
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[8], swigjobj, jelementID, jnewValue);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[8], swigjobj, jelementID, jnewValue);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -1677,7 +1677,7 @@ void SwigDirector_ObjectElementListener::OnLongElementChanged(XTools::XGuid elem
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
     jelementID = (jlong) elementID;
     jnewValue = (jlong) newValue;
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[9], swigjobj, jelementID, jnewValue);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[9], swigjobj, jelementID, jnewValue);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -1705,7 +1705,7 @@ void SwigDirector_ObjectElementListener::OnFloatElementChanged(XTools::XGuid ele
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
     jelementID = (jlong) elementID;
     jnewValue = (jfloat) newValue;
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[10], swigjobj, jelementID, jnewValue);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[10], swigjobj, jelementID, jnewValue);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -1733,7 +1733,7 @@ void SwigDirector_ObjectElementListener::OnDoubleElementChanged(XTools::XGuid el
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
     jelementID = (jlong) elementID;
     jnewValue = (jdouble) newValue;
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[11], swigjobj, jelementID, jnewValue);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[11], swigjobj, jelementID, jnewValue);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -1767,7 +1767,7 @@ void SwigDirector_ObjectElementListener::OnStringElementChanged(XTools::XGuid el
     }
     *( XString **)&jnewValue = (&newValue)->get();
     
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[12], swigjobj, jelementID, jnewValue);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[12], swigjobj, jelementID, jnewValue);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -1798,7 +1798,7 @@ void SwigDirector_ObjectElementListener::OnElementAdded(XTools::ElementPtr const
     }
     *( Element **)&jelement = (&element)->get();
     
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[13], swigjobj, jelement);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[13], swigjobj, jelement);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -1829,7 +1829,7 @@ void SwigDirector_ObjectElementListener::OnElementDeleted(XTools::ElementPtr con
     }
     *( Element **)&jelement = (&element)->get();
     
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[14], swigjobj, jelement);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[14], swigjobj, jelement);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -1915,7 +1915,7 @@ void SwigDirector_SyncListener::OnSyncChangesBegin() {
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[15], swigjobj);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[15], swigjobj);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -1939,7 +1939,7 @@ void SwigDirector_SyncListener::OnSyncChangesEnd() {
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[16], swigjobj);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[16], swigjobj);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2010,7 +2010,7 @@ void SwigDirector_SessionListener::OnJoiningSession() {
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[17], swigjobj);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[17], swigjobj);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2034,7 +2034,7 @@ void SwigDirector_SessionListener::OnJoinSucceeded() {
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[18], swigjobj);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[18], swigjobj);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2058,7 +2058,7 @@ void SwigDirector_SessionListener::OnJoinFailed() {
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[19], swigjobj);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[19], swigjobj);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2082,7 +2082,7 @@ void SwigDirector_SessionListener::OnSessionDisconnected() {
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[20], swigjobj);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[20], swigjobj);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2166,7 +2166,7 @@ void SwigDirector_SessionManagerListener::OnCreateSucceeded(XTools::SessionPtr c
     }
     *( Session **)&jnewSession = (&newSession)->get();
     
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[21], swigjobj, jnewSession);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[21], swigjobj, jnewSession);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2197,7 +2197,7 @@ void SwigDirector_SessionManagerListener::OnCreateFailed(XTools::XStringPtr cons
     }
     *( XString **)&jreason = (&reason)->get();
     
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[22], swigjobj, jreason);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[22], swigjobj, jreason);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2228,7 +2228,7 @@ void SwigDirector_SessionManagerListener::OnSessionAdded(XTools::SessionPtr cons
     }
     *( Session **)&jnewSession = (&newSession)->get();
     
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[23], swigjobj, jnewSession);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[23], swigjobj, jnewSession);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2259,7 +2259,7 @@ void SwigDirector_SessionManagerListener::OnSessionClosed(XTools::SessionPtr con
     }
     *( Session **)&jsession = (&session)->get();
     
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[24], swigjobj, jsession);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[24], swigjobj, jsession);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2298,7 +2298,7 @@ void SwigDirector_SessionManagerListener::OnUserJoinedSession(XTools::SessionPtr
     }
     *( User **)&jnewUser = (&newUser)->get();
     
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[25], swigjobj, jsession, jnewUser);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[25], swigjobj, jsession, jnewUser);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2337,7 +2337,7 @@ void SwigDirector_SessionManagerListener::OnUserLeftSession(XTools::SessionPtr c
     }
     *( User **)&juser = (&user)->get();
     
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[26], swigjobj, jsession, juser);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[26], swigjobj, jsession, juser);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2376,7 +2376,7 @@ void SwigDirector_SessionManagerListener::OnUserChanged(XTools::SessionPtr const
     }
     *( User **)&juser = (&user)->get();
     
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[27], swigjobj, jsession, juser);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[27], swigjobj, jsession, juser);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2400,7 +2400,7 @@ void SwigDirector_SessionManagerListener::OnServerConnected() {
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[28], swigjobj);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[28], swigjobj);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2424,7 +2424,7 @@ void SwigDirector_SessionManagerListener::OnServerDisconnected() {
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[29], swigjobj);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[29], swigjobj);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2523,7 +2523,7 @@ void SwigDirector_UserPresenceManagerListener::OnUserPresenceChanged(XTools::Use
     }
     *( User **)&juser = (&user)->get();
     
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[30], swigjobj, juser);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[30], swigjobj, juser);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2598,7 +2598,7 @@ void SwigDirector_RoomManagerListener::OnRoomAdded(XTools::RoomPtr const &newRoo
     }
     *( Room **)&jnewRoom = (&newRoom)->get();
     
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[31], swigjobj, jnewRoom);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[31], swigjobj, jnewRoom);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2629,7 +2629,7 @@ void SwigDirector_RoomManagerListener::OnRoomClosed(XTools::RoomPtr const &room)
     }
     *( Room **)&jroom = (&room)->get();
     
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[32], swigjobj, jroom);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[32], swigjobj, jroom);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2662,7 +2662,7 @@ void SwigDirector_RoomManagerListener::OnUserJoinedRoom(XTools::RoomPtr const &r
     *( Room **)&jroom = (&room)->get();
     
     juser = (jint) user;
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[33], swigjobj, jroom, juser);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[33], swigjobj, jroom, juser);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2695,7 +2695,7 @@ void SwigDirector_RoomManagerListener::OnUserLeftRoom(XTools::RoomPtr const &roo
     *( Room **)&jroom = (&room)->get();
     
     juser = (jint) user;
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[34], swigjobj, jroom, juser);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[34], swigjobj, jroom, juser);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2726,7 +2726,7 @@ void SwigDirector_RoomManagerListener::OnAnchorsChanged(XTools::RoomPtr const &r
     }
     *( Room **)&jroom = (&room)->get();
     
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[35], swigjobj, jroom);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[35], swigjobj, jroom);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2768,7 +2768,7 @@ void SwigDirector_RoomManagerListener::OnAnchorsDownloaded(bool successful, XToo
     }
     *( XString **)&jfailureReason = (&failureReason)->get();
     
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[36], swigjobj, jsuccessful, jrequest, jfailureReason);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[36], swigjobj, jsuccessful, jrequest, jfailureReason);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2802,7 +2802,7 @@ void SwigDirector_RoomManagerListener::OnAnchorUploadComplete(bool successful, X
     }
     *( XString **)&jfailureReason = (&failureReason)->get();
     
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[37], swigjobj, jsuccessful, jfailureReason);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[37], swigjobj, jsuccessful, jfailureReason);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2889,7 +2889,7 @@ bool SwigDirector_PairMaker::IsReceiver() {
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    jresult = (jboolean) jenv->CallStaticBooleanMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[38], swigjobj);
+    jresult = (jboolean) jenv->CallStaticBooleanMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[38], swigjobj);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2917,7 +2917,7 @@ XTools::int32 SwigDirector_PairMaker::GetAddressCount() {
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[39], swigjobj);
+    jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[39], swigjobj);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2947,7 +2947,7 @@ XTools::XStringPtr SwigDirector_PairMaker::GetAddress(XTools::int32 index) {
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
     jindex = (jint) index;
-    jresult = (jlong) jenv->CallStaticLongMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[40], swigjobj, jindex);
+    jresult = (jlong) jenv->CallStaticLongMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[40], swigjobj, jindex);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2979,7 +2979,7 @@ XTools::uint16 SwigDirector_PairMaker::GetPort() {
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[41], swigjobj);
+    jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[41], swigjobj);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -3005,7 +3005,7 @@ void SwigDirector_PairMaker::Update() {
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[42], swigjobj);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[42], swigjobj);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -3030,7 +3030,7 @@ bool SwigDirector_PairMaker::IsReadyToConnect() {
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    jresult = (jboolean) jenv->CallStaticBooleanMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[43], swigjobj);
+    jresult = (jboolean) jenv->CallStaticBooleanMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[43], swigjobj);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -3057,7 +3057,7 @@ XTools::int32 SwigDirector_PairMaker::GetLocalKey() {
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[44], swigjobj);
+    jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[44], swigjobj);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -3084,7 +3084,7 @@ XTools::int32 SwigDirector_PairMaker::GetRemoteKey() {
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[45], swigjobj);
+    jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[45], swigjobj);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -3175,7 +3175,7 @@ void SwigDirector_PairingListener::PairingConnectionSucceeded() {
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[46], swigjobj);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[46], swigjobj);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -3201,7 +3201,7 @@ void SwigDirector_PairingListener::PairingConnectionFailed(XTools::PairingResult
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
     jreason = (jint) reason;
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[47], swigjobj, jreason);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[47], swigjobj, jreason);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -3279,7 +3279,7 @@ void SwigDirector_ImageTagLocationListener::OnTagLocated(XTools::ImageTagLocatio
     }
     *( ImageTagLocation **)&jlocation = (&location)->get();
     
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[48], swigjobj, jlocation);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[48], swigjobj, jlocation);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -3303,7 +3303,7 @@ void SwigDirector_ImageTagLocationListener::OnTagLocatingCompleted() {
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    jenv->CallStaticVoidMethod(Swig::jclass_XToolsClientJNI, Swig::director_methids[49], swigjobj);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[49], swigjobj);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -3360,7 +3360,7 @@ void SwigDirector_ImageTagLocationListener::swig_connect_director(JNIEnv *jenv, 
 extern "C" {
 #endif
 
-SWIGEXPORT jobject JNICALL Java_com_microsoft_xtools_XToolsClientJNI_kInvalidSocketID_1get(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jobject JNICALL Java_com_microsoft_xtools_SharingClientJNI_kInvalidSocketID_1get(JNIEnv *jenv, jclass jcls) {
   jobject jresult = 0 ;
   XTools::SocketID result;
   
@@ -3388,7 +3388,7 @@ SWIGEXPORT jobject JNICALL Java_com_microsoft_xtools_XToolsClientJNI_kInvalidSoc
 }
 
 
-SWIGEXPORT jobject JNICALL Java_com_microsoft_xtools_XToolsClientJNI_kInvalidConnectionGUID_1get(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jobject JNICALL Java_com_microsoft_xtools_SharingClientJNI_kInvalidConnectionGUID_1get(JNIEnv *jenv, jclass jcls) {
   jobject jresult = 0 ;
   XTools::ConnectionGUID result;
   
@@ -3416,7 +3416,7 @@ SWIGEXPORT jobject JNICALL Java_com_microsoft_xtools_XToolsClientJNI_kInvalidCon
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1Receipt(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_delete_1Receipt(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::Receipt *arg1 = (XTools::Receipt *) 0 ;
   
   (void)jenv;
@@ -3426,7 +3426,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1Receip
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Receipt_1Clear(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_Receipt_1Clear(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   XTools::Receipt *arg1 = (XTools::Receipt *) 0 ;
   
   (void)jenv;
@@ -3437,7 +3437,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Receipt_1Clear
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_new_1Receipt(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_new_1Receipt(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   XTools::Receipt *result = 0 ;
   
@@ -3450,7 +3450,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_new_1Receipt(
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1LogManager(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_delete_1LogManager(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::LogManager *arg1 = (XTools::LogManager *) 0 ;
   
   (void)jenv;
@@ -3460,7 +3460,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1LogMan
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_LogManager_1Log(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jstring jarg3) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_LogManager_1Log(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jstring jarg3) {
   XTools::LogManager *arg1 = (XTools::LogManager *) 0 ;
   XTools::LogSeverity arg2 ;
   char *arg3 = (char *) 0 ;
@@ -3480,7 +3480,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_LogManager_1Lo
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1LogWriter(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_delete_1LogWriter(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::LogWriter *arg1 = (XTools::LogWriter *) 0 ;
   
   (void)jenv;
@@ -3490,7 +3490,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1LogWri
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_LogWriter_1WriteLogEntry(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jstring jarg3) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_LogWriter_1WriteLogEntry(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jstring jarg3) {
   XTools::LogWriter *arg1 = (XTools::LogWriter *) 0 ;
   XTools::LogSeverity arg2 ;
   std::string *arg3 = 0 ;
@@ -3513,7 +3513,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_LogWriter_1Wri
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_LogWriter_1WriteLogEntrySwigExplicitLogWriter(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jstring jarg3) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_LogWriter_1WriteLogEntrySwigExplicitLogWriter(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jstring jarg3) {
   XTools::LogWriter *arg1 = (XTools::LogWriter *) 0 ;
   XTools::LogSeverity arg2 ;
   std::string *arg3 = 0 ;
@@ -3536,7 +3536,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_LogWriter_1Wri
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_new_1LogWriter(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_new_1LogWriter(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   XTools::LogWriter *result = 0 ;
   
@@ -3548,7 +3548,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_new_1LogWrite
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_LogWriter_1director_1connect(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jswig_mem_own, jboolean jweak_global) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_LogWriter_1director_1connect(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jswig_mem_own, jboolean jweak_global) {
   XTools::LogWriter *obj = *((XTools::LogWriter **)&objarg);
   (void)jcls;
   SwigDirector_LogWriter *director = dynamic_cast<SwigDirector_LogWriter *>(obj);
@@ -3558,7 +3558,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_LogWriter_1dir
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_LogWriter_1change_1ownership(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jtake_or_release) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_LogWriter_1change_1ownership(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jtake_or_release) {
   XTools::LogWriter *obj = *((XTools::LogWriter **)&objarg);
   SwigDirector_LogWriter *director = dynamic_cast<SwigDirector_LogWriter *>(obj);
   (void)jcls;
@@ -3568,7 +3568,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_LogWriter_1cha
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Log_1Info(JNIEnv *jenv, jclass jcls, jstring jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_Log_1Info(JNIEnv *jenv, jclass jcls, jstring jarg1) {
   char *arg1 = (char *) 0 ;
   
   (void)jenv;
@@ -3583,7 +3583,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Log_1Info(JNIE
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Log_1Warning(JNIEnv *jenv, jclass jcls, jstring jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_Log_1Warning(JNIEnv *jenv, jclass jcls, jstring jarg1) {
   char *arg1 = (char *) 0 ;
   
   (void)jenv;
@@ -3598,7 +3598,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Log_1Warning(J
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Log_1Error(JNIEnv *jenv, jclass jcls, jstring jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_Log_1Error(JNIEnv *jenv, jclass jcls, jstring jarg1) {
   char *arg1 = (char *) 0 ;
   
   (void)jenv;
@@ -3613,7 +3613,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Log_1Error(JNI
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_new_1Log(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_new_1Log(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   XTools::Log *result = 0 ;
   
@@ -3625,7 +3625,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_new_1Log(JNIE
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1Log(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_delete_1Log(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::Log *arg1 = (XTools::Log *) 0 ;
   
   (void)jenv;
@@ -3635,7 +3635,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1Log(JN
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1Listener(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_delete_1Listener(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::Listener *arg1 = (XTools::Listener *) 0 ;
   
   (void)jenv;
@@ -3645,7 +3645,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1Listen
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Listener_1UnregisterAll(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_Listener_1UnregisterAll(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   XTools::Listener *arg1 = (XTools::Listener *) 0 ;
   
   (void)jenv;
@@ -3656,7 +3656,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Listener_1Unre
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Listener_1IsRegistered(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_SharingClientJNI_Listener_1IsRegistered(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   XTools::Listener *arg1 = (XTools::Listener *) 0 ;
   bool result;
@@ -3671,7 +3671,7 @@ SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Listener_1
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_new_1Listener(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_new_1Listener(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   XTools::Listener *result = 0 ;
   
@@ -3683,7 +3683,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_new_1Listener
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_kInvalidXGuid_1get(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_kInvalidXGuid_1get(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   XTools::XGuid result;
   
@@ -3695,7 +3695,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_kInvalidXGuid
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_new_1XString_1_1SWIG_10(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_new_1XString_1_1SWIG_10(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   XTools::XString *result = 0 ;
   
@@ -3708,7 +3708,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_new_1XString_
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_new_1XString_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jstring jarg1) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_new_1XString_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jstring jarg1) {
   jlong jresult = 0 ;
   std::string *arg1 = 0 ;
   XTools::XString *result = 0 ;
@@ -3731,7 +3731,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_new_1XString_
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1XString(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_delete_1XString(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::XString *arg1 = (XTools::XString *) 0 ;
   
   (void)jenv;
@@ -3741,7 +3741,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1XStrin
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_XString_1GetLength(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_XString_1GetLength(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   XTools::XString *arg1 = (XTools::XString *) 0 ;
   XTools::uint32 result;
@@ -3756,7 +3756,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_XString_1GetL
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_XString_1IsEqual(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_SharingClientJNI_XString_1IsEqual(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   jboolean jresult = 0 ;
   XTools::XString *arg1 = (XTools::XString *) 0 ;
   XTools::ref_ptr< XTools::XString > *arg2 = 0 ;
@@ -3786,7 +3786,7 @@ SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_XString_1I
 }
 
 
-SWIGEXPORT jstring JNICALL Java_com_microsoft_xtools_XToolsClientJNI_XString_1GetString(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_com_microsoft_xtools_SharingClientJNI_XString_1GetString(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   XTools::XString *arg1 = (XTools::XString *) 0 ;
   std::string *result = 0 ;
@@ -3801,7 +3801,7 @@ SWIGEXPORT jstring JNICALL Java_com_microsoft_xtools_XToolsClientJNI_XString_1Ge
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkOutMessage_1Write_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jbyte jarg2) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkOutMessage_1Write_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jbyte jarg2) {
   XTools::NetworkOutMessage *arg1 = (XTools::NetworkOutMessage *) 0 ;
   XTools::byte arg2 ;
   
@@ -3814,7 +3814,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkOutMess
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkOutMessage_1Write_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jshort jarg2) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkOutMessage_1Write_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jshort jarg2) {
   XTools::NetworkOutMessage *arg1 = (XTools::NetworkOutMessage *) 0 ;
   XTools::int16 arg2 ;
   
@@ -3827,7 +3827,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkOutMess
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkOutMessage_1Write_1_1SWIG_12(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkOutMessage_1Write_1_1SWIG_12(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   XTools::NetworkOutMessage *arg1 = (XTools::NetworkOutMessage *) 0 ;
   XTools::int32 arg2 ;
   
@@ -3840,7 +3840,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkOutMess
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkOutMessage_1Write_1_1SWIG_13(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkOutMessage_1Write_1_1SWIG_13(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   XTools::NetworkOutMessage *arg1 = (XTools::NetworkOutMessage *) 0 ;
   XTools::int64 arg2 ;
   
@@ -3853,7 +3853,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkOutMess
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkOutMessage_1Write_1_1SWIG_14(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jfloat jarg2) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkOutMessage_1Write_1_1SWIG_14(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jfloat jarg2) {
   XTools::NetworkOutMessage *arg1 = (XTools::NetworkOutMessage *) 0 ;
   float arg2 ;
   
@@ -3866,7 +3866,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkOutMess
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkOutMessage_1Write_1_1SWIG_15(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jdouble jarg2) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkOutMessage_1Write_1_1SWIG_15(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jdouble jarg2) {
   XTools::NetworkOutMessage *arg1 = (XTools::NetworkOutMessage *) 0 ;
   double arg2 ;
   
@@ -3879,7 +3879,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkOutMess
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkOutMessage_1Write_1_1SWIG_16(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkOutMessage_1Write_1_1SWIG_16(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::NetworkOutMessage *arg1 = (XTools::NetworkOutMessage *) 0 ;
   XTools::XStringPtr *arg2 = 0 ;
   XTools::XStringPtr tempnull2 ;
@@ -3905,7 +3905,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkOutMess
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkOutMessage_1WriteArray(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jbyteArray jarg2, jlong jarg3) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkOutMessage_1WriteArray(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jbyteArray jarg2, jlong jarg3) {
   XTools::NetworkOutMessage *arg1 = (XTools::NetworkOutMessage *) 0 ;
   XTools::byte *arg2 = (XTools::byte *) 0 ;
   XTools::uint32 arg3 ;
@@ -3923,7 +3923,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkOutMess
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkOutMessage_1Reset(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkOutMessage_1Reset(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   XTools::NetworkOutMessage *arg1 = (XTools::NetworkOutMessage *) 0 ;
   
   (void)jenv;
@@ -3934,7 +3934,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkOutMess
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1NetworkOutMessage(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_delete_1NetworkOutMessage(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::NetworkOutMessage *arg1 = (XTools::NetworkOutMessage *) 0 ;
   
   (void)jenv;
@@ -3944,7 +3944,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1Networ
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1NetworkInMessage(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_delete_1NetworkInMessage(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::NetworkInMessage *arg1 = (XTools::NetworkInMessage *) 0 ;
   
   (void)jenv;
@@ -3954,7 +3954,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1Networ
 }
 
 
-SWIGEXPORT jshort JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkInMessage_1ReadByte(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jshort JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkInMessage_1ReadByte(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jshort jresult = 0 ;
   XTools::NetworkInMessage *arg1 = (XTools::NetworkInMessage *) 0 ;
   XTools::byte result;
@@ -3969,7 +3969,7 @@ SWIGEXPORT jshort JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkInMes
 }
 
 
-SWIGEXPORT jshort JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkInMessage_1ReadInt16(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jshort JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkInMessage_1ReadInt16(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jshort jresult = 0 ;
   XTools::NetworkInMessage *arg1 = (XTools::NetworkInMessage *) 0 ;
   XTools::int16 result;
@@ -3984,7 +3984,7 @@ SWIGEXPORT jshort JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkInMes
 }
 
 
-SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkInMessage_1ReadInt32(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkInMessage_1ReadInt32(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   XTools::NetworkInMessage *arg1 = (XTools::NetworkInMessage *) 0 ;
   XTools::int32 result;
@@ -3999,7 +3999,7 @@ SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkInMessa
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkInMessage_1ReadInt64(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkInMessage_1ReadInt64(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   XTools::NetworkInMessage *arg1 = (XTools::NetworkInMessage *) 0 ;
   XTools::int64 result;
@@ -4014,7 +4014,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkInMess
 }
 
 
-SWIGEXPORT jfloat JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkInMessage_1ReadFloat(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jfloat JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkInMessage_1ReadFloat(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jfloat jresult = 0 ;
   XTools::NetworkInMessage *arg1 = (XTools::NetworkInMessage *) 0 ;
   float result;
@@ -4029,7 +4029,7 @@ SWIGEXPORT jfloat JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkInMes
 }
 
 
-SWIGEXPORT jdouble JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkInMessage_1ReadDouble(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jdouble JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkInMessage_1ReadDouble(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jdouble jresult = 0 ;
   XTools::NetworkInMessage *arg1 = (XTools::NetworkInMessage *) 0 ;
   double result;
@@ -4044,7 +4044,7 @@ SWIGEXPORT jdouble JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkInMe
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkInMessage_1ReadString(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkInMessage_1ReadString(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   XTools::NetworkInMessage *arg1 = (XTools::NetworkInMessage *) 0 ;
   XTools::XStringPtr result;
@@ -4067,7 +4067,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkInMess
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkInMessage_1ReadArray(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jbyteArray jarg2, jlong jarg3) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkInMessage_1ReadArray(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jbyteArray jarg2, jlong jarg3) {
   XTools::NetworkInMessage *arg1 = (XTools::NetworkInMessage *) 0 ;
   XTools::byte *arg2 = (XTools::byte *) 0 ;
   XTools::uint32 arg3 ;
@@ -4085,7 +4085,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkInMessa
 }
 
 
-SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkInMessage_1GetUnreadBitsCount(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkInMessage_1GetUnreadBitsCount(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   XTools::NetworkInMessage *arg1 = (XTools::NetworkInMessage *) 0 ;
   XTools::int32 result;
@@ -4100,7 +4100,7 @@ SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkInMessa
 }
 
 
-SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkInMessage_1GetSize(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkInMessage_1GetSize(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   XTools::NetworkInMessage *arg1 = (XTools::NetworkInMessage *) 0 ;
   XTools::int32 result;
@@ -4115,7 +4115,7 @@ SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkInMessa
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1NetworkConnectionListener(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_delete_1NetworkConnectionListener(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::NetworkConnectionListener *arg1 = (XTools::NetworkConnectionListener *) 0 ;
   
   (void)jenv;
@@ -4125,7 +4125,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1Networ
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnectionListener_1OnConnected(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkConnectionListener_1OnConnected(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::NetworkConnectionListener *arg1 = (XTools::NetworkConnectionListener *) 0 ;
   XTools::NetworkConnectionPtr *arg2 = 0 ;
   XTools::NetworkConnectionPtr tempnull2 ;
@@ -4151,7 +4151,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnect
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnectionListener_1OnConnectedSwigExplicitNetworkConnectionListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkConnectionListener_1OnConnectedSwigExplicitNetworkConnectionListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::NetworkConnectionListener *arg1 = (XTools::NetworkConnectionListener *) 0 ;
   XTools::NetworkConnectionPtr *arg2 = 0 ;
   XTools::NetworkConnectionPtr tempnull2 ;
@@ -4177,7 +4177,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnect
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnectionListener_1OnConnectFailed(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkConnectionListener_1OnConnectFailed(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::NetworkConnectionListener *arg1 = (XTools::NetworkConnectionListener *) 0 ;
   XTools::NetworkConnectionPtr *arg2 = 0 ;
   XTools::NetworkConnectionPtr tempnull2 ;
@@ -4203,7 +4203,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnect
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnectionListener_1OnConnectFailedSwigExplicitNetworkConnectionListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkConnectionListener_1OnConnectFailedSwigExplicitNetworkConnectionListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::NetworkConnectionListener *arg1 = (XTools::NetworkConnectionListener *) 0 ;
   XTools::NetworkConnectionPtr *arg2 = 0 ;
   XTools::NetworkConnectionPtr tempnull2 ;
@@ -4229,7 +4229,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnect
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnectionListener_1OnDisconnected(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkConnectionListener_1OnDisconnected(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::NetworkConnectionListener *arg1 = (XTools::NetworkConnectionListener *) 0 ;
   XTools::NetworkConnectionPtr *arg2 = 0 ;
   XTools::NetworkConnectionPtr tempnull2 ;
@@ -4255,7 +4255,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnect
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnectionListener_1OnDisconnectedSwigExplicitNetworkConnectionListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkConnectionListener_1OnDisconnectedSwigExplicitNetworkConnectionListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::NetworkConnectionListener *arg1 = (XTools::NetworkConnectionListener *) 0 ;
   XTools::NetworkConnectionPtr *arg2 = 0 ;
   XTools::NetworkConnectionPtr tempnull2 ;
@@ -4281,7 +4281,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnect
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnectionListener_1OnMessageReceived(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkConnectionListener_1OnMessageReceived(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_) {
   XTools::NetworkConnectionListener *arg1 = (XTools::NetworkConnectionListener *) 0 ;
   XTools::NetworkConnectionPtr *arg2 = 0 ;
   XTools::NetworkInMessage *arg3 = 0 ;
@@ -4314,7 +4314,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnect
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnectionListener_1OnMessageReceivedSwigExplicitNetworkConnectionListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkConnectionListener_1OnMessageReceivedSwigExplicitNetworkConnectionListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_) {
   XTools::NetworkConnectionListener *arg1 = (XTools::NetworkConnectionListener *) 0 ;
   XTools::NetworkConnectionPtr *arg2 = 0 ;
   XTools::NetworkInMessage *arg3 = 0 ;
@@ -4347,7 +4347,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnect
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_new_1NetworkConnectionListener(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_new_1NetworkConnectionListener(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   XTools::NetworkConnectionListener *result = 0 ;
   
@@ -4359,7 +4359,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_new_1NetworkC
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnectionListener_1director_1connect(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jswig_mem_own, jboolean jweak_global) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkConnectionListener_1director_1connect(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jswig_mem_own, jboolean jweak_global) {
   XTools::NetworkConnectionListener *obj = *((XTools::NetworkConnectionListener **)&objarg);
   (void)jcls;
   SwigDirector_NetworkConnectionListener *director = dynamic_cast<SwigDirector_NetworkConnectionListener *>(obj);
@@ -4369,7 +4369,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnect
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnectionListener_1change_1ownership(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jtake_or_release) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkConnectionListener_1change_1ownership(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jtake_or_release) {
   XTools::NetworkConnectionListener *obj = *((XTools::NetworkConnectionListener **)&objarg);
   SwigDirector_NetworkConnectionListener *director = dynamic_cast<SwigDirector_NetworkConnectionListener *>(obj);
   (void)jcls;
@@ -4379,7 +4379,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnect
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_User_1GetName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_User_1GetName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   XTools::User *arg1 = (XTools::User *) 0 ;
   XTools::XStringPtr *result = 0 ;
@@ -4402,7 +4402,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_User_1GetName
 }
 
 
-SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_User_1GetID(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_SharingClientJNI_User_1GetID(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   XTools::User *arg1 = (XTools::User *) 0 ;
   XTools::UserID result;
@@ -4417,7 +4417,7 @@ SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_User_1GetID(JN
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_User_1IsValid(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_SharingClientJNI_User_1IsValid(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   XTools::User *arg1 = (XTools::User *) 0 ;
   bool result;
@@ -4432,7 +4432,7 @@ SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_User_1IsVa
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_User_1GetMuteState(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_SharingClientJNI_User_1GetMuteState(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   XTools::User *arg1 = (XTools::User *) 0 ;
   bool result;
@@ -4447,7 +4447,7 @@ SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_User_1GetM
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1User(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_delete_1User(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::User *arg1 = (XTools::User *) 0 ;
   
   (void)jenv;
@@ -4457,7 +4457,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1User(J
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnection_1IsConnected(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkConnection_1IsConnected(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   bool result;
@@ -4472,7 +4472,7 @@ SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkCon
 }
 
 
-SWIGEXPORT jobject JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnection_1GetConnectionGUID(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jobject JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkConnection_1GetConnectionGUID(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jobject jresult = 0 ;
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   XTools::ConnectionGUID result;
@@ -4503,7 +4503,7 @@ SWIGEXPORT jobject JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConn
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnection_1Send_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3, jint jarg4, jint jarg5, jboolean jarg6) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkConnection_1Send_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3, jint jarg4, jint jarg5, jboolean jarg6) {
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   XTools::NetworkOutMessagePtr *arg2 = 0 ;
   XTools::MessagePriority arg3 ;
@@ -4537,7 +4537,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnect
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnection_1Send_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3, jint jarg4, jint jarg5) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkConnection_1Send_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3, jint jarg4, jint jarg5) {
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   XTools::NetworkOutMessagePtr *arg2 = 0 ;
   XTools::MessagePriority arg3 ;
@@ -4569,7 +4569,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnect
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnection_1Send_1_1SWIG_12(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3, jint jarg4) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkConnection_1Send_1_1SWIG_12(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3, jint jarg4) {
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   XTools::NetworkOutMessagePtr *arg2 = 0 ;
   XTools::MessagePriority arg3 ;
@@ -4599,7 +4599,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnect
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnection_1Send_1_1SWIG_13(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkConnection_1Send_1_1SWIG_13(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3) {
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   XTools::NetworkOutMessagePtr *arg2 = 0 ;
   XTools::MessagePriority arg3 ;
@@ -4627,7 +4627,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnect
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnection_1Send_1_1SWIG_14(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkConnection_1Send_1_1SWIG_14(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   XTools::NetworkOutMessagePtr *arg2 = 0 ;
   XTools::NetworkOutMessagePtr tempnull2 ;
@@ -4653,7 +4653,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnect
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnection_1SendTo_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3, jlong jarg4, jobject jarg4_, jint jarg5, jint jarg6, jint jarg7, jboolean jarg8) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkConnection_1SendTo_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3, jlong jarg4, jobject jarg4_, jint jarg5, jint jarg6, jint jarg7, jboolean jarg8) {
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   XTools::UserPtr *arg2 = 0 ;
   XTools::ClientRole arg3 ;
@@ -4704,7 +4704,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnect
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnection_1SendTo_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3, jlong jarg4, jobject jarg4_, jint jarg5, jint jarg6, jint jarg7) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkConnection_1SendTo_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3, jlong jarg4, jobject jarg4_, jint jarg5, jint jarg6, jint jarg7) {
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   XTools::UserPtr *arg2 = 0 ;
   XTools::ClientRole arg3 ;
@@ -4753,7 +4753,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnect
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnection_1SendTo_1_1SWIG_12(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3, jlong jarg4, jobject jarg4_, jint jarg5, jint jarg6) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkConnection_1SendTo_1_1SWIG_12(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3, jlong jarg4, jobject jarg4_, jint jarg5, jint jarg6) {
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   XTools::UserPtr *arg2 = 0 ;
   XTools::ClientRole arg3 ;
@@ -4800,7 +4800,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnect
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnection_1SendTo_1_1SWIG_13(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3, jlong jarg4, jobject jarg4_, jint jarg5) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkConnection_1SendTo_1_1SWIG_13(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3, jlong jarg4, jobject jarg4_, jint jarg5) {
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   XTools::UserPtr *arg2 = 0 ;
   XTools::ClientRole arg3 ;
@@ -4845,7 +4845,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnect
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnection_1SendTo_1_1SWIG_14(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3, jlong jarg4, jobject jarg4_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkConnection_1SendTo_1_1SWIG_14(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3, jlong jarg4, jobject jarg4_) {
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   XTools::UserPtr *arg2 = 0 ;
   XTools::ClientRole arg3 ;
@@ -4888,7 +4888,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnect
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnection_1Broadcast_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3, jint jarg4, jint jarg5, jboolean jarg6) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkConnection_1Broadcast_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3, jint jarg4, jint jarg5, jboolean jarg6) {
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   XTools::NetworkOutMessagePtr *arg2 = 0 ;
   XTools::MessagePriority arg3 ;
@@ -4922,7 +4922,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnect
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnection_1Broadcast_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3, jint jarg4, jint jarg5) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkConnection_1Broadcast_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3, jint jarg4, jint jarg5) {
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   XTools::NetworkOutMessagePtr *arg2 = 0 ;
   XTools::MessagePriority arg3 ;
@@ -4954,7 +4954,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnect
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnection_1Broadcast_1_1SWIG_12(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3, jint jarg4) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkConnection_1Broadcast_1_1SWIG_12(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3, jint jarg4) {
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   XTools::NetworkOutMessagePtr *arg2 = 0 ;
   XTools::MessagePriority arg3 ;
@@ -4984,7 +4984,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnect
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnection_1Broadcast_1_1SWIG_13(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkConnection_1Broadcast_1_1SWIG_13(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3) {
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   XTools::NetworkOutMessagePtr *arg2 = 0 ;
   XTools::MessagePriority arg3 ;
@@ -5012,7 +5012,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnect
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnection_1Broadcast_1_1SWIG_14(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkConnection_1Broadcast_1_1SWIG_14(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   XTools::NetworkOutMessagePtr *arg2 = 0 ;
   XTools::NetworkOutMessagePtr tempnull2 ;
@@ -5038,7 +5038,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnect
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnection_1AddListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jbyte jarg2, jlong jarg3, jobject jarg3_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkConnection_1AddListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jbyte jarg2, jlong jarg3, jobject jarg3_) {
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   XTools::byte arg2 ;
   XTools::NetworkConnectionListener *arg3 = (XTools::NetworkConnectionListener *) 0 ;
@@ -5054,7 +5054,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnect
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnection_1RemoveListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jbyte jarg2, jlong jarg3, jobject jarg3_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkConnection_1RemoveListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jbyte jarg2, jlong jarg3, jobject jarg3_) {
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   XTools::byte arg2 ;
   XTools::NetworkConnectionListener *arg3 = (XTools::NetworkConnectionListener *) 0 ;
@@ -5070,7 +5070,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnect
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnection_1RegisterAsyncCallback(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jbyte jarg2, jlong jarg3, jobject jarg3_) {
+SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkConnection_1RegisterAsyncCallback(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jbyte jarg2, jlong jarg3, jobject jarg3_) {
   jboolean jresult = 0 ;
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   XTools::byte arg2 ;
@@ -5090,7 +5090,7 @@ SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkCon
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnection_1UnregisterAsyncCallback(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jbyte jarg2) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkConnection_1UnregisterAsyncCallback(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jbyte jarg2) {
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   XTools::byte arg2 ;
   
@@ -5103,7 +5103,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnect
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnection_1CreateMessage(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jbyte jarg2) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkConnection_1CreateMessage(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jbyte jarg2) {
   jlong jresult = 0 ;
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   XTools::byte arg2 ;
@@ -5128,7 +5128,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnec
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnection_1ReturnMessage(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkConnection_1ReturnMessage(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   XTools::NetworkOutMessagePtr *arg2 = 0 ;
   XTools::NetworkOutMessagePtr tempnull2 ;
@@ -5154,7 +5154,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnect
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnection_1Disconnect(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkConnection_1Disconnect(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   
   (void)jenv;
@@ -5165,7 +5165,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnect
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnection_1GetRemoteAddress(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkConnection_1GetRemoteAddress(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   XTools::XStringPtr result;
@@ -5188,7 +5188,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnec
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1NetworkConnection(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_delete_1NetworkConnection(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   
   (void)jenv;
@@ -5198,7 +5198,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1Networ
 }
 
 
-SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Element_1GetElementType(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_SharingClientJNI_Element_1GetElementType(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   XTools::Element *arg1 = (XTools::Element *) 0 ;
   XTools::ElementType result;
@@ -5213,7 +5213,7 @@ SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Element_1GetEl
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Element_1GetGUID(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_Element_1GetGUID(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   XTools::Element *arg1 = (XTools::Element *) 0 ;
   XTools::XGuid result;
@@ -5228,7 +5228,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Element_1GetG
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Element_1GetName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_Element_1GetName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   XTools::Element *arg1 = (XTools::Element *) 0 ;
   XTools::XStringPtr *result = 0 ;
@@ -5251,7 +5251,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Element_1GetN
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Element_1GetParent(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_Element_1GetParent(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   XTools::Element *arg1 = (XTools::Element *) 0 ;
   XTools::ref_ptr< XTools::Element > result;
@@ -5274,7 +5274,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Element_1GetP
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Element_1IsValid(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_SharingClientJNI_Element_1IsValid(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   XTools::Element *arg1 = (XTools::Element *) 0 ;
   bool result;
@@ -5289,7 +5289,7 @@ SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Element_1I
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1Element(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_delete_1Element(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::Element *arg1 = (XTools::Element *) 0 ;
   
   (void)jenv;
@@ -5299,7 +5299,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1Elemen
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntElement_1Cast(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_IntElement_1Cast(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   XTools::ElementPtr *arg1 = 0 ;
   XTools::ElementPtr tempnull1 ;
@@ -5334,7 +5334,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntElement_1C
 }
 
 
-SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntElement_1GetValue(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_SharingClientJNI_IntElement_1GetValue(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   XTools::IntElement *arg1 = (XTools::IntElement *) 0 ;
   XTools::int32 result;
@@ -5349,7 +5349,7 @@ SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntElement_1Ge
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntElement_1SetValue(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_IntElement_1SetValue(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   XTools::IntElement *arg1 = (XTools::IntElement *) 0 ;
   XTools::int32 arg2 ;
   
@@ -5362,7 +5362,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntElement_1Se
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1IntElement(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_delete_1IntElement(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::IntElement *arg1 = (XTools::IntElement *) 0 ;
   
   (void)jenv;
@@ -5372,7 +5372,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1IntEle
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_LongElement_1Cast(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_LongElement_1Cast(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   XTools::ElementPtr *arg1 = 0 ;
   XTools::ElementPtr tempnull1 ;
@@ -5407,7 +5407,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_LongElement_1
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_LongElement_1GetValue(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_LongElement_1GetValue(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   XTools::LongElement *arg1 = (XTools::LongElement *) 0 ;
   XTools::int64 result;
@@ -5422,7 +5422,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_LongElement_1
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_LongElement_1SetValue(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_LongElement_1SetValue(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   XTools::LongElement *arg1 = (XTools::LongElement *) 0 ;
   XTools::int64 arg2 ;
   
@@ -5435,7 +5435,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_LongElement_1S
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1LongElement(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_delete_1LongElement(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::LongElement *arg1 = (XTools::LongElement *) 0 ;
   
   (void)jenv;
@@ -5445,7 +5445,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1LongEl
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_FloatElement_1Cast(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_FloatElement_1Cast(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   XTools::ElementPtr *arg1 = 0 ;
   XTools::ElementPtr tempnull1 ;
@@ -5480,7 +5480,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_FloatElement_
 }
 
 
-SWIGEXPORT jfloat JNICALL Java_com_microsoft_xtools_XToolsClientJNI_FloatElement_1GetValue(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jfloat JNICALL Java_com_microsoft_xtools_SharingClientJNI_FloatElement_1GetValue(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jfloat jresult = 0 ;
   XTools::FloatElement *arg1 = (XTools::FloatElement *) 0 ;
   float result;
@@ -5495,7 +5495,7 @@ SWIGEXPORT jfloat JNICALL Java_com_microsoft_xtools_XToolsClientJNI_FloatElement
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_FloatElement_1SetValue(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jfloat jarg2) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_FloatElement_1SetValue(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jfloat jarg2) {
   XTools::FloatElement *arg1 = (XTools::FloatElement *) 0 ;
   float arg2 ;
   
@@ -5508,7 +5508,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_FloatElement_1
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1FloatElement(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_delete_1FloatElement(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::FloatElement *arg1 = (XTools::FloatElement *) 0 ;
   
   (void)jenv;
@@ -5518,7 +5518,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1FloatE
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_DoubleElement_1Cast(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_DoubleElement_1Cast(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   XTools::ElementPtr *arg1 = 0 ;
   XTools::ElementPtr tempnull1 ;
@@ -5553,7 +5553,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_DoubleElement
 }
 
 
-SWIGEXPORT jdouble JNICALL Java_com_microsoft_xtools_XToolsClientJNI_DoubleElement_1GetValue(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jdouble JNICALL Java_com_microsoft_xtools_SharingClientJNI_DoubleElement_1GetValue(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jdouble jresult = 0 ;
   XTools::DoubleElement *arg1 = (XTools::DoubleElement *) 0 ;
   double result;
@@ -5568,7 +5568,7 @@ SWIGEXPORT jdouble JNICALL Java_com_microsoft_xtools_XToolsClientJNI_DoubleEleme
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_DoubleElement_1SetValue(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jdouble jarg2) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_DoubleElement_1SetValue(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jdouble jarg2) {
   XTools::DoubleElement *arg1 = (XTools::DoubleElement *) 0 ;
   double arg2 ;
   
@@ -5581,7 +5581,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_DoubleElement_
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1DoubleElement(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_delete_1DoubleElement(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::DoubleElement *arg1 = (XTools::DoubleElement *) 0 ;
   
   (void)jenv;
@@ -5591,7 +5591,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1Double
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_StringElement_1Cast(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_StringElement_1Cast(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   XTools::ElementPtr *arg1 = 0 ;
   XTools::ElementPtr tempnull1 ;
@@ -5626,7 +5626,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_StringElement
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_StringElement_1GetValue(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_StringElement_1GetValue(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   XTools::StringElement *arg1 = (XTools::StringElement *) 0 ;
   XTools::XStringPtr *result = 0 ;
@@ -5649,7 +5649,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_StringElement
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_StringElement_1SetValue(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_StringElement_1SetValue(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::StringElement *arg1 = (XTools::StringElement *) 0 ;
   XTools::XStringPtr *arg2 = 0 ;
   XTools::XStringPtr tempnull2 ;
@@ -5675,7 +5675,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_StringElement_
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1StringElement(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_delete_1StringElement(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::StringElement *arg1 = (XTools::StringElement *) 0 ;
   
   (void)jenv;
@@ -5685,7 +5685,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1String
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1IntArrayListener(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_delete_1IntArrayListener(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::IntArrayListener *arg1 = (XTools::IntArrayListener *) 0 ;
   
   (void)jenv;
@@ -5695,7 +5695,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1IntArr
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayListener_1OnValueChanged(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_IntArrayListener_1OnValueChanged(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3) {
   XTools::IntArrayListener *arg1 = (XTools::IntArrayListener *) 0 ;
   XTools::int32 arg2 ;
   XTools::int32 arg3 ;
@@ -5710,7 +5710,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayListen
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayListener_1OnValueChangedSwigExplicitIntArrayListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_IntArrayListener_1OnValueChangedSwigExplicitIntArrayListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3) {
   XTools::IntArrayListener *arg1 = (XTools::IntArrayListener *) 0 ;
   XTools::int32 arg2 ;
   XTools::int32 arg3 ;
@@ -5725,7 +5725,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayListen
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayListener_1OnValueInserted(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_IntArrayListener_1OnValueInserted(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3) {
   XTools::IntArrayListener *arg1 = (XTools::IntArrayListener *) 0 ;
   XTools::int32 arg2 ;
   XTools::int32 arg3 ;
@@ -5740,7 +5740,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayListen
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayListener_1OnValueInsertedSwigExplicitIntArrayListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_IntArrayListener_1OnValueInsertedSwigExplicitIntArrayListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3) {
   XTools::IntArrayListener *arg1 = (XTools::IntArrayListener *) 0 ;
   XTools::int32 arg2 ;
   XTools::int32 arg3 ;
@@ -5755,7 +5755,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayListen
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayListener_1OnValueRemoved(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_IntArrayListener_1OnValueRemoved(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3) {
   XTools::IntArrayListener *arg1 = (XTools::IntArrayListener *) 0 ;
   XTools::int32 arg2 ;
   XTools::int32 arg3 ;
@@ -5770,7 +5770,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayListen
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayListener_1OnValueRemovedSwigExplicitIntArrayListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_IntArrayListener_1OnValueRemovedSwigExplicitIntArrayListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3) {
   XTools::IntArrayListener *arg1 = (XTools::IntArrayListener *) 0 ;
   XTools::int32 arg2 ;
   XTools::int32 arg3 ;
@@ -5785,7 +5785,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayListen
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_new_1IntArrayListener(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_new_1IntArrayListener(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   XTools::IntArrayListener *result = 0 ;
   
@@ -5797,7 +5797,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_new_1IntArray
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayListener_1director_1connect(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jswig_mem_own, jboolean jweak_global) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_IntArrayListener_1director_1connect(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jswig_mem_own, jboolean jweak_global) {
   XTools::IntArrayListener *obj = *((XTools::IntArrayListener **)&objarg);
   (void)jcls;
   SwigDirector_IntArrayListener *director = dynamic_cast<SwigDirector_IntArrayListener *>(obj);
@@ -5807,7 +5807,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayListen
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayListener_1change_1ownership(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jtake_or_release) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_IntArrayListener_1change_1ownership(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jtake_or_release) {
   XTools::IntArrayListener *obj = *((XTools::IntArrayListener **)&objarg);
   SwigDirector_IntArrayListener *director = dynamic_cast<SwigDirector_IntArrayListener *>(obj);
   (void)jcls;
@@ -5817,7 +5817,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayListen
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayElement_1Cast(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_IntArrayElement_1Cast(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   XTools::ElementPtr *arg1 = 0 ;
   XTools::ElementPtr tempnull1 ;
@@ -5852,7 +5852,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayEleme
 }
 
 
-SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayElement_1GetCount(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_SharingClientJNI_IntArrayElement_1GetCount(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   XTools::IntArrayElement *arg1 = (XTools::IntArrayElement *) 0 ;
   XTools::int32 result;
@@ -5867,7 +5867,7 @@ SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayElemen
 }
 
 
-SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayElement_1GetValue(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_SharingClientJNI_IntArrayElement_1GetValue(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   jint jresult = 0 ;
   XTools::IntArrayElement *arg1 = (XTools::IntArrayElement *) 0 ;
   XTools::int32 arg2 ;
@@ -5884,7 +5884,7 @@ SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayElemen
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayElement_1SetValue(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_IntArrayElement_1SetValue(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3) {
   XTools::IntArrayElement *arg1 = (XTools::IntArrayElement *) 0 ;
   XTools::int32 arg2 ;
   XTools::int32 arg3 ;
@@ -5899,7 +5899,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayElemen
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayElement_1InsertValue(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_IntArrayElement_1InsertValue(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3) {
   XTools::IntArrayElement *arg1 = (XTools::IntArrayElement *) 0 ;
   XTools::int32 arg2 ;
   int arg3 ;
@@ -5914,7 +5914,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayElemen
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayElement_1RemoveValue(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_IntArrayElement_1RemoveValue(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   XTools::IntArrayElement *arg1 = (XTools::IntArrayElement *) 0 ;
   XTools::int32 arg2 ;
   
@@ -5927,7 +5927,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayElemen
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayElement_1AddListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_IntArrayElement_1AddListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::IntArrayElement *arg1 = (XTools::IntArrayElement *) 0 ;
   XTools::IntArrayListener *arg2 = (XTools::IntArrayListener *) 0 ;
   
@@ -5941,7 +5941,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayElemen
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayElement_1RemoveListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_IntArrayElement_1RemoveListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::IntArrayElement *arg1 = (XTools::IntArrayElement *) 0 ;
   XTools::IntArrayListener *arg2 = (XTools::IntArrayListener *) 0 ;
   
@@ -5955,7 +5955,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayElemen
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1IntArrayElement(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_delete_1IntArrayElement(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::IntArrayElement *arg1 = (XTools::IntArrayElement *) 0 ;
   
   (void)jenv;
@@ -5965,7 +5965,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1IntArr
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1ObjectElementListener(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_delete_1ObjectElementListener(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::ObjectElementListener *arg1 = (XTools::ObjectElementListener *) 0 ;
   
   (void)jenv;
@@ -5975,7 +5975,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1Object
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElementListener_1OnIntElementChanged(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jint jarg3) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_ObjectElementListener_1OnIntElementChanged(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jint jarg3) {
   XTools::ObjectElementListener *arg1 = (XTools::ObjectElementListener *) 0 ;
   XTools::XGuid arg2 ;
   XTools::int32 arg3 ;
@@ -5990,7 +5990,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElementL
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElementListener_1OnIntElementChangedSwigExplicitObjectElementListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jint jarg3) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_ObjectElementListener_1OnIntElementChangedSwigExplicitObjectElementListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jint jarg3) {
   XTools::ObjectElementListener *arg1 = (XTools::ObjectElementListener *) 0 ;
   XTools::XGuid arg2 ;
   XTools::int32 arg3 ;
@@ -6005,7 +6005,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElementL
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElementListener_1OnLongElementChanged(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jlong jarg3) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_ObjectElementListener_1OnLongElementChanged(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jlong jarg3) {
   XTools::ObjectElementListener *arg1 = (XTools::ObjectElementListener *) 0 ;
   XTools::XGuid arg2 ;
   XTools::int64 arg3 ;
@@ -6020,7 +6020,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElementL
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElementListener_1OnLongElementChangedSwigExplicitObjectElementListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jlong jarg3) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_ObjectElementListener_1OnLongElementChangedSwigExplicitObjectElementListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jlong jarg3) {
   XTools::ObjectElementListener *arg1 = (XTools::ObjectElementListener *) 0 ;
   XTools::XGuid arg2 ;
   XTools::int64 arg3 ;
@@ -6035,7 +6035,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElementL
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElementListener_1OnFloatElementChanged(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jfloat jarg3) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_ObjectElementListener_1OnFloatElementChanged(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jfloat jarg3) {
   XTools::ObjectElementListener *arg1 = (XTools::ObjectElementListener *) 0 ;
   XTools::XGuid arg2 ;
   float arg3 ;
@@ -6050,7 +6050,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElementL
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElementListener_1OnFloatElementChangedSwigExplicitObjectElementListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jfloat jarg3) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_ObjectElementListener_1OnFloatElementChangedSwigExplicitObjectElementListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jfloat jarg3) {
   XTools::ObjectElementListener *arg1 = (XTools::ObjectElementListener *) 0 ;
   XTools::XGuid arg2 ;
   float arg3 ;
@@ -6065,7 +6065,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElementL
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElementListener_1OnDoubleElementChanged(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jdouble jarg3) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_ObjectElementListener_1OnDoubleElementChanged(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jdouble jarg3) {
   XTools::ObjectElementListener *arg1 = (XTools::ObjectElementListener *) 0 ;
   XTools::XGuid arg2 ;
   double arg3 ;
@@ -6080,7 +6080,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElementL
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElementListener_1OnDoubleElementChangedSwigExplicitObjectElementListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jdouble jarg3) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_ObjectElementListener_1OnDoubleElementChangedSwigExplicitObjectElementListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jdouble jarg3) {
   XTools::ObjectElementListener *arg1 = (XTools::ObjectElementListener *) 0 ;
   XTools::XGuid arg2 ;
   double arg3 ;
@@ -6095,7 +6095,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElementL
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElementListener_1OnStringElementChanged(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jlong jarg3, jobject jarg3_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_ObjectElementListener_1OnStringElementChanged(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jlong jarg3, jobject jarg3_) {
   XTools::ObjectElementListener *arg1 = (XTools::ObjectElementListener *) 0 ;
   XTools::XGuid arg2 ;
   XTools::XStringPtr *arg3 = 0 ;
@@ -6123,7 +6123,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElementL
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElementListener_1OnStringElementChangedSwigExplicitObjectElementListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jlong jarg3, jobject jarg3_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_ObjectElementListener_1OnStringElementChangedSwigExplicitObjectElementListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jlong jarg3, jobject jarg3_) {
   XTools::ObjectElementListener *arg1 = (XTools::ObjectElementListener *) 0 ;
   XTools::XGuid arg2 ;
   XTools::XStringPtr *arg3 = 0 ;
@@ -6151,7 +6151,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElementL
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElementListener_1OnElementAdded(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_ObjectElementListener_1OnElementAdded(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::ObjectElementListener *arg1 = (XTools::ObjectElementListener *) 0 ;
   XTools::ElementPtr *arg2 = 0 ;
   XTools::ElementPtr tempnull2 ;
@@ -6177,7 +6177,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElementL
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElementListener_1OnElementAddedSwigExplicitObjectElementListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_ObjectElementListener_1OnElementAddedSwigExplicitObjectElementListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::ObjectElementListener *arg1 = (XTools::ObjectElementListener *) 0 ;
   XTools::ElementPtr *arg2 = 0 ;
   XTools::ElementPtr tempnull2 ;
@@ -6203,7 +6203,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElementL
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElementListener_1OnElementDeleted(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_ObjectElementListener_1OnElementDeleted(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::ObjectElementListener *arg1 = (XTools::ObjectElementListener *) 0 ;
   XTools::ElementPtr *arg2 = 0 ;
   XTools::ElementPtr tempnull2 ;
@@ -6229,7 +6229,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElementL
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElementListener_1OnElementDeletedSwigExplicitObjectElementListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_ObjectElementListener_1OnElementDeletedSwigExplicitObjectElementListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::ObjectElementListener *arg1 = (XTools::ObjectElementListener *) 0 ;
   XTools::ElementPtr *arg2 = 0 ;
   XTools::ElementPtr tempnull2 ;
@@ -6255,7 +6255,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElementL
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_new_1ObjectElementListener(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_new_1ObjectElementListener(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   XTools::ObjectElementListener *result = 0 ;
   
@@ -6267,7 +6267,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_new_1ObjectEl
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElementListener_1director_1connect(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jswig_mem_own, jboolean jweak_global) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_ObjectElementListener_1director_1connect(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jswig_mem_own, jboolean jweak_global) {
   XTools::ObjectElementListener *obj = *((XTools::ObjectElementListener **)&objarg);
   (void)jcls;
   SwigDirector_ObjectElementListener *director = dynamic_cast<SwigDirector_ObjectElementListener *>(obj);
@@ -6277,7 +6277,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElementL
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElementListener_1change_1ownership(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jtake_or_release) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_ObjectElementListener_1change_1ownership(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jtake_or_release) {
   XTools::ObjectElementListener *obj = *((XTools::ObjectElementListener **)&objarg);
   SwigDirector_ObjectElementListener *director = dynamic_cast<SwigDirector_ObjectElementListener *>(obj);
   (void)jcls;
@@ -6287,7 +6287,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElementL
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElement_1Cast(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_ObjectElement_1Cast(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   XTools::ElementPtr *arg1 = 0 ;
   XTools::ElementPtr tempnull1 ;
@@ -6322,7 +6322,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElement
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElement_1CreateIntElement(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_ObjectElement_1CreateIntElement(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3) {
   jlong jresult = 0 ;
   XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
   XTools::XStringPtr *arg2 = 0 ;
@@ -6362,7 +6362,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElement
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElement_1CreateLongElement(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_ObjectElement_1CreateLongElement(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3) {
   jlong jresult = 0 ;
   XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
   XTools::XStringPtr *arg2 = 0 ;
@@ -6402,7 +6402,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElement
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElement_1CreateFloatElement(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jfloat jarg3) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_ObjectElement_1CreateFloatElement(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jfloat jarg3) {
   jlong jresult = 0 ;
   XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
   XTools::XStringPtr *arg2 = 0 ;
@@ -6442,7 +6442,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElement
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElement_1CreateDoubleElement(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jdouble jarg3) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_ObjectElement_1CreateDoubleElement(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jdouble jarg3) {
   jlong jresult = 0 ;
   XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
   XTools::XStringPtr *arg2 = 0 ;
@@ -6482,7 +6482,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElement
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElement_1CreateStringElement(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_ObjectElement_1CreateStringElement(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_) {
   jlong jresult = 0 ;
   XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
   XTools::XStringPtr *arg2 = 0 ;
@@ -6535,7 +6535,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElement
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElement_1CreateObjectElement_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_ObjectElement_1CreateObjectElement_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_) {
   jlong jresult = 0 ;
   XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
   XTools::XStringPtr *arg2 = 0 ;
@@ -6576,7 +6576,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElement
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElement_1CreateObjectElement_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_ObjectElement_1CreateObjectElement_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   jlong jresult = 0 ;
   XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
   XTools::XStringPtr *arg2 = 0 ;
@@ -6614,7 +6614,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElement
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElement_1CreateIntArrayElement(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_ObjectElement_1CreateIntArrayElement(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   jlong jresult = 0 ;
   XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
   XTools::XStringPtr *arg2 = 0 ;
@@ -6652,7 +6652,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElement
 }
 
 
-SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElement_1GetElementCount(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_SharingClientJNI_ObjectElement_1GetElementCount(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
   XTools::int32 result;
@@ -6667,7 +6667,7 @@ SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElement_
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElement_1GetElement_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_ObjectElement_1GetElement_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   jlong jresult = 0 ;
   XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
   XTools::XGuid arg2 ;
@@ -6692,7 +6692,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElement
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElement_1GetElement_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_ObjectElement_1GetElement_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   jlong jresult = 0 ;
   XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
   XTools::XStringPtr *arg2 = 0 ;
@@ -6730,7 +6730,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElement
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElement_1GetElementAt(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_ObjectElement_1GetElementAt(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   jlong jresult = 0 ;
   XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
   XTools::int32 arg2 ;
@@ -6755,7 +6755,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElement
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElement_1RemoveElement_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_ObjectElement_1RemoveElement_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
   XTools::ElementPtr *arg2 = 0 ;
   XTools::ElementPtr tempnull2 ;
@@ -6781,7 +6781,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElement_
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElement_1RemoveElement_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_ObjectElement_1RemoveElement_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
   XTools::XGuid arg2 ;
   
@@ -6794,7 +6794,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElement_
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElement_1RemoveElementAt(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_ObjectElement_1RemoveElementAt(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
   XTools::int32 arg2 ;
   
@@ -6807,7 +6807,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElement_
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElement_1AddListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_ObjectElement_1AddListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
   XTools::ObjectElementListener *arg2 = (XTools::ObjectElementListener *) 0 ;
   
@@ -6821,7 +6821,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElement_
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElement_1RemoveListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_ObjectElement_1RemoveListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
   XTools::ObjectElementListener *arg2 = (XTools::ObjectElementListener *) 0 ;
   
@@ -6835,7 +6835,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElement_
 }
 
 
-SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElement_1GetOwnerID(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_SharingClientJNI_ObjectElement_1GetOwnerID(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
   XTools::UserID result;
@@ -6850,7 +6850,7 @@ SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElement_
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1ObjectElement(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_delete_1ObjectElement(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
   
   (void)jenv;
@@ -6860,7 +6860,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1Object
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SyncListener_1OnSyncChangesBegin(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_SyncListener_1OnSyncChangesBegin(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   XTools::SyncListener *arg1 = (XTools::SyncListener *) 0 ;
   
   (void)jenv;
@@ -6871,7 +6871,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SyncListener_1
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SyncListener_1OnSyncChangesBeginSwigExplicitSyncListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_SyncListener_1OnSyncChangesBeginSwigExplicitSyncListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   XTools::SyncListener *arg1 = (XTools::SyncListener *) 0 ;
   
   (void)jenv;
@@ -6882,7 +6882,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SyncListener_1
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SyncListener_1OnSyncChangesEnd(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_SyncListener_1OnSyncChangesEnd(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   XTools::SyncListener *arg1 = (XTools::SyncListener *) 0 ;
   
   (void)jenv;
@@ -6893,7 +6893,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SyncListener_1
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SyncListener_1OnSyncChangesEndSwigExplicitSyncListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_SyncListener_1OnSyncChangesEndSwigExplicitSyncListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   XTools::SyncListener *arg1 = (XTools::SyncListener *) 0 ;
   
   (void)jenv;
@@ -6904,7 +6904,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SyncListener_1
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_new_1SyncListener(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_new_1SyncListener(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   XTools::SyncListener *result = 0 ;
   
@@ -6916,7 +6916,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_new_1SyncList
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1SyncListener(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_delete_1SyncListener(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::SyncListener *arg1 = (XTools::SyncListener *) 0 ;
   
   (void)jenv;
@@ -6926,7 +6926,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1SyncLi
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SyncListener_1director_1connect(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jswig_mem_own, jboolean jweak_global) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_SyncListener_1director_1connect(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jswig_mem_own, jboolean jweak_global) {
   XTools::SyncListener *obj = *((XTools::SyncListener **)&objarg);
   (void)jcls;
   SwigDirector_SyncListener *director = dynamic_cast<SwigDirector_SyncListener *>(obj);
@@ -6936,7 +6936,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SyncListener_1
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SyncListener_1change_1ownership(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jtake_or_release) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_SyncListener_1change_1ownership(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jtake_or_release) {
   XTools::SyncListener *obj = *((XTools::SyncListener **)&objarg);
   SwigDirector_SyncListener *director = dynamic_cast<SwigDirector_SyncListener *>(obj);
   (void)jcls;
@@ -6946,7 +6946,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SyncListener_1
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1SessionListener(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_delete_1SessionListener(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::SessionListener *arg1 = (XTools::SessionListener *) 0 ;
   
   (void)jenv;
@@ -6956,7 +6956,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1Sessio
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionListener_1OnJoiningSession(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_SessionListener_1OnJoiningSession(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   XTools::SessionListener *arg1 = (XTools::SessionListener *) 0 ;
   
   (void)jenv;
@@ -6967,7 +6967,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionListene
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionListener_1OnJoiningSessionSwigExplicitSessionListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_SessionListener_1OnJoiningSessionSwigExplicitSessionListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   XTools::SessionListener *arg1 = (XTools::SessionListener *) 0 ;
   
   (void)jenv;
@@ -6978,7 +6978,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionListene
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionListener_1OnJoinSucceeded(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_SessionListener_1OnJoinSucceeded(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   XTools::SessionListener *arg1 = (XTools::SessionListener *) 0 ;
   
   (void)jenv;
@@ -6989,7 +6989,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionListene
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionListener_1OnJoinSucceededSwigExplicitSessionListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_SessionListener_1OnJoinSucceededSwigExplicitSessionListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   XTools::SessionListener *arg1 = (XTools::SessionListener *) 0 ;
   
   (void)jenv;
@@ -7000,7 +7000,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionListene
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionListener_1OnJoinFailed(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_SessionListener_1OnJoinFailed(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   XTools::SessionListener *arg1 = (XTools::SessionListener *) 0 ;
   
   (void)jenv;
@@ -7011,7 +7011,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionListene
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionListener_1OnJoinFailedSwigExplicitSessionListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_SessionListener_1OnJoinFailedSwigExplicitSessionListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   XTools::SessionListener *arg1 = (XTools::SessionListener *) 0 ;
   
   (void)jenv;
@@ -7022,7 +7022,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionListene
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionListener_1OnSessionDisconnected(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_SessionListener_1OnSessionDisconnected(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   XTools::SessionListener *arg1 = (XTools::SessionListener *) 0 ;
   
   (void)jenv;
@@ -7033,7 +7033,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionListene
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionListener_1OnSessionDisconnectedSwigExplicitSessionListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_SessionListener_1OnSessionDisconnectedSwigExplicitSessionListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   XTools::SessionListener *arg1 = (XTools::SessionListener *) 0 ;
   
   (void)jenv;
@@ -7044,7 +7044,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionListene
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_new_1SessionListener(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_new_1SessionListener(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   XTools::SessionListener *result = 0 ;
   
@@ -7056,7 +7056,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_new_1SessionL
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionListener_1director_1connect(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jswig_mem_own, jboolean jweak_global) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_SessionListener_1director_1connect(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jswig_mem_own, jboolean jweak_global) {
   XTools::SessionListener *obj = *((XTools::SessionListener **)&objarg);
   (void)jcls;
   SwigDirector_SessionListener *director = dynamic_cast<SwigDirector_SessionListener *>(obj);
@@ -7066,7 +7066,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionListene
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionListener_1change_1ownership(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jtake_or_release) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_SessionListener_1change_1ownership(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jtake_or_release) {
   XTools::SessionListener *obj = *((XTools::SessionListener **)&objarg);
   SwigDirector_SessionListener *director = dynamic_cast<SwigDirector_SessionListener *>(obj);
   (void)jcls;
@@ -7076,7 +7076,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionListene
 }
 
 
-SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Session_1GetMachineSessionState(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_SharingClientJNI_Session_1GetMachineSessionState(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   XTools::Session *arg1 = (XTools::Session *) 0 ;
   XTools::MachineSessionState result;
@@ -7091,7 +7091,7 @@ SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Session_1GetMa
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Session_1AddListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_Session_1AddListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::Session *arg1 = (XTools::Session *) 0 ;
   XTools::SessionListener *arg2 = (XTools::SessionListener *) 0 ;
   
@@ -7105,7 +7105,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Session_1AddLi
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Session_1RemoveListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_Session_1RemoveListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::Session *arg1 = (XTools::Session *) 0 ;
   XTools::SessionListener *arg2 = (XTools::SessionListener *) 0 ;
   
@@ -7119,7 +7119,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Session_1Remov
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Session_1IsJoined(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_SharingClientJNI_Session_1IsJoined(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   XTools::Session *arg1 = (XTools::Session *) 0 ;
   bool result;
@@ -7134,7 +7134,7 @@ SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Session_1I
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Session_1Join(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_SharingClientJNI_Session_1Join(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   XTools::Session *arg1 = (XTools::Session *) 0 ;
   bool result;
@@ -7149,7 +7149,7 @@ SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Session_1J
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Session_1Leave(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_Session_1Leave(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   XTools::Session *arg1 = (XTools::Session *) 0 ;
   
   (void)jenv;
@@ -7160,7 +7160,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Session_1Leave
 }
 
 
-SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Session_1GetUserCount(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_SharingClientJNI_Session_1GetUserCount(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   XTools::Session *arg1 = (XTools::Session *) 0 ;
   XTools::int32 result;
@@ -7175,7 +7175,7 @@ SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Session_1GetUs
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Session_1GetUser(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_Session_1GetUser(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   jlong jresult = 0 ;
   XTools::Session *arg1 = (XTools::Session *) 0 ;
   XTools::int32 arg2 ;
@@ -7200,7 +7200,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Session_1GetU
 }
 
 
-SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Session_1GetSessionType(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_SharingClientJNI_Session_1GetSessionType(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   XTools::Session *arg1 = (XTools::Session *) 0 ;
   XTools::SessionType result;
@@ -7215,7 +7215,7 @@ SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Session_1GetSe
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Session_1GetName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_Session_1GetName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   XTools::Session *arg1 = (XTools::Session *) 0 ;
   XTools::XStringPtr *result = 0 ;
@@ -7238,7 +7238,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Session_1GetN
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Session_1GetSessionNetworkConnection(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_Session_1GetSessionNetworkConnection(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   XTools::Session *arg1 = (XTools::Session *) 0 ;
   XTools::NetworkConnectionPtr result;
@@ -7261,7 +7261,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Session_1GetS
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1Session(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_delete_1Session(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::Session *arg1 = (XTools::Session *) 0 ;
   
   (void)jenv;
@@ -7271,7 +7271,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1Sessio
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1SessionManagerListener(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_delete_1SessionManagerListener(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::SessionManagerListener *arg1 = (XTools::SessionManagerListener *) 0 ;
   
   (void)jenv;
@@ -7281,7 +7281,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1Sessio
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManagerListener_1OnCreateSucceeded(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_SessionManagerListener_1OnCreateSucceeded(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::SessionManagerListener *arg1 = (XTools::SessionManagerListener *) 0 ;
   XTools::SessionPtr *arg2 = 0 ;
   XTools::SessionPtr tempnull2 ;
@@ -7307,7 +7307,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManager
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManagerListener_1OnCreateSucceededSwigExplicitSessionManagerListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_SessionManagerListener_1OnCreateSucceededSwigExplicitSessionManagerListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::SessionManagerListener *arg1 = (XTools::SessionManagerListener *) 0 ;
   XTools::SessionPtr *arg2 = 0 ;
   XTools::SessionPtr tempnull2 ;
@@ -7333,7 +7333,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManager
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManagerListener_1OnCreateFailed(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_SessionManagerListener_1OnCreateFailed(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::SessionManagerListener *arg1 = (XTools::SessionManagerListener *) 0 ;
   XTools::XStringPtr *arg2 = 0 ;
   XTools::XStringPtr tempnull2 ;
@@ -7359,7 +7359,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManager
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManagerListener_1OnCreateFailedSwigExplicitSessionManagerListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_SessionManagerListener_1OnCreateFailedSwigExplicitSessionManagerListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::SessionManagerListener *arg1 = (XTools::SessionManagerListener *) 0 ;
   XTools::XStringPtr *arg2 = 0 ;
   XTools::XStringPtr tempnull2 ;
@@ -7385,7 +7385,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManager
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManagerListener_1OnSessionAdded(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_SessionManagerListener_1OnSessionAdded(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::SessionManagerListener *arg1 = (XTools::SessionManagerListener *) 0 ;
   XTools::SessionPtr *arg2 = 0 ;
   XTools::SessionPtr tempnull2 ;
@@ -7411,7 +7411,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManager
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManagerListener_1OnSessionAddedSwigExplicitSessionManagerListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_SessionManagerListener_1OnSessionAddedSwigExplicitSessionManagerListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::SessionManagerListener *arg1 = (XTools::SessionManagerListener *) 0 ;
   XTools::SessionPtr *arg2 = 0 ;
   XTools::SessionPtr tempnull2 ;
@@ -7437,7 +7437,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManager
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManagerListener_1OnSessionClosed(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_SessionManagerListener_1OnSessionClosed(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::SessionManagerListener *arg1 = (XTools::SessionManagerListener *) 0 ;
   XTools::SessionPtr *arg2 = 0 ;
   XTools::SessionPtr tempnull2 ;
@@ -7463,7 +7463,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManager
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManagerListener_1OnSessionClosedSwigExplicitSessionManagerListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_SessionManagerListener_1OnSessionClosedSwigExplicitSessionManagerListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::SessionManagerListener *arg1 = (XTools::SessionManagerListener *) 0 ;
   XTools::SessionPtr *arg2 = 0 ;
   XTools::SessionPtr tempnull2 ;
@@ -7489,7 +7489,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManager
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManagerListener_1OnUserJoinedSession(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_SessionManagerListener_1OnUserJoinedSession(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_) {
   XTools::SessionManagerListener *arg1 = (XTools::SessionManagerListener *) 0 ;
   XTools::SessionPtr *arg2 = 0 ;
   XTools::UserPtr *arg3 = 0 ;
@@ -7530,7 +7530,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManager
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManagerListener_1OnUserJoinedSessionSwigExplicitSessionManagerListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_SessionManagerListener_1OnUserJoinedSessionSwigExplicitSessionManagerListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_) {
   XTools::SessionManagerListener *arg1 = (XTools::SessionManagerListener *) 0 ;
   XTools::SessionPtr *arg2 = 0 ;
   XTools::UserPtr *arg3 = 0 ;
@@ -7571,7 +7571,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManager
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManagerListener_1OnUserLeftSession(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_SessionManagerListener_1OnUserLeftSession(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_) {
   XTools::SessionManagerListener *arg1 = (XTools::SessionManagerListener *) 0 ;
   XTools::SessionPtr *arg2 = 0 ;
   XTools::UserPtr *arg3 = 0 ;
@@ -7612,7 +7612,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManager
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManagerListener_1OnUserLeftSessionSwigExplicitSessionManagerListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_SessionManagerListener_1OnUserLeftSessionSwigExplicitSessionManagerListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_) {
   XTools::SessionManagerListener *arg1 = (XTools::SessionManagerListener *) 0 ;
   XTools::SessionPtr *arg2 = 0 ;
   XTools::UserPtr *arg3 = 0 ;
@@ -7653,7 +7653,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManager
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManagerListener_1OnUserChanged(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_SessionManagerListener_1OnUserChanged(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_) {
   XTools::SessionManagerListener *arg1 = (XTools::SessionManagerListener *) 0 ;
   XTools::SessionPtr *arg2 = 0 ;
   XTools::UserPtr *arg3 = 0 ;
@@ -7694,7 +7694,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManager
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManagerListener_1OnUserChangedSwigExplicitSessionManagerListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_SessionManagerListener_1OnUserChangedSwigExplicitSessionManagerListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_) {
   XTools::SessionManagerListener *arg1 = (XTools::SessionManagerListener *) 0 ;
   XTools::SessionPtr *arg2 = 0 ;
   XTools::UserPtr *arg3 = 0 ;
@@ -7735,7 +7735,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManager
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManagerListener_1OnServerConnected(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_SessionManagerListener_1OnServerConnected(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   XTools::SessionManagerListener *arg1 = (XTools::SessionManagerListener *) 0 ;
   
   (void)jenv;
@@ -7746,7 +7746,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManager
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManagerListener_1OnServerConnectedSwigExplicitSessionManagerListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_SessionManagerListener_1OnServerConnectedSwigExplicitSessionManagerListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   XTools::SessionManagerListener *arg1 = (XTools::SessionManagerListener *) 0 ;
   
   (void)jenv;
@@ -7757,7 +7757,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManager
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManagerListener_1OnServerDisconnected(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_SessionManagerListener_1OnServerDisconnected(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   XTools::SessionManagerListener *arg1 = (XTools::SessionManagerListener *) 0 ;
   
   (void)jenv;
@@ -7768,7 +7768,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManager
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManagerListener_1OnServerDisconnectedSwigExplicitSessionManagerListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_SessionManagerListener_1OnServerDisconnectedSwigExplicitSessionManagerListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   XTools::SessionManagerListener *arg1 = (XTools::SessionManagerListener *) 0 ;
   
   (void)jenv;
@@ -7779,7 +7779,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManager
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_new_1SessionManagerListener(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_new_1SessionManagerListener(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   XTools::SessionManagerListener *result = 0 ;
   
@@ -7791,7 +7791,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_new_1SessionM
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManagerListener_1director_1connect(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jswig_mem_own, jboolean jweak_global) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_SessionManagerListener_1director_1connect(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jswig_mem_own, jboolean jweak_global) {
   XTools::SessionManagerListener *obj = *((XTools::SessionManagerListener **)&objarg);
   (void)jcls;
   SwigDirector_SessionManagerListener *director = dynamic_cast<SwigDirector_SessionManagerListener *>(obj);
@@ -7801,7 +7801,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManager
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManagerListener_1change_1ownership(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jtake_or_release) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_SessionManagerListener_1change_1ownership(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jtake_or_release) {
   XTools::SessionManagerListener *obj = *((XTools::SessionManagerListener **)&objarg);
   SwigDirector_SessionManagerListener *director = dynamic_cast<SwigDirector_SessionManagerListener *>(obj);
   (void)jcls;
@@ -7811,7 +7811,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManager
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManager_1AddListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_SessionManager_1AddListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::SessionManager *arg1 = (XTools::SessionManager *) 0 ;
   XTools::SessionManagerListener *arg2 = (XTools::SessionManagerListener *) 0 ;
   
@@ -7825,7 +7825,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManager
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManager_1RemoveListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_SessionManager_1RemoveListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::SessionManager *arg1 = (XTools::SessionManager *) 0 ;
   XTools::SessionManagerListener *arg2 = (XTools::SessionManagerListener *) 0 ;
   
@@ -7839,7 +7839,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManager
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManager_1CreateSession(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_SharingClientJNI_SessionManager_1CreateSession(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   jboolean jresult = 0 ;
   XTools::SessionManager *arg1 = (XTools::SessionManager *) 0 ;
   XTools::XStringPtr *arg2 = 0 ;
@@ -7869,7 +7869,7 @@ SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionMan
 }
 
 
-SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManager_1GetSessionCount(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_SharingClientJNI_SessionManager_1GetSessionCount(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   XTools::SessionManager *arg1 = (XTools::SessionManager *) 0 ;
   XTools::int32 result;
@@ -7884,7 +7884,7 @@ SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManager
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManager_1GetSession(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_SessionManager_1GetSession(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   jlong jresult = 0 ;
   XTools::SessionManager *arg1 = (XTools::SessionManager *) 0 ;
   XTools::int32 arg2 ;
@@ -7909,7 +7909,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManage
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManager_1GetCurrentSession(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_SessionManager_1GetCurrentSession(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   XTools::SessionManager *arg1 = (XTools::SessionManager *) 0 ;
   XTools::SessionPtr result;
@@ -7932,7 +7932,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManage
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManager_1GetCurrentUser(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_SessionManager_1GetCurrentUser(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   XTools::SessionManager *arg1 = (XTools::SessionManager *) 0 ;
   XTools::UserPtr *result = 0 ;
@@ -7955,7 +7955,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManage
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManager_1IsServerConnected(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_SharingClientJNI_SessionManager_1IsServerConnected(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   XTools::SessionManager *arg1 = (XTools::SessionManager *) 0 ;
   bool result;
@@ -7970,7 +7970,7 @@ SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionMan
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1SessionManager(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_delete_1SessionManager(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::SessionManager *arg1 = (XTools::SessionManager *) 0 ;
   
   (void)jenv;
@@ -7980,7 +7980,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1Sessio
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1UserPresenceManagerListener(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_delete_1UserPresenceManagerListener(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::UserPresenceManagerListener *arg1 = (XTools::UserPresenceManagerListener *) 0 ;
   
   (void)jenv;
@@ -7990,7 +7990,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1UserPr
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_UserPresenceManagerListener_1OnUserPresenceChanged(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_UserPresenceManagerListener_1OnUserPresenceChanged(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::UserPresenceManagerListener *arg1 = (XTools::UserPresenceManagerListener *) 0 ;
   XTools::UserPtr *arg2 = 0 ;
   XTools::UserPtr tempnull2 ;
@@ -8016,7 +8016,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_UserPresenceMa
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_UserPresenceManagerListener_1OnUserPresenceChangedSwigExplicitUserPresenceManagerListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_UserPresenceManagerListener_1OnUserPresenceChangedSwigExplicitUserPresenceManagerListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::UserPresenceManagerListener *arg1 = (XTools::UserPresenceManagerListener *) 0 ;
   XTools::UserPtr *arg2 = 0 ;
   XTools::UserPtr tempnull2 ;
@@ -8042,7 +8042,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_UserPresenceMa
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_new_1UserPresenceManagerListener(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_new_1UserPresenceManagerListener(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   XTools::UserPresenceManagerListener *result = 0 ;
   
@@ -8054,7 +8054,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_new_1UserPres
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_UserPresenceManagerListener_1director_1connect(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jswig_mem_own, jboolean jweak_global) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_UserPresenceManagerListener_1director_1connect(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jswig_mem_own, jboolean jweak_global) {
   XTools::UserPresenceManagerListener *obj = *((XTools::UserPresenceManagerListener **)&objarg);
   (void)jcls;
   SwigDirector_UserPresenceManagerListener *director = dynamic_cast<SwigDirector_UserPresenceManagerListener *>(obj);
@@ -8064,7 +8064,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_UserPresenceMa
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_UserPresenceManagerListener_1change_1ownership(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jtake_or_release) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_UserPresenceManagerListener_1change_1ownership(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jtake_or_release) {
   XTools::UserPresenceManagerListener *obj = *((XTools::UserPresenceManagerListener **)&objarg);
   SwigDirector_UserPresenceManagerListener *director = dynamic_cast<SwigDirector_UserPresenceManagerListener *>(obj);
   (void)jcls;
@@ -8074,7 +8074,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_UserPresenceMa
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_UserPresenceManager_1AddListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_UserPresenceManager_1AddListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::UserPresenceManager *arg1 = (XTools::UserPresenceManager *) 0 ;
   XTools::UserPresenceManagerListener *arg2 = (XTools::UserPresenceManagerListener *) 0 ;
   
@@ -8088,7 +8088,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_UserPresenceMa
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_UserPresenceManager_1RemoveListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_UserPresenceManager_1RemoveListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::UserPresenceManager *arg1 = (XTools::UserPresenceManager *) 0 ;
   XTools::UserPresenceManagerListener *arg2 = (XTools::UserPresenceManagerListener *) 0 ;
   
@@ -8102,7 +8102,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_UserPresenceMa
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_UserPresenceManager_1GetMuteState(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_SharingClientJNI_UserPresenceManager_1GetMuteState(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   XTools::UserPresenceManager *arg1 = (XTools::UserPresenceManager *) 0 ;
   bool result;
@@ -8117,7 +8117,7 @@ SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_UserPresen
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_UserPresenceManager_1SetMuteState(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_UserPresenceManager_1SetMuteState(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
   XTools::UserPresenceManager *arg1 = (XTools::UserPresenceManager *) 0 ;
   bool arg2 ;
   
@@ -8130,7 +8130,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_UserPresenceMa
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_UserPresenceManager_1SetName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_UserPresenceManager_1SetName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::UserPresenceManager *arg1 = (XTools::UserPresenceManager *) 0 ;
   XTools::XStringPtr *arg2 = 0 ;
   XTools::XStringPtr tempnull2 ;
@@ -8156,7 +8156,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_UserPresenceMa
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_UserPresenceManager_1GetName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_UserPresenceManager_1GetName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   XTools::UserPresenceManager *arg1 = (XTools::UserPresenceManager *) 0 ;
   XTools::XStringPtr result;
@@ -8179,7 +8179,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_UserPresenceM
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_UserPresenceManager_1SetUser(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_UserPresenceManager_1SetUser(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::UserPresenceManager *arg1 = (XTools::UserPresenceManager *) 0 ;
   XTools::UserPtr *arg2 = 0 ;
   XTools::UserPtr tempnull2 ;
@@ -8205,7 +8205,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_UserPresenceMa
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1UserPresenceManager(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_delete_1UserPresenceManager(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::UserPresenceManager *arg1 = (XTools::UserPresenceManager *) 0 ;
   
   (void)jenv;
@@ -8215,7 +8215,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1UserPr
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_new_1ClientConfig(JNIEnv *jenv, jclass jcls, jint jarg1) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_new_1ClientConfig(JNIEnv *jenv, jclass jcls, jint jarg1) {
   jlong jresult = 0 ;
   XTools::ClientRole arg1 ;
   XTools::ClientConfig *result = 0 ;
@@ -8230,7 +8230,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_new_1ClientCo
 }
 
 
-SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ClientConfig_1GetRole(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_SharingClientJNI_ClientConfig_1GetRole(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   XTools::ClientConfig *arg1 = (XTools::ClientConfig *) 0 ;
   XTools::ClientRole result;
@@ -8245,7 +8245,7 @@ SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ClientConfig_1
 }
 
 
-SWIGEXPORT jstring JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ClientConfig_1GetServerAddress(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_com_microsoft_xtools_SharingClientJNI_ClientConfig_1GetServerAddress(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   XTools::ClientConfig *arg1 = (XTools::ClientConfig *) 0 ;
   std::string result;
@@ -8260,7 +8260,7 @@ SWIGEXPORT jstring JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ClientConfi
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ClientConfig_1SetServerAddress(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_SharingClientJNI_ClientConfig_1SetServerAddress(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   jboolean jresult = 0 ;
   XTools::ClientConfig *arg1 = (XTools::ClientConfig *) 0 ;
   std::string *arg2 = 0 ;
@@ -8285,7 +8285,7 @@ SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ClientConf
 }
 
 
-SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ClientConfig_1GetServerPort(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_SharingClientJNI_ClientConfig_1GetServerPort(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   XTools::ClientConfig *arg1 = (XTools::ClientConfig *) 0 ;
   XTools::int32 result;
@@ -8300,7 +8300,7 @@ SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ClientConfig_1
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ClientConfig_1SetServerPort(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_SharingClientJNI_ClientConfig_1SetServerPort(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   jboolean jresult = 0 ;
   XTools::ClientConfig *arg1 = (XTools::ClientConfig *) 0 ;
   XTools::int32 arg2 ;
@@ -8317,7 +8317,7 @@ SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ClientConf
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ClientConfig_1GetLogWriter(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_ClientConfig_1GetLogWriter(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   XTools::ClientConfig *arg1 = (XTools::ClientConfig *) 0 ;
   XTools::LogWriter *result = 0 ;
@@ -8332,7 +8332,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ClientConfig_
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ClientConfig_1SetLogWriter(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_ClientConfig_1SetLogWriter(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::ClientConfig *arg1 = (XTools::ClientConfig *) 0 ;
   XTools::LogWriter *arg2 = (XTools::LogWriter *) 0 ;
   
@@ -8346,7 +8346,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ClientConfig_1
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ClientConfig_1GetIsAudioEndpoint(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_SharingClientJNI_ClientConfig_1GetIsAudioEndpoint(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   XTools::ClientConfig *arg1 = (XTools::ClientConfig *) 0 ;
   bool result;
@@ -8361,7 +8361,7 @@ SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ClientConf
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ClientConfig_1SetIsAudioEndpoint(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_ClientConfig_1SetIsAudioEndpoint(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
   XTools::ClientConfig *arg1 = (XTools::ClientConfig *) 0 ;
   bool arg2 ;
   
@@ -8374,7 +8374,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ClientConfig_1
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1ClientConfig(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_delete_1ClientConfig(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::ClientConfig *arg1 = (XTools::ClientConfig *) 0 ;
   
   (void)jenv;
@@ -8384,7 +8384,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1Client
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_AudioManager_1SetMicrophoneEnabled(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_AudioManager_1SetMicrophoneEnabled(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
   XTools::AudioManager *arg1 = (XTools::AudioManager *) 0 ;
   bool arg2 ;
   
@@ -8397,7 +8397,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_AudioManager_1
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1AudioManager(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_delete_1AudioManager(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::AudioManager *arg1 = (XTools::AudioManager *) 0 ;
   
   (void)jenv;
@@ -8407,7 +8407,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1AudioM
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1ProfileManager(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_delete_1ProfileManager(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::ProfileManager *arg1 = (XTools::ProfileManager *) 0 ;
   
   (void)jenv;
@@ -8417,7 +8417,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1Profil
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ProfileManager_1BeginRange(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_ProfileManager_1BeginRange(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   XTools::ProfileManager *arg1 = (XTools::ProfileManager *) 0 ;
   std::string *arg2 = 0 ;
   
@@ -8438,7 +8438,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ProfileManager
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ProfileManager_1EndRange(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_ProfileManager_1EndRange(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   XTools::ProfileManager *arg1 = (XTools::ProfileManager *) 0 ;
   
   (void)jenv;
@@ -8449,7 +8449,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ProfileManager
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ProfileManager_1Log(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jstring jarg3) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_ProfileManager_1Log(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jstring jarg3) {
   XTools::ProfileManager *arg1 = (XTools::ProfileManager *) 0 ;
   XTools::LogSeverity arg2 ;
   std::string *arg3 = 0 ;
@@ -8472,7 +8472,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ProfileManager
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Profile_1BeginRange(JNIEnv *jenv, jclass jcls, jstring jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_Profile_1BeginRange(JNIEnv *jenv, jclass jcls, jstring jarg1) {
   std::string *arg1 = 0 ;
   
   (void)jenv;
@@ -8490,14 +8490,14 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Profile_1Begin
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Profile_1EndRange(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_Profile_1EndRange(JNIEnv *jenv, jclass jcls) {
   (void)jenv;
   (void)jcls;
   XTools::Profile::EndRange();
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_new_1Profile(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_new_1Profile(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   XTools::Profile *result = 0 ;
   
@@ -8509,7 +8509,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_new_1Profile(
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1Profile(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_delete_1Profile(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::Profile *arg1 = (XTools::Profile *) 0 ;
   
   (void)jenv;
@@ -8519,7 +8519,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1Profil
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Room_1GetName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_Room_1GetName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   XTools::Room *arg1 = (XTools::Room *) 0 ;
   XTools::XStringPtr result;
@@ -8542,7 +8542,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Room_1GetName
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Room_1GetID(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_Room_1GetID(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   XTools::Room *arg1 = (XTools::Room *) 0 ;
   XTools::RoomID result;
@@ -8557,7 +8557,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Room_1GetID(J
 }
 
 
-SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Room_1GetUserCount(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_SharingClientJNI_Room_1GetUserCount(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   XTools::Room *arg1 = (XTools::Room *) 0 ;
   XTools::int32 result;
@@ -8572,7 +8572,7 @@ SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Room_1GetUserC
 }
 
 
-SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Room_1GetUserID(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_SharingClientJNI_Room_1GetUserID(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   jint jresult = 0 ;
   XTools::Room *arg1 = (XTools::Room *) 0 ;
   XTools::int32 arg2 ;
@@ -8589,7 +8589,7 @@ SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Room_1GetUserI
 }
 
 
-SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Room_1GetAnchorCount(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_SharingClientJNI_Room_1GetAnchorCount(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   XTools::Room *arg1 = (XTools::Room *) 0 ;
   XTools::int32 result;
@@ -8604,7 +8604,7 @@ SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Room_1GetAncho
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Room_1GetAnchorName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_Room_1GetAnchorName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   jlong jresult = 0 ;
   XTools::Room *arg1 = (XTools::Room *) 0 ;
   XTools::int32 arg2 ;
@@ -8629,7 +8629,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Room_1GetAnch
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1Room(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_delete_1Room(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::Room *arg1 = (XTools::Room *) 0 ;
   
   (void)jenv;
@@ -8639,7 +8639,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1Room(J
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_AnchorDownloadRequest_1GetAnchorName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_AnchorDownloadRequest_1GetAnchorName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   XTools::AnchorDownloadRequest *arg1 = (XTools::AnchorDownloadRequest *) 0 ;
   XTools::XStringPtr result;
@@ -8662,7 +8662,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_AnchorDownloa
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_AnchorDownloadRequest_1GetRoom(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_AnchorDownloadRequest_1GetRoom(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   XTools::AnchorDownloadRequest *arg1 = (XTools::AnchorDownloadRequest *) 0 ;
   XTools::RoomPtr result;
@@ -8685,7 +8685,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_AnchorDownloa
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_AnchorDownloadRequest_1IsDownloading(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_SharingClientJNI_AnchorDownloadRequest_1IsDownloading(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   XTools::AnchorDownloadRequest *arg1 = (XTools::AnchorDownloadRequest *) 0 ;
   bool result;
@@ -8700,7 +8700,7 @@ SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_AnchorDown
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_AnchorDownloadRequest_1CancelDownload(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_AnchorDownloadRequest_1CancelDownload(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   XTools::AnchorDownloadRequest *arg1 = (XTools::AnchorDownloadRequest *) 0 ;
   
   (void)jenv;
@@ -8711,7 +8711,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_AnchorDownload
 }
 
 
-SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_AnchorDownloadRequest_1GetDataSize(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_SharingClientJNI_AnchorDownloadRequest_1GetDataSize(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   XTools::AnchorDownloadRequest *arg1 = (XTools::AnchorDownloadRequest *) 0 ;
   XTools::int32 result;
@@ -8726,7 +8726,7 @@ SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_AnchorDownload
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_AnchorDownloadRequest_1GetData(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jbyteArray jarg2, jint jarg3) {
+SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_SharingClientJNI_AnchorDownloadRequest_1GetData(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jbyteArray jarg2, jint jarg3) {
   jboolean jresult = 0 ;
   XTools::AnchorDownloadRequest *arg1 = (XTools::AnchorDownloadRequest *) 0 ;
   XTools::byte *arg2 = (XTools::byte *) 0 ;
@@ -8748,7 +8748,7 @@ SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_AnchorDown
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1AnchorDownloadRequest(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_delete_1AnchorDownloadRequest(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::AnchorDownloadRequest *arg1 = (XTools::AnchorDownloadRequest *) 0 ;
   
   (void)jenv;
@@ -8758,7 +8758,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1Anchor
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1RoomManagerListener(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_delete_1RoomManagerListener(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
   
   (void)jenv;
@@ -8768,7 +8768,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1RoomMa
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerListener_1OnRoomAdded(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_RoomManagerListener_1OnRoomAdded(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
   XTools::RoomPtr *arg2 = 0 ;
   XTools::RoomPtr tempnull2 ;
@@ -8794,7 +8794,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerLis
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerListener_1OnRoomAddedSwigExplicitRoomManagerListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_RoomManagerListener_1OnRoomAddedSwigExplicitRoomManagerListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
   XTools::RoomPtr *arg2 = 0 ;
   XTools::RoomPtr tempnull2 ;
@@ -8820,7 +8820,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerLis
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerListener_1OnRoomClosed(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_RoomManagerListener_1OnRoomClosed(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
   XTools::RoomPtr *arg2 = 0 ;
   XTools::RoomPtr tempnull2 ;
@@ -8846,7 +8846,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerLis
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerListener_1OnRoomClosedSwigExplicitRoomManagerListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_RoomManagerListener_1OnRoomClosedSwigExplicitRoomManagerListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
   XTools::RoomPtr *arg2 = 0 ;
   XTools::RoomPtr tempnull2 ;
@@ -8872,7 +8872,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerLis
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerListener_1OnUserJoinedRoom(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_RoomManagerListener_1OnUserJoinedRoom(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3) {
   XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
   XTools::RoomPtr *arg2 = 0 ;
   XTools::UserID arg3 ;
@@ -8900,7 +8900,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerLis
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerListener_1OnUserJoinedRoomSwigExplicitRoomManagerListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_RoomManagerListener_1OnUserJoinedRoomSwigExplicitRoomManagerListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3) {
   XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
   XTools::RoomPtr *arg2 = 0 ;
   XTools::UserID arg3 ;
@@ -8928,7 +8928,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerLis
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerListener_1OnUserLeftRoom(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_RoomManagerListener_1OnUserLeftRoom(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3) {
   XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
   XTools::RoomPtr *arg2 = 0 ;
   XTools::UserID arg3 ;
@@ -8956,7 +8956,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerLis
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerListener_1OnUserLeftRoomSwigExplicitRoomManagerListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_RoomManagerListener_1OnUserLeftRoomSwigExplicitRoomManagerListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3) {
   XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
   XTools::RoomPtr *arg2 = 0 ;
   XTools::UserID arg3 ;
@@ -8984,7 +8984,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerLis
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerListener_1OnAnchorsChanged(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_RoomManagerListener_1OnAnchorsChanged(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
   XTools::RoomPtr *arg2 = 0 ;
   XTools::RoomPtr tempnull2 ;
@@ -9010,7 +9010,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerLis
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerListener_1OnAnchorsChangedSwigExplicitRoomManagerListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_RoomManagerListener_1OnAnchorsChangedSwigExplicitRoomManagerListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
   XTools::RoomPtr *arg2 = 0 ;
   XTools::RoomPtr tempnull2 ;
@@ -9036,7 +9036,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerLis
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerListener_1OnAnchorsDownloaded(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2, jlong jarg3, jobject jarg3_, jlong jarg4, jobject jarg4_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_RoomManagerListener_1OnAnchorsDownloaded(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2, jlong jarg3, jobject jarg3_, jlong jarg4, jobject jarg4_) {
   XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
   bool arg2 ;
   XTools::AnchorDownloadRequestPtr *arg3 = 0 ;
@@ -9079,7 +9079,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerLis
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerListener_1OnAnchorsDownloadedSwigExplicitRoomManagerListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2, jlong jarg3, jobject jarg3_, jlong jarg4, jobject jarg4_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_RoomManagerListener_1OnAnchorsDownloadedSwigExplicitRoomManagerListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2, jlong jarg3, jobject jarg3_, jlong jarg4, jobject jarg4_) {
   XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
   bool arg2 ;
   XTools::AnchorDownloadRequestPtr *arg3 = 0 ;
@@ -9122,7 +9122,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerLis
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerListener_1OnAnchorUploadComplete(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2, jlong jarg3, jobject jarg3_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_RoomManagerListener_1OnAnchorUploadComplete(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2, jlong jarg3, jobject jarg3_) {
   XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
   bool arg2 ;
   XTools::XStringPtr *arg3 = 0 ;
@@ -9150,7 +9150,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerLis
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerListener_1OnAnchorUploadCompleteSwigExplicitRoomManagerListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2, jlong jarg3, jobject jarg3_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_RoomManagerListener_1OnAnchorUploadCompleteSwigExplicitRoomManagerListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2, jlong jarg3, jobject jarg3_) {
   XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
   bool arg2 ;
   XTools::XStringPtr *arg3 = 0 ;
@@ -9178,7 +9178,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerLis
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_new_1RoomManagerListener(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_new_1RoomManagerListener(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   XTools::RoomManagerListener *result = 0 ;
   
@@ -9190,7 +9190,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_new_1RoomMana
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerListener_1director_1connect(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jswig_mem_own, jboolean jweak_global) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_RoomManagerListener_1director_1connect(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jswig_mem_own, jboolean jweak_global) {
   XTools::RoomManagerListener *obj = *((XTools::RoomManagerListener **)&objarg);
   (void)jcls;
   SwigDirector_RoomManagerListener *director = dynamic_cast<SwigDirector_RoomManagerListener *>(obj);
@@ -9200,7 +9200,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerLis
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerListener_1change_1ownership(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jtake_or_release) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_RoomManagerListener_1change_1ownership(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jtake_or_release) {
   XTools::RoomManagerListener *obj = *((XTools::RoomManagerListener **)&objarg);
   SwigDirector_RoomManagerListener *director = dynamic_cast<SwigDirector_RoomManagerListener *>(obj);
   (void)jcls;
@@ -9210,7 +9210,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerLis
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManager_1AddListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_RoomManager_1AddListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::RoomManager *arg1 = (XTools::RoomManager *) 0 ;
   XTools::RoomManagerListener *arg2 = (XTools::RoomManagerListener *) 0 ;
   
@@ -9224,7 +9224,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManager_1A
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManager_1RemoveListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_RoomManager_1RemoveListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::RoomManager *arg1 = (XTools::RoomManager *) 0 ;
   XTools::RoomManagerListener *arg2 = (XTools::RoomManagerListener *) 0 ;
   
@@ -9238,7 +9238,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManager_1R
 }
 
 
-SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManager_1GetRoomCount(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_SharingClientJNI_RoomManager_1GetRoomCount(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   XTools::RoomManager *arg1 = (XTools::RoomManager *) 0 ;
   XTools::int32 result;
@@ -9253,7 +9253,7 @@ SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManager_1G
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManager_1GetRoom(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_RoomManager_1GetRoom(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   jlong jresult = 0 ;
   XTools::RoomManager *arg1 = (XTools::RoomManager *) 0 ;
   XTools::int32 arg2 ;
@@ -9278,7 +9278,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManager_1
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManager_1GetCurrentRoom(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_RoomManager_1GetCurrentRoom(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   XTools::RoomManager *arg1 = (XTools::RoomManager *) 0 ;
   XTools::RoomPtr result;
@@ -9301,7 +9301,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManager_1
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManager_1CreateRoom(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_RoomManager_1CreateRoom(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3) {
   jlong jresult = 0 ;
   XTools::RoomManager *arg1 = (XTools::RoomManager *) 0 ;
   XTools::XStringPtr *arg2 = 0 ;
@@ -9341,7 +9341,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManager_1
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManager_1JoinRoom(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_SharingClientJNI_RoomManager_1JoinRoom(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   jboolean jresult = 0 ;
   XTools::RoomManager *arg1 = (XTools::RoomManager *) 0 ;
   XTools::RoomPtr *arg2 = 0 ;
@@ -9371,7 +9371,7 @@ SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManage
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManager_1LeaveRoom(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_SharingClientJNI_RoomManager_1LeaveRoom(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   XTools::RoomManager *arg1 = (XTools::RoomManager *) 0 ;
   bool result;
@@ -9386,7 +9386,7 @@ SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManage
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManager_1DownloadAnchor(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_RoomManager_1DownloadAnchor(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_) {
   jlong jresult = 0 ;
   XTools::RoomManager *arg1 = (XTools::RoomManager *) 0 ;
   XTools::RoomPtr *arg2 = 0 ;
@@ -9439,7 +9439,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManager_1
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManager_1UploadAnchor(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_, jbyteArray jarg4, jint jarg5) {
+SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_SharingClientJNI_RoomManager_1UploadAnchor(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_, jbyteArray jarg4, jint jarg5) {
   jboolean jresult = 0 ;
   XTools::RoomManager *arg1 = (XTools::RoomManager *) 0 ;
   XTools::RoomPtr *arg2 = 0 ;
@@ -9491,7 +9491,7 @@ SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManage
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1RoomManager(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_delete_1RoomManager(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::RoomManager *arg1 = (XTools::RoomManager *) 0 ;
   
   (void)jenv;
@@ -9501,7 +9501,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1RoomMa
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_new_1Settings(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_new_1Settings(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   XTools::Settings *result = 0 ;
   
@@ -9514,7 +9514,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_new_1Settings
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Settings_1GetServerAddress(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_Settings_1GetServerAddress(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   XTools::Settings *arg1 = (XTools::Settings *) 0 ;
   XTools::XStringPtr *result = 0 ;
@@ -9537,7 +9537,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Settings_1Get
 }
 
 
-SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Settings_1GetServerPort(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_SharingClientJNI_Settings_1GetServerPort(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   XTools::Settings *arg1 = (XTools::Settings *) 0 ;
   XTools::int32 result;
@@ -9552,7 +9552,7 @@ SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Settings_1GetS
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Settings_1GetViewerAddress(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_Settings_1GetViewerAddress(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   XTools::Settings *arg1 = (XTools::Settings *) 0 ;
   XTools::XStringPtr *result = 0 ;
@@ -9575,7 +9575,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Settings_1Get
 }
 
 
-SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Settings_1GetViewerPort(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_SharingClientJNI_Settings_1GetViewerPort(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   XTools::Settings *arg1 = (XTools::Settings *) 0 ;
   XTools::int32 result;
@@ -9590,7 +9590,7 @@ SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Settings_1GetV
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Settings_1GetLocalUserName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_Settings_1GetLocalUserName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   XTools::Settings *arg1 = (XTools::Settings *) 0 ;
   XTools::XStringPtr *result = 0 ;
@@ -9613,7 +9613,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_Settings_1Get
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1Settings(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_delete_1Settings(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::Settings *arg1 = (XTools::Settings *) 0 ;
   
   (void)jenv;
@@ -9623,7 +9623,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1Settin
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairMaker_1IsReceiver(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_SharingClientJNI_PairMaker_1IsReceiver(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   XTools::PairMaker *arg1 = (XTools::PairMaker *) 0 ;
   bool result;
@@ -9638,7 +9638,7 @@ SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairMaker_
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairMaker_1IsReceiverSwigExplicitPairMaker(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_SharingClientJNI_PairMaker_1IsReceiverSwigExplicitPairMaker(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   XTools::PairMaker *arg1 = (XTools::PairMaker *) 0 ;
   bool result;
@@ -9653,7 +9653,7 @@ SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairMaker_
 }
 
 
-SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairMaker_1GetAddressCount(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_SharingClientJNI_PairMaker_1GetAddressCount(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   XTools::PairMaker *arg1 = (XTools::PairMaker *) 0 ;
   XTools::int32 result;
@@ -9668,7 +9668,7 @@ SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairMaker_1Get
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairMaker_1GetAddress(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_PairMaker_1GetAddress(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   jlong jresult = 0 ;
   XTools::PairMaker *arg1 = (XTools::PairMaker *) 0 ;
   XTools::int32 arg2 ;
@@ -9693,7 +9693,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairMaker_1Ge
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairMaker_1GetAddressSwigExplicitPairMaker(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_PairMaker_1GetAddressSwigExplicitPairMaker(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   jlong jresult = 0 ;
   XTools::PairMaker *arg1 = (XTools::PairMaker *) 0 ;
   XTools::int32 arg2 ;
@@ -9718,7 +9718,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairMaker_1Ge
 }
 
 
-SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairMaker_1GetPort(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_SharingClientJNI_PairMaker_1GetPort(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   XTools::PairMaker *arg1 = (XTools::PairMaker *) 0 ;
   XTools::uint16 result;
@@ -9733,7 +9733,7 @@ SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairMaker_1Get
 }
 
 
-SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairMaker_1GetPortSwigExplicitPairMaker(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_SharingClientJNI_PairMaker_1GetPortSwigExplicitPairMaker(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   XTools::PairMaker *arg1 = (XTools::PairMaker *) 0 ;
   XTools::uint16 result;
@@ -9748,7 +9748,7 @@ SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairMaker_1Get
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairMaker_1Update(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_PairMaker_1Update(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   XTools::PairMaker *arg1 = (XTools::PairMaker *) 0 ;
   
   (void)jenv;
@@ -9759,7 +9759,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairMaker_1Upd
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairMaker_1UpdateSwigExplicitPairMaker(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_PairMaker_1UpdateSwigExplicitPairMaker(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   XTools::PairMaker *arg1 = (XTools::PairMaker *) 0 ;
   
   (void)jenv;
@@ -9770,7 +9770,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairMaker_1Upd
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairMaker_1IsReadyToConnect(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_SharingClientJNI_PairMaker_1IsReadyToConnect(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   XTools::PairMaker *arg1 = (XTools::PairMaker *) 0 ;
   bool result;
@@ -9785,7 +9785,7 @@ SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairMaker_
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairMaker_1IsReadyToConnectSwigExplicitPairMaker(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_SharingClientJNI_PairMaker_1IsReadyToConnectSwigExplicitPairMaker(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   XTools::PairMaker *arg1 = (XTools::PairMaker *) 0 ;
   bool result;
@@ -9800,7 +9800,7 @@ SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairMaker_
 }
 
 
-SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairMaker_1GetLocalKey(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_SharingClientJNI_PairMaker_1GetLocalKey(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   XTools::PairMaker *arg1 = (XTools::PairMaker *) 0 ;
   XTools::int32 result;
@@ -9815,7 +9815,7 @@ SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairMaker_1Get
 }
 
 
-SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairMaker_1GetLocalKeySwigExplicitPairMaker(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_SharingClientJNI_PairMaker_1GetLocalKeySwigExplicitPairMaker(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   XTools::PairMaker *arg1 = (XTools::PairMaker *) 0 ;
   XTools::int32 result;
@@ -9830,7 +9830,7 @@ SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairMaker_1Get
 }
 
 
-SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairMaker_1GetRemoteKey(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_SharingClientJNI_PairMaker_1GetRemoteKey(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   XTools::PairMaker *arg1 = (XTools::PairMaker *) 0 ;
   XTools::int32 result;
@@ -9845,7 +9845,7 @@ SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairMaker_1Get
 }
 
 
-SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairMaker_1GetRemoteKeySwigExplicitPairMaker(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_SharingClientJNI_PairMaker_1GetRemoteKeySwigExplicitPairMaker(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   XTools::PairMaker *arg1 = (XTools::PairMaker *) 0 ;
   XTools::int32 result;
@@ -9860,7 +9860,7 @@ SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairMaker_1Get
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_new_1PairMaker(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_new_1PairMaker(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   XTools::PairMaker *result = 0 ;
   
@@ -9873,7 +9873,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_new_1PairMake
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1PairMaker(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_delete_1PairMaker(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::PairMaker *arg1 = (XTools::PairMaker *) 0 ;
   
   (void)jenv;
@@ -9883,7 +9883,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1PairMa
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairMaker_1director_1connect(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jswig_mem_own, jboolean jweak_global) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_PairMaker_1director_1connect(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jswig_mem_own, jboolean jweak_global) {
   XTools::PairMaker *obj = *((XTools::PairMaker **)&objarg);
   (void)jcls;
   SwigDirector_PairMaker *director = dynamic_cast<SwigDirector_PairMaker *>(obj);
@@ -9893,7 +9893,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairMaker_1dir
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairMaker_1change_1ownership(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jtake_or_release) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_PairMaker_1change_1ownership(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jtake_or_release) {
   XTools::PairMaker *obj = *((XTools::PairMaker **)&objarg);
   SwigDirector_PairMaker *director = dynamic_cast<SwigDirector_PairMaker *>(obj);
   (void)jcls;
@@ -9903,7 +9903,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairMaker_1cha
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairingListener_1PairingConnectionSucceeded(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_PairingListener_1PairingConnectionSucceeded(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   XTools::PairingListener *arg1 = (XTools::PairingListener *) 0 ;
   
   (void)jenv;
@@ -9914,7 +9914,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairingListene
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairingListener_1PairingConnectionSucceededSwigExplicitPairingListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_PairingListener_1PairingConnectionSucceededSwigExplicitPairingListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   XTools::PairingListener *arg1 = (XTools::PairingListener *) 0 ;
   
   (void)jenv;
@@ -9925,7 +9925,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairingListene
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairingListener_1PairingConnectionFailed(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_PairingListener_1PairingConnectionFailed(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   XTools::PairingListener *arg1 = (XTools::PairingListener *) 0 ;
   XTools::PairingResult arg2 ;
   
@@ -9938,7 +9938,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairingListene
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairingListener_1PairingConnectionFailedSwigExplicitPairingListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_PairingListener_1PairingConnectionFailedSwigExplicitPairingListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   XTools::PairingListener *arg1 = (XTools::PairingListener *) 0 ;
   XTools::PairingResult arg2 ;
   
@@ -9951,7 +9951,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairingListene
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_new_1PairingListener(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_new_1PairingListener(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   XTools::PairingListener *result = 0 ;
   
@@ -9963,7 +9963,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_new_1PairingL
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1PairingListener(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_delete_1PairingListener(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::PairingListener *arg1 = (XTools::PairingListener *) 0 ;
   
   (void)jenv;
@@ -9973,7 +9973,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1Pairin
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairingListener_1director_1connect(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jswig_mem_own, jboolean jweak_global) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_PairingListener_1director_1connect(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jswig_mem_own, jboolean jweak_global) {
   XTools::PairingListener *obj = *((XTools::PairingListener **)&objarg);
   (void)jcls;
   SwigDirector_PairingListener *director = dynamic_cast<SwigDirector_PairingListener *>(obj);
@@ -9983,7 +9983,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairingListene
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairingListener_1change_1ownership(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jtake_or_release) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_PairingListener_1change_1ownership(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jtake_or_release) {
   XTools::PairingListener *obj = *((XTools::PairingListener **)&objarg);
   SwigDirector_PairingListener *director = dynamic_cast<SwigDirector_PairingListener *>(obj);
   (void)jcls;
@@ -9993,7 +9993,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairingListene
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairingManager_1HasPairingInfo(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_SharingClientJNI_PairingManager_1HasPairingInfo(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   XTools::PairingManager *arg1 = (XTools::PairingManager *) 0 ;
   bool result;
@@ -10008,7 +10008,7 @@ SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairingMan
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairingManager_1ClearPairingInfo(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_PairingManager_1ClearPairingInfo(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   XTools::PairingManager *arg1 = (XTools::PairingManager *) 0 ;
   
   (void)jenv;
@@ -10019,7 +10019,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairingManager
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairingManager_1BeginConnecting(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_SharingClientJNI_PairingManager_1BeginConnecting(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   jboolean jresult = 0 ;
   XTools::PairingManager *arg1 = (XTools::PairingManager *) 0 ;
   XTools::PairingListener *arg2 = (XTools::PairingListener *) 0 ;
@@ -10037,7 +10037,7 @@ SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairingMan
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairingManager_1CancelConnecting(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_PairingManager_1CancelConnecting(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   XTools::PairingManager *arg1 = (XTools::PairingManager *) 0 ;
   
   (void)jenv;
@@ -10048,7 +10048,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairingManager
 }
 
 
-SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairingManager_1BeginPairing(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_) {
+SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_SharingClientJNI_PairingManager_1BeginPairing(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_) {
   jint jresult = 0 ;
   XTools::PairingManager *arg1 = (XTools::PairingManager *) 0 ;
   XTools::PairMakerPtr *arg2 = 0 ;
@@ -10081,7 +10081,7 @@ SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairingManager
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairingManager_1CancelPairing(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_PairingManager_1CancelPairing(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   XTools::PairingManager *arg1 = (XTools::PairingManager *) 0 ;
   
   (void)jenv;
@@ -10092,7 +10092,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairingManager
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairingManager_1IsPairing(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_SharingClientJNI_PairingManager_1IsPairing(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   XTools::PairingManager *arg1 = (XTools::PairingManager *) 0 ;
   bool result;
@@ -10107,7 +10107,7 @@ SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairingMan
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairingManager_1IsConnected(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_SharingClientJNI_PairingManager_1IsConnected(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   XTools::PairingManager *arg1 = (XTools::PairingManager *) 0 ;
   bool result;
@@ -10122,7 +10122,7 @@ SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairingMan
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1PairingManager(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_delete_1PairingManager(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::PairingManager *arg1 = (XTools::PairingManager *) 0 ;
   
   (void)jenv;
@@ -10132,7 +10132,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1Pairin
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_XToolsManager_1Create(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_XToolsManager_1Create(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   XTools::ClientConfigPtr *arg1 = 0 ;
   XTools::ClientConfigPtr tempnull1 ;
@@ -10167,7 +10167,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_XToolsManager
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_XToolsManager_1GetSessionManager(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_XToolsManager_1GetSessionManager(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   XTools::XToolsManager *arg1 = (XTools::XToolsManager *) 0 ;
   XTools::SessionManagerPtr *result = 0 ;
@@ -10190,7 +10190,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_XToolsManager
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_XToolsManager_1GetUserPresenceManager(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_XToolsManager_1GetUserPresenceManager(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   XTools::XToolsManager *arg1 = (XTools::XToolsManager *) 0 ;
   XTools::UserPresenceManagerPtr *result = 0 ;
@@ -10213,7 +10213,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_XToolsManager
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_XToolsManager_1GetAudioManager(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_XToolsManager_1GetAudioManager(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   XTools::XToolsManager *arg1 = (XTools::XToolsManager *) 0 ;
   XTools::AudioManagerPtr *result = 0 ;
@@ -10236,7 +10236,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_XToolsManager
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_XToolsManager_1GetPairingManager(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_XToolsManager_1GetPairingManager(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   XTools::XToolsManager *arg1 = (XTools::XToolsManager *) 0 ;
   XTools::PairingManagerPtr *result = 0 ;
@@ -10259,7 +10259,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_XToolsManager
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_XToolsManager_1GetRoomManager(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_XToolsManager_1GetRoomManager(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   XTools::XToolsManager *arg1 = (XTools::XToolsManager *) 0 ;
   XTools::RoomManagerPtr *result = 0 ;
@@ -10282,7 +10282,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_XToolsManager
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_XToolsManager_1GetRootSyncObject(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_XToolsManager_1GetRootSyncObject(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   XTools::XToolsManager *arg1 = (XTools::XToolsManager *) 0 ;
   XTools::ObjectElementPtr result;
@@ -10305,7 +10305,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_XToolsManager
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_XToolsManager_1RegisterSyncListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_SharingClientJNI_XToolsManager_1RegisterSyncListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   jboolean jresult = 0 ;
   XTools::XToolsManager *arg1 = (XTools::XToolsManager *) 0 ;
   XTools::SyncListener *arg2 = (XTools::SyncListener *) 0 ;
@@ -10323,7 +10323,7 @@ SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_XToolsMana
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_XToolsManager_1Update(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_XToolsManager_1Update(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   XTools::XToolsManager *arg1 = (XTools::XToolsManager *) 0 ;
   
   (void)jenv;
@@ -10334,7 +10334,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_XToolsManager_
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_XToolsManager_1GetPairedConnection(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_XToolsManager_1GetPairedConnection(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   XTools::XToolsManager *arg1 = (XTools::XToolsManager *) 0 ;
   XTools::NetworkConnectionPtr result;
@@ -10357,7 +10357,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_XToolsManager
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_XToolsManager_1GetServerConnection(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_XToolsManager_1GetServerConnection(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   XTools::XToolsManager *arg1 = (XTools::XToolsManager *) 0 ;
   XTools::NetworkConnectionPtr result;
@@ -10380,7 +10380,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_XToolsManager
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_XToolsManager_1GetSettings(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_XToolsManager_1GetSettings(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   XTools::XToolsManager *arg1 = (XTools::XToolsManager *) 0 ;
   XTools::SettingsPtr *result = 0 ;
@@ -10403,7 +10403,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_XToolsManager
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_XToolsManager_1SetServerConnectionInfo(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_XToolsManager_1SetServerConnectionInfo(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3) {
   XTools::XToolsManager *arg1 = (XTools::XToolsManager *) 0 ;
   XTools::XStringPtr *arg2 = 0 ;
   XTools::uint32 arg3 ;
@@ -10431,7 +10431,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_XToolsManager_
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_XToolsManager_1GetLocalUser(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_XToolsManager_1GetLocalUser(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   XTools::XToolsManager *arg1 = (XTools::XToolsManager *) 0 ;
   XTools::UserPtr result;
@@ -10454,7 +10454,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_XToolsManager
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_XToolsManager_1SetUserName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_XToolsManager_1SetUserName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::XToolsManager *arg1 = (XTools::XToolsManager *) 0 ;
   XTools::XStringPtr *arg2 = 0 ;
   XTools::XStringPtr tempnull2 ;
@@ -10480,7 +10480,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_XToolsManager_
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1XToolsManager(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_delete_1XToolsManager(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::XToolsManager *arg1 = (XTools::XToolsManager *) 0 ;
   
   (void)jenv;
@@ -10490,7 +10490,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1XTools
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1ImageTagLocation(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_delete_1ImageTagLocation(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::ImageTagLocation *arg1 = (XTools::ImageTagLocation *) 0 ;
   
   (void)jenv;
@@ -10500,7 +10500,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1ImageT
 }
 
 
-SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ImageTagLocation_1GetTagId(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_SharingClientJNI_ImageTagLocation_1GetTagId(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   XTools::ImageTagLocation *arg1 = (XTools::ImageTagLocation *) 0 ;
   int result;
@@ -10515,7 +10515,7 @@ SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ImageTagLocati
 }
 
 
-SWIGEXPORT jfloat JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ImageTagLocation_1GetPixelX(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT jfloat JNICALL Java_com_microsoft_xtools_SharingClientJNI_ImageTagLocation_1GetPixelX(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   jfloat jresult = 0 ;
   XTools::ImageTagLocation *arg1 = (XTools::ImageTagLocation *) 0 ;
   XTools::ImageTagLocationType arg2 ;
@@ -10532,7 +10532,7 @@ SWIGEXPORT jfloat JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ImageTagLoca
 }
 
 
-SWIGEXPORT jfloat JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ImageTagLocation_1GetPixelY(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT jfloat JNICALL Java_com_microsoft_xtools_SharingClientJNI_ImageTagLocation_1GetPixelY(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   jfloat jresult = 0 ;
   XTools::ImageTagLocation *arg1 = (XTools::ImageTagLocation *) 0 ;
   XTools::ImageTagLocationType arg2 ;
@@ -10549,7 +10549,7 @@ SWIGEXPORT jfloat JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ImageTagLoca
 }
 
 
-SWIGEXPORT jfloat JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ImageTagLocation_1GetModelViewMatrix(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3, jfloat jarg4, jfloat jarg5, jfloat jarg6, jfloat jarg7, jfloat jarg8, jfloat jarg9) {
+SWIGEXPORT jfloat JNICALL Java_com_microsoft_xtools_SharingClientJNI_ImageTagLocation_1GetModelViewMatrix(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3, jfloat jarg4, jfloat jarg5, jfloat jarg6, jfloat jarg7, jfloat jarg8, jfloat jarg9) {
   jfloat jresult = 0 ;
   XTools::ImageTagLocation *arg1 = (XTools::ImageTagLocation *) 0 ;
   XTools::int32 arg2 ;
@@ -10580,7 +10580,7 @@ SWIGEXPORT jfloat JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ImageTagLoca
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1ImageTagLocationListener(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_delete_1ImageTagLocationListener(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::ImageTagLocationListener *arg1 = (XTools::ImageTagLocationListener *) 0 ;
   
   (void)jenv;
@@ -10590,7 +10590,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1ImageT
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ImageTagLocationListener_1OnTagLocated(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_ImageTagLocationListener_1OnTagLocated(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::ImageTagLocationListener *arg1 = (XTools::ImageTagLocationListener *) 0 ;
   XTools::ImageTagLocationPtr *arg2 = 0 ;
   XTools::ImageTagLocationPtr tempnull2 ;
@@ -10616,7 +10616,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ImageTagLocati
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ImageTagLocationListener_1OnTagLocatedSwigExplicitImageTagLocationListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_ImageTagLocationListener_1OnTagLocatedSwigExplicitImageTagLocationListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::ImageTagLocationListener *arg1 = (XTools::ImageTagLocationListener *) 0 ;
   XTools::ImageTagLocationPtr *arg2 = 0 ;
   XTools::ImageTagLocationPtr tempnull2 ;
@@ -10642,7 +10642,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ImageTagLocati
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ImageTagLocationListener_1OnTagLocatingCompleted(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_ImageTagLocationListener_1OnTagLocatingCompleted(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   XTools::ImageTagLocationListener *arg1 = (XTools::ImageTagLocationListener *) 0 ;
   
   (void)jenv;
@@ -10653,7 +10653,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ImageTagLocati
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ImageTagLocationListener_1OnTagLocatingCompletedSwigExplicitImageTagLocationListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_ImageTagLocationListener_1OnTagLocatingCompletedSwigExplicitImageTagLocationListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   XTools::ImageTagLocationListener *arg1 = (XTools::ImageTagLocationListener *) 0 ;
   
   (void)jenv;
@@ -10664,7 +10664,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ImageTagLocati
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_new_1ImageTagLocationListener(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_new_1ImageTagLocationListener(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   XTools::ImageTagLocationListener *result = 0 ;
   
@@ -10676,7 +10676,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_new_1ImageTag
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ImageTagLocationListener_1director_1connect(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jswig_mem_own, jboolean jweak_global) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_ImageTagLocationListener_1director_1connect(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jswig_mem_own, jboolean jweak_global) {
   XTools::ImageTagLocationListener *obj = *((XTools::ImageTagLocationListener **)&objarg);
   (void)jcls;
   SwigDirector_ImageTagLocationListener *director = dynamic_cast<SwigDirector_ImageTagLocationListener *>(obj);
@@ -10686,7 +10686,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ImageTagLocati
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ImageTagLocationListener_1change_1ownership(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jtake_or_release) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_ImageTagLocationListener_1change_1ownership(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jtake_or_release) {
   XTools::ImageTagLocationListener *obj = *((XTools::ImageTagLocationListener **)&objarg);
   SwigDirector_ImageTagLocationListener *director = dynamic_cast<SwigDirector_ImageTagLocationListener *>(obj);
   (void)jcls;
@@ -10696,7 +10696,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ImageTagLocati
 }
 
 
-SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_TagImage_1GetWidth(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_SharingClientJNI_TagImage_1GetWidth(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   XTools::TagImage *arg1 = (XTools::TagImage *) 0 ;
   XTools::int32 result;
@@ -10711,7 +10711,7 @@ SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_TagImage_1GetW
 }
 
 
-SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_TagImage_1GetHeight(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_SharingClientJNI_TagImage_1GetHeight(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   XTools::TagImage *arg1 = (XTools::TagImage *) 0 ;
   XTools::int32 result;
@@ -10726,7 +10726,7 @@ SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_TagImage_1GetH
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_TagImage_1CopyImageData(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jbyteArray jarg2, jint jarg3, jint jarg4) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_TagImage_1CopyImageData(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jbyteArray jarg2, jint jarg3, jint jarg4) {
   XTools::TagImage *arg1 = (XTools::TagImage *) 0 ;
   XTools::byte *arg2 = (XTools::byte *) 0 ;
   XTools::int32 arg3 ;
@@ -10746,7 +10746,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_TagImage_1Copy
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1TagImage(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_delete_1TagImage(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::TagImage *arg1 = (XTools::TagImage *) 0 ;
   
   (void)jenv;
@@ -10756,7 +10756,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1TagIma
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1ImageTagManager(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_delete_1ImageTagManager(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::ImageTagManager *arg1 = (XTools::ImageTagManager *) 0 ;
   
   (void)jenv;
@@ -10766,7 +10766,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1ImageT
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ImageTagManager_1Update(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_ImageTagManager_1Update(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   XTools::ImageTagManager *arg1 = (XTools::ImageTagManager *) 0 ;
   
   (void)jenv;
@@ -10777,7 +10777,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ImageTagManage
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ImageTagManager_1FindTags(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jbyteArray jarg2, jint jarg3, jint jarg4, jint jarg5, jlong jarg6, jobject jarg6_) {
+SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_SharingClientJNI_ImageTagManager_1FindTags(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jbyteArray jarg2, jint jarg3, jint jarg4, jint jarg5, jlong jarg6, jobject jarg6_) {
   jboolean jresult = 0 ;
   XTools::ImageTagManager *arg1 = (XTools::ImageTagManager *) 0 ;
   XTools::byte *arg2 = (XTools::byte *) 0 ;
@@ -10806,7 +10806,7 @@ SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ImageTagMa
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ImageTagManager_1CreateTagImage(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_ImageTagManager_1CreateTagImage(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   jlong jresult = 0 ;
   XTools::ImageTagManager *arg1 = (XTools::ImageTagManager *) 0 ;
   XTools::int32 arg2 ;
@@ -10831,7 +10831,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ImageTagManag
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ImageTagManager_1Create(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_ImageTagManager_1Create(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   XTools::ref_ptr< XTools::ImageTagManager > result;
   
@@ -10851,7 +10851,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ImageTagManag
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_new_1DirectPairConnector_1_1SWIG_10(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_new_1DirectPairConnector_1_1SWIG_10(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   XTools::DirectPairConnector *result = 0 ;
   
@@ -10864,7 +10864,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_new_1DirectPa
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_new_1DirectPairConnector_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_new_1DirectPairConnector_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   XTools::XStringPtr *arg1 = 0 ;
   XTools::XStringPtr tempnull1 ;
@@ -10892,7 +10892,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_new_1DirectPa
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_new_1DirectPairConnector_1_1SWIG_12(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_new_1DirectPairConnector_1_1SWIG_12(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   jlong jresult = 0 ;
   XTools::XStringPtr *arg1 = 0 ;
   XTools::uint16 arg2 ;
@@ -10922,7 +10922,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_new_1DirectPa
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_DirectPairConnector_1IsReceiver(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_SharingClientJNI_DirectPairConnector_1IsReceiver(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   XTools::DirectPairConnector *arg1 = (XTools::DirectPairConnector *) 0 ;
   bool result;
@@ -10937,7 +10937,7 @@ SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_DirectPair
 }
 
 
-SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_DirectPairConnector_1GetAddressCount(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_SharingClientJNI_DirectPairConnector_1GetAddressCount(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   XTools::DirectPairConnector *arg1 = (XTools::DirectPairConnector *) 0 ;
   XTools::int32 result;
@@ -10952,7 +10952,7 @@ SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_DirectPairConn
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_DirectPairConnector_1GetAddress(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_DirectPairConnector_1GetAddress(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   jlong jresult = 0 ;
   XTools::DirectPairConnector *arg1 = (XTools::DirectPairConnector *) 0 ;
   XTools::int32 arg2 ;
@@ -10977,7 +10977,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_DirectPairCon
 }
 
 
-SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_DirectPairConnector_1GetPort(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_SharingClientJNI_DirectPairConnector_1GetPort(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   XTools::DirectPairConnector *arg1 = (XTools::DirectPairConnector *) 0 ;
   XTools::uint16 result;
@@ -10992,7 +10992,7 @@ SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_DirectPairConn
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_DirectPairConnector_1Update(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_DirectPairConnector_1Update(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   XTools::DirectPairConnector *arg1 = (XTools::DirectPairConnector *) 0 ;
   
   (void)jenv;
@@ -11003,7 +11003,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_DirectPairConn
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_DirectPairConnector_1IsReadyToConnect(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_SharingClientJNI_DirectPairConnector_1IsReadyToConnect(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   XTools::DirectPairConnector *arg1 = (XTools::DirectPairConnector *) 0 ;
   bool result;
@@ -11018,7 +11018,7 @@ SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_DirectPair
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_DirectPairConnector_1SetRemoteAddress(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_DirectPairConnector_1SetRemoteAddress(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   XTools::DirectPairConnector *arg1 = (XTools::DirectPairConnector *) 0 ;
   XTools::XStringPtr *arg2 = 0 ;
   XTools::XStringPtr tempnull2 ;
@@ -11044,7 +11044,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_DirectPairConn
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_DirectPairConnector_1SetRemotePort(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_DirectPairConnector_1SetRemotePort(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   XTools::DirectPairConnector *arg1 = (XTools::DirectPairConnector *) 0 ;
   XTools::uint16 arg2 ;
   
@@ -11057,7 +11057,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_DirectPairConn
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1DirectPairConnector(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_delete_1DirectPairConnector(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::DirectPairConnector *arg1 = (XTools::DirectPairConnector *) 0 ;
   
   (void)jenv;
@@ -11067,7 +11067,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1Direct
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_new_1DirectPairReceiver_1_1SWIG_10(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_new_1DirectPairReceiver_1_1SWIG_10(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   XTools::DirectPairReceiver *result = 0 ;
   
@@ -11080,7 +11080,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_new_1DirectPa
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_new_1DirectPairReceiver_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jint jarg1) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_new_1DirectPairReceiver_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jint jarg1) {
   jlong jresult = 0 ;
   XTools::uint16 arg1 ;
   XTools::DirectPairReceiver *result = 0 ;
@@ -11095,7 +11095,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_new_1DirectPa
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_DirectPairReceiver_1IsReceiver(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_SharingClientJNI_DirectPairReceiver_1IsReceiver(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   XTools::DirectPairReceiver *arg1 = (XTools::DirectPairReceiver *) 0 ;
   bool result;
@@ -11110,7 +11110,7 @@ SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_DirectPair
 }
 
 
-SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_DirectPairReceiver_1GetAddressCount(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_SharingClientJNI_DirectPairReceiver_1GetAddressCount(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   XTools::DirectPairReceiver *arg1 = (XTools::DirectPairReceiver *) 0 ;
   XTools::int32 result;
@@ -11125,7 +11125,7 @@ SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_DirectPairRece
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_DirectPairReceiver_1GetAddress(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_DirectPairReceiver_1GetAddress(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   jlong jresult = 0 ;
   XTools::DirectPairReceiver *arg1 = (XTools::DirectPairReceiver *) 0 ;
   XTools::int32 arg2 ;
@@ -11150,7 +11150,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_DirectPairRec
 }
 
 
-SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_DirectPairReceiver_1GetPort(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_SharingClientJNI_DirectPairReceiver_1GetPort(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   XTools::DirectPairReceiver *arg1 = (XTools::DirectPairReceiver *) 0 ;
   XTools::uint16 result;
@@ -11165,7 +11165,7 @@ SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_XToolsClientJNI_DirectPairRece
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_DirectPairReceiver_1Update(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_DirectPairReceiver_1Update(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   XTools::DirectPairReceiver *arg1 = (XTools::DirectPairReceiver *) 0 ;
   
   (void)jenv;
@@ -11176,7 +11176,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_DirectPairRece
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_DirectPairReceiver_1IsReadyToConnect(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_SharingClientJNI_DirectPairReceiver_1IsReadyToConnect(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   XTools::DirectPairReceiver *arg1 = (XTools::DirectPairReceiver *) 0 ;
   bool result;
@@ -11191,7 +11191,7 @@ SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_DirectPair
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_DirectPairReceiver_1SetIncomingPort(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_DirectPairReceiver_1SetIncomingPort(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   XTools::DirectPairReceiver *arg1 = (XTools::DirectPairReceiver *) 0 ;
   XTools::uint16 arg2 ;
   
@@ -11204,7 +11204,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_DirectPairRece
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1DirectPairReceiver(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_delete_1DirectPairReceiver(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::DirectPairReceiver *arg1 = (XTools::DirectPairReceiver *) 0 ;
   
   (void)jenv;
@@ -11214,7 +11214,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1Direct
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_VisualPairReceiver_1Create(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_VisualPairReceiver_1Create(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   XTools::ref_ptr< XTools::VisualPairReceiver > result;
   
@@ -11234,7 +11234,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_VisualPairRec
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_VisualPairReceiver_1CreateTagImage(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_VisualPairReceiver_1CreateTagImage(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   XTools::VisualPairReceiver *arg1 = (XTools::VisualPairReceiver *) 0 ;
   XTools::TagImagePtr result;
@@ -11257,7 +11257,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_VisualPairRec
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1VisualPairReceiver(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_delete_1VisualPairReceiver(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::VisualPairReceiver *arg1 = (XTools::VisualPairReceiver *) 0 ;
   
   (void)jenv;
@@ -11267,7 +11267,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1Visual
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_VisualPairConnector_1Create(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_VisualPairConnector_1Create(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   XTools::ref_ptr< XTools::VisualPairConnector > result;
   
@@ -11287,7 +11287,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_VisualPairCon
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_VisualPairConnector_1ProcessImage(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jbyteArray jarg2, jint jarg3, jint jarg4, jint jarg5) {
+SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_SharingClientJNI_VisualPairConnector_1ProcessImage(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jbyteArray jarg2, jint jarg3, jint jarg4, jint jarg5) {
   jboolean jresult = 0 ;
   XTools::VisualPairConnector *arg1 = (XTools::VisualPairConnector *) 0 ;
   XTools::byte *arg2 = (XTools::byte *) 0 ;
@@ -11313,7 +11313,7 @@ SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_VisualPair
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_VisualPairConnector_1IsProcessingImage(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_SharingClientJNI_VisualPairConnector_1IsProcessingImage(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   XTools::VisualPairConnector *arg1 = (XTools::VisualPairConnector *) 0 ;
   bool result;
@@ -11328,7 +11328,7 @@ SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_XToolsClientJNI_VisualPair
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1VisualPairConnector(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_delete_1VisualPairConnector(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::VisualPairConnector *arg1 = (XTools::VisualPairConnector *) 0 ;
   
   (void)jenv;
@@ -11338,7 +11338,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_delete_1Visual
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnectionListener_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_NetworkConnectionListener_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
     jlong baseptr = 0;
     (void)jenv;
     (void)jcls;
@@ -11346,7 +11346,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_NetworkConnec
     return baseptr;
 }
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntElement_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_IntElement_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
     jlong baseptr = 0;
     (void)jenv;
     (void)jcls;
@@ -11354,7 +11354,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntElement_1S
     return baseptr;
 }
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_LongElement_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_LongElement_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
     jlong baseptr = 0;
     (void)jenv;
     (void)jcls;
@@ -11362,7 +11362,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_LongElement_1
     return baseptr;
 }
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_FloatElement_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_FloatElement_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
     jlong baseptr = 0;
     (void)jenv;
     (void)jcls;
@@ -11370,7 +11370,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_FloatElement_
     return baseptr;
 }
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_DoubleElement_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_DoubleElement_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
     jlong baseptr = 0;
     (void)jenv;
     (void)jcls;
@@ -11378,7 +11378,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_DoubleElement
     return baseptr;
 }
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_StringElement_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_StringElement_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
     jlong baseptr = 0;
     (void)jenv;
     (void)jcls;
@@ -11386,7 +11386,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_StringElement
     return baseptr;
 }
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayListener_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_IntArrayListener_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
     jlong baseptr = 0;
     (void)jenv;
     (void)jcls;
@@ -11394,7 +11394,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayListe
     return baseptr;
 }
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayElement_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_IntArrayElement_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
     jlong baseptr = 0;
     (void)jenv;
     (void)jcls;
@@ -11402,7 +11402,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_IntArrayEleme
     return baseptr;
 }
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElementListener_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_ObjectElementListener_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
     jlong baseptr = 0;
     (void)jenv;
     (void)jcls;
@@ -11410,7 +11410,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElement
     return baseptr;
 }
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElement_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_ObjectElement_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
     jlong baseptr = 0;
     (void)jenv;
     (void)jcls;
@@ -11418,7 +11418,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ObjectElement
     return baseptr;
 }
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SyncListener_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_SyncListener_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
     jlong baseptr = 0;
     (void)jenv;
     (void)jcls;
@@ -11426,7 +11426,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SyncListener_
     return baseptr;
 }
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionListener_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_SessionListener_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
     jlong baseptr = 0;
     (void)jenv;
     (void)jcls;
@@ -11434,7 +11434,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionListen
     return baseptr;
 }
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManagerListener_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_SessionManagerListener_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
     jlong baseptr = 0;
     (void)jenv;
     (void)jcls;
@@ -11442,7 +11442,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_SessionManage
     return baseptr;
 }
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_UserPresenceManagerListener_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_UserPresenceManagerListener_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
     jlong baseptr = 0;
     (void)jenv;
     (void)jcls;
@@ -11450,7 +11450,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_UserPresenceM
     return baseptr;
 }
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerListener_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_RoomManagerListener_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
     jlong baseptr = 0;
     (void)jenv;
     (void)jcls;
@@ -11458,7 +11458,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_RoomManagerLi
     return baseptr;
 }
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairingListener_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_PairingListener_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
     jlong baseptr = 0;
     (void)jenv;
     (void)jcls;
@@ -11466,7 +11466,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_PairingListen
     return baseptr;
 }
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ImageTagLocationListener_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_ImageTagLocationListener_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
     jlong baseptr = 0;
     (void)jenv;
     (void)jcls;
@@ -11474,7 +11474,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_ImageTagLocat
     return baseptr;
 }
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_DirectPairConnector_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_DirectPairConnector_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
     jlong baseptr = 0;
     (void)jenv;
     (void)jcls;
@@ -11482,7 +11482,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_DirectPairCon
     return baseptr;
 }
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_DirectPairReceiver_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_DirectPairReceiver_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
     jlong baseptr = 0;
     (void)jenv;
     (void)jcls;
@@ -11490,7 +11490,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_DirectPairRec
     return baseptr;
 }
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_VisualPairReceiver_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_VisualPairReceiver_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
     jlong baseptr = 0;
     (void)jenv;
     (void)jcls;
@@ -11498,7 +11498,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_VisualPairRec
     return baseptr;
 }
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_VisualPairConnector_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_VisualPairConnector_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
     jlong baseptr = 0;
     (void)jenv;
     (void)jcls;
@@ -11506,7 +11506,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_XToolsClientJNI_VisualPairCon
     return baseptr;
 }
 
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_swig_1module_1init(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_swig_1module_1init(JNIEnv *jenv, jclass jcls) {
   int i;
   
   static struct {
@@ -11664,8 +11664,8 @@ SWIGEXPORT void JNICALL Java_com_microsoft_xtools_XToolsClientJNI_swig_1module_1
       "SwigDirector_ImageTagLocationListener_OnTagLocatingCompleted", "(Lcom/microsoft/xtools/ImageTagLocationListener;)V" 
     }
   };
-  Swig::jclass_XToolsClientJNI = (jclass) jenv->NewGlobalRef(jcls);
-  if (!Swig::jclass_XToolsClientJNI) return;
+  Swig::jclass_SharingClientJNI = (jclass) jenv->NewGlobalRef(jcls);
+  if (!Swig::jclass_SharingClientJNI) return;
   for (i = 0; i < (int) (sizeof(methods)/sizeof(methods[0])); ++i) {
     Swig::director_methids[i] = jenv->GetStaticMethodID(jcls, methods[i].method, methods[i].signature);
     if (!Swig::director_methids[i]) return;

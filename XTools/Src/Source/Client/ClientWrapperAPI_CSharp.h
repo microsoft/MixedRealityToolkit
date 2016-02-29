@@ -8,8 +8,8 @@
  * interface file instead.
  * ----------------------------------------------------------------------------- */
 
-#ifndef SWIG_XToolsClient_WRAP_H_
-#define SWIG_XToolsClient_WRAP_H_
+#ifndef SWIG_SharingClient_WRAP_H_
+#define SWIG_SharingClient_WRAP_H_
 
 class SwigDirector_LogWriter : public XTools::LogWriter, public Swig::Director {
 
