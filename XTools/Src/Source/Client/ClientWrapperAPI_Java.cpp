@@ -8699,18 +8699,6 @@ SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_SharingClientJNI_AnchorDow
   return jresult;
 }
 
-
-SWIGEXPORT void JNICALL Java_com_microsoft_xtools_SharingClientJNI_AnchorDownloadRequest_1CancelDownload(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  XTools::AnchorDownloadRequest *arg1 = (XTools::AnchorDownloadRequest *) 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(XTools::AnchorDownloadRequest **)&jarg1; 
-  (arg1)->CancelDownload();
-}
-
-
 SWIGEXPORT jint JNICALL Java_com_microsoft_xtools_SharingClientJNI_AnchorDownloadRequest_1GetDataSize(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   XTools::AnchorDownloadRequest *arg1 = (XTools::AnchorDownloadRequest *) 0 ;
@@ -9386,8 +9374,8 @@ SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_SharingClientJNI_RoomManag
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_RoomManager_1DownloadAnchor(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_) {
-  jlong jresult = 0 ;
+SWIGEXPORT jboolean JNICALL Java_com_microsoft_xtools_SharingClientJNI_RoomManager_1DownloadAnchor(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_) {
+  jboolean jresult = 0 ;
   XTools::RoomManager *arg1 = (XTools::RoomManager *) 0 ;
   XTools::RoomPtr *arg2 = 0 ;
   XTools::XStringPtr *arg3 = 0 ;
@@ -9397,7 +9385,7 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_RoomManager_
   XTools::XStringPtr tempnull3 ;
   XTools::XStringPtr temp3 ;
   XTools::XString *smartarg3 ;
-  XTools::AnchorDownloadRequestPtr result;
+  bool result;
   
   (void)jenv;
   (void)jcls;
@@ -9425,16 +9413,8 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_xtools_SharingClientJNI_RoomManager_
     arg3 = &tempnull3;
   }
   
-  result = (arg1)->DownloadAnchor((XTools::RoomPtr const &)*arg2,(XTools::XStringPtr const &)*arg3);
-  
-  // ref_ptr by value out
-  if (result) {
-    result->AddRef();
-    *( AnchorDownloadRequest **)&jresult = result.get();
-  } else {
-    *( AnchorDownloadRequest **)&jresult = 0; 
-  }
-  
+  result = (bool)(arg1)->DownloadAnchor((XTools::RoomPtr const &)*arg2,(XTools::XStringPtr const &)*arg3);
+  jresult = (jboolean)result; 
   return jresult;
 }
 

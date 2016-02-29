@@ -122,7 +122,7 @@ void ServerRoomManager::OnUploadRequest(const NetworkConnectionPtr& connection, 
 
 		for (auto itr = m_connections.begin(); itr != m_connections.end(); ++itr)
 		{
-			if (itr->first != connection->GetConnectionGUID())
+			if (itr->first != connection->GetConnectionGUID() && itr->second->IsConnected())
 			{
 				itr->second->Send(outMsg, MessagePriority::Low, MessageReliability::ReliableOrdered, MessageChannel::RoomAnchorChannel, false);
 			}

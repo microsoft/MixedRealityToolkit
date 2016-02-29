@@ -5767,26 +5767,6 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_AnchorDownloadRequest_GetRoom(void * jarg1)
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_AnchorDownloadRequest_IsDownloading(void * jarg1) {
-  unsigned int jresult ;
-  XTools::AnchorDownloadRequest *arg1 = (XTools::AnchorDownloadRequest *) 0 ;
-  bool result;
-  
-  arg1 = (XTools::AnchorDownloadRequest *)jarg1; 
-  result = (bool)((XTools::AnchorDownloadRequest const *)arg1)->IsDownloading();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_AnchorDownloadRequest_CancelDownload(void * jarg1) {
-  XTools::AnchorDownloadRequest *arg1 = (XTools::AnchorDownloadRequest *) 0 ;
-  
-  arg1 = (XTools::AnchorDownloadRequest *)jarg1; 
-  (arg1)->CancelDownload();
-}
-
-
 SWIGEXPORT int SWIGSTDCALL CSharp_AnchorDownloadRequest_GetDataSize(void * jarg1) {
   int jresult ;
   XTools::AnchorDownloadRequest *arg1 = (XTools::AnchorDownloadRequest *) 0 ;
@@ -6352,8 +6332,8 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_RoomManager_LeaveRoom(void * jarg1) {
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_RoomManager_DownloadAnchor(void * jarg1, void * jarg2, void * jarg3) {
-  void * jresult ;
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_RoomManager_DownloadAnchor(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
   XTools::RoomManager *arg1 = (XTools::RoomManager *) 0 ;
   XTools::RoomPtr *arg2 = 0 ;
   XTools::XStringPtr *arg3 = 0 ;
@@ -6363,7 +6343,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_RoomManager_DownloadAnchor(void * jarg1, vo
   XTools::XStringPtr tempnull3 ;
   XTools::XStringPtr temp3 ;
   XTools::XString *smartarg3 ;
-  XTools::AnchorDownloadRequestPtr result;
+  bool result;
   
   arg1 = (XTools::RoomManager *)jarg1; 
   
@@ -6386,16 +6366,8 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_RoomManager_DownloadAnchor(void * jarg1, vo
     arg3 = &tempnull3;
   }
   
-  result = (arg1)->DownloadAnchor((XTools::RoomPtr const &)*arg2,(XTools::XStringPtr const &)*arg3);
-  
-  // ref_ptr by value out
-  if (result) {
-    result->AddRef();
-    *( AnchorDownloadRequest **)&jresult = (&result)->get();
-  } else {
-    *( AnchorDownloadRequest **)&jresult = 0; 
-  }
-  
+  result = (bool)(arg1)->DownloadAnchor((XTools::RoomPtr const &)*arg2,(XTools::XStringPtr const &)*arg3);
+  jresult = result; 
   return jresult;
 }
 
