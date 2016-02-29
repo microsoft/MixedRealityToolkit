@@ -30,7 +30,15 @@ BufferPtr ServerAnchorList::GetAnchorData(const std::string& name) const
 
 void ServerAnchorList::SetAnchor(const std::string& name, const BufferPtr& data)
 {
-	ObjectElementPtr newAnchorElement = GetElement()->CreateObjectElement(new XString(name));
+	// Overwrite the anchor with the given name OR create a new anchor with the name
+	XStringPtr nameXString = new XString(name);
+
+	ObjectElementPtr newAnchorElement = ObjectElement::Cast(GetElement()->GetElement(nameXString));
+	if (newAnchorElement == nullptr)
+	{
+		newAnchorElement = GetElement()->CreateObjectElement(nameXString);
+	}
+
 	m_anchors[name] = Anchor(newAnchorElement, data);
 }
 

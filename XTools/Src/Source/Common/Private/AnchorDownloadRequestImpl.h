@@ -21,12 +21,6 @@ public:
 	/// Returns the Room that the requested anchor is in
 	virtual RoomPtr GetRoom() const XTOVERRIDE;
 
-	/// Returns true as long as the requested anchor data is still downloading
-	virtual bool IsDownloading() const XTOVERRIDE;
-
-	/// Cancel the pending download.  If the download has already completed then this does nothing
-	virtual void CancelDownload() XTOVERRIDE;
-
 	/// Returns the size of the downloaded data.  Returns 0 until the download completes
 	virtual int32 GetDataSize() const XTOVERRIDE;
 

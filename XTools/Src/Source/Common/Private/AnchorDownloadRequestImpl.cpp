@@ -30,21 +30,6 @@ RoomPtr AnchorDownloadRequestImpl::GetRoom() const
 }
 
 
-bool AnchorDownloadRequestImpl::IsDownloading() const
-{
-	return (m_status == Status::Downloading);
-}
-
-
-void AnchorDownloadRequestImpl::CancelDownload()
-{
-	// TODO!!!
-
-	m_status = Status::Cancelled;
-	m_data = nullptr;
-}
-
-
 int32 AnchorDownloadRequestImpl::GetDataSize() const
 {
 	return (m_data != nullptr) ? m_data->GetSize() : 0;

@@ -174,12 +174,12 @@ bool RoomManagerImpl::LeaveRoom()
 }
 
 
-AnchorDownloadRequestPtr RoomManagerImpl::DownloadAnchor(const RoomPtr& room, const XStringPtr& anchorName)
+bool RoomManagerImpl::DownloadAnchor(const RoomPtr& room, const XStringPtr& anchorName)
 {
 	if (m_currentDownloadRequest != nullptr)
 	{
 		LogError("Anchor download already in progress");
-		return nullptr;
+		return false;
 	}
 
 	// Create a new object to represent this request
@@ -195,23 +195,41 @@ AnchorDownloadRequestPtr RoomManagerImpl::DownloadAnchor(const RoomPtr& room, co
 	outMsg->Write(anchorName);
 	serverConnection->Send(outMsg, MessagePriority::Low, MessageReliability::ReliableOrdered, MessageChannel::RoomAnchorChannel, true);
 
-	return m_currentDownloadRequest;
+	return true;
 }
 
  
 bool RoomManagerImpl::UploadAnchor(const RoomPtr& room, const XStringPtr& anchorName, const byte* data, int32 dataSize)
 {
+	if (data == nullptr)
+	{
+		LogError("Anchor data passed to UploadAnchor is invalid");
+		return false;
+	}
+
+	if (dataSize <= 0)
+	{
+		LogError("Anchor data saize passed to UploadAnchor is invalid");
+		return false;
+	}
+
 	if (m_bUploadInProgress)
 	{
 		LogError("Anchor upload already in progress");
 		return false;
 	}
 
+	NetworkConnectionPtr serverConnection = m_context->GetSessionConnection();
+
+	if (!serverConnection->IsConnected())
+	{
+		LogError("Cannot upload anchors when not joined to a session");
+		return false;
+	}
+
 	m_bUploadInProgress = true;
 
 	// Build the request message and send it
-	NetworkConnectionPtr serverConnection = m_context->GetSessionConnection();
-
 	NetworkOutMessagePtr outMsg = serverConnection->CreateMessage(MessageID::RoomAnchor);
 	outMsg->Write((byte)RoomMessageID::AnchorUploadRequest);
 	outMsg->Write(room->GetID());

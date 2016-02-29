@@ -55,7 +55,7 @@ public:
 	/// Begins the asynchronous download of an anchor in the given room from the session server.  
 	/// Returns an AnchorDownloadRequest object that allows the user to track or cancel the download and retrieve the
 	/// data once its finished downloading
-	virtual AnchorDownloadRequestPtr DownloadAnchor(const RoomPtr& room, const XStringPtr& anchorName) XTOVERRIDE;
+	virtual bool DownloadAnchor(const RoomPtr& room, const XStringPtr& anchorName) XTOVERRIDE;
 
 	/// Begin the asynchronous upload of an anchor.  A copy of the data is created internally,
 	/// so it is safe to release once this function returns.  
