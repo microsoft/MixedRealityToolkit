@@ -72,6 +72,16 @@ RoomPtr RoomManagerImpl::CreateRoom(const XStringPtr& roomName, RoomID roomID)
 	// If the user is currently in a room, leave it first
 	LeaveRoom();
 
+	// Check that a room with the given ID does not already exist
+	for (size_t i = 0; i < m_roomList.size(); ++i)
+	{
+		if (m_roomList[i]->GetID() == roomID)
+		{
+			LogError("Failed to create room with ID %lli: a room with that ID already exists", roomID);
+			return false;
+		}
+	}
+
 	// Create a Room object for this element
 	RoomImplPtr newRoom = new RoomImpl(m_listenerList, roomName, roomID);
 
