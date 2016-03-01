@@ -251,6 +251,12 @@
     <Compile Include="..\..\GeneratedInterface\CSharpAPI\Settings.cs">
       <Link>Generated Files\Settings.cs</Link>
     </Compile>
+    <Compile Include="..\..\GeneratedInterface\CSharpAPI\SharingClient.cs">
+      <Link>Generated Files\SharingClient.cs</Link>
+    </Compile>
+    <Compile Include="..\..\GeneratedInterface\CSharpAPI\SharingClientPINVOKE.cs">
+      <Link>Generated Files\SharingClientPINVOKE.cs</Link>
+    </Compile>
     <Compile Include="..\..\GeneratedInterface\CSharpAPI\StringElement.cs">
       <Link>Generated Files\StringElement.cs</Link>
     </Compile>
@@ -277,12 +283,6 @@
     </Compile>
     <Compile Include="..\..\GeneratedInterface\CSharpAPI\XString.cs">
       <Link>Generated Files\XString.cs</Link>
-    </Compile>
-    <Compile Include="..\..\GeneratedInterface\CSharpAPI\XToolsClient.cs">
-      <Link>Generated Files\XToolsClient.cs</Link>
-    </Compile>
-    <Compile Include="..\..\GeneratedInterface\CSharpAPI\XToolsClientPINVOKE.cs">
-      <Link>Generated Files\XToolsClientPINVOKE.cs</Link>
     </Compile>
     <Compile Include="..\..\GeneratedInterface\CSharpAPI\XToolsManager.cs">
       <Link>Generated Files\XToolsManager.cs</Link>
@@ -345,12 +345,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="$(BaseOutputPath)ClientWindowsCSharp\XToolsClient.dll">
-      <Link>XToolsClient.dll</Link>
+    <Content Include="$(BaseOutputPath)ClientWindowsCSharp\SharingClient.dll">
+      <Link>SharingClient.dll</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="$(BaseOutputPath)ClientWindowsCSharp\XToolsClient.pdb">
-      <Link>XToolsClient.pdb</Link>
+    <Content Include="$(BaseOutputPath)ClientWindowsCSharp\SharingClient.pdb">
+      <Link>SharingClient.pdb</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Resource Include="Assets\search.gif" />

@@ -74,22 +74,22 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(BaseOutputPath)$(ProjectName)\</OutDir>
     <IntDir>$(BaseIntermediateOutputPath)$(Configuration)\$(Platform)\$(ProjectName)\</IntDir>
-    <TargetName>XToolsProfiler</TargetName>
+    <TargetName>SharingProfiler</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(BaseOutputPath)$(ProjectName)\</OutDir>
     <IntDir>$(BaseIntermediateOutputPath)$(Configuration)\$(Platform)\$(ProjectName)\</IntDir>
-    <TargetName>XToolsProfiler</TargetName>
+    <TargetName>SharingProfiler</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(BaseOutputPath)$(ProjectName)\</OutDir>
     <IntDir>$(BaseIntermediateOutputPath)$(Configuration)\$(Platform)\$(ProjectName)\</IntDir>
-    <TargetName>XToolsProfiler</TargetName>
+    <TargetName>SharingProfiler</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(BaseOutputPath)$(ProjectName)\</OutDir>
     <IntDir>$(BaseIntermediateOutputPath)$(Configuration)\$(Platform)\$(ProjectName)\</IntDir>
-    <TargetName>XToolsProfiler</TargetName>
+    <TargetName>SharingProfiler</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

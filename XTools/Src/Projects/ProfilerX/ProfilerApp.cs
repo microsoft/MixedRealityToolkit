@@ -12,11 +12,11 @@ namespace ProfilerX
 
         public bool Recording = true;
 
-        public XTools.ProfilerStreamManager Manager { get; private set; }
+        public HoloToolkit.Sharing.ProfilerStreamManager Manager { get; private set; }
 
         public ProfilerApp()
         {
-            this.Manager = XTools.ProfilerStreamManager.Create();
+            this.Manager = HoloToolkit.Sharing.ProfilerStreamManager.Create();
             this.disposed = false;
         }
 

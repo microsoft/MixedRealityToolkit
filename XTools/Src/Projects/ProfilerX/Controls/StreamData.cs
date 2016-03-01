@@ -25,8 +25,8 @@ namespace ProfilerX
             get { return this.logs; }
         }
 
-        public XTools.ProfilerStream stream;
-        private XTools.ProfilerStreamAdapter adapter;
+        public HoloToolkit.Sharing.ProfilerStream stream;
+        private HoloToolkit.Sharing.ProfilerStreamAdapter adapter;
         private string remoteSystemName;
         private readonly int MaxFrames = 600; // 10 seconds @ 60fps
 
@@ -42,14 +42,14 @@ namespace ProfilerX
             }
         }
 
-        public StreamData(XTools.ProfilerStream newStream, string remoteName)
+        public StreamData(HoloToolkit.Sharing.ProfilerStream newStream, string remoteName)
         {
             this.remoteSystemName = remoteName;
 
             this.frames = new ObservableCollection<FrameData>();
             this.logs = new ObservableCollection<LogData>();
 
-            this.adapter = new XTools.ProfilerStreamAdapter();
+            this.adapter = new HoloToolkit.Sharing.ProfilerStreamAdapter();
             this.adapter.ConnectedEvent += OnConnected;
             this.adapter.ConnectFailedEvent += OnConnectFailed;
             this.adapter.DisconnectedEvent += OnDisconnected;
@@ -79,7 +79,7 @@ namespace ProfilerX
             this.stream.Connect();
         }
 
-        private void OnReceiveProfileFrame(XTools.ProfileFrame newFrame)
+        private void OnReceiveProfileFrame(HoloToolkit.Sharing.ProfileFrame newFrame)
         {
             if (App.ProfilerApp.Recording)
             {

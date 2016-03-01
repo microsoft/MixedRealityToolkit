@@ -11,7 +11,7 @@ namespace ProfilerX
 {
     public class ThreadData : INotifyPropertyChanged
     {
-        private XTools.ProfileThread thread;
+        private HoloToolkit.Sharing.ProfileThread thread;
         private ObservableCollection<SampleData> samples;
         private bool _isExpanded = true;
         private bool _isSelected;
@@ -83,7 +83,7 @@ namespace ProfilerX
         }
 
 
-        public ThreadData(XTools.ProfileThread newThread)
+        public ThreadData(HoloToolkit.Sharing.ProfileThread newThread)
         {
             this.thread = newThread;
             this.ThreadID = newThread.GetThreadID();
@@ -95,7 +95,7 @@ namespace ProfilerX
             this.samples = new ObservableCollection<SampleData>();
             for(int i = 0; i < this.thread.GetSampleCount(); ++i)
             {
-                XTools.ProfileSample sample = this.thread.GetSample(i);
+                HoloToolkit.Sharing.ProfileSample sample = this.thread.GetSample(i);
                 if(sample.GetParentIndex() == -1)
                 {
                     SampleData newSample = new SampleData(sample, i, this.thread);

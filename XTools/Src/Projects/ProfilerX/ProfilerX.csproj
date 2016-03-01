@@ -98,6 +98,12 @@
     <Compile Include="..\..\GeneratedInterface\Profiler\CSharpAPI\Receipt.cs">
       <Link>Generated Files\Receipt.cs</Link>
     </Compile>
+    <Compile Include="..\..\GeneratedInterface\Profiler\CSharpAPI\SharingProfiler.cs">
+      <Link>Generated Files\SharingProfiler.cs</Link>
+    </Compile>
+    <Compile Include="..\..\GeneratedInterface\Profiler\CSharpAPI\SharingProfilerPINVOKE.cs">
+      <Link>Generated Files\SharingProfilerPINVOKE.cs</Link>
+    </Compile>
     <Compile Include="Controls\DurationToBrushConverter.cs" />
     <Compile Include="Controls\LogData.cs" />
     <Compile Include="Controls\SampleData.cs" />
@@ -145,12 +151,6 @@
     <Compile Include="..\..\GeneratedInterface\Profiler\CSharpAPI\XString.cs">
       <Link>Generated Files\XString.cs</Link>
     </Compile>
-    <Compile Include="..\..\GeneratedInterface\Profiler\CSharpAPI\XToolsProfiler.cs">
-      <Link>Generated Files\XToolsProfiler.cs</Link>
-    </Compile>
-    <Compile Include="..\..\GeneratedInterface\Profiler\CSharpAPI\XToolsProfilerPINVOKE.cs">
-      <Link>Generated Files\XToolsProfilerPINVOKE.cs</Link>
-    </Compile>
     <Compile Include="AddAppDialog.xaml.cs">
       <DependentUpon>AddAppDialog.xaml</DependentUpon>
     </Compile>
@@ -191,12 +191,12 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="$(BaseOutputPath)ProfilerWindowsCSharp\XToolsProfiler.dll">
-      <Link>XToolsProfiler.dll</Link>
+    <Content Include="$(BaseOutputPath)ProfilerWindowsCSharp\SharingProfiler.dll">
+      <Link>SharingProfiler.dll</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="$(BaseOutputPath)ProfilerWindowsCSharp\XToolsProfiler.pdb">
-      <Link>XToolsProfiler.pdb</Link>
+    <Content Include="$(BaseOutputPath)ProfilerWindowsCSharp\SharingProfiler.pdb">
+      <Link>SharingProfiler.pdb</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

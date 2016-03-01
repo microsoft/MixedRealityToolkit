@@ -6,7 +6,7 @@
 
 using System;
 using System.Collections.Generic;
-using HoloToolkit.XTools;
+using HoloToolkit.Sharing;
 
 namespace SessionManager.Network
 {
@@ -20,7 +20,7 @@ namespace SessionManager.Network
         private ConsoleLogWriter logWriter;
         private Dictionary<string, string> parsedArguments;
 
-        public HoloToolkit.XTools.SessionManager SessionManager { get; private set; }
+        public HoloToolkit.Sharing.SessionManager SessionManager { get; private set; }
 
         public XToolsManager Manager { get; private set; }
 

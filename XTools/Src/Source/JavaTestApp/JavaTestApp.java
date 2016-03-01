@@ -4,11 +4,11 @@
  * Copyright (C) 2014 Microsoft Corp.  All Rights Reserved
  */
 
-package XTools;
+package HoloToolkit.Sharing;
 
 import java.io.*;
 import java.util.concurrent.*;
-import com.microsoft.xtools.*;
+import com.microsoft.holotoolkit.sharing.*;
 
  public class JavaTestApp {
 
@@ -116,7 +116,7 @@ import com.microsoft.xtools.*;
      }
 
     static {
-        System.loadLibrary("XToolsClient");
+        System.loadLibrary("SharingClient");
     }
 
 

@@ -6,7 +6,7 @@
 // Copyright (C) 2014 Microsoft Corp.  All Rights Reserved
 //////////////////////////////////////////////////////////////////////////
 
-package XTools;
+package HoloToolkit.Sharing;
 
  public class VersionInfo {
 	public static String getVersion()

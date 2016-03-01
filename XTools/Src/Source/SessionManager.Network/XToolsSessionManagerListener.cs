@@ -5,7 +5,7 @@
 //------------------------------------------------------------------------------
 
 using System;
-using HoloToolkit.XTools;
+using HoloToolkit.Sharing;
 
 namespace SessionManager.Network
 {

@@ -1,7 +1,7 @@
-Main-Class: XTools.JavaTestApp
-Specification-Title: XTools Console Application
+Main-Class: HoloToolkit.Sharing.JavaTestApp
+Specification-Title: HoloToolkit.Sharing Console Application
 Specification-Version: 1.0.0.0
 Specification-Vendor: Microsoft Corporation
-Implementation-Title: XTools Console Application
+Implementation-Title: HoloToolkit.Sharing Console Application
 Implementation-Version: 1.0.0.0
 Implementation-Vendor: Microsoft Corporation

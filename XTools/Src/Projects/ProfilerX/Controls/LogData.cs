@@ -10,12 +10,12 @@ namespace ProfilerX
 {
     public class LogData : INotifyPropertyChanged
     {
-        private XTools.LogMessage logMsg;
+        private HoloToolkit.Sharing.LogMessage logMsg;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
 
-        public XTools.LogSeverity Severity
+        public HoloToolkit.Sharing.LogSeverity Severity
         {
             get { return this.logMsg.GetSeverity(); }
         }
@@ -30,7 +30,7 @@ namespace ProfilerX
             get { return this.logMsg.GetSeverity().ToString() + ": " + this.logMsg.GetLogMessage(); }
         }
 
-        public LogData(XTools.LogMessage msg)
+        public LogData(HoloToolkit.Sharing.LogMessage msg)
         {
             this.logMsg = msg;
         }

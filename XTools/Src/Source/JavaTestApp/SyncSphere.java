@@ -6,9 +6,9 @@
 // Copyright (C) 2014 Microsoft Corp.  All Rights Reserved
 //////////////////////////////////////////////////////////////////////////
 
-package XTools;
+package HoloToolkit.Sharing;
 
-import com.microsoft.xtools.*;
+import com.microsoft.holotoolkit.sharing.*;
 
  public class SyncSphere extends ObjectElementListener {
 	private ObjectElement mElement;

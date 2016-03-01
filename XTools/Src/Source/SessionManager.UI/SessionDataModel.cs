@@ -17,7 +17,7 @@ namespace SessionManager.DataModel
         private int id;
         private bool muteState;
 
-        public User(HoloToolkit.XTools.User XUser, string userName, int id, bool muteState)
+        public User(HoloToolkit.Sharing.User XUser, string userName, int id, bool muteState)
         {
             this.XUser = XUser;
             this.userName = userName;
@@ -71,7 +71,7 @@ namespace SessionManager.DataModel
         }
 
         // XTool user reference
-        public HoloToolkit.XTools.User XUser { get; private set; }
+        public HoloToolkit.Sharing.User XUser { get; private set; }
 
         // Create the OnPropertyChanged method to raise the event 
         protected void OnPropertyChanged(string name)
@@ -91,7 +91,7 @@ namespace SessionManager.DataModel
         public XToolsSessionListener SessionListener;
         private ObservableCollection<User> sessionUsers;
 
-        public SessionData(HoloToolkit.XTools.Session session)
+        public SessionData(HoloToolkit.Sharing.Session session)
         {
             this.Session = session;
             this.sessionUsers = new ObservableCollection<User>();
@@ -144,7 +144,7 @@ namespace SessionManager.DataModel
 
         public bool Joinable
         {
-            get { return this.IsValid ? this.Session.GetMachineSessionState() == HoloToolkit.XTools.MachineSessionState.DISCONNECTED : false; }
+            get { return this.IsValid ? this.Session.GetMachineSessionState() == HoloToolkit.Sharing.MachineSessionState.DISCONNECTED : false; }
         }
 
         public int UserCount
@@ -162,14 +162,14 @@ namespace SessionManager.DataModel
             get { return this.IsValid ? System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(this.Session.GetMachineSessionState().ToString().ToLower()) : "Invalid"; }
         }
 
-        public HoloToolkit.XTools.Session Session { get; private set; }
+        public HoloToolkit.Sharing.Session Session { get; private set; }
 
         public ObservableCollection<User> Users
         {
             get { return this.sessionUsers; }
         }
 
-        private void XToolsApp_ServerDisconnected(HoloToolkit.XTools.NetworkConnection connection)
+        private void XToolsApp_ServerDisconnected(HoloToolkit.Sharing.NetworkConnection connection)
         {
             if (this.IsValid)
             {
@@ -178,7 +178,7 @@ namespace SessionManager.DataModel
             }
         }
 
-        private void SessionManagerListener_SessionUserJoined(HoloToolkit.XTools.Session session, HoloToolkit.XTools.User XUser)
+        private void SessionManagerListener_SessionUserJoined(HoloToolkit.Sharing.Session session, HoloToolkit.Sharing.User XUser)
         {
             if (this.IsValid && this.Session.GetName().IsEqual(session.GetName()))
             {
@@ -187,7 +187,7 @@ namespace SessionManager.DataModel
             }
         }
 
-        private void SessionManagerListener_SessionUserLeft(HoloToolkit.XTools.Session session, HoloToolkit.XTools.User XUser)
+        private void SessionManagerListener_SessionUserLeft(HoloToolkit.Sharing.Session session, HoloToolkit.Sharing.User XUser)
         {
             if (this.IsValid && this.Session.GetName().IsEqual(session.GetName()))
             {
@@ -196,7 +196,7 @@ namespace SessionManager.DataModel
             }
         }
 
-        private void SessionManagerListener_SessionUserChanged(HoloToolkit.XTools.Session session, HoloToolkit.XTools.User XUser)
+        private void SessionManagerListener_SessionUserChanged(HoloToolkit.Sharing.Session session, HoloToolkit.Sharing.User XUser)
         {
             if (this.IsValid && this.Session.GetName().IsEqual(session.GetName()))
             {
@@ -204,7 +204,7 @@ namespace SessionManager.DataModel
             }
         }
 
-        private void SessionListener_SessionChanged(HoloToolkit.XTools.Session session)
+        private void SessionListener_SessionChanged(HoloToolkit.Sharing.Session session)
         {
             OnPropertyChanged("Joinable");
             OnPropertyChanged("Status");
@@ -218,7 +218,7 @@ namespace SessionManager.DataModel
             // Make sure any existing users are added to the session
             for (int i = 0; i < this.Session.GetUserCount(); i++)
             {
-                HoloToolkit.XTools.User XUser = this.Session.GetUser(i);
+                HoloToolkit.Sharing.User XUser = this.Session.GetUser(i);
                 AddUser(XUser);
             }
         }
@@ -234,7 +234,7 @@ namespace SessionManager.DataModel
             }
         }
 
-        private void AddUser(HoloToolkit.XTools.User XUser)
+        private void AddUser(HoloToolkit.Sharing.User XUser)
         {
             string userName = XUser.GetName().GetString();
             int id = XUser.GetID();
@@ -250,7 +250,7 @@ namespace SessionManager.DataModel
             }), new object[] { this });
         }
 
-        private void RemoveUser(HoloToolkit.XTools.User XUser)
+        private void RemoveUser(HoloToolkit.Sharing.User XUser)
         {
             int id = XUser.GetID();
 
@@ -264,7 +264,7 @@ namespace SessionManager.DataModel
             }), new object[] { this });
         }
 
-        private void UpdateUser(HoloToolkit.XTools.User XUser)
+        private void UpdateUser(HoloToolkit.Sharing.User XUser)
         {
             string userName = XUser.GetName().GetString();
             int id = XUser.GetID();
@@ -320,7 +320,7 @@ namespace SessionManager.DataModel
             }
         }
 
-        public SessionData FindSession(HoloToolkit.XTools.Session session)
+        public SessionData FindSession(HoloToolkit.Sharing.Session session)
         {
             SessionData existingSessionData = session != null ? this.FirstOrDefault(x => x.Session.GetName().IsEqual(session.GetName())) : null;
             return existingSessionData;
@@ -340,7 +340,7 @@ namespace SessionManager.DataModel
             }), new object[] { this });
         }
 
-        private void SessionListener_SessionManagerAdded(HoloToolkit.XTools.Session session)
+        private void SessionListener_SessionManagerAdded(HoloToolkit.Sharing.Session session)
         {
             App.Current.Dispatcher.BeginInvoke(new Action<SessionsList>((sender) =>
             {
@@ -353,7 +353,7 @@ namespace SessionManager.DataModel
             }), new object[] { this }).Wait();
         }
 
-        private void SessionManagerListener_SessionClosed(HoloToolkit.XTools.Session session)
+        private void SessionManagerListener_SessionClosed(HoloToolkit.Sharing.Session session)
         {
             App.Current.Dispatcher.BeginInvoke(new Action<SessionsList>((sender) =>
             {
@@ -397,7 +397,7 @@ namespace SessionManager.DataModel
             {
                 if (!UserName.Equals(value))
                 {
-                    App.XToolsApp.Manager.SetUserName(new HoloToolkit.XTools.XString(value));
+                    App.XToolsApp.Manager.SetUserName(new HoloToolkit.Sharing.XString(value));
                     OnPropertyChanged("UserName");
                 }
             }
@@ -427,7 +427,7 @@ namespace SessionManager.DataModel
                 uint port = (uint)App.XToolsApp.Manager.GetSettings().GetServerPort();
                 GetNetworkAddressParts(value, ref hostname, ref port);
 
-                App.XToolsApp.Manager.SetServerConnectionInfo(new HoloToolkit.XTools.XString(hostname), port);
+                App.XToolsApp.Manager.SetServerConnectionInfo(new HoloToolkit.Sharing.XString(hostname), port);
                 OnPropertyChanged("ServerAddress");
             }
         }
@@ -453,7 +453,7 @@ namespace SessionManager.DataModel
             OnPropertyChanged("IsServerConnected");
         }
 
-        private void XToolsApp_ViewerConnectionChanged(HoloToolkit.XTools.NetworkConnection obj)
+        private void XToolsApp_ViewerConnectionChanged(HoloToolkit.Sharing.NetworkConnection obj)
         {
             OnPropertyChanged("IsViewerConnected");
         }
