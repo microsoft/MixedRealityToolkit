@@ -145,13 +145,13 @@
     <CustomBuild Include="..\..\Source\Profiler\WrapperAPI\Profiler_CSharp.i">
       <FileType>Document</FileType>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">cd ..\..\Source\Profiler\WrapperAPI
-call ProfilerAPIGen_CSharp.bat XToolsProfiler _M_IX86 _WIN32 "%(FullPath)"</Command>
+call ProfilerAPIGen_CSharp.bat SharingProfiler _M_IX86 _WIN32 "%(FullPath)"</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">cd ..\..\Source\Profiler\WrapperAPI
-call ProfilerAPIGen_CSharp.bat XToolsProfiler _M_X64 _WIN32 "%(FullPath)"</Command>
+call ProfilerAPIGen_CSharp.bat SharingProfiler _M_X64 _WIN32 "%(FullPath)"</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">cd ..\..\Source\Profiler\WrapperAPI
-call ProfilerAPIGen_CSharp.bat XToolsProfiler _M_X64 _WIN32 "%(FullPath)"</Command>
+call ProfilerAPIGen_CSharp.bat SharingProfiler _M_X64 _WIN32 "%(FullPath)"</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">cd ..\..\Source\Profiler\WrapperAPI
-call ProfilerAPIGen_CSharp.bat XToolsProfiler _M_IX86 _WIN32 "%(FullPath)"</Command>
+call ProfilerAPIGen_CSharp.bat SharingProfiler _M_IX86 _WIN32 "%(FullPath)"</Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">ProfilerWrapperAPI_CSharp.h;ProfilerWrapperAPI_CSharp.cpp;%(Outputs)</Outputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">ProfilerWrapperAPI_CSharp.h;ProfilerWrapperAPI_CSharp.cpp;%(Outputs)</Outputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ProfilerWrapperAPI_CSharp.h;ProfilerWrapperAPI_CSharp.cpp;%(Outputs)</Outputs>
