@@ -21,10 +21,10 @@
 // 
 
 // Internal name of the service
-#define SERVICE_NAME             L"XToolsServer"
+#define SERVICE_NAME             L"SharingService"
 
 // Displayed name of the service
-#define SERVICE_DISPLAY_NAME     L"XTools Server"
+#define SERVICE_DISPLAY_NAME     L"Sharing Service"
 
 // Service start options.  
 #define SERVICE_START_TYPE       SERVICE_AUTO_START	// start automatically by the service control manager during system startup
@@ -69,7 +69,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		}
 		else if (_wcsicmp(L"local", argv[1] + 1) == 0)
 		{
-			wprintf(L"Running XTools server not as a service.  Enter 'q' to quit.  \n");
+			wprintf(L"Running Sharing Service locally.  Enter 'q' to quit.  \n");
 
 			XTools::SessionServer server(SERVICE_NAME);
 			server.OnStart(0, NULL);

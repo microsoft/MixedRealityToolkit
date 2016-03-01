@@ -54,11 +54,11 @@ void SessionServer::OnStart(DWORD dwArgc, PWSTR *pszArgv)
 
     // Log out an obvious piece of text to help distinguish between server sessions.
     LogInfo("***********************************");
-    LogInfo("****** SessionServer OnStart ******");
+    LogInfo("****** Sharing Service OnStart ******");
     LogInfo("***********************************");
 
 	// Log a service start message to the Application log.
-	WriteEventLogEntry(L"XTools Server starting", EVENTLOG_INFORMATION_TYPE);
+	WriteEventLogEntry(L"Sharing Server starting", EVENTLOG_INFORMATION_TYPE);
 	LogInfo("Server Info: \n\tBuild Version: %ls \n\tSchema Version: %i", XTOOLS_VERSION_STRING, kXToolsSchemaVersion);
 
 	// TODO: use different machines, etc, based on command line parameters
@@ -81,11 +81,11 @@ void SessionServer::OnStart(DWORD dwArgc, PWSTR *pszArgv)
 void SessionServer::OnStop()
 {
     LogInfo("**********************************");
-    LogInfo("****** SessionServer OnStop ******");
+    LogInfo("****** Sharing Service OnStop ******");
     LogInfo("**********************************");
 
 	// Log a service stop message to the Application log.
-	WriteEventLogEntry(L"XTools Server stopping", EVENTLOG_INFORMATION_TYPE);
+	WriteEventLogEntry(L"Sharing Server stopping", EVENTLOG_INFORMATION_TYPE);
 
 	// Indicate that the service is stopping and wait for the finish of the 
 	// main service function (ServerThreadFunc).
@@ -134,7 +134,7 @@ void SessionServer::OnSessionEmpty(const XSessionConstPtr& session)
 	XT_UNREFERENCED_PARAM(session);
 
 	// Log a service stop message to the Application log.
-	WriteEventLogEntry(L"XTools Server session empty", EVENTLOG_INFORMATION_TYPE);
+	WriteEventLogEntry(L"Sharing Service session empty", EVENTLOG_INFORMATION_TYPE);
 
 	if (session->GetType() == SessionType::ADHOC)
 	{
@@ -466,7 +466,7 @@ void SessionServer::InitializeFileLogger()
     if (!m_logWriter)
     {
         std::string filePath = s_defaultLogBaseLocation;
-        filePath += "SessionServerLogs";
+        filePath += "SharingServiceLogs";
         filePath += "\\";
 
         BOOL dirResult = CreateDirectoryA(filePath.c_str(), NULL);
@@ -474,7 +474,7 @@ void SessionServer::InitializeFileLogger()
         if (dirResult || GetLastError() == ERROR_ALREADY_EXISTS)
         {
             // Either we succeeded in creating the directory or it already exists.
-            std::string fileName = "SessionServer_";
+            std::string fileName = "SharingService_";
             fileName += std::to_string(curTM.tm_year + 1900);
             fileName += std::to_string(curTM.tm_mon + 1);
             fileName += std::to_string(curTM.tm_mday);

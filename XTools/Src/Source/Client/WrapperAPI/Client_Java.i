@@ -1,4 +1,4 @@
-%module(directors="1") XToolsClient
+%module(directors="1") SharingClient
 
 %{
 #include "../Common/Common.h"

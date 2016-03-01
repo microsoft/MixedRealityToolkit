@@ -47,17 +47,19 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(BaseOutputPath)$(ProjectName)\</OutDir>
-    <IntDir>$(BaseIntermediateOutputPath)$(Configuration)\$(Platform)\$(ProjectName)\</IntDir>
+    <OutDir>$(BaseOutputPath)SharingService\</OutDir>
+    <IntDir>$(BaseIntermediateOutputPath)$(Configuration)\$(Platform)\SharingService\</IntDir>
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);../../External/speex-1.2rc1/include</IncludePath>
     <LibraryPath>..\..\External\speex-1.2rc1\lib;$(LibraryPath)</LibraryPath>
+    <TargetName>SharingService</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(BaseOutputPath)$(ProjectName)\</OutDir>
-    <IntDir>$(BaseIntermediateOutputPath)$(Configuration)\$(Platform)\$(ProjectName)\</IntDir>
+    <OutDir>$(BaseOutputPath)SharingService\</OutDir>
+    <IntDir>$(BaseIntermediateOutputPath)$(Configuration)\$(Platform)\SharingService\</IntDir>
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);../../External/speex-1.2rc1/include</IncludePath>
     <LibraryPath>..\..\External\speex-1.2rc1\lib;$(LibraryPath)</LibraryPath>
+    <TargetName>SharingService</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -140,6 +142,7 @@
     <ClInclude Include="..\..\Source\SessionServer\AudioRouterWithMixer.h" />
     <ClInclude Include="..\..\Source\SessionServer\BroadcastForwarder.h" />
     <ClInclude Include="..\..\Source\SessionServer\PortMachinePool.h" />
+    <ClInclude Include="..\..\Source\SessionServer\resource.h" />
     <ClInclude Include="..\..\Source\SessionServer\SendToForwarder.h" />
     <ClInclude Include="..\..\Source\SessionServer\ServerAnchorList.h" />
     <ClInclude Include="..\..\Source\SessionServer\ServerRoom.h" />

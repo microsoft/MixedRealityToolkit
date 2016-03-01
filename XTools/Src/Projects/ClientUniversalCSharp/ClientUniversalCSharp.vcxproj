@@ -123,42 +123,42 @@
     <IgnoreImportLibrary>false</IgnoreImportLibrary>
     <OutDir>$(BaseOutputPath)$(ProjectName)\</OutDir>
     <IntDir>$(BaseIntermediateOutputPath)$(Configuration)\$(Platform)\$(ProjectName)\</IntDir>
-    <TargetName>XToolsClient</TargetName>
+    <TargetName>SharingClient</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <GenerateManifest>false</GenerateManifest>
     <IgnoreImportLibrary>false</IgnoreImportLibrary>
     <OutDir>$(BaseOutputPath)$(ProjectName)\</OutDir>
     <IntDir>$(BaseIntermediateOutputPath)$(Configuration)\$(Platform)\$(ProjectName)\</IntDir>
-    <TargetName>XToolsClient</TargetName>
+    <TargetName>SharingClient</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <GenerateManifest>false</GenerateManifest>
     <IgnoreImportLibrary>false</IgnoreImportLibrary>
     <OutDir>$(BaseOutputPath)$(ProjectName)\</OutDir>
     <IntDir>$(BaseIntermediateOutputPath)$(Configuration)\$(Platform)\$(ProjectName)\</IntDir>
-    <TargetName>XToolsClient</TargetName>
+    <TargetName>SharingClient</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <GenerateManifest>false</GenerateManifest>
     <IgnoreImportLibrary>false</IgnoreImportLibrary>
     <OutDir>$(BaseOutputPath)$(ProjectName)\</OutDir>
     <IntDir>$(BaseIntermediateOutputPath)$(Configuration)\$(Platform)\$(ProjectName)\</IntDir>
-    <TargetName>XToolsClient</TargetName>
+    <TargetName>SharingClient</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <GenerateManifest>false</GenerateManifest>
     <IgnoreImportLibrary>false</IgnoreImportLibrary>
     <OutDir>$(BaseOutputPath)$(ProjectName)\</OutDir>
     <IntDir>$(BaseIntermediateOutputPath)$(Configuration)\$(Platform)\$(ProjectName)\</IntDir>
-    <TargetName>XToolsClient</TargetName>
+    <TargetName>SharingClient</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <GenerateManifest>false</GenerateManifest>
     <IgnoreImportLibrary>false</IgnoreImportLibrary>
     <OutDir>$(BaseOutputPath)$(ProjectName)\</OutDir>
     <IntDir>$(BaseIntermediateOutputPath)$(Configuration)\$(Platform)\$(ProjectName)\</IntDir>
-    <TargetName>XToolsClient</TargetName>
+    <TargetName>SharingClient</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

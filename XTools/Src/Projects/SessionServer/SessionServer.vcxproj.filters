@@ -109,6 +109,7 @@
     <ClInclude Include="..\..\Source\SessionServer\ServerAnchorList.h">
       <Filter>Source\Rooms</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\SessionServer\resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\..\Source\SessionServer\SessionServer.rc">

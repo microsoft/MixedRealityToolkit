@@ -24,16 +24,16 @@
     <CustomBuild Include="..\..\..\..\Source\Client\WrapperAPI\Client_CSharp.i">
       <FileType>Document</FileType>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">cd ..\..\..\..\Source\Client\WrapperAPI
-call APIGen_CSharp.bat XToolsClient _M_IX86 _WIN32 "%(FullPath)"
+call APIGen_CSharp.bat SharingClient _M_IX86 _WIN32 "%(FullPath)"
       </Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">cd ..\..\..\..\Source\Client\WrapperAPI
-call APIGen_CSharp.bat XToolsClient _M_IX86 _WIN32 "%(FullPath)"
+call APIGen_CSharp.bat SharingClient _M_IX86 _WIN32 "%(FullPath)"
       </Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">cd ..\..\..\..\Source\Client\WrapperAPI
-call APIGen_CSharp.bat XToolsClient _M_X64 _WIN32 "%(FullPath)"
+call APIGen_CSharp.bat SharingClient _M_X64 _WIN32 "%(FullPath)"
       </Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">cd ..\..\..\..\Source\Client\WrapperAPI
-call APIGen_CSharp.bat XToolsClient _M_X64 _WIN32 "%(FullPath)"
+call APIGen_CSharp.bat SharingClient _M_X64 _WIN32 "%(FullPath)"
       </Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(InputName)_wrap.cpp;$(InputName)_wrap.h;%(Outputs)</Outputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(InputName)_wrap.cpp;$(InputName)_wrap.h;%(Outputs)</Outputs>
