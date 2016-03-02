@@ -1,6 +1,6 @@
 ﻿
 
-namespace HoloToolkit.XTools
+namespace HoloToolkit.Sharing
 {
     /// <summary>
     /// Allows users of the pairing API to register to receive pairing event callbacks without
@@ -11,6 +11,7 @@ namespace HoloToolkit.XTools
         public event System.Action SuccessEvent;
         public event System.Action<PairingResult> FailureEvent;
 
+        public PairingAdapter() { }
 
         public override void PairingConnectionSucceeded()
         {

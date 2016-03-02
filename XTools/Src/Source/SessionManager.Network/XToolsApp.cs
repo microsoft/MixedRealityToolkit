@@ -59,15 +59,15 @@ namespace SessionManager.Network
             BeginPairing();
 
             ViewerListener = new NetworkConnectionAdapter();
-            ViewerListener.ConnectedCallback = this.OnViewerConnected;
-            ViewerListener.ConnectionFailedCallback = this.OnViewerConnectionFailed;
-            ViewerListener.DisconnectedCallback = this.OnViewerDisconnected;
+            ViewerListener.ConnectedCallback += this.OnViewerConnected;
+            ViewerListener.ConnectionFailedCallback += this.OnViewerConnectionFailed;
+            ViewerListener.DisconnectedCallback += this.OnViewerDisconnected;
             viewerConnection.AddListener((byte)MessageID.StatusOnly, ViewerListener);
 
             ServerListener = new NetworkConnectionAdapter();
-            ServerListener.ConnectedCallback = this.OnSessionConnected;
-            ServerListener.ConnectionFailedCallback = this.OnSessionConnectionFailed;
-            ServerListener.DisconnectedCallback = this.OnSessionDisconnected;
+            ServerListener.ConnectedCallback += this.OnSessionConnected;
+            ServerListener.ConnectionFailedCallback += this.OnSessionConnectionFailed;
+            ServerListener.DisconnectedCallback += this.OnSessionDisconnected;
             serverConnection.AddListener((byte)MessageID.StatusOnly, ServerListener);
 
             this.rootObject = this.Manager.GetRootSyncObject();

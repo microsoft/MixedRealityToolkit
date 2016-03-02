@@ -10,20 +10,12 @@ namespace HoloToolkit.Sharing
     /// </summary>
     public class NetworkConnectionAdapter : NetworkConnectionListener
     {
-        public delegate void ConnectedDelegate(NetworkConnection connection);
-        public delegate void ConnectionFailedDelegate(NetworkConnection connection);
-        public delegate void DisconnectedDelegate(NetworkConnection connection);
-        public delegate void MessageReceivedDelegate(NetworkConnection connection, NetworkInMessage message);
+        public event System.Action<NetworkConnection> ConnectedCallback;
+        public event System.Action<NetworkConnection> ConnectionFailedCallback;
+        public event System.Action<NetworkConnection> DisconnectedCallback;
+        public event System.Action<NetworkConnection, NetworkInMessage> MessageReceivedCallback;
 
-        public ConnectedDelegate ConnectedCallback;
-        public ConnectionFailedDelegate ConnectionFailedCallback;
-        public DisconnectedDelegate DisconnectedCallback;
-        public MessageReceivedDelegate MessageReceivedCallback;
-
-        public NetworkConnectionAdapter()
-        {
-
-        }
+        public NetworkConnectionAdapter() { }
 
         public override void OnConnected(NetworkConnection connection)
         {

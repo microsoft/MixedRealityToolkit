@@ -2,7 +2,7 @@
 // Copyright (C) Microsoft. All rights reserved.
 //
 
-namespace HoloToolkit.XTools
+namespace HoloToolkit.Sharing
 {
     /// <summary>
     /// Allows users of ObjectElements to register to receive event callbacks without
@@ -16,10 +16,7 @@ namespace HoloToolkit.XTools
         public event System.Action<Element> ElementAddedEvent;
         public event System.Action<Element> ElementDeletedEvent;
 
-        public ObjectElementAdapter()
-        {
-
-        }
+        public ObjectElementAdapter() { }
 
         public override void OnIntElementChanged(long elementID, int newValue)
         {

@@ -2,7 +2,7 @@
 // Copyright (C) Microsoft. All rights reserved.
 //
 
-namespace HoloToolkit.XTools
+namespace HoloToolkit.Sharing
 {
     /// <summary>
     /// Allows users of UserPresenceManager to register to receive event callbacks without
@@ -10,15 +10,15 @@ namespace HoloToolkit.XTools
     /// </summary>
     public class UserPresenceManagerAdapter : UserPresenceManagerListener
     {
-        public delegate void UserPresenceChangedDelegate(User user);
+        public event System.Action<User> UserPresenceChangedEvent;
 
-        public UserPresenceChangedDelegate UserPresenceStateChangedCallback;
+        public UserPresenceManagerAdapter() { }
 
         public override void OnUserPresenceChanged(User user)
         {
-            if (this.UserPresenceStateChangedCallback != null)
+            if (this.UserPresenceChangedEvent != null)
             {
-                this.UserPresenceStateChangedCallback(user);
+                this.UserPresenceChangedEvent(user);
             }
         }
     }

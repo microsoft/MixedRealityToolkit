@@ -85,7 +85,10 @@ RoomPtr RoomManagerImpl::CreateRoom(const XStringPtr& roomName, RoomID roomID)
 	// Create a Room object for this element
 	RoomImplPtr newRoom = new RoomImpl(m_listenerList, roomName, roomID);
 
-	if (newRoom->BindLocal(m_element, roomName->GetString(), nullptr))
+	// Make the name of the object element for the room be "Room<RoomID> to keep it unique
+	std::string roomElementName = "Room" + std::to_string(roomID);
+
+	if (newRoom->BindLocal(m_element, roomElementName, nullptr))
 	{
 		// Add it to the list of rooms
 		m_roomList.push_back(newRoom);

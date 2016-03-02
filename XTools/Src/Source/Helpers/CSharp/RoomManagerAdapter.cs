@@ -2,7 +2,7 @@
 // Copyright (C) Microsoft. All rights reserved.
 //
 
-namespace HoloToolkit.XTools
+namespace HoloToolkit.Sharing
 {
     /// <summary>
     /// Allows users of the RoomManager to register to receive event callbacks without
