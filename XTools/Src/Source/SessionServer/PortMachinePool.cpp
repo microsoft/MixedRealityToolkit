@@ -32,8 +32,7 @@ PortMachinePair PortMachinePool::GetPortMachinePair()
 		if (ports[i].inUse == false)
 		{
 			ports[i].inUse = true;
-            LogInfo("GetPortMachinePair: returning pmp %s:%u", ports[i].pair.address.c_str(), ports[i].pair.portID);
-			return ports[i].pair;
+            return ports[i].pair;
 		}
 	}
 
@@ -49,8 +48,7 @@ void PortMachinePool::ReleasePortMachinePair(PortMachinePair pair)
 		if (Match(pair, ports[i].pair))
 		{
 			ports[i].inUse = false;
-            LogInfo("ReleasePortMachinePair: releasing pmp %s:%u", ports[i].pair.address.c_str(), ports[i].pair.portID);
-			return;
+            return;
 		}
 	}
 

@@ -67,6 +67,7 @@ void SessionServer::OnStart(DWORD dwArgc, PWSTR *pszArgv)
 
 	// Start listening for new connections
 	m_listenerReceipt = m_socketMgr->AcceptConnections(kSessionServerPort, kSessionServerMaxConnections, this);
+	LogInfo("Listening for session list connections on port %i", kSessionServerPort);
 
 	m_portMachinePool = new PortMachinePool(m_socketMgr->GetLocalMachineAddress(), kSessionServerPort);
 
@@ -165,8 +166,6 @@ void SessionServer::OnSessionEmpty(const XSessionConstPtr& session)
 
 void SessionServer::OnNewConnection(const XSocketPtr& newConnection)
 {
-	LogInfo("ListServer: New connection from %s, starting handshake", newConnection->GetRemoteSystemName().c_str());
-
 	HandshakeCallback callback = CreateCallback3(this, &SessionServer::OnHandshakeComplete);
 
 	m_pendingConnections[newConnection->GetID()] = new NetworkHandshake(newConnection, new SessionListHandshakeLogic(true), callback);
@@ -192,8 +191,6 @@ void SessionServer::OnHandshakeComplete(const XSocketPtr& newConnection, SocketI
 #if defined(MSTEST)
 		m_broadcaster->AddConnection(newClient.m_connection);
 #endif
-
-        LogInfo("ListServer: Handshake from %s complete...", newConnection->GetRemoteSystemName().c_str());
 	}
     else
     {
@@ -264,7 +261,7 @@ XSessionImplPtr SessionServer::CreateNewSession(const std::string& sessionName, 
 		{
 			m_sessionChangeListener[xsession] = xsession->RegisterCallback(this);
 			m_sessions.push_back(xsession);
-			LogInfo("Creating Server Session \"%s\":%u", sessionName.c_str(), id);
+			LogInfo("Created Session \"%s\" with ID %u on port %i", sessionName.c_str(), id, pmp.portID);
 
 			// Notify the listeners about the new session
 			SessionAddedMsg sessionAddedMsg;
@@ -273,7 +270,7 @@ XSessionImplPtr SessionServer::CreateNewSession(const std::string& sessionName, 
 		}
 		else
 		{
-			LogError("Completely unable to create new session %s", sessionName.c_str());
+			LogError("Failed to create new session %s", sessionName.c_str());
 			xsession = NULL;
 		}
     }

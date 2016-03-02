@@ -9,7 +9,7 @@
 
 #pragma once
 #include "Message.h"
-#include "Utils/LFQueue.h"
+#include "Utils/TypedLFQueue.h"
 #include "MessageInterceptor.h"
 #include <queue>
 
@@ -28,7 +28,7 @@ public:
 	void RemoveMessageInterceptor(const MessageInterceptorPtr& interceptor);
 
 	// Returns true if a message was successfully popped from the queue
-	bool TryGetMessage(Message& msg);
+	bool TryGetMessage(MessagePtr& msg);
 
 private:
 	void ProcessMessages();
@@ -42,7 +42,7 @@ private:
 	struct PeerSettings;
 
 	// Queue of messages
-	LFQueue					m_messageQueue;
+	TypedLFQueue<MessagePtr>		m_messageQueue;
 
 	// Buffer to hold the message data as its being reassembled on the main thread
 	Buffer					m_messageBufferIn;
@@ -56,7 +56,7 @@ private:
 	Mutex					m_mutex;
 
 	// If the main lock-free queue is full, store the messages here to be sent later
-	std::queue<std::shared_ptr<Buffer> > m_backupQueue;
+	std::queue<MessagePtr> m_backupQueue;
 };
 
 XTOOLS_NAMESPACE_END

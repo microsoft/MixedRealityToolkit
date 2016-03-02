@@ -44,8 +44,6 @@ void AudioSessionProcessorServer::AddConnection(const NetworkConnectionPtr& conn
 
 	m_audioConnections[connectionGUID] = newAudioConnectionClient;
 	m_routerWithMixer->AddAudioConnection(newAudioConnectionClient);
-
-	LogInfo("Audio: Adding audio subsystem connection for guid %08llx.", (uint64)connectionGUID);
 }
 
 
@@ -65,8 +63,6 @@ void AudioSessionProcessorServer::RemoveConnection(const NetworkConnectionPtr& c
 	//audioConnection->RemoveAudioProcessor(m_decompressor, Output);
 
 	m_audioConnections.erase(connectionGUID);
-
-	LogInfo("Audio: Removing audio subsystem connection for guid %08llx.", (uint64)connectionGUID);
 }
 
 

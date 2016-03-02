@@ -13,11 +13,11 @@
 
 XTOOLS_NAMESPACE_BEGIN
 
-// Allocate 3 mb for the message buffer. Messages bigger than this will be split
+// Allocate 3 mb for the message buffer
 static const uint32 kMessageQueueSize = 3 * (1024 * 1024);
 
 // The maximum number of message to process from a single peer connection per update.  
-static const uint32 kMaxIncomingMessages = 100;
+static const uint32 kMaxIncomingMessages = 30;
 
 //////////////////////////////////////////////////////////////////////////
 struct MessageQueue::MessageHeader
@@ -120,43 +120,11 @@ void MessageQueue::RemoveMessageInterceptor(const MessageInterceptorPtr& interce
 }
 
 
-bool MessageQueue::TryGetMessage(Message& msg)
+bool MessageQueue::TryGetMessage(MessagePtr& msg)
 {
 	auto startTime = std::chrono::high_resolution_clock::now();
 
-	bool result = false;
-	if (m_messageQueue.TryPop(m_messageBufferOut))
-	{
-		MessageHeader* header = reinterpret_cast<MessageHeader*>(m_messageBufferOut.GetData());
-		msg.m_address		= header->m_address;
-		msg.m_rakNetGuid	= header->m_raknetGuid;
-		msg.m_peerID		= header->m_peerID;
-
-		const uint32 payloadSize		= header->m_payloadSize;
-		const uint32 messagePayloadSize = m_messageBufferOut.GetSize() - sizeof(MessageHeader);
-		XTASSERT(payloadSize >= messagePayloadSize);
-
-		msg.m_payload.Reset(payloadSize);
-		msg.m_payload.Append(m_messageBufferOut.GetData() + sizeof(MessageHeader), messagePayloadSize);
-
-		// The packet may be broken into several pops if it is bigger than the queue,
-		// so keep popping and appending it to the final message
-		uint32 accumulatedPacket = messagePayloadSize;
-		while (accumulatedPacket < payloadSize)
-		{
-			if (m_messageQueue.TryPop(m_messageBufferOut))
-			{
-				XTASSERT(m_messageBufferOut.GetSize() + accumulatedPacket <= payloadSize);
-
-				msg.m_payload.Append(m_messageBufferOut.GetData(), m_messageBufferOut.GetSize());
-				accumulatedPacket += m_messageBufferOut.GetSize();
-			}
-		} 
-
-		XTASSERT(accumulatedPacket == payloadSize);
-
-		result = true;
-	}
+	bool result = m_messageQueue.TryPop(msg);
 
 	auto endTime = std::chrono::high_resolution_clock::now();
 
@@ -178,8 +146,8 @@ void MessageQueue::ProcessMessages()
 	// Send the messages that did not fit in the queue last update
 	while (!m_backupQueue.empty())
 	{
-		std::shared_ptr<Buffer> buffer = m_backupQueue.front();
-		if (m_messageQueue.TryPush(*buffer))
+		MessagePtr msg = m_backupQueue.front();
+		if (m_messageQueue.TryPush(msg))
 		{
 			// Message put on the lfqueue, clear it from the backup buffer
 			m_backupQueue.pop();
@@ -191,8 +159,6 @@ void MessageQueue::ProcessMessages()
 			return;
 		}
 	}
-
-	const uint32 maxPushSize = m_messageQueue.GetAllocatedSize() - LFQueue::kElementOverhead - 1;
 
 	bool bQueueFull = false;
 
@@ -213,50 +179,19 @@ void MessageQueue::ProcessMessages()
 				// First check to see if any of the interceptors want to handle it
 				if (!InterceptPacket(packet.get(), m_peers[peerIndex].m_interceptors))
 				{
-					// Ok, lets push this message into the queue to be consumed later on the main thread
-					const uint32 totalMessageSize = sizeof(MessageHeader) + packet->length;
-					uint32 initialSize = std::min(maxPushSize, totalMessageSize);
-					uint32 initialPayloadSize = initialSize - sizeof(MessageHeader);
+					// Create a message from this packet
+					MessagePtr msg = new Message(packet->length);
+					msg->m_address = packet->systemAddress;
+					msg->m_rakNetGuid = packet->guid;
+					msg->m_peerID = (*peer).GetPeerID();
+					msg->m_payload.Append(packet->data, packet->length);
 
-					m_messageBufferIn.Reset(initialSize);
-
-					// Push the header on the queue
-					MessageHeader header;
-					header.m_address = packet->systemAddress;
-					header.m_raknetGuid = packet->guid;
-					header.m_peerID = (*peer).GetPeerID();
-					header.m_payloadSize = packet->length;
-
-					m_messageBufferIn.Append(reinterpret_cast<const byte*>(&header), sizeof(MessageHeader));
-					m_messageBufferIn.Append(packet->data, initialPayloadSize);
-
-					if (bQueueFull || !m_messageQueue.TryPush(m_messageBufferIn))
+					if (bQueueFull || !m_messageQueue.TryPush(msg))
 					{
 						// The queue is too full to push this packet; store it on the backup queue to be sent later
-						m_backupQueue.push(std::shared_ptr<Buffer>(new Buffer(m_messageBufferIn)));
+						m_backupQueue.push(msg);
 						bQueueFull = true;
 					}
-
-					uint32 remainingPayloadSize = packet->length - initialPayloadSize;
-					uint32 packetOffset = initialPayloadSize;
-
-					// If the packet is too big it is split up.  This way we avoid complicated allocations with the LFQueue
-					while (remainingPayloadSize > 0)
-					{
-						uint32 copySize = std::min(remainingPayloadSize, maxPushSize);
-
-						if (bQueueFull || !m_messageQueue.TryPush(packet->data + packetOffset, copySize))
-						{
-							// The queue is too full to push this packet; store it on the backup queue to be sent later
-							m_backupQueue.push(std::shared_ptr<Buffer>(new Buffer(packet->data + packetOffset, copySize)));
-							bQueueFull = true;
-						}
-
-						remainingPayloadSize -= copySize;
-						packetOffset += copySize;
-					}
-
-					XTASSERT(packetOffset == packet->length);
 				}
 
 				++peerMessagesProcessed;

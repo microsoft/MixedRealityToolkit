@@ -135,8 +135,6 @@ ReceiptPtr XSocketManagerImpl::AcceptConnections(uint16 port, uint16 maxConnecti
 {
 	PROFILE_FUNCTION();
 
-	LogInfo("Started Listening for connections on port %u", port);
-
 	XTASSERT(listener != NULL);
 
 	// Create the peer
@@ -288,15 +286,16 @@ void XSocketManagerImpl::Update()
 		m_closingPeers.erase(m_closingPeers.begin());
 	}
 
-	while (m_messageQueue.TryGetMessage(m_incomingMessage))
+	MessagePtr incomingMessage;
+	while (m_messageQueue.TryGetMessage(incomingMessage))
 	{
-		if (XTVERIFY(m_incomingMessage.IsValid()))
+		if (XTVERIFY(incomingMessage->IsValid()))
 		{
-			const byte packetID = m_incomingMessage.GetMessageID();
+			const byte packetID = incomingMessage->GetMessageID();
 
 			if (XTVERIFY(packetID < 255))
 			{
-				auto peerIter = m_peers.find(m_incomingMessage.GetPeerID());
+				auto peerIter = m_peers.find(incomingMessage->GetPeerID());
 				if (peerIter != m_peers.end())
 				{
 					PeerConnectionPtr peerConnection = peerIter->second;
@@ -305,10 +304,10 @@ void XSocketManagerImpl::Update()
 					if (packetID == ID_NEW_INCOMING_CONNECTION)
 					{
 						// Create a connection object to represent this connection.  
-						XSocketImplPtr connection = new XSocketImpl(this, m_nextSocketID++, peerConnection->m_peer, m_incomingMessage.GetSystemAddress(), m_incomingMessage.GetRakNetGUID());
+						XSocketImplPtr connection = new XSocketImpl(this, m_nextSocketID++, peerConnection->m_peer, incomingMessage->GetSystemAddress(), incomingMessage->GetRakNetGUID());
 						connection->SetRegistrationReceipt(CreateRegistrationReceipt(XSocketManagerImplPtr(this), &XSocketManagerImpl::OnConnectionDestroyed, connection.get()));
 
-						peerConnection->m_sockets[m_incomingMessage.GetRakNetGUID()] = connection.get();
+						peerConnection->m_sockets[incomingMessage->GetRakNetGUID()] = connection.get();
 
 						// Notify the listener that a new connection has been made
 						IncomingXSocketListener* listener = peerConnection->m_listener;
@@ -332,33 +331,33 @@ void XSocketManagerImpl::Update()
 							if (XTVERIFY(peerConnection->m_sockets.size() == 1))
 							{
 								XSocketImplPtr connection = peerConnection->m_sockets.begin()->second;
-								XTASSERT(connection->GetAddress().GetPort() == m_incomingMessage.GetSystemAddress().GetPort());
+								XTASSERT(connection->GetAddress().GetPort() == incomingMessage->GetSystemAddress().GetPort());
 
-								connection->SetAddress(m_incomingMessage.GetSystemAddress());
-								connection->SetRakNetGUID(m_incomingMessage.GetRakNetGUID());
+								connection->SetAddress(incomingMessage->GetSystemAddress());
+								connection->SetRakNetGUID(incomingMessage->GetRakNetGUID());
 								peerConnection->m_sockets.clear();
-								peerConnection->m_sockets[m_incomingMessage.GetRakNetGUID()] = connection.get();
+								peerConnection->m_sockets[incomingMessage->GetRakNetGUID()] = connection.get();
 							}
 						}
 
 						// Check to see if we have a socket for this packet.  Its possible for this to be false
 						// if the connection was terminated but the peer still has pending received packets in the queue
-						auto socketIter = peerConnection->m_sockets.find(m_incomingMessage.GetRakNetGUID());
+						auto socketIter = peerConnection->m_sockets.find(incomingMessage->GetRakNetGUID());
 						if (socketIter != peerConnection->m_sockets.end())
 						{
 							// Hold a reference to the connection to prevent it from getting destroyed before this callback completes
 							XSocketImplPtr connection = socketIter->second;
-							connection->OnReceiveMessage(m_incomingMessage);
+							connection->OnReceiveMessage(incomingMessage);
 						}
 						else
 						{
-							LogError("Received message from %s with no associated socket", m_incomingMessage.GetSystemAddress().ToString(false));
+							LogError("Received message from %s with no associated socket", incomingMessage->GetSystemAddress().ToString(false));
 						}
 					}
 				}
 				else
 				{
-					LogWarning("Got message from closed peer connection %i", m_incomingMessage.GetPeerID());
+					LogWarning("Got message from closed peer connection %i", incomingMessage->GetPeerID());
 				}
 
 				++messagesProcessed;

@@ -47,7 +47,7 @@ public:
 	// Local Functions:
 
 	// Returns true if this message was consumed by this function
-	bool				OnReceiveMessage(const Message& msg);
+	bool				OnReceiveMessage(const MessageConstPtr& msg);
 
 	const PeerPtr&		GetPeer();
 	PeerConstPtr		GetPeer() const;

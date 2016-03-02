@@ -22,6 +22,16 @@ Message::Message()
 }
 
 
+Message::Message(uint32 messageSize)
+	: m_payload(messageSize)
+	, m_address(RakNet::UNASSIGNED_SYSTEM_ADDRESS)
+	, m_rakNetGuid(RakNet::UNASSIGNED_RAKNET_GUID)
+	, m_peerID(0)
+{
+
+}
+
+
 bool Message::IsValid() const
 {
 	return m_payload.GetSize() > 0;

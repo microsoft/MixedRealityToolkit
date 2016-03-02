@@ -102,18 +102,18 @@ std::string XSocketImpl::GetRemoteSystemName() const
 }
 
 
-bool XSocketImpl::OnReceiveMessage(const Message& msg)
+bool XSocketImpl::OnReceiveMessage(const MessageConstPtr& msg)
 {
 	bool bConsumedPacket = false;
 
-	byte packetID = msg.GetMessageID();
+	byte packetID = msg->GetMessageID();
 
 	// If this is a user's packet, forward it to them
 	if (packetID >= ID_USER_PACKET_ENUM)
 	{
 		if (m_listener)
 		{
-			m_listener->OnMessageReceived(this, msg.GetData(), msg.GetSize());
+			m_listener->OnMessageReceived(this, msg->GetData(), msg->GetSize());
 			bConsumedPacket = true;
 		}
 		else
@@ -132,13 +132,11 @@ bool XSocketImpl::OnReceiveMessage(const Message& msg)
 			break;
 
 		case ID_DISCONNECTION_NOTIFICATION:
-			LogInfo("Remote host closed the connection");
 			OnLostConnection();
 			bConsumedPacket = true;
 			break;
 
 		case ID_CONNECTION_LOST:
-			LogInfo("Connection to remote host lost");
 			OnLostConnection();
 			bConsumedPacket = true;
 			break;

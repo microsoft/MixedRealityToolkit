@@ -90,7 +90,6 @@ private:
 	uint32							m_nextPeerID;
 
 	MessageQueue					m_messageQueue;
-	Message							m_incomingMessage;
 };
 
 DECLARE_PTR(XSocketManagerImpl)

@@ -12,10 +12,11 @@
 
 XTOOLS_NAMESPACE_BEGIN
 
-class Message
+class Message : public AtomicRefCounted
 {
 public:
 	Message();
+	Message(uint32 messageSize);
 
 	// Returns false if the size is zero
 	bool							IsValid() const;
@@ -41,5 +42,7 @@ private:
 	RakNet::RakNetGUID		m_rakNetGuid;
 	PeerID					m_peerID;
 };
+
+DECLARE_PTR(Message)
 
 XTOOLS_NAMESPACE_END

@@ -172,6 +172,8 @@ void XSessionImpl::OnDisconnected(const NetworkConnectionPtr& connection)
 		{
 			RemoteClientPtr remoteClient = m_clients[i];
 
+			LogInfo("User %s left session %s", remoteClient->m_userName.c_str(), GetName().c_str());
+
 			m_clients.erase(m_clients.begin() + i);
 
 			m_broadcaster->RemoveConnection(remoteClient->m_primaryConnection);
@@ -189,6 +191,8 @@ void XSessionImpl::OnDisconnected(const NetworkConnectionPtr& connection)
 			{
 				m_callback->OnUserLeftSession(m_id, remoteClient->m_userID);
 			}
+
+			
 			
 			found = true;
 			break;
@@ -229,8 +233,6 @@ void XSessionImpl::OnMessageReceived(const NetworkConnectionPtr& connection, Net
 
 void XSessionImpl::OnNewConnection(const XSocketPtr& newConnection)
 {
-	LogInfo("Session %s: New connection from %s, starting handshake", m_name.c_str(), newConnection->GetRemoteSystemName().c_str());
-
 	HandshakeCallback callback = CreateCallback3(this, &XSessionImpl::OnHandshakeComplete);
 
 	m_pendingConnections[newConnection->GetID()] = new NetworkHandshake(newConnection, new SessionHandshakeLogic(true), callback);
@@ -376,6 +378,8 @@ void XSessionImpl::OnJoinSessionRequest(const JoinSessionRequest& request, const
 		}
 		else
 		{
+			LogInfo("User %s at address %s joined session %s", remoteClient->m_userName.c_str(), remoteClient->m_primaryConnection->GetRemoteAddress()->GetString().c_str(), GetName().c_str());
+
 			// Add the user to the real list of clients in the session
 			m_clients.push_back(remoteClient);
 
@@ -463,8 +467,6 @@ void XSessionImpl::CheckIfEmpty(bool resetImmediately)
 		m_emptyTime += timeDelta;
 		if (!m_bEmptyCheckApplied && (resetImmediately || m_emptyTime > kEmptySessionTimeout))
 		{
-			LogInfo("No more clients, sending OnSessionEmpty message to parent.");
-
 			// Delete the old sync manager and create a new one to ensure that all the old
 			// sync data is cleaned up
 			UserPtr serverUser = m_syncMgr->GetLocalUser();

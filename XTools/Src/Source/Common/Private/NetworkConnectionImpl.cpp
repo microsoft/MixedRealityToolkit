@@ -449,8 +449,6 @@ void NetworkConnectionImpl::OnDisconnected(const XSocketPtr& connection)
 	XTASSERT(connection == m_socket);
 	XT_UNREFERENCED_PARAM(connection);	// Necessary for when XTASSET is not defined
 
-	LogInfo("NetworkConnection Disconnected");
-
 	// Prevent this object from getting destroyed while iterating through callbacks
 	NetworkConnectionPtr thisPtr(this);
 

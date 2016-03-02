@@ -29,7 +29,7 @@ TunnelConnection::TunnelConnection(const NetworkConnectionPtr& connection)
 
 TunnelConnection::~TunnelConnection()
 {
-	LogInfo("Closed Tunnel");
+	
 }
 
 

@@ -35,8 +35,6 @@ void AudioSessionProcessorClient::AddConnection(const NetworkConnectionPtr& conn
 	ConnectionGUID connectionGUID = connection->GetConnectionGUID();
 
 	m_audioConnections[connectionGUID] = newAudioConnectionClient;
-
-	LogInfo("Audio: Adding audio subsystem connection for guid %08llx.", (uint64)connectionGUID);
 }
 
 
@@ -51,8 +49,6 @@ void AudioSessionProcessorClient::RemoveConnection(const NetworkConnectionPtr& c
 	// TODO: Tear down processing pipeline
 
 	m_audioConnections.erase(connectionGUID);
-
-	LogInfo("Audio: Removing audio subsystem connection for guid %08llx.", (uint64)connectionGUID);
 }
 
 
