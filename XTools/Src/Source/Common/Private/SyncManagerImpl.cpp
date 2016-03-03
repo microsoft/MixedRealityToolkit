@@ -23,9 +23,9 @@ XTOOLS_REFLECTION_DEFINE(SyncManagerImpl)
 .BaseClass<SyncManager>();
 
 
-SyncManagerPtr SyncManager::Create(MessageID messageID, AuthorityLevel authorityLevel, const UserPtr& localUser)
+SyncManagerPtr SyncManager::Create(MessageID messageID, MessagePriority messagePriority, AuthorityLevel authorityLevel, const UserPtr& localUser)
 {
-	return new SyncManagerImpl(messageID, authorityLevel, localUser);
+	return new SyncManagerImpl(messageID, messagePriority, authorityLevel, localUser);
 }
 
 
@@ -82,9 +82,10 @@ void SyncManagerImpl::RemoteSyncPeer::SendOp(const OperationConstPtr& op)
 }
 
 
-SyncManagerImpl::SyncManagerImpl(MessageID messageID, AuthorityLevel authorityLevel, const UserPtr& localUser)
+SyncManagerImpl::SyncManagerImpl(MessageID messageID, MessagePriority messagePriority, AuthorityLevel authorityLevel, const UserPtr& localUser)
 	: m_listener(NULL)
 	, m_messageID(messageID)
+    , m_messagePriority(messagePriority)
 {
 	XTASSERT(localUser);
 
@@ -700,7 +701,7 @@ void SyncManagerImpl::SendSyncMessage(RemoteSyncPeer& remotePeer)
 			}
 
 			// Send the message
-			remotePeer.m_connection->Send(msg);
+			remotePeer.m_connection->Send(msg, m_messagePriority);
 
 			remotePeer.m_sendList.clear();
 		}
@@ -726,7 +727,7 @@ void SyncManagerImpl::SendHandshakeMessage(RemoteSyncPeer& remotePeer)
 	identityMsg->Write(m_syncContext->GetLocalUser()->GetName());
 	identityMsg->Write(m_syncContext->GetLocalUser()->GetID());
 
-	remotePeer.m_connection->Send(identityMsg);
+	remotePeer.m_connection->Send(identityMsg, m_messagePriority);
 }
 
 

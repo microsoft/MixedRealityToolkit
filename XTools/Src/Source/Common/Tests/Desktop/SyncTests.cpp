@@ -73,8 +73,8 @@ namespace CommonDesktopTests
 				clientConnection1->SetSocket(connection1);
 			}
 
-			SyncManagerPtr serverSyncMgr = SyncManager::Create(MessageID::SyncMessage, AuthorityLevel::High, new UserImpl("Server", User::kInvalidUserID, false));
-			SyncManagerPtr client1SyncMgr = SyncManager::Create(MessageID::SyncMessage, AuthorityLevel::Medium, new UserImpl("Client", User::kInvalidUserID, false));
+			SyncManagerPtr serverSyncMgr = SyncManager::Create(MessageID::SyncMessage, MessagePriority::Medium, AuthorityLevel::High, new UserImpl("Server", User::kInvalidUserID, false));
+			SyncManagerPtr client1SyncMgr = SyncManager::Create(MessageID::SyncMessage, MessagePriority::Medium, AuthorityLevel::Medium, new UserImpl("Client", User::kInvalidUserID, false));
 
 			serverSyncMgr->AddConnection(serverConnection1);
 			client1SyncMgr->AddConnection(clientConnection1);
@@ -284,11 +284,11 @@ namespace CommonDesktopTests
 				onsightConnection2->SetSocket(connection4);
 			}
 
-			SyncManagerPtr serverSyncMgr = SyncManager::Create(MessageID::SyncMessage, AuthorityLevel::High, new UserImpl("Server", User::kInvalidUserID, false));
-			SyncManagerPtr client1SyncMgr = SyncManager::Create(MessageID::SyncMessage, AuthorityLevel::Medium, new UserImpl("Client1", 1, false));
-			SyncManagerPtr client2SyncMgr = SyncManager::Create(MessageID::SyncMessage, AuthorityLevel::Medium, new UserImpl("Client2", 2, false));
-			SyncManagerPtr onsight1SyncMgr = SyncManager::Create(MessageID::SyncMessage, AuthorityLevel::Low, new UserImpl("OnSight1", 1, false));
-			SyncManagerPtr onsight2SyncMgr = SyncManager::Create(MessageID::SyncMessage, AuthorityLevel::Low, new UserImpl("OnSight2", 2, false));
+			SyncManagerPtr serverSyncMgr = SyncManager::Create(MessageID::SyncMessage, MessagePriority::Medium, AuthorityLevel::High, new UserImpl("Server", User::kInvalidUserID, false));
+			SyncManagerPtr client1SyncMgr = SyncManager::Create(MessageID::SyncMessage, MessagePriority::Medium, AuthorityLevel::Medium, new UserImpl("Client1", 1, false));
+			SyncManagerPtr client2SyncMgr = SyncManager::Create(MessageID::SyncMessage, MessagePriority::Medium, AuthorityLevel::Medium, new UserImpl("Client2", 2, false));
+			SyncManagerPtr onsight1SyncMgr = SyncManager::Create(MessageID::SyncMessage, MessagePriority::Medium, AuthorityLevel::Low, new UserImpl("OnSight1", 1, false));
+			SyncManagerPtr onsight2SyncMgr = SyncManager::Create(MessageID::SyncMessage, MessagePriority::Medium, AuthorityLevel::Low, new UserImpl("OnSight2", 2, false));
 
 			serverSyncMgr->AddConnection(serverConnection1);
 			serverSyncMgr->AddConnection(serverConnection2);

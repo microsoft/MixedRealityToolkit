@@ -62,8 +62,8 @@ ClientContext::ClientContext(const ClientConfigPtr& config)
 
 
 	Sync::AuthorityLevel authLevel = (m_clientRole == ClientRole::Primary) ? Sync::AuthorityLevel::Medium : Sync::AuthorityLevel::Low;
-	m_syncMgr = Sync::SyncManager::Create(MessageID::SyncMessage, authLevel, m_localUser);
-	m_internalSyncMgr = Sync::SyncManager::Create(MessageID::InternalSyncMessage, authLevel, m_localUser);
+	m_syncMgr = Sync::SyncManager::Create(MessageID::SyncMessage, MessagePriority::Medium, authLevel, m_localUser);
+	m_internalSyncMgr = Sync::SyncManager::Create(MessageID::InternalSyncMessage, MessagePriority::High, authLevel, m_localUser);
 
 	// Add the paired connection to the sync manager.  
 	// The sessions will have to connect the sync manager to their individual session connections

@@ -126,11 +126,11 @@ namespace CommonDesktopTests
 			Assert::IsTrue(m_onsightConnection2->IsConnected(), L"Timed out waiting for the operation to complete.", LINE_INFO());
 		}
 
-		m_serverSyncMgr = SyncManager::Create(MessageID::SyncMessage, AuthorityLevel::High, m_userServer);
-		m_client1SyncMgr = SyncManager::Create(MessageID::SyncMessage, AuthorityLevel::Medium, m_userClient1);
-		m_client2SyncMgr = SyncManager::Create(MessageID::SyncMessage, AuthorityLevel::Medium, m_userClient2);
-		m_onsight1SyncMgr = SyncManager::Create(MessageID::SyncMessage, AuthorityLevel::Low, m_userOnSight1);
-		m_onsight2SyncMgr = SyncManager::Create(MessageID::SyncMessage, AuthorityLevel::Low, m_userOnSight2);
+		m_serverSyncMgr = SyncManager::Create(MessageID::SyncMessage, MessagePriority::Medium, AuthorityLevel::High, m_userServer);
+		m_client1SyncMgr = SyncManager::Create(MessageID::SyncMessage, MessagePriority::Medium, AuthorityLevel::Medium, m_userClient1);
+		m_client2SyncMgr = SyncManager::Create(MessageID::SyncMessage, MessagePriority::Medium, AuthorityLevel::Medium, m_userClient2);
+		m_onsight1SyncMgr = SyncManager::Create(MessageID::SyncMessage, MessagePriority::Medium, AuthorityLevel::Low, m_userOnSight1);
+		m_onsight2SyncMgr = SyncManager::Create(MessageID::SyncMessage, MessagePriority::Medium, AuthorityLevel::Low, m_userOnSight2);
 
 		m_serverSyncMgr->AddConnection(m_serverConnection1);
 		m_serverSyncMgr->AddConnection(m_serverConnection2);
