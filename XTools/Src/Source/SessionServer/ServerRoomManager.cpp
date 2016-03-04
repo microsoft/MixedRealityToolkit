@@ -124,7 +124,7 @@ void ServerRoomManager::OnUploadRequest(const NetworkConnectionPtr& connection, 
 		{
 			if (itr->first != connection->GetConnectionGUID() && itr->second->IsConnected())
 			{
-				itr->second->Send(outMsg, MessagePriority::Medium, MessageReliability::ReliableOrdered, MessageChannel::RoomAnchorChannel, false);
+				itr->second->Send(outMsg, MessagePriority::Low, MessageReliability::ReliableOrdered, MessageChannel::RoomAnchorChannel, false);
 			}
 		}
 
@@ -176,7 +176,7 @@ void ServerRoomManager::SendUploadResponse(const NetworkConnectionPtr& connectio
 		outMsg->Write(failureReason);
 	}
 
-	connection->Send(outMsg, MessagePriority::Medium, MessageReliability::ReliableOrdered, MessageChannel::RoomAnchorChannel, true);
+	connection->Send(outMsg, MessagePriority::Low, MessageReliability::ReliableOrdered, MessageChannel::RoomAnchorChannel, true);
 }
 
 
@@ -198,7 +198,7 @@ void ServerRoomManager::SendDownloadResponse(const NetworkConnectionPtr& connect
 		outMsg->Write(failureReason);
 	}
 
-	connection->Send(outMsg, MessagePriority::Medium, MessageReliability::ReliableOrdered, MessageChannel::RoomAnchorChannel, true);
+	connection->Send(outMsg, MessagePriority::Low, MessageReliability::ReliableOrdered, MessageChannel::RoomAnchorChannel, true);
 }
 
 XTOOLS_NAMESPACE_END

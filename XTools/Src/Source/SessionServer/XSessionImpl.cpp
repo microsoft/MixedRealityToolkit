@@ -56,8 +56,8 @@ XSessionImpl::XSessionImpl(const std::string& name, PortMachinePair pmp, Session
 , m_emptyTime(0)
 , m_bEmptyCheckApplied(false)
 {
-	m_syncMgr = Sync::SyncManager::Create(MessageID::SyncMessage, MessagePriority::Medium, Sync::AuthorityLevel::High, new UserImpl("SessionServer", User::kInvalidUserID, false));
-	m_internalSyncMgr = Sync::SyncManager::Create(MessageID::InternalSyncMessage, MessagePriority::High, Sync::AuthorityLevel::High, new UserImpl("SessionServer", User::kInvalidUserID, false));
+	m_syncMgr = Sync::SyncManager::Create(MessageID::SyncMessage, Sync::AuthorityLevel::High, new UserImpl("SessionServer", User::kInvalidUserID, false));
+	m_internalSyncMgr = Sync::SyncManager::Create(MessageID::InternalSyncMessage, Sync::AuthorityLevel::High, new UserImpl("SessionServer", User::kInvalidUserID, false));
 	m_roomMgr = new ServerRoomManager(m_internalSyncMgr);
 
 	// Start listening for new connections
@@ -470,8 +470,8 @@ void XSessionImpl::CheckIfEmpty(bool resetImmediately)
 			// Delete the old sync manager and create a new one to ensure that all the old
 			// sync data is cleaned up
 			UserPtr serverUser = m_syncMgr->GetLocalUser();
-			m_syncMgr = Sync::SyncManager::Create(MessageID::SyncMessage, MessagePriority::Medium, Sync::AuthorityLevel::High, serverUser);
-			m_internalSyncMgr = Sync::SyncManager::Create(MessageID::InternalSyncMessage, MessagePriority::High, Sync::AuthorityLevel::High, serverUser);
+			m_syncMgr = Sync::SyncManager::Create(MessageID::SyncMessage, Sync::AuthorityLevel::High, serverUser);
+			m_internalSyncMgr = Sync::SyncManager::Create(MessageID::InternalSyncMessage, Sync::AuthorityLevel::High, serverUser);
 			m_roomMgr = new ServerRoomManager(m_internalSyncMgr);
 
 			m_callback->OnSessionEmpty(this);

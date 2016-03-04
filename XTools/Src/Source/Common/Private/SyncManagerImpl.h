@@ -16,7 +16,7 @@ class SyncManagerImpl : public SyncManager, public NetworkConnectionListener
 	XTOOLS_REFLECTION_DECLARE(SyncManagerImpl)
 
 public:
-	SyncManagerImpl(MessageID messageID, MessagePriority messagePriority, AuthorityLevel authorityLevel, const UserPtr& localUser);
+	SyncManagerImpl(MessageID messageID, AuthorityLevel authorityLevel, const UserPtr& localUser);
 
 	// SyncManager Functions:
 	virtual bool RegisterListener(SyncListener* listener) XTOVERRIDE;
@@ -129,9 +129,6 @@ private:
 
 	// The ID to use for messages passed between remote devices
 	MessageID						m_messageID;
-
-    // The priority to be used for messages between remote devices
-    MessagePriority					m_messagePriority;
 };
 
 DECLARE_PTR(SyncManagerImpl)

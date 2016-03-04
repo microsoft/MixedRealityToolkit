@@ -86,8 +86,8 @@ namespace CommonDesktopTests
 			UserPtr user1 = new UserImpl("User1", 1, false);
 			UserPtr user2 = new UserImpl("User2", 2, true);
 
-			SyncManagerPtr serverSyncMgr = SyncManager::Create(MessageID::SyncMessage, MessagePriority::Medium, AuthorityLevel::High, user1);
-			SyncManagerPtr clientSyncMgr = SyncManager::Create(MessageID::SyncMessage, MessagePriority::Medium, AuthorityLevel::Medium, user2);
+			SyncManagerPtr serverSyncMgr = SyncManager::Create(MessageID::SyncMessage, AuthorityLevel::High, user1);
+			SyncManagerPtr clientSyncMgr = SyncManager::Create(MessageID::SyncMessage, AuthorityLevel::Medium, user2);
 
 			serverSyncMgr->AddConnection(serverConnection);
 			clientSyncMgr->AddConnection(clientConnection);
@@ -144,8 +144,8 @@ namespace CommonDesktopTests
 			UserPtr user1 = new UserImpl("User1", 1, false);
 			UserPtr user2 = new UserImpl("User2", 2, true);
 
-			SyncManagerPtr serverSyncMgr = SyncManager::Create(MessageID::SyncMessage, MessagePriority::Medium, AuthorityLevel::Medium, user1);
-			SyncManagerPtr clientSyncMgr = SyncManager::Create(MessageID::SyncMessage, MessagePriority::Medium, AuthorityLevel::Medium, user2);
+			SyncManagerPtr serverSyncMgr = SyncManager::Create(MessageID::SyncMessage, AuthorityLevel::Medium, user1);
+			SyncManagerPtr clientSyncMgr = SyncManager::Create(MessageID::SyncMessage, AuthorityLevel::Medium, user2);
 
 			serverSyncMgr->AddConnection(serverConnection);
 			clientSyncMgr->AddConnection(clientConnection);
