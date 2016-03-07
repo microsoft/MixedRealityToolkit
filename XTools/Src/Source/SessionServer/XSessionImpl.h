@@ -11,7 +11,6 @@
 #include "BroadcastForwarder.h"
 #include "SendToForwarder.h"
 #include "SessionChangeCallback.h"
-#include "PortMachinePool.h"
 #include "AudioSessionProcessorServer.h"
 #include "ServerRoomManager.h"
 #include <Private/NetworkConnectionImpl.h>
@@ -21,7 +20,7 @@ XTOOLS_NAMESPACE_BEGIN
 class XSessionImpl : public XSession, public NetworkConnectionListener, public IncomingXSocketListener
 {
 public:
-	explicit XSessionImpl(const std::string& name, PortMachinePair pmp, SessionType type, unsigned int id);
+	explicit XSessionImpl(const std::string& name, uint16 port, SessionType type, unsigned int id);
 	virtual ~XSessionImpl();
 
 	// Register to receive callbacks when the session changes.  
@@ -38,9 +37,9 @@ public:
 	virtual uint32		GetSessionUserID(int32 i) const XTOVERRIDE;
     virtual bool        GetUserMuteState(int32 i) const XTOVERRIDE;
 
-    virtual PortMachinePair GetPortMachinePair();
+    uint16 GetPort() const;
 
-	SessionDescriptorImplPtr GetSessionDescription() const;
+	SessionDescriptorImplPtr GetSessionDescription(const XSocketPtr& targetRemoteSystem) const;
 
 	// Returns false if the session was unable to initialize itself correctly
 	bool IsInitialized() const;
@@ -99,7 +98,7 @@ private:
 	XSocketManagerPtr				m_socketMgr;
 	Mutex							m_mutex;
 	SessionChangeCallback*			m_callback;
-	PortMachinePair					m_portMachinePair;
+	uint16							m_port;
 	Sync::SyncManagerPtr			m_syncMgr;
 	Sync::SyncManagerPtr			m_internalSyncMgr;
 	ServerRoomManagerPtr			m_roomMgr;

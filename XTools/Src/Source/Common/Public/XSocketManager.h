@@ -32,8 +32,8 @@ public:
 	// can connect at the same time.  
 	virtual ReceiptPtr AcceptConnections(uint16 port, uint16 maxConnections, IncomingXSocketListener* listener) = 0;
 
-	// Returns the address of this machine as seen by remote machines
-	virtual std::string GetLocalMachineAddress() = 0;
+	// Returns the address of this machine as seen by the remote machine connected by the given socket
+	virtual std::string GetLocalAddressForRemoteClient(const XSocketPtr& socket) const = 0;
 
 	// Returns a list of all the IP addresses for this machine
 	static IPAddressList GetLocalMachineAddresses();

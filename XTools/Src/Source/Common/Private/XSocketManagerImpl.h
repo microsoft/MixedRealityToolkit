@@ -39,7 +39,7 @@ public:
 	// Mutex locked
 	virtual ReceiptPtr AcceptConnections(uint16 port, uint16 maxConnections, IncomingXSocketListener* listener) XTOVERRIDE;
 
-	virtual std::string GetLocalMachineAddress() XTOVERRIDE;
+	virtual std::string GetLocalAddressForRemoteClient(const XSocketPtr& socket) const XTOVERRIDE;
 
 	// Processes any network messages that have arrived since the last call to Update().  
 	// When called, it will process any connection or disconnection notifications, then

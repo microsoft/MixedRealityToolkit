@@ -17,6 +17,8 @@ class XSocketManagerImpl;
 
 class XSocketImpl : public XSocket
 {
+	XTOOLS_REFLECTION_DECLARE(XSocketImpl)
+
 public:
 	// Initiate a connection to a remote peer
 	XSocketImpl(

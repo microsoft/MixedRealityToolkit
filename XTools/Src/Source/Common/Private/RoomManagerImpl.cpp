@@ -160,6 +160,9 @@ bool RoomManagerImpl::JoinRoom(const RoomPtr& room)
 
 bool RoomManagerImpl::LeaveRoom()
 {
+	// Always clear out any pending download request when this function is called
+	m_currentDownloadRequest = nullptr;
+
 	if (m_currentRoom != nullptr)
 	{
 		const UserID localUserID = m_context->GetLocalUser()->GetID();
@@ -339,6 +342,14 @@ void RoomManagerImpl::OnUploadResponse(NetworkInMessage& message)
 
 void RoomManagerImpl::OnDownloadResponse(NetworkInMessage& message)
 {
+	PROFILE_FUNCTION();
+
+	// If we are not currently waiting for a download then do not bother to process the message
+	if (m_currentDownloadRequest == nullptr)
+	{
+		return;
+	}
+
 	bool bSuccess = (message.ReadByte() != 0);
 	XStringPtr failureReason;
 
@@ -349,7 +360,9 @@ void RoomManagerImpl::OnDownloadResponse(NetworkInMessage& message)
 		BufferPtr buffer(new Buffer(dataSize));
 		buffer->Resize(dataSize);
 
+		Profile::BeginRange("ReadArray");
 		message.ReadArray(buffer->GetData(), buffer->GetSize());
+		Profile::EndRange();
 
 		m_currentDownloadRequest->SetData(buffer);
 	}
@@ -362,7 +375,9 @@ void RoomManagerImpl::OnDownloadResponse(NetworkInMessage& message)
 	AnchorDownloadRequestPtr request = m_currentDownloadRequest;
 	m_currentDownloadRequest = nullptr;
 
+	Profile::BeginRange("Notify Listeners");
 	m_listenerList->NotifyListeners(&RoomManagerListener::OnAnchorsDownloaded, bSuccess, request, failureReason);
+	Profile::EndRange();
 }
 
 

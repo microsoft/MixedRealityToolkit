@@ -8,7 +8,6 @@
 
 #include "stdafx.h"
 #include "XSessionImpl.h"
-#include "PortmachinePool.h"
 #include <Private/NetworkConnectionImpl.h>
 #include <Private/Utils/ScopedLock.h>
 #include <Private/JSONMessage.h>
@@ -42,7 +41,7 @@ public:
 
 
 
-XSessionImpl::XSessionImpl(const std::string& name, PortMachinePair pmp, SessionType type, unsigned int id)
+XSessionImpl::XSessionImpl(const std::string& name, uint16 port, SessionType type, unsigned int id)
 : m_messagePool(new NetworkMessagePool(kDefaultMessagePoolSize))
 , m_broadcaster(new BroadcastForwarder())
 , m_sendToForwarder(new SendToForwarder())
@@ -50,7 +49,7 @@ XSessionImpl::XSessionImpl(const std::string& name, PortMachinePair pmp, Session
 , m_socketMgr(XSocketManager::Create())
 , m_name(name)
 , m_stopping(0)
-, m_portMachinePair(pmp)
+, m_port(port)
 , m_TypeOfSession(type)
 , m_id(id)
 , m_emptyTime(0)
@@ -61,7 +60,7 @@ XSessionImpl::XSessionImpl(const std::string& name, PortMachinePair pmp, Session
 	m_roomMgr = new ServerRoomManager(m_internalSyncMgr);
 
 	// Start listening for new connections
-	m_listenerReceipt = m_socketMgr->AcceptConnections(pmp.portID, kSessionServerMaxConnections, this);
+	m_listenerReceipt = m_socketMgr->AcceptConnections(m_port, kSessionServerMaxConnections, this);
 	
 	// Check that we successfully opened a socket to listen for connections on
 	if (m_listenerReceipt != NULL)
@@ -254,23 +253,23 @@ void XSessionImpl::OnHandshakeComplete(const XSocketPtr& newConnection, SocketID
 }
 
 
-PortMachinePair XSessionImpl::GetPortMachinePair()
+uint16 XSessionImpl::GetPort() const
 {
-	return m_portMachinePair;
+	return m_port;
 }
 
 
-SessionDescriptorImplPtr XSessionImpl::GetSessionDescription() const
+SessionDescriptorImplPtr XSessionImpl::GetSessionDescription(const XSocketPtr& targetRemoteSystem) const
 {
+	int32 numUsers = GetUserCount();
+
 	SessionDescriptorImplPtr sessionDesc = new SessionDescriptorImpl();
 
 	sessionDesc->SetName(GetName());
 	sessionDesc->SetID(GetId());
 	sessionDesc->SetSessionType(GetType());
-	sessionDesc->SetAddress(m_portMachinePair.address);
-	sessionDesc->SetPortID(m_portMachinePair.portID);
-
-	int32 numUsers = GetUserCount();
+	sessionDesc->SetAddress(m_socketMgr->GetLocalAddressForRemoteClient(targetRemoteSystem));
+	sessionDesc->SetPortID(m_port);
 	sessionDesc->SetUserCount(numUsers);
 
 	for (int32 userIndex = 0; userIndex < numUsers; ++userIndex)

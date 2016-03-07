@@ -373,16 +373,13 @@ void XSocketManagerImpl::Update()
 }
 
 
-std::string XSocketManagerImpl::GetLocalMachineAddress()
+std::string XSocketManagerImpl::GetLocalAddressForRemoteClient(const XSocketPtr& socket) const
 {
-	// Frustratingly, RakNet does not provide a way to get the address of the local machine without first creating a peer.  
-	// One you have one or more peers, it shouldn't matter which one you use to find out your own address, as it should
-	// be the same for all of them
-	if (!m_peers.empty())
+	XSocketImpl* socketImpl = reflection_cast<XSocketImpl>(socket);
+	if (socketImpl)
 	{
 		
-		RakNet::SystemAddress address = m_peers.begin()->second->m_peer->GetInternalID();
-
+		RakNet::SystemAddress address = socketImpl->GetPeer()->GetExternalID(socketImpl->GetAddress());
 		return address.ToString(false);
 	}
 	else

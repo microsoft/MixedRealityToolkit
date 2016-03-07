@@ -14,6 +14,7 @@
 #include "SessionChangeCallback.h"
 #include "Private/Utils/FileLogWriter.h"
 #include "BroadcastForwarder.h"
+#include "PortPool.h"
 
 XTOOLS_NAMESPACE_BEGIN
 
@@ -95,7 +96,7 @@ private:
 	MemberFuncThreadPtr						m_serverThread;
 	volatile int							m_stopping;
 
-	PortMachinePoolPtr						m_portMachinePool;
+	PortPoolPtr								m_portPool;
 
 	uint32									m_nextSessionId;
 

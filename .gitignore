@@ -22,3 +22,4 @@
 /XTools/Src/External/zxing-cpp/src/tmp
 /XTools/Src/External/speex-1.2rc1/lib
 /XTools/Src/GeneratedInterface
+*.db

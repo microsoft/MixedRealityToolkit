@@ -16,7 +16,6 @@
 #include "Private/JoinSessionRequest.h"
 #include "Private/JoinSessionReply.h"
 #include "Private/Utils/ScopedLock.h"
-#include "PortMachinePool.h"
 #include "Private/SessionDescriptorImpl.h"
 #include "Private/Utils/FileLogWriter.h"
 #include "Private/ProfileManagerImpl.h"
@@ -67,9 +66,17 @@ void SessionServer::OnStart(DWORD dwArgc, PWSTR *pszArgv)
 
 	// Start listening for new connections
 	m_listenerReceipt = m_socketMgr->AcceptConnections(kSessionServerPort, kSessionServerMaxConnections, this);
-	LogInfo("Listening for session list connections on port %i", kSessionServerPort);
+	LogInfo("Listening for session list connections on port %i of all network devices of the local machine.", kSessionServerPort);
+	LogInfo("Local IP addresses are:");
 
-	m_portMachinePool = new PortMachinePool(m_socketMgr->GetLocalMachineAddress(), kSessionServerPort);
+	IPAddressList addressList = m_socketMgr->GetLocalMachineAddresses();
+	for (size_t i = 0; i < addressList.size(); ++i)
+	{
+		LogInfo("\t%s", addressList[i].ToString().c_str());
+	}
+	
+	// Allocate a pool of ports to use for sessions
+	m_portPool = new PortPool(kSessionServerPort-1, 256);
 
 	// TODO: Read from a configuration file for persistent sessions. 
 	XTVERIFY(CreateNewSession("Default", SessionType::PERSISTENT) != NULL);
@@ -236,37 +243,48 @@ void SessionServer::OnMessageReceived(const NetworkConnectionPtr& connection, Ne
 
 XSessionImplPtr SessionServer::CreateNewSession(const std::string& sessionName, SessionType type)
 {
-    PortMachinePair pmp = m_portMachinePool->GetPortMachinePair();
-    
     XSessionImplPtr xsession;
+	uint16 sessionPort;
 
     // Better way to check for error?
-    if (pmp.portID != kInvalidPortId)
+    if (m_portPool->GetPort(sessionPort))
     {
         uint32 id = GetNewSessionId();
 
-        xsession = new XSessionImpl(sessionName, pmp, type, id);
+        xsession = new XSessionImpl(sessionName, sessionPort, type, id);
 
 		// Check that the session was able to set itself up, open a socket to listen on, etc
 		for (int creationCount = 0; !xsession->IsInitialized() && creationCount < 10; ++creationCount)
 		{
-			PortMachinePair newPmp = m_portMachinePool->GetPortMachinePair();
-			xsession = new XSessionImpl(sessionName, newPmp, type, id);
+			m_portPool->ReleasePort(sessionPort);
 
-			m_portMachinePool->ReleasePortMachinePair(pmp);
-			pmp = newPmp;
+			if (m_portPool->GetPort(sessionPort))
+			{
+				xsession = new XSessionImpl(sessionName, sessionPort, type, id);
+			}
+			else
+			{
+				break;
+			}
 		}
 
 		if (xsession->IsInitialized())
 		{
 			m_sessionChangeListener[xsession] = xsession->RegisterCallback(this);
 			m_sessions.push_back(xsession);
-			LogInfo("Created Session \"%s\" with ID %u on port %i", sessionName.c_str(), id, pmp.portID);
+			LogInfo("Created Session \"%s\" with ID %u on port %i", sessionName.c_str(), id, sessionPort);
 
 			// Notify the listeners about the new session
-			SessionAddedMsg sessionAddedMsg;
-			sessionAddedMsg.SetSessionDescriptor(xsession->GetSessionDescription());
-			SendSessionMessageToAllClients(sessionAddedMsg.ToJSONString());
+			for (size_t i = 0; i < m_clients.size(); ++i)
+			{
+				SessionAddedMsg sessionAddedMsg;
+				sessionAddedMsg.SetSessionDescriptor(xsession->GetSessionDescription(m_clients[i].m_connection->GetSocket()));
+
+				NetworkOutMessagePtr msg = m_clients[i].m_connection->CreateMessage((byte)MessageID::SessionControl);
+				msg->Write(sessionAddedMsg.ToJSONString());
+
+				m_clients[i].m_connection->Send(msg, MessagePriority::Medium, MessageReliability::ReliableOrdered, MessageChannel::Default, true);
+			}
 		}
 		else
 		{
@@ -328,14 +346,15 @@ void SessionServer::OnNewSessionRequest(const NewSessionRequest& request, const 
 	if (session)
 	{
 		// Report success.
-		PortMachinePair pmp = session->GetPortMachinePair();
+		std::string address = m_socketMgr->GetLocalAddressForRemoteClient(connection->GetSocket());
+		uint16 port = session->GetPort();
 
 		NewSessionReply reply(
 			session->GetId(), 
 			session->GetType(),
 			name, 
-			pmp.address, 
-			pmp.portID);
+			address, 
+			port);
 
 		NetworkOutMessagePtr response = connection->CreateMessage(MessageID::SessionControl);
 
@@ -369,7 +388,7 @@ void SessionServer::OnListSessionsRequest(const ListSessionsRequest&, const Netw
 	{
 		XSessionImplPtr currentSession = m_sessions[i];
 
-		reply.SetSessionDescriptor((int32)i, currentSession->GetSessionDescription());
+		reply.SetSessionDescriptor((int32)i, currentSession->GetSessionDescription(connection->GetSocket()));
 	}
 
 	NetworkOutMessagePtr msg = connection->CreateMessage(MessageID::SessionControl);
@@ -408,7 +427,7 @@ void SessionServer::ServerThreadFunc()
 		// Release the ports that the closing session were using
 		for (size_t i = 0; i < m_sessionsPendingDeletion.size(); ++i)
 		{
-			m_portMachinePool->ReleasePortMachinePair(m_sessionsPendingDeletion[i]->GetPortMachinePair());
+			m_portPool->ReleasePort(m_sessionsPendingDeletion[i]->GetPort());
 		}
 
 		// Clear any sessions pending deletion

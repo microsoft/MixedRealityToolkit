@@ -17,8 +17,10 @@ XTOOLS_NAMESPACE_BEGIN
 // Forward declaration of the interface to receive events from this socket
 class XSocketListener;
 
-class XSocket : public AtomicRefCounted
+class XSocket : public AtomicRefCounted, public Reflection::XTObject
 {
+	XTOOLS_REFLECTION_DECLARE(XSocket)
+
 public:
 	enum Status
 	{

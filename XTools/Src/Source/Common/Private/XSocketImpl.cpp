@@ -25,6 +25,12 @@ static_assert(static_cast<int>(MessageReliability::Reliable)			== static_cast<in
 static_assert(static_cast<int>(MessageReliability::ReliableOrdered)		== static_cast<int>(PacketReliability::RELIABLE_ORDERED), "XTools MessageReliability enum does not match RakNet");
 static_assert(static_cast<int>(MessageReliability::ReliableSequenced)	== static_cast<int>(PacketReliability::RELIABLE_SEQUENCED), "XTools MessageReliability enum does not match RakNet");
 
+XTOOLS_REFLECTION_DEFINE(XSocket)
+.BaseClass<Reflection::XTObject>();
+
+XTOOLS_REFLECTION_DEFINE(XSocketImpl)
+.BaseClass<XSocket>();
+
 
 XSocketImpl::XSocketImpl(XSocketManagerImpl* manager, SocketID id, const PeerPtr& peer, const RakNet::SystemAddress& address, RakNet::RakNetGUID guid)
 	: m_manager(manager)
