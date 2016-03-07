@@ -209,7 +209,7 @@ bool RoomManagerImpl::DownloadAnchor(const RoomPtr& room, const XStringPtr& anch
 	outMsg->Write((byte)RoomMessageID::AnchorDownloadRequest);
 	outMsg->Write(room->GetID());
 	outMsg->Write(anchorName);
-	serverConnection->Send(outMsg, MessagePriority::Medium, MessageReliability::ReliableOrdered, MessageChannel::RoomAnchorChannel, true);
+	serverConnection->Send(outMsg, MessagePriority::Low, MessageReliability::ReliableOrdered, MessageChannel::RoomAnchorChannel, true);
 
 	return true;
 }
@@ -252,7 +252,7 @@ bool RoomManagerImpl::UploadAnchor(const RoomPtr& room, const XStringPtr& anchor
 	outMsg->Write(anchorName);
 	outMsg->Write(dataSize);
 	outMsg->WriteArray(data, dataSize);
-	serverConnection->Send(outMsg, MessagePriority::Medium, MessageReliability::ReliableOrdered, MessageChannel::RoomAnchorChannel, true);
+	serverConnection->Send(outMsg, MessagePriority::Low, MessageReliability::ReliableOrdered, MessageChannel::RoomAnchorChannel, true);
 
 	return true;
 }
