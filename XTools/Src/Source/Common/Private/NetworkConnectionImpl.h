@@ -66,11 +66,11 @@ protected:
 	typedef ListenerList<NetworkConnectionListener> ListenerList;
 	DECLARE_PTR(ListenerList);
 
-	std::map<byte, ListenerListPtr>	m_listeners;
-
 	class NetConnectionInterceptor;
 	class InterceptorProxy;
 	struct AsyncCallback;
+
+	std::map<byte, ListenerListPtr>	m_listeners;
 	std::map<byte, AsyncCallback>	m_asyncCallbacks;
 
 	XSocketPtr						m_socket;

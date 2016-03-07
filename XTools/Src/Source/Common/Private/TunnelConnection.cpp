@@ -11,6 +11,7 @@
 #include "TunnelConnection.h"
 #include "NetworkOutMessageImpl.h"
 #include "NetworkInMessageImpl.h"
+#include <random>
 
 XTOOLS_NAMESPACE_BEGIN
 
@@ -23,7 +24,9 @@ TunnelConnection::TunnelConnection(const NetworkConnectionPtr& connection)
 {
 	m_netConnection->AddListener(MessageID::Tunnel, this);
 	m_netConnection->AddListener(MessageID::TunnelControl, this);
-	m_connectionGUID = RakNet::RakPeerInterface::Get64BitUniqueRandomNumber();
+
+	std::random_device randomGenerator;
+	m_connectionGUID = ((uint64)randomGenerator() << 32) + (uint64)randomGenerator();
 }
 
 

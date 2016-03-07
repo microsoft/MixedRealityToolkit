@@ -9,7 +9,7 @@
 #include "stdafx.h"
 #include "NetworkConnectionImpl.h"
 #include "NetworkInMessageImpl.h"
-
+#include <random>
 
 XTOOLS_NAMESPACE_BEGIN
 
@@ -95,7 +95,8 @@ NetworkConnectionImpl::NetworkConnectionImpl(const NetworkMessagePoolPtr& messag
 	, m_messageBuffer(new byte[kDefaultMessageBufferSize])
 	, m_messageBufferSize(kDefaultMessageBufferSize)
 {
-	m_connectionGUID = RakNet::RakPeerInterface::Get64BitUniqueRandomNumber();
+	std::random_device randomGenerator;
+	m_connectionGUID = ((uint64)randomGenerator() << 32) + (uint64)randomGenerator();
 }
 
 

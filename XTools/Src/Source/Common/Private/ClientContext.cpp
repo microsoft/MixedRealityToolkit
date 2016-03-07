@@ -13,6 +13,7 @@
 #include <Private/UserPresenceManagerFollowerImpl.h>
 #include <Private/TunnelConnection.h>
 #include <Private/AudioManagerImpl.h>
+#include <random>
 
 XTOOLS_NAMESPACE_BEGIN
 
@@ -46,7 +47,8 @@ ClientContext::ClientContext(const ClientConfigPtr& config)
 	{
 		UserID userID;
 		do {
-			userID = static_cast<uint32>(RakNet::RakPeerInterface::Get64BitUniqueRandomNumber());
+			std::random_device randomGenerator;
+			userID = randomGenerator();
 		} while (userID == 0 || userID == User::kInvalidUserID);
 
 		LogInfo("Local User ID: %u", userID);

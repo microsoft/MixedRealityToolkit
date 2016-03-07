@@ -19,14 +19,6 @@ static const uint32 kMessageQueueSize = 3 * (1024 * 1024);
 // The maximum number of message to process from a single peer connection per update.  
 static const uint32 kMaxIncomingMessages = 30;
 
-//////////////////////////////////////////////////////////////////////////
-struct MessageQueue::MessageHeader
-{
-	RakNet::SystemAddress	m_address;
-	RakNet::RakNetGUID		m_raknetGuid;
-	PeerID					m_peerID;
-	uint32					m_payloadSize;
-};
 
 //////////////////////////////////////////////////////////////////////////
 struct MessageQueue::PeerSettings
@@ -39,8 +31,6 @@ struct MessageQueue::PeerSettings
 MessageQueue::MessageQueue()
 : m_stopping(0)
 , m_messageQueue(kMessageQueueSize)
-, m_messageBufferIn(kMessageQueueSize)
-, m_messageBufferOut(kMessageQueueSize)
 {	
 	// Start a thread to run the update loop. 
 	m_networkThread = new MemberFuncThread(&MessageQueue::ThreadFunc, this);

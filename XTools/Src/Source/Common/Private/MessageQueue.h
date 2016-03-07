@@ -38,15 +38,10 @@ private:
 
 	void ThreadFunc();
 
-	struct MessageHeader;
 	struct PeerSettings;
 
 	// Queue of messages
 	TypedLFQueue<MessagePtr>		m_messageQueue;
-
-	// Buffer to hold the message data as its being reassembled on the main thread
-	Buffer					m_messageBufferIn;
-	Buffer					m_messageBufferOut;
 
 	std::vector<PeerSettings>	m_peers;
 
