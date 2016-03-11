@@ -74,6 +74,7 @@
     <ClCompile Include="..\..\Source\Common\Private\json\json_serialization.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\json\utilities\asyncrt_utils.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\ModifyOperation.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\NetworkThreadCommands.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\Peer.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\Profile.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\ProfileEntry.cpp" />
@@ -202,6 +203,7 @@
     <ClInclude Include="..\..\Source\Common\Private\json\cpprest\json.h" />
     <ClInclude Include="..\..\Source\Common\Private\json\cpprest\xxpublic.h" />
     <ClInclude Include="..\..\Source\Common\Private\ModifyOperation.h" />
+    <ClInclude Include="..\..\Source\Common\Private\NetworkThreadCommands.h" />
     <ClInclude Include="..\..\Source\Common\Private\PacketWrapper.h" />
     <ClInclude Include="..\..\Source\Common\Private\Peer.h" />
     <ClInclude Include="..\..\Source\Common\Private\ProfileEntry.h" />

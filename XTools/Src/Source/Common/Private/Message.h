@@ -15,32 +15,30 @@ XTOOLS_NAMESPACE_BEGIN
 class Message : public AtomicRefCounted
 {
 public:
-	Message();
-	Message(uint32 messageSize);
+	Message(SocketID socketID);
+	Message(SocketID socketID, PeerID peerID, const RakNet::SystemAddress& address, uint32 messageSize);
 
 	// Returns false if the size is zero
-	bool							IsValid() const;
+	bool			IsValid() const;
 	
-	const RakNet::SystemAddress&	GetSystemAddress() const;
-	RakNet::RakNetGUID				GetRakNetGUID() const;
+	SocketID		GetSocketID() const;
+	PeerID			GetPeerID() const;
 
-	// The ID of the PeerPtr object that this message came from
-	PeerID							GetPeerID() const;
+	const RakNet::SystemAddress& GetSystemAddress() const;
 
-	const byte*						GetData() const;
-	uint32							GetSize() const;
+	const byte*		GetData() const;
+	uint32			GetSize() const;
+	void			SetData(const byte* buffer, uint32 size);
+	void			AppendData(const byte* buffer, uint32 size);
 
-	// Return the ID of the message, which is usually the first byte of
-	// the payload
-	byte							GetMessageID() const;
+	// Return the ID of the message, which is the first byte of the payload
+	byte			GetMessageID() const;
 
 private:
-	friend class MessageQueue;
-
 	Buffer					m_payload;
-	RakNet::SystemAddress	m_address;
-	RakNet::RakNetGUID		m_rakNetGuid;
+	SocketID				m_socketID;
 	PeerID					m_peerID;
+	RakNet::SystemAddress	m_address;
 };
 
 DECLARE_PTR(Message)

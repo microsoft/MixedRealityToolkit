@@ -29,7 +29,7 @@ public:
 
 private:
 #if defined(XTOOLS_PLATFORM_WINDOWS_DESKTOP) || defined(XTOOLS_PLATFORM_WINRT)
-	HANDLE m_mutexHandle;
+	CRITICAL_SECTION m_criticalSection;
     
 #elif defined(XTOOLS_PLATFORM_OSX)
     pthread_mutex_t m_mutex;

@@ -12,21 +12,21 @@
 
 XTOOLS_NAMESPACE_BEGIN
 
-Message::Message()
-: m_payload(1024)
-, m_address(RakNet::UNASSIGNED_SYSTEM_ADDRESS)
-, m_rakNetGuid(RakNet::UNASSIGNED_RAKNET_GUID)
-, m_peerID(0)
+Message::Message(SocketID socketID)
+	: m_payload(0)
+	, m_socketID(socketID)
+	, m_peerID(kInvalidPeerID)
+	, m_address(RakNet::UNASSIGNED_SYSTEM_ADDRESS)
 {
 	
 }
 
 
-Message::Message(uint32 messageSize)
+Message::Message(SocketID socketID, PeerID peerID, const RakNet::SystemAddress& address, uint32 messageSize)
 	: m_payload(messageSize)
-	, m_address(RakNet::UNASSIGNED_SYSTEM_ADDRESS)
-	, m_rakNetGuid(RakNet::UNASSIGNED_RAKNET_GUID)
-	, m_peerID(0)
+	, m_socketID(socketID)
+	, m_peerID(peerID)
+	, m_address(address)
 {
 
 }
@@ -38,21 +38,21 @@ bool Message::IsValid() const
 }
 
 
-const RakNet::SystemAddress& Message::GetSystemAddress() const
+SocketID Message::GetSocketID() const
 {
-	return m_address;
-}
-
-
-RakNet::RakNetGUID Message::GetRakNetGUID() const
-{
-	return m_rakNetGuid;
+	return m_socketID;
 }
 
 
 PeerID Message::GetPeerID() const
 {
 	return m_peerID;
+}
+
+
+const RakNet::SystemAddress& Message::GetSystemAddress() const
+{
+	return m_address;
 }
 
 
@@ -65,6 +65,18 @@ const byte* Message::GetData() const
 uint32 Message::GetSize() const
 {
 	return m_payload.GetSize();
+}
+
+
+void Message::SetData(const byte* buffer, uint32 size)
+{
+	m_payload.Set(buffer, size);
+}
+
+
+void Message::AppendData(const byte* buffer, uint32 size)
+{
+	m_payload.Append(buffer, size);
 }
 
 

@@ -462,6 +462,9 @@
     <ClCompile Include="..\..\Source\Common\Private\AnchorList.cpp">
       <Filter>Source\Private\Rooms</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\NetworkThreadCommands.cpp">
+      <Filter>Source\Private\Networking</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\Common\Private\Utils\ScopedLock.h">
@@ -1123,6 +1126,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Source\Common\Private\AnchorList.h">
       <Filter>Source\Private\Rooms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\NetworkThreadCommands.h">
+      <Filter>Source\Private\Networking</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -11,9 +11,19 @@
 
 XTOOLS_NAMESPACE_BEGIN
 
-Peer::Peer(PeerID peerID)
+std::atomic<PeerID>	Peer::m_sCounter;
+
+Peer::Peer()
 : m_rakPeer(RakNet::RakPeerInterface::GetInstance())
-, m_peerID(peerID)
+, m_peerID(CreatePeerID())
+{
+
+}
+
+
+Peer::Peer(PeerID id)
+	: m_rakPeer(RakNet::RakPeerInterface::GetInstance())
+	, m_peerID(id)
 {
 
 }
@@ -29,6 +39,13 @@ Peer::~Peer()
 PeerID Peer::GetPeerID() const
 {
 	return m_peerID;
+}
+
+
+//static 
+PeerID Peer::CreatePeerID()
+{
+	return ++m_sCounter;
 }
 
 XTOOLS_NAMESPACE_END

@@ -31,14 +31,26 @@ XTOOLS_REFLECTION_DEFINE(XSocket)
 XTOOLS_REFLECTION_DEFINE(XSocketImpl)
 .BaseClass<XSocket>();
 
+std::atomic<SocketID> XSocketImpl::m_sCounter(0);
 
-XSocketImpl::XSocketImpl(XSocketManagerImpl* manager, SocketID id, const PeerPtr& peer, const RakNet::SystemAddress& address, RakNet::RakNetGUID guid)
-	: m_manager(manager)
-	, m_id(id)
+
+XSocketImpl::XSocketImpl(const std::string& address, uint16 port)
+	: m_id(++m_sCounter)
+	, m_listener(NULL)
+	, m_address(address.c_str(), port)
+	, m_raknetGuid(RakNet::UNASSIGNED_RAKNET_GUID)
+	, m_status(Connecting)	// Default status to connecting
+{
+
+}
+
+
+XSocketImpl::XSocketImpl(XSocketManagerImpl* manager, const PeerPtr& peer, const RakNet::SystemAddress& address, RakNet::RakNetGUID guid)
+	: m_id(++m_sCounter)
 	, m_peer(peer)
 	, m_listener(NULL)
 	, m_address(address)
-	, m_raknetGuid(guid)
+	, m_raknetGuid(RakNet::UNASSIGNED_RAKNET_GUID)
 	, m_status(Connecting)
 {
 	// XSockets are only created when:
@@ -65,11 +77,14 @@ void XSocketImpl::Send(const byte* message, uint32 messageSize, MessagePriority 
 {
 	XTASSERT(m_status == Connected);
 
-	uint32 messageID = m_peer->Send(reinterpret_cast<const char*>(message), messageSize, (PacketPriority)priority, (PacketReliability)reliability, (char)channel, m_address, false);
-	if (messageID == 0)
+	if (m_peer)
 	{
-		XTASSERT(false);
-		LogWarning("Failed to send message to %s", m_address.ToString(true));
+		uint32 messageID = m_peer->Send(reinterpret_cast<const char*>(message), messageSize, (PacketPriority)priority, (PacketReliability)reliability, (char)channel, m_address, false);
+		if (messageID == 0)
+		{
+			XTASSERT(false);
+			LogWarning("Failed to send message to %s", m_address.ToString(true));
+		}
 	}
 }
 
@@ -164,6 +179,30 @@ bool XSocketImpl::OnReceiveMessage(const MessageConstPtr& msg)
 }
 
 
+bool XSocketImpl::OnReceiveMessageAsync(const MessageConstPtr& msg)
+{
+	bool bConsumedPacket = false;
+
+	byte packetID = msg->GetMessageID();
+
+	// If this is a user's packet, forward it to them
+	if (packetID >= ID_USER_PACKET_ENUM)
+	{
+		if (m_listener)
+		{
+			m_listener->OnMessageReceivedAsync(this, msg->GetData(), msg->GetSize());
+			bConsumedPacket = true;
+		}
+	}
+}
+
+
+void XSocketImpl::OnOpenFailed()
+{
+	OnConnectionAttemptFailed(ID_CONNECTION_ATTEMPT_FAILED);
+}
+
+
 const PeerPtr& XSocketImpl::GetPeer() 
 { 
 	return m_peer; 
@@ -173,6 +212,12 @@ const PeerPtr& XSocketImpl::GetPeer()
 PeerConstPtr XSocketImpl::GetPeer() const 
 { 
 	return m_peer; 
+}
+
+
+void XSocketImpl::SetPeer(const PeerPtr& peer)
+{
+	m_peer = peer;
 }
 
 
@@ -203,12 +248,6 @@ void XSocketImpl::SetRakNetGUID(const RakNet::RakNetGUID& guid)
 void XSocketImpl::SetRegistrationReceipt(const ReceiptPtr& receipt)
 {
 	m_receipt = receipt;
-}
-
-
-XSocketManagerImpl* XSocketImpl::GetSocketManager()
-{
-	return m_manager;
 }
 
 
