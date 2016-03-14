@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Generated Files">
+      <UniqueIdentifier>{f62c3eca-6852-4075-99d0-7ca874ee21b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scripts">
+      <UniqueIdentifier>{0d7bc2e3-02b4-4764-b670-6bc800de7f2b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\Source\JavaTestApp\Manifest.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="..\..\Source\JavaTestApp\JavaTestApp.java">
+      <Filter>Source Files</Filter>
+    </Object>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Source\JavaTestApp\CopyDependencies.bat">
+      <Filter>Scripts</Filter>
+    </None>
+    <None Include="..\..\Source\JavaTestApp\SyncSphere.java">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="..\..\Source\JavaTestApp\SyncRoot.java">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="..\..\Source\JavaTestApp\VersionInfo.java">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\AnchorDownloadRequest.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\AudioManager.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\ClientConfig.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\ClientRole.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\DirectPairConnector.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\DirectPairReceiver.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\DoubleElement.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\Element.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\ElementType.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\FloatElement.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\ImageTagLocation.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\ImageTagLocationListener.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\ImageTagLocationType.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\ImageTagManager.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\IntArrayElement.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\IntArrayListener.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\IntElement.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\Listener.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\Log.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\LogManager.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\LogSeverity.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\LogWriter.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\LongElement.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\MachineSessionState.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\MessageChannel.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\MessageID.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\MessagePriority.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\MessageReliability.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\NetworkConnection.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\NetworkConnectionListener.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\NetworkInMessage.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\NetworkOutMessage.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\ObjectElement.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\ObjectElementListener.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\PairingListener.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\PairingManager.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\PairingResult.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\PairMaker.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\Profile.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\ProfileManager.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\Receipt.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\Room.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\RoomManager.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\RoomManagerListener.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\Session.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\SessionListener.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\SessionManager.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\SessionManagerListener.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\SessionType.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\Settings.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\SharingClient.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\SharingClientJNI.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\StringElement.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\SyncListener.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\TagImage.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\User.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\UserPresenceManager.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\UserPresenceManagerListener.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\VisualPairConnector.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\VisualPairReceiver.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\XString.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\XToolsManager.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>

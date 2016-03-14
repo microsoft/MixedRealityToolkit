@@ -1,0 +1,19 @@
+<Project ToolsVersion="4.0" DefaultTargets="Build" TreatAsLocalProperty="OutDir" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <UsingTask TaskName="Microsoft.Internal.BuildUtilities.SetEnvironmentVariable" AssemblyFile="$(BranchRoot)External\Build\BuildUtilities.dll"/>
+
+  <PropertyGroup>
+    <GenerateProjectSpecificOutputFolder>false</GenerateProjectSpecificOutputFolder>
+    <OutDir Condition="'$(OutputPath)' != ''">$(OutputPath)</OutDir>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+
+  <Target Name="ValidateProjectAndProperties" BeforeTargets="BeforeBuild">
+    <Error Condition="'$(PropertyFileImported)' != 'true'" Text="GeneralBuild.Prop was not imported"/>
+    <Error Condition="'$(BranchRoot)' != '' and !HasTrailingSlash('$(BranchRoot)')" Text="The BranchRoot must end with a trailing slash." />
+    <Error Condition="'$(BaseOutputPath)' != '' and !HasTrailingSlash('$(BaseOutputPath)')" Text="The BaseOutputPath must end with a trailing slash." />
+  </Target>
+
+  <PropertyGroup>
+    <IntermediateOutputPath>$(BaseIntermediateOutputPath)$(Configuration)\$(Platform)\$(MSBuildProjectName)\</IntermediateOutputPath>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,4 @@
+ServerAddress OSSERVER
+
+# Used for testing
+UserNameOverride TestUser

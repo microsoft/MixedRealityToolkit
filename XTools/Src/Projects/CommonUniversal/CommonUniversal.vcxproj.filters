@@ -1,0 +1,1014 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source">
+      <UniqueIdentifier>{db885406-763a-409f-a71f-76d7b125c5a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Private">
+      <UniqueIdentifier>{9622f474-73d4-4125-97b9-745e4587c005}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Private\Utils">
+      <UniqueIdentifier>{e863426b-a875-437d-badd-72474d26592b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Private\Networking">
+      <UniqueIdentifier>{49888805-b265-41d5-813c-e9abd18535ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Private\Networking\HandshakeLogic">
+      <UniqueIdentifier>{b0e8df61-b326-4aa1-9eba-9451ffdcda50}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Private\Networking\Discovery">
+      <UniqueIdentifier>{af3c68da-3817-4219-bffd-f2dc55102807}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Private\Sync">
+      <UniqueIdentifier>{273e995c-9be8-43e6-9752-5b45bf8fcd6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Private\Sync\Elements">
+      <UniqueIdentifier>{9a13dcc1-8e8b-4c95-b3fd-0fa4914357b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Private\Sync\Operations">
+      <UniqueIdentifier>{43ec7f91-8628-4046-b878-b8a06826ca15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Private\Sync\Transforms">
+      <UniqueIdentifier>{affe019c-2020-468a-ba0f-d530b6e10e89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Private\JSON">
+      <UniqueIdentifier>{f9d6d040-835f-43a0-aac0-5dbdb6fc0a7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Private\JSON\compat">
+      <UniqueIdentifier>{7c4b7571-9c1d-41df-bdeb-692cb9e05ad6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Private\JSON\cpprest">
+      <UniqueIdentifier>{bce93ff7-273f-44f5-a788-34f068c15bef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Private\JSON\utilities">
+      <UniqueIdentifier>{5ad0c7d1-8fb4-4176-a125-4a667eaadf82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Private\Profiling">
+      <UniqueIdentifier>{857df20b-d7db-4967-b98a-6c2e41fb0bc9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Private\Audio">
+      <UniqueIdentifier>{26b28966-c976-464d-ade2-f8549af1e5fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Private\Sessions">
+      <UniqueIdentifier>{1176a5c2-6c95-46d8-a1da-64239baca182}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Private\Sessions\Messages">
+      <UniqueIdentifier>{a20091af-988e-4138-8e98-84750b005ed3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Public">
+      <UniqueIdentifier>{f3938ac4-932d-4cb9-943f-68149df5e27b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Public\Utils">
+      <UniqueIdentifier>{cdade52e-4690-45f8-b30d-310a47f365b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Public\Networking">
+      <UniqueIdentifier>{c94f8d9d-3828-4e11-9371-aec68ea055ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Public\Networking\HandshakeLogic">
+      <UniqueIdentifier>{d38286ea-783b-4277-abf4-5dab3419fcb2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Public\Networking\Discovery">
+      <UniqueIdentifier>{fdf4405c-3d30-44a9-a481-2a7b6a49488f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Public\SideCar">
+      <UniqueIdentifier>{35d9513c-6ac2-4a96-8add-4773b0cbec32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Public\Sync">
+      <UniqueIdentifier>{e894afa7-12aa-4ff3-9cc7-88ae6ec4229b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Public\Sync\Elements">
+      <UniqueIdentifier>{e3b873af-2aa2-4085-a7d2-5408a05c7fbb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Public\Profiling">
+      <UniqueIdentifier>{a5b9302e-02ae-437c-95b0-08efd58a5cb2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Public\Audio">
+      <UniqueIdentifier>{583bf461-2491-405c-a5f1-fbcfb6f68ffe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Private\Sync\Utils">
+      <UniqueIdentifier>{c7418a90-def7-48e9-ac1c-ded4794a54c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Private\Rooms">
+      <UniqueIdentifier>{2103e195-52d5-4971-8dad-e8c5958e3c61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Public\Rooms">
+      <UniqueIdentifier>{626c4881-f007-4a32-b6d0-46271e5c26d6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Source\Common\stdafx.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\ClientConfig.cpp">
+      <Filter>Source\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\ClientContext.cpp">
+      <Filter>Source\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\Environment.cpp">
+      <Filter>Source\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\Reflection.cpp">
+      <Filter>Source\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\UserImpl.cpp">
+      <Filter>Source\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\UserPresenceManagerFollowerImpl.cpp">
+      <Filter>Source\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\UserPresenceManagerLeaderImpl.cpp">
+      <Filter>Source\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\XString.cpp">
+      <Filter>Source\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\Utils\Event.cpp">
+      <Filter>Source\Private\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\Utils\Hash.cpp">
+      <Filter>Source\Private\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\Utils\IUpdateable.cpp">
+      <Filter>Source\Private\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\Utils\LFQueue.cpp">
+      <Filter>Source\Private\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\Utils\Log.cpp">
+      <Filter>Source\Private\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\Utils\Logger.cpp">
+      <Filter>Source\Private\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\Utils\MemberFuncThread.cpp">
+      <Filter>Source\Private\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\Utils\MemoryManager.cpp">
+      <Filter>Source\Private\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\Utils\Mutex.cpp">
+      <Filter>Source\Private\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\Utils\PlatformUtils.cpp">
+      <Filter>Source\Private\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\Utils\RegistrationReceipt.cpp">
+      <Filter>Source\Private\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\Utils\ScopedLock.cpp">
+      <Filter>Source\Private\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\Utils\StringUtils.cpp">
+      <Filter>Source\Private\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\Utils\XThread.cpp">
+      <Filter>Source\Private\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\Buffer.cpp">
+      <Filter>Source\Private\Networking</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\BufferQueue.cpp">
+      <Filter>Source\Private\Networking</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\IPAddress.cpp">
+      <Filter>Source\Private\Networking</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\Message.cpp">
+      <Filter>Source\Private\Networking</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\MessageInterceptor.cpp">
+      <Filter>Source\Private\Networking</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\MessageQueue.cpp">
+      <Filter>Source\Private\Networking</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\NetworkConnectionImpl.cpp">
+      <Filter>Source\Private\Networking</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\NetworkHandshake.cpp">
+      <Filter>Source\Private\Networking</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\NetworkInMessageImpl.cpp">
+      <Filter>Source\Private\Networking</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\NetworkMessagePool.cpp">
+      <Filter>Source\Private\Networking</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\NetworkOutMessageImpl.cpp">
+      <Filter>Source\Private\Networking</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\Peer.cpp">
+      <Filter>Source\Private\Networking</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\TunnelBridge.cpp">
+      <Filter>Source\Private\Networking</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\TunnelConnection.cpp">
+      <Filter>Source\Private\Networking</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\XSocketImpl.cpp">
+      <Filter>Source\Private\Networking</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\XSocketManagerImpl.cpp">
+      <Filter>Source\Private\Networking</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\PairingHandshakeLogic.cpp">
+      <Filter>Source\Private\Networking\HandshakeLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\SessionHandshakeLogic.cpp">
+      <Filter>Source\Private\Networking\HandshakeLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\SessionListHandshakeLogic.cpp">
+      <Filter>Source\Private\Networking\HandshakeLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\DiscoveredSystem.cpp">
+      <Filter>Source\Private\Networking\Discovery</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\DiscoveryClientImpl.cpp">
+      <Filter>Source\Private\Networking\Discovery</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\DiscoveryServerImpl.cpp">
+      <Filter>Source\Private\Networking\Discovery</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\SyncContext.cpp">
+      <Filter>Source\Private\Sync</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\SyncManagerImpl.cpp">
+      <Filter>Source\Private\Sync</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\XValue.cpp">
+      <Filter>Source\Private\Sync</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\ElementFactory.cpp">
+      <Filter>Source\Private\Sync\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\FloatElementImpl.cpp">
+      <Filter>Source\Private\Sync\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\IntElementImpl.cpp">
+      <Filter>Source\Private\Sync\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\ObjectElementImpl.cpp">
+      <Filter>Source\Private\Sync\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\StringElementImpl.cpp">
+      <Filter>Source\Private\Sync\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\AckOperation.cpp">
+      <Filter>Source\Private\Sync\Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\CreateOperation.cpp">
+      <Filter>Source\Private\Sync\Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\DeleteOperation.cpp">
+      <Filter>Source\Private\Sync\Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\ModifyOperation.cpp">
+      <Filter>Source\Private\Sync\Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\NoopOperation.cpp">
+      <Filter>Source\Private\Sync\Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\Operation.cpp">
+      <Filter>Source\Private\Sync\Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\OperationFactory.cpp">
+      <Filter>Source\Private\Sync\Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\CreateCreateTransform.cpp">
+      <Filter>Source\Private\Sync\Transforms</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\CreateDeleteTransform.cpp">
+      <Filter>Source\Private\Sync\Transforms</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\CreateModifyTransform.cpp">
+      <Filter>Source\Private\Sync\Transforms</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\DeleteCreateTransform.cpp">
+      <Filter>Source\Private\Sync\Transforms</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\DeleteDeleteTransform.cpp">
+      <Filter>Source\Private\Sync\Transforms</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\DeleteModifyTransform.cpp">
+      <Filter>Source\Private\Sync\Transforms</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\ModifyDeleteTransform.cpp">
+      <Filter>Source\Private\Sync\Transforms</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\ModifyModifyTransform.cpp">
+      <Filter>Source\Private\Sync\Transforms</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\TransformManager.cpp">
+      <Filter>Source\Private\Sync\Transforms</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\JSONMessage.cpp">
+      <Filter>Source\Private\JSON</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\json\json.cpp">
+      <Filter>Source\Private\JSON</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\json\json_parsing.cpp">
+      <Filter>Source\Private\JSON</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\json\json_serialization.cpp">
+      <Filter>Source\Private\JSON</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\json\utilities\asyncrt_utils.cpp">
+      <Filter>Source\Private\JSON\utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\Profile.cpp">
+      <Filter>Source\Private\Profiling</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\ProfileEntry.cpp">
+      <Filter>Source\Private\Profiling</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\ProfileManagerImpl.cpp">
+      <Filter>Source\Private\Profiling</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\AudioConnection.cpp">
+      <Filter>Source\Private\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\AudioConnectionClient.cpp">
+      <Filter>Source\Private\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\AudioManagerImpl.cpp">
+      <Filter>Source\Private\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\AudioSessionProcessor.cpp">
+      <Filter>Source\Private\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\AudioPacket.cpp">
+      <Filter>Source\Private\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\AudioPacketPool.cpp">
+      <Filter>Source\Private\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\AudioSessionProcessorClient.cpp">
+      <Filter>Source\Private\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\AudioWavFile.cpp">
+      <Filter>Source\Private\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\ResampleProcessor.cpp">
+      <Filter>Source\Private\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\SessionDescriptorImpl.cpp">
+      <Filter>Source\Private\Sessions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\SessionImpl.cpp">
+      <Filter>Source\Private\Sessions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\SessionManagerImpl.cpp">
+      <Filter>Source\Private\Sessions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\SessionMessageRouter.cpp">
+      <Filter>Source\Private\Sessions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\JoinSessionReply.cpp">
+      <Filter>Source\Private\Sessions\Messages</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\JoinSessionRequest.cpp">
+      <Filter>Source\Private\Sessions\Messages</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\ListSessionsReply.cpp">
+      <Filter>Source\Private\Sessions\Messages</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\ListSessionsRequest.cpp">
+      <Filter>Source\Private\Sessions\Messages</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\NewSessionReply.cpp">
+      <Filter>Source\Private\Sessions\Messages</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\NewSessionRequest.cpp">
+      <Filter>Source\Private\Sessions\Messages</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\SessionAddedMsg.cpp">
+      <Filter>Source\Private\Sessions\Messages</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\SessionClosedMsg.cpp">
+      <Filter>Source\Private\Sessions\Messages</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\UserChangedSessionMsg.cpp">
+      <Filter>Source\Private\Sessions\Messages</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\UserJoinedSessionMsg.cpp">
+      <Filter>Source\Private\Sessions\Messages</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\UserLeftSessionMsg.cpp">
+      <Filter>Source\Private\Sessions\Messages</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\Syncable.cpp">
+      <Filter>Source\Private\Sync\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\SyncObject.cpp">
+      <Filter>Source\Private\Sync\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\DoubleElementImpl.cpp">
+      <Filter>Source\Private\Sync\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\LongElementImpl.cpp">
+      <Filter>Source\Private\Sync\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\AnchorDownloadRequestImpl.cpp">
+      <Filter>Source\Private\Rooms</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\RoomImpl.cpp">
+      <Filter>Source\Private\Rooms</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\RoomManagerImpl.cpp">
+      <Filter>Source\Private\Rooms</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\IntArrayElementImpl.cpp">
+      <Filter>Source\Private\Sync\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\InsertOperation.cpp">
+      <Filter>Source\Private\Sync\Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\RemoveOperation.cpp">
+      <Filter>Source\Private\Sync\Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\UpdateOperation.cpp">
+      <Filter>Source\Private\Sync\Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\ArrayTransforms.cpp">
+      <Filter>Source\Private\Sync\Transforms</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\IntArrayAdapter.cpp">
+      <Filter>Source\Private\Sync\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\AnchorList.cpp">
+      <Filter>Source\Private\Rooms</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Source\Common\Common.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\CommonPrivate.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\SideCarAPI.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\stdafx.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\WrapperAPIs.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\RakNetIncludes.h">
+      <Filter>Source\Private</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\UserImpl.h">
+      <Filter>Source\Private</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\UserPresenceManagerFollowerImpl.h">
+      <Filter>Source\Private</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\UserPresenceManagerLeaderImpl.h">
+      <Filter>Source\Private</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\Utils\LFQueue.h">
+      <Filter>Source\Private\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\Utils\RegistrationReceipt.h">
+      <Filter>Source\Private\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\Utils\ScopedLock.h">
+      <Filter>Source\Private\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\Buffer.h">
+      <Filter>Source\Private\Networking</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\BufferQueue.h">
+      <Filter>Source\Private\Networking</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\Message.h">
+      <Filter>Source\Private\Networking</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\MessageInterceptor.h">
+      <Filter>Source\Private\Networking</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\MessageQueue.h">
+      <Filter>Source\Private\Networking</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\NetworkConnectionImpl.h">
+      <Filter>Source\Private\Networking</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\NetworkInMessageImpl.h">
+      <Filter>Source\Private\Networking</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\NetworkMessagePool.h">
+      <Filter>Source\Private\Networking</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\NetworkOutMessageImpl.h">
+      <Filter>Source\Private\Networking</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\Peer.h">
+      <Filter>Source\Private\Networking</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\TunnelBridge.h">
+      <Filter>Source\Private\Networking</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\TunnelConnection.h">
+      <Filter>Source\Private\Networking</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\XSessionProcessor.h">
+      <Filter>Source\Private\Networking</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\XSocketImpl.h">
+      <Filter>Source\Private\Networking</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\XSocketManagerImpl.h">
+      <Filter>Source\Private\Networking</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\DiscoveryClientImpl.h">
+      <Filter>Source\Private\Networking\Discovery</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\DiscoveryServerImpl.h">
+      <Filter>Source\Private\Networking\Discovery</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\SystemDescription.h">
+      <Filter>Source\Private\Networking\Discovery</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\SyncContext.h">
+      <Filter>Source\Private\Sync</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\SyncManagerImpl.h">
+      <Filter>Source\Private\Sync</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\ElementFactory.h">
+      <Filter>Source\Private\Sync\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\FloatElementImpl.h">
+      <Filter>Source\Private\Sync\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\IntElementImpl.h">
+      <Filter>Source\Private\Sync\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\ObjectElementImpl.h">
+      <Filter>Source\Private\Sync\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\StringElementImpl.h">
+      <Filter>Source\Private\Sync\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\AckOperation.h">
+      <Filter>Source\Private\Sync\Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\CreateOperation.h">
+      <Filter>Source\Private\Sync\Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\DeleteOperation.h">
+      <Filter>Source\Private\Sync\Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\ModifyOperation.h">
+      <Filter>Source\Private\Sync\Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\NoopOperation.h">
+      <Filter>Source\Private\Sync\Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\Operation.h">
+      <Filter>Source\Private\Sync\Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\OperationFactory.h">
+      <Filter>Source\Private\Sync\Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\CreateCreateTransform.h">
+      <Filter>Source\Private\Sync\Transforms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\CreateDeleteTransform.h">
+      <Filter>Source\Private\Sync\Transforms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\CreateModifyTransform.h">
+      <Filter>Source\Private\Sync\Transforms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\DeleteCreateTransform.h">
+      <Filter>Source\Private\Sync\Transforms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\DeleteDeleteTransform.h">
+      <Filter>Source\Private\Sync\Transforms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\DeleteModifyTransform.h">
+      <Filter>Source\Private\Sync\Transforms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\ModifyDeleteTransform.h">
+      <Filter>Source\Private\Sync\Transforms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\ModifyModifyTransform.h">
+      <Filter>Source\Private\Sync\Transforms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\OpTransform.h">
+      <Filter>Source\Private\Sync\Transforms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\TransformManager.h">
+      <Filter>Source\Private\Sync\Transforms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\JSONMessage.h">
+      <Filter>Source\Private\JSON</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\json\compat\SafeInt3.hpp">
+      <Filter>Source\Private\JSON\compat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\json\compat\windows_compat.h">
+      <Filter>Source\Private\JSON\compat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\json\cpprest\asyncrt_utils.h">
+      <Filter>Source\Private\JSON\cpprest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\json\cpprest\basic_types.h">
+      <Filter>Source\Private\JSON\cpprest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\json\cpprest\json.h">
+      <Filter>Source\Private\JSON\cpprest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\json\cpprest\xxpublic.h">
+      <Filter>Source\Private\JSON\cpprest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\ProfileEntry.h">
+      <Filter>Source\Private\Profiling</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\ProfileManagerImpl.h">
+      <Filter>Source\Private\Profiling</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\AudioConnection.h">
+      <Filter>Source\Private\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\AudioConnectionClient.h">
+      <Filter>Source\Private\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\AudioManagerImpl.h">
+      <Filter>Source\Private\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\AudioPacket.h">
+      <Filter>Source\Private\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\AudioPacketPool.h">
+      <Filter>Source\Private\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\AudioProcessor.h">
+      <Filter>Source\Private\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\AudioSessionProcessorClient.h">
+      <Filter>Source\Private\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\AudioWavFile.h">
+      <Filter>Source\Private\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\ResampleProcessor.h">
+      <Filter>Source\Private\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\SessionDescriptorImpl.h">
+      <Filter>Source\Private\Sessions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\SessionImpl.h">
+      <Filter>Source\Private\Sessions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\SessionManagerImpl.h">
+      <Filter>Source\Private\Sessions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\SessionMessageRouter.h">
+      <Filter>Source\Private\Sessions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\JoinSessionReply.h">
+      <Filter>Source\Private\Sessions\Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\JoinSessionRequest.h">
+      <Filter>Source\Private\Sessions\Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\ListSessionsReply.h">
+      <Filter>Source\Private\Sessions\Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\ListSessionsRequest.h">
+      <Filter>Source\Private\Sessions\Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\NewSessionReply.h">
+      <Filter>Source\Private\Sessions\Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\NewSessionRequest.h">
+      <Filter>Source\Private\Sessions\Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\SessionAddedMsg.h">
+      <Filter>Source\Private\Sessions\Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\SessionClosedMsg.h">
+      <Filter>Source\Private\Sessions\Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\UserChangedSessionMsg.h">
+      <Filter>Source\Private\Sessions\Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\UserJoinedSessionMsg.h">
+      <Filter>Source\Private\Sessions\Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\UserLeftSessionMsg.h">
+      <Filter>Source\Private\Sessions\Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\BasicTypes.h">
+      <Filter>Source\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\ClientConfig.h">
+      <Filter>Source\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\ClientContext.h">
+      <Filter>Source\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\CommonSettings.h">
+      <Filter>Source\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\Environment.h">
+      <Filter>Source\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\Reflection.h">
+      <Filter>Source\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\Session.h">
+      <Filter>Source\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\SessionListener.h">
+      <Filter>Source\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\User.h">
+      <Filter>Source\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\XToolsMessageTypes.h">
+      <Filter>Source\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\XToolsTypes.h">
+      <Filter>Source\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\XToolsVersion.h">
+      <Filter>Source\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\Utils\AtomicRefCounted.h">
+      <Filter>Source\Public\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\Utils\Callback.h">
+      <Filter>Source\Public\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\Utils\Callback2.h">
+      <Filter>Source\Public\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\Utils\Callback3.h">
+      <Filter>Source\Public\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\Utils\ClassThreadRunner.h">
+      <Filter>Source\Public\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\Utils\Event.h">
+      <Filter>Source\Public\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\Utils\GetPointer.h">
+      <Filter>Source\Public\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\Utils\Hash.h">
+      <Filter>Source\Public\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\Utils\IUpdateable.h">
+      <Filter>Source\Public\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\Utils\ListenerList.h">
+      <Filter>Source\Public\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\Utils\Log.h">
+      <Filter>Source\Public\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\Utils\Logger.h">
+      <Filter>Source\Public\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\Utils\MemoryManager.h">
+      <Filter>Source\Public\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\Utils\Mutex.h">
+      <Filter>Source\Public\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\Utils\NotifyList.h">
+      <Filter>Source\Public\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\Utils\PlatformUtils.h">
+      <Filter>Source\Public\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\Utils\Receipt.h">
+      <Filter>Source\Public\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\Utils\RefCounted.h">
+      <Filter>Source\Public\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\Utils\RefPtr.h">
+      <Filter>Source\Public\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\Utils\RefPtrProxy.h">
+      <Filter>Source\Public\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\Utils\RefPtrTS.h">
+      <Filter>Source\Public\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\Utils\StringUtils.h">
+      <Filter>Source\Public\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\Utils\XThread.h">
+      <Filter>Source\Public\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\HandshakeLogic.h">
+      <Filter>Source\Public\Networking</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\IncomingXSocketListener.h">
+      <Filter>Source\Public\Networking</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\IPAddress.h">
+      <Filter>Source\Public\Networking</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\NetworkConnection.h">
+      <Filter>Source\Public\Networking</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\NetworkConnectionListener.h">
+      <Filter>Source\Public\Networking</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\NetworkHandshake.h">
+      <Filter>Source\Public\Networking</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\NetworkInMessage.h">
+      <Filter>Source\Public\Networking</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\NetworkOutMessage.h">
+      <Filter>Source\Public\Networking</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\XSocket.h">
+      <Filter>Source\Public\Networking</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\XSocketListener.h">
+      <Filter>Source\Public\Networking</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\XSocketManager.h">
+      <Filter>Source\Public\Networking</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\PairingHandshakeLogic.h">
+      <Filter>Source\Public\Networking\HandshakeLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\SessionHandshakeLogic.h">
+      <Filter>Source\Public\Networking\HandshakeLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\SessionListHandshakeLogic.h">
+      <Filter>Source\Public\Networking\HandshakeLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\DiscoveredSystem.h">
+      <Filter>Source\Public\Networking\Discovery</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\DiscoveryClient.h">
+      <Filter>Source\Public\Networking\Discovery</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\DiscoveryServer.h">
+      <Filter>Source\Public\Networking\Discovery</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\SideCar.h">
+      <Filter>Source\Public\SideCar</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\SideCarContext.h">
+      <Filter>Source\Public\SideCar</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\SideCarFunctions.h">
+      <Filter>Source\Public\SideCar</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\SideCarMacros.h">
+      <Filter>Source\Public\SideCar</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\AuthorityLevel.h">
+      <Filter>Source\Public\Sync</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\SyncListener.h">
+      <Filter>Source\Public\Sync</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\SyncManager.h">
+      <Filter>Source\Public\Sync</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\XGuid.h">
+      <Filter>Source\Public\Sync</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\XString.h">
+      <Filter>Source\Public\Sync</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\XValue.h">
+      <Filter>Source\Public\Sync</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\Element.h">
+      <Filter>Source\Public\Sync\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\FloatElement.h">
+      <Filter>Source\Public\Sync\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\IntElement.h">
+      <Filter>Source\Public\Sync\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\ObjectElement.h">
+      <Filter>Source\Public\Sync\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\ObjectElementListener.h">
+      <Filter>Source\Public\Sync\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\StringElement.h">
+      <Filter>Source\Public\Sync\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\Profile.h">
+      <Filter>Source\Public\Profiling</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\ProfileManager.h">
+      <Filter>Source\Public\Profiling</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\ScopedProfile.h">
+      <Filter>Source\Public\Profiling</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\AudioManager.h">
+      <Filter>Source\Public\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\AudioSessionProcessor.h">
+      <Filter>Source\Public\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\Syncable.h">
+      <Filter>Source\Private\Sync\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\SyncEnum.h">
+      <Filter>Source\Private\Sync\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\SyncObject.h">
+      <Filter>Source\Private\Sync\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\SyncPrimitives.h">
+      <Filter>Source\Private\Sync\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\DoubleElementImpl.h">
+      <Filter>Source\Private\Sync\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\LongElementImpl.h">
+      <Filter>Source\Private\Sync\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\AnchorDownloadRequestImpl.h">
+      <Filter>Source\Private\Rooms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\RoomImpl.h">
+      <Filter>Source\Private\Rooms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\RoomManagerImpl.h">
+      <Filter>Source\Private\Rooms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\RoomUserList.h">
+      <Filter>Source\Private\Rooms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\AnchorDownloadRequest.h">
+      <Filter>Source\Public\Rooms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\Room.h">
+      <Filter>Source\Public\Rooms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\RoomManager.h">
+      <Filter>Source\Public\Rooms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\RoomManagerListener.h">
+      <Filter>Source\Public\Rooms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\DoubleElement.h">
+      <Filter>Source\Public\Sync\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\LongElement.h">
+      <Filter>Source\Public\Sync\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\IntArrayElementImpl.h">
+      <Filter>Source\Private\Sync\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\ArrayElement.h">
+      <Filter>Source\Private\Sync\Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\InsertOperation.h">
+      <Filter>Source\Private\Sync\Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\RemoveOperation.h">
+      <Filter>Source\Private\Sync\Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\UpdateOperation.h">
+      <Filter>Source\Private\Sync\Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\ArrayTransforms.h">
+      <Filter>Source\Private\Sync\Transforms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\InverseTransform.h">
+      <Filter>Source\Private\Sync\Transforms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\IntArrayElement.h">
+      <Filter>Source\Public\Sync\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\IntArrayListener.h">
+      <Filter>Source\Public\Sync\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\IntArrayAdapter.h">
+      <Filter>Source\Private\Sync\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\SyncArray.h">
+      <Filter>Source\Private\Sync\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\AnchorList.h">
+      <Filter>Source\Private\Rooms</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <RakNetSymbols Include="..\..\External\RakNet-4.081\lib\*.pdb" />
+  </ItemGroup>
+</Project>

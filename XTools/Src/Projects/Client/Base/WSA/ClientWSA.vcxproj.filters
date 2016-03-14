@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Precompiled Header">
+      <UniqueIdentifier>{66771d77-e148-410a-b8d3-934ddc53c737}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Private">
+      <UniqueIdentifier>{d727a584-b3a8-4fe6-8b39-3538ea3632fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Public">
+      <UniqueIdentifier>{686b2394-d91f-4674-a6fb-169aab0064c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Private\Pairing">
+      <UniqueIdentifier>{62a28357-4317-4e1c-8d2b-b884bfda5c00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Private\Pairing\PairMakers">
+      <UniqueIdentifier>{cf7792ab-65eb-4304-a7a5-8c3a5bf5d826}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Private\Pairing\PairMakers\Direct">
+      <UniqueIdentifier>{12918337-e205-4a41-9f77-1eb56eda019b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Private\Pairing\PairMakers\Visual">
+      <UniqueIdentifier>{18621a34-71b2-416f-adcb-657234046b5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Public\Pairing">
+      <UniqueIdentifier>{ce0661d3-83d5-42bf-a705-25f412cc73b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Public\Pairing\PairMakers">
+      <UniqueIdentifier>{953d650b-e1d0-4135-8c59-1d39760c3c18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Public\Pairing\PairMakers\Direct">
+      <UniqueIdentifier>{64291587-b29e-4b4a-8be0-9fbe680c79a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Public\Pairing\PairMakers\Visual">
+      <UniqueIdentifier>{7e37e609-3e00-430c-a330-fd3f0c9ce72a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Public\ImageTagProcessing">
+      <UniqueIdentifier>{42514bb3-8ef0-4d00-850f-b4bc9bcc14aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Private\ImageTagProcessing">
+      <UniqueIdentifier>{d2b08df6-588e-4c42-8c35-4a33a9dcb6f5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\Source\Client\stdafx.h">
+      <Filter>Precompiled Header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Client\DynamicLibrary.h">
+      <Filter>Private</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Client\SideCarContextImpl.h">
+      <Filter>Private</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Client\ClientWrapperAPI.h">
+      <Filter>Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Client\Settings.h">
+      <Filter>Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Client\XToolsManager.h">
+      <Filter>Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Client\PairingInfo.h">
+      <Filter>Private\Pairing</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Client\PairingManagerImpl.h">
+      <Filter>Private\Pairing</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Client\ZXingIncludes.h">
+      <Filter>Private\Pairing\PairMakers\Visual</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Client\VisualPairConnectorImpl.h">
+      <Filter>Private\Pairing\PairMakers\Visual</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Client\PairingListener.h">
+      <Filter>Public\Pairing</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Client\PairingManager.h">
+      <Filter>Public\Pairing</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Client\PairMaker.h">
+      <Filter>Public\Pairing</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Client\DirectPairConnector.h">
+      <Filter>Public\Pairing\PairMakers\Direct</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Client\DirectPairReceiver.h">
+      <Filter>Public\Pairing\PairMakers\Direct</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Client\VisualPairConnector.h">
+      <Filter>Public\Pairing\PairMakers\Visual</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Client\VisualPairReceiver.h">
+      <Filter>Public\Pairing\PairMakers\Visual</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Client\ImageData.h">
+      <Filter>Private\Pairing\PairMakers\Visual</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Client\ImageLuminanceSource.h">
+      <Filter>Private\Pairing\PairMakers\Visual</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Client\VisualPairReceiverImpl.h">
+      <Filter>Private\Pairing\PairMakers\Visual</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Client\TagImage.h">
+      <Filter>Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Client\TagImageImpl.h">
+      <Filter>Private</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Client\PairingResult.h">
+      <Filter>Public\Pairing</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Client\XToolsManagerImpl.h">
+      <Filter>Private</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Client\ImageTagLocation.h">
+      <Filter>Public\ImageTagProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Client\ImageTagManager.h">
+      <Filter>Public\ImageTagProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Client\ImageTagLocationImpl.h">
+      <Filter>Private\ImageTagProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Client\ImageTagLocator.h">
+      <Filter>Private\ImageTagProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Client\ImageTagManagerImpl.h">
+      <Filter>Private\ImageTagProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Client\ImageTagLocationListener.h">
+      <Filter>Public\ImageTagProcessing</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\Source\Client\stdafx.cpp">
+      <Filter>Precompiled Header</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Client\DynamicLibrary.cpp">
+      <Filter>Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Client\Settings.cpp">
+      <Filter>Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Client\SideCarContextImpl.cpp">
+      <Filter>Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Client\PairingManagerImpl.cpp">
+      <Filter>Private\Pairing</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Client\DirectPairConnector.cpp">
+      <Filter>Private\Pairing\PairMakers\Direct</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Client\DirectPairReceiver.cpp">
+      <Filter>Private\Pairing\PairMakers\Direct</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Client\VisualPairConnectorImpl.cpp">
+      <Filter>Private\Pairing\PairMakers\Visual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Client\ImageData.cpp">
+      <Filter>Private\Pairing\PairMakers\Visual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Client\ImageLuminanceSource.cpp">
+      <Filter>Private\Pairing\PairMakers\Visual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Client\VisualPairReceiverImpl.cpp">
+      <Filter>Private\Pairing\PairMakers\Visual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Client\TagImageImpl.cpp">
+      <Filter>Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Client\PairingInfo.cpp">
+      <Filter>Private\Pairing</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Client\XToolsManagerImpl.cpp">
+      <Filter>Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Client\ImageTagLocationImpl.cpp">
+      <Filter>Private\ImageTagProcessing</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Client\ImageTagLocator.cpp">
+      <Filter>Private\ImageTagProcessing</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Client\ImageTagManagerImpl.cpp">
+      <Filter>Private\ImageTagProcessing</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,47 @@
+﻿<Window x:Class="ProfilerX.AddAppDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="AddAppDialog" Height="226" Width="699">
+    <Grid Margin="10,0,10,10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="100"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0" Margin="0,0,10,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <GroupBox Header="Address" Grid.Row="0" Grid.Column="0">
+                <TextBox x:Name="addressBox"></TextBox>
+            </GroupBox>
+            <StackPanel Margin="10,15,10,5" Grid.Row="0" Grid.Column="1">
+                <ComboBox x:Name="roleComboBox">
+                    <ComboBoxItem>SessionDiscoveryServerRole</ComboBoxItem>
+                    <ComboBoxItem>SessionServerRole</ComboBoxItem>
+                    <ComboBoxItem IsSelected="True">PrimaryClientRole</ComboBoxItem>
+                    <ComboBoxItem>SecondaryClientRole</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+            <GroupBox Header="XTools Apps" Grid.Row="1" Grid.ColumnSpan="2">
+                <ListBox x:Name="remoteClientList" TabIndex="1" IsSynchronizedWithCurrentItem="True" SelectionChanged="remoteClientList_SelectionChanged" >
+                </ListBox>
+            </GroupBox>
+        </Grid>
+        
+
+        <!-- Accept or Cancel -->
+        <StackPanel Grid.Column="1" VerticalAlignment="Top" Margin="0,10,0,0">
+            <Button Height="25" Click="OKButton_Clicked" IsDefault="True" TabIndex="2" Content="Add"/>
+            <Separator Height="10" Background="{x:Null}" />
+            <Button Height="25" Click="CancelButton_Clicked" IsCancel="True" TabIndex="3">Cancel</Button>
+        </StackPanel>
+    </Grid>
+</Window>

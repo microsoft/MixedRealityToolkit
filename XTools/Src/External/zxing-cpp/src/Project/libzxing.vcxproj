@@ -1,0 +1,463 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGUID>{F17D3705-CDE3-4EAB-8BE4-EC0F86B8CF67}</ProjectGUID>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>Win32</Platform>
+    <ProjectName>libzxing</ProjectName>
+    <SccProjectName>SAK</SccProjectName>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccProvider>SAK</SccProvider>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\build\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\tmp\$(Configuration)\$(PlatformName)\$(ProjectName)\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionName)_WinDesktop_$(PlatformTarget)_$(Configuration)</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionName)_WinDesktop_$(PlatformTarget)_$(Configuration)</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.lib</TargetExt>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\build\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\tmp\$(Configuration)\$(PlatformName)\$(ProjectName)\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionName)_WinDesktop_$(PlatformTarget)_$(Configuration)</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionName)_WinDesktop_$(PlatformTarget)_$(Configuration)</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.lib</TargetExt>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>..\build\</OutDir>
+    <IntDir>..\tmp\$(Configuration)\$(PlatformName)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>..\build\</OutDir>
+    <IntDir>..\tmp\$(Configuration)\$(PlatformName)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\core\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_CRT_SECURE_NO_WARNINGS;NO_ICONV=1;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_CRT_SECURE_NO_WARNINGS;NO_ICONV=1;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\.\core\lib\win32;E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\.\core\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\.\core\lib\win32;E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\.\core\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\core\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_CRT_SECURE_NO_WARNINGS;NO_ICONV=1;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <DisableSpecificWarnings>4267</DisableSpecificWarnings>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_CRT_SECURE_NO_WARNINGS;NO_ICONV=1;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\.\core\lib\win32;E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\.\core\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\.\core\lib\win32;E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\.\core\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\core\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;NO_ICONV=1;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;NO_ICONV=1;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\.\core\lib\win32;E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\.\core\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\.\core\lib\win32;E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\.\core\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\core\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;NO_ICONV=1;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <DisableSpecificWarnings>4267</DisableSpecificWarnings>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;NO_ICONV=1;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\.\core\lib\win32;E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\.\core\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\.\core\lib\win32;E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\.\core\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\win32\zxing\iconv.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\win32\zxing\stdint.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\aztec\AztecDetectorResult.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\aztec\AztecReader.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\aztec\decoder\Decoder.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\aztec\detector\Detector.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\BarcodeFormat.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\Binarizer.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\BinaryBitmap.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\ChecksumException.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\Array.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\BitArray.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\BitMatrix.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\BitSource.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\CharacterSetECI.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\Counted.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\DecoderResult.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\detector\JavaMath.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\detector\MathUtils.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\detector\MonochromeRectangleDetector.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\detector\WhiteRectangleDetector.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\DetectorResult.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\GlobalHistogramBinarizer.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\GreyscaleLuminanceSource.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\GreyscaleRotatedLuminanceSource.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\GridSampler.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\HybridBinarizer.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\IllegalArgumentException.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\PerspectiveTransform.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\Point.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\reedsolomon\GenericGF.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\reedsolomon\GenericGFPoly.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\reedsolomon\ReedSolomonDecoder.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\reedsolomon\ReedSolomonException.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\Str.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\StringUtils.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\datamatrix\DataMatrixReader.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\datamatrix\decoder\BitMatrixParser.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\datamatrix\decoder\DataBlock.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\datamatrix\decoder\DecodedBitStreamParser.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\datamatrix\decoder\Decoder.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\datamatrix\detector\CornerPoint.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\datamatrix\detector\Detector.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\datamatrix\detector\DetectorException.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\datamatrix\Version.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\DecodeHints.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\Exception.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\FormatException.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\IllegalStateException.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\InvertedLuminanceSource.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\LuminanceSource.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\multi\ByQuadrantReader.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\multi\GenericMultipleBarcodeReader.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\multi\MultipleBarcodeReader.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\multi\qrcode\detector\MultiDetector.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\multi\qrcode\detector\MultiFinderPatternFinder.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\multi\qrcode\QRCodeMultiReader.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\MultiFormatReader.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\NotFoundException.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\CodaBarReader.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\Code128Reader.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\Code39Reader.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\Code93Reader.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\EAN13Reader.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\EAN8Reader.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\ITFReader.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\MultiFormatOneDReader.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\MultiFormatUPCEANReader.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\OneDReader.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\OneDResultPoint.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\UPCAReader.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\UPCEANReader.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\UPCEReader.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\pdf417\decoder\BitMatrixParser.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\pdf417\decoder\DecodedBitStreamParser.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\pdf417\decoder\Decoder.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\pdf417\decoder\ec\ErrorCorrection.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\pdf417\decoder\ec\ModulusGF.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\pdf417\decoder\ec\ModulusPoly.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\pdf417\detector\Detector.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\pdf417\detector\LinesSampler.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\pdf417\PDF417Reader.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\decoder\BitMatrixParser.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\decoder\DataBlock.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\decoder\DataMask.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\decoder\DecodedBitStreamParser.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\decoder\Decoder.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\decoder\Mode.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\detector\AlignmentPattern.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\detector\AlignmentPatternFinder.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\detector\Detector.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\detector\FinderPattern.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\detector\FinderPatternFinder.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\detector\FinderPatternInfo.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\ErrorCorrectionLevel.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\FormatInformation.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\QRCodeReader.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\Version.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\Reader.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\ReaderException.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\Result.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\ResultPoint.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\ResultPointCallback.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\ZXing.h" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\bigint\BigInteger.hh" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\bigint\BigIntegerAlgorithms.hh" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\bigint\BigIntegerLibrary.hh" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\bigint\BigIntegerUtils.hh" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\bigint\BigUnsigned.hh" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\bigint\BigUnsignedInABase.hh" />
+    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\bigint\NumberlikeArray.hh" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\aztec\AztecDetectorResult.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\aztec\AztecReader.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\aztec\decoder\Decoder.cpp">
+      <ObjectFileName>$(IntDir)/core/src/zxing/aztec/decoder/Decoder.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\aztec\detector\Detector.cpp">
+      <ObjectFileName>$(IntDir)/core/src/zxing/aztec/detector/Detector.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\BarcodeFormat.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\Binarizer.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\BinaryBitmap.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\ChecksumException.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\BitArray.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\BitArrayIO.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\BitMatrix.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\BitSource.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\CharacterSetECI.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\DecoderResult.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\detector\MonochromeRectangleDetector.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\detector\WhiteRectangleDetector.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\DetectorResult.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\GlobalHistogramBinarizer.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\GreyscaleLuminanceSource.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\GreyscaleRotatedLuminanceSource.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\GridSampler.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\HybridBinarizer.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\IllegalArgumentException.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\PerspectiveTransform.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\reedsolomon\GenericGF.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\reedsolomon\GenericGFPoly.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\reedsolomon\ReedSolomonDecoder.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\reedsolomon\ReedSolomonException.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\Str.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\StringUtils.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\datamatrix\DataMatrixReader.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\datamatrix\decoder\BitMatrixParser.cpp">
+      <ObjectFileName>$(IntDir)/core/src/zxing/datamatrix/decoder/BitMatrixParser.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\datamatrix\decoder\DataBlock.cpp">
+      <ObjectFileName>$(IntDir)/core/src/zxing/datamatrix/decoder/DataBlock.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\datamatrix\decoder\DecodedBitStreamParser.cpp">
+      <ObjectFileName>$(IntDir)/core/src/zxing/datamatrix/decoder/DecodedBitStreamParser.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\datamatrix\decoder\Decoder.cpp">
+      <ObjectFileName>$(IntDir)/core/src/zxing/datamatrix/decoder/Decoder.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\datamatrix\detector\CornerPoint.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\datamatrix\detector\Detector.cpp">
+      <ObjectFileName>$(IntDir)/core/src/zxing/datamatrix/detector/Detector.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\datamatrix\detector\DetectorException.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\datamatrix\Version.cpp">
+      <ObjectFileName>$(IntDir)/core/src/zxing/datamatrix/Version.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\DecodeHints.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\Exception.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\FormatException.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\InvertedLuminanceSource.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\LuminanceSource.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\multi\ByQuadrantReader.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\multi\GenericMultipleBarcodeReader.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\multi\MultipleBarcodeReader.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\multi\qrcode\detector\MultiDetector.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\multi\qrcode\detector\MultiFinderPatternFinder.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\multi\qrcode\QRCodeMultiReader.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\MultiFormatReader.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\CodaBarReader.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\Code128Reader.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\Code39Reader.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\Code93Reader.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\EAN13Reader.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\EAN8Reader.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\ITFReader.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\MultiFormatOneDReader.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\MultiFormatUPCEANReader.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\OneDReader.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\OneDResultPoint.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\UPCAReader.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\UPCEANReader.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\UPCEReader.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\pdf417\decoder\BitMatrixParser.cpp">
+      <ObjectFileName>$(IntDir)/core/src/zxing/pdf417/decoder/BitMatrixParser.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\pdf417\decoder\DecodedBitStreamParser.cpp">
+      <ObjectFileName>$(IntDir)/core/src/zxing/pdf417/decoder/DecodedBitStreamParser.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\pdf417\decoder\Decoder.cpp">
+      <ObjectFileName>$(IntDir)/core/src/zxing/pdf417/decoder/Decoder.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\pdf417\decoder\ec\ErrorCorrection.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\pdf417\decoder\ec\ModulusGF.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\pdf417\decoder\ec\ModulusPoly.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\pdf417\detector\Detector.cpp">
+      <ObjectFileName>$(IntDir)/core/src/zxing/pdf417/detector/Detector.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\pdf417\detector\LinesSampler.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\pdf417\PDF417Reader.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\decoder\BitMatrixParser.cpp">
+      <ObjectFileName>$(IntDir)/core/src/zxing/qrcode/decoder/BitMatrixParser.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\decoder\DataBlock.cpp">
+      <ObjectFileName>$(IntDir)/core/src/zxing/qrcode/decoder/DataBlock.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\decoder\DataMask.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\decoder\DecodedBitStreamParser.cpp">
+      <ObjectFileName>$(IntDir)/core/src/zxing/qrcode/decoder/DecodedBitStreamParser.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\decoder\Decoder.cpp">
+      <ObjectFileName>$(IntDir)/core/src/zxing/qrcode/decoder/Decoder.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\decoder\Mode.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\detector\AlignmentPattern.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\detector\AlignmentPatternFinder.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\detector\Detector.cpp">
+      <ObjectFileName>$(IntDir)/core/src/zxing/qrcode/detector/Detector.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\detector\FinderPattern.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\detector\FinderPatternFinder.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\detector\FinderPatternInfo.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\ErrorCorrectionLevel.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\FormatInformation.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\QRCodeReader.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\Version.cpp">
+      <ObjectFileName>$(IntDir)/core/src/zxing/qrcode/Version.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\Reader.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\Result.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\ResultIO.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\ResultPoint.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\ResultPointCallback.cpp" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\bigint\BigInteger.cc" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\bigint\BigIntegerAlgorithms.cc" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\bigint\BigIntegerUtils.cc" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\bigint\BigUnsigned.cc" />
+    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\bigint\BigUnsignedInABase.cc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

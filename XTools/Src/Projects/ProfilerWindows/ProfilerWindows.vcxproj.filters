@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Precompiled Headers">
+      <UniqueIdentifier>{0ed61b94-4e59-49ba-8207-106854e8de6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Public">
+      <UniqueIdentifier>{8dbf6fe6-b1d6-491e-b22b-b3baa9ef5a18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Private">
+      <UniqueIdentifier>{40b3b5e9-e2e5-454b-9e7e-39c0480ada34}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Source\Profiler\stdafx.cpp">
+      <Filter>Precompiled Headers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Profiler\ProfilerStreamImpl.cpp">
+      <Filter>Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Profiler\ProfileSample.cpp">
+      <Filter>Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Profiler\ProfileThread.cpp">
+      <Filter>Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Profiler\ProfileFrame.cpp">
+      <Filter>Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Profiler\ProfilerStreamManagerImpl.cpp">
+      <Filter>Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Profiler\LogMessageImpl.cpp">
+      <Filter>Private</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Source\Profiler\stdafx.h">
+      <Filter>Precompiled Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Profiler\ProfilerAPI.h" />
+    <ClInclude Include="..\..\Source\Profiler\ProfilerStream.h">
+      <Filter>Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Profiler\ProfilerStreamImpl.h">
+      <Filter>Private</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Profiler\ProfilerStreamListener.h">
+      <Filter>Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Profiler\ProfileFrame.h">
+      <Filter>Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Profiler\ProfileSample.h">
+      <Filter>Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Profiler\ProfileThread.h">
+      <Filter>Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Profiler\ProfilerStreamManager.h">
+      <Filter>Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Profiler\ProfilerStreamManagerImpl.h">
+      <Filter>Private</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Profiler\LogMessage.h">
+      <Filter>Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Profiler\LogMessageImpl.h">
+      <Filter>Private</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

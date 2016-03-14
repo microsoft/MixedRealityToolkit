@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LibStatic", "Lib\LibStatic\LibStatic_vc9.vcxproj", "{6533BDAE-0F0C-45E4-8FE7-ADD0F37FE063}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LibStaticWinUniversal", "Lib\LibStatic\LibStaticWinUniversal.vcxproj", "{FF874139-5B8E-4855-B759-1E3FEE2E8645}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ARM = Debug|ARM
+		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
+		Release|ARM = Release|ARM
+		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6533BDAE-0F0C-45E4-8FE7-ADD0F37FE063}.Debug|ARM.ActiveCfg = Debug|Win32
+		{6533BDAE-0F0C-45E4-8FE7-ADD0F37FE063}.Debug|Win32.ActiveCfg = Debug|Win32
+		{6533BDAE-0F0C-45E4-8FE7-ADD0F37FE063}.Debug|Win32.Build.0 = Debug|Win32
+		{6533BDAE-0F0C-45E4-8FE7-ADD0F37FE063}.Debug|x64.ActiveCfg = Debug|x64
+		{6533BDAE-0F0C-45E4-8FE7-ADD0F37FE063}.Debug|x64.Build.0 = Debug|x64
+		{6533BDAE-0F0C-45E4-8FE7-ADD0F37FE063}.Release|ARM.ActiveCfg = Release|Win32
+		{6533BDAE-0F0C-45E4-8FE7-ADD0F37FE063}.Release|Win32.ActiveCfg = Release|Win32
+		{6533BDAE-0F0C-45E4-8FE7-ADD0F37FE063}.Release|Win32.Build.0 = Release|Win32
+		{6533BDAE-0F0C-45E4-8FE7-ADD0F37FE063}.Release|x64.ActiveCfg = Release|x64
+		{6533BDAE-0F0C-45E4-8FE7-ADD0F37FE063}.Release|x64.Build.0 = Release|x64
+		{FF874139-5B8E-4855-B759-1E3FEE2E8645}.Debug|ARM.ActiveCfg = Debug|ARM
+		{FF874139-5B8E-4855-B759-1E3FEE2E8645}.Debug|ARM.Build.0 = Debug|ARM
+		{FF874139-5B8E-4855-B759-1E3FEE2E8645}.Debug|Win32.ActiveCfg = Debug|Win32
+		{FF874139-5B8E-4855-B759-1E3FEE2E8645}.Debug|Win32.Build.0 = Debug|Win32
+		{FF874139-5B8E-4855-B759-1E3FEE2E8645}.Debug|x64.ActiveCfg = Debug|x64
+		{FF874139-5B8E-4855-B759-1E3FEE2E8645}.Debug|x64.Build.0 = Debug|x64
+		{FF874139-5B8E-4855-B759-1E3FEE2E8645}.Release|ARM.ActiveCfg = Release|ARM
+		{FF874139-5B8E-4855-B759-1E3FEE2E8645}.Release|ARM.Build.0 = Release|ARM
+		{FF874139-5B8E-4855-B759-1E3FEE2E8645}.Release|Win32.ActiveCfg = Release|Win32
+		{FF874139-5B8E-4855-B759-1E3FEE2E8645}.Release|Win32.Build.0 = Release|Win32
+		{FF874139-5B8E-4855-B759-1E3FEE2E8645}.Release|x64.ActiveCfg = Release|x64
+		{FF874139-5B8E-4855-B759-1E3FEE2E8645}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://vstfpn.partners.extranet.microsoft.com:8443/tfs/platformnext
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Lib\\LibStatic\\LibStatic_vc9.vcxproj
+		SccProjectName1 = Lib/LibStatic
+		SccLocalPath1 = Lib\\LibStatic
+		SccProjectUniqueName2 = Lib\\LibStatic\\LibStaticWinUniversal.vcxproj
+		SccProjectName2 = Lib/LibStatic
+		SccLocalPath2 = Lib\\LibStatic
+	EndGlobalSection
+EndGlobal

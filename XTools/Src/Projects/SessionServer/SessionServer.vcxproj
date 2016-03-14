@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\XTools.props" />
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{96763B5E-8C36-463A-9C17-45748794E68D}</ProjectGuid>
+    <SccProjectName>SAK</SccProjectName>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccProvider>SAK</SccProvider>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>SessionServer</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.10240.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(BaseOutputPath)SharingService\</OutDir>
+    <IntDir>$(BaseIntermediateOutputPath)$(Configuration)\$(Platform)\SharingService\</IntDir>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);../../External/speex-1.2rc1/include</IncludePath>
+    <LibraryPath>..\..\External\speex-1.2rc1\lib;$(LibraryPath)</LibraryPath>
+    <TargetName>SharingService</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(BaseOutputPath)SharingService\</OutDir>
+    <IntDir>$(BaseIntermediateOutputPath)$(Configuration)\$(Platform)\SharingService\</IntDir>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);../../External/speex-1.2rc1/include</IncludePath>
+    <LibraryPath>..\..\External\speex-1.2rc1\lib;$(LibraryPath)</LibraryPath>
+    <TargetName>SharingService</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>..\..\Source\Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <BrowseInformation>true</BrowseInformation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>DbgHelp.lib;ws2_32.lib;wldap32.lib;libspeex_libstatic_$(Configuration)_$(Platform).lib;libspeexdsp_libstatic_$(Configuration)_$(Platform).lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>/ignore:4099 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalLibraryDirectories>..\..\External\speex-1.2rc1\lib</AdditionalLibraryDirectories>
+    </Link>
+    <ResourceCompile>
+      <PreprocessorDefinitions>MSTEST;WIN64;_UNICODE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Bscmake>
+      <PreserveSbr>true</PreserveSbr>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>..\..\Source\Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>DbgHelp.lib;ws2_32.lib;wldap32.lib;libspeex_libstatic_$(Configuration)_$(Platform).lib;libspeexdsp_libstatic_$(Configuration)_$(Platform).lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>/ignore:4099 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalLibraryDirectories>..\..\External\speex-1.2rc1\lib</AdditionalLibraryDirectories>
+    </Link>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN64;_UNICODE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\Source\SessionServer\SessionServer.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Source\SessionServer\AudioSessionProcessorServer.cpp" />
+    <ClCompile Include="..\..\Source\SessionServer\AudioRouterWithMixer.cpp" />
+    <ClCompile Include="..\..\Source\SessionServer\BroadcastForwarder.cpp" />
+    <ClCompile Include="..\..\Source\SessionServer\Main.cpp" />
+    <ClCompile Include="..\..\Source\SessionServer\PortPool.cpp" />
+    <ClCompile Include="..\..\Source\SessionServer\SendToForwarder.cpp" />
+    <ClCompile Include="..\..\Source\SessionServer\ServerAnchorList.cpp" />
+    <ClCompile Include="..\..\Source\SessionServer\ServerRoom.cpp" />
+    <ClCompile Include="..\..\Source\SessionServer\ServerRoomManager.cpp" />
+    <ClCompile Include="..\..\Source\SessionServer\ServiceBase.cpp" />
+    <ClCompile Include="..\..\Source\SessionServer\ServiceInstaller.cpp" />
+    <ClCompile Include="..\..\Source\SessionServer\SessionServer.cpp" />
+    <ClCompile Include="..\..\Source\SessionServer\stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\SessionServer\XSessionImpl.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Source\SessionServer\AudioConnectionTypes.h" />
+    <ClInclude Include="..\..\Source\SessionServer\AudioSessionProcessorServer.h" />
+    <ClInclude Include="..\..\Source\SessionServer\AudioRouterWithMixer.h" />
+    <ClInclude Include="..\..\Source\SessionServer\BroadcastForwarder.h" />
+    <ClInclude Include="..\..\Source\SessionServer\PortPool.h" />
+    <ClInclude Include="..\..\Source\SessionServer\resource.h" />
+    <ClInclude Include="..\..\Source\SessionServer\SendToForwarder.h" />
+    <ClInclude Include="..\..\Source\SessionServer\ServerAnchorList.h" />
+    <ClInclude Include="..\..\Source\SessionServer\ServerRoom.h" />
+    <ClInclude Include="..\..\Source\SessionServer\ServerRoomManager.h" />
+    <ClInclude Include="..\..\Source\SessionServer\ServiceBase.h" />
+    <ClInclude Include="..\..\Source\SessionServer\ServiceInstaller.h" />
+    <ClInclude Include="..\..\Source\SessionServer\SessionChangeCallback.h" />
+    <ClInclude Include="..\..\Source\SessionServer\SessionServer.h" />
+    <ClInclude Include="..\..\Source\SessionServer\stdafx.h" />
+    <ClInclude Include="..\..\Source\SessionServer\XSession.h" />
+    <ClInclude Include="..\..\Source\SessionServer\XSessionImpl.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CommonDesktop\CommonDesktop.vcxproj">
+      <Project>{58299519-1341-48ce-a3c4-e76a1531ffbf}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="..\XTools.targets" />
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

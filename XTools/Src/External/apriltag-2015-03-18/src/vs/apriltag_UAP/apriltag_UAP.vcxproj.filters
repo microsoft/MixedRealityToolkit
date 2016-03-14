@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tga;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Common">
+      <UniqueIdentifier>{1bfe04c8-cd76-40a2-b4cc-fb4cea6e00ac}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\common\getopt.c">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\homography.c">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\image_f32.c">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\image_u8.c">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\image_u32.c">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\matd.c">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\pnm.c">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\string_util.c">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\svd22.c">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\threading.c">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\time_util.c">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\timeprofile.c">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\unionfind.c">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\workerpool.c">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\zarray.c">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\zhash.c">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\zmaxheap.c">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\apriltag.c" />
+    <ClCompile Include="..\..\apriltag_quad_thresh.c" />
+    <ClCompile Include="..\..\g2d.c" />
+    <ClCompile Include="..\..\tag16h5.c" />
+    <ClCompile Include="..\..\tag25h7.c" />
+    <ClCompile Include="..\..\tag25h9.c" />
+    <ClCompile Include="..\..\tag36artoolkit.c" />
+    <ClCompile Include="..\..\tag36h10.c" />
+    <ClCompile Include="..\..\tag36h11.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\common\getopt.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\homography.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\image_f32.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\image_u8.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\image_u32.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\matd.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\math_util.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\pnm.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\postscript_utils.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\stackalloc.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\string_util.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\svd22.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\thash_impl.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\threading.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\time_util.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\timeprofile.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\unionfind.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\workerpool.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\zarray.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\zhash.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\zmaxheap.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\apriltag.h" />
+    <ClInclude Include="..\..\g2d.h" />
+    <ClInclude Include="..\..\tag16h5.h" />
+    <ClInclude Include="..\..\tag25h7.h" />
+    <ClInclude Include="..\..\tag25h9.h" />
+    <ClInclude Include="..\..\tag36artoolkit.h" />
+    <ClInclude Include="..\..\tag36h10.h" />
+    <ClInclude Include="..\..\tag36h11.h" />
+  </ItemGroup>
+</Project>
