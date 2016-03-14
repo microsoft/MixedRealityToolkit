@@ -5070,12 +5070,10 @@ SWIGEXPORT void JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_NetworkConnection_1RegisterAsyncCallback(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jbyte jarg2, jlong jarg3, jobject jarg3_) {
-  jboolean jresult = 0 ;
+SWIGEXPORT void JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_NetworkConnection_1AddListenerAsync(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jbyte jarg2, jlong jarg3, jobject jarg3_) {
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   XTools::byte arg2 ;
   XTools::NetworkConnectionListener *arg3 = (XTools::NetworkConnectionListener *) 0 ;
-  bool result;
   
   (void)jenv;
   (void)jcls;
@@ -5084,22 +5082,23 @@ SWIGEXPORT jboolean JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClient
   arg1 = *(XTools::NetworkConnection **)&jarg1; 
   arg2 = (XTools::byte)jarg2; 
   arg3 = *(XTools::NetworkConnectionListener **)&jarg3; 
-  result = (bool)(arg1)->RegisterAsyncCallback(arg2,arg3);
-  jresult = (jboolean)result; 
-  return jresult;
+  (arg1)->AddListenerAsync(arg2,arg3);
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_NetworkConnection_1UnregisterAsyncCallback(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jbyte jarg2) {
+SWIGEXPORT void JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_NetworkConnection_1RemoveListenerAsync(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jbyte jarg2, jlong jarg3, jobject jarg3_) {
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   XTools::byte arg2 ;
+  XTools::NetworkConnectionListener *arg3 = (XTools::NetworkConnectionListener *) 0 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
+  (void)jarg3_;
   arg1 = *(XTools::NetworkConnection **)&jarg1; 
   arg2 = (XTools::byte)jarg2; 
-  (arg1)->UnregisterAsyncCallback(arg2);
+  arg3 = *(XTools::NetworkConnectionListener **)&jarg3; 
+  (arg1)->RemoveListenerAsync(arg2,arg3);
 }
 
 

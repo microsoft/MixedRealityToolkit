@@ -20,11 +20,9 @@
 #include <Private/Utils/ScopedLock.h>
 #include <Private/Utils/TypeUtils.h>
 #include <Private/Peer.h>
-#include <Private/MessageInterceptor.h>
 #include <Private/XSocketImpl.h>
 #include <Private/XSocketManagerImpl.h>
 #include <Private/NetworkCommonPrivate.h>
-#include <Private/MessageInterceptor.h>
 #include <Private/NetworkConnectionImpl.h>
 #include <Private/Operation.h>
 #include <Private/AckOperation.h>

@@ -2809,29 +2809,27 @@ SWIGEXPORT void SWIGSTDCALL CSharp_NetworkConnection_RemoveListener(void * jarg1
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_NetworkConnection_RegisterAsyncCallback(void * jarg1, unsigned char jarg2, void * jarg3) {
-  unsigned int jresult ;
+SWIGEXPORT void SWIGSTDCALL CSharp_NetworkConnection_AddListenerAsync(void * jarg1, unsigned char jarg2, void * jarg3) {
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   XTools::byte arg2 ;
   XTools::NetworkConnectionListener *arg3 = (XTools::NetworkConnectionListener *) 0 ;
-  bool result;
   
   arg1 = (XTools::NetworkConnection *)jarg1; 
   arg2 = (XTools::byte)jarg2; 
   arg3 = (XTools::NetworkConnectionListener *)jarg3; 
-  result = (bool)(arg1)->RegisterAsyncCallback(arg2,arg3);
-  jresult = result; 
-  return jresult;
+  (arg1)->AddListenerAsync(arg2,arg3);
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_NetworkConnection_UnregisterAsyncCallback(void * jarg1, unsigned char jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_NetworkConnection_RemoveListenerAsync(void * jarg1, unsigned char jarg2, void * jarg3) {
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   XTools::byte arg2 ;
+  XTools::NetworkConnectionListener *arg3 = (XTools::NetworkConnectionListener *) 0 ;
   
   arg1 = (XTools::NetworkConnection *)jarg1; 
   arg2 = (XTools::byte)jarg2; 
-  (arg1)->UnregisterAsyncCallback(arg2);
+  arg3 = (XTools::NetworkConnectionListener *)jarg3; 
+  (arg1)->RemoveListenerAsync(arg2,arg3);
 }
 
 

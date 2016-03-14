@@ -34,36 +34,14 @@ XTOOLS_REFLECTION_DEFINE(XSocketImpl)
 std::atomic<SocketID> XSocketImpl::m_sCounter(0);
 
 
-XSocketImpl::XSocketImpl(const std::string& address, uint16 port)
+XSocketImpl::XSocketImpl(const RakNet::SystemAddress& sysAddress)
 	: m_id(++m_sCounter)
 	, m_listener(NULL)
-	, m_address(address.c_str(), port)
+	, m_address(sysAddress)
 	, m_raknetGuid(RakNet::UNASSIGNED_RAKNET_GUID)
 	, m_status(Connecting)	// Default status to connecting
 {
 
-}
-
-
-XSocketImpl::XSocketImpl(XSocketManagerImpl* manager, const PeerPtr& peer, const RakNet::SystemAddress& address, RakNet::RakNetGUID guid)
-	: m_id(++m_sCounter)
-	, m_peer(peer)
-	, m_listener(NULL)
-	, m_address(address)
-	, m_raknetGuid(RakNet::UNASSIGNED_RAKNET_GUID)
-	, m_status(Connecting)
-{
-	// XSockets are only created when:
-	// 1) The user asks to open a connection, or
-	// 2) A new connection is received
-	// RakNet does not properly handle pending connections, so set the status as connecting unless
-	// the RakNet status is connected
-
-	RakNet::ConnectionState peerState = m_peer->GetConnectionState(m_address);
-	if (peerState == RakNet::IS_CONNECTED)
-	{
-		m_status = Connected;
-	}
 }
 
 
@@ -123,10 +101,8 @@ std::string XSocketImpl::GetRemoteSystemName() const
 }
 
 
-bool XSocketImpl::OnReceiveMessage(const MessageConstPtr& msg)
+void XSocketImpl::OnReceiveMessage(const MessageConstPtr& msg)
 {
-	bool bConsumedPacket = false;
-
 	byte packetID = msg->GetMessageID();
 
 	// If this is a user's packet, forward it to them
@@ -135,7 +111,6 @@ bool XSocketImpl::OnReceiveMessage(const MessageConstPtr& msg)
 		if (m_listener)
 		{
 			m_listener->OnMessageReceived(this, msg->GetData(), msg->GetSize());
-			bConsumedPacket = true;
 		}
 		else
 		{
@@ -149,24 +124,20 @@ bool XSocketImpl::OnReceiveMessage(const MessageConstPtr& msg)
 		{
 		case ID_CONNECTION_REQUEST_ACCEPTED:
 			OnConnected();
-			bConsumedPacket = true;
 			break;
 
 		case ID_DISCONNECTION_NOTIFICATION:
 			OnLostConnection();
-			bConsumedPacket = true;
 			break;
 
 		case ID_CONNECTION_LOST:
 			OnLostConnection();
-			bConsumedPacket = true;
 			break;
 
 		case ID_CONNECTION_ATTEMPT_FAILED:
 		case ID_ALREADY_CONNECTED:
 		case ID_NO_FREE_INCOMING_CONNECTIONS:
 			OnConnectionAttemptFailed(packetID);
-			bConsumedPacket = true;
 			break;
 
 		case ID_IP_RECENTLY_CONNECTED:
@@ -174,15 +145,11 @@ bool XSocketImpl::OnReceiveMessage(const MessageConstPtr& msg)
 			break;
 		}
 	}
-	
-	return bConsumedPacket;
 }
 
 
-bool XSocketImpl::OnReceiveMessageAsync(const MessageConstPtr& msg)
+void XSocketImpl::OnReceiveMessageAsync(const MessageConstPtr& msg)
 {
-	bool bConsumedPacket = false;
-
 	byte packetID = msg->GetMessageID();
 
 	// If this is a user's packet, forward it to them
@@ -191,15 +158,8 @@ bool XSocketImpl::OnReceiveMessageAsync(const MessageConstPtr& msg)
 		if (m_listener)
 		{
 			m_listener->OnMessageReceivedAsync(this, msg->GetData(), msg->GetSize());
-			bConsumedPacket = true;
 		}
 	}
-}
-
-
-void XSocketImpl::OnOpenFailed()
-{
-	OnConnectionAttemptFailed(ID_CONNECTION_ATTEMPT_FAILED);
 }
 
 
@@ -218,6 +178,12 @@ PeerConstPtr XSocketImpl::GetPeer() const
 void XSocketImpl::SetPeer(const PeerPtr& peer)
 {
 	m_peer = peer;
+
+	RakNet::ConnectionState peerState = m_peer->GetConnectionState(m_address);
+	if (peerState == RakNet::IS_CONNECTED)
+	{
+		m_status = Connected;
+	}
 }
 
 
@@ -233,15 +199,15 @@ void XSocketImpl::SetAddress(const RakNet::SystemAddress& newAddress)
 }
 
 
-const RakNet::RakNetGUID& XSocketImpl::GetRakNetGUID() const 
-{ 
-	return m_raknetGuid; 
+const RakNet::RakNetGUID& XSocketImpl::GetRakNetGUID() const
+{
+	return m_raknetGuid;
 }
 
 
-void XSocketImpl::SetRakNetGUID(const RakNet::RakNetGUID& guid) 
-{ 
-	m_raknetGuid = guid; 
+void XSocketImpl::SetRakNetGUID(const RakNet::RakNetGUID& guid)
+{
+	m_raknetGuid = guid;
 }
 
 

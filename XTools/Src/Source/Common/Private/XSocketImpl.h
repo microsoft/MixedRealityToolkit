@@ -20,7 +20,7 @@ class XSocketImpl : public XSocket
 	XTOOLS_REFLECTION_DECLARE(XSocketImpl)
 
 public:
-	XSocketImpl(const std::string& address, uint16 port);
+	XSocketImpl(const RakNet::SystemAddress& sysAddress);
 
 	//////////////////////////////////////////////////////////////////////////
 	// XSocket Functions:
@@ -46,14 +46,10 @@ public:
 	// Local Functions:
 
 	// Called by XSocketManager on the main thread when a packet has arrived on this socket. 
-	// Returns true if this message was consumed by this function
-	bool						OnReceiveMessage(const MessageConstPtr& msg);
+	void						OnReceiveMessage(const MessageConstPtr& msg);
 
 	// Called by XSocketManager on the network thread when a packet has arrived on this socket. 
-	// Returns true if this message was consumed by this function
-	bool						OnReceiveMessageAsync(const MessageConstPtr& msg);
-
-	void						OnOpenFailed();
+	void						OnReceiveMessageAsync(const MessageConstPtr& msg);
 
 	const PeerPtr&				GetPeer();
 	PeerConstPtr				GetPeer() const;

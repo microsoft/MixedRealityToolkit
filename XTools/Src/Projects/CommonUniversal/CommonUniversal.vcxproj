@@ -75,8 +75,6 @@
     <ClCompile Include="..\..\Source\Common\Private\ListSessionsRequest.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\LongElementImpl.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\Message.cpp" />
-    <ClCompile Include="..\..\Source\Common\Private\MessageInterceptor.cpp" />
-    <ClCompile Include="..\..\Source\Common\Private\MessageQueue.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\ModifyDeleteTransform.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\ModifyModifyTransform.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\ModifyOperation.cpp" />
@@ -85,6 +83,7 @@
     <ClCompile Include="..\..\Source\Common\Private\NetworkInMessageImpl.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\NetworkMessagePool.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\NetworkOutMessageImpl.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\NetworkThreadCommands.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\NewSessionReply.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\NewSessionRequest.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\NoopOperation.cpp" />
@@ -200,8 +199,6 @@
     <ClInclude Include="..\..\Source\Common\Private\ListSessionsRequest.h" />
     <ClInclude Include="..\..\Source\Common\Private\LongElementImpl.h" />
     <ClInclude Include="..\..\Source\Common\Private\Message.h" />
-    <ClInclude Include="..\..\Source\Common\Private\MessageInterceptor.h" />
-    <ClInclude Include="..\..\Source\Common\Private\MessageQueue.h" />
     <ClInclude Include="..\..\Source\Common\Private\ModifyDeleteTransform.h" />
     <ClInclude Include="..\..\Source\Common\Private\ModifyModifyTransform.h" />
     <ClInclude Include="..\..\Source\Common\Private\ModifyOperation.h" />
@@ -209,6 +206,7 @@
     <ClInclude Include="..\..\Source\Common\Private\NetworkInMessageImpl.h" />
     <ClInclude Include="..\..\Source\Common\Private\NetworkMessagePool.h" />
     <ClInclude Include="..\..\Source\Common\Private\NetworkOutMessageImpl.h" />
+    <ClInclude Include="..\..\Source\Common\Private\NetworkThreadCommands.h" />
     <ClInclude Include="..\..\Source\Common\Private\NewSessionReply.h" />
     <ClInclude Include="..\..\Source\Common\Private\NewSessionRequest.h" />
     <ClInclude Include="..\..\Source\Common\Private\NoopOperation.h" />

@@ -64,8 +64,6 @@
     <ClCompile Include="..\..\Source\Common\Private\ListSessionsRequest.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\LongElementImpl.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\Message.cpp" />
-    <ClCompile Include="..\..\Source\Common\Private\MessageInterceptor.cpp" />
-    <ClCompile Include="..\..\Source\Common\Private\MessageQueue.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\ModifyDeleteTransform.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\ModifyModifyTransform.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\JSONMessage.cpp" />
@@ -191,8 +189,6 @@
     <ClInclude Include="..\..\Source\Common\Private\ListSessionsRequest.h" />
     <ClInclude Include="..\..\Source\Common\Private\LongElementImpl.h" />
     <ClInclude Include="..\..\Source\Common\Private\Message.h" />
-    <ClInclude Include="..\..\Source\Common\Private\MessageInterceptor.h" />
-    <ClInclude Include="..\..\Source\Common\Private\MessageQueue.h" />
     <ClInclude Include="..\..\Source\Common\Private\ModifyDeleteTransform.h" />
     <ClInclude Include="..\..\Source\Common\Private\ModifyModifyTransform.h" />
     <ClInclude Include="..\..\Source\Common\Private\JSONMessage.h" />

@@ -39,22 +39,19 @@ class AcceptCommand : public Command
 {
 	XTOOLS_REFLECTION_DECLARE(AcceptCommand)
 public:
-	AcceptCommand(PeerID peerID, uint16 port, uint16 maxConnections, IncomingXSocketListener* listener)
+	AcceptCommand(PeerID peerID, uint16 port, uint16 maxConnections)
 		: m_peerID(peerID)
 		, m_port(port)
-		, m_maxConnections(maxConnections)
-		, m_listener(listener) {}
+		, m_maxConnections(maxConnections) {}
 
 	PeerID GetPeerID() const { return m_peerID; }
 	uint16 GetPort() const { return m_port; }
 	uint16 GetMaxConnections() const { return m_maxConnections; }
-	IncomingXSocketListener* GetListener() const { return m_listener; }
 
 private:
 	PeerID m_peerID;
 	uint16 m_port;
 	uint16 m_maxConnections;
-	IncomingXSocketListener* m_listener;
 };
 DECLARE_PTR(AcceptCommand)
 

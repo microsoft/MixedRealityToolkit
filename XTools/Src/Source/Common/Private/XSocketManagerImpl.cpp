@@ -76,17 +76,14 @@ static const uint32 kMaxIncomingMessages = 50;
 
 struct XSocketManagerImpl::PeerConnection : public AtomicRefCounted
 {
-	PeerConnection()
-		: m_peer(new Peer())
-		, m_listener(NULL) {}
-
+	PeerConnection() : m_peer(new Peer()) {}
+	explicit PeerConnection(PeerID peerID) : m_peer(new Peer(peerID)) {}
 
 	// Get the unique ID of this peer, assigned at creation
 	PeerID GetPeerID() const { return (*m_peer).GetPeerID(); }
 
 	std::map<RakNet::RakNetGUID, XSocketImpl*>	m_sockets;		// Maps RakNetGUIDs to their corresponding XSocket
 	PeerPtr										m_peer;
-	IncomingXSocketListener*					m_listener;		// Callback for when new connections are made
 };
 
 
@@ -121,7 +118,7 @@ XSocketPtr XSocketManagerImpl::OpenConnection(const std::string& remoteName, uin
 
 	RakNet::SystemAddress addr(remoteName.c_str(), remotePort);
 
-	XSocketImplPtr newSocket = new XSocketImpl(remoteName, remotePort);
+	XSocketImplPtr newSocket = new XSocketImpl(addr);
 	newSocket->SetRegistrationReceipt(CreateRegistrationReceipt(XSocketManagerImplPtr(this), &XSocketManagerImpl::CloseConnection, newSocket->GetID()));
 
 	m_sockets[newSocket->GetID()] = newSocket.get();
@@ -139,10 +136,12 @@ ReceiptPtr XSocketManagerImpl::AcceptConnections(uint16 port, uint16 maxConnecti
 
 	PeerID peerID = Peer::CreatePeerID();
 
-	CommandPtr acceptCommand = new AcceptCommand(peerID, port, maxConnections, listener);
+	m_incomingConnectionListeners[peerID] = listener;
+
+	CommandPtr acceptCommand = new AcceptCommand(peerID, port, maxConnections);
 	SendCommandToNetworkThread(acceptCommand);
 
-	return CreateRegistrationReceipt(XSocketManagerImplPtr(this), &XSocketManagerImpl::UnregisterConnectionListener, listener, peerID);
+	return CreateRegistrationReceipt(XSocketManagerImplPtr(this), &XSocketManagerImpl::UnregisterConnectionListener, peerID);
 }
 
 
@@ -205,7 +204,7 @@ void XSocketManagerImpl::CloseConnection(SocketID socketID)
 					connectionList.erase(socketIter);
 
 					// Destroy the peer if no one is using it anymore
-					if (connectionList.empty() && currentPeerConnection->m_listener == NULL)
+					if (connectionList.empty() && m_incomingConnectionListeners.find(currentPeerConnection->GetPeerID()) == m_incomingConnectionListeners.end())
 					{
 						currentPeerConnection->m_peer->Shutdown(kRakNetShutdownTime);
 						m_closingPeers.push_back(ClosingPeer(std::chrono::high_resolution_clock::now(), currentPeerConnection->m_peer));
@@ -219,33 +218,28 @@ void XSocketManagerImpl::CloseConnection(SocketID socketID)
 }
 
 
-void XSocketManagerImpl::UnregisterConnectionListener(IncomingXSocketListener*	listener, PeerID peerID)
+void XSocketManagerImpl::UnregisterConnectionListener(PeerID peerID)
 {
-	if (XTVERIFY(listener != NULL))
+	// Lock the peer list.  This can block the network thread
+	ScopedLock lock(m_peerMutex);
+
+	auto iter = m_peers.find(peerID);
+	if (XTVERIFY(iter != m_peers.end()))
 	{
-		// Lock the peer list.  This can block the network thread
-		ScopedLock lock(m_peerMutex);
+		PeerConnectionPtr peerConnection = iter->second;
 
-		auto iter = m_peers.find(peerID);
-		if (XTVERIFY(iter != m_peers.end()))
+		// Set the max incoming connections to zero to stop accepting new connections
+		peerConnection->m_peer->SetMaximumIncomingConnections(0);
+
+		m_incomingConnectionListeners.erase(m_incomingConnectionListeners.find(peerID));
+
+		// Destroy the peer if no one is using it anymore
+		if (peerConnection->m_sockets.empty())
 		{
-			PeerConnectionPtr peerConnection = iter->second;
+			peerConnection->m_peer->Shutdown(kRakNetShutdownTime);
+			m_closingPeers.push_back(ClosingPeer(std::chrono::high_resolution_clock::now(), peerConnection->m_peer));
 
-			if (XTVERIFY(peerConnection->m_listener == listener))
-			{
-				// Set the max incoming connections to zero to stop accepting new connections
-				peerConnection->m_peer->SetMaximumIncomingConnections(0);
-				peerConnection->m_listener = NULL;
-
-				// Destroy the peer if no one is using it anymore
-				if (peerConnection->m_sockets.empty() && peerConnection->m_listener == NULL)
-				{
-					peerConnection->m_peer->Shutdown(kRakNetShutdownTime);
-					m_closingPeers.push_back(ClosingPeer(std::chrono::high_resolution_clock::now(), peerConnection->m_peer));
-
-					m_peers.erase(iter);
-				}
-			}
+			m_peers.erase(iter);
 		}
 	}
 }
@@ -273,29 +267,34 @@ void XSocketManagerImpl::Update()
 		m_closingPeers.erase(m_closingPeers.begin());
 	}
 
-	MessagePtr incomingMessage;
-	while (m_messageQueue.TryGetMessage(incomingMessage))
+	MessagePtr msg;
+	while (m_messageQueue.TryPop(msg))
 	{
-		if (XTVERIFY(incomingMessage->IsValid()))
+		if (XTVERIFY(msg->IsValid()))
 		{
-			const byte packetID = incomingMessage->GetMessageID();
-
-			if (XTVERIFY(packetID < 255))
+			// Get the socket that this message came from
+			auto socketItr = m_sockets.find(msg->GetSocketID());
+			if (socketItr != m_sockets.end())
 			{
+				XSocketImplPtr socket = socketItr->second;
+
+				const byte packetID = msg->GetMessageID();
+
 				// First check to see if this is a new incoming connection
 				if (packetID == ID_NEW_INCOMING_CONNECTION)
 				{
-					// Create a connection object to represent this connection.  
-					XSocketImplPtr connection = new XSocketImpl(connection->GetID(), incomingMessage->GetSystemAddress());
-					connection->SetRegistrationReceipt(CreateRegistrationReceipt(XSocketManagerImplPtr(this), &XSocketManagerImpl::CloseConnection, connection->GetID()));
-
-					peerConnection->m_sockets[incomingMessage->GetRakNetGUID()] = connection.get();
-
 					// Notify the listener that a new connection has been made
-					IncomingXSocketListener* listener = peerConnection->m_listener;
+					IncomingXSocketListener* listener = nullptr;
+
+					auto listenerItr = m_incomingConnectionListeners.find(msg->GetPeerID());
+					if (listenerItr != m_incomingConnectionListeners.end())
+					{
+						listener = listenerItr->second;
+					}
+
 					if (listener)
 					{
-						listener->OnNewConnection(connection);
+						listener->OnNewConnection(socket);
 					}
 					else
 					{
@@ -303,40 +302,10 @@ void XSocketManagerImpl::Update()
 					}
 				}
 				// Otherwise, find the Connection this packet is meant for and pass it off 
-				else if (!peerConnection->m_sockets.empty())
+				else 
 				{
-					// Once the connection is accepted, the full system address may have been fully resolved.  
-					// Update the binding
-					if (packetID == ID_CONNECTION_REQUEST_ACCEPTED)
-					{
-						// This should only happen on outgoing connections where there is only one connection per peer.
-						if (XTVERIFY(peerConnection->m_sockets.size() == 1))
-						{
-							XSocketImplPtr connection = peerConnection->m_sockets.begin()->second;
-							XTASSERT(connection->GetAddress().GetPort() == incomingMessage->GetSystemAddress().GetPort());
-
-							connection->SetAddress(incomingMessage->GetSystemAddress());
-							connection->SetRakNetGUID(incomingMessage->GetRakNetGUID());
-							peerConnection->m_sockets.clear();
-							peerConnection->m_sockets[incomingMessage->GetRakNetGUID()] = connection.get();
-						}
-					}
-
-					// Check to see if we have a socket for this packet.  Its possible for this to be false
-					// if the connection was terminated but the peer still has pending received packets in the queue
-					auto socketIter = peerConnection->m_sockets.find(incomingMessage->GetRakNetGUID());
-					if (socketIter != peerConnection->m_sockets.end())
-					{
-						// Hold a reference to the connection to prevent it from getting destroyed before this callback completes
-						XSocketImplPtr connection = socketIter->second;
-						connection->OnReceiveMessage(incomingMessage);
-					}
-					else
-					{
-						LogError("Received message from %s with no associated socket", incomingMessage->GetSystemAddress().ToString(false));
-					}
+					socket->OnReceiveMessage(msg);
 				}
-
 
 				++messagesProcessed;
 
@@ -345,6 +314,10 @@ void XSocketManagerImpl::Update()
 				{
 					break;
 				}
+			}
+			else
+			{
+				LogError("Received message from %s with no associated socket", msg->GetSystemAddress().ToString(false));
 			}
 		}
 	}
@@ -436,19 +409,58 @@ void XSocketManagerImpl::ProcessMessages()
 			if (packet->length > 0)
 			{
 				// Create a message from this packet
-				MessagePtr msg = new Message(packet->length);
-				msg->m_address = packet->systemAddress;
-				msg->m_rakNetGuid = packet->guid;
-				msg->m_peerID = peerConnection->GetPeerID();
-				msg->m_payload.Append(packet->data, packet->length);
+				MessagePtr msg = new Message();
+				msg->SetSystemAddress(packet->systemAddress);
+				msg->SetPeerID(peerConnection->GetPeerID());
+				msg->SetData(packet->data, packet->length);
 
-				// Check to see if we have a socket for this packet, and if so call back to its async message received function
-				auto socketIter = peerConnection->m_sockets.find(packet->guid);
-				if (socketIter != peerConnection->m_sockets.end())
+				// If an outgoing connection was accepted by a remote peer...
+				if (msg->GetMessageID() == ID_CONNECTION_REQUEST_ACCEPTED)
 				{
-					// Hold a reference to the connection to prevent it from getting destroyed before this callback completes
-					XSocketImplPtr connection = socketIter->second;
-					connection->OnReceiveMessageAsync(msg);
+					// This should only happen on outgoing connections where there is only one connection per peer.
+					if (XTVERIFY(peerConnection->m_sockets.size() == 1))
+					{
+						XSocketImplPtr socket = peerConnection->m_sockets.begin()->second;
+						XTASSERT(socket->GetAddress().GetPort() == msg->GetSystemAddress().GetPort());
+
+						// After the connection is made, the address is often updated to be more accurate, so capture that
+						socket->SetAddress(msg->GetSystemAddress());
+
+						// We did not have a valid RakNetGUID for this connection until now, so reset the mapping 
+						// for this socket to its guid
+						socket->SetRakNetGUID(packet->guid);
+						peerConnection->m_sockets.clear();
+						peerConnection->m_sockets[packet->guid] = socket.get();
+
+						msg->SetSocketID(socket->GetID());
+					}
+				}
+				// If we have accepted a new connection from a remote peer...
+				else if (msg->GetMessageID() == ID_NEW_INCOMING_CONNECTION)
+				{
+					// Create a socket object to represent this connection.  Note that the main thread will trigger the callback
+					// to listeners to let them know about the new connection.  
+					XSocketImpl* newSocket = new XSocketImpl(msg->GetSystemAddress());
+					newSocket->SetRakNetGUID(packet->guid);
+					newSocket->SetRegistrationReceipt(CreateRegistrationReceipt(XSocketManagerImplPtr(this), &XSocketManagerImpl::CloseConnection, newSocket->GetID()));
+
+					msg->SetSocketID(newSocket->GetID());
+
+					peerConnection->m_sockets[packet->guid] = newSocket;
+				}
+				else
+				{
+					// Check to see if we have a socket for this packet, and if so call back to its async message received function
+					auto socketIter = peerConnection->m_sockets.find(packet->guid);
+					if (socketIter != peerConnection->m_sockets.end())
+					{
+						// Hold a reference to the connection to prevent it from getting destroyed before this callback completes
+						XSocketImplPtr socket = socketIter->second;
+
+						msg->SetSocketID(socket->GetID());
+
+						socket->OnReceiveMessageAsync(msg);
+					}
 				}
 				
 				// Finally stuff the message in the message queue for delivery to the main thread
@@ -527,32 +539,27 @@ void XSocketManagerImpl::ProcessAcceptCommand(const AcceptCommandPtr& acceptComm
 
 	// Listen on the given port on the machine's default IP address for both IPv4 and IPv6
 	RakNet::SocketDescriptor socketDescriptor;
-	socketDescriptor.port = port;
+	socketDescriptor.port = acceptCommand->GetPort();
 	socketDescriptor.socketFamily = AF_INET; // IPV4
 
 											 // Startup the peer interface with the given socket settings.  Will fail if we already have a peer interface for this host
-	RakNet::StartupResult startupResult = peerConnection->m_peer->Startup(maxConnections, &socketDescriptor, 1);
+	RakNet::StartupResult startupResult = peerConnection->m_peer->Startup(acceptCommand->GetMaxConnections(), &socketDescriptor, 1);
 	if (startupResult != RakNet::RAKNET_STARTED)
 	{
-		LogError("Failed to create incoming connection on port %u.  Error code: %u", port, startupResult);
-		return NULL;
+		LogError("Failed to create incoming connection on port %u.  Error code: %u", acceptCommand->GetPort(), startupResult);
+		return;
 	}
 
 	// Set the connection to time out after the given amount of time
 	peerConnection->m_peer->SetTimeoutTime(kConnectionTimeoutMS, RakNet::UNASSIGNED_SYSTEM_ADDRESS);
 
-	// Add to the list of all peers
-	peerConnection->m_listener = listener;
-
 	// Calling this function starts the peer listening for incoming connections
-	peerConnection->m_peer->SetMaximumIncomingConnections(maxConnections);
+	peerConnection->m_peer->SetMaximumIncomingConnections(acceptCommand->GetMaxConnections());
 
 	// Add the new peer to the list
 	m_peerMutex.Lock();
 	m_peers[peerConnection->GetPeerID()] = peerConnection;
 	m_peerMutex.Unlock();
-
-	
 }
 
 
@@ -560,9 +567,12 @@ void XSocketManagerImpl::SendConnectionFailedMessage(SocketID socketID)
 {
 	// Fake a network connection failed message and send that to the main thread
 
-	MessagePtr msg = new Message(socketID);
+	MessagePtr msg = new Message();
+	msg->SetSocketID(socketID);
+
 	byte msgID = ID_CONNECTION_ATTEMPT_FAILED;
 	msg->AppendData(&msgID, sizeof(msgID));
+
 	SendMessageToMainThread(msg);
 }
 

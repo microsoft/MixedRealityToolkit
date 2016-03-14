@@ -15,6 +15,25 @@
 
 XTOOLS_NAMESPACE_BEGIN
 
+class TunnelConnection::AsyncListenerProxy : public AtomicRefCounted, public NetworkConnectionListener
+{
+public:
+	typedef Callback2<const NetworkConnectionPtr&, NetworkInMessage&> MessageCallback;
+
+	AsyncListenerProxy(MessageCallback callback) : m_callback(callback) {}
+
+private:
+	virtual void OnMessageReceived(const NetworkConnectionPtr& connection, NetworkInMessage& message)
+	{
+		if (m_callback.IsBound())
+		{
+			m_callback.Call(connection, message);
+		}
+	}
+
+	MessageCallback m_callback;
+};
+
 
 TunnelConnection::TunnelConnection(const NetworkConnectionPtr& connection)
 : m_netConnection(connection)
@@ -25,6 +44,9 @@ TunnelConnection::TunnelConnection(const NetworkConnectionPtr& connection)
 	m_netConnection->AddListener(MessageID::Tunnel, this);
 	m_netConnection->AddListener(MessageID::TunnelControl, this);
 
+	m_asyncProxy = new AsyncListenerProxy(CreateCallback2(this, &TunnelConnection::OnMessageReceivedAsync));
+	m_netConnection->AddListenerAsync(MessageID::Tunnel, m_asyncProxy.get());
+
 	std::random_device randomGenerator;
 	m_connectionGUID = ((uint64)randomGenerator() << 32) + (uint64)randomGenerator();
 }
@@ -32,7 +54,8 @@ TunnelConnection::TunnelConnection(const NetworkConnectionPtr& connection)
 
 TunnelConnection::~TunnelConnection()
 {
-	
+	// Make sure we stop receiving async messages before we are fully destructed
+	m_asyncProxy = nullptr;
 }
 
 
@@ -217,19 +240,47 @@ void TunnelConnection::RemoveListener(byte messageType, NetworkConnectionListene
 }
 
 
-bool TunnelConnection::RegisterAsyncCallback(byte messageType, NetworkConnectionListener* cb)
+void TunnelConnection::AddListenerAsync(byte messageType, NetworkConnectionListener* newListener)
 {
-	XT_UNREFERENCED_PARAM(messageType);
-	XT_UNREFERENCED_PARAM(cb);
-	XTASSERT(false);	// Time constrained; implement when needed
-	return false;
+	// If the message ID being registered for is outside the valid range, then set it to be
+	// StatusOnly messages: the listener will still get connect/disconnect notifications, but will not receive any messages
+	if (messageType < MessageID::Start)
+	{
+		messageType = MessageID::StatusOnly;
+	}
+
+	{
+		ScopedLock lock(m_asyncListMutex);
+
+		ListenerListPtr list = m_asyncListeners[messageType];
+		if (!list)
+		{
+			list = ListenerList::Create();
+			m_asyncListeners[messageType] = list;
+		}
+
+		list->AddListener(newListener);
+	}
 }
 
 
-void TunnelConnection::UnregisterAsyncCallback(byte messageType)
+void TunnelConnection::RemoveListenerAsync(byte messageType, NetworkConnectionListener* oldListener)
 {
-	XT_UNREFERENCED_PARAM(messageType);
-	XTASSERT(false);	// Time constrained; implement when needed
+	// If the message ID being registered for is outside the valid range, then set it to be
+	// StatusOnly messages: the listener will still get connect/disconnect notifications, but will not receive any messages
+	if (messageType < MessageID::Start)
+	{
+		messageType = MessageID::StatusOnly;
+	}
+
+	{
+		ScopedLock lock(m_asyncListMutex);
+		ListenerListPtr list = m_asyncListeners[messageType];
+		if (list)
+		{
+			list->RemoveListener(oldListener);
+		}
+	}
 }
 
 
@@ -352,6 +403,59 @@ void TunnelConnection::OnMessageReceived(const NetworkConnectionPtr&, NetworkInM
 			// The connection on the other side of the bridge was lost
 			m_remoteSystemConnected = false;
 			NotifyDisconnected();
+		}
+	}
+}
+
+
+void TunnelConnection::OnMessageReceivedAsync(const NetworkConnectionPtr& , NetworkInMessage& message)
+{
+	ScopedLock lock(m_asyncListMutex);
+
+	// This function should only receive Tunneled messages
+	MessageID msgID = static_cast<MessageID>(*message.GetData());
+
+	if (msgID == MessageID::Tunnel)
+	{
+		const NetworkHeader* header = reinterpret_cast<NetworkHeader*>(message.GetData());
+
+		// NOTE: it is possible to receive tunneled messages BEFORE we get the RemotePeerConnected notification 
+		// when the messages are sent as unreliable and/or in a different channel than Default.  Check for those cases here.
+		XTASSERT(m_remoteSystemConnected ||
+			header->m_channel != MessageChannel::Default ||
+			header->m_reliability != MessageReliability::ReliableOrdered);
+		XT_UNREFERENCED_PARAM(header);
+
+		if (m_remoteSystemConnected)
+		{
+			// Extract the payload
+			const uint32 headerSize = sizeof(NetworkHeader);
+			const uint32 payloadSize = message.GetSize() - headerSize;
+			byte* payload = message.GetData() + headerSize;
+
+			// Wrap the message in a NetworkMessage on the stack and call the callback.
+			NetworkInMessageImpl unwrappedMsg(payload, payloadSize);
+
+			// Read the message ID off the front
+			byte payloadMsgID = payload[0];
+
+			auto callbackIter = m_asyncListeners.find(payloadMsgID);
+			if (callbackIter != m_asyncListeners.end())
+			{
+				// Make sure we pass a different message instance to each listener so that they can independently
+				// consume content from the message.  Otherwise, two listeners for the same message type will each
+				// advance the state of the NetworkInMessageImpl.
+				for (int32 i = callbackIter->second->GetListenerCount() - 1; i >= 0; i--)
+				{
+					// Wrap the message in a NetworkMessage on the stack and call the callback.
+					NetworkInMessageImpl msg(payload, payloadSize);
+
+					// Read the message ID off the front before passing it off to the callback
+					msg.ReadByte();
+
+					callbackIter->second->NotifyListener(i, &NetworkConnectionListener::OnMessageReceived, this, msg);
+				}
+			}
 		}
 	}
 }

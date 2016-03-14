@@ -15,16 +15,19 @@ XTOOLS_NAMESPACE_BEGIN
 class Message : public AtomicRefCounted
 {
 public:
-	Message(SocketID socketID);
-	Message(SocketID socketID, PeerID peerID, const RakNet::SystemAddress& address, uint32 messageSize);
+	Message();
 
 	// Returns false if the size is zero
 	bool			IsValid() const;
 	
 	SocketID		GetSocketID() const;
+	void			SetSocketID(SocketID socketID);
+
 	PeerID			GetPeerID() const;
+	void			SetPeerID(PeerID peerID);
 
 	const RakNet::SystemAddress& GetSystemAddress() const;
+	void			SetSystemAddress(const RakNet::SystemAddress& sysAddress);
 
 	const byte*		GetData() const;
 	uint32			GetSize() const;

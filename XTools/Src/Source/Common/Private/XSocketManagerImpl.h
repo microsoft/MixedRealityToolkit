@@ -13,13 +13,10 @@
 #include <string>
 #include <map>
 #include <chrono>
-#include "TypedLFQueue.h"
 #include "NetworkThreadCommands.h"
+#include "Utils/TypedLFQueue.h"
 
 XTOOLS_NAMESPACE_BEGIN
-
-typedef uint32 PeerID;
-const PeerID kInvalidPeerID = 0xFFFFFFFF;
 
 class XSocketImpl;
 
@@ -73,7 +70,7 @@ private:
 	// Mutex locked
 	void CloseConnection(SocketID socketID);
 
-	void UnregisterConnectionListener(IncomingXSocketListener*	listener, PeerID peerID);
+	void UnregisterConnectionListener(PeerID peerID);
 
 	void ThreadFunc();
 
@@ -87,9 +84,6 @@ private:
 	void ProcessAcceptCommand(const AcceptCommandPtr& acceptCommand);
 	void SendConnectionFailedMessage(SocketID socketID);
 	bool SendMessageToMainThread(const MessagePtr& msg);
-
-
-	
 
 	// Maps Socket
 	std::map<SocketID, XSocketImpl*> m_sockets;

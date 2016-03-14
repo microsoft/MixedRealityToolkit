@@ -9,26 +9,15 @@
 #include "stdafx.h"
 #include "Message.h"
 
-
 XTOOLS_NAMESPACE_BEGIN
 
-Message::Message(SocketID socketID)
+Message::Message()
 	: m_payload(0)
-	, m_socketID(socketID)
+	, m_socketID(kInvalidSocketID)
 	, m_peerID(kInvalidPeerID)
 	, m_address(RakNet::UNASSIGNED_SYSTEM_ADDRESS)
 {
 	
-}
-
-
-Message::Message(SocketID socketID, PeerID peerID, const RakNet::SystemAddress& address, uint32 messageSize)
-	: m_payload(messageSize)
-	, m_socketID(socketID)
-	, m_peerID(peerID)
-	, m_address(address)
-{
-
 }
 
 
@@ -44,15 +33,33 @@ SocketID Message::GetSocketID() const
 }
 
 
+void Message::SetSocketID(SocketID socketID)
+{
+	m_socketID = socketID;
+}
+
+
 PeerID Message::GetPeerID() const
 {
 	return m_peerID;
 }
 
 
+void Message::SetPeerID(PeerID peerID)
+{
+	m_peerID = peerID;
+}
+
+
 const RakNet::SystemAddress& Message::GetSystemAddress() const
 {
 	return m_address;
+}
+
+
+void Message::SetSystemAddress(const RakNet::SystemAddress& sysAddress)
+{
+	m_address = sysAddress;
 }
 
 

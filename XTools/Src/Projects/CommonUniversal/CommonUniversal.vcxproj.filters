@@ -177,12 +177,6 @@
     <ClCompile Include="..\..\Source\Common\Private\Message.cpp">
       <Filter>Source\Private\Networking</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Common\Private\MessageInterceptor.cpp">
-      <Filter>Source\Private\Networking</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Common\Private\MessageQueue.cpp">
-      <Filter>Source\Private\Networking</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Source\Common\Private\NetworkConnectionImpl.cpp">
       <Filter>Source\Private\Networking</Filter>
     </ClCompile>
@@ -441,6 +435,9 @@
     <ClCompile Include="..\..\Source\Common\Private\AnchorList.cpp">
       <Filter>Source\Private\Rooms</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\NetworkThreadCommands.cpp">
+      <Filter>Source\Private\Networking</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\Common\Common.h">
@@ -486,12 +483,6 @@
       <Filter>Source\Private\Networking</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Common\Private\Message.h">
-      <Filter>Source\Private\Networking</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Common\Private\MessageInterceptor.h">
-      <Filter>Source\Private\Networking</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Common\Private\MessageQueue.h">
       <Filter>Source\Private\Networking</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Common\Private\NetworkConnectionImpl.h">
@@ -1006,6 +997,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Source\Common\Private\AnchorList.h">
       <Filter>Source\Private\Rooms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\NetworkThreadCommands.h">
+      <Filter>Source\Private\Networking</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

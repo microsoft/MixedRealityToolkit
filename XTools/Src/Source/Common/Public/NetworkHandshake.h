@@ -34,6 +34,7 @@ private:
 	virtual void OnConnectionFailed(const XSocketPtr& socket, FailureReason reason) XTOVERRIDE;
 	virtual void OnDisconnected(const XSocketPtr& socket) XTOVERRIDE;
 	virtual void OnMessageReceived(const XSocketPtr& socket, const byte* message, uint32 messageLength) XTOVERRIDE;
+	virtual void OnMessageReceivedAsync(const XSocketPtr& socket, const byte* message, uint32 messageLength) XTOVERRIDE;
 
 	// Local Functions:
 	void ReturnSuccess();

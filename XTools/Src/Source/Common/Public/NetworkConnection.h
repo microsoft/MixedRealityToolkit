@@ -46,15 +46,10 @@ public:
 	/// The generated wrapper for this class will release its reference to the given listener when this is called.  
 	virtual void RemoveListener(byte messageType, NetworkConnectionListener* oldListener) = 0;
 
-	/// Same as RegisterCallback, but the callbacks will be called on the network thread as soon as they arrive,
-	/// rather than being queued and processed later on the main thread.  
-	/// Returns true if successful, false if someone else has already registered for this messageType.  
-	/// NOTE: Registering and Unregistering for Async callbacks must be done manually, and does not use receipts.
-	/// The is because users need to unregister BEFORE their destruction is complete to avoid race condition errors
-	virtual bool RegisterAsyncCallback(byte messageType, NetworkConnectionListener* cb) = 0;
 
-	/// Manually unregister for async callbacks
-	virtual void UnregisterAsyncCallback(byte messageType) = 0;
+	virtual void AddListenerAsync(byte messageType, NetworkConnectionListener* newListener) = 0;
+
+	virtual void RemoveListenerAsync(byte messageType, NetworkConnectionListener* oldListener) = 0;
 
 	/// Create a message that is intended for a single destination.  This message is pulled
 	/// from a pools of messages to try to avoid allocations.  You can return the message
