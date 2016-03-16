@@ -86,7 +86,8 @@ private:
 	bool SendMessageToMainThread(const MessagePtr& msg);
 
 	// Maps Socket
-	std::map<SocketID, XSocketImpl*> m_sockets;
+	std::map<SocketID, XSocketImpl*>	m_sockets;
+	Mutex								m_socketsMutex;
 
 	// Maps peers to callbacks that should be notified when a new incoming connection is made
 	std::map<PeerID, IncomingXSocketListener*> m_incomingConnectionListeners;
@@ -106,8 +107,6 @@ private:
 
 	MemberFuncThreadPtr			m_networkThread;
 	volatile int				m_stopping;
-
-	Mutex						m_mutex;
 
 	// If the main lock-free queue is full, store the messages here to be sent later
 	std::queue<MessagePtr>		m_backupQueue;

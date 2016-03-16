@@ -26,7 +26,9 @@
 #include "RakNetDefines.h"
 #include <stdio.h>
 
-int WSAStartupSingleton::refCount=0;
+/// MICROSOFT PROJECT B CHANGES BEGIN
+std::atomic<int> WSAStartupSingleton::refCount=0;
+/// MICROSOFT PROJECT B CHANGES END
 
 WSAStartupSingleton::WSAStartupSingleton() {}
 WSAStartupSingleton::~WSAStartupSingleton() {}
@@ -34,14 +36,10 @@ void WSAStartupSingleton::AddRef(void)
 {
 #if defined(_WIN32) && !defined(WINDOWS_STORE_RT)
 
-	refCount++;
-	
-	if (refCount!=1)
+	/// MICROSOFT PROJECT B CHANGES BEGIN
+	if (++refCount != 1)
 		return;
-
-
-
-
+	/// MICROSOFT PROJECT B CHANGES END
 
 	WSADATA winsockInfo;
 	if ( WSAStartup( MAKEWORD( 2, 2 ), &winsockInfo ) != 0 )
@@ -64,22 +62,11 @@ void WSAStartupSingleton::AddRef(void)
 void WSAStartupSingleton::Deref(void)
 {
 #if defined(_WIN32) && !defined(WINDOWS_STORE_RT)
-	if (refCount==0)
-		return;
+
+	/// MICROSOFT PROJECT B CHANGES BEGIN
+	if (--refCount == 0)
+		WSACleanup();
+	/// MICROSOFT PROJECT B CHANGES END
 		
-	if (refCount>1)
-	{
-		refCount--;
-		return;
-	}
-	
-	WSACleanup();
-
-
-
-
-
-	
-	refCount=0;
 #endif
 }

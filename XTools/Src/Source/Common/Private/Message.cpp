@@ -81,12 +81,6 @@ void Message::SetData(const byte* buffer, uint32 size)
 }
 
 
-void Message::AppendData(const byte* buffer, uint32 size)
-{
-	m_payload.Append(buffer, size);
-}
-
-
 byte Message::GetMessageID() const
 {
 	if (m_payload.GetSize() == 0)

@@ -17,7 +17,9 @@
 using namespace RakNet;
 
 StringTable* StringTable::instance=0;
-int StringTable::referenceCount=0;
+/// MICROSOFT PROJECT B CHANGES BEGIN
+std::atomic<int> StringTable::referenceCount=0;
+/// MICROSOFT PROJECT B CHANGES END
 
 
 int RakNet::StrAndBoolComp( char *const &key, const StrAndBool &data )
@@ -51,14 +53,13 @@ void StringTable::RemoveReference(void)
 {
 	RakAssert(referenceCount > 0);
 
-	if (referenceCount > 0)
+	/// MICROSOFT PROJECT B CHANGES BEGIN
+	if (--referenceCount==0)
 	{
-		if (--referenceCount==0)
-		{
-			RakNet::OP_DELETE(instance, _FILE_AND_LINE_);
-			instance=0;
-		}
+		RakNet::OP_DELETE(instance, _FILE_AND_LINE_);
+		instance=0;
 	}
+	/// MICROSOFT PROJECT B CHANGES END
 }
 
 StringTable* StringTable::Instance(void)

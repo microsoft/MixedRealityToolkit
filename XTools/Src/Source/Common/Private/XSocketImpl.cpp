@@ -34,10 +34,13 @@ XTOOLS_REFLECTION_DEFINE(XSocketImpl)
 std::atomic<SocketID> XSocketImpl::m_sCounter(0);
 
 
-XSocketImpl::XSocketImpl(const RakNet::SystemAddress& sysAddress)
+XSocketImpl::XSocketImpl(const std::string& remoteName, uint16 remotePort)
 	: m_id(++m_sCounter)
+	, m_peerID(kInvalidPeerID)
 	, m_listener(NULL)
-	, m_address(sysAddress)
+	, m_address(remoteName)
+	, m_port(remotePort)
+	, m_raknetAddress(RakNet::UNASSIGNED_SYSTEM_ADDRESS)
 	, m_raknetGuid(RakNet::UNASSIGNED_RAKNET_GUID)
 	, m_status(Connecting)	// Default status to connecting
 {
@@ -57,11 +60,11 @@ void XSocketImpl::Send(const byte* message, uint32 messageSize, MessagePriority 
 
 	if (m_peer)
 	{
-		uint32 messageID = m_peer->Send(reinterpret_cast<const char*>(message), messageSize, (PacketPriority)priority, (PacketReliability)reliability, (char)channel, m_address, false);
+		uint32 messageID = m_peer->Send(reinterpret_cast<const char*>(message), messageSize, (PacketPriority)priority, (PacketReliability)reliability, (char)channel, m_raknetAddress, false);
 		if (messageID == 0)
 		{
 			XTASSERT(false);
-			LogWarning("Failed to send message to %s", m_address.ToString(true));
+			LogWarning("Failed to send message to %s", m_address.c_str());
 		}
 	}
 }
@@ -95,9 +98,15 @@ bool XSocketImpl::IsConnected() const
 }
 
 
-std::string XSocketImpl::GetRemoteSystemName() const
+const std::string& XSocketImpl::GetRemoteSystemName() const
 {
-	return m_address.ToString(false);
+	return m_address;
+}
+
+
+uint16 XSocketImpl::GetRemoteSystemPort() const
+{
+	return m_port;
 }
 
 
@@ -179,7 +188,7 @@ void XSocketImpl::SetPeer(const PeerPtr& peer)
 {
 	m_peer = peer;
 
-	RakNet::ConnectionState peerState = m_peer->GetConnectionState(m_address);
+	RakNet::ConnectionState peerState = m_peer->GetConnectionState(m_raknetAddress);
 	if (peerState == RakNet::IS_CONNECTED)
 	{
 		m_status = Connected;
@@ -187,15 +196,17 @@ void XSocketImpl::SetPeer(const PeerPtr& peer)
 }
 
 
-RakNet::SystemAddress XSocketImpl::GetAddress() const 
-{ 
-	return m_address; 
+RakNet::SystemAddress XSocketImpl::GetAddress() const
+{
+	return m_raknetAddress;
 }
 
 
 void XSocketImpl::SetAddress(const RakNet::SystemAddress& newAddress)
 {
-	m_address = newAddress;
+	m_raknetAddress = newAddress;
+	m_address = m_raknetAddress.ToString(false);
+	m_port = m_raknetAddress.GetPort();
 }
 
 

@@ -25,10 +25,10 @@ class OpenCommand : public Command
 public:
 	explicit OpenCommand(const XSocketImplPtr& socket) : m_socket(socket) {}
 
-	const XSocketImplPtr& GetSocket() { return m_socket; }
+	const XSocketImplPtr& GetSocket() const { return m_socket; }
 
 private:
-	XSocketImplPtr m_socket;
+	XSocketImplPtr	m_socket;
 };
 DECLARE_PTR(OpenCommand)
 

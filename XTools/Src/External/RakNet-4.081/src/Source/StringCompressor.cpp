@@ -31,7 +31,9 @@
 using namespace RakNet;
 
 StringCompressor* StringCompressor::instance=0;
-int StringCompressor::referenceCount=0;
+/// MICROSOFT PROJECT B CHANGES BEGIN
+std::atomic<int> StringCompressor::referenceCount=0;
+/// MICROSOFT PROJECT B CHANGES END
 
 void StringCompressor::AddReference(void)
 {
@@ -44,14 +46,13 @@ void StringCompressor::RemoveReference(void)
 {
 	RakAssert(referenceCount > 0);
 
-	if (referenceCount > 0)
+	/// MICROSOFT PROJECT B CHANGES BEGIN
+	if (--referenceCount==0)
 	{
-		if (--referenceCount==0)
-		{
-			RakNet::OP_DELETE(instance, _FILE_AND_LINE_);
-			instance=0;
-		}
+		RakNet::OP_DELETE(instance, _FILE_AND_LINE_);
+		instance=0;
 	}
+	/// MICROSOFT PROJECT B CHANGES END
 }
 
 StringCompressor* StringCompressor::Instance(void)

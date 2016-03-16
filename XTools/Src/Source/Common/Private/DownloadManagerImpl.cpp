@@ -13,18 +13,6 @@ XTOOLS_NAMESPACE_BEGIN
 
 static const uint32 kDefaultDownloadBufferSize = 2 * 1024;
 
-//////////////////////////////////////////////////////////////////////////
-// Core information about a download request.  Used by both the main and download threads
-struct DownloadManagerImpl::Request : public AtomicRefCounted
-{
-	std::string				m_url;
-	std::string				m_cookies;
-	DownloadBufferPtr		m_buffer;
-	DownloadCallback*		m_callback;
-	DownloadRequestID		m_requestID;
-	bool					m_bAsyncCallback;
-};
-
 
 //////////////////////////////////////////////////////////////////////////
 // Used on the download thread for holding all the data, including libCurl handles, for an active request.  

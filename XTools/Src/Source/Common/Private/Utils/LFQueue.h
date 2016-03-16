@@ -19,6 +19,7 @@ public:
 	static const uint32 kElementOverhead = 4;
 
 	explicit LFQueue(uint32 cacheSize);
+	virtual ~LFQueue() {}
 
 	uint32 GetSize() const;
 	uint32 GetAllocatedSize() const;

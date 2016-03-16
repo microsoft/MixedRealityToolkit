@@ -20,6 +20,9 @@
 #include "DS_OrderedList.h"
 #include "Export.h"
 #include "RakMemoryOverride.h"
+/// MICROSOFT PROJECT B CHANGES BEGIN
+#include <atomic>
+/// MICROSOFT PROJECT B CHANGES END
 
 /// Forward declaration
 namespace RakNet
@@ -94,7 +97,12 @@ namespace RakNet
 
 		/// Singleton instance
 		static StringTable *instance;
-		static int referenceCount;
+
+		/// MICROSOFT PROJECT B CHANGES BEGIN
+		/// making this static variable atomic so that peers destroyed in separate threads do
+		/// not corrupt the reference count
+		static std::atomic<int> referenceCount;
+		/// MICROSOFT PROJECT B CHANGES END
 
 		DataStructures::OrderedList<char *, StrAndBool, StrAndBoolComp> orderedStringList;
 	};

@@ -32,7 +32,6 @@ public:
 	const byte*		GetData() const;
 	uint32			GetSize() const;
 	void			SetData(const byte* buffer, uint32 size);
-	void			AppendData(const byte* buffer, uint32 size);
 
 	// Return the ID of the message, which is the first byte of the payload
 	byte			GetMessageID() const;

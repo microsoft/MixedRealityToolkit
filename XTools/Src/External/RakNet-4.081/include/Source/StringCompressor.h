@@ -21,6 +21,9 @@
 #include "DS_Map.h"
 #include "RakMemoryOverride.h"
 #include "NativeTypes.h"
+/// MICROSOFT PROJECT B CHANGES BEGIN
+#include <atomic>
+/// MICROSOFT PROJECT B CHANGES END
 
 #ifdef _STD_STRING_COMPRESSOR
 #include <string>
@@ -105,7 +108,11 @@ private:
 	/// Pointer to the huffman encoding trees.
 	DataStructures::Map<int, HuffmanEncodingTree *> huffmanEncodingTrees;
 	
-	static int referenceCount;
+	/// MICROSOFT PROJECT B CHANGES BEGIN
+	/// making this static variable atomic so that peers destroyed in separate threads do
+	/// not corrupt the reference count
+	static std::atomic<int> referenceCount;
+	/// MICROSOFT PROJECT B CHANGES END
 };
 
 } // namespace RakNet

@@ -20,7 +20,7 @@ class XSocketImpl : public XSocket
 	XTOOLS_REFLECTION_DECLARE(XSocketImpl)
 
 public:
-	XSocketImpl(const RakNet::SystemAddress& sysAddress);
+	XSocketImpl(const std::string& remoteName, uint16 remotePort);
 
 	//////////////////////////////////////////////////////////////////////////
 	// XSocket Functions:
@@ -39,7 +39,9 @@ public:
 
 	virtual bool				IsConnected() const XTOVERRIDE;
 
-	virtual std::string			GetRemoteSystemName() const XTOVERRIDE;
+	virtual const std::string&	GetRemoteSystemName() const XTOVERRIDE;
+
+	virtual uint16				GetRemoteSystemPort() const XTOVERRIDE;
 
 
 	//////////////////////////////////////////////////////////////////////////
@@ -76,7 +78,9 @@ private:
 	PeerID						m_peerID;
 	PeerPtr						m_peer;
 	XSocketListener*			m_listener;
-	RakNet::SystemAddress		m_address;
+	std::string					m_address;
+	uint16						m_port;
+	RakNet::SystemAddress		m_raknetAddress;
 	RakNet::RakNetGUID			m_raknetGuid;
 	Status						m_status;
 	ReceiptPtr					m_receipt;

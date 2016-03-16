@@ -340,6 +340,7 @@
     <ClInclude Include="..\..\Source\Common\Public\Utils\RefCounted.h" />
     <ClInclude Include="..\..\Source\Common\Public\Utils\RefPtr.h" />
     <ClInclude Include="..\..\Source\Common\Public\Utils\RefPtrProxy.h" />
+    <ClInclude Include="..\..\Source\Common\Public\Utils\RefPtrProxyTS.h" />
     <ClInclude Include="..\..\Source\Common\Public\Utils\RefPtrTS.h" />
     <ClInclude Include="..\..\Source\Common\Public\Utils\ScopedArray.h" />
     <ClInclude Include="..\..\Source\Common\Public\Utils\ScopedPtr.h" />
@@ -454,6 +455,7 @@
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <BrowseInformation>true</BrowseInformation>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -482,6 +484,7 @@
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
