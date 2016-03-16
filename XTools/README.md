@@ -1,9 +1,9 @@
-# HoloLens XTools
+# HoloToolkit Sharing
 
 ## Description
-XTools is a library that allows applications to span multiple devices.  
+The HoloToolkit.Sharing library allows applications to span multiple devices, and enables holographic collaboration.  
 
-Originally developed for OnSight, a collaboration between SOTA (a Microsoft studio) and NASA to enhance their existing Mars rover planning tool with HoloLens, XTools enables users to use multiple devices for a task by allowing the apps running on each device communicate and stay in sync seamlessly in real time.  
+Originally developed for OnSight, a collaboration between SOTA (a Microsoft studio) and NASA to enhance their existing Mars rover planning tool with HoloLens, HoloToolkit.Sharing enables users to use multiple devices for a task by allowing the apps running on each device communicate and stay in sync seamlessly in real time.  
 
 Users can also collaborate with other users (who are also using multiple devices) who may be in the same room or working remotely.  
 
@@ -12,8 +12,8 @@ Users can also collaborate with other users (who are also using multiple devices
 ### Multi-Platform, Multi-language
 Enhance any app, on any device, written in any programming language
 * Portable C++ code
-* Auto-Generated bindings to most languages (SWIG).  C++, C#, and Java bindings are currently implemente, but it is possible to generate bindings for Python, Ruby, and more
-* Currently Supported platforms: Win32, UWP, and OSX.  Support for Xbox One is available upond request
+* Auto-Generated bindings to most languages (SWIG).  C++, C#, and Java bindings are currently implemented, but it is possible to generate bindings for Python, Ruby, and more
+* Currently Supported platforms: Win32, UWP, and OSX.  Support for Xbox One is available upon request
 
 ### Lobby & Session system
 * Discover available sessions or create your own
@@ -41,11 +41,7 @@ Connect devices just by looking at them
 * Can also detect location in 3D space using built-in fiducial marker support
 
 ### Profiler
-Profiling and debugging an experience that spans multiple devices is challenging.  So XTools provides an app that can connect to multiple XTools-enabled devices at once and aggregates their timings and debug output in a single place
-
-## Terms of Use
-XTools is available for MS internal use.  Separate LCA approval is required for the open source libraries used by XTools.  
-If you'd like to release a product or service using XTools please contact [Joe van den Heuvel](mailto:jovan@microsoft.com). 
+Profiling and debugging an experience that spans multiple devices is challenging.  So HoloToolkit.Sharing provides an app that can connect to multiple devices at once and aggregates their timings and debug output in a single place
 
 ## Supported Languages and Platforms
 * Win32, UWP, OSX
