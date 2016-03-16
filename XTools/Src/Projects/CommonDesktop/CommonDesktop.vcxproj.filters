@@ -291,9 +291,6 @@
     <ClCompile Include="..\..\Source\Common\Private\SessionHandshakeLogic.cpp">
       <Filter>Source\Private\Networking\HandshakeLogic</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Common\Private\MessageQueue.cpp">
-      <Filter>Source\Private\Networking</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Source\Common\Private\BufferQueue.cpp">
       <Filter>Source\Private\Networking</Filter>
     </ClCompile>
@@ -305,9 +302,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Source\Common\Private\Utils\MemberFuncThread.cpp">
       <Filter>Source\Private\Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Common\Private\MessageInterceptor.cpp">
-      <Filter>Source\Private\Networking</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Common\Private\UserChangedSessionMsg.cpp">
       <Filter>Source\Private\Sessions\Messages</Filter>
@@ -461,6 +455,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Source\Common\Private\AnchorList.cpp">
       <Filter>Source\Private\Rooms</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\NetworkThreadCommands.cpp">
+      <Filter>Source\Private\Networking</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -815,9 +812,6 @@
     <ClInclude Include="..\..\Source\Common\Public\Utils\ScopedArray.h">
       <Filter>Source\Public\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Common\Private\MessageQueue.h">
-      <Filter>Source\Private\Networking</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Source\Common\Private\BufferQueue.h">
       <Filter>Source\Private\Networking</Filter>
     </ClInclude>
@@ -829,9 +823,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Source\Common\Public\Utils\AtomicRefCounted.h">
       <Filter>Source\Public\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Common\Private\MessageInterceptor.h">
-      <Filter>Source\Private\Networking</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Common\Public\Utils\RefPtrTS.h">
       <Filter>Source\Public\Utils</Filter>
@@ -1123,6 +1114,12 @@
     </ClInclude>
     <ClInclude Include="..\..\Source\Common\Private\AnchorList.h">
       <Filter>Source\Private\Rooms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\NetworkThreadCommands.h">
+      <Filter>Source\Private\Networking</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\Utils\RefPtrProxyTS.h">
+      <Filter>Source\Public\Utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

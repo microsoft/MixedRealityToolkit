@@ -135,9 +135,17 @@ XToolsManagerImpl::~XToolsManagerImpl()
 
 	m_sessionManager = nullptr;
 
+	m_paringManager = nullptr;
+
+	m_profileManager = nullptr;
+
+	m_roomManager = nullptr;
+
 	m_clientContext = nullptr;
 
 	m_settings = nullptr;
+
+	m_listServerHandshake = nullptr;
 
 	m_logManager->ClearWriter();
 }

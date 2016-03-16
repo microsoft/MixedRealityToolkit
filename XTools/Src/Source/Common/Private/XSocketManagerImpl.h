@@ -13,7 +13,8 @@
 #include <string>
 #include <map>
 #include <chrono>
-#include "MessageQueue.h"
+#include "NetworkThreadCommands.h"
+#include "Utils/TypedLFQueue.h"
 
 XTOOLS_NAMESPACE_BEGIN
 
@@ -25,6 +26,7 @@ class XSocketManagerImpl : public XSocketManager
 
 public:
 	XSocketManagerImpl();
+	virtual ~XSocketManagerImpl();
 
 	//////////////////////////////////////////////////////////////////////////
 	// ConnectionMgr Functions:
@@ -46,21 +48,10 @@ public:
 	// forward on any packets to the appropriate Connection object
 	virtual void Update() XTOVERRIDE;
 
-	// Add an interceptor, which will intercept an incoming message on the network thread and handle it before it is sent
-	// to the main thread
-	void AddInterceptor(const MessageInterceptorPtr& interceptor);
-
-	void RemoveInterceptor(const MessageInterceptorPtr& interceptor);
-
 private:
+
 	struct PeerConnection;
 	DECLARE_PTR(PeerConnection)
-
-	struct ListenerInfo
-	{
-		IncomingXSocketListener*	m_listener;
-		PeerID						m_peerID;
-	};
 
 	struct ClosingPeer
 	{
@@ -73,23 +64,52 @@ private:
 		PeerPtr                                         m_peer;
 	};
 
-	// Callback for when a Connection object is not longer referenced.  Called from ConnectionImpl.
+	void SendCommandToNetworkThread(const CommandPtr& command);
+
+	// Callback for when a socket is not longer referenced.
 	// Mutex locked
-	void OnConnectionDestroyed(XSocketImpl* closingConnection);
+	void CloseConnection(SocketID socketID);
 
-	void UnregisterConnectionListener(ListenerInfo listenerDesc);
+	void UnregisterConnectionListener(PeerID peerID);
 
-	// Maps peerIDs to peer connections
-	std::map<uint32, PeerConnectionPtr>	m_peers;
+	void ThreadFunc();
+
+	// Process commands sent from the main thread to the network thread via the commandQueue
+	void ProcessCommands();
+
+	// Process incoming packets from the network
+	void ProcessMessages();
+
+	void ProcessOpenCommand(const OpenCommandPtr& openCommand);
+	void ProcessAcceptCommand(const AcceptCommandPtr& acceptCommand);
+	void SendConnectionFailedMessage(SocketID socketID);
+	bool SendMessageToMainThread(const MessagePtr& msg);
+
+	// Maps Socket
+	std::map<SocketID, XSocketImpl*>	m_sockets;
+	Mutex								m_socketsMutex;
+
+	// Maps peers to callbacks that should be notified when a new incoming connection is made
+	std::map<PeerID, IncomingXSocketListener*> m_incomingConnectionListeners;
+
+	// Maps peerIDs to peer connections.  Only used on the network thread
+	std::map<PeerID, PeerConnectionPtr>	m_peers;
+	Mutex								m_peerMutex;
 
 	// List of peers that are currently shutting down and we're waiting for them to finish sending
 	// their last messages before deleting them.  
 	std::list<ClosingPeer>		m_closingPeers;
 
-	SocketID						m_nextSocketID;
-	uint32							m_nextPeerID;
+	TypedLFQueue<CommandPtr>	m_commandQueue;
+	TypedLFQueue<MessagePtr>	m_messageQueue;
 
-	MessageQueue					m_messageQueue;
+	Event						m_networkThreadEvent;
+
+	MemberFuncThreadPtr			m_networkThread;
+	volatile int				m_stopping;
+
+	// If the main lock-free queue is full, store the messages here to be sent later
+	std::queue<MessagePtr>		m_backupQueue;
 };
 
 DECLARE_PTR(XSocketManagerImpl)

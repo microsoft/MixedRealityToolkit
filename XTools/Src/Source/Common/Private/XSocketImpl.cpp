@@ -31,27 +31,20 @@ XTOOLS_REFLECTION_DEFINE(XSocket)
 XTOOLS_REFLECTION_DEFINE(XSocketImpl)
 .BaseClass<XSocket>();
 
+std::atomic<SocketID> XSocketImpl::m_sCounter(0);
 
-XSocketImpl::XSocketImpl(XSocketManagerImpl* manager, SocketID id, const PeerPtr& peer, const RakNet::SystemAddress& address, RakNet::RakNetGUID guid)
-	: m_manager(manager)
-	, m_id(id)
-	, m_peer(peer)
+
+XSocketImpl::XSocketImpl(const std::string& remoteName, uint16 remotePort)
+	: m_id(++m_sCounter)
+	, m_peerID(kInvalidPeerID)
 	, m_listener(NULL)
-	, m_address(address)
-	, m_raknetGuid(guid)
-	, m_status(Connecting)
+	, m_address(remoteName)
+	, m_port(remotePort)
+	, m_raknetAddress(RakNet::UNASSIGNED_SYSTEM_ADDRESS)
+	, m_raknetGuid(RakNet::UNASSIGNED_RAKNET_GUID)
+	, m_status(Connecting)	// Default status to connecting
 {
-	// XSockets are only created when:
-	// 1) The user asks to open a connection, or
-	// 2) A new connection is received
-	// RakNet does not properly handle pending connections, so set the status as connecting unless
-	// the RakNet status is connected
 
-	RakNet::ConnectionState peerState = m_peer->GetConnectionState(m_address);
-	if (peerState == RakNet::IS_CONNECTED)
-	{
-		m_status = Connected;
-	}
 }
 
 
@@ -65,11 +58,14 @@ void XSocketImpl::Send(const byte* message, uint32 messageSize, MessagePriority 
 {
 	XTASSERT(m_status == Connected);
 
-	uint32 messageID = m_peer->Send(reinterpret_cast<const char*>(message), messageSize, (PacketPriority)priority, (PacketReliability)reliability, (char)channel, m_address, false);
-	if (messageID == 0)
+	if (m_peer)
 	{
-		XTASSERT(false);
-		LogWarning("Failed to send message to %s", m_address.ToString(true));
+		uint32 messageID = m_peer->Send(reinterpret_cast<const char*>(message), messageSize, (PacketPriority)priority, (PacketReliability)reliability, (char)channel, m_raknetAddress, false);
+		if (messageID == 0)
+		{
+			XTASSERT(false);
+			LogWarning("Failed to send message to %s", m_address.c_str());
+		}
 	}
 }
 
@@ -102,16 +98,20 @@ bool XSocketImpl::IsConnected() const
 }
 
 
-std::string XSocketImpl::GetRemoteSystemName() const
+const std::string& XSocketImpl::GetRemoteSystemName() const
 {
-	return m_address.ToString(false);
+	return m_address;
 }
 
 
-bool XSocketImpl::OnReceiveMessage(const MessageConstPtr& msg)
+uint16 XSocketImpl::GetRemoteSystemPort() const
 {
-	bool bConsumedPacket = false;
+	return m_port;
+}
 
+
+void XSocketImpl::OnReceiveMessage(const MessageConstPtr& msg)
+{
 	byte packetID = msg->GetMessageID();
 
 	// If this is a user's packet, forward it to them
@@ -120,7 +120,6 @@ bool XSocketImpl::OnReceiveMessage(const MessageConstPtr& msg)
 		if (m_listener)
 		{
 			m_listener->OnMessageReceived(this, msg->GetData(), msg->GetSize());
-			bConsumedPacket = true;
 		}
 		else
 		{
@@ -134,24 +133,20 @@ bool XSocketImpl::OnReceiveMessage(const MessageConstPtr& msg)
 		{
 		case ID_CONNECTION_REQUEST_ACCEPTED:
 			OnConnected();
-			bConsumedPacket = true;
 			break;
 
 		case ID_DISCONNECTION_NOTIFICATION:
 			OnLostConnection();
-			bConsumedPacket = true;
 			break;
 
 		case ID_CONNECTION_LOST:
 			OnLostConnection();
-			bConsumedPacket = true;
 			break;
 
 		case ID_CONNECTION_ATTEMPT_FAILED:
 		case ID_ALREADY_CONNECTED:
 		case ID_NO_FREE_INCOMING_CONNECTIONS:
 			OnConnectionAttemptFailed(packetID);
-			bConsumedPacket = true;
 			break;
 
 		case ID_IP_RECENTLY_CONNECTED:
@@ -159,8 +154,21 @@ bool XSocketImpl::OnReceiveMessage(const MessageConstPtr& msg)
 			break;
 		}
 	}
-	
-	return bConsumedPacket;
+}
+
+
+void XSocketImpl::OnReceiveMessageAsync(const MessageConstPtr& msg)
+{
+	byte packetID = msg->GetMessageID();
+
+	// If this is a user's packet, forward it to them
+	if (packetID >= ID_USER_PACKET_ENUM)
+	{
+		if (m_listener)
+		{
+			m_listener->OnMessageReceivedAsync(this, msg->GetData(), msg->GetSize());
+		}
+	}
 }
 
 
@@ -176,39 +184,47 @@ PeerConstPtr XSocketImpl::GetPeer() const
 }
 
 
-RakNet::SystemAddress XSocketImpl::GetAddress() const 
-{ 
-	return m_address; 
+void XSocketImpl::SetPeer(const PeerPtr& peer)
+{
+	m_peer = peer;
+
+	RakNet::ConnectionState peerState = m_peer->GetConnectionState(m_raknetAddress);
+	if (peerState == RakNet::IS_CONNECTED)
+	{
+		m_status = Connected;
+	}
+}
+
+
+RakNet::SystemAddress XSocketImpl::GetAddress() const
+{
+	return m_raknetAddress;
 }
 
 
 void XSocketImpl::SetAddress(const RakNet::SystemAddress& newAddress)
 {
-	m_address = newAddress;
+	m_raknetAddress = newAddress;
+	m_address = m_raknetAddress.ToString(false);
+	m_port = m_raknetAddress.GetPort();
 }
 
 
-const RakNet::RakNetGUID& XSocketImpl::GetRakNetGUID() const 
-{ 
-	return m_raknetGuid; 
+const RakNet::RakNetGUID& XSocketImpl::GetRakNetGUID() const
+{
+	return m_raknetGuid;
 }
 
 
-void XSocketImpl::SetRakNetGUID(const RakNet::RakNetGUID& guid) 
-{ 
-	m_raknetGuid = guid; 
+void XSocketImpl::SetRakNetGUID(const RakNet::RakNetGUID& guid)
+{
+	m_raknetGuid = guid;
 }
 
 
 void XSocketImpl::SetRegistrationReceipt(const ReceiptPtr& receipt)
 {
 	m_receipt = receipt;
-}
-
-
-XSocketManagerImpl* XSocketImpl::GetSocketManager()
-{
-	return m_manager;
 }
 
 

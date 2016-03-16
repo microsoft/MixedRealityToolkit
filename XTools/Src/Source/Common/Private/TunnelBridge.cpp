@@ -20,10 +20,10 @@ TunnelBridge::TunnelBridge(const NetworkConnectionPtr& serverConnection, const N
 #endif
 
 	m_connections[TunnelIndex::ServerIndex] = serverConnection; 
-	m_connections[TunnelIndex::BarabooIndex] = bConnection;
+	m_connections[TunnelIndex::SecondaryClientIndex] = bConnection;
 
-	XTVERIFY(serverConnection->RegisterAsyncCallback(MessageID::Tunnel, this));
-	XTVERIFY(bConnection->RegisterAsyncCallback(MessageID::Tunnel, this));
+	serverConnection->AddListenerAsync(MessageID::Tunnel, this);
+	bConnection->AddListenerAsync(MessageID::Tunnel, this);
 
 	SendConnectionMessages();
 }
@@ -35,20 +35,20 @@ TunnelBridge::~TunnelBridge()
 	// any more messages from the network thread once destruction is complete.  
 	// This WILL block until any concurrently running OnMessageReceived() call finishes, so no need for
 	// additional locks.  
-	m_connections[TunnelIndex::ServerIndex]->UnregisterAsyncCallback(MessageID::Tunnel);
-	m_connections[TunnelIndex::BarabooIndex]->UnregisterAsyncCallback(MessageID::Tunnel);
+	m_connections[TunnelIndex::ServerIndex]->RemoveListenerAsync(MessageID::Tunnel, this);
+	m_connections[TunnelIndex::SecondaryClientIndex]->RemoveListenerAsync(MessageID::Tunnel, this);
 
 	if (IsConnected())
 	{
 		SendTunnelControlMessage(m_connections[TunnelIndex::ServerIndex], RemotePeerDisconnected);
-		SendTunnelControlMessage(m_connections[TunnelIndex::BarabooIndex], RemotePeerDisconnected);
+		SendTunnelControlMessage(m_connections[TunnelIndex::SecondaryClientIndex], RemotePeerDisconnected);
 	}
 }
 
 
 bool TunnelBridge::IsConnected() const
 {
-	return (m_connections[TunnelIndex::ServerIndex]->IsConnected() && m_connections[TunnelIndex::BarabooIndex]->IsConnected());
+	return (m_connections[TunnelIndex::ServerIndex]->IsConnected() && m_connections[TunnelIndex::SecondaryClientIndex]->IsConnected());
 }
 
 
@@ -123,7 +123,7 @@ void TunnelBridge::SendTunnelControlMessage(const NetworkConnectionPtr& connecti
 
 const NetworkConnectionPtr& TunnelBridge::GetOtherConnection(const NetworkConnectionPtr& connection)
 {
-	return (m_connections[TunnelIndex::ServerIndex] == connection) ? m_connections[TunnelIndex::BarabooIndex] : m_connections[TunnelIndex::ServerIndex];
+	return (m_connections[TunnelIndex::ServerIndex] == connection) ? m_connections[TunnelIndex::SecondaryClientIndex] : m_connections[TunnelIndex::ServerIndex];
 }
 
 
@@ -136,7 +136,7 @@ void TunnelBridge::SendConnectionMessages()
 #endif
 
 		SendTunnelControlMessage(m_connections[TunnelIndex::ServerIndex], RemotePeerConnected);
-		SendTunnelControlMessage(m_connections[TunnelIndex::BarabooIndex], RemotePeerConnected);
+		SendTunnelControlMessage(m_connections[TunnelIndex::SecondaryClientIndex], RemotePeerConnected);
 	}
 }
 

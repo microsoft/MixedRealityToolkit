@@ -18,7 +18,7 @@ XTOOLS_NAMESPACE_BEGIN
 class TunnelBridge : public RefCounted, public NetworkConnectionListener
 {
 public:
-	TunnelBridge(const NetworkConnectionPtr& serverConnection, const NetworkConnectionPtr& bConnection);
+	TunnelBridge(const NetworkConnectionPtr& serverConnection, const NetworkConnectionPtr& secondaryClientConnection);
 	virtual ~TunnelBridge();
 
 	bool IsConnected() const;
@@ -27,7 +27,7 @@ private:
 	enum TunnelIndex
 	{
 		ServerIndex = 0,
-		BarabooIndex = 1,
+		SecondaryClientIndex = 1,
 		TunnelConnectionCount
 	};
 

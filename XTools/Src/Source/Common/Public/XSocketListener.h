@@ -36,6 +36,11 @@ public:
 	// Callback for when a message is received.  The first byte of the message is the type ID of the message, and
 	// should be used to determine what to do with the rest of the message
 	virtual void OnMessageReceived(const XSocketPtr& socket, const byte* message, uint32 messageLength) = 0;
+
+	// Same as OnMessageReceived, but called from the network thread.  All incoming messages call back to both
+	// OnMessageReceived and OnMessageReceivedAsync to allow listeners to forward the message in the appropriate
+	// way to multiple different systems
+	virtual void OnMessageReceivedAsync(const XSocketPtr& socket, const byte* message, uint32 messageLength) = 0;
 };
 
 XTOOLS_NAMESPACE_END

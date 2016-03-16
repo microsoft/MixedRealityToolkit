@@ -21,6 +21,7 @@
 #include <Public/Utils/ScopedArray.h>
 #include <Public/Utils/RefPtrTS.h>
 #include <Public/Utils/RefPtrProxy.h>
+#include <Public/Utils/RefPtrProxyTS.h>
 #include <Public/Utils/Logger.h>
 #include <Public/Utils/Receipt.h>
 #include <Public/Utils/Hash.h>

@@ -133,7 +133,7 @@ bool Event::WaitTimeout(uint32 timeoutMS)
 	XTASSERT(m_EventHandle != NULL);
 	DWORD result = WaitForSingleObjectEx(
 		m_EventHandle,  // handle to Event
-		timeoutMS,		// no time-out interval
+		timeoutMS,		// time-out interval
 		false);			// Do not return on IO alerts
 	return result == WAIT_OBJECT_0;
 

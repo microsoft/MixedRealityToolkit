@@ -33,9 +33,9 @@ public:
 
 	virtual void					RemoveListener(byte messageType, NetworkConnectionListener* oldListener) XTOVERRIDE;
 
-	virtual bool					RegisterAsyncCallback(byte messageType, NetworkConnectionListener* cb) XTOVERRIDE;
+	virtual void					AddListenerAsync(byte messageType, NetworkConnectionListener* newListener) XTOVERRIDE;
 
-	virtual void					UnregisterAsyncCallback(byte messageType) XTOVERRIDE;
+	virtual void					RemoveListenerAsync(byte messageType, NetworkConnectionListener* oldListener) XTOVERRIDE;
  
 	virtual NetworkOutMessagePtr	CreateMessage(byte messageType) XTOVERRIDE;
  
@@ -62,16 +62,13 @@ protected:
 	virtual void					OnConnectionFailed(const XSocketPtr& connection, FailureReason reason) XTOVERRIDE;
 	virtual void					OnDisconnected(const XSocketPtr& connection) XTOVERRIDE;
 	virtual void					OnMessageReceived(const XSocketPtr& connection, const byte* message, uint32 messageLength) XTOVERRIDE;
+	virtual void					OnMessageReceivedAsync(const XSocketPtr& socket, const byte* message, uint32 messageLength) XTOVERRIDE;
 
 	typedef ListenerList<NetworkConnectionListener> ListenerList;
 	DECLARE_PTR(ListenerList);
 
 	std::map<byte, ListenerListPtr>	m_listeners;
-
-	class NetConnectionInterceptor;
-	class InterceptorProxy;
-	struct AsyncCallback;
-	std::map<byte, AsyncCallback>	m_asyncCallbacks;
+	std::map<byte, ListenerListPtr>	m_asyncListeners;
 
 	XSocketPtr						m_socket;
 	ReceiptPtr						m_listenerReceipt;

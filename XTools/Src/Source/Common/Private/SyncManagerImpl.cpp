@@ -11,6 +11,7 @@
 #include "CreateOperation.h"
 #include "DeleteOperation.h"
 #include "AckOperation.h"
+#include <random>
 
 XTOOLS_NAMESPACE_BEGIN
 NAMESPACE_BEGIN(Sync)
@@ -92,7 +93,8 @@ SyncManagerImpl::SyncManagerImpl(MessageID messageID, AuthorityLevel authorityLe
 	SystemID localSystemID = 0;
 	do 
 	{
-		localSystemID = static_cast<SystemID>(RakNet::RakPeerInterface::Get64BitUniqueRandomNumber());
+		std::random_device randomGenerator;
+		localSystemID = randomGenerator();
 	} while (localSystemID == 0);
 	
 	m_syncContext = new SyncContext(authorityLevel, localSystemID, localUser);

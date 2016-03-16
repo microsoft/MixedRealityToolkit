@@ -37,7 +37,15 @@ public:
 private:
 
 	// Core information about a download request.  Used by both the main and download threads
-	struct Request;
+	struct Request : public AtomicRefCounted
+	{
+		std::string				m_url;
+		std::string				m_cookies;
+		DownloadBufferPtr		m_buffer;
+		DownloadCallback*		m_callback;
+		DownloadRequestID		m_requestID;
+		bool					m_bAsyncCallback;
+	};
 	DECLARE_PTR(Request)
 
 	// Container for sending commands to the download thread

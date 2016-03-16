@@ -91,6 +91,16 @@ void NetworkHandshake::OnMessageReceived(const XSocketPtr& , const byte* message
 }
 
 
+void NetworkHandshake::OnMessageReceivedAsync(const XSocketPtr& socket, const byte* message, uint32 messageLength)
+{
+	// Intentionally blank
+
+	XT_UNREFERENCED_PARAM(socket);
+	XT_UNREFERENCED_PARAM(message);
+	XT_UNREFERENCED_PARAM(messageLength);
+}
+
+
 void NetworkHandshake::ReturnSuccess()
 {
 	// Hold on to a reference to this object so it is not destroyed by the callback before it can complete

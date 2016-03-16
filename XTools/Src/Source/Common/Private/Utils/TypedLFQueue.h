@@ -25,6 +25,16 @@ public:
 
 	}
 
+	virtual ~TypedLFQueue()
+	{
+		// Pop all remaining items in the queue to ensure they are cleaned up correctly
+		while (LFQueue::TryPop(m_readBuffer))
+		{
+			T* msg = reinterpret_cast<T*>(m_readBuffer.GetData());
+			msg->~T();
+		}
+	}
+
 	bool TryPush(const T& msg)
 	{
 		byte* buffer[sizeof(T)];

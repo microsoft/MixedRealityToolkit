@@ -12,11 +12,13 @@ XTOOLS_NAMESPACE_BEGIN
 
 // ID assigned by the XSocketManager to easily identify peers
 typedef uint32 PeerID;
+const PeerID kInvalidPeerID = 0xFFFFFFFF;
 
 class Peer : public AtomicRefCounted
 {
 public:
-	Peer(PeerID peerID);
+	Peer();
+	explicit Peer(PeerID id);
 	virtual ~Peer();
 
 	RakNet::RakPeerInterface*		operator->() { return m_rakPeer; }
@@ -25,9 +27,12 @@ public:
 	// Get the unique ID of this peer, assigned at creation
 	PeerID							GetPeerID() const;
 
+	static PeerID					CreatePeerID();
+
 private:
 	RakNet::RakPeerInterface*	m_rakPeer;
 	PeerID						m_peerID;
+	static std::atomic<PeerID>	m_sCounter;
 };
 
 DECLARE_PTR_PROXY(Peer)
