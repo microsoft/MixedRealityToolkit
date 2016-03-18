@@ -265,8 +265,6 @@ void SessionManagerImpl::OnUserJoinedSession(const UserJoinedSessionMsg& msg, co
 	// If this session has the current user joined, use that object instead. 
 	if (userId == m_context->GetLocalUser()->GetID())
 	{
-		LogInfo("Skipping OnUserJoinedSession for local user...");
-
 		// Just exit the function as if everything is fine.
 		return;
 	}

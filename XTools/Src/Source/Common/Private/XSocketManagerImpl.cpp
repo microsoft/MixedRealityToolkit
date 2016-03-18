@@ -120,14 +120,9 @@ XSocketPtr XSocketManagerImpl::OpenConnection(const std::string& remoteName, uin
 	XTASSERT(remotePort != 0);
 
 	XSocketImplPtr newSocket = new XSocketImpl(remoteName, remotePort);
-	newSocket->SetRegistrationReceipt(CreateRegistrationReceipt(XSocketManagerImplPtr(this), &XSocketManagerImpl::CloseConnection, newSocket->GetID()));
+	newSocket->SetRegistrationReceipt(CreateRegistrationReceipt(XSocketManagerImplPtr(this), &XSocketManagerImpl::CloseConnection, newSocket.get()));
 
-	{
-		ScopedLock socketLock(m_socketsMutex);
-		m_sockets[newSocket->GetID()] = newSocket.get();
-	}
-	
-	CommandPtr openCommand = new OpenCommand(newSocket);
+	CommandPtr openCommand = new Command(newSocket);
 	SendCommandToNetworkThread(openCommand);
 
 	return newSocket;
@@ -144,7 +139,7 @@ ReceiptPtr XSocketManagerImpl::AcceptConnections(uint16 port, uint16 maxConnecti
 
 	m_incomingConnectionListeners[peerID] = listener;
 
-	CommandPtr acceptCommand = new AcceptCommand(peerID, port, maxConnections);
+	CommandPtr acceptCommand = new Command(peerID, port, maxConnections);
 	SendCommandToNetworkThread(acceptCommand);
 
 	return CreateRegistrationReceipt(XSocketManagerImplPtr(this), &XSocketManagerImpl::UnregisterConnectionListener, peerID);
@@ -161,21 +156,8 @@ void XSocketManagerImpl::SendCommandToNetworkThread(const CommandPtr& command)
 }
 
 
-void XSocketManagerImpl::CloseConnection(SocketID socketID)
+void XSocketManagerImpl::CloseConnection(XSocketImpl* closingSocket)
 {
-	XSocketImpl* closingSocket = nullptr;
-
-	// Remove the socket from the socket list
-	{
-		ScopedLock socketLock(m_socketsMutex);
-		auto itr = m_sockets.find(socketID);
-		if (itr != m_sockets.end())
-		{
-			closingSocket = itr->second;
-			m_sockets.erase(itr);
-		}
-	}
-	
 	if (closingSocket)
 	{
 		// Find the peer for this connection.  This will be NULL if the network thread failed to successfully
@@ -267,17 +249,7 @@ void XSocketManagerImpl::Update()
 		if (XTVERIFY(msg->IsValid()))
 		{
 			// Get the socket that this message came from
-			XSocketImplPtr socket = nullptr;
-			{
-				ScopedLock socketLock(m_socketsMutex);
-
-				auto socketItr = m_sockets.find(msg->GetSocketID());
-				if (socketItr != m_sockets.end())
-				{
-					socket = socketItr->second;
-				}
-			}
-			
+			XSocketImplPtr socket = msg->GetSocket();
 			if (socket)
 			{
 				const byte packetID = msg->GetMessageID();
@@ -362,17 +334,13 @@ void XSocketManagerImpl::ProcessCommands()
 
 	while (m_commandQueue.TryPop(newCommand))
 	{
-		const int typeID = newCommand->GetTypeInfo().GetID();
-
-		if (OpenCommand::MyTypeInfo().GetID() == typeID)
+		if (newCommand->GetType() == Command::Open)
 		{
-			OpenCommandPtr openCommand = reflection_cast<OpenCommand>(newCommand);
-			ProcessOpenCommand(openCommand);
+			ProcessOpenCommand(newCommand);
 		}
-		else if (AcceptCommand::MyTypeInfo().GetID() == typeID)
+		else if (newCommand->GetType() == Command::Accept)
 		{
-			AcceptCommandPtr acceptCommand = reflection_cast<AcceptCommand>(newCommand);
-			ProcessAcceptCommand(acceptCommand);
+			ProcessAcceptCommand(newCommand);
 		}
 	}
 }
@@ -452,7 +420,7 @@ void XSocketManagerImpl::ProcessMessages()
 						peerConnection->m_sockets.clear();
 						peerConnection->m_sockets[packet->guid] = socket.get();
 
-						msg->SetSocketID(socket->GetID());
+						msg->SetSocket(socket);
 					}
 				}
 				// If we have accepted a new connection from a remote peer...
@@ -460,20 +428,15 @@ void XSocketManagerImpl::ProcessMessages()
 				{
 					// Create a socket object to represent this connection.  Note that the main thread will trigger the callback
 					// to listeners to let them know about the new connection.  
-					XSocketImpl* newSocket = new XSocketImpl(std::string(), 0);
+					XSocketImplPtr newSocket = new XSocketImpl(std::string(), 0);
 					newSocket->SetAddress(msg->GetSystemAddress());
 					newSocket->SetRakNetGUID(packet->guid);
 					newSocket->SetPeer(peerConnection->m_peer);
-					newSocket->SetRegistrationReceipt(CreateRegistrationReceipt(XSocketManagerImplPtr(this), &XSocketManagerImpl::CloseConnection, newSocket->GetID()));
+					newSocket->SetRegistrationReceipt(CreateRegistrationReceipt(XSocketManagerImplPtr(this), &XSocketManagerImpl::CloseConnection, newSocket.get()));
 
-					msg->SetSocketID(newSocket->GetID());
+					msg->SetSocket(newSocket);
 
-					{
-						ScopedLock socketLock(m_socketsMutex);
-						m_sockets[newSocket->GetID()] = newSocket;
-					}
-
-					peerConnection->m_sockets[packet->guid] = newSocket;
+					peerConnection->m_sockets[packet->guid] = newSocket.get();
 				}
 				else
 				{
@@ -481,10 +444,9 @@ void XSocketManagerImpl::ProcessMessages()
 					auto socketIter = peerConnection->m_sockets.find(packet->guid);
 					if (socketIter != peerConnection->m_sockets.end())
 					{
-						// Hold a reference to the connection to prevent it from getting destroyed before this callback completes
 						XSocketImplPtr socket = socketIter->second;
 
-						msg->SetSocketID(socket->GetID());
+						msg->SetSocket(socketIter->second);
 
 						socket->OnReceiveMessageAsync(msg);
 					}
@@ -502,7 +464,7 @@ void XSocketManagerImpl::ProcessMessages()
 }
 
 
-void XSocketManagerImpl::ProcessOpenCommand(const OpenCommandPtr& openCommand)
+void XSocketManagerImpl::ProcessOpenCommand(const CommandPtr& openCommand)
 {
 	PROFILE_SCOPE("ProcessOpenCommand");
 
@@ -523,7 +485,7 @@ void XSocketManagerImpl::ProcessOpenCommand(const OpenCommandPtr& openCommand)
 	if (startupResult != RAKNET_STARTED)
 	{
 		LogError("Failed to create connection object for %s.  Error code: %u", newSocket->GetRemoteSystemName().c_str(), startupResult);
-		SendConnectionFailedMessage(newSocket->GetID());
+		SendConnectionFailedMessage(newSocket);
 		return;
 	}
 
@@ -541,7 +503,7 @@ void XSocketManagerImpl::ProcessOpenCommand(const OpenCommandPtr& openCommand)
 	if (connectResult != CONNECTION_ATTEMPT_STARTED)
 	{
 		LogError("Failed to begin connection attempt for %s.  Error code: %u", newSocket->GetRemoteSystemName().c_str(), connectResult);
-		SendConnectionFailedMessage(newSocket->GetID());
+		SendConnectionFailedMessage(newSocket);
 		return;
 	}
 
@@ -558,7 +520,7 @@ void XSocketManagerImpl::ProcessOpenCommand(const OpenCommandPtr& openCommand)
 }
 
 
-void XSocketManagerImpl::ProcessAcceptCommand(const AcceptCommandPtr& acceptCommand)
+void XSocketManagerImpl::ProcessAcceptCommand(const CommandPtr& acceptCommand)
 {
 	PROFILE_SCOPE("ProcessAcceptCommand");
 
@@ -591,12 +553,12 @@ void XSocketManagerImpl::ProcessAcceptCommand(const AcceptCommandPtr& acceptComm
 }
 
 
-void XSocketManagerImpl::SendConnectionFailedMessage(SocketID socketID)
+void XSocketManagerImpl::SendConnectionFailedMessage(const XSocketImplPtr& socket)
 {
 	// Fake a network connection failed message and send that to the main thread
 
 	MessagePtr msg = new Message();
-	msg->SetSocketID(socketID);
+	msg->SetSocket(socket);
 
 	byte msgID = ID_CONNECTION_ATTEMPT_FAILED;
 	msg->SetData(&msgID, sizeof(msgID));

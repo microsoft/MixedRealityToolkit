@@ -13,16 +13,18 @@ RoomImpl::RoomImpl(const RoomListenerListPtr& listeners)
 	: m_listeners(listeners)
 	, m_name(new XString("UnnamedRoom"))
 	, m_id(kInvalidRoomID)
+	, m_keepOpen(false)
 	, m_userListenerAdapter(new IntArrayAdapter())
 {
 	SetupMembers();
 }
 
 
-RoomImpl::RoomImpl(const RoomListenerListPtr& listeners, const XStringPtr& name, RoomID id)
+RoomImpl::RoomImpl(const RoomListenerListPtr& listeners, const XStringPtr& name, RoomID id, bool bKeepOpen)
 	: m_listeners(listeners)
 	, m_name(name)
 	, m_id(id)
+	, m_keepOpen(bKeepOpen)
 	, m_userListenerAdapter(new IntArrayAdapter())
 {
 	SetupMembers();
@@ -60,6 +62,19 @@ UserID RoomImpl::GetUserID(int32 userIndex)
 }
 
 
+
+bool RoomImpl::GetKeepOpen() const
+{
+	return m_keepOpen;
+}
+
+
+void RoomImpl::SetKeepOpen(bool keepOpen)
+{
+	m_keepOpen = keepOpen;
+}
+
+
 int32 RoomImpl::GetAnchorCount() const
 {
 	return m_anchors.GetAnchorCount();
@@ -84,10 +99,17 @@ const SyncArray& RoomImpl::GetUserArray() const
 }
 
 
+void RoomImpl::ClearAnchors()
+{
+	m_anchors.Clear();
+}
+
+
 void RoomImpl::SetupMembers()
 {
 	AddMember(&m_name, "Name");
 	AddMember(&m_id, "ID");
+	AddMember(&m_keepOpen, "keepOpen");
 	AddMember(&m_users, "users");
 	AddMember(&m_anchors, "Anchors");
 

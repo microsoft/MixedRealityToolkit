@@ -14,9 +14,13 @@ class Syncable XTABSTRACT : public Reflection::XTObject
 	XTOOLS_REFLECTION_DECLARE(Syncable)
 		
 public:
-	virtual XGuid GetGUID() const { return kInvalidXGuid; }
+	virtual ~Syncable() {}
 
-	virtual ElementType GetType() const { return ElementType::UnknownType; }
+	virtual XGuid GetGUID() const = 0;
+
+	virtual ElementType GetType() const = 0;
+
+	virtual ElementPtr GetElement() const = 0;
 
 	// Create a new element for this instance in the sync system
 	virtual bool BindLocal(const ObjectElementPtr& parent, const std::string& name, const UserPtr& owner) = 0;
@@ -24,14 +28,14 @@ public:
 	// Bind this instance to an element that already exists in the sync system
 	virtual void BindRemote(const ElementPtr& element) = 0;
 
+	// Remove the binding information from this instance
+	virtual void Unbind() = 0;
+
 protected:
 	Syncable() {}
 
 	// Set the value of this instance in response to the value being changed remotely
-	virtual void SetValue(int ) {}
-	virtual void SetValue(float ) {}
-	virtual void SetValue(std::string ) {}
-	void SetValue(const XStringPtr& s) { SetValue(s->GetString()); }
+	virtual void SetValue(const XValue& newValue) = 0;
 
 	friend class SyncObject;
 };

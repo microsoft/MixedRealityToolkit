@@ -32,6 +32,7 @@
     <ClCompile Include="..\..\Source\Common\Private\AudioPacketPool.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\AudioSessionProcessorClient.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\AudioWavFile.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\BoolElementImpl.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\Buffer.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\BufferQueue.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\ClientConfig.cpp" />
@@ -161,6 +162,7 @@
     <ClInclude Include="..\..\Source\Common\Private\AudioProcessor.h" />
     <ClInclude Include="..\..\Source\Common\Private\AudioSessionProcessorClient.h" />
     <ClInclude Include="..\..\Source\Common\Private\AudioWavFile.h" />
+    <ClInclude Include="..\..\Source\Common\Private\BoolElementImpl.h" />
     <ClInclude Include="..\..\Source\Common\Private\Buffer.h" />
     <ClInclude Include="..\..\Source\Common\Private\BufferQueue.h" />
     <ClInclude Include="..\..\Source\Common\Private\CreateCreateTransform.h" />
@@ -259,6 +261,7 @@
     <ClInclude Include="..\..\Source\Common\Public\AudioManager.h" />
     <ClInclude Include="..\..\Source\Common\Public\AudioSessionProcessor.h" />
     <ClInclude Include="..\..\Source\Common\Public\BasicTypes.h" />
+    <ClInclude Include="..\..\Source\Common\Public\BoolElement.h" />
     <ClInclude Include="..\..\Source\Common\Public\ClientConfig.h" />
     <ClInclude Include="..\..\Source\Common\Public\ClientContext.h" />
     <ClInclude Include="..\..\Source\Common\Public\CommonSettings.h" />

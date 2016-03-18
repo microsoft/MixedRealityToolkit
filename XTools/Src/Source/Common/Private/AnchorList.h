@@ -17,6 +17,8 @@ public:
 
 	const XStringPtr& GetAnchorName(int32 index) const;
 
+	void Clear();
+
 private:
 	virtual bool BindLocal(const ObjectElementPtr& parent, const std::string& name, const UserPtr& owner) XTOVERRIDE;
 	virtual void BindRemote(const ElementPtr& element) XTOVERRIDE;

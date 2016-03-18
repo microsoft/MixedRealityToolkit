@@ -19,7 +19,39 @@ SyncObject::SyncObject()
 }
 
 
-const ObjectElementPtr& SyncObject::GetElement()
+SyncObject::~SyncObject()
+{
+	if (m_element && m_element->IsValid())
+	{
+		ObjectElementPtr parent = ObjectElement::Cast(m_element->GetParent());
+		if (parent)
+		{
+			parent->RemoveElement(m_element);
+		}
+	}
+}
+
+
+const ObjectElementPtr& SyncObject::GetObjectElement() const
+{
+	return m_element;
+}
+
+
+XGuid SyncObject::GetGUID() const
+{
+	if (m_element) { return m_element->GetGUID(); }
+	else { return kInvalidXGuid; }
+}
+
+
+ElementType SyncObject::GetType() const
+{
+	return ElementType::ObjectType;
+}
+
+
+ElementPtr SyncObject::GetElement() const
 {
 	return m_element;
 }
@@ -42,13 +74,31 @@ void SyncObject::AddMember(Syncable* memberSyncable, const std::string& name, Me
 }
 
 
+void SyncObject::OnBoolElementChanged(XGuid elementID, bool newValue)
+{
+	OnElementValueChanged(elementID, newValue);
+}
+
+
 void SyncObject::OnIntElementChanged(XGuid elementID, int32 newValue)
 {
 	OnElementValueChanged(elementID, newValue);
 }
 
 
+void SyncObject::OnLongElementChanged(XGuid elementID, int64 newValue)
+{
+	OnElementValueChanged(elementID, newValue);
+}
+
+
 void SyncObject::OnFloatElementChanged(XGuid elementID, float newValue)
+{
+	OnElementValueChanged(elementID, newValue);
+}
+
+
+void SyncObject::OnDoubleElementChanged(XGuid elementID, double newValue)
 {
 	OnElementValueChanged(elementID, newValue);
 }
@@ -82,6 +132,13 @@ void SyncObject::OnElementAdded(const ElementPtr& element)
 void SyncObject::OnElementDeleted(const ElementPtr& )
 {
 	// TODO: implement
+	XTASSERT(false);
+}
+
+
+void SyncObject::SetValue(const XValue& )
+{
+	// Object elements should not receive this callback
 	XTASSERT(false);
 }
 
@@ -165,6 +222,23 @@ void SyncObject::BindRemote(const ElementPtr& element)
 	else
 	{
 		LogError("Failed to use remotely created sync element for object %s", element->GetName()->GetString().c_str());
+	}
+}
+
+
+void SyncObject::Unbind()
+{
+	if (m_element != nullptr)
+	{
+		for (auto childItr = m_memberMap.begin(); childItr != m_memberMap.end(); ++childItr)
+		{
+			childItr->second->Unbind();
+		}
+
+		m_memberMap.clear();
+
+		m_element->RemoveListener(this);
+		m_element = nullptr;
 	}
 }
 

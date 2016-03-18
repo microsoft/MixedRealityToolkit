@@ -25,6 +25,7 @@ public:
 
 	/// Called when the value of an element has changed.  
 	/// Pass in the new values in the callback to try to avoid extra allocations of Element wrappers
+	virtual void OnBoolElementChanged(XGuid elementID, bool newValue) {}
 	virtual void OnIntElementChanged(XGuid elementID, int32 newValue) {}
 	virtual void OnLongElementChanged(XGuid elementID, int64 newValue) {}
 	virtual void OnFloatElementChanged(XGuid elementID, float newValue) {}

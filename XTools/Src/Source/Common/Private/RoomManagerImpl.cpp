@@ -67,7 +67,7 @@ RoomPtr RoomManagerImpl::GetCurrentRoom()
 }
 
 
-RoomPtr RoomManagerImpl::CreateRoom(const XStringPtr& roomName, RoomID roomID)
+RoomPtr RoomManagerImpl::CreateRoom(const XStringPtr& roomName, RoomID roomID, bool keepOpenWhenEmpty)
 {
 	// If the user is currently in a room, leave it first
 	LeaveRoom();
@@ -83,7 +83,7 @@ RoomPtr RoomManagerImpl::CreateRoom(const XStringPtr& roomName, RoomID roomID)
 	}
 
 	// Create a Room object for this element
-	RoomImplPtr newRoom = new RoomImpl(m_listenerList, roomName, roomID);
+	RoomImplPtr newRoom = new RoomImpl(m_listenerList, roomName, roomID, keepOpenWhenEmpty);
 
 	// Make the name of the object element for the room be "Room<RoomID> to keep it unique
 	std::string roomElementName = "Room" + std::to_string(roomID);
@@ -180,7 +180,27 @@ bool RoomManagerImpl::LeaveRoom()
 			}
 		}
 
+		RoomPtr leavingRoom = m_currentRoom;
 		m_currentRoom = nullptr;
+
+		// If we are working disconnected from a session and we left the room, and the room isn't marked for keeping, then delete it
+		if (!m_context->GetSessionConnection()->IsConnected() &&
+			!leavingRoom->GetKeepOpen()
+			)
+		{
+			for (size_t i = 0; i < m_roomList.size(); ++i)
+			{
+				if (m_roomList[i]->GetID() == leavingRoom->GetID())
+				{
+					m_roomList.erase(m_roomList.begin() + i);
+
+					m_listenerList->NotifyListeners(&RoomManagerListener::OnRoomClosed, leavingRoom);
+
+					break;
+				}
+			}
+		}
+
 		return true;
 	}
 	else
@@ -296,6 +316,34 @@ void RoomManagerImpl::OnElementDeleted(const ElementPtr& element)
 	if (closedRoom != nullptr)
 	{
 		m_listenerList->NotifyListeners(&RoomManagerListener::OnRoomClosed, closedRoom);
+	}
+}
+
+
+void RoomManagerImpl::OnDisconnected(const NetworkConnectionPtr& )
+{
+	m_bUploadInProgress = false;
+	m_currentDownloadRequest = nullptr;
+
+	// When we disconnect from the server, remove all open rooms except the one the user is in and any rooms marked as keepOpen
+
+	// Iterate backwards because we will be removing items from the list as we iterate
+	for (int32 i = (int32)m_roomList.size() - 1; i >= 0; --i)
+	{
+		// Clear out all anchors; only the server holds on to the anchor data
+		m_roomList[i]->ClearAnchors();
+
+		bool isCurrentRoom = 
+			(m_currentRoom != nullptr &&
+			m_currentRoom->GetID() == m_roomList[i]->GetID());
+
+		if (!isCurrentRoom && !m_roomList[i]->GetKeepOpen())
+		{
+			RoomImplPtr closedRoom = m_roomList[i];
+			m_roomList.erase(m_roomList.begin() + i);
+
+			m_listenerList->NotifyListeners(&RoomManagerListener::OnRoomClosed, closedRoom);
+		}
 	}
 }
 

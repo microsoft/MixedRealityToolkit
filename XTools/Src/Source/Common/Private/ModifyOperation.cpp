@@ -9,6 +9,7 @@
 #include "stdafx.h"
 #include "ModifyOperation.h"
 #include "ObjectElementImpl.h"
+#include "BoolElementImpl.h"
 #include "IntElementImpl.h"
 #include "LongElementImpl.h"
 #include "FloatElementImpl.h"
@@ -119,6 +120,13 @@ void ModifyOperation::Notify(const SyncContextPtr& context) const
 				// Notify the listener that the value of the element has changed
 				switch (m_newValue.GetType())
 				{
+				case XValue::Bool:
+				{
+					bool boolValue = *(m_newValue.Get<bool>());
+					parentObjectElement->GetListeners()->NotifyListeners(&ObjectElementListener::OnBoolElementChanged, m_elementGuid, boolValue);
+					break;
+				}
+
 				case XValue::Int:
 				{
 					int32 intValue = *(m_newValue.Get<int32>());

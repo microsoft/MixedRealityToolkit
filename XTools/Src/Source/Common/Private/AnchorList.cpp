@@ -25,11 +25,26 @@ const XStringPtr& AnchorList::GetAnchorName(int32 index) const
 }
 
 
+void AnchorList::Clear()
+{
+	ObjectElementPtr myElement = GetObjectElement();
+	if (myElement)
+	{
+		for (size_t i = 0; i < m_anchorNameElements.size(); ++i)
+		{
+			myElement->RemoveElement(m_anchorNameElements[i]);
+		}
+	}
+
+	m_anchorNameElements.clear();
+}
+
+
 bool AnchorList::BindLocal(const ObjectElementPtr& parent, const std::string& name, const UserPtr& owner)
 {
 	if (SyncObject::BindLocal(parent, name, owner))
 	{
-		GetElement()->AddListener(this);
+		GetObjectElement()->AddListener(this);
 		return true;
 	}
 	else
@@ -42,7 +57,7 @@ bool AnchorList::BindLocal(const ObjectElementPtr& parent, const std::string& na
 void AnchorList::BindRemote(const ElementPtr& element)
 {
 	SyncObject::BindRemote(element);
-	GetElement()->AddListener(this);
+	GetObjectElement()->AddListener(this);
 }
 
 

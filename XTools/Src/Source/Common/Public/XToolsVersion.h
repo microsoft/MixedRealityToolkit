@@ -29,6 +29,7 @@ XTOOLS_NAMESPACE_BEGIN
 // static const uint32 kXToolsSchemaVersion = 11;	// Changed audio bit rate to 48k
 //static const uint32 kXToolsSchemaVersion = 12;	// Changed pairing logic
 //static const uint32 kXToolsSchemaVersion = 13;	// Added support for SendTo
-static const uint32 kXToolsSchemaVersion = 14;		// Added Room/Anchor support
+//static const uint32 kXToolsSchemaVersion = 14;	// Added Room/Anchor support
+static const uint32 kXToolsSchemaVersion = 15;		// Added Boolean sync element type
 
 XTOOLS_NAMESPACE_END

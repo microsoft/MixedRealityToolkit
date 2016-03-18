@@ -36,7 +36,6 @@ std::atomic<SocketID> XSocketImpl::m_sCounter(0);
 
 XSocketImpl::XSocketImpl(const std::string& remoteName, uint16 remotePort)
 	: m_id(++m_sCounter)
-	, m_peerID(kInvalidPeerID)
 	, m_listener(NULL)
 	, m_address(remoteName)
 	, m_port(remotePort)

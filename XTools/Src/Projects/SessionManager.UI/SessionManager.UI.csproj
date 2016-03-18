@@ -110,6 +110,9 @@
     <Compile Include="..\..\GeneratedInterface\CSharpAPI\AudioManager.cs">
       <Link>Generated Files\AudioManager.cs</Link>
     </Compile>
+    <Compile Include="..\..\GeneratedInterface\CSharpAPI\BoolElement.cs">
+      <Link>Generated Files\BoolElement.cs</Link>
+    </Compile>
     <Compile Include="..\..\GeneratedInterface\CSharpAPI\ClientConfig.cs">
       <Link>Generated Files\ClientConfig.cs</Link>
     </Compile>

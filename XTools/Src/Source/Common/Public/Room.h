@@ -30,6 +30,12 @@ public:
 	/// Returns the user at the given index in the room
 	virtual UserID GetUserID(int32 userIndex) = 0;
 
+	/// Returns true if the server should keep the room open even if there are no users in it
+	virtual bool GetKeepOpen() const = 0;
+
+	/// Tell the server whether or not it should keep this room open even if there are no users in it
+	virtual void SetKeepOpen(bool keepOpen) = 0;
+
 	/// Return the number of unique anchor names associated with this room
 	virtual int32 GetAnchorCount() const = 0;
 

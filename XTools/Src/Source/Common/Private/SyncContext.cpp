@@ -9,6 +9,7 @@
 #include "stdafx.h"
 #include "SyncContext.h"
 #include "ObjectElementImpl.h"
+#include "BoolElementImpl.h"
 #include "IntElementImpl.h"
 #include "LongElementImpl.h"
 #include "FloatElementImpl.h"
@@ -22,6 +23,7 @@ NAMESPACE_BEGIN(Sync)
 const char* kElementTypeNames[ElementType::Int32ArrayType + 1] =
 {
 	"UnknownType",
+	"BoolType",
 	"Int32Type",
 	"Int64Type",
 	"FloatType",
@@ -53,6 +55,7 @@ SyncContext::SyncContext(AuthorityLevel authorityLevel, SystemID localSystemID, 
 	m_opFactory.RegisterMaker(Operation::Remove, new OpMakerT<RemoveOperation>());
 
 	// Add makers for all the element types
+	m_elementFactory.RegisterMaker(ElementType::BoolType, new ElementMakerT<BoolElementImpl>());
 	m_elementFactory.RegisterMaker(ElementType::Int32Type, new ElementMakerT<IntElementImpl>());
 	m_elementFactory.RegisterMaker(ElementType::Int64Type, new ElementMakerT<LongElementImpl>());
 	m_elementFactory.RegisterMaker(ElementType::FloatType, new ElementMakerT<FloatElementImpl>());

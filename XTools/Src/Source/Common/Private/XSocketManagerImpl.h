@@ -68,7 +68,7 @@ private:
 
 	// Callback for when a socket is not longer referenced.
 	// Mutex locked
-	void CloseConnection(SocketID socketID);
+	void CloseConnection(XSocketImpl* closingSocket);
 
 	void UnregisterConnectionListener(PeerID peerID);
 
@@ -80,14 +80,10 @@ private:
 	// Process incoming packets from the network
 	void ProcessMessages();
 
-	void ProcessOpenCommand(const OpenCommandPtr& openCommand);
-	void ProcessAcceptCommand(const AcceptCommandPtr& acceptCommand);
-	void SendConnectionFailedMessage(SocketID socketID);
+	void ProcessOpenCommand(const CommandPtr& openCommand);
+	void ProcessAcceptCommand(const CommandPtr& acceptCommand);
+	void SendConnectionFailedMessage(const XSocketImplPtr& socket);
 	bool SendMessageToMainThread(const MessagePtr& msg);
-
-	// Maps Socket
-	std::map<SocketID, XSocketImpl*>	m_sockets;
-	Mutex								m_socketsMutex;
 
 	// Maps peers to callbacks that should be notified when a new incoming connection is made
 	std::map<PeerID, IncomingXSocketListener*> m_incomingConnectionListeners;

@@ -11,6 +11,7 @@
 XTOOLS_NAMESPACE_BEGIN
 
 template<typename T> struct ElementEnum { static const ElementType Type = ElementType::UnknownType; };
+template<> struct ElementEnum<BoolElement> { static const ElementType Type = ElementType::BoolType; };
 template<> struct ElementEnum<IntElement> { static const ElementType Type = ElementType::Int32Type; };
 template<> struct ElementEnum<LongElement> { static const ElementType Type = ElementType::Int64Type; };
 template<> struct ElementEnum<FloatElement> { static const ElementType Type = ElementType::FloatType; };
@@ -26,6 +27,18 @@ public:
 	typedef SyncPrimitiveBase<primitiveType, elementType> this_type;
 
 	SyncPrimitiveBase(primitiveType initialValue) : m_value(initialValue) {}
+	virtual ~SyncPrimitiveBase()
+	{
+		if (m_element && m_element->IsValid())
+		{
+			ObjectElementPtr parent = ObjectElement::Cast(m_element->GetParent());
+			if (parent)
+			{
+				parent->RemoveElement(m_element);
+				Unbind();
+			}
+		}
+	}
 
 	XGuid GetGUID() const XTOVERRIDE
 	{
@@ -35,7 +48,7 @@ public:
 
 	ElementType GetType() const XTOVERRIDE { return ElementEnum<elementType>::Type; }
 
-	const ref_ptr<elementType>& GetElement() { return m_element; }
+	virtual ElementPtr GetElement() const XTOVERRIDE { return m_element; }
 
 
 	primitiveType Get() const { return m_value; }
@@ -79,18 +92,24 @@ public:
 		}
 		else
 		{
-			LogError("Failed to bind sync float element");
+			LogError("Failed to bind sync element");
 		}
+	}
+
+	virtual void Unbind() XTOVERRIDE
+	{
+		m_element = nullptr;
 	}
 
 protected:
 
-	virtual void SetValue(primitiveType newValue) 
+	virtual void SetValue(const XValue& newValue) XTOVERRIDE
 	{
-		m_value = newValue;
+		m_value = *newValue.Get<primitiveType>();
 	}
 
 private:
+	static BoolElementPtr	CreateElement(const ObjectElementPtr& parent, const std::string& name, bool value) { return  parent->CreateBoolElement(new XString(name), value); }
 	static FloatElementPtr	CreateElement(const ObjectElementPtr& parent, const std::string& name, float value) { return  parent->CreateFloatElement(new XString(name), value); }
 	static DoubleElementPtr	CreateElement(const ObjectElementPtr& parent, const std::string& name, double value) { return  parent->CreateDoubleElement(new XString(name), value); }
 	static IntElementPtr	CreateElement(const ObjectElementPtr& parent, const std::string& name, int32 value) { return  parent->CreateIntElement(new XString(name), value); }
@@ -101,7 +120,7 @@ private:
 	primitiveType m_value;
 };
 
-
+typedef SyncPrimitiveBase<bool, BoolElement> SyncBool;
 typedef SyncPrimitiveBase<float, FloatElement> SyncFloat;
 typedef SyncPrimitiveBase<double, DoubleElement> SyncDouble;
 typedef SyncPrimitiveBase<int32, IntElement> SyncInt;

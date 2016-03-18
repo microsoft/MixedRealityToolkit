@@ -58,6 +58,19 @@ ObjectElementImpl::ObjectElementImpl(SyncContext* syncContext, const XStringPtr&
 }
 
 
+BoolElementPtr ObjectElementImpl::CreateBoolElement(const XStringPtr& name, bool value)
+{
+	if (!name)
+	{
+		LogError("Null name passed to CreateBoolElement");
+		return NULL;
+	}
+
+	ElementPtr newElement = CreateElement(ElementType::BoolType, name, value);
+	return BoolElement::Cast(newElement);
+}
+
+
 IntElementPtr ObjectElementImpl::CreateIntElement(const XStringPtr& name, int value)
 {
 	if (!name)

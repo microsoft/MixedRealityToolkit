@@ -12,6 +12,7 @@
 SyncTestObject::SyncTestObject(const ObjectElementPtr& element, bool bCreatedLocally)
 	: m_name(element->GetName()->GetString())
 	, m_element(element)
+	, m_boolMember(false)
 	, m_floatMember(0.f)
 	, m_intMember(0)
 	, m_stringMember("TestString")
@@ -27,6 +28,7 @@ SyncTestObject::SyncTestObject(const ObjectElementPtr& element, bool bCreatedLoc
 
 	if (bCreatedLocally && m_element->GetName()->GetString() != std::string("Root"))
 	{
+		m_boolElement = m_element->CreateBoolElement(new XString("boolMember"), m_boolMember);
 		m_floatElement = m_element->CreateFloatElement(new XString("floatMember"), m_floatMember);
 		m_intElement = m_element->CreateIntElement(new XString("intMember"), m_intMember);
 		m_stringElement = m_element->CreateStringElement(new XString("stringMember"), new XString(m_stringMember));
@@ -243,6 +245,18 @@ bool SyncTestObject::Equals(const ref_ptr<const SyncTestObject>& otherObj) const
 		return false;
 	}
 
+	if ((m_boolElement == NULL) != (otherObj->m_boolElement == NULL)) return false;
+	if (m_boolElement != NULL)
+	{
+		if (otherObj->m_boolElement == NULL ||
+			m_boolMember != otherObj->m_boolMember ||
+			m_boolElement->GetGUID() != otherObj->m_boolElement->GetGUID() ||
+			!m_boolElement->GetName()->IsEqual(otherObj->m_boolElement->GetName()))
+		{
+			return false;
+		}
+	}
+
 	if ((m_floatElement == NULL) != (otherObj->m_floatElement == NULL)) return false;
 	if (m_floatElement != NULL)
 	{
@@ -364,6 +378,15 @@ bool SyncTestObject::Equals(const ref_ptr<const SyncTestObject>& otherObj) const
 }
 
 
+void SyncTestObject::OnBoolElementChanged(XGuid elementID, bool newValue)
+{
+	XTASSERT(m_boolElement);
+	XTASSERT(m_boolElement->GetGUID() == elementID);
+
+	m_boolMember = newValue;
+}
+
+
 void SyncTestObject::OnIntElementChanged(XGuid elementID, int32 newValue)
 {
 	XTASSERT(m_intElement);
@@ -426,6 +449,12 @@ void SyncTestObject::OnElementAdded(const ElementPtr& element)
 			m_children.push_back(new SyncTestObject(objElement, false));
 		}
 		
+	}
+	else if (element->GetElementType() == ElementType::BoolType)
+	{
+		XTASSERT(m_boolElement == NULL);
+		m_boolElement = BoolElement::Cast(element);
+		m_boolMember = m_boolElement->GetValue();
 	}
 	else if (element->GetElementType() == ElementType::FloatType)
 	{

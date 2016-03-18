@@ -50,8 +50,6 @@ XToolsManagerImpl::XToolsManagerImpl(const ClientConfigPtr& config)
 		m_logManager->SetWriter(config->GetLogWriter());
 	}
 
-	LogInfo("XTools Info: \n\tBuild Version: " STRING_FORMAT_CHARACTER " \n\tSchema Version: %i", XTOOLS_VERSION_STRING, kXToolsSchemaVersion);
-
 	std::string machineName = Platform::GetLocalMachineNetworkName();
 	LogInfo("Local Machine Name: %s", machineName.c_str());
 

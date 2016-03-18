@@ -13,7 +13,6 @@ XTOOLS_NAMESPACE_BEGIN
 
 Message::Message()
 	: m_payload(0)
-	, m_socketID(kInvalidSocketID)
 	, m_peerID(kInvalidPeerID)
 	, m_address(RakNet::UNASSIGNED_SYSTEM_ADDRESS)
 {
@@ -27,15 +26,15 @@ bool Message::IsValid() const
 }
 
 
-SocketID Message::GetSocketID() const
+const XSocketImplPtr& Message::GetSocket() const
 {
-	return m_socketID;
+	return m_socket;
 }
 
 
-void Message::SetSocketID(SocketID socketID)
+void Message::SetSocket(const XSocketImplPtr& socket)
 {
-	m_socketID = socketID;
+	m_socket = socket;
 }
 
 

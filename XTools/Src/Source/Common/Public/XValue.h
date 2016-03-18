@@ -16,6 +16,7 @@ public:
 	enum Type : byte
 	{
 		Unknown = 0,
+		Bool,
 		Int,
 		UInt,
 		Int64,
@@ -88,19 +89,21 @@ private:
 	template<Type T> struct TypeMapper				{ typedef void ValueType; };
 
 #if !defined(XTOOLS_PLATFORM_OSX)
-	template<> struct ValueMapper < int32 >			{ static const Type value = Int; };
-	template<> struct ValueMapper < uint32 >		{ static const Type value = UInt; };
-	template<> struct ValueMapper < int64 >			{ static const Type value = Int64; };
-	template<> struct ValueMapper < float >			{ static const Type value = Float; };
-	template<> struct ValueMapper < double >		{ static const Type value = Double; };
-	template<> struct ValueMapper < std::string >	{ static const Type value = String; };
+	template<> struct ValueMapper < bool >			{ static const Type value = Type::Bool; };
+	template<> struct ValueMapper < int32 >			{ static const Type value = Type::Int; };
+	template<> struct ValueMapper < uint32 >		{ static const Type value = Type::UInt; };
+	template<> struct ValueMapper < int64 >			{ static const Type value = Type::Int64; };
+	template<> struct ValueMapper < float >			{ static const Type value = Type::Float; };
+	template<> struct ValueMapper < double >		{ static const Type value = Type::Double; };
+	template<> struct ValueMapper < std::string >	{ static const Type value = Type::String; };
 
-	template<> struct TypeMapper<Int>				{ typedef int32 ValueType; };
-	template<> struct TypeMapper<UInt>				{ typedef uint32 ValueType; };
-	template<> struct TypeMapper<Int64>				{ typedef int64 ValueType; };
-	template<> struct TypeMapper<Float>				{ typedef float ValueType; };
-	template<> struct TypeMapper<Double>			{ typedef double ValueType; };
-	template<> struct TypeMapper<String>			{ typedef std::string ValueType; };
+	template<> struct TypeMapper<Type::Bool>		{ typedef bool ValueType; };
+	template<> struct TypeMapper<Type::Int>			{ typedef int32 ValueType; };
+	template<> struct TypeMapper<Type::UInt>		{ typedef uint32 ValueType; };
+	template<> struct TypeMapper<Type::Int64>		{ typedef int64 ValueType; };
+	template<> struct TypeMapper<Type::Float>		{ typedef float ValueType; };
+	template<> struct TypeMapper<Type::Double>		{ typedef double ValueType; };
+	template<> struct TypeMapper<Type::String>		{ typedef std::string ValueType; };
 #endif
 	
 	class ValueWrapper : public RefCounted
@@ -131,6 +134,27 @@ private:
 		T m_value;
 	};
 
+	// Template specialization for bools to make sure they don't get cast to ints
+	template<>
+	class ValueT<bool> : public ValueWrapper
+	{
+	public:
+		ValueT(const bool& value) : m_value(value) {}
+
+		virtual Type GetType() const { return ValueMapper<bool>::value; }
+
+		virtual void Serialize(const NetworkOutMessagePtr& msg) const { msg->Write((byte)((m_value) ? 1 : 0)); }
+
+		virtual bool Equals(const ValueWrapper* other) const
+		{
+			return (static_cast<const ValueT<bool>*>(other)->m_value == m_value);
+		}
+
+		const bool* Get() const { return &m_value; }
+	private:
+		bool m_value;
+	};
+
 	ref_ptr<ValueWrapper> m_wrappedValue;
 };
 
@@ -141,6 +165,7 @@ inline XValue::XValue(const XStringPtr& value)
 	m_wrappedValue = new ValueT<std::string>(value->GetString());
 }
 
+template<> struct XValue::ValueMapper < bool >			{ static const Type value = Bool; };
 template<> struct XValue::ValueMapper < int32 >			{ static const Type value = Int; };
 template<> struct XValue::ValueMapper < uint32 >		{ static const Type value = UInt; };
 template<> struct XValue::ValueMapper < int64 >			{ static const Type value = Int64; };
@@ -148,6 +173,7 @@ template<> struct XValue::ValueMapper < float >			{ static const Type value = Fl
 template<> struct XValue::ValueMapper < double >		{ static const Type value = Double; };
 template<> struct XValue::ValueMapper < std::string >	{ static const Type value = String; };
 
+template<> struct XValue::TypeMapper< XValue::Type::Bool >		{ typedef bool ValueType; };
 template<> struct XValue::TypeMapper< XValue::Type::Int >		{ typedef int32 ValueType; };
 template<> struct XValue::TypeMapper< XValue::Type::UInt >      { typedef uint32 ValueType; };
 template<> struct XValue::TypeMapper< XValue::Type::Int64 >		{ typedef int64 ValueType; };

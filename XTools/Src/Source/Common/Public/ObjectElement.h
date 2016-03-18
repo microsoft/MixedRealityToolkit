@@ -21,9 +21,13 @@ public:
 	/// If the given element is an Object, cast it to the derived type.  Otherwise return null
 	static ref_ptr<ObjectElement> Cast(const ElementPtr& element);
 
+	/// Create a BoolElement as a child of this object.  The element will have the given starting value.  
+	/// Creating this element will cause the same element to automatically be created on all the remote systems
+	virtual BoolElementPtr CreateBoolElement(const XStringPtr& name, bool value) = 0;
+
 	/// Create an IntElement as a child of this object.  The element will have the given starting value.  
 	/// Creating this element will cause the same element to automatically be created on all the remote systems
-	virtual IntElementPtr CreateIntElement(const XStringPtr& name, int value) = 0;
+	virtual IntElementPtr CreateIntElement(const XStringPtr& name, int32 value) = 0;
 
 	/// Create a LongElement as a child of this object.  The element will have the given starting value.  
 	/// Creating this element will cause the same element to automatically be created on all the remote systems

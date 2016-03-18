@@ -33,6 +33,7 @@
 #include <Public/NetworkConnection.h>
 #include <Public/XValue.h>
 #include <Public/Element.h>
+#include <Public/BoolElement.h>
 #include <Public/IntElement.h>
 #include <Public/LongElement.h>
 #include <Public/FloatElement.h>

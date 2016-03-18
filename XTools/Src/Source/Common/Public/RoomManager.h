@@ -33,7 +33,7 @@ public:
 	/// Creates a new room with the given name and ID and adds the local user to that room.
 	/// The room is created immediately and the remote devices are notified asynchronously.  
 	/// Returns the newly created room if successful, or null if a room with the same name or ID already exists 
-	virtual RoomPtr CreateRoom(const XStringPtr& roomName, RoomID roomID) = 0;
+	virtual RoomPtr CreateRoom(const XStringPtr& roomName, RoomID roomID, bool keepOpenWhenEmpty) = 0;
 
 	/// Add the local user to the given room.  If the user is currently in another room, they will automatically 
 	/// leave the old room before joining the new one.  

@@ -179,8 +179,11 @@ void XSessionImpl::OnDisconnected(const NetworkConnectionPtr& connection)
 			m_broadcaster->RemoveConnection(remoteClient->m_secondaryConnection);
 			m_sendToForwarder->RemoveConnection(remoteClient->m_userID);
 			m_audioSessionProcessor->RemoveConnection(remoteClient->m_secondaryConnection);
+
 			m_roomMgr->RemoveConnection(remoteClient->m_primaryConnection);
 			m_roomMgr->RemoveConnection(remoteClient->m_secondaryConnection);
+			m_roomMgr->OnUserDisconnected(remoteClient->m_userID);	// Remove the user from the list of rooms
+
 			m_syncMgr->RemoveConnection(connection);
 			m_internalSyncMgr->RemoveConnection(connection);
 			
@@ -470,8 +473,6 @@ void XSessionImpl::CheckIfEmpty(bool resetImmediately)
 			// sync data is cleaned up
 			UserPtr serverUser = m_syncMgr->GetLocalUser();
 			m_syncMgr = Sync::SyncManager::Create(MessageID::SyncMessage, Sync::AuthorityLevel::High, serverUser);
-			m_internalSyncMgr = Sync::SyncManager::Create(MessageID::InternalSyncMessage, Sync::AuthorityLevel::High, serverUser);
-			m_roomMgr = new ServerRoomManager(m_internalSyncMgr);
 
 			m_callback->OnSessionEmpty(this);
 

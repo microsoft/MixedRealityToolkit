@@ -221,5 +221,8 @@
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\XToolsManager.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\BoolElement.java">
+      <Filter>Source Files\Generated Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

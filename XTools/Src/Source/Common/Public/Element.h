@@ -13,6 +13,7 @@ XTOOLS_NAMESPACE_BEGIN
 enum ElementType : byte
 {
 	UnknownType = 0,
+	BoolType,
 	Int32Type,
 	Int64Type,
 	FloatType,

@@ -14,6 +14,17 @@ class SyncArray : public Syncable, public IntArrayListener
 {
 public:
 	SyncArray() : m_listeners(ListenerList<IntArrayListener>::Create()) {}
+	virtual ~SyncArray()
+	{
+		if (m_element && m_element->IsValid())
+		{
+			ObjectElementPtr parent = ObjectElement::Cast(m_element->GetParent());
+			if (parent)
+			{
+				parent->RemoveElement(m_element);
+			}
+		}
+	}
 
 	virtual XGuid GetGUID() const XTOVERRIDE
 	{
@@ -26,10 +37,12 @@ public:
 		return ElementType::Int32ArrayType;
 	}
 
+	ElementPtr GetElement() const XTOVERRIDE { return m_element; }
+
 	void AddListener(IntArrayListener* listener) { m_listeners->AddListener(listener); }
 	void RemoveListener(IntArrayListener* listener) { m_listeners->RemoveListener(listener); }
 
-	const IntArrayElementPtr& GetElement() { return m_element; }
+	const IntArrayElementPtr& GetIntArrayElement() const { return m_element; }
 
 	int32 GetCount() const { return (int32)m_array.size(); }
 
@@ -123,7 +136,22 @@ public:
 		}
 	}
 
+	virtual void Unbind() XTOVERRIDE
+	{
+		if (m_element)
+		{
+			m_element->RemoveListener(this);
+			m_element = nullptr;
+		}
+	}
+
 private:
+	virtual void SetValue(const XValue& ) XTOVERRIDE
+	{
+		// Should not get called for arrays
+		XTASSERT(false);
+	}
+
 	virtual void OnValueChanged(int32 index, int32 newValue) XTOVERRIDE
 	{
 		m_array[index] = newValue;

@@ -30,6 +30,7 @@
   <ItemGroup>
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\AnchorDownloadRequest.java" />
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\AudioManager.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\BoolElement.java" />
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\ClientConfig.java" />
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\ClientRole.java" />
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\DirectPairConnector.java" />

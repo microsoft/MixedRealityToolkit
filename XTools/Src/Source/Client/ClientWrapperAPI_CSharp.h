@@ -76,6 +76,7 @@ class SwigDirector_ObjectElementListener : public XTools::ObjectElementListener,
 public:
     SwigDirector_ObjectElementListener();
     virtual ~SwigDirector_ObjectElementListener();
+    virtual void OnBoolElementChanged(XTools::XGuid elementID, bool newValue);
     virtual void OnIntElementChanged(XTools::XGuid elementID, XTools::int32 newValue);
     virtual void OnLongElementChanged(XTools::XGuid elementID, XTools::int64 newValue);
     virtual void OnFloatElementChanged(XTools::XGuid elementID, float newValue);
@@ -84,23 +85,25 @@ public:
     virtual void OnElementAdded(XTools::ElementPtr const &element);
     virtual void OnElementDeleted(XTools::ElementPtr const &element);
 
-    typedef void (SWIGSTDCALL* SWIG_Callback0_t)(long long, int);
-    typedef void (SWIGSTDCALL* SWIG_Callback1_t)(long long, long long);
-    typedef void (SWIGSTDCALL* SWIG_Callback2_t)(long long, float);
-    typedef void (SWIGSTDCALL* SWIG_Callback3_t)(long long, double);
-    typedef void (SWIGSTDCALL* SWIG_Callback4_t)(long long, void *);
-    typedef void (SWIGSTDCALL* SWIG_Callback5_t)(void *);
+    typedef void (SWIGSTDCALL* SWIG_Callback0_t)(long long, unsigned int);
+    typedef void (SWIGSTDCALL* SWIG_Callback1_t)(long long, int);
+    typedef void (SWIGSTDCALL* SWIG_Callback2_t)(long long, long long);
+    typedef void (SWIGSTDCALL* SWIG_Callback3_t)(long long, float);
+    typedef void (SWIGSTDCALL* SWIG_Callback4_t)(long long, double);
+    typedef void (SWIGSTDCALL* SWIG_Callback5_t)(long long, void *);
     typedef void (SWIGSTDCALL* SWIG_Callback6_t)(void *);
-    void swig_connect_director(SWIG_Callback0_t callbackOnIntElementChanged, SWIG_Callback1_t callbackOnLongElementChanged, SWIG_Callback2_t callbackOnFloatElementChanged, SWIG_Callback3_t callbackOnDoubleElementChanged, SWIG_Callback4_t callbackOnStringElementChanged, SWIG_Callback5_t callbackOnElementAdded, SWIG_Callback6_t callbackOnElementDeleted);
+    typedef void (SWIGSTDCALL* SWIG_Callback7_t)(void *);
+    void swig_connect_director(SWIG_Callback0_t callbackOnBoolElementChanged, SWIG_Callback1_t callbackOnIntElementChanged, SWIG_Callback2_t callbackOnLongElementChanged, SWIG_Callback3_t callbackOnFloatElementChanged, SWIG_Callback4_t callbackOnDoubleElementChanged, SWIG_Callback5_t callbackOnStringElementChanged, SWIG_Callback6_t callbackOnElementAdded, SWIG_Callback7_t callbackOnElementDeleted);
 
 private:
-    SWIG_Callback0_t swig_callbackOnIntElementChanged;
-    SWIG_Callback1_t swig_callbackOnLongElementChanged;
-    SWIG_Callback2_t swig_callbackOnFloatElementChanged;
-    SWIG_Callback3_t swig_callbackOnDoubleElementChanged;
-    SWIG_Callback4_t swig_callbackOnStringElementChanged;
-    SWIG_Callback5_t swig_callbackOnElementAdded;
-    SWIG_Callback6_t swig_callbackOnElementDeleted;
+    SWIG_Callback0_t swig_callbackOnBoolElementChanged;
+    SWIG_Callback1_t swig_callbackOnIntElementChanged;
+    SWIG_Callback2_t swig_callbackOnLongElementChanged;
+    SWIG_Callback3_t swig_callbackOnFloatElementChanged;
+    SWIG_Callback4_t swig_callbackOnDoubleElementChanged;
+    SWIG_Callback5_t swig_callbackOnStringElementChanged;
+    SWIG_Callback6_t swig_callbackOnElementAdded;
+    SWIG_Callback7_t swig_callbackOnElementDeleted;
     void swig_init_callbacks();
 };
 

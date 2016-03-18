@@ -21,6 +21,9 @@ void XValue::Deserialize(NetworkInMessage& msg)
 	{
 		switch (inType)
 		{
+		case XTools::XValue::Bool:
+			*this = XValue(msg.ReadByte() != 0);
+			break;
 		case XTools::XValue::Int:
 			*this = XValue(msg.ReadInt32());
 			break;
@@ -55,6 +58,9 @@ std::string XValue::ToString() const
 
 	switch (m_wrappedValue->GetType())
 	{
+	case XTools::XValue::Bool:
+		sprintf_s(buffer, sizeof(buffer), "%s", (*Get<bool>()) ? "true" : "false");
+		break;
 	case XTools::XValue::Int:
 		sprintf_s(buffer, sizeof(buffer), "%i", *Get<int32>());
 		break;

@@ -67,6 +67,7 @@ public:
     void swig_connect_director(JNIEnv *jenv, jobject jself, jclass jcls, bool swig_mem_own, bool weak_global);
     SwigDirector_ObjectElementListener(JNIEnv *jenv);
     virtual ~SwigDirector_ObjectElementListener();
+    virtual void OnBoolElementChanged(XTools::XGuid elementID, bool newValue);
     virtual void OnIntElementChanged(XTools::XGuid elementID, XTools::int32 newValue);
     virtual void OnLongElementChanged(XTools::XGuid elementID, XTools::int64 newValue);
     virtual void OnFloatElementChanged(XTools::XGuid elementID, float newValue);
@@ -76,10 +77,10 @@ public:
     virtual void OnElementDeleted(XTools::ElementPtr const &element);
 public:
     bool swig_overrides(int n) {
-      return (n < 7 ? swig_override[n] : false);
+      return (n < 8 ? swig_override[n] : false);
     }
 protected:
-    bool swig_override[7];
+    bool swig_override[8];
 };
 
 class SwigDirector_SyncListener : public XTools::SyncListener, public Swig::Director {

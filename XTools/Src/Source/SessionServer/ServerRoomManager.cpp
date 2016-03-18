@@ -44,6 +44,36 @@ void ServerRoomManager::RemoveConnection(const NetworkConnectionPtr& connection)
 }
 
 
+void ServerRoomManager::OnUserDisconnected(UserID userID)
+{
+	// Find the room that this user is in and remove them from it, and close the room if necessary
+	std::list<RoomID> deleteRoomList;
+
+	// First remove the user from all rooms, and make a note of which rooms should be deleted
+	for (auto roomItr = m_rooms.begin(); roomItr != m_rooms.end(); ++roomItr)
+	{
+		ServerRoomPtr room = roomItr->second;
+		if (room->RemoveUser(userID))
+		{
+			if (room->IsEmpty() && !room->GetKeepOpen())
+			{
+				deleteRoomList.push_back(room->GetID());
+			}
+		}
+	}
+
+	// Now go through and delete the empty rooms
+	for (auto itr = deleteRoomList.begin(); itr != deleteRoomList.end(); ++itr)
+	{
+		auto roomItr = m_rooms.find(*itr);
+		if (roomItr != m_rooms.end())
+		{
+			m_rooms.erase(roomItr);
+		}
+	}
+}
+
+
 void ServerRoomManager::OnMessageReceived(const NetworkConnectionPtr& connection, NetworkInMessage& message)
 {
 	RoomMessageID messageType = (RoomMessageID)message.ReadByte();
@@ -62,7 +92,7 @@ void ServerRoomManager::OnMessageReceived(const NetworkConnectionPtr& connection
 
 void ServerRoomManager::OnElementAdded(const ElementPtr& element)
 {
-	ServerRoomPtr newRoom = new ServerRoom();
+	ServerRoomPtr newRoom = new ServerRoom(this);
 	newRoom->BindRemote(element);
 
 	m_rooms[newRoom->GetID()] = newRoom;
@@ -77,6 +107,20 @@ void ServerRoomManager::OnElementDeleted(const ElementPtr& element)
 		{
 			m_rooms.erase(itr);
 			break;
+		}
+	}
+}
+
+
+void ServerRoomManager::OnRoomEmpty(const ServerRoomPtr& room)
+{
+	// If the empty room is not set to be kept open, then close it
+	if (!room->GetKeepOpen())
+	{
+		auto roomItr = m_rooms.find(room->GetID());
+		if (roomItr != m_rooms.end())
+		{
+			m_rooms.erase(roomItr);
 		}
 	}
 }

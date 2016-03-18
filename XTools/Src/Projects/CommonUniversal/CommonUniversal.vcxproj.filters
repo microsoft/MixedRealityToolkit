@@ -438,6 +438,9 @@
     <ClCompile Include="..\..\Source\Common\Private\NetworkThreadCommands.cpp">
       <Filter>Source\Private\Networking</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\BoolElementImpl.cpp">
+      <Filter>Source\Private\Sync\Elements</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\Common\Common.h">
@@ -1000,6 +1003,12 @@
     </ClInclude>
     <ClInclude Include="..\..\Source\Common\Private\NetworkThreadCommands.h">
       <Filter>Source\Private\Networking</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\BoolElementImpl.h">
+      <Filter>Source\Private\Sync\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\BoolElement.h">
+      <Filter>Source\Public\Sync\Elements</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -24,6 +24,10 @@ public:
 
 	// ObjectElement Functions:
 
+	/// Create a BoolElement as a child of this object.  The element will have the given starting value.  
+	/// Creating this element will cause the same element to automatically be created on all the remote systems
+	virtual BoolElementPtr CreateBoolElement(const XStringPtr& name, bool value) XTOVERRIDE;
+
 	/// Create an IntElement as a child of this object.  The element will have the given starting value.  
 	/// Creating this element will cause the same element to automatically be created on all the remote systems
 	virtual IntElementPtr CreateIntElement(const XStringPtr& name, int value) XTOVERRIDE;

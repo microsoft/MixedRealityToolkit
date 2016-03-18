@@ -14,13 +14,15 @@ XTOOLS_NAMESPACE_BEGIN
 class ServerRoomManager : 
 	public AtomicRefCounted, 
 	public NetworkConnectionListener,
-	public ObjectElementListener
+	public ObjectElementListener,
+	public RoomEmptyListener
 {
 public:
 	explicit ServerRoomManager(const Sync::SyncManagerPtr& syncMgr);
 
 	void AddConnection(const NetworkConnectionPtr& connection);
 	void RemoveConnection(const NetworkConnectionPtr& connection);
+	void OnUserDisconnected(UserID userID);
 
 private:
 	// NetworkConnectionListener Functions:
@@ -29,6 +31,9 @@ private:
 	// ObjectElementListener Functions: 
 	virtual void OnElementAdded(const ElementPtr& element) XTOVERRIDE;
 	virtual void OnElementDeleted(const ElementPtr& element) XTOVERRIDE;
+
+	// RoomEmptyListener Functions:
+	virtual void OnRoomEmpty(const ServerRoomPtr& room) XTOVERRIDE;
 
 	void OnUploadRequest(const NetworkConnectionPtr& connection, NetworkInMessage& message);
 	void OnDownloadRequest(const NetworkConnectionPtr& connection, NetworkInMessage& message);

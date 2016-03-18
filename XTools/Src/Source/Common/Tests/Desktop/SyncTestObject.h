@@ -59,6 +59,7 @@ public:
 	uint32 GetIncomingAdds() const { return m_incomingAddCount; }
 	uint32 GetIncomingRemoves() const { return m_incomingRemoveCount; }
 
+	virtual void OnBoolElementChanged(XGuid elementID, bool newValue) XTOVERRIDE;
 	virtual void OnIntElementChanged(XGuid elementID, int32 newValue) XTOVERRIDE;
 	virtual void OnFloatElementChanged(XGuid elementID, float newValue) XTOVERRIDE;
 	virtual void OnStringElementChanged(XGuid elementID, const XStringPtr& newValue) XTOVERRIDE;
@@ -78,6 +79,9 @@ private:
 
 	std::string							m_name;
 	ObjectElementPtr					m_element;
+
+	BoolElementPtr		m_boolElement;
+	bool				m_boolMember;
 
 	FloatElementPtr		m_floatElement;
 	float				m_floatMember;
