@@ -215,8 +215,9 @@ void XSocketManagerImpl::UnregisterConnectionListener(PeerID peerID)
 	// Lock the peer list.  This can block the network thread
 	ScopedLock lock(m_peerMutex);
 
+	// NOTE: if the peer failed during creation on the network thread then it will not be in this list
 	auto iter = m_peers.find(peerID);
-	if (XTVERIFY(iter != m_peers.end()))
+	if (iter != m_peers.end())
 	{
 		PeerConnectionPtr peerConnection = iter->second;
 
