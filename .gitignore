@@ -7,6 +7,11 @@
 *.log
 *.idb
 *.opendb
+*.db
+*.pdb
+*.vspscc
+*.user
+*.pch
 /Sharing/Src/bin
 /Sharing/Src/tmp
 /Sharing/Src/External/apriltag-2015-03-18/lib
@@ -22,4 +27,5 @@
 /Sharing/Src/External/zxing-cpp/src/tmp
 /Sharing/Src/External/speex-1.2rc1/lib
 /Sharing/Src/GeneratedInterface
-*.db
+/Sharing/Src/Projects/ProfilerX/obj
+/Sharing/Src/Projects/ProfilerX/bin
