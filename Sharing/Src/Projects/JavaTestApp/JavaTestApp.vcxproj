@@ -81,6 +81,7 @@
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\Settings.java" />
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\SharingClient.java" />
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\SharingClientJNI.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\SharingManager.java" />
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\StringElement.java" />
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\SyncListener.java" />
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\TagImage.java" />
@@ -90,7 +91,6 @@
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\VisualPairConnector.java" />
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\VisualPairReceiver.java" />
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\XString.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\XToolsManager.java" />
     <None Include="..\..\Source\JavaTestApp\CopyDependencies.bat" />
     <None Include="..\..\Source\JavaTestApp\SyncRoot.java" />
     <None Include="..\..\Source\JavaTestApp\SyncSphere.java" />

@@ -260,6 +260,9 @@
     <Compile Include="..\..\GeneratedInterface\CSharpAPI\SharingClientPINVOKE.cs">
       <Link>Generated Files\SharingClientPINVOKE.cs</Link>
     </Compile>
+    <Compile Include="..\..\GeneratedInterface\CSharpAPI\SharingManager.cs">
+      <Link>Generated Files\SharingManager.cs</Link>
+    </Compile>
     <Compile Include="..\..\GeneratedInterface\CSharpAPI\StringElement.cs">
       <Link>Generated Files\StringElement.cs</Link>
     </Compile>
@@ -286,9 +289,6 @@
     </Compile>
     <Compile Include="..\..\GeneratedInterface\CSharpAPI\XString.cs">
       <Link>Generated Files\XString.cs</Link>
-    </Compile>
-    <Compile Include="..\..\GeneratedInterface\CSharpAPI\XToolsManager.cs">
-      <Link>Generated Files\XToolsManager.cs</Link>
     </Compile>
     <Compile Include="..\..\Source\Helpers\CSharp\NetworkConnectionAdapter.cs">
       <Link>Network\NetworkConnectionAdapter.cs</Link>

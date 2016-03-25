@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////
-// XToolsManager.h
+// SharingManager.h
 //
 // Copyright (C) 2014 Microsoft Corp.  All Rights Reserved
 //////////////////////////////////////////////////////////////////////////
@@ -8,15 +8,15 @@
 
 XTOOLS_NAMESPACE_BEGIN
 
-DECLARE_PTR_PRE(XToolsManager)
+DECLARE_PTR_PRE(SharingManager)
 
 /// Main class responsible for initializing the primary systems and allowing
 /// access to the creation of other objects
-class XToolsManager : public AtomicRefCounted
+class SharingManager : public AtomicRefCounted
 {
 public:
-	/// Create a new XToolsManager instance.  There should only be one per app
-	static ref_ptr<XToolsManager>			Create(const ClientConfigPtr& config);
+	/// Create a new SharingManager instance.  There should only be one per app
+	static ref_ptr<SharingManager>			Create(const ClientConfigPtr& config);
 
 	/// Returns the \ref SessionManager, which keeps track of available sessions and allows
 	/// this client to create, join, and leave sessions
@@ -75,6 +75,6 @@ public:
 	virtual void							SetUserName(const XStringPtr& name) = 0;
 };
 
-DECLARE_PTR_POST(XToolsManager)
+DECLARE_PTR_POST(SharingManager)
 
 XTOOLS_NAMESPACE_END

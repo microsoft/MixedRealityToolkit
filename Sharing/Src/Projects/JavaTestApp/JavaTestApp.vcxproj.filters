@@ -218,10 +218,10 @@
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\XString.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\XToolsManager.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\BoolElement.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\BoolElement.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\SharingManager.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
   </ItemGroup>

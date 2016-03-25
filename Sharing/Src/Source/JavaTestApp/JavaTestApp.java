@@ -12,7 +12,7 @@ import com.microsoft.holotoolkit.sharing.*;
 
  public class JavaTestApp {
 
-    XToolsManager _myMgr;
+    SharingManager _myMgr;
     final boolean _autoJoin = true;
     final int _autoJoinSessionId = 0;
     NetworkConnection _onSightConnection;
@@ -244,7 +244,7 @@ import com.microsoft.holotoolkit.sharing.*;
 		ClientConfig config = new ClientConfig(ClientRole.Primary);
 		config.SetServerAddress("osserver.redmond.corp.microsoft.com");
 
-        _myMgr = XToolsManager.Create(config);
+        _myMgr = SharingManager.Create(config);
 
         if (_myMgr != null) {
             _onSightConnection = _myMgr.GetServerConnection();

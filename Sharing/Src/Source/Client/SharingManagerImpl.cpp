@@ -1,11 +1,11 @@
 //////////////////////////////////////////////////////////////////////////
-// XToolsManagerImpl.cpp
+// SharingManagerImpl.cpp
 //
 // Copyright (C) 2015 Microsoft Corp.  All Rights Reserved
 //////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
-#include "XToolsManagerImpl.h"
+#include "SharingManagerImpl.h"
 #include "DynamicLibrary.h"
 #include "SideCarContextImpl.h"
 #include "PairingManagerImpl.h"
@@ -28,14 +28,14 @@ XTOOLS_NAMESPACE_BEGIN
 // Statics
 
 // Retry the server once a second.
-const int XToolsManagerImpl::s_serverConnectRetryRateTicks = 3 * CLOCKS_PER_SEC;
+const int SharingManagerImpl::s_serverConnectRetryRateTicks = 3 * CLOCKS_PER_SEC;
 
-XToolsManagerPtr XToolsManager::Create(const ClientConfigPtr& config)
+SharingManagerPtr SharingManager::Create(const ClientConfigPtr& config)
 {
-	return new XToolsManagerImpl(config);
+	return new SharingManagerImpl(config);
 }
 
-XToolsManagerImpl::XToolsManagerImpl(const ClientConfigPtr& config)
+SharingManagerImpl::SharingManagerImpl(const ClientConfigPtr& config)
 	: m_clientContext(new ClientContext(config))
 	, m_settings(new Settings())
 	, m_logManager(new Logger())
@@ -113,9 +113,9 @@ XToolsManagerImpl::XToolsManagerImpl(const ClientConfigPtr& config)
 }
 
 
-XToolsManagerImpl::~XToolsManagerImpl()
+SharingManagerImpl::~SharingManagerImpl()
 {
-	LogInfo("XToolsManager shutting down");
+	LogInfo("SharingManager shutting down");
 
 	// Manually release all the smart pointers so they can print any errors to
 	// the logger before it gets cleared
@@ -149,50 +149,50 @@ XToolsManagerImpl::~XToolsManagerImpl()
 }
 
 
-const SessionManagerPtr& XToolsManagerImpl::GetSessionManager() const
+const SessionManagerPtr& SharingManagerImpl::GetSessionManager() const
 {
 	return m_sessionManager;
 }
 
 
-const UserPresenceManagerPtr& XToolsManagerImpl::GetUserPresenceManager() const
+const UserPresenceManagerPtr& SharingManagerImpl::GetUserPresenceManager() const
 {
 	return m_clientContext->GetUserPresenceManager();
 }
 
-const AudioManagerPtr& XToolsManagerImpl::GetAudioManager() const
+const AudioManagerPtr& SharingManagerImpl::GetAudioManager() const
 {
 	return m_clientContext->GetAudioManager();
 }
 
 
-const PairingManagerPtr& XToolsManagerImpl::GetPairingManager() const
+const PairingManagerPtr& SharingManagerImpl::GetPairingManager() const
 {
 	return m_paringManager;
 }
 
 
-ObjectElementPtr XToolsManagerImpl::GetRootSyncObject()
+ObjectElementPtr SharingManagerImpl::GetRootSyncObject()
 {
 	return m_clientContext->GetSyncManager()->GetRootObject();
 }
 
 
-const RoomManagerPtr& XToolsManagerImpl::GetRoomManager() const
+const RoomManagerPtr& SharingManagerImpl::GetRoomManager() const
 {
 	return m_roomManager;
 }
 
 
-void XToolsManagerImpl::Update()
+void SharingManagerImpl::Update()
 {
 	{
-		PROFILE_SCOPE("XToolsManager Update");
+		PROFILE_SCOPE("SharingManager Update");
 
 		// This triggers callbacks, which could remove references to this object.  
 		// So we create a smart pointer reference here to ensure that this object 
 		// is not destroyed before this function returns.  
-		XToolsManagerPtr thisPtr;
+		SharingManagerPtr thisPtr;
 
 		if (m_retryServerConnectionRequired)
 		{
@@ -242,33 +242,33 @@ void XToolsManagerImpl::Update()
 }
 
 
-NetworkConnectionPtr XToolsManagerImpl::GetPairedConnection()
+NetworkConnectionPtr SharingManagerImpl::GetPairedConnection()
 {
 	return m_clientContext->GetPairedConnection();
 }
 
 
-NetworkConnectionPtr XToolsManagerImpl::GetServerConnection()
+NetworkConnectionPtr SharingManagerImpl::GetServerConnection()
 {
 	return m_clientContext->GetSessionConnection();
 }
 
 
 #if defined(MSTEST)
-NetworkConnectionPtr XToolsManagerImpl::GetListServerConnection()
+NetworkConnectionPtr SharingManagerImpl::GetListServerConnection()
 {
 	return m_clientContext->GetSessionListConnection();
 }
 #endif
 
 
-const SettingsPtr& XToolsManagerImpl::GetSettings()
+const SettingsPtr& SharingManagerImpl::GetSettings()
 {
 	return m_settings;
 }
 
 
-void XToolsManagerImpl::SetServerConnectionInfo(const XStringPtr& address, uint32 port)
+void SharingManagerImpl::SetServerConnectionInfo(const XStringPtr& address, uint32 port)
 {
 	if (!address)
 	{
@@ -302,13 +302,13 @@ void XToolsManagerImpl::SetServerConnectionInfo(const XStringPtr& address, uint3
 }
 
 
-UserPtr XToolsManagerImpl::GetLocalUser()
+UserPtr SharingManagerImpl::GetLocalUser()
 {
 	return m_clientContext->GetLocalUser();
 }
 
 
-void XToolsManagerImpl::SetUserName(const XStringPtr& name)
+void SharingManagerImpl::SetUserName(const XStringPtr& name)
 {
 	if (!name)
 	{
@@ -338,13 +338,13 @@ void XToolsManagerImpl::SetUserName(const XStringPtr& name)
 }
 
 
-bool XToolsManagerImpl::RegisterSyncListener(SyncListener* listener)
+bool SharingManagerImpl::RegisterSyncListener(SyncListener* listener)
 {
 	return m_clientContext->GetSyncManager()->RegisterListener(listener);
 }
 
 
-void XToolsManagerImpl::OnConnected(const NetworkConnectionPtr& connection)
+void SharingManagerImpl::OnConnected(const NetworkConnectionPtr& connection)
 {
 	if (m_clientContext->IsPrimaryClient())
 	{
@@ -361,7 +361,7 @@ void XToolsManagerImpl::OnConnected(const NetworkConnectionPtr& connection)
 }
 
 
-void XToolsManagerImpl::OnConnectFailed(const NetworkConnectionPtr& connection)
+void SharingManagerImpl::OnConnectFailed(const NetworkConnectionPtr& connection)
 {
 	if (m_clientContext->IsPrimaryClient())
 	{
@@ -379,7 +379,7 @@ void XToolsManagerImpl::OnConnectFailed(const NetworkConnectionPtr& connection)
 }
 
 
-void XToolsManagerImpl::OnDisconnected(const NetworkConnectionPtr& connection)
+void SharingManagerImpl::OnDisconnected(const NetworkConnectionPtr& connection)
 {
 	if (m_clientContext->IsPrimaryClient())
 	{
@@ -403,7 +403,7 @@ void XToolsManagerImpl::OnDisconnected(const NetworkConnectionPtr& connection)
 }
 
 
-void XToolsManagerImpl::ConnectToServer()
+void SharingManagerImpl::ConnectToServer()
 {
 	PROFILE_FUNCTION();
 
@@ -419,7 +419,7 @@ void XToolsManagerImpl::ConnectToServer()
 	if (serverSocket)
 	{
 		// Initiate the handshake
-		HandshakeCallback callback = CreateCallback3(this, &XToolsManagerImpl::OnListServerHandshakeComplete);
+		HandshakeCallback callback = CreateCallback3(this, &SharingManagerImpl::OnListServerHandshakeComplete);
 		m_listServerHandshake = new NetworkHandshake(serverSocket, new SessionListHandshakeLogic(false), callback);
 		m_retryServerConnectionRequired = false;
 	}
@@ -430,7 +430,7 @@ void XToolsManagerImpl::ConnectToServer()
 }
 
 
-void XToolsManagerImpl::SetupSideCars()
+void SharingManagerImpl::SetupSideCars()
 {
 #if defined(XTOOLS_PLATFORM_WINDOWS_ANY)
 	utility::string_t sidecarFolder(U(".\\SideCars\\"));
@@ -451,7 +451,7 @@ void XToolsManagerImpl::SetupSideCars()
 }
 
 
-void XToolsManagerImpl::LoadSideCar(const utility::string_t& sidecarFolder, const utility::string_t& currentFile)
+void SharingManagerImpl::LoadSideCar(const utility::string_t& sidecarFolder, const utility::string_t& currentFile)
 {
 	DynamicLibrary dynamicLibrary((sidecarFolder + currentFile).c_str());
 	if (!dynamicLibrary.IsValid())
@@ -512,7 +512,7 @@ void XToolsManagerImpl::LoadSideCar(const utility::string_t& sidecarFolder, cons
 }
 
 
-void XToolsManagerImpl::OnListServerHandshakeComplete(const XSocketPtr& newConnection, SocketID, HandshakeResult result)
+void SharingManagerImpl::OnListServerHandshakeComplete(const XSocketPtr& newConnection, SocketID, HandshakeResult result)
 {
 	XTASSERT(m_clientContext->IsPrimaryClient());
 
@@ -540,7 +540,7 @@ void XToolsManagerImpl::OnListServerHandshakeComplete(const XSocketPtr& newConne
 
 // TODO: Abstract platform specific implementations into their own classes to avoid the need for
 // lots of #ifs
-std::vector<utility::string_t> XToolsManagerImpl::GetLibrariesInFolder(const utility::string_t& folder) const
+std::vector<utility::string_t> SharingManagerImpl::GetLibrariesInFolder(const utility::string_t& folder) const
 {
 	std::vector<utility::string_t> names;
 

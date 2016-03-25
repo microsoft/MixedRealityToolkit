@@ -10301,13 +10301,13 @@ SWIGEXPORT void JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_XToolsManager_1Create(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_SharingManager_1Create(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   XTools::ClientConfigPtr *arg1 = 0 ;
   XTools::ClientConfigPtr tempnull1 ;
   XTools::ClientConfigPtr temp1 ;
   XTools::ClientConfig *smartarg1 ;
-  XTools::ref_ptr< XTools::XToolsManager > result;
+  XTools::ref_ptr< XTools::SharingManager > result;
   
   (void)jenv;
   (void)jcls;
@@ -10322,30 +10322,30 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI
     arg1 = &tempnull1;
   }
   
-  result = XTools::XToolsManager::Create((XTools::ref_ptr< XTools::ClientConfig > const &)*arg1);
+  result = XTools::SharingManager::Create((XTools::ref_ptr< XTools::ClientConfig > const &)*arg1);
   
   // ref_ptr by value out
   if (result) {
     result->AddRef();
-    *( XToolsManager **)&jresult = result.get();
+    *( SharingManager **)&jresult = result.get();
   } else {
-    *( XToolsManager **)&jresult = 0; 
+    *( SharingManager **)&jresult = 0; 
   }
   
   return jresult;
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_XToolsManager_1GetSessionManager(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_SharingManager_1GetSessionManager(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
-  XTools::XToolsManager *arg1 = (XTools::XToolsManager *) 0 ;
+  XTools::SharingManager *arg1 = (XTools::SharingManager *) 0 ;
   XTools::SessionManagerPtr *result = 0 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(XTools::XToolsManager **)&jarg1; 
-  result = (XTools::SessionManagerPtr *) &((XTools::XToolsManager const *)arg1)->GetSessionManager();
+  arg1 = *(XTools::SharingManager **)&jarg1; 
+  result = (XTools::SessionManagerPtr *) &((XTools::SharingManager const *)arg1)->GetSessionManager();
   
   // ref_ptr by reference out
   if (*result) {
@@ -10359,16 +10359,16 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_XToolsManager_1GetUserPresenceManager(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_SharingManager_1GetUserPresenceManager(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
-  XTools::XToolsManager *arg1 = (XTools::XToolsManager *) 0 ;
+  XTools::SharingManager *arg1 = (XTools::SharingManager *) 0 ;
   XTools::UserPresenceManagerPtr *result = 0 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(XTools::XToolsManager **)&jarg1; 
-  result = (XTools::UserPresenceManagerPtr *) &((XTools::XToolsManager const *)arg1)->GetUserPresenceManager();
+  arg1 = *(XTools::SharingManager **)&jarg1; 
+  result = (XTools::UserPresenceManagerPtr *) &((XTools::SharingManager const *)arg1)->GetUserPresenceManager();
   
   // ref_ptr by reference out
   if (*result) {
@@ -10382,16 +10382,16 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_XToolsManager_1GetAudioManager(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_SharingManager_1GetAudioManager(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
-  XTools::XToolsManager *arg1 = (XTools::XToolsManager *) 0 ;
+  XTools::SharingManager *arg1 = (XTools::SharingManager *) 0 ;
   XTools::AudioManagerPtr *result = 0 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(XTools::XToolsManager **)&jarg1; 
-  result = (XTools::AudioManagerPtr *) &((XTools::XToolsManager const *)arg1)->GetAudioManager();
+  arg1 = *(XTools::SharingManager **)&jarg1; 
+  result = (XTools::AudioManagerPtr *) &((XTools::SharingManager const *)arg1)->GetAudioManager();
   
   // ref_ptr by reference out
   if (*result) {
@@ -10405,16 +10405,16 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_XToolsManager_1GetPairingManager(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_SharingManager_1GetPairingManager(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
-  XTools::XToolsManager *arg1 = (XTools::XToolsManager *) 0 ;
+  XTools::SharingManager *arg1 = (XTools::SharingManager *) 0 ;
   XTools::PairingManagerPtr *result = 0 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(XTools::XToolsManager **)&jarg1; 
-  result = (XTools::PairingManagerPtr *) &((XTools::XToolsManager const *)arg1)->GetPairingManager();
+  arg1 = *(XTools::SharingManager **)&jarg1; 
+  result = (XTools::PairingManagerPtr *) &((XTools::SharingManager const *)arg1)->GetPairingManager();
   
   // ref_ptr by reference out
   if (*result) {
@@ -10428,16 +10428,16 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_XToolsManager_1GetRoomManager(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_SharingManager_1GetRoomManager(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
-  XTools::XToolsManager *arg1 = (XTools::XToolsManager *) 0 ;
+  XTools::SharingManager *arg1 = (XTools::SharingManager *) 0 ;
   XTools::RoomManagerPtr *result = 0 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(XTools::XToolsManager **)&jarg1; 
-  result = (XTools::RoomManagerPtr *) &((XTools::XToolsManager const *)arg1)->GetRoomManager();
+  arg1 = *(XTools::SharingManager **)&jarg1; 
+  result = (XTools::RoomManagerPtr *) &((XTools::SharingManager const *)arg1)->GetRoomManager();
   
   // ref_ptr by reference out
   if (*result) {
@@ -10451,15 +10451,15 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_XToolsManager_1GetRootSyncObject(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_SharingManager_1GetRootSyncObject(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
-  XTools::XToolsManager *arg1 = (XTools::XToolsManager *) 0 ;
+  XTools::SharingManager *arg1 = (XTools::SharingManager *) 0 ;
   XTools::ObjectElementPtr result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(XTools::XToolsManager **)&jarg1; 
+  arg1 = *(XTools::SharingManager **)&jarg1; 
   result = (arg1)->GetRootSyncObject();
   
   // ref_ptr by value out
@@ -10474,9 +10474,9 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_XToolsManager_1RegisterSyncListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT jboolean JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_SharingManager_1RegisterSyncListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   jboolean jresult = 0 ;
-  XTools::XToolsManager *arg1 = (XTools::XToolsManager *) 0 ;
+  XTools::SharingManager *arg1 = (XTools::SharingManager *) 0 ;
   XTools::SyncListener *arg2 = (XTools::SyncListener *) 0 ;
   bool result;
   
@@ -10484,7 +10484,7 @@ SWIGEXPORT jboolean JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClient
   (void)jcls;
   (void)jarg1_;
   (void)jarg2_;
-  arg1 = *(XTools::XToolsManager **)&jarg1; 
+  arg1 = *(XTools::SharingManager **)&jarg1; 
   arg2 = *(XTools::SyncListener **)&jarg2; 
   result = (bool)(arg1)->RegisterSyncListener(arg2);
   jresult = (jboolean)result; 
@@ -10492,26 +10492,26 @@ SWIGEXPORT jboolean JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClient
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_XToolsManager_1Update(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  XTools::XToolsManager *arg1 = (XTools::XToolsManager *) 0 ;
+SWIGEXPORT void JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_SharingManager_1Update(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  XTools::SharingManager *arg1 = (XTools::SharingManager *) 0 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(XTools::XToolsManager **)&jarg1; 
+  arg1 = *(XTools::SharingManager **)&jarg1; 
   (arg1)->Update();
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_XToolsManager_1GetPairedConnection(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_SharingManager_1GetPairedConnection(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
-  XTools::XToolsManager *arg1 = (XTools::XToolsManager *) 0 ;
+  XTools::SharingManager *arg1 = (XTools::SharingManager *) 0 ;
   XTools::NetworkConnectionPtr result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(XTools::XToolsManager **)&jarg1; 
+  arg1 = *(XTools::SharingManager **)&jarg1; 
   result = (arg1)->GetPairedConnection();
   
   // ref_ptr by value out
@@ -10526,15 +10526,15 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_XToolsManager_1GetServerConnection(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_SharingManager_1GetServerConnection(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
-  XTools::XToolsManager *arg1 = (XTools::XToolsManager *) 0 ;
+  XTools::SharingManager *arg1 = (XTools::SharingManager *) 0 ;
   XTools::NetworkConnectionPtr result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(XTools::XToolsManager **)&jarg1; 
+  arg1 = *(XTools::SharingManager **)&jarg1; 
   result = (arg1)->GetServerConnection();
   
   // ref_ptr by value out
@@ -10549,15 +10549,15 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_XToolsManager_1GetSettings(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_SharingManager_1GetSettings(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
-  XTools::XToolsManager *arg1 = (XTools::XToolsManager *) 0 ;
+  XTools::SharingManager *arg1 = (XTools::SharingManager *) 0 ;
   XTools::SettingsPtr *result = 0 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(XTools::XToolsManager **)&jarg1; 
+  arg1 = *(XTools::SharingManager **)&jarg1; 
   result = (XTools::SettingsPtr *) &(arg1)->GetSettings();
   
   // ref_ptr by reference out
@@ -10572,8 +10572,8 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_XToolsManager_1SetServerConnectionInfo(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3) {
-  XTools::XToolsManager *arg1 = (XTools::XToolsManager *) 0 ;
+SWIGEXPORT void JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_SharingManager_1SetServerConnectionInfo(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3) {
+  XTools::SharingManager *arg1 = (XTools::SharingManager *) 0 ;
   XTools::XStringPtr *arg2 = 0 ;
   XTools::uint32 arg3 ;
   XTools::XStringPtr tempnull2 ;
@@ -10584,7 +10584,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_
   (void)jcls;
   (void)jarg1_;
   (void)jarg2_;
-  arg1 = *(XTools::XToolsManager **)&jarg1; 
+  arg1 = *(XTools::SharingManager **)&jarg1; 
   
   // ref_ptr by reference in
   if ( jarg2 ) {
@@ -10600,15 +10600,15 @@ SWIGEXPORT void JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_
 }
 
 
-SWIGEXPORT jlong JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_XToolsManager_1GetLocalUser(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_SharingManager_1GetLocalUser(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
-  XTools::XToolsManager *arg1 = (XTools::XToolsManager *) 0 ;
+  XTools::SharingManager *arg1 = (XTools::SharingManager *) 0 ;
   XTools::UserPtr result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(XTools::XToolsManager **)&jarg1; 
+  arg1 = *(XTools::SharingManager **)&jarg1; 
   result = (arg1)->GetLocalUser();
   
   // ref_ptr by value out
@@ -10623,8 +10623,8 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_XToolsManager_1SetUserName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
-  XTools::XToolsManager *arg1 = (XTools::XToolsManager *) 0 ;
+SWIGEXPORT void JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_SharingManager_1SetUserName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+  XTools::SharingManager *arg1 = (XTools::SharingManager *) 0 ;
   XTools::XStringPtr *arg2 = 0 ;
   XTools::XStringPtr tempnull2 ;
   XTools::XStringPtr temp2 ;
@@ -10634,7 +10634,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_
   (void)jcls;
   (void)jarg1_;
   (void)jarg2_;
-  arg1 = *(XTools::XToolsManager **)&jarg1; 
+  arg1 = *(XTools::SharingManager **)&jarg1; 
   
   // ref_ptr by reference in
   if ( jarg2 ) {
@@ -10649,12 +10649,12 @@ SWIGEXPORT void JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_
 }
 
 
-SWIGEXPORT void JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_delete_1XToolsManager(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  XTools::XToolsManager *arg1 = (XTools::XToolsManager *) 0 ;
+SWIGEXPORT void JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_delete_1SharingManager(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  XTools::SharingManager *arg1 = (XTools::SharingManager *) 0 ;
   
   (void)jenv;
   (void)jcls;
-  arg1 = *(XTools::XToolsManager **)&jarg1; 
+  arg1 = *(XTools::SharingManager **)&jarg1; 
   if(arg1) arg1->RemoveRef();
 }
 

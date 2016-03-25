@@ -12,8 +12,12 @@ Users can also collaborate with other users (who are also using multiple devices
 ### Multi-Platform, Multi-language
 Enhance any app, on any device, written in any programming language
 * Portable C++ code
-* Auto-Generated bindings to most languages (SWIG).  C++, C#, and Java bindings are currently implemented, but it is possible to generate bindings for Python, Ruby, and more
-* Currently Supported platforms: Win32, UWP, and OSX.  Support for Xbox One is available upon request
+* Auto-Generated bindings to most languages (SWIG)
+
+Supported Languages, Platforms and Chip Architectures:
+* Win32, UWP, OSX
+* C++, C#, Java
+* x86, x64, ARM
 
 ### Lobby & Session system
 * Discover available sessions or create your own
@@ -21,14 +25,20 @@ Enhance any app, on any device, written in any programming language
 * See user status: current session, mute state
 * Easy to discover and hop between sessions
 
+### Anchor Sharing
+* Users in a session can be in the same or different physical rooms
+* Users can share the location of Holographic 'anchors' they place in their room with other users in the same room
+* Users joining late can download all anchors in the session
+* Allows multiple users to see shared holograms
+
 ### Synchronization System
 Synchronize data across all participants in session
 * Everyone in session guaranteed to see the same thing
 * Automatic conflict resolution for simultanious conflicting remote changes
 * Real-time: See remote changes as they happen
 * Shared data sets automatically merged when new users join a session
-* Responsive – no delay in your own changes
-* ‘Ownership’: your data leaves session when you do
+* Responsive: no delay in your own changes
+* Ownership: your data leaves session when you do
 
 ### Group Voice Chat
 Support for VOIP is built-in
@@ -42,8 +52,3 @@ Connect devices just by looking at them
 
 ### Profiler
 Profiling and debugging an experience that spans multiple devices is challenging.  So HoloToolkit.Sharing provides an app that can connect to multiple devices at once and aggregates their timings and debug output in a single place
-
-## Supported Languages and Platforms
-* Win32, UWP, OSX
-* C++, C#, Java
-* x86, x64, ARM

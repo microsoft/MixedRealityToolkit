@@ -22,7 +22,7 @@ namespace SessionManager.Network
 
         public HoloToolkit.Sharing.SessionManager SessionManager { get; private set; }
 
-        public XToolsManager Manager { get; private set; }
+        public SharingManager Manager { get; private set; }
 
         public bool IsViewerConnected { get; private set; }
 
@@ -49,7 +49,7 @@ namespace SessionManager.Network
             config.SetServerAddress(GetArgumentOrDefault("sessionserver", "OSOSERVER.redmond.corp.microsoft.com"));
             config.SetLogWriter(this.logWriter);
 
-            this.Manager = XToolsManager.Create(config);
+            this.Manager = SharingManager.Create(config);
             this.syncListener = new ConsoleSyncReporter();
 
             this.viewerConnection = this.Manager.GetPairedConnection();

@@ -7082,13 +7082,13 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_PairingManager(void * jarg1) {
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_XToolsManager_Create(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_SharingManager_Create(void * jarg1) {
   void * jresult ;
   XTools::ClientConfigPtr *arg1 = 0 ;
   XTools::ClientConfigPtr tempnull1 ;
   XTools::ClientConfigPtr temp1 ;
   XTools::ClientConfig *smartarg1 ;
-  XTools::ref_ptr< XTools::XToolsManager > result;
+  XTools::ref_ptr< XTools::SharingManager > result;
   
   
   // ref_ptr by reference in
@@ -7100,27 +7100,27 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_XToolsManager_Create(void * jarg1) {
     arg1 = &tempnull1;
   }
   
-  result = XTools::XToolsManager::Create((XTools::ref_ptr< XTools::ClientConfig > const &)*arg1);
+  result = XTools::SharingManager::Create((XTools::ref_ptr< XTools::ClientConfig > const &)*arg1);
   
   // ref_ptr by value out
   if (result) {
     result->AddRef();
-    *( XToolsManager **)&jresult = (&result)->get();
+    *( SharingManager **)&jresult = (&result)->get();
   } else {
-    *( XToolsManager **)&jresult = 0; 
+    *( SharingManager **)&jresult = 0; 
   }
   
   return jresult;
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_XToolsManager_GetSessionManager(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_SharingManager_GetSessionManager(void * jarg1) {
   void * jresult ;
-  XTools::XToolsManager *arg1 = (XTools::XToolsManager *) 0 ;
+  XTools::SharingManager *arg1 = (XTools::SharingManager *) 0 ;
   XTools::SessionManagerPtr *result = 0 ;
   
-  arg1 = (XTools::XToolsManager *)jarg1; 
-  result = (XTools::SessionManagerPtr *) &((XTools::XToolsManager const *)arg1)->GetSessionManager();
+  arg1 = (XTools::SharingManager *)jarg1; 
+  result = (XTools::SessionManagerPtr *) &((XTools::SharingManager const *)arg1)->GetSessionManager();
   
   // ref_ptr by reference out
   if (*result) {
@@ -7134,13 +7134,13 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_XToolsManager_GetSessionManager(void * jarg
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_XToolsManager_GetUserPresenceManager(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_SharingManager_GetUserPresenceManager(void * jarg1) {
   void * jresult ;
-  XTools::XToolsManager *arg1 = (XTools::XToolsManager *) 0 ;
+  XTools::SharingManager *arg1 = (XTools::SharingManager *) 0 ;
   XTools::UserPresenceManagerPtr *result = 0 ;
   
-  arg1 = (XTools::XToolsManager *)jarg1; 
-  result = (XTools::UserPresenceManagerPtr *) &((XTools::XToolsManager const *)arg1)->GetUserPresenceManager();
+  arg1 = (XTools::SharingManager *)jarg1; 
+  result = (XTools::UserPresenceManagerPtr *) &((XTools::SharingManager const *)arg1)->GetUserPresenceManager();
   
   // ref_ptr by reference out
   if (*result) {
@@ -7154,13 +7154,13 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_XToolsManager_GetUserPresenceManager(void *
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_XToolsManager_GetAudioManager(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_SharingManager_GetAudioManager(void * jarg1) {
   void * jresult ;
-  XTools::XToolsManager *arg1 = (XTools::XToolsManager *) 0 ;
+  XTools::SharingManager *arg1 = (XTools::SharingManager *) 0 ;
   XTools::AudioManagerPtr *result = 0 ;
   
-  arg1 = (XTools::XToolsManager *)jarg1; 
-  result = (XTools::AudioManagerPtr *) &((XTools::XToolsManager const *)arg1)->GetAudioManager();
+  arg1 = (XTools::SharingManager *)jarg1; 
+  result = (XTools::AudioManagerPtr *) &((XTools::SharingManager const *)arg1)->GetAudioManager();
   
   // ref_ptr by reference out
   if (*result) {
@@ -7174,13 +7174,13 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_XToolsManager_GetAudioManager(void * jarg1)
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_XToolsManager_GetPairingManager(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_SharingManager_GetPairingManager(void * jarg1) {
   void * jresult ;
-  XTools::XToolsManager *arg1 = (XTools::XToolsManager *) 0 ;
+  XTools::SharingManager *arg1 = (XTools::SharingManager *) 0 ;
   XTools::PairingManagerPtr *result = 0 ;
   
-  arg1 = (XTools::XToolsManager *)jarg1; 
-  result = (XTools::PairingManagerPtr *) &((XTools::XToolsManager const *)arg1)->GetPairingManager();
+  arg1 = (XTools::SharingManager *)jarg1; 
+  result = (XTools::PairingManagerPtr *) &((XTools::SharingManager const *)arg1)->GetPairingManager();
   
   // ref_ptr by reference out
   if (*result) {
@@ -7194,13 +7194,13 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_XToolsManager_GetPairingManager(void * jarg
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_XToolsManager_GetRoomManager(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_SharingManager_GetRoomManager(void * jarg1) {
   void * jresult ;
-  XTools::XToolsManager *arg1 = (XTools::XToolsManager *) 0 ;
+  XTools::SharingManager *arg1 = (XTools::SharingManager *) 0 ;
   XTools::RoomManagerPtr *result = 0 ;
   
-  arg1 = (XTools::XToolsManager *)jarg1; 
-  result = (XTools::RoomManagerPtr *) &((XTools::XToolsManager const *)arg1)->GetRoomManager();
+  arg1 = (XTools::SharingManager *)jarg1; 
+  result = (XTools::RoomManagerPtr *) &((XTools::SharingManager const *)arg1)->GetRoomManager();
   
   // ref_ptr by reference out
   if (*result) {
@@ -7214,12 +7214,12 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_XToolsManager_GetRoomManager(void * jarg1) 
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_XToolsManager_GetRootSyncObject(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_SharingManager_GetRootSyncObject(void * jarg1) {
   void * jresult ;
-  XTools::XToolsManager *arg1 = (XTools::XToolsManager *) 0 ;
+  XTools::SharingManager *arg1 = (XTools::SharingManager *) 0 ;
   XTools::ObjectElementPtr result;
   
-  arg1 = (XTools::XToolsManager *)jarg1; 
+  arg1 = (XTools::SharingManager *)jarg1; 
   result = (arg1)->GetRootSyncObject();
   
   // ref_ptr by value out
@@ -7234,13 +7234,13 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_XToolsManager_GetRootSyncObject(void * jarg
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_XToolsManager_RegisterSyncListener(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SharingManager_RegisterSyncListener(void * jarg1, void * jarg2) {
   unsigned int jresult ;
-  XTools::XToolsManager *arg1 = (XTools::XToolsManager *) 0 ;
+  XTools::SharingManager *arg1 = (XTools::SharingManager *) 0 ;
   XTools::SyncListener *arg2 = (XTools::SyncListener *) 0 ;
   bool result;
   
-  arg1 = (XTools::XToolsManager *)jarg1; 
+  arg1 = (XTools::SharingManager *)jarg1; 
   arg2 = (XTools::SyncListener *)jarg2; 
   result = (bool)(arg1)->RegisterSyncListener(arg2);
   jresult = result; 
@@ -7248,20 +7248,20 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_XToolsManager_RegisterSyncListener(vo
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_XToolsManager_Update(void * jarg1) {
-  XTools::XToolsManager *arg1 = (XTools::XToolsManager *) 0 ;
+SWIGEXPORT void SWIGSTDCALL CSharp_SharingManager_Update(void * jarg1) {
+  XTools::SharingManager *arg1 = (XTools::SharingManager *) 0 ;
   
-  arg1 = (XTools::XToolsManager *)jarg1; 
+  arg1 = (XTools::SharingManager *)jarg1; 
   (arg1)->Update();
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_XToolsManager_GetPairedConnection(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_SharingManager_GetPairedConnection(void * jarg1) {
   void * jresult ;
-  XTools::XToolsManager *arg1 = (XTools::XToolsManager *) 0 ;
+  XTools::SharingManager *arg1 = (XTools::SharingManager *) 0 ;
   XTools::NetworkConnectionPtr result;
   
-  arg1 = (XTools::XToolsManager *)jarg1; 
+  arg1 = (XTools::SharingManager *)jarg1; 
   result = (arg1)->GetPairedConnection();
   
   // ref_ptr by value out
@@ -7276,12 +7276,12 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_XToolsManager_GetPairedConnection(void * ja
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_XToolsManager_GetServerConnection(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_SharingManager_GetServerConnection(void * jarg1) {
   void * jresult ;
-  XTools::XToolsManager *arg1 = (XTools::XToolsManager *) 0 ;
+  XTools::SharingManager *arg1 = (XTools::SharingManager *) 0 ;
   XTools::NetworkConnectionPtr result;
   
-  arg1 = (XTools::XToolsManager *)jarg1; 
+  arg1 = (XTools::SharingManager *)jarg1; 
   result = (arg1)->GetServerConnection();
   
   // ref_ptr by value out
@@ -7296,12 +7296,12 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_XToolsManager_GetServerConnection(void * ja
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_XToolsManager_GetSettings(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_SharingManager_GetSettings(void * jarg1) {
   void * jresult ;
-  XTools::XToolsManager *arg1 = (XTools::XToolsManager *) 0 ;
+  XTools::SharingManager *arg1 = (XTools::SharingManager *) 0 ;
   XTools::SettingsPtr *result = 0 ;
   
-  arg1 = (XTools::XToolsManager *)jarg1; 
+  arg1 = (XTools::SharingManager *)jarg1; 
   result = (XTools::SettingsPtr *) &(arg1)->GetSettings();
   
   // ref_ptr by reference out
@@ -7316,15 +7316,15 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_XToolsManager_GetSettings(void * jarg1) {
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_XToolsManager_SetServerConnectionInfo(void * jarg1, void * jarg2, unsigned int jarg3) {
-  XTools::XToolsManager *arg1 = (XTools::XToolsManager *) 0 ;
+SWIGEXPORT void SWIGSTDCALL CSharp_SharingManager_SetServerConnectionInfo(void * jarg1, void * jarg2, unsigned int jarg3) {
+  XTools::SharingManager *arg1 = (XTools::SharingManager *) 0 ;
   XTools::XStringPtr *arg2 = 0 ;
   XTools::uint32 arg3 ;
   XTools::XStringPtr tempnull2 ;
   XTools::XStringPtr temp2 ;
   XTools::XString *smartarg2 ;
   
-  arg1 = (XTools::XToolsManager *)jarg1; 
+  arg1 = (XTools::SharingManager *)jarg1; 
   
   // ref_ptr by reference in
   if ( jarg2 ) {
@@ -7340,12 +7340,12 @@ SWIGEXPORT void SWIGSTDCALL CSharp_XToolsManager_SetServerConnectionInfo(void * 
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_XToolsManager_GetLocalUser(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_SharingManager_GetLocalUser(void * jarg1) {
   void * jresult ;
-  XTools::XToolsManager *arg1 = (XTools::XToolsManager *) 0 ;
+  XTools::SharingManager *arg1 = (XTools::SharingManager *) 0 ;
   XTools::UserPtr result;
   
-  arg1 = (XTools::XToolsManager *)jarg1; 
+  arg1 = (XTools::SharingManager *)jarg1; 
   result = (arg1)->GetLocalUser();
   
   // ref_ptr by value out
@@ -7360,14 +7360,14 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_XToolsManager_GetLocalUser(void * jarg1) {
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_XToolsManager_SetUserName(void * jarg1, void * jarg2) {
-  XTools::XToolsManager *arg1 = (XTools::XToolsManager *) 0 ;
+SWIGEXPORT void SWIGSTDCALL CSharp_SharingManager_SetUserName(void * jarg1, void * jarg2) {
+  XTools::SharingManager *arg1 = (XTools::SharingManager *) 0 ;
   XTools::XStringPtr *arg2 = 0 ;
   XTools::XStringPtr tempnull2 ;
   XTools::XStringPtr temp2 ;
   XTools::XString *smartarg2 ;
   
-  arg1 = (XTools::XToolsManager *)jarg1; 
+  arg1 = (XTools::SharingManager *)jarg1; 
   
   // ref_ptr by reference in
   if ( jarg2 ) {
@@ -7382,10 +7382,10 @@ SWIGEXPORT void SWIGSTDCALL CSharp_XToolsManager_SetUserName(void * jarg1, void 
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_delete_XToolsManager(void * jarg1) {
-  XTools::XToolsManager *arg1 = (XTools::XToolsManager *) 0 ;
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_SharingManager(void * jarg1) {
+  XTools::SharingManager *arg1 = (XTools::SharingManager *) 0 ;
   
-  arg1 = (XTools::XToolsManager *)jarg1; 
+  arg1 = (XTools::SharingManager *)jarg1; 
   if(arg1) arg1->RemoveRef();
 }
 

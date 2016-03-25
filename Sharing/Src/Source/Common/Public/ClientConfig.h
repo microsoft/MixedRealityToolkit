@@ -1,7 +1,7 @@
 //////////////////////////////////////////////////////////////////////////
 // ClientConfig.h
 //
-// Simple type to hold configuration settings to be passed to the XToolsManager
+// Simple type to hold configuration settings to be passed to the SharingManager
 // on the client to define how it should fit within the XTools network system
 //
 // Copyright (C) 2014 Microsoft Corp.  All Rights Reserved

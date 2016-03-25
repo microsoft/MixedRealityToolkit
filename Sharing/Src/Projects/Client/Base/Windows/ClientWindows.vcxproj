@@ -232,8 +232,8 @@
     <ClInclude Include="..\..\..\..\Source\Client\VisualPairConnectorImpl.h" />
     <ClInclude Include="..\..\..\..\Source\Client\VisualPairReceiver.h" />
     <ClInclude Include="..\..\..\..\Source\Client\VisualPairReceiverImpl.h" />
-    <ClInclude Include="..\..\..\..\Source\Client\XToolsManager.h" />
-    <ClInclude Include="..\..\..\..\Source\Client\XToolsManagerImpl.h" />
+    <ClInclude Include="..\..\..\..\Source\Client\SharingManager.h" />
+    <ClInclude Include="..\..\..\..\Source\Client\SharingManagerImpl.h" />
     <ClInclude Include="..\..\..\..\Source\Client\ZXingIncludes.h" />
   </ItemGroup>
   <ItemGroup>
@@ -258,7 +258,7 @@
     <ClCompile Include="..\..\..\..\Source\Client\TagImageImpl.cpp" />
     <ClCompile Include="..\..\..\..\Source\Client\VisualPairConnectorImpl.cpp" />
     <ClCompile Include="..\..\..\..\Source\Client\VisualPairReceiverImpl.cpp" />
-    <ClCompile Include="..\..\..\..\Source\Client\XToolsManagerImpl.cpp" />
+    <ClCompile Include="..\..\..\..\Source\Client\SharingManagerImpl.cpp" />
   </ItemGroup>
   <Import Project="..\..\..\XTools.targets" />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,8 +1,6 @@
 @echo off
 
-REM vsvars32.bat appears to have issues if you call it too many times from one command prompt.
-REM We'll use "DevEnvDir" to determine if we already ran it or if we need to run it again.
-@if "%DevEnvDir%"=="" call "%VS140COMNTOOLS%..\..\VC\vcvarsall.bat" amd64
+call "%VS140COMNTOOLS%..\..\VC\vcvarsall.bat" amd64
 
 pushd "%~dp0"
 

@@ -34,7 +34,7 @@ public:
 	// If initiating the pairing connection, returns the port on the remote client to connect to
 	virtual uint16		GetPort() XTOVERRIDE;
 
-	// Called each time the XToolsManager update
+	// Called each time the SharingManager update
 	virtual void		Update() XTOVERRIDE;
 
 	// Return true when this object is ready to provide XTools with the information it needs to start 

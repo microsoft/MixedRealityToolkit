@@ -14,7 +14,7 @@
 #include "PairMaker.h"
 #include "PairingListener.h"
 #include "PairingManager.h"
-#include "XToolsManager.h"
+#include "SharingManager.h"
 
 // Image tag processing
 #include "ImageTagManager.h"

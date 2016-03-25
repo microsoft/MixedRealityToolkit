@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////
-// XToolsManagerImpl.h
+// SharingManagerImpl.h
 //
 // Copyright (C) 2015 Microsoft Corp.  All Rights Reserved
 //////////////////////////////////////////////////////////////////////////
@@ -10,11 +10,11 @@
 
 XTOOLS_NAMESPACE_BEGIN
 
-class XToolsManagerImpl : public XToolsManager, public NetworkConnectionListener
+class SharingManagerImpl : public SharingManager, public NetworkConnectionListener
 {
 public:
-	XToolsManagerImpl(const ClientConfigPtr& config);
-	virtual ~XToolsManagerImpl();
+	SharingManagerImpl(const ClientConfigPtr& config);
+	virtual ~SharingManagerImpl();
 
 	virtual const SessionManagerPtr& GetSessionManager() const XTOVERRIDE;
 
@@ -86,7 +86,7 @@ private:
 	void LoadSideCar(const utility::string_t& sidecarFolder, const utility::string_t& library);
 
 	// Keep a list of pointers to each of the subsystems that need to be updated
-	// each time the XToolsManager is updated.  
+	// each time the SharingManager is updated.  
 	std::vector<IUpdateable*>	m_updateableSubsystems;
 
 	// Sidecar Related
@@ -118,6 +118,6 @@ private:
 	static const int            s_serverConnectRetryRateTicks;
 };
 
-DECLARE_PTR(XToolsManagerImpl)
+DECLARE_PTR(SharingManagerImpl)
 
 XTOOLS_NAMESPACE_END
