@@ -57,9 +57,6 @@
     <ClCompile Include="..\..\Source\Client\TagImageImpl.cpp">
       <Filter>Private</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Client\XToolsManagerImpl.cpp">
-      <Filter>Private</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Source\Client\PairingInfo.cpp">
       <Filter>Private\Pairing</Filter>
     </ClCompile>
@@ -93,6 +90,9 @@
     <ClCompile Include="..\..\Source\Client\ImageTagManagerImpl.cpp">
       <Filter>Private\ImageTagProcessing</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Client\SharingManagerImpl.cpp">
+      <Filter>Private</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\Client\stdafx.h">
@@ -105,9 +105,6 @@
       <Filter>Private</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Client\TagImageImpl.h">
-      <Filter>Private</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Client\XToolsManagerImpl.h">
       <Filter>Private</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Client\PairingInfo.h">
@@ -149,9 +146,6 @@
     <ClInclude Include="..\..\Source\Client\TagImage.h">
       <Filter>Public</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Client\XToolsManager.h">
-      <Filter>Public</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Source\Client\PairingListener.h">
       <Filter>Public\Pairing</Filter>
     </ClInclude>
@@ -184,6 +178,12 @@
     </ClInclude>
     <ClInclude Include="..\..\Source\Client\ImageTagManager.h">
       <Filter>Public\ImageTagProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Client\SharingManagerImpl.h">
+      <Filter>Private</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Client\SharingManager.h">
+      <Filter>Public</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

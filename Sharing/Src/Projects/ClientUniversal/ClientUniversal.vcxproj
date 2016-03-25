@@ -39,6 +39,7 @@
     <ClCompile Include="..\..\Source\Client\PairingInfo.cpp" />
     <ClCompile Include="..\..\Source\Client\PairingManagerImpl.cpp" />
     <ClCompile Include="..\..\Source\Client\Settings.cpp" />
+    <ClCompile Include="..\..\Source\Client\SharingManagerImpl.cpp" />
     <ClCompile Include="..\..\Source\Client\SideCarContextImpl.cpp" />
     <ClCompile Include="..\..\Source\Client\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -51,7 +52,6 @@
     <ClCompile Include="..\..\Source\Client\TagImageImpl.cpp" />
     <ClCompile Include="..\..\Source\Client\VisualPairConnectorImpl.cpp" />
     <ClCompile Include="..\..\Source\Client\VisualPairReceiverImpl.cpp" />
-    <ClCompile Include="..\..\Source\Client\XToolsManagerImpl.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\Client\ClientWrapperAPI.h" />
@@ -73,6 +73,8 @@
     <ClInclude Include="..\..\Source\Client\PairingResult.h" />
     <ClInclude Include="..\..\Source\Client\PairMaker.h" />
     <ClInclude Include="..\..\Source\Client\Settings.h" />
+    <ClInclude Include="..\..\Source\Client\SharingManager.h" />
+    <ClInclude Include="..\..\Source\Client\SharingManagerImpl.h" />
     <ClInclude Include="..\..\Source\Client\SideCarContextImpl.h" />
     <ClInclude Include="..\..\Source\Client\stdafx.h" />
     <ClInclude Include="..\..\Source\Client\TagImage.h" />
@@ -81,8 +83,6 @@
     <ClInclude Include="..\..\Source\Client\VisualPairConnectorImpl.h" />
     <ClInclude Include="..\..\Source\Client\VisualPairReceiver.h" />
     <ClInclude Include="..\..\Source\Client\VisualPairReceiverImpl.h" />
-    <ClInclude Include="..\..\Source\Client\XToolsManager.h" />
-    <ClInclude Include="..\..\Source\Client\XToolsManagerImpl.h" />
     <ClInclude Include="..\..\Source\Client\ZXingIncludes.h" />
   </ItemGroup>
   <ItemGroup>
