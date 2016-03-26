@@ -12,6 +12,9 @@
 *.vspscc
 *.user
 *.pch
+*.lib
+*.pri
+/Sharing/SDK
 /Sharing/Src/bin
 /Sharing/Src/tmp
 /Sharing/Src/External/apriltag-2015-03-18/lib
@@ -19,7 +22,6 @@
 /Sharing/Src/External/curl-7.39.0/lib
 /Sharing/Src/External/curl-7.39.0/Source/builds
 /Sharing/Src/External/RakNet-4.081/lib
-/Sharing/Src/External/RakNet-4.081/src/Lib
 /Sharing/Src/External/zint-2.4.3/lib
 /Sharing/Src/External/zint-2.4.3/src/build
 /Sharing/Src/External/zint-2.4.3/src/tmp
