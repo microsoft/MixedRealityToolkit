@@ -1,639 +1,639 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\aztec\AztecDetectorResult.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\aztec\AztecDetectorResult.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\aztec\AztecReader.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\aztec\AztecReader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\aztec\decoder\Decoder.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\aztec\decoder\Decoder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\aztec\detector\Detector.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\aztec\detector\Detector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\BarcodeFormat.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\BarcodeFormat.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\Binarizer.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\Binarizer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\BinaryBitmap.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\BinaryBitmap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\ChecksumException.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\ChecksumException.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\BitArray.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\common\BitArray.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\BitArrayIO.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\common\BitArrayIO.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\BitMatrix.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\common\BitMatrix.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\BitSource.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\common\BitSource.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\CharacterSetECI.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\common\CharacterSetECI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\DecoderResult.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\common\DecoderResult.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\detector\MonochromeRectangleDetector.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\common\detector\MonochromeRectangleDetector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\detector\WhiteRectangleDetector.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\common\detector\WhiteRectangleDetector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\DetectorResult.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\common\DetectorResult.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\GlobalHistogramBinarizer.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\common\GlobalHistogramBinarizer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\GreyscaleLuminanceSource.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\common\GreyscaleLuminanceSource.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\GreyscaleRotatedLuminanceSource.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\common\GreyscaleRotatedLuminanceSource.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\GridSampler.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\common\GridSampler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\HybridBinarizer.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\common\HybridBinarizer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\IllegalArgumentException.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\common\IllegalArgumentException.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\PerspectiveTransform.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\common\PerspectiveTransform.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\reedsolomon\GenericGF.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\common\reedsolomon\GenericGF.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\reedsolomon\GenericGFPoly.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\common\reedsolomon\GenericGFPoly.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\reedsolomon\ReedSolomonDecoder.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\common\reedsolomon\ReedSolomonDecoder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\reedsolomon\ReedSolomonException.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\common\reedsolomon\ReedSolomonException.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\Str.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\common\Str.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\StringUtils.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\common\StringUtils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\datamatrix\DataMatrixReader.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\datamatrix\DataMatrixReader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\datamatrix\decoder\BitMatrixParser.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\datamatrix\decoder\BitMatrixParser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\datamatrix\decoder\DataBlock.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\datamatrix\decoder\DataBlock.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\datamatrix\decoder\DecodedBitStreamParser.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\datamatrix\decoder\DecodedBitStreamParser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\datamatrix\decoder\Decoder.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\datamatrix\decoder\Decoder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\datamatrix\detector\CornerPoint.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\datamatrix\detector\CornerPoint.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\datamatrix\detector\Detector.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\datamatrix\detector\Detector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\datamatrix\detector\DetectorException.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\datamatrix\detector\DetectorException.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\datamatrix\Version.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\datamatrix\Version.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\DecodeHints.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\DecodeHints.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\Exception.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\Exception.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\FormatException.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\FormatException.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\InvertedLuminanceSource.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\InvertedLuminanceSource.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\LuminanceSource.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\LuminanceSource.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\multi\ByQuadrantReader.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\multi\ByQuadrantReader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\multi\GenericMultipleBarcodeReader.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\multi\GenericMultipleBarcodeReader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\multi\MultipleBarcodeReader.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\multi\MultipleBarcodeReader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\multi\qrcode\detector\MultiDetector.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\multi\qrcode\detector\MultiDetector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\multi\qrcode\detector\MultiFinderPatternFinder.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\multi\qrcode\detector\MultiFinderPatternFinder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\multi\qrcode\QRCodeMultiReader.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\multi\qrcode\QRCodeMultiReader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\MultiFormatReader.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\MultiFormatReader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\CodaBarReader.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\oned\CodaBarReader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\Code128Reader.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\oned\Code128Reader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\Code39Reader.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\oned\Code39Reader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\Code93Reader.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\oned\Code93Reader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\EAN13Reader.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\oned\EAN13Reader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\EAN8Reader.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\oned\EAN8Reader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\ITFReader.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\oned\ITFReader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\MultiFormatOneDReader.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\oned\MultiFormatOneDReader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\MultiFormatUPCEANReader.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\oned\MultiFormatUPCEANReader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\OneDReader.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\oned\OneDReader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\OneDResultPoint.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\oned\OneDResultPoint.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\UPCAReader.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\oned\UPCAReader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\UPCEANReader.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\oned\UPCEANReader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\UPCEReader.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\oned\UPCEReader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\pdf417\decoder\BitMatrixParser.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\pdf417\decoder\BitMatrixParser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\pdf417\decoder\DecodedBitStreamParser.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\pdf417\decoder\DecodedBitStreamParser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\pdf417\decoder\Decoder.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\pdf417\decoder\Decoder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\pdf417\decoder\ec\ErrorCorrection.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\pdf417\decoder\ec\ErrorCorrection.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\pdf417\decoder\ec\ModulusGF.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\pdf417\decoder\ec\ModulusGF.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\pdf417\decoder\ec\ModulusPoly.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\pdf417\decoder\ec\ModulusPoly.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\pdf417\detector\Detector.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\pdf417\detector\Detector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\pdf417\detector\LinesSampler.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\pdf417\detector\LinesSampler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\pdf417\PDF417Reader.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\pdf417\PDF417Reader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\decoder\BitMatrixParser.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\qrcode\decoder\BitMatrixParser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\decoder\DataBlock.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\qrcode\decoder\DataBlock.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\decoder\DataMask.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\qrcode\decoder\DataMask.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\decoder\DecodedBitStreamParser.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\qrcode\decoder\DecodedBitStreamParser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\decoder\Decoder.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\qrcode\decoder\Decoder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\decoder\Mode.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\qrcode\decoder\Mode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\detector\AlignmentPattern.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\qrcode\detector\AlignmentPattern.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\detector\AlignmentPatternFinder.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\qrcode\detector\AlignmentPatternFinder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\detector\Detector.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\qrcode\detector\Detector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\detector\FinderPattern.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\qrcode\detector\FinderPattern.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\detector\FinderPatternFinder.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\qrcode\detector\FinderPatternFinder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\detector\FinderPatternInfo.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\qrcode\detector\FinderPatternInfo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\ErrorCorrectionLevel.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\qrcode\ErrorCorrectionLevel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\FormatInformation.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\qrcode\FormatInformation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\QRCodeReader.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\qrcode\QRCodeReader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\Version.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\qrcode\Version.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\Reader.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\Reader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\Result.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\Result.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\ResultIO.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\ResultIO.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\ResultPoint.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\ResultPoint.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\ResultPointCallback.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\ResultPointCallback.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\bigint\BigInteger.cc">
+    <ClCompile Include="$(SolutionDir)..\core\src\bigint\BigInteger.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\bigint\BigIntegerAlgorithms.cc">
+    <ClCompile Include="$(SolutionDir)..\core\src\bigint\BigIntegerAlgorithms.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\bigint\BigIntegerUtils.cc">
+    <ClCompile Include="$(SolutionDir)..\core\src\bigint\BigIntegerUtils.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\bigint\BigUnsigned.cc">
+    <ClCompile Include="$(SolutionDir)..\core\src\bigint\BigUnsigned.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\bigint\BigUnsignedInABase.cc">
+    <ClCompile Include="$(SolutionDir)..\core\src\bigint\BigUnsignedInABase.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\win32\zxing\iconv.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\win32\zxing\iconv.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\win32\zxing\stdint.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\win32\zxing\stdint.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\aztec\AztecDetectorResult.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\aztec\AztecDetectorResult.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\aztec\AztecReader.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\aztec\AztecReader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\aztec\decoder\Decoder.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\aztec\decoder\Decoder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\aztec\detector\Detector.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\aztec\detector\Detector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\BarcodeFormat.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\BarcodeFormat.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\Binarizer.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\Binarizer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\BinaryBitmap.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\BinaryBitmap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\ChecksumException.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\ChecksumException.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\Array.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\Array.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\BitArray.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\BitArray.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\BitMatrix.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\BitMatrix.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\BitSource.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\BitSource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\CharacterSetECI.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\CharacterSetECI.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\Counted.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\Counted.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\DecoderResult.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\DecoderResult.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\detector\JavaMath.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\detector\JavaMath.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\detector\MathUtils.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\detector\MathUtils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\detector\MonochromeRectangleDetector.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\detector\MonochromeRectangleDetector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\detector\WhiteRectangleDetector.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\detector\WhiteRectangleDetector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\DetectorResult.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\DetectorResult.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\GlobalHistogramBinarizer.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\GlobalHistogramBinarizer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\GreyscaleLuminanceSource.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\GreyscaleLuminanceSource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\GreyscaleRotatedLuminanceSource.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\GreyscaleRotatedLuminanceSource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\GridSampler.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\GridSampler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\HybridBinarizer.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\HybridBinarizer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\IllegalArgumentException.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\IllegalArgumentException.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\PerspectiveTransform.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\PerspectiveTransform.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\Point.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\Point.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\reedsolomon\GenericGF.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\reedsolomon\GenericGF.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\reedsolomon\GenericGFPoly.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\reedsolomon\GenericGFPoly.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\reedsolomon\ReedSolomonDecoder.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\reedsolomon\ReedSolomonDecoder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\reedsolomon\ReedSolomonException.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\reedsolomon\ReedSolomonException.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\Str.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\Str.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\common\StringUtils.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\StringUtils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\datamatrix\DataMatrixReader.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\datamatrix\DataMatrixReader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\datamatrix\decoder\BitMatrixParser.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\datamatrix\decoder\BitMatrixParser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\datamatrix\decoder\DataBlock.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\datamatrix\decoder\DataBlock.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\datamatrix\decoder\DecodedBitStreamParser.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\datamatrix\decoder\DecodedBitStreamParser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\datamatrix\decoder\Decoder.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\datamatrix\decoder\Decoder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\datamatrix\detector\CornerPoint.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\datamatrix\detector\CornerPoint.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\datamatrix\detector\Detector.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\datamatrix\detector\Detector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\datamatrix\detector\DetectorException.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\datamatrix\detector\DetectorException.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\datamatrix\Version.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\datamatrix\Version.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\DecodeHints.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\DecodeHints.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\Exception.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\Exception.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\FormatException.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\FormatException.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\IllegalStateException.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\IllegalStateException.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\InvertedLuminanceSource.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\InvertedLuminanceSource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\LuminanceSource.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\LuminanceSource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\multi\ByQuadrantReader.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\multi\ByQuadrantReader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\multi\GenericMultipleBarcodeReader.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\multi\GenericMultipleBarcodeReader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\multi\MultipleBarcodeReader.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\multi\MultipleBarcodeReader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\multi\qrcode\detector\MultiDetector.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\multi\qrcode\detector\MultiDetector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\multi\qrcode\detector\MultiFinderPatternFinder.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\multi\qrcode\detector\MultiFinderPatternFinder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\multi\qrcode\QRCodeMultiReader.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\multi\qrcode\QRCodeMultiReader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\MultiFormatReader.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\MultiFormatReader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\NotFoundException.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\NotFoundException.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\CodaBarReader.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\oned\CodaBarReader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\Code128Reader.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\oned\Code128Reader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\Code39Reader.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\oned\Code39Reader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\Code93Reader.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\oned\Code93Reader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\EAN13Reader.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\oned\EAN13Reader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\EAN8Reader.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\oned\EAN8Reader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\ITFReader.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\oned\ITFReader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\MultiFormatOneDReader.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\oned\MultiFormatOneDReader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\MultiFormatUPCEANReader.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\oned\MultiFormatUPCEANReader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\OneDReader.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\oned\OneDReader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\OneDResultPoint.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\oned\OneDResultPoint.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\UPCAReader.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\oned\UPCAReader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\UPCEANReader.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\oned\UPCEANReader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\oned\UPCEReader.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\oned\UPCEReader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\pdf417\decoder\BitMatrixParser.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\pdf417\decoder\BitMatrixParser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\pdf417\decoder\DecodedBitStreamParser.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\pdf417\decoder\DecodedBitStreamParser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\pdf417\decoder\Decoder.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\pdf417\decoder\Decoder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\pdf417\decoder\ec\ErrorCorrection.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\pdf417\decoder\ec\ErrorCorrection.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\pdf417\decoder\ec\ModulusGF.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\pdf417\decoder\ec\ModulusGF.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\pdf417\decoder\ec\ModulusPoly.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\pdf417\decoder\ec\ModulusPoly.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\pdf417\detector\Detector.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\pdf417\detector\Detector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\pdf417\detector\LinesSampler.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\pdf417\detector\LinesSampler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\pdf417\PDF417Reader.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\pdf417\PDF417Reader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\decoder\BitMatrixParser.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\qrcode\decoder\BitMatrixParser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\decoder\DataBlock.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\qrcode\decoder\DataBlock.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\decoder\DataMask.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\qrcode\decoder\DataMask.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\decoder\DecodedBitStreamParser.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\qrcode\decoder\DecodedBitStreamParser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\decoder\Decoder.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\qrcode\decoder\Decoder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\decoder\Mode.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\qrcode\decoder\Mode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\detector\AlignmentPattern.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\qrcode\detector\AlignmentPattern.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\detector\AlignmentPatternFinder.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\qrcode\detector\AlignmentPatternFinder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\detector\Detector.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\qrcode\detector\Detector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\detector\FinderPattern.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\qrcode\detector\FinderPattern.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\detector\FinderPatternFinder.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\qrcode\detector\FinderPatternFinder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\detector\FinderPatternInfo.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\qrcode\detector\FinderPatternInfo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\ErrorCorrectionLevel.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\qrcode\ErrorCorrectionLevel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\FormatInformation.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\qrcode\FormatInformation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\QRCodeReader.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\qrcode\QRCodeReader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\qrcode\Version.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\qrcode\Version.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\Reader.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\Reader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\ReaderException.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\ReaderException.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\Result.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\Result.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\ResultPoint.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\ResultPoint.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\ResultPointCallback.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\ResultPointCallback.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\zxing\ZXing.h">
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\ZXing.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\bigint\BigInteger.hh">
+    <ClInclude Include="$(SolutionDir)..\core\src\bigint\BigInteger.hh">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\bigint\BigIntegerAlgorithms.hh">
+    <ClInclude Include="$(SolutionDir)..\core\src\bigint\BigIntegerAlgorithms.hh">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\bigint\BigIntegerLibrary.hh">
+    <ClInclude Include="$(SolutionDir)..\core\src\bigint\BigIntegerLibrary.hh">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\bigint\BigIntegerUtils.hh">
+    <ClInclude Include="$(SolutionDir)..\core\src\bigint\BigIntegerUtils.hh">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\bigint\BigUnsigned.hh">
+    <ClInclude Include="$(SolutionDir)..\core\src\bigint\BigUnsigned.hh">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\bigint\BigUnsignedInABase.hh">
+    <ClInclude Include="$(SolutionDir)..\core\src\bigint\BigUnsignedInABase.hh">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\dev\SOTA\Libraries\XTools\Native\External\zxing-cpp\src\core\src\bigint\NumberlikeArray.hh">
+    <ClInclude Include="$(SolutionDir)..\core\src\bigint\NumberlikeArray.hh">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
