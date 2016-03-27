@@ -104,10 +104,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_CRT_SECURE_NO_WARNINGS;NO_ICONV=1;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\core\lib\win32;..\core\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\core\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>..\core\lib\win32;..\core\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\core\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -136,10 +136,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_CRT_SECURE_NO_WARNINGS;NO_ICONV=1;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\core\lib\win32;..\core\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\core\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>..\core\lib\win32;..\core\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\core\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -166,10 +166,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;NO_ICONV=1;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\core\lib\win32;..\core\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\core\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>..\core\lib\win32;..\core\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\core\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -197,10 +197,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;NO_ICONV=1;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\core\lib\win32;..\core\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\core\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>..\core\lib\win32;..\core\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\core\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -209,253 +209,253 @@
     </Midl>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\core\src\win32\zxing\iconv.h" />
-    <ClInclude Include="..\core\src\win32\zxing\stdint.h" />
-    <ClInclude Include="..\core\src\zxing\aztec\AztecDetectorResult.h" />
-    <ClInclude Include="..\core\src\zxing\aztec\AztecReader.h" />
-    <ClInclude Include="..\core\src\zxing\aztec\decoder\Decoder.h" />
-    <ClInclude Include="..\core\src\zxing\aztec\detector\Detector.h" />
-    <ClInclude Include="..\core\src\zxing\BarcodeFormat.h" />
-    <ClInclude Include="..\core\src\zxing\Binarizer.h" />
-    <ClInclude Include="..\core\src\zxing\BinaryBitmap.h" />
-    <ClInclude Include="..\core\src\zxing\ChecksumException.h" />
-    <ClInclude Include="..\core\src\zxing\common\Array.h" />
-    <ClInclude Include="..\core\src\zxing\common\BitArray.h" />
-    <ClInclude Include="..\core\src\zxing\common\BitMatrix.h" />
-    <ClInclude Include="..\core\src\zxing\common\BitSource.h" />
-    <ClInclude Include="..\core\src\zxing\common\CharacterSetECI.h" />
-    <ClInclude Include="..\core\src\zxing\common\Counted.h" />
-    <ClInclude Include="..\core\src\zxing\common\DecoderResult.h" />
-    <ClInclude Include="..\core\src\zxing\common\detector\JavaMath.h" />
-    <ClInclude Include="..\core\src\zxing\common\detector\MathUtils.h" />
-    <ClInclude Include="..\core\src\zxing\common\detector\MonochromeRectangleDetector.h" />
-    <ClInclude Include="..\core\src\zxing\common\detector\WhiteRectangleDetector.h" />
-    <ClInclude Include="..\core\src\zxing\common\DetectorResult.h" />
-    <ClInclude Include="..\core\src\zxing\common\GlobalHistogramBinarizer.h" />
-    <ClInclude Include="..\core\src\zxing\common\GreyscaleLuminanceSource.h" />
-    <ClInclude Include="..\core\src\zxing\common\GreyscaleRotatedLuminanceSource.h" />
-    <ClInclude Include="..\core\src\zxing\common\GridSampler.h" />
-    <ClInclude Include="..\core\src\zxing\common\HybridBinarizer.h" />
-    <ClInclude Include="..\core\src\zxing\common\IllegalArgumentException.h" />
-    <ClInclude Include="..\core\src\zxing\common\PerspectiveTransform.h" />
-    <ClInclude Include="..\core\src\zxing\common\Point.h" />
-    <ClInclude Include="..\core\src\zxing\common\reedsolomon\GenericGF.h" />
-    <ClInclude Include="..\core\src\zxing\common\reedsolomon\GenericGFPoly.h" />
-    <ClInclude Include="..\core\src\zxing\common\reedsolomon\ReedSolomonDecoder.h" />
-    <ClInclude Include="..\core\src\zxing\common\reedsolomon\ReedSolomonException.h" />
-    <ClInclude Include="..\core\src\zxing\common\Str.h" />
-    <ClInclude Include="..\core\src\zxing\common\StringUtils.h" />
-    <ClInclude Include="..\core\src\zxing\datamatrix\DataMatrixReader.h" />
-    <ClInclude Include="..\core\src\zxing\datamatrix\decoder\BitMatrixParser.h" />
-    <ClInclude Include="..\core\src\zxing\datamatrix\decoder\DataBlock.h" />
-    <ClInclude Include="..\core\src\zxing\datamatrix\decoder\DecodedBitStreamParser.h" />
-    <ClInclude Include="..\core\src\zxing\datamatrix\decoder\Decoder.h" />
-    <ClInclude Include="..\core\src\zxing\datamatrix\detector\CornerPoint.h" />
-    <ClInclude Include="..\core\src\zxing\datamatrix\detector\Detector.h" />
-    <ClInclude Include="..\core\src\zxing\datamatrix\detector\DetectorException.h" />
-    <ClInclude Include="..\core\src\zxing\datamatrix\Version.h" />
-    <ClInclude Include="..\core\src\zxing\DecodeHints.h" />
-    <ClInclude Include="..\core\src\zxing\Exception.h" />
-    <ClInclude Include="..\core\src\zxing\FormatException.h" />
-    <ClInclude Include="..\core\src\zxing\IllegalStateException.h" />
-    <ClInclude Include="..\core\src\zxing\InvertedLuminanceSource.h" />
-    <ClInclude Include="..\core\src\zxing\LuminanceSource.h" />
-    <ClInclude Include="..\core\src\zxing\multi\ByQuadrantReader.h" />
-    <ClInclude Include="..\core\src\zxing\multi\GenericMultipleBarcodeReader.h" />
-    <ClInclude Include="..\core\src\zxing\multi\MultipleBarcodeReader.h" />
-    <ClInclude Include="..\core\src\zxing\multi\qrcode\detector\MultiDetector.h" />
-    <ClInclude Include="..\core\src\zxing\multi\qrcode\detector\MultiFinderPatternFinder.h" />
-    <ClInclude Include="..\core\src\zxing\multi\qrcode\QRCodeMultiReader.h" />
-    <ClInclude Include="..\core\src\zxing\MultiFormatReader.h" />
-    <ClInclude Include="..\core\src\zxing\NotFoundException.h" />
-    <ClInclude Include="..\core\src\zxing\oned\CodaBarReader.h" />
-    <ClInclude Include="..\core\src\zxing\oned\Code128Reader.h" />
-    <ClInclude Include="..\core\src\zxing\oned\Code39Reader.h" />
-    <ClInclude Include="..\core\src\zxing\oned\Code93Reader.h" />
-    <ClInclude Include="..\core\src\zxing\oned\EAN13Reader.h" />
-    <ClInclude Include="..\core\src\zxing\oned\EAN8Reader.h" />
-    <ClInclude Include="..\core\src\zxing\oned\ITFReader.h" />
-    <ClInclude Include="..\core\src\zxing\oned\MultiFormatOneDReader.h" />
-    <ClInclude Include="..\core\src\zxing\oned\MultiFormatUPCEANReader.h" />
-    <ClInclude Include="..\core\src\zxing\oned\OneDReader.h" />
-    <ClInclude Include="..\core\src\zxing\oned\OneDResultPoint.h" />
-    <ClInclude Include="..\core\src\zxing\oned\UPCAReader.h" />
-    <ClInclude Include="..\core\src\zxing\oned\UPCEANReader.h" />
-    <ClInclude Include="..\core\src\zxing\oned\UPCEReader.h" />
-    <ClInclude Include="..\core\src\zxing\pdf417\decoder\BitMatrixParser.h" />
-    <ClInclude Include="..\core\src\zxing\pdf417\decoder\DecodedBitStreamParser.h" />
-    <ClInclude Include="..\core\src\zxing\pdf417\decoder\Decoder.h" />
-    <ClInclude Include="..\core\src\zxing\pdf417\decoder\ec\ErrorCorrection.h" />
-    <ClInclude Include="..\core\src\zxing\pdf417\decoder\ec\ModulusGF.h" />
-    <ClInclude Include="..\core\src\zxing\pdf417\decoder\ec\ModulusPoly.h" />
-    <ClInclude Include="..\core\src\zxing\pdf417\detector\Detector.h" />
-    <ClInclude Include="..\core\src\zxing\pdf417\detector\LinesSampler.h" />
-    <ClInclude Include="..\core\src\zxing\pdf417\PDF417Reader.h" />
-    <ClInclude Include="..\core\src\zxing\qrcode\decoder\BitMatrixParser.h" />
-    <ClInclude Include="..\core\src\zxing\qrcode\decoder\DataBlock.h" />
-    <ClInclude Include="..\core\src\zxing\qrcode\decoder\DataMask.h" />
-    <ClInclude Include="..\core\src\zxing\qrcode\decoder\DecodedBitStreamParser.h" />
-    <ClInclude Include="..\core\src\zxing\qrcode\decoder\Decoder.h" />
-    <ClInclude Include="..\core\src\zxing\qrcode\decoder\Mode.h" />
-    <ClInclude Include="..\core\src\zxing\qrcode\detector\AlignmentPattern.h" />
-    <ClInclude Include="..\core\src\zxing\qrcode\detector\AlignmentPatternFinder.h" />
-    <ClInclude Include="..\core\src\zxing\qrcode\detector\Detector.h" />
-    <ClInclude Include="..\core\src\zxing\qrcode\detector\FinderPattern.h" />
-    <ClInclude Include="..\core\src\zxing\qrcode\detector\FinderPatternFinder.h" />
-    <ClInclude Include="..\core\src\zxing\qrcode\detector\FinderPatternInfo.h" />
-    <ClInclude Include="..\core\src\zxing\qrcode\ErrorCorrectionLevel.h" />
-    <ClInclude Include="..\core\src\zxing\qrcode\FormatInformation.h" />
-    <ClInclude Include="..\core\src\zxing\qrcode\QRCodeReader.h" />
-    <ClInclude Include="..\core\src\zxing\qrcode\Version.h" />
-    <ClInclude Include="..\core\src\zxing\Reader.h" />
-    <ClInclude Include="..\core\src\zxing\ReaderException.h" />
-    <ClInclude Include="..\core\src\zxing\Result.h" />
-    <ClInclude Include="..\core\src\zxing\ResultPoint.h" />
-    <ClInclude Include="..\core\src\zxing\ResultPointCallback.h" />
-    <ClInclude Include="..\core\src\zxing\ZXing.h" />
-    <ClInclude Include="..\core\src\bigint\BigInteger.hh" />
-    <ClInclude Include="..\core\src\bigint\BigIntegerAlgorithms.hh" />
-    <ClInclude Include="..\core\src\bigint\BigIntegerLibrary.hh" />
-    <ClInclude Include="..\core\src\bigint\BigIntegerUtils.hh" />
-    <ClInclude Include="..\core\src\bigint\BigUnsigned.hh" />
-    <ClInclude Include="..\core\src\bigint\BigUnsignedInABase.hh" />
-    <ClInclude Include="..\core\src\bigint\NumberlikeArray.hh" />
-    <ClCompile Include="..\core\src\zxing\aztec\AztecDetectorResult.cpp" />
-    <ClCompile Include="..\core\src\zxing\aztec\AztecReader.cpp" />
-    <ClCompile Include="..\core\src\zxing\aztec\decoder\Decoder.cpp">
+    <ClInclude Include="$(SolutionDir)..\core\src\win32\zxing\iconv.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\win32\zxing\stdint.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\aztec\AztecDetectorResult.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\aztec\AztecReader.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\aztec\decoder\Decoder.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\aztec\detector\Detector.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\BarcodeFormat.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\Binarizer.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\BinaryBitmap.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\ChecksumException.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\Array.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\BitArray.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\BitMatrix.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\BitSource.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\CharacterSetECI.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\Counted.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\DecoderResult.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\detector\JavaMath.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\detector\MathUtils.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\detector\MonochromeRectangleDetector.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\detector\WhiteRectangleDetector.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\DetectorResult.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\GlobalHistogramBinarizer.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\GreyscaleLuminanceSource.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\GreyscaleRotatedLuminanceSource.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\GridSampler.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\HybridBinarizer.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\IllegalArgumentException.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\PerspectiveTransform.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\Point.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\reedsolomon\GenericGF.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\reedsolomon\GenericGFPoly.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\reedsolomon\ReedSolomonDecoder.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\reedsolomon\ReedSolomonException.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\Str.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\common\StringUtils.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\datamatrix\DataMatrixReader.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\datamatrix\decoder\BitMatrixParser.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\datamatrix\decoder\DataBlock.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\datamatrix\decoder\DecodedBitStreamParser.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\datamatrix\decoder\Decoder.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\datamatrix\detector\CornerPoint.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\datamatrix\detector\Detector.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\datamatrix\detector\DetectorException.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\datamatrix\Version.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\DecodeHints.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\Exception.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\FormatException.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\IllegalStateException.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\InvertedLuminanceSource.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\LuminanceSource.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\multi\ByQuadrantReader.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\multi\GenericMultipleBarcodeReader.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\multi\MultipleBarcodeReader.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\multi\qrcode\detector\MultiDetector.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\multi\qrcode\detector\MultiFinderPatternFinder.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\multi\qrcode\QRCodeMultiReader.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\MultiFormatReader.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\NotFoundException.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\oned\CodaBarReader.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\oned\Code128Reader.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\oned\Code39Reader.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\oned\Code93Reader.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\oned\EAN13Reader.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\oned\EAN8Reader.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\oned\ITFReader.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\oned\MultiFormatOneDReader.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\oned\MultiFormatUPCEANReader.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\oned\OneDReader.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\oned\OneDResultPoint.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\oned\UPCAReader.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\oned\UPCEANReader.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\oned\UPCEReader.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\pdf417\decoder\BitMatrixParser.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\pdf417\decoder\DecodedBitStreamParser.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\pdf417\decoder\Decoder.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\pdf417\decoder\ec\ErrorCorrection.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\pdf417\decoder\ec\ModulusGF.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\pdf417\decoder\ec\ModulusPoly.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\pdf417\detector\Detector.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\pdf417\detector\LinesSampler.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\pdf417\PDF417Reader.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\qrcode\decoder\BitMatrixParser.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\qrcode\decoder\DataBlock.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\qrcode\decoder\DataMask.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\qrcode\decoder\DecodedBitStreamParser.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\qrcode\decoder\Decoder.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\qrcode\decoder\Mode.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\qrcode\detector\AlignmentPattern.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\qrcode\detector\AlignmentPatternFinder.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\qrcode\detector\Detector.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\qrcode\detector\FinderPattern.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\qrcode\detector\FinderPatternFinder.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\qrcode\detector\FinderPatternInfo.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\qrcode\ErrorCorrectionLevel.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\qrcode\FormatInformation.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\qrcode\QRCodeReader.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\qrcode\Version.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\Reader.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\ReaderException.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\Result.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\ResultPoint.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\ResultPointCallback.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\zxing\ZXing.h" />
+    <ClInclude Include="$(SolutionDir)..\core\src\bigint\BigInteger.hh" />
+    <ClInclude Include="$(SolutionDir)..\core\src\bigint\BigIntegerAlgorithms.hh" />
+    <ClInclude Include="$(SolutionDir)..\core\src\bigint\BigIntegerLibrary.hh" />
+    <ClInclude Include="$(SolutionDir)..\core\src\bigint\BigIntegerUtils.hh" />
+    <ClInclude Include="$(SolutionDir)..\core\src\bigint\BigUnsigned.hh" />
+    <ClInclude Include="$(SolutionDir)..\core\src\bigint\BigUnsignedInABase.hh" />
+    <ClInclude Include="$(SolutionDir)..\core\src\bigint\NumberlikeArray.hh" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\aztec\AztecDetectorResult.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\aztec\AztecReader.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\aztec\decoder\Decoder.cpp">
       <ObjectFileName>$(IntDir)/core/src/zxing/aztec/decoder/Decoder.cpp.obj</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\core\src\zxing\aztec\detector\Detector.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\aztec\detector\Detector.cpp">
       <ObjectFileName>$(IntDir)/core/src/zxing/aztec/detector/Detector.cpp.obj</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\core\src\zxing\BarcodeFormat.cpp" />
-    <ClCompile Include="..\core\src\zxing\Binarizer.cpp" />
-    <ClCompile Include="..\core\src\zxing\BinaryBitmap.cpp" />
-    <ClCompile Include="..\core\src\zxing\ChecksumException.cpp" />
-    <ClCompile Include="..\core\src\zxing\common\BitArray.cpp" />
-    <ClCompile Include="..\core\src\zxing\common\BitArrayIO.cpp" />
-    <ClCompile Include="..\core\src\zxing\common\BitMatrix.cpp" />
-    <ClCompile Include="..\core\src\zxing\common\BitSource.cpp" />
-    <ClCompile Include="..\core\src\zxing\common\CharacterSetECI.cpp" />
-    <ClCompile Include="..\core\src\zxing\common\DecoderResult.cpp" />
-    <ClCompile Include="..\core\src\zxing\common\detector\MonochromeRectangleDetector.cpp" />
-    <ClCompile Include="..\core\src\zxing\common\detector\WhiteRectangleDetector.cpp" />
-    <ClCompile Include="..\core\src\zxing\common\DetectorResult.cpp" />
-    <ClCompile Include="..\core\src\zxing\common\GlobalHistogramBinarizer.cpp" />
-    <ClCompile Include="..\core\src\zxing\common\GreyscaleLuminanceSource.cpp" />
-    <ClCompile Include="..\core\src\zxing\common\GreyscaleRotatedLuminanceSource.cpp" />
-    <ClCompile Include="..\core\src\zxing\common\GridSampler.cpp" />
-    <ClCompile Include="..\core\src\zxing\common\HybridBinarizer.cpp" />
-    <ClCompile Include="..\core\src\zxing\common\IllegalArgumentException.cpp" />
-    <ClCompile Include="..\core\src\zxing\common\PerspectiveTransform.cpp" />
-    <ClCompile Include="..\core\src\zxing\common\reedsolomon\GenericGF.cpp" />
-    <ClCompile Include="..\core\src\zxing\common\reedsolomon\GenericGFPoly.cpp" />
-    <ClCompile Include="..\core\src\zxing\common\reedsolomon\ReedSolomonDecoder.cpp" />
-    <ClCompile Include="..\core\src\zxing\common\reedsolomon\ReedSolomonException.cpp" />
-    <ClCompile Include="..\core\src\zxing\common\Str.cpp" />
-    <ClCompile Include="..\core\src\zxing\common\StringUtils.cpp" />
-    <ClCompile Include="..\core\src\zxing\datamatrix\DataMatrixReader.cpp" />
-    <ClCompile Include="..\core\src\zxing\datamatrix\decoder\BitMatrixParser.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\BarcodeFormat.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\Binarizer.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\BinaryBitmap.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\ChecksumException.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\common\BitArray.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\common\BitArrayIO.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\common\BitMatrix.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\common\BitSource.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\common\CharacterSetECI.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\common\DecoderResult.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\common\detector\MonochromeRectangleDetector.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\common\detector\WhiteRectangleDetector.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\common\DetectorResult.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\common\GlobalHistogramBinarizer.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\common\GreyscaleLuminanceSource.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\common\GreyscaleRotatedLuminanceSource.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\common\GridSampler.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\common\HybridBinarizer.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\common\IllegalArgumentException.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\common\PerspectiveTransform.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\common\reedsolomon\GenericGF.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\common\reedsolomon\GenericGFPoly.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\common\reedsolomon\ReedSolomonDecoder.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\common\reedsolomon\ReedSolomonException.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\common\Str.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\common\StringUtils.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\datamatrix\DataMatrixReader.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\datamatrix\decoder\BitMatrixParser.cpp">
       <ObjectFileName>$(IntDir)/core/src/zxing/datamatrix/decoder/BitMatrixParser.cpp.obj</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\core\src\zxing\datamatrix\decoder\DataBlock.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\datamatrix\decoder\DataBlock.cpp">
       <ObjectFileName>$(IntDir)/core/src/zxing/datamatrix/decoder/DataBlock.cpp.obj</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\core\src\zxing\datamatrix\decoder\DecodedBitStreamParser.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\datamatrix\decoder\DecodedBitStreamParser.cpp">
       <ObjectFileName>$(IntDir)/core/src/zxing/datamatrix/decoder/DecodedBitStreamParser.cpp.obj</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\core\src\zxing\datamatrix\decoder\Decoder.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\datamatrix\decoder\Decoder.cpp">
       <ObjectFileName>$(IntDir)/core/src/zxing/datamatrix/decoder/Decoder.cpp.obj</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\core\src\zxing\datamatrix\detector\CornerPoint.cpp" />
-    <ClCompile Include="..\core\src\zxing\datamatrix\detector\Detector.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\datamatrix\detector\CornerPoint.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\datamatrix\detector\Detector.cpp">
       <ObjectFileName>$(IntDir)/core/src/zxing/datamatrix/detector/Detector.cpp.obj</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\core\src\zxing\datamatrix\detector\DetectorException.cpp" />
-    <ClCompile Include="..\core\src\zxing\datamatrix\Version.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\datamatrix\detector\DetectorException.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\datamatrix\Version.cpp">
       <ObjectFileName>$(IntDir)/core/src/zxing/datamatrix/Version.cpp.obj</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\core\src\zxing\DecodeHints.cpp" />
-    <ClCompile Include="..\core\src\zxing\Exception.cpp" />
-    <ClCompile Include="..\core\src\zxing\FormatException.cpp" />
-    <ClCompile Include="..\core\src\zxing\InvertedLuminanceSource.cpp" />
-    <ClCompile Include="..\core\src\zxing\LuminanceSource.cpp" />
-    <ClCompile Include="..\core\src\zxing\multi\ByQuadrantReader.cpp" />
-    <ClCompile Include="..\core\src\zxing\multi\GenericMultipleBarcodeReader.cpp" />
-    <ClCompile Include="..\core\src\zxing\multi\MultipleBarcodeReader.cpp" />
-    <ClCompile Include="..\core\src\zxing\multi\qrcode\detector\MultiDetector.cpp" />
-    <ClCompile Include="..\core\src\zxing\multi\qrcode\detector\MultiFinderPatternFinder.cpp" />
-    <ClCompile Include="..\core\src\zxing\multi\qrcode\QRCodeMultiReader.cpp" />
-    <ClCompile Include="..\core\src\zxing\MultiFormatReader.cpp" />
-    <ClCompile Include="..\core\src\zxing\oned\CodaBarReader.cpp" />
-    <ClCompile Include="..\core\src\zxing\oned\Code128Reader.cpp" />
-    <ClCompile Include="..\core\src\zxing\oned\Code39Reader.cpp" />
-    <ClCompile Include="..\core\src\zxing\oned\Code93Reader.cpp" />
-    <ClCompile Include="..\core\src\zxing\oned\EAN13Reader.cpp" />
-    <ClCompile Include="..\core\src\zxing\oned\EAN8Reader.cpp" />
-    <ClCompile Include="..\core\src\zxing\oned\ITFReader.cpp" />
-    <ClCompile Include="..\core\src\zxing\oned\MultiFormatOneDReader.cpp" />
-    <ClCompile Include="..\core\src\zxing\oned\MultiFormatUPCEANReader.cpp" />
-    <ClCompile Include="..\core\src\zxing\oned\OneDReader.cpp" />
-    <ClCompile Include="..\core\src\zxing\oned\OneDResultPoint.cpp" />
-    <ClCompile Include="..\core\src\zxing\oned\UPCAReader.cpp" />
-    <ClCompile Include="..\core\src\zxing\oned\UPCEANReader.cpp" />
-    <ClCompile Include="..\core\src\zxing\oned\UPCEReader.cpp" />
-    <ClCompile Include="..\core\src\zxing\pdf417\decoder\BitMatrixParser.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\DecodeHints.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\Exception.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\FormatException.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\InvertedLuminanceSource.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\LuminanceSource.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\multi\ByQuadrantReader.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\multi\GenericMultipleBarcodeReader.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\multi\MultipleBarcodeReader.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\multi\qrcode\detector\MultiDetector.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\multi\qrcode\detector\MultiFinderPatternFinder.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\multi\qrcode\QRCodeMultiReader.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\MultiFormatReader.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\oned\CodaBarReader.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\oned\Code128Reader.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\oned\Code39Reader.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\oned\Code93Reader.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\oned\EAN13Reader.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\oned\EAN8Reader.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\oned\ITFReader.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\oned\MultiFormatOneDReader.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\oned\MultiFormatUPCEANReader.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\oned\OneDReader.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\oned\OneDResultPoint.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\oned\UPCAReader.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\oned\UPCEANReader.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\oned\UPCEReader.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\pdf417\decoder\BitMatrixParser.cpp">
       <ObjectFileName>$(IntDir)/core/src/zxing/pdf417/decoder/BitMatrixParser.cpp.obj</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\core\src\zxing\pdf417\decoder\DecodedBitStreamParser.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\pdf417\decoder\DecodedBitStreamParser.cpp">
       <ObjectFileName>$(IntDir)/core/src/zxing/pdf417/decoder/DecodedBitStreamParser.cpp.obj</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\core\src\zxing\pdf417\decoder\Decoder.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\pdf417\decoder\Decoder.cpp">
       <ObjectFileName>$(IntDir)/core/src/zxing/pdf417/decoder/Decoder.cpp.obj</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\core\src\zxing\pdf417\decoder\ec\ErrorCorrection.cpp" />
-    <ClCompile Include="..\core\src\zxing\pdf417\decoder\ec\ModulusGF.cpp" />
-    <ClCompile Include="..\core\src\zxing\pdf417\decoder\ec\ModulusPoly.cpp" />
-    <ClCompile Include="..\core\src\zxing\pdf417\detector\Detector.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\pdf417\decoder\ec\ErrorCorrection.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\pdf417\decoder\ec\ModulusGF.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\pdf417\decoder\ec\ModulusPoly.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\pdf417\detector\Detector.cpp">
       <ObjectFileName>$(IntDir)/core/src/zxing/pdf417/detector/Detector.cpp.obj</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\core\src\zxing\pdf417\detector\LinesSampler.cpp" />
-    <ClCompile Include="..\core\src\zxing\pdf417\PDF417Reader.cpp" />
-    <ClCompile Include="..\core\src\zxing\qrcode\decoder\BitMatrixParser.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\pdf417\detector\LinesSampler.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\pdf417\PDF417Reader.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\qrcode\decoder\BitMatrixParser.cpp">
       <ObjectFileName>$(IntDir)/core/src/zxing/qrcode/decoder/BitMatrixParser.cpp.obj</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\core\src\zxing\qrcode\decoder\DataBlock.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\qrcode\decoder\DataBlock.cpp">
       <ObjectFileName>$(IntDir)/core/src/zxing/qrcode/decoder/DataBlock.cpp.obj</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\core\src\zxing\qrcode\decoder\DataMask.cpp" />
-    <ClCompile Include="..\core\src\zxing\qrcode\decoder\DecodedBitStreamParser.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\qrcode\decoder\DataMask.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\qrcode\decoder\DecodedBitStreamParser.cpp">
       <ObjectFileName>$(IntDir)/core/src/zxing/qrcode/decoder/DecodedBitStreamParser.cpp.obj</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\core\src\zxing\qrcode\decoder\Decoder.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\qrcode\decoder\Decoder.cpp">
       <ObjectFileName>$(IntDir)/core/src/zxing/qrcode/decoder/Decoder.cpp.obj</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\core\src\zxing\qrcode\decoder\Mode.cpp" />
-    <ClCompile Include="..\core\src\zxing\qrcode\detector\AlignmentPattern.cpp" />
-    <ClCompile Include="..\core\src\zxing\qrcode\detector\AlignmentPatternFinder.cpp" />
-    <ClCompile Include="..\core\src\zxing\qrcode\detector\Detector.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\qrcode\decoder\Mode.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\qrcode\detector\AlignmentPattern.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\qrcode\detector\AlignmentPatternFinder.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\qrcode\detector\Detector.cpp">
       <ObjectFileName>$(IntDir)/core/src/zxing/qrcode/detector/Detector.cpp.obj</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\core\src\zxing\qrcode\detector\FinderPattern.cpp" />
-    <ClCompile Include="..\core\src\zxing\qrcode\detector\FinderPatternFinder.cpp" />
-    <ClCompile Include="..\core\src\zxing\qrcode\detector\FinderPatternInfo.cpp" />
-    <ClCompile Include="..\core\src\zxing\qrcode\ErrorCorrectionLevel.cpp" />
-    <ClCompile Include="..\core\src\zxing\qrcode\FormatInformation.cpp" />
-    <ClCompile Include="..\core\src\zxing\qrcode\QRCodeReader.cpp" />
-    <ClCompile Include="..\core\src\zxing\qrcode\Version.cpp">
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\qrcode\detector\FinderPattern.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\qrcode\detector\FinderPatternFinder.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\qrcode\detector\FinderPatternInfo.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\qrcode\ErrorCorrectionLevel.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\qrcode\FormatInformation.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\qrcode\QRCodeReader.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\qrcode\Version.cpp">
       <ObjectFileName>$(IntDir)/core/src/zxing/qrcode/Version.cpp.obj</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\core\src\zxing\Reader.cpp" />
-    <ClCompile Include="..\core\src\zxing\Result.cpp" />
-    <ClCompile Include="..\core\src\zxing\ResultIO.cpp" />
-    <ClCompile Include="..\core\src\zxing\ResultPoint.cpp" />
-    <ClCompile Include="..\core\src\zxing\ResultPointCallback.cpp" />
-    <ClCompile Include="..\core\src\bigint\BigInteger.cc" />
-    <ClCompile Include="..\core\src\bigint\BigIntegerAlgorithms.cc" />
-    <ClCompile Include="..\core\src\bigint\BigIntegerUtils.cc" />
-    <ClCompile Include="..\core\src\bigint\BigUnsigned.cc" />
-    <ClCompile Include="..\core\src\bigint\BigUnsignedInABase.cc" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\Reader.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\Result.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\ResultIO.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\ResultPoint.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\zxing\ResultPointCallback.cpp" />
+    <ClCompile Include="$(SolutionDir)..\core\src\bigint\BigInteger.cc" />
+    <ClCompile Include="$(SolutionDir)..\core\src\bigint\BigIntegerAlgorithms.cc" />
+    <ClCompile Include="$(SolutionDir)..\core\src\bigint\BigIntegerUtils.cc" />
+    <ClCompile Include="$(SolutionDir)..\core\src\bigint\BigUnsigned.cc" />
+    <ClCompile Include="$(SolutionDir)..\core\src\bigint\BigUnsignedInABase.cc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
