@@ -11,7 +11,7 @@
 
 #if defined(XTOOLS_PLATFORM_WINDOWS_DESKTOP)
 # define CURL_STATICLIB
-# include <curl.h>
+# include <curl/curl.h>
 #elif defined(XTOOLS_PLATFORM_OSX)
 # include <curl/curl.h>
 #endif

@@ -3,8 +3,6 @@
 echo ****************************************************
 echo ********* Building All HoloToolkit.Sharing *********
 echo ****************************************************
-echo
-echo
 
 call BuildDependencies.bat
 IF NOT %ERRORLEVEL% == 0 goto BuildError

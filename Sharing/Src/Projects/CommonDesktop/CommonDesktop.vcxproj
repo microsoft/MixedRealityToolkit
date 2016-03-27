@@ -467,7 +467,7 @@
       <LinkLibraryDependencies>true</LinkLibraryDependencies>
     </ProjectReference>
     <Lib>
-      <AdditionalDependencies>RakNet_WinDesktop_$(PlatformTarget)_$(Configuration).lib;libcurld.lib;libspeex_libstatic_$(Configuration)_$(Platform).lib;libspeexdsp_libstatic_$(Configuration)_$(Platform).lib</AdditionalDependencies>
+      <AdditionalDependencies>RakNet_WinDesktop_$(PlatformTarget)_$(Configuration).lib;libcurl_a_debug.lib;libspeex_libstatic_$(Configuration)_$(Platform).lib;libspeexdsp_libstatic_$(Configuration)_$(Platform).lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\..\External\RakNet-4.081\lib;..\..\External\curl-7.39.0\lib\$(Configuration)\$(PlatformName);..\..\External\speex-1.2rc1\lib</AdditionalLibraryDirectories>
       <AdditionalOptions>/ignore:4006 /ignore:4221 %(AdditionalOptions)</AdditionalOptions>
     </Lib>
@@ -497,7 +497,7 @@
     </ProjectReference>
     <Lib>
       <AdditionalLibraryDirectories>..\..\External\RakNet-4.081\lib;..\..\External\curl-7.39.0\lib\$(Configuration)\$(PlatformName);..\..\External\speex-1.2rc1\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>RakNet_WinDesktop_$(PlatformTarget)_$(Configuration).lib;libcurld.lib;libspeex_libstatic_$(Configuration)_$(Platform).lib;libspeexdsp_libstatic_$(Configuration)_$(Platform).lib</AdditionalDependencies>
+      <AdditionalDependencies>RakNet_WinDesktop_$(PlatformTarget)_$(Configuration).lib;libcurl_a_debug.lib;libspeex_libstatic_$(Configuration)_$(Platform).lib;libspeexdsp_libstatic_$(Configuration)_$(Platform).lib</AdditionalDependencies>
       <AdditionalOptions>/ignore:4006 /ignore:4221 %(AdditionalOptions)</AdditionalOptions>
     </Lib>
   </ItemDefinitionGroup>
@@ -526,7 +526,7 @@
     </ProjectReference>
     <Lib>
       <AdditionalLibraryDirectories>..\..\External\RakNet-4.081\lib;..\..\External\curl-7.39.0\lib\$(Configuration)\$(PlatformName);..\..\External\speex-1.2rc1\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>RakNet_WinDesktop_$(PlatformTarget)_$(Configuration).lib;ws2_32.lib;libcurl.lib;libspeex_libstatic_$(Configuration)_$(Platform).lib;libspeexdsp_libstatic_$(Configuration)_$(Platform).lib</AdditionalDependencies>
+      <AdditionalDependencies>RakNet_WinDesktop_$(PlatformTarget)_$(Configuration).lib;ws2_32.lib;libcurl_a.lib;libspeex_libstatic_$(Configuration)_$(Platform).lib;libspeexdsp_libstatic_$(Configuration)_$(Platform).lib</AdditionalDependencies>
       <AdditionalOptions>/ignore:4006 /ignore:4221 %(AdditionalOptions)</AdditionalOptions>
     </Lib>
   </ItemDefinitionGroup>
@@ -555,7 +555,7 @@
     </ProjectReference>
     <Lib>
       <AdditionalLibraryDirectories>..\..\External\RakNet-4.081\lib;..\..\External\curl-7.39.0\lib\$(Configuration)\$(PlatformName);..\..\External\speex-1.2rc1\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>RakNet_WinDesktop_$(PlatformTarget)_$(Configuration).lib;libcurl.lib;libspeex_libstatic_$(Configuration)_$(Platform).lib;libspeexdsp_libstatic_$(Configuration)_$(Platform).lib</AdditionalDependencies>
+      <AdditionalDependencies>RakNet_WinDesktop_$(PlatformTarget)_$(Configuration).lib;libcurl_a.lib;libspeex_libstatic_$(Configuration)_$(Platform).lib;libspeexdsp_libstatic_$(Configuration)_$(Platform).lib</AdditionalDependencies>
       <AdditionalOptions>/ignore:4006 /ignore:4221 %(AdditionalOptions)</AdditionalOptions>
     </Lib>
   </ItemDefinitionGroup>

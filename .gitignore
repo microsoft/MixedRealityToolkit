@@ -17,6 +17,7 @@
 /Sharing/SDK
 /Sharing/Src/bin
 /Sharing/Src/tmp
+/Sharing/Src/External/doxygen
 /Sharing/Src/External/apriltag-2015-03-18/lib
 /Sharing/Src/External/apriltag-2015-03-18/tmp
 /Sharing/Src/External/curl-7.39.0/lib
@@ -31,3 +32,4 @@
 /Sharing/Src/GeneratedInterface
 /Sharing/Src/Projects/ProfilerX/obj
 /Sharing/Src/Projects/ProfilerX/bin
+/Sharing/Src/Docs/C++/html
