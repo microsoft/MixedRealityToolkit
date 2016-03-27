@@ -46,7 +46,7 @@ namespace SessionManager.Network
             this.logWriter = new ConsoleLogWriter();
 
             ClientConfig config = new ClientConfig(ClientRole.Primary);
-            config.SetServerAddress(GetArgumentOrDefault("sessionserver", "OSOSERVER.redmond.corp.microsoft.com"));
+            config.SetServerAddress(GetArgumentOrDefault("sessionserver", "localhost"));
             config.SetLogWriter(this.logWriter);
 
             this.Manager = SharingManager.Create(config);
