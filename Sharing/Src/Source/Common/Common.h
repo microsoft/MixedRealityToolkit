@@ -61,7 +61,6 @@
 #include <Public/DiscoveredSystem.h>
 #include <Public/DiscoveryClientListener.h>
 #include <Public/DiscoveryClient.h>
-#include <Public/DiscoveryServer.h>
 
 #include <Public/ProfileManager.h>
 

@@ -71,8 +71,7 @@ private:
 	XSocketManagerPtr		m_socketMgr;
 	NetworkConnectionPtr	m_connection;
 	ReceiptPtr				m_incomingConnectionReceipt;
-
-	DiscoveryServerPtr		m_discoveryServer;
+	ReceiptPtr				m_discoveryResponseReceipt;
 
 	volatile int			m_isConnected;
 };

@@ -222,9 +222,6 @@
     <ClCompile Include="..\..\Source\Common\Private\DiscoveryClientImpl.cpp">
       <Filter>Source\Private\Networking\Discovery</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Common\Private\DiscoveryServerImpl.cpp">
-      <Filter>Source\Private\Networking\Discovery</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Source\Common\Private\SyncContext.cpp">
       <Filter>Source\Private\Sync</Filter>
     </ClCompile>
@@ -519,9 +516,6 @@
       <Filter>Source\Private\Networking</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Common\Private\DiscoveryClientImpl.h">
-      <Filter>Source\Private\Networking\Discovery</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Common\Private\DiscoveryServerImpl.h">
       <Filter>Source\Private\Networking\Discovery</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Common\Private\SystemDescription.h">
@@ -849,9 +843,6 @@
       <Filter>Source\Public\Networking\Discovery</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Common\Public\DiscoveryClient.h">
-      <Filter>Source\Public\Networking\Discovery</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Common\Public\DiscoveryServer.h">
       <Filter>Source\Public\Networking\Discovery</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Common\Public\SideCar.h">

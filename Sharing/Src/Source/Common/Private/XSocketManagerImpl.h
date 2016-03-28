@@ -41,6 +41,9 @@ public:
 	// Mutex locked
 	virtual ReceiptPtr AcceptConnections(uint16 port, uint16 maxConnections, IncomingXSocketListener* listener) XTOVERRIDE;
 
+	// Open a port to listen for discovery connections and respond with a description of this machine
+	virtual ReceiptPtr AcceptDiscoveryPings(uint16 port, SystemRole role) XTOVERRIDE;
+
 	virtual std::string GetLocalAddressForRemoteClient(const XSocketPtr& socket) const XTOVERRIDE;
 
 	// Processes any network messages that have arrived since the last call to Update().  
@@ -82,6 +85,7 @@ private:
 
 	void ProcessOpenCommand(const CommandPtr& openCommand);
 	void ProcessAcceptCommand(const CommandPtr& acceptCommand);
+	void ProcessDiscoveryResponseCommand(const CommandPtr& discoveryCommand);
 	void SendConnectionFailedMessage(const XSocketImplPtr& socket);
 	bool SendMessageToMainThread(const MessagePtr& msg);
 

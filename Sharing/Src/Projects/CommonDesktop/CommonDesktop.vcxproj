@@ -45,7 +45,6 @@
     <ClCompile Include="..\..\Source\Common\Private\DeleteModifyTransform.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\DiscoveredSystem.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\DiscoveryClientImpl.cpp" />
-    <ClCompile Include="..\..\Source\Common\Private\DiscoveryServerImpl.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\DoubleElementImpl.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\DownloadBufferImpl.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\DownloadManagerImpl.cpp" />
@@ -172,7 +171,6 @@
     <ClInclude Include="..\..\Source\Common\Private\DeleteDeleteTransform.h" />
     <ClInclude Include="..\..\Source\Common\Private\DeleteModifyTransform.h" />
     <ClInclude Include="..\..\Source\Common\Private\DiscoveryClientImpl.h" />
-    <ClInclude Include="..\..\Source\Common\Private\DiscoveryServerImpl.h" />
     <ClInclude Include="..\..\Source\Common\Private\DoubleElementImpl.h" />
     <ClInclude Include="..\..\Source\Common\Private\DownloadBufferImpl.h" />
     <ClInclude Include="..\..\Source\Common\Private\DownloadManagerImpl.h" />
@@ -268,7 +266,6 @@
     <ClInclude Include="..\..\Source\Common\Public\DiscoveredSystem.h" />
     <ClInclude Include="..\..\Source\Common\Public\DiscoveryClient.h" />
     <ClInclude Include="..\..\Source\Common\Public\DiscoveryClientListener.h" />
-    <ClInclude Include="..\..\Source\Common\Public\DiscoveryServer.h" />
     <ClInclude Include="..\..\Source\Common\Public\DoubleElement.h" />
     <ClInclude Include="..\..\Source\Common\Public\DownloadBuffer.h" />
     <ClInclude Include="..\..\Source\Common\Public\DownloadCallback.h" />

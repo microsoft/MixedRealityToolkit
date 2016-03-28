@@ -6,7 +6,6 @@
 
 #include "stdafx.h"
 #include "ProfileManagerImpl.h"
-#include "DiscoveryServerImpl.h"
 
 XTOOLS_NAMESPACE_BEGIN
 
@@ -67,7 +66,7 @@ ProfileManagerImpl::ProfileManagerImpl(const XSocketManagerPtr& socketMgr, Syste
 	}
 
 	// Start the discovery server to allow this instance to be discovered
-	m_discoveryServer = DiscoveryServer::Create(role);
+	m_discoveryResponseReceipt = m_socketMgr->AcceptDiscoveryPings(kDiscoveryServerPort, role);
 
 	{
 		ScopedLock lock(m_sInstanceMutex);
@@ -145,8 +144,6 @@ void ProfileManagerImpl::Log(LogSeverity severity, const std::string& message)
 
 void ProfileManagerImpl::Update()
 {
-	m_discoveryServer->Update();
-
 	// If we're connected to the profiling tool...
 	if (m_isConnected)
 	{

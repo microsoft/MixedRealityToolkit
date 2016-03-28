@@ -55,7 +55,6 @@
     <ClCompile Include="..\..\Source\Common\Private\DeleteOperation.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\DiscoveredSystem.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\DiscoveryClientImpl.cpp" />
-    <ClCompile Include="..\..\Source\Common\Private\DiscoveryServerImpl.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\DoubleElementImpl.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\ElementFactory.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\Environment.cpp" />
@@ -179,7 +178,6 @@
     <ClInclude Include="..\..\Source\Common\Private\DeleteModifyTransform.h" />
     <ClInclude Include="..\..\Source\Common\Private\DeleteOperation.h" />
     <ClInclude Include="..\..\Source\Common\Private\DiscoveryClientImpl.h" />
-    <ClInclude Include="..\..\Source\Common\Private\DiscoveryServerImpl.h" />
     <ClInclude Include="..\..\Source\Common\Private\DoubleElementImpl.h" />
     <ClInclude Include="..\..\Source\Common\Private\ElementFactory.h" />
     <ClInclude Include="..\..\Source\Common\Private\FloatElementImpl.h" />
@@ -267,7 +265,6 @@
     <ClInclude Include="..\..\Source\Common\Public\CommonSettings.h" />
     <ClInclude Include="..\..\Source\Common\Public\DiscoveredSystem.h" />
     <ClInclude Include="..\..\Source\Common\Public\DiscoveryClient.h" />
-    <ClInclude Include="..\..\Source\Common\Public\DiscoveryServer.h" />
     <ClInclude Include="..\..\Source\Common\Public\DoubleElement.h" />
     <ClInclude Include="..\..\Source\Common\Public\Element.h" />
     <ClInclude Include="..\..\Source\Common\Public\Environment.h" />

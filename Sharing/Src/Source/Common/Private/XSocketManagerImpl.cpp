@@ -11,6 +11,7 @@
 #include "XSocketImpl.h"
 #include "Peer.h"
 #include "PacketWrapper.h"
+#include "SystemDescription.h"
 
 XTOOLS_NAMESPACE_BEGIN
 
@@ -106,6 +107,7 @@ XSocketManagerImpl::~XSocketManagerImpl()
 {
 	// trigger the thread exit and wait for it...
 	m_stopping = 1;
+	m_networkThreadEvent.Set();
 	m_networkThread->WaitForThreadExit();
 
 	XTASSERT(m_peers.empty());
@@ -122,7 +124,7 @@ XSocketPtr XSocketManagerImpl::OpenConnection(const std::string& remoteName, uin
 	XSocketImplPtr newSocket = new XSocketImpl(remoteName, remotePort);
 	newSocket->SetRegistrationReceipt(CreateRegistrationReceipt(XSocketManagerImplPtr(this), &XSocketManagerImpl::CloseConnection, newSocket.get()));
 
-	CommandPtr openCommand = new Command(newSocket);
+	CommandPtr openCommand = CreateOpenCommand(newSocket);
 	SendCommandToNetworkThread(openCommand);
 
 	return newSocket;
@@ -133,13 +135,27 @@ ReceiptPtr XSocketManagerImpl::AcceptConnections(uint16 port, uint16 maxConnecti
 {
 	PROFILE_SCOPE("XSocketManager::AcceptConnections");
 
-	XTASSERT(listener != NULL);
+	PeerID peerID = Peer::CreatePeerID();
+
+	if (listener)
+	{
+		m_incomingConnectionListeners[peerID] = listener;
+	}
+
+	CommandPtr acceptCommand = CreateAcceptCommand(peerID, port, maxConnections);
+	SendCommandToNetworkThread(acceptCommand);
+
+	return CreateRegistrationReceipt(XSocketManagerImplPtr(this), &XSocketManagerImpl::UnregisterConnectionListener, peerID);
+}
+
+
+ReceiptPtr XSocketManagerImpl::AcceptDiscoveryPings(uint16 port, SystemRole role)
+{
+	PROFILE_SCOPE("XSocketManager::AcceptDiscoveryPings");
 
 	PeerID peerID = Peer::CreatePeerID();
 
-	m_incomingConnectionListeners[peerID] = listener;
-
-	CommandPtr acceptCommand = new Command(peerID, port, maxConnections);
+	CommandPtr acceptCommand = CreateDiscoveryResponseCommand(peerID, port, role);
 	SendCommandToNetworkThread(acceptCommand);
 
 	return CreateRegistrationReceipt(XSocketManagerImplPtr(this), &XSocketManagerImpl::UnregisterConnectionListener, peerID);
@@ -224,7 +240,11 @@ void XSocketManagerImpl::UnregisterConnectionListener(PeerID peerID)
 		// Set the max incoming connections to zero to stop accepting new connections
 		peerConnection->m_peer->SetMaximumIncomingConnections(0);
 
-		m_incomingConnectionListeners.erase(m_incomingConnectionListeners.find(peerID));
+		auto incomingListenerItr = m_incomingConnectionListeners.find(peerID);
+		if (incomingListenerItr != m_incomingConnectionListeners.end())
+		{
+			m_incomingConnectionListeners.erase(incomingListenerItr);
+		}
 
 		// Destroy the peer if no one is using it anymore
 		if (peerConnection->m_sockets.empty())
@@ -290,10 +310,6 @@ void XSocketManagerImpl::Update()
 					break;
 				}
 			}
-			else
-			{
-				LogError("Received message from %s with no associated socket", msg->GetSystemAddress().ToString(false));
-			}
 		}
 	}
 }
@@ -342,6 +358,10 @@ void XSocketManagerImpl::ProcessCommands()
 		else if (newCommand->GetType() == Command::Accept)
 		{
 			ProcessAcceptCommand(newCommand);
+		}
+		else if (newCommand->GetType() == Command::DiscoveryResponse)
+		{
+			ProcessDiscoveryResponseCommand(newCommand);
 		}
 	}
 }
@@ -538,9 +558,9 @@ void XSocketManagerImpl::ProcessAcceptCommand(const CommandPtr& acceptCommand)
 	
 	try 
 	{
-		peerConnection->m_peer->Startup(acceptCommand->GetMaxConnections(), &socketDescriptor, 1);
+		startupResult = peerConnection->m_peer->Startup(acceptCommand->GetMaxConnections(), &socketDescriptor, 1);
 	}
-	catch (...) {}
+	catch (...)  { }
 	
 	if (startupResult != RakNet::RAKNET_STARTED)
 	{
@@ -553,6 +573,55 @@ void XSocketManagerImpl::ProcessAcceptCommand(const CommandPtr& acceptCommand)
 
 	// Calling this function starts the peer listening for incoming connections
 	peerConnection->m_peer->SetMaximumIncomingConnections(acceptCommand->GetMaxConnections());
+
+	// Add the new peer to the list
+	m_peerMutex.Lock();
+	m_peers[peerConnection->GetPeerID()] = peerConnection;
+	m_peerMutex.Unlock();
+}
+
+
+void XSocketManagerImpl::ProcessDiscoveryResponseCommand(const CommandPtr& discoveryCommand)
+{
+	PROFILE_SCOPE("ProcessDiscoveryResponseCommand");
+
+	// Create the peer
+	PeerConnectionPtr peerConnection = new PeerConnection(discoveryCommand->GetPeerID());
+
+	// Get the name of this machine
+	std::string name = Platform::GetLocalMachineNetworkName();
+
+	// Create the description object of the local system
+	SystemDescription desc;
+	memcpy(desc.m_name, name.c_str(), std::min(name.length(), sizeof(desc.m_name)));
+	desc.m_name[name.length()] = '\0';
+	desc.m_role = discoveryCommand->GetRole();
+
+	// Set the system description to be returned along with ping responses
+	peerConnection->m_peer->SetOfflinePingResponse(reinterpret_cast<char*>(&desc), sizeof(SystemDescription));
+
+	// Listen on the given port on the machine's default IP address for both IPv4 and IPv6
+	RakNet::SocketDescriptor socketDescriptor;
+	socketDescriptor.port = discoveryCommand->GetPort();
+	socketDescriptor.socketFamily = AF_INET; // IPV4
+
+	// Startup the peer interface with the given socket settings.  Will fail if we already have a peer interface for this host
+	RakNet::StartupResult startupResult = RakNet::STARTUP_OTHER_FAILURE;
+
+	try
+	{
+		startupResult = peerConnection->m_peer->Startup(discoveryCommand->GetMaxConnections(), &socketDescriptor, 1);
+	}
+	catch (...) {}
+
+	if (startupResult != RakNet::RAKNET_STARTED)
+	{
+		LogError("Failed to create incoming connection on port %u.  Error code: %u", discoveryCommand->GetPort(), startupResult);
+		return;
+	}
+
+	// Calling this function starts the peer listening for incoming connections
+	peerConnection->m_peer->SetMaximumIncomingConnections(discoveryCommand->GetMaxConnections());
 
 	// Add the new peer to the list
 	m_peerMutex.Lock();

@@ -10,6 +10,7 @@
 #pragma once
 
 #include <Public/Utils/Callback.h>
+#include <Public/SystemRole.h>
 
 XTOOLS_NAMESPACE_BEGIN
 
@@ -31,6 +32,9 @@ public:
 	// a XSocket instance is created for it and passed to the given listener.  Only 'maxConnections' clients
 	// can connect at the same time.  
 	virtual ReceiptPtr AcceptConnections(uint16 port, uint16 maxConnections, IncomingXSocketListener* listener) = 0;
+
+	// Open a port to listen for discovery connections and respond with a description of this machine
+	virtual ReceiptPtr AcceptDiscoveryPings(uint16 port, SystemRole role) = 0;
 
 	// Returns the address of this machine as seen by the remote machine connected by the given socket
 	virtual std::string GetLocalAddressForRemoteClient(const XSocketPtr& socket) const = 0;

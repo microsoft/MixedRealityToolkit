@@ -387,9 +387,6 @@
     <ClCompile Include="..\..\Source\Common\Private\Utils\StringUtils.cpp">
       <Filter>Source\Private\Utils</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Common\Private\DiscoveryServerImpl.cpp">
-      <Filter>Source\Private\Networking\Discovery</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Source\Common\Private\DiscoveryClientImpl.cpp">
       <Filter>Source\Private\Networking\Discovery</Filter>
     </ClCompile>
@@ -974,17 +971,11 @@
     <ClInclude Include="..\..\Source\Common\Public\Utils\SwigHelperMacros.h">
       <Filter>Source\Public\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Common\Public\DiscoveryServer.h">
-      <Filter>Source\Public\Networking\Discovery</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Source\Common\Public\DiscoveryClient.h">
       <Filter>Source\Public\Networking\Discovery</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Common\Public\DiscoveredSystem.h">
       <Filter>Source\Public\Networking\Discovery</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Common\Private\DiscoveryServerImpl.h">
-      <Filter>Source\Private\Networking\Discovery</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Common\Private\DiscoveryClientImpl.h">
       <Filter>Source\Private\Networking\Discovery</Filter>
