@@ -533,8 +533,15 @@ void XSocketManagerImpl::ProcessAcceptCommand(const CommandPtr& acceptCommand)
 	socketDescriptor.port = acceptCommand->GetPort();
 	socketDescriptor.socketFamily = AF_INET; // IPV4
 
-											 // Startup the peer interface with the given socket settings.  Will fail if we already have a peer interface for this host
-	RakNet::StartupResult startupResult = peerConnection->m_peer->Startup(acceptCommand->GetMaxConnections(), &socketDescriptor, 1);
+	// Startup the peer interface with the given socket settings.  Will fail if we already have a peer interface for this host
+	RakNet::StartupResult startupResult = RakNet::STARTUP_OTHER_FAILURE; 
+	
+	try 
+	{
+		peerConnection->m_peer->Startup(acceptCommand->GetMaxConnections(), &socketDescriptor, 1);
+	}
+	catch (...) {}
+	
 	if (startupResult != RakNet::RAKNET_STARTED)
 	{
 		LogError("Failed to create incoming connection on port %u.  Error code: %u", acceptCommand->GetPort(), startupResult);

@@ -18,6 +18,7 @@ ClientConfig::ClientConfig(ClientRole role)
 , m_logger(NULL)
 , m_role(role)
 , m_isAudioEndpoint(false)
+, m_bProfilerEnabled(true)
 {
 
 }
@@ -92,6 +93,18 @@ bool ClientConfig::GetIsAudioEndpoint() const
 void ClientConfig::SetIsAudioEndpoint(bool isAudioEndpoint)
 {
 	m_isAudioEndpoint = isAudioEndpoint;
+}
+
+
+bool ClientConfig::GetProfilerEnabled() const
+{
+	return m_bProfilerEnabled;
+}
+
+
+void ClientConfig::SetProfilerEnabled(bool enabled)
+{
+	m_bProfilerEnabled = enabled;
 }
 
 XTOOLS_NAMESPACE_END

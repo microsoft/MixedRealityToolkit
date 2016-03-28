@@ -73,8 +73,11 @@ SharingManagerImpl::SharingManagerImpl(const ClientConfigPtr& config)
 	}
 
 	// Create the profile manager
-	SystemRole systemRole = (m_clientContext->GetClientRole() == Primary) ? SystemRole::PrimaryClientRole : SystemRole::SecondaryClientRole;
-	m_profileManager = new ProfileManagerImpl(m_clientContext->GetXSocketManager(), systemRole);
+	if (config->GetProfilerEnabled())
+	{
+		SystemRole systemRole = (m_clientContext->GetClientRole() == Primary) ? SystemRole::PrimaryClientRole : SystemRole::SecondaryClientRole;
+		m_profileManager = new ProfileManagerImpl(m_clientContext->GetXSocketManager(), systemRole);
+	}
 
 	// Create the pairing manager
 	m_paringManager = new PairingManagerImpl(m_clientContext);
@@ -238,7 +241,10 @@ void SharingManagerImpl::Update()
 	}
 
 	// Tick the profiler last
-	reflection_cast<IUpdateable>(m_profileManager)->Update();
+	if (m_profileManager)
+	{
+		reflection_cast<IUpdateable>(m_profileManager)->Update();
+	}
 }
 
 

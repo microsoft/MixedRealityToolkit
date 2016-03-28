@@ -47,6 +47,12 @@ public:
 	/// Default is off (false).
 	void SetIsAudioEndpoint(bool isAudioEndpoint);
 
+	/// Returns true if the profiler is enabled
+	bool GetProfilerEnabled() const;
+
+	/// Set whether or not the profiler should be enabled
+	void SetProfilerEnabled(bool enabled);
+
 private:
 	std::string m_serverAddress;
 
@@ -57,6 +63,8 @@ private:
 	ClientRole	m_role;
 
 	bool		m_isAudioEndpoint;
+
+	bool		m_bProfilerEnabled;
 };
 
 DECLARE_PTR(ClientConfig)

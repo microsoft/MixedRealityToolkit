@@ -5653,6 +5653,28 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ClientConfig_SetIsAudioEndpoint(void * jarg1,
 }
 
 
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_ClientConfig_GetProfilerEnabled(void * jarg1) {
+  unsigned int jresult ;
+  XTools::ClientConfig *arg1 = (XTools::ClientConfig *) 0 ;
+  bool result;
+  
+  arg1 = (XTools::ClientConfig *)jarg1; 
+  result = (bool)((XTools::ClientConfig const *)arg1)->GetProfilerEnabled();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ClientConfig_SetProfilerEnabled(void * jarg1, unsigned int jarg2) {
+  XTools::ClientConfig *arg1 = (XTools::ClientConfig *) 0 ;
+  bool arg2 ;
+  
+  arg1 = (XTools::ClientConfig *)jarg1; 
+  arg2 = jarg2 ? true : false; 
+  (arg1)->SetProfilerEnabled(arg2);
+}
+
+
 SWIGEXPORT void SWIGSTDCALL CSharp_delete_ClientConfig(void * jarg1) {
   XTools::ClientConfig *arg1 = (XTools::ClientConfig *) 0 ;
   

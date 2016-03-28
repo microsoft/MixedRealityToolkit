@@ -8547,6 +8547,34 @@ SWIGEXPORT void JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_
 }
 
 
+SWIGEXPORT jboolean JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_ClientConfig_1GetProfilerEnabled(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jboolean jresult = 0 ;
+  XTools::ClientConfig *arg1 = (XTools::ClientConfig *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(XTools::ClientConfig **)&jarg1; 
+  result = (bool)((XTools::ClientConfig const *)arg1)->GetProfilerEnabled();
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_ClientConfig_1SetProfilerEnabled(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
+  XTools::ClientConfig *arg1 = (XTools::ClientConfig *) 0 ;
+  bool arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(XTools::ClientConfig **)&jarg1; 
+  arg2 = jarg2 ? true : false; 
+  (arg1)->SetProfilerEnabled(arg2);
+}
+
+
 SWIGEXPORT void JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_delete_1ClientConfig(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::ClientConfig *arg1 = (XTools::ClientConfig *) 0 ;
   
