@@ -86,7 +86,7 @@ public:
 	virtual void AddListener(ObjectElementListener* newListener) = 0;
 
 	/// Remove a previously registered listener.  The wrapper class will release its reference to the given listener.  
-	/// \param newListener The listener object that will no longer receive callbacks  
+	/// \param oldListener The listener object that will no longer receive callbacks  
 	virtual void RemoveListener(ObjectElementListener* oldListener) = 0;
 
 	/// Return the ID of the user who 'owns' this element.  Owned elements will be deleted from the 

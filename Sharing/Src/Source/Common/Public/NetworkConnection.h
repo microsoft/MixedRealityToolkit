@@ -25,14 +25,29 @@ public:
 
 	/// Send the given message with specific settings.  Set releaseMessage to true to release the NetworkMessage
 	/// and return it to the message pool for later reuse.  
+	/// \param msg The message to send
+	/// \param priority Determines the priority this message has relative to other outgoing messages.  Higher priority messages are sent first
+	/// \param reliability Determines what guarantees should be placed on the message's delivery
+	/// \param channel Messages sent in the same channel will be ordered relative to each other if sent with Ordered or Reliable reliability settings
+	/// \param releaseMessage Set to true to return this NetworkOutMessage to the pool.  Set to false if intend to send the message again before it is released. 
 	virtual void Send(const NetworkOutMessagePtr& msg, MessagePriority priority = MessagePriority::Medium, MessageReliability reliability = MessageReliability::ReliableOrdered, MessageChannel channel = MessageChannel::Default, bool releaseMessage = true) = 0;
 
 	/// Send the given message to the device of devices of a particular user.  
 	/// \param user The User to send the message to
 	/// \param deviceRole Specifies which of the user's devices to send the message to based on the devices' roles.  A roll of "Unspecified" will cause to the message to be sent to all of the user's devices.  
+	/// \param msg The message to send
+	/// \param priority Determines the priority this message has relative to other outgoing messages.  Higher priority messages are sent first
+	/// \param reliability Determines what guarantees should be placed on the message's delivery
+	/// \param channel Messages sent in the same channel will be ordered relative to each other if sent with Ordered or Reliable reliability settings
+	/// \param releaseMessage Set to true to return this NetworkOutMessage to the pool.  Set to false if intend to send the message again before it is released. 
 	virtual void SendTo(const UserPtr& user, ClientRole deviceRole, const NetworkOutMessagePtr& msg, MessagePriority priority = MessagePriority::Medium, MessageReliability reliability = MessageReliability::ReliableOrdered, MessageChannel channel = MessageChannel::Default, bool releaseMessage = true) = 0;
 
-	/// Instruct the recipient to sent this messages on to all other connected peers
+	/// Instruct the recipient to send this messages on to all other connected peers
+	/// \param msg The message to send
+	/// \param priority Determines the priority this message has relative to other outgoing messages.  Higher priority messages are sent first
+	/// \param reliability Determines what guarantees should be placed on the message's delivery
+	/// \param channel Messages sent in the same channel will be ordered relative to each other if sent with Ordered or Reliable reliability settings
+	/// \param releaseMessage Set to true to return this NetworkOutMessage to the pool.  Set to false if intend to send the message again before it is released. 
 	virtual void Broadcast(const NetworkOutMessagePtr& msg, MessagePriority priority = MessagePriority::Medium, MessageReliability reliability = MessageReliability::ReliableOrdered, MessageChannel channel = MessageChannel::Default, bool releaseMessage = true) = 0;
 
 	/// Register to receive callbacks for a specific message type.  Multiple listeners can register for the same message type, 

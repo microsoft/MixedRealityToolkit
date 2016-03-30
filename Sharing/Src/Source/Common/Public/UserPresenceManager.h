@@ -20,7 +20,7 @@ public:
 	virtual void AddListener(UserPresenceManagerListener* newListener) = 0;
 
 	/// Remove a previously registered listener.  The wrapper class will release its reference to the given listener.  
-	/// \param newListener The listener object that will no longer receive callbacks from this SessionManager.  
+	/// \param oldListener The listener object that will no longer receive callbacks.  
 	virtual void RemoveListener(UserPresenceManagerListener* oldListener) = 0;
 
     virtual bool GetMuteState() const = 0;

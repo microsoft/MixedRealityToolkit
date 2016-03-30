@@ -35,7 +35,7 @@ public:
 	/// Initiate the pairing process using the connection information provided by the given \ref PairMaker.  
 	/// \param pairMaker Provides the logic and settings to use for this pairing attempt
 	/// \param listener Pointer to the object that will be sent notifications if the connection succeeds or fails
-	/// \returns \ref PairingResult::Ok if the attempt was successfully kicked off, other values if unsuccessful
+	/// \returns PairingResult::Ok if the attempt was successfully kicked off, other values if unsuccessful
 	virtual PairingResult	BeginPairing(const PairMakerPtr& pairMaker, PairingListener* listener) = 0;
 
 	/// Stop the current pairing attempt.  Does nothing if not attempting to pair

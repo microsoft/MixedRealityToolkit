@@ -1,6 +1,9 @@
-# HoloToolkit Sharing
+                        {#mainpage}
+============
+# HoloToolkit.Sharing
 
 ## Description
+
 The HoloToolkit.Sharing library allows applications to span multiple devices, and enables holographic collaboration.  
 
 Originally developed for OnSight, a collaboration between SOTA (a Microsoft studio) and NASA to enhance their existing Mars rover planning tool with HoloLens, HoloToolkit.Sharing enables users to use multiple devices for a task by allowing the apps running on each device communicate and stay in sync seamlessly in real time.  

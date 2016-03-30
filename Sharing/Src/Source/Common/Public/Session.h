@@ -39,7 +39,7 @@ public:
 	virtual void AddListener(SessionListener* newListener) = 0;
 
 	/// Remove a previously registered listener.  The wrapper class will release its reference to the given listener.  
-	/// \param newListener The listener object that will no longer receive callbacks from this SessionManager.  
+	/// \param oldListener The listener object that will no longer receive callbacks from this SessionManager.  
 	virtual void RemoveListener(SessionListener* oldListener) = 0;
 
 	// Returns true if we have joined this session
