@@ -14,6 +14,14 @@
 *.pch
 *.lib
 *.pri
+*.class
+*.o
+*.a
+*.dylib
+*.plist
+*.d
+*.dia
+*.xcuserstate
 /Sharing/SDK
 /Sharing/Src/bin
 /Sharing/Src/tmp
@@ -33,3 +41,4 @@
 /Sharing/Src/Projects/ProfilerX/obj
 /Sharing/Src/Projects/ProfilerX/bin
 /Sharing/Src/Docs/C++/html
+Sharing/Src/Solutions/Xcode/XToolsClient/build

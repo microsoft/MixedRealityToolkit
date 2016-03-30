@@ -1,7 +1,7 @@
 SRC_ROOT = $(PROJECT_DIR)/../../..
 INT_DIR = $(OBJROOT)
 INT_CLASSES = $(INT_DIR)/Classes
-OUT_DIR = $(BUILT_PRODUCTS_DIR)
+OUT_DIR = $(SRC_ROOT)/../SDK/Tools/JavaTestApp
 
 default:
 # Make initial directories for intermediate files and output files, if they don't exist already

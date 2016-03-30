@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		895A87C01CAC1DE000993679 /* libSharingClient.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9F434BF41A3A68C200B7615D /* libSharingClient.dylib */; };
 		89B194371CAB42A200FC7F88 /* RefPtrProxyTS.h in Headers */ = {isa = PBXBuildFile; fileRef = 89B194361CAB42A200FC7F88 /* RefPtrProxyTS.h */; };
 		89B194391CAB42AF00FC7F88 /* ListenerList.h in Headers */ = {isa = PBXBuildFile; fileRef = 89B194381CAB42AF00FC7F88 /* ListenerList.h */; };
 		89B194421CAB42DC00FC7F88 /* BoolElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 89B1943A1CAB42DC00FC7F88 /* BoolElement.h */; };
@@ -729,6 +730,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		895A87BF1CAC1D9900993679 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(PROJECT_DIR)../../../../../SDK/Client/Java/bin/OSX";
+			dstSubfolderSpec = 0;
+			files = (
+				895A87C01CAC1DE000993679 /* libSharingClient.dylib in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		89B194361CAB42A200FC7F88 /* RefPtrProxyTS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefPtrProxyTS.h; sourceTree = "<group>"; };
 		89B194381CAB42AF00FC7F88 /* ListenerList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListenerList.h; sourceTree = "<group>"; };
@@ -844,7 +858,7 @@
 		9F302B851ACA085300D7C678 /* ImageTagManagerImpl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ImageTagManagerImpl.cpp; path = ../../../Source/Client/ImageTagManagerImpl.cpp; sourceTree = "<group>"; };
 		9F302B861ACA085300D7C678 /* ImageTagManagerImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageTagManagerImpl.h; path = ../../../Source/Client/ImageTagManagerImpl.h; sourceTree = "<group>"; };
 		9F302B901ACA096D00D7C678 /* libapriltag.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libapriltag.a; path = "../../../External/apriltag-2015-03-18/libapriltag.a"; sourceTree = "<group>"; };
-		9F434BF41A3A68C200B7615D /* libXToolsClient.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libXToolsClient.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F434BF41A3A68C200B7615D /* libSharingClient.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libSharingClient.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F434C061A3A68FB00B7615D /* libXTools.Common.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libXTools.Common.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F434C181A3A6EF700B7615D /* libRakNet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRakNet.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F434C231A3A6F9A00B7615D /* _FindFirst.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = _FindFirst.cpp; path = "../../../External/RakNet-4.081/src/Source/_FindFirst.cpp"; sourceTree = SOURCE_ROOT; };
@@ -1485,7 +1499,7 @@
 		9F434BF51A3A68C200B7615D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9F434BF41A3A68C200B7615D /* libXToolsClient.dylib */,
+				9F434BF41A3A68C200B7615D /* libSharingClient.dylib */,
 				9F434C061A3A68FB00B7615D /* libXTools.Common.a */,
 				9F434C181A3A6EF700B7615D /* libRakNet.a */,
 				9F2F793A1A5365B00071561F /* libSideCarTest.dylib */,
@@ -2728,6 +2742,7 @@
 				9F434BF01A3A68C200B7615D /* Sources */,
 				9F434BF11A3A68C200B7615D /* Frameworks */,
 				9F434BF21A3A68C200B7615D /* Headers */,
+				895A87BF1CAC1D9900993679 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -2736,7 +2751,7 @@
 			);
 			name = XToolsClient;
 			productName = XToolsClient;
-			productReference = 9F434BF41A3A68C200B7615D /* libXToolsClient.dylib */;
+			productReference = 9F434BF41A3A68C200B7615D /* libSharingClient.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 		9F434C051A3A68FB00B7615D /* XTools.Common */ = {
@@ -3240,6 +3255,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				SYMROOT = build;
 			};
 			name = Debug;
 		};
@@ -3274,6 +3290,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
+				SYMROOT = build;
 			};
 			name = Release;
 		};
@@ -3309,6 +3326,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_NAME = SharingClient;
 				SDKROOT = macosx;
+				SYMROOT = build;
 				USE_HEADERMAP = NO;
 			};
 			name = Debug;
@@ -3345,6 +3363,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_NAME = SharingClient;
 				SDKROOT = macosx;
+				SYMROOT = build;
 				USE_HEADERMAP = NO;
 			};
 			name = Release;
@@ -3369,6 +3388,7 @@
 				PRELINK_LIBS = libCurl.a;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SYMROOT = build;
 				USER_HEADER_SEARCH_PATHS = "
 ";
 				USE_HEADERMAP = NO;
@@ -3395,6 +3415,7 @@
 				PRELINK_LIBS = libCurl.a;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SYMROOT = build;
 				USER_HEADER_SEARCH_PATHS = "
 ";
 				USE_HEADERMAP = NO;
@@ -3486,6 +3507,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
+				SYMROOT = build;
 			};
 			name = MSTest;
 		};
@@ -3521,6 +3543,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_NAME = SharingClient;
 				SDKROOT = macosx;
+				SYMROOT = build;
 				USE_HEADERMAP = NO;
 			};
 			name = MSTest;
@@ -3545,6 +3568,7 @@
 				PRELINK_LIBS = libCurl.a;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SYMROOT = build;
 				USER_HEADER_SEARCH_PATHS = "
 ";
 				USE_HEADERMAP = NO;

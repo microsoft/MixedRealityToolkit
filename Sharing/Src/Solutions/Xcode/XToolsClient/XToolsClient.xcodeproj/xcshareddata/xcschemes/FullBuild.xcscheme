@@ -43,7 +43,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9F434BF31A3A68C200B7615D"
-               BuildableName = "libXToolsClient.dylib"
+               BuildableName = "libSharingClient.dylib"
                BlueprintName = "XToolsClient"
                ReferencedContainer = "container:XToolsClient.xcodeproj">
             </BuildableReference>
@@ -89,7 +89,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9F434BF31A3A68C200B7615D"
-            BuildableName = "libXToolsClient.dylib"
+            BuildableName = "libSharingClient.dylib"
             BlueprintName = "XToolsClient"
             ReferencedContainer = "container:XToolsClient.xcodeproj">
          </BuildableReference>
@@ -111,7 +111,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9F434BF31A3A68C200B7615D"
-            BuildableName = "libXToolsClient.dylib"
+            BuildableName = "libSharingClient.dylib"
             BlueprintName = "XToolsClient"
             ReferencedContainer = "container:XToolsClient.xcodeproj">
          </BuildableReference>
@@ -129,7 +129,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9F434BF31A3A68C200B7615D"
-            BuildableName = "libXToolsClient.dylib"
+            BuildableName = "libSharingClient.dylib"
             BlueprintName = "XToolsClient"
             ReferencedContainer = "container:XToolsClient.xcodeproj">
          </BuildableReference>
