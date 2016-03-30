@@ -22,7 +22,8 @@
 *.d
 *.dia
 *.xcuserstate
-/Sharing/SDK
+/Sharing/SDK/
+!/Sharing/SDK/Docs/
 /Sharing/Src/bin
 /Sharing/Src/tmp
 /Sharing/Src/External/doxygen
