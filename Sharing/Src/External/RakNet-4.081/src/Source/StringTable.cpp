@@ -18,7 +18,7 @@ using namespace RakNet;
 
 StringTable* StringTable::instance=0;
 /// MICROSOFT PROJECT B CHANGES BEGIN
-std::atomic<int> StringTable::referenceCount=0;
+std::atomic<int> StringTable::referenceCount(0);
 /// MICROSOFT PROJECT B CHANGES END
 
 

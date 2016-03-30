@@ -32,7 +32,7 @@ using namespace RakNet;
 
 StringCompressor* StringCompressor::instance=0;
 /// MICROSOFT PROJECT B CHANGES BEGIN
-std::atomic<int> StringCompressor::referenceCount=0;
+std::atomic<int> StringCompressor::referenceCount(0);
 /// MICROSOFT PROJECT B CHANGES END
 
 void StringCompressor::AddReference(void)

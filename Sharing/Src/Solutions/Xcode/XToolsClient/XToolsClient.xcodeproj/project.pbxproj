@@ -7,6 +7,62 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		89B194371CAB42A200FC7F88 /* RefPtrProxyTS.h in Headers */ = {isa = PBXBuildFile; fileRef = 89B194361CAB42A200FC7F88 /* RefPtrProxyTS.h */; };
+		89B194391CAB42AF00FC7F88 /* ListenerList.h in Headers */ = {isa = PBXBuildFile; fileRef = 89B194381CAB42AF00FC7F88 /* ListenerList.h */; };
+		89B194421CAB42DC00FC7F88 /* BoolElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 89B1943A1CAB42DC00FC7F88 /* BoolElement.h */; };
+		89B194431CAB42DC00FC7F88 /* DoubleElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 89B1943B1CAB42DC00FC7F88 /* DoubleElement.h */; };
+		89B194441CAB42DC00FC7F88 /* IntArrayElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 89B1943C1CAB42DC00FC7F88 /* IntArrayElement.h */; };
+		89B194451CAB42DC00FC7F88 /* IntArrayListener.h in Headers */ = {isa = PBXBuildFile; fileRef = 89B1943D1CAB42DC00FC7F88 /* IntArrayListener.h */; };
+		89B194461CAB42DC00FC7F88 /* LongElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 89B1943E1CAB42DC00FC7F88 /* LongElement.h */; };
+		89B194471CAB42DC00FC7F88 /* Room.h in Headers */ = {isa = PBXBuildFile; fileRef = 89B1943F1CAB42DC00FC7F88 /* Room.h */; };
+		89B194481CAB42DC00FC7F88 /* RoomManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 89B194401CAB42DC00FC7F88 /* RoomManager.h */; };
+		89B194491CAB42DC00FC7F88 /* RoomManagerListener.h in Headers */ = {isa = PBXBuildFile; fileRef = 89B194411CAB42DC00FC7F88 /* RoomManagerListener.h */; };
+		89B194731CAB434F00FC7F88 /* AnchorDownloadRequestImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 89B1944A1CAB434F00FC7F88 /* AnchorDownloadRequestImpl.cpp */; };
+		89B194741CAB434F00FC7F88 /* AnchorDownloadRequestImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = 89B1944B1CAB434F00FC7F88 /* AnchorDownloadRequestImpl.h */; };
+		89B194751CAB434F00FC7F88 /* AnchorList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 89B1944C1CAB434F00FC7F88 /* AnchorList.cpp */; };
+		89B194761CAB434F00FC7F88 /* AnchorList.h in Headers */ = {isa = PBXBuildFile; fileRef = 89B1944D1CAB434F00FC7F88 /* AnchorList.h */; };
+		89B194771CAB434F00FC7F88 /* ArrayElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 89B1944E1CAB434F00FC7F88 /* ArrayElement.h */; };
+		89B194781CAB434F00FC7F88 /* ArrayTransforms.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 89B1944F1CAB434F00FC7F88 /* ArrayTransforms.cpp */; };
+		89B194791CAB434F00FC7F88 /* ArrayTransforms.h in Headers */ = {isa = PBXBuildFile; fileRef = 89B194501CAB434F00FC7F88 /* ArrayTransforms.h */; };
+		89B1947A1CAB434F00FC7F88 /* BoolElementImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 89B194511CAB434F00FC7F88 /* BoolElementImpl.cpp */; };
+		89B1947B1CAB434F00FC7F88 /* BoolElementImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = 89B194521CAB434F00FC7F88 /* BoolElementImpl.h */; };
+		89B1947C1CAB434F00FC7F88 /* DoubleElementImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 89B194531CAB434F00FC7F88 /* DoubleElementImpl.cpp */; };
+		89B1947D1CAB434F00FC7F88 /* DoubleElementImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = 89B194541CAB434F00FC7F88 /* DoubleElementImpl.h */; };
+		89B1947E1CAB434F00FC7F88 /* InsertOperation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 89B194551CAB434F00FC7F88 /* InsertOperation.cpp */; };
+		89B1947F1CAB434F00FC7F88 /* InsertOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 89B194561CAB434F00FC7F88 /* InsertOperation.h */; };
+		89B194801CAB434F00FC7F88 /* IntArrayAdapter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 89B194571CAB434F00FC7F88 /* IntArrayAdapter.cpp */; };
+		89B194811CAB434F00FC7F88 /* IntArrayAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 89B194581CAB434F00FC7F88 /* IntArrayAdapter.h */; };
+		89B194821CAB434F00FC7F88 /* IntArrayElementImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 89B194591CAB434F00FC7F88 /* IntArrayElementImpl.cpp */; };
+		89B194831CAB434F00FC7F88 /* IntArrayElementImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = 89B1945A1CAB434F00FC7F88 /* IntArrayElementImpl.h */; };
+		89B194841CAB434F00FC7F88 /* InverseTransform.h in Headers */ = {isa = PBXBuildFile; fileRef = 89B1945B1CAB434F00FC7F88 /* InverseTransform.h */; };
+		89B194851CAB434F00FC7F88 /* LongElementImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 89B1945C1CAB434F00FC7F88 /* LongElementImpl.cpp */; };
+		89B194861CAB434F00FC7F88 /* LongElementImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = 89B1945D1CAB434F00FC7F88 /* LongElementImpl.h */; };
+		89B194871CAB434F00FC7F88 /* NetworkThreadCommands.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 89B1945E1CAB434F00FC7F88 /* NetworkThreadCommands.cpp */; };
+		89B194881CAB434F00FC7F88 /* NetworkThreadCommands.h in Headers */ = {isa = PBXBuildFile; fileRef = 89B1945F1CAB434F00FC7F88 /* NetworkThreadCommands.h */; };
+		89B194891CAB434F00FC7F88 /* RemoveOperation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 89B194601CAB434F00FC7F88 /* RemoveOperation.cpp */; };
+		89B1948A1CAB434F00FC7F88 /* RemoveOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 89B194611CAB434F00FC7F88 /* RemoveOperation.h */; };
+		89B1948B1CAB434F00FC7F88 /* RoomImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 89B194621CAB434F00FC7F88 /* RoomImpl.cpp */; };
+		89B1948C1CAB434F00FC7F88 /* RoomImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = 89B194631CAB434F00FC7F88 /* RoomImpl.h */; };
+		89B1948D1CAB434F00FC7F88 /* RoomManagerImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 89B194641CAB434F00FC7F88 /* RoomManagerImpl.cpp */; };
+		89B1948E1CAB434F00FC7F88 /* RoomManagerImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = 89B194651CAB434F00FC7F88 /* RoomManagerImpl.h */; };
+		89B1948F1CAB434F00FC7F88 /* RoomMessageID.h in Headers */ = {isa = PBXBuildFile; fileRef = 89B194661CAB434F00FC7F88 /* RoomMessageID.h */; };
+		89B194901CAB434F00FC7F88 /* RoomUserList.h in Headers */ = {isa = PBXBuildFile; fileRef = 89B194671CAB434F00FC7F88 /* RoomUserList.h */; };
+		89B194911CAB434F00FC7F88 /* SpeexProcessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 89B194681CAB434F00FC7F88 /* SpeexProcessor.cpp */; };
+		89B194921CAB434F00FC7F88 /* SpeexProcessor.h in Headers */ = {isa = PBXBuildFile; fileRef = 89B194691CAB434F00FC7F88 /* SpeexProcessor.h */; };
+		89B194931CAB434F00FC7F88 /* Syncable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 89B1946A1CAB434F00FC7F88 /* Syncable.cpp */; };
+		89B194941CAB434F00FC7F88 /* Syncable.h in Headers */ = {isa = PBXBuildFile; fileRef = 89B1946B1CAB434F00FC7F88 /* Syncable.h */; };
+		89B194951CAB434F00FC7F88 /* SyncArray.h in Headers */ = {isa = PBXBuildFile; fileRef = 89B1946C1CAB434F00FC7F88 /* SyncArray.h */; };
+		89B194961CAB434F00FC7F88 /* SyncEnum.h in Headers */ = {isa = PBXBuildFile; fileRef = 89B1946D1CAB434F00FC7F88 /* SyncEnum.h */; };
+		89B194971CAB434F00FC7F88 /* SyncObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 89B1946E1CAB434F00FC7F88 /* SyncObject.cpp */; };
+		89B194981CAB434F00FC7F88 /* SyncObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 89B1946F1CAB434F00FC7F88 /* SyncObject.h */; };
+		89B194991CAB434F00FC7F88 /* SyncPrimitives.h in Headers */ = {isa = PBXBuildFile; fileRef = 89B194701CAB434F00FC7F88 /* SyncPrimitives.h */; };
+		89B1949A1CAB434F00FC7F88 /* UpdateOperation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 89B194711CAB434F00FC7F88 /* UpdateOperation.cpp */; };
+		89B1949B1CAB434F00FC7F88 /* UpdateOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 89B194721CAB434F00FC7F88 /* UpdateOperation.h */; };
+		89B194A21CAB43DC00FC7F88 /* AprilTagIncludes.h in Headers */ = {isa = PBXBuildFile; fileRef = 89B1949D1CAB43DC00FC7F88 /* AprilTagIncludes.h */; };
+		89B194A31CAB43DC00FC7F88 /* PairingResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 89B1949E1CAB43DC00FC7F88 /* PairingResult.h */; };
+		89B194A41CAB43DC00FC7F88 /* SharingManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 89B1949F1CAB43DC00FC7F88 /* SharingManager.h */; };
+		89B194A51CAB43DC00FC7F88 /* SharingManagerImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 89B194A01CAB43DC00FC7F88 /* SharingManagerImpl.cpp */; };
+		89B194A61CAB43DC00FC7F88 /* SharingManagerImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = 89B194A11CAB43DC00FC7F88 /* SharingManagerImpl.h */; };
 		9F0D72D61A856AF500316457 /* DownloadBufferImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F0D72D41A856AF500316457 /* DownloadBufferImpl.cpp */; };
 		9F0D72D71A856AF500316457 /* DownloadBufferImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F0D72D51A856AF500316457 /* DownloadBufferImpl.h */; };
 		9F0D72DA1A856B2E00316457 /* DownloadBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F0D72D81A856B2E00316457 /* DownloadBuffer.h */; };
@@ -50,14 +106,8 @@
 		9F13A5711AC36B69000FD8F7 /* libzint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F13A5701AC36B69000FD8F7 /* libzint.a */; };
 		9F17F9BE1AEB138D00ABC53A /* IPAddress.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F17F9BD1AEB138C00ABC53A /* IPAddress.cpp */; };
 		9F17F9C01AEB141300ABC53A /* IPAddress.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F17F9BF1AEB141300ABC53A /* IPAddress.h */; };
-		9F1A48BB1A54A18100F0F806 /* MouseShakeDetector.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F1A48B11A54A18100F0F806 /* MouseShakeDetector.h */; };
-		9F1A48BC1A54A18100F0F806 /* MouseShakeDetector.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F1A48B11A54A18100F0F806 /* MouseShakeDetector.h */; };
-		9F1A48C91A54A48D00F0F806 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F69EF681A42497200939E3C /* ApplicationServices.framework */; };
-		9F1A48D21A54B74F00F0F806 /* libXTools.Common.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F434C061A3A68FB00B7615D /* libXTools.Common.a */; };
 		9F2F79701A5366200071561F /* SideCarTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F2F79651A5366200071561F /* SideCarTest.cpp */; };
 		9F2F79711A5366200071561F /* SideCarTest.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F2F79661A5366200071561F /* SideCarTest.h */; };
-		9F302B671A97AF6D00D7C678 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F302B661A97AF6D00D7C678 /* Security.framework */; };
-		9F302B691A97D5E400D7C678 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F302B681A97D5E400D7C678 /* AppKit.framework */; };
 		9F302B871ACA085300D7C678 /* ImageTagLocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F302B7E1ACA085300D7C678 /* ImageTagLocation.h */; };
 		9F302B881ACA085300D7C678 /* ImageTagLocationListener.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F302B7F1ACA085300D7C678 /* ImageTagLocationListener.h */; };
 		9F302B891ACA085300D7C678 /* ImageTagLocationImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F302B801ACA085300D7C678 /* ImageTagLocationImpl.cpp */; };
@@ -341,7 +391,7 @@
 		9F515D141B04892C001FC726 /* RegistrationReceipt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F515D131B04892C001FC726 /* RegistrationReceipt.cpp */; };
 		9F64D0F71ACC888D00578EF4 /* NetworkConnectionListener.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F64D0F61ACC888D00578EF4 /* NetworkConnectionListener.h */; };
 		9F69D29E1A8E62DF006B3988 /* DownloadManagerImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F69ED4C1A4121AC00939E3C /* DownloadManagerImpl.cpp */; };
-		9F69D2A61A8E7F7C006B3988 /* libcurl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F69D2A01A8E7BBF006B3988 /* libcurl.dylib */; };
+		9F69D2A61A8E7F7C006B3988 /* libcurl.4.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F69D2A01A8E7BBF006B3988 /* libcurl.4.tbd */; };
 		9F69EE561A4121AC00939E3C /* Common.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F69ED261A4121AC00939E3C /* Common.h */; };
 		9F69EE571A4121AC00939E3C /* CommonPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F69ED271A4121AC00939E3C /* CommonPrivate.h */; };
 		9F69EE581A4121AC00939E3C /* AckOperation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F69ED291A4121AC00939E3C /* AckOperation.cpp */; };
@@ -410,10 +460,6 @@
 		9F69EE9B1A4121AC00939E3C /* ListSessionsRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F69ED701A4121AC00939E3C /* ListSessionsRequest.h */; };
 		9F69EE9C1A4121AC00939E3C /* Message.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F69ED711A4121AC00939E3C /* Message.cpp */; };
 		9F69EE9D1A4121AC00939E3C /* Message.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F69ED721A4121AC00939E3C /* Message.h */; };
-		9F69EE9E1A4121AC00939E3C /* MessageInterceptor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F69ED731A4121AC00939E3C /* MessageInterceptor.cpp */; };
-		9F69EE9F1A4121AC00939E3C /* MessageInterceptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F69ED741A4121AC00939E3C /* MessageInterceptor.h */; };
-		9F69EEA01A4121AC00939E3C /* MessageQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F69ED751A4121AC00939E3C /* MessageQueue.cpp */; };
-		9F69EEA11A4121AC00939E3C /* MessageQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F69ED761A4121AC00939E3C /* MessageQueue.h */; };
 		9F69EEA21A4121AC00939E3C /* ModifyDeleteTransform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F69ED771A4121AC00939E3C /* ModifyDeleteTransform.cpp */; };
 		9F69EEA31A4121AC00939E3C /* ModifyDeleteTransform.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F69ED781A4121AC00939E3C /* ModifyDeleteTransform.h */; };
 		9F69EEA41A4121AC00939E3C /* ModifyModifyTransform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F69ED791A4121AC00939E3C /* ModifyModifyTransform.cpp */; };
@@ -593,8 +639,6 @@
 		9F8BC50B1AE7F30F004343DA /* DiscoveredSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F8BC4FF1AE7F30F004343DA /* DiscoveredSystem.cpp */; };
 		9F8BC50C1AE7F30F004343DA /* DiscoveryClientImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F8BC5001AE7F30F004343DA /* DiscoveryClientImpl.cpp */; };
 		9F8BC50D1AE7F30F004343DA /* DiscoveryClientImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F8BC5011AE7F30F004343DA /* DiscoveryClientImpl.h */; };
-		9F8BC50E1AE7F30F004343DA /* DiscoveryServerImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F8BC5021AE7F30F004343DA /* DiscoveryServerImpl.cpp */; };
-		9F8BC50F1AE7F30F004343DA /* DiscoveryServerImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F8BC5031AE7F30F004343DA /* DiscoveryServerImpl.h */; };
 		9F8BC5101AE7F30F004343DA /* PacketWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F8BC5041AE7F30F004343DA /* PacketWrapper.h */; };
 		9F8BC5111AE7F30F004343DA /* Profile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F8BC5051AE7F30F004343DA /* Profile.cpp */; };
 		9F8BC5121AE7F30F004343DA /* ProfileEntry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F8BC5061AE7F30F004343DA /* ProfileEntry.cpp */; };
@@ -605,26 +649,11 @@
 		9F8BC51F1AE7F383004343DA /* DiscoveredSystem.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F8BC5171AE7F383004343DA /* DiscoveredSystem.h */; };
 		9F8BC5201AE7F383004343DA /* DiscoveryClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F8BC5181AE7F383004343DA /* DiscoveryClient.h */; };
 		9F8BC5211AE7F383004343DA /* DiscoveryClientListener.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F8BC5191AE7F383004343DA /* DiscoveryClientListener.h */; };
-		9F8BC5221AE7F383004343DA /* DiscoveryServer.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F8BC51A1AE7F383004343DA /* DiscoveryServer.h */; };
 		9F8BC5231AE7F383004343DA /* Profile.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F8BC51B1AE7F383004343DA /* Profile.h */; };
 		9F8BC5241AE7F383004343DA /* ProfileManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F8BC51C1AE7F383004343DA /* ProfileManager.h */; };
 		9F8BC5251AE7F383004343DA /* ScopedProfile.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F8BC51D1AE7F383004343DA /* ScopedProfile.h */; };
 		9F8BC5261AE7F383004343DA /* SystemRole.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F8BC51E1AE7F383004343DA /* SystemRole.h */; };
 		9F8BC5281AE7F390004343DA /* SwigHelperMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F8BC5271AE7F390004343DA /* SwigHelperMacros.h */; };
-		9FAB89A71A5C8737002723D4 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9FAB89A61A5C8737002723D4 /* main.mm */; };
-		9FAB89AA1A5C887C002723D4 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9FAB89A91A5C887C002723D4 /* AppDelegate.mm */; };
-		9FAB89AE1A5C8AA4002723D4 /* libXTools.Common.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F434C061A3A68FB00B7615D /* libXTools.Common.a */; };
-		9FAB89AF1A5C8B17002723D4 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F69EF681A42497200939E3C /* ApplicationServices.framework */; };
-		9FAB89B01A5C8CD3002723D4 /* MouseXMacInputManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9FAB89AB1A5C8A1A002723D4 /* MouseXMacInputManager.cpp */; };
-		9FAB89B11A5C8CF5002723D4 /* MouseShakeDetector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F1A48B01A54A18100F0F806 /* MouseShakeDetector.cpp */; };
-		9FAB89B21A5C8D04002723D4 /* MouseXServerInputManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F1A48B21A54A18100F0F806 /* MouseXServerInputManager.cpp */; };
-		9FAB89B31A5C8D0F002723D4 /* MouseXServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F1A48AD1A54A18100F0F806 /* MouseXServer.cpp */; };
-		9FAB89B51A5C92A3002723D4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FAB89B41A5C92A3002723D4 /* Cocoa.framework */; };
-		9FAB89BD1A5CA027002723D4 /* MouseXMacSideCarServer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9FAB89BA1A5C9AB0002723D4 /* MouseXMacSideCarServer.mm */; };
-		9FAB89C01A5DE0A7002723D4 /* MouseLocatorView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9FAB89BF1A5DE0A7002723D4 /* MouseLocatorView.mm */; };
-		9FAB89C31A5DE5D0002723D4 /* MouseLocatorAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FAB89C21A5DE5D0002723D4 /* MouseLocatorAnimation.m */; };
-		9FAF7F6D1AC5B49800B2E4E2 /* XToolsManagerImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9FAF7F6B1AC5B49800B2E4E2 /* XToolsManagerImpl.cpp */; };
-		9FAF7F6E1AC5B49800B2E4E2 /* XToolsManagerImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = 9FAF7F6C1AC5B49800B2E4E2 /* XToolsManagerImpl.h */; };
 		9FAF7F701AC5B4CF00B2E4E2 /* StringUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 9FAF7F6F1AC5B4CF00B2E4E2 /* StringUtils.h */; };
 		9FAF7F721AC5B4E000B2E4E2 /* StringUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9FAF7F711AC5B4E000B2E4E2 /* StringUtils.cpp */; };
 		9FB478881AEED897007D9B98 /* Log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9FB478871AEED897007D9B98 /* Log.cpp */; };
@@ -637,11 +666,8 @@
 		9FD4FD8D1A3B95B700B570FC /* Settings.h in Headers */ = {isa = PBXBuildFile; fileRef = 9FD4FD861A3B95B700B570FC /* Settings.h */; };
 		9FD4FD8E1A3B95B700B570FC /* SideCarContextImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9FD4FD871A3B95B700B570FC /* SideCarContextImpl.cpp */; };
 		9FD4FD8F1A3B95B700B570FC /* SideCarContextImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = 9FD4FD881A3B95B700B570FC /* SideCarContextImpl.h */; };
-		9FD4FD911A3B95B700B570FC /* XToolsManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 9FD4FD8A1A3B95B700B570FC /* XToolsManager.h */; };
 		9FFC24FA1A547F5100F03B68 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9FFC24D31A54756100F03B68 /* stdafx.cpp */; };
 		9FFC24FB1A547F5600F03B68 /* stdafx.h in Headers */ = {isa = PBXBuildFile; fileRef = 9FFC24D41A54756100F03B68 /* stdafx.h */; };
-		9FFC25451A54857000F03B68 /* MouseXMacSideCar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9FFC25431A54857000F03B68 /* MouseXMacSideCar.cpp */; };
-		9FFC25461A54857000F03B68 /* MouseXMacSideCar.h in Headers */ = {isa = PBXBuildFile; fileRef = 9FFC25441A54857000F03B68 /* MouseXMacSideCar.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -701,35 +727,65 @@
 			remoteGlobalIDString = 9F434C171A3A6EF700B7615D;
 			remoteInfo = RakNet;
 		};
-		9FAB89B61A5C9490002723D4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9F434BEC1A3A68C200B7615D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9FAB899D1A5C86A4002723D4;
-			remoteInfo = MouseXServer;
-		};
-		9FFC24F81A547DED00F03B68 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9F434BEC1A3A68C200B7615D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9FFC24F31A547D7C00F03B68;
-			remoteInfo = SideCarMouseXMac;
-		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		9FAB899C1A5C86A4002723D4 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
+		89B194361CAB42A200FC7F88 /* RefPtrProxyTS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefPtrProxyTS.h; sourceTree = "<group>"; };
+		89B194381CAB42AF00FC7F88 /* ListenerList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListenerList.h; sourceTree = "<group>"; };
+		89B1943A1CAB42DC00FC7F88 /* BoolElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoolElement.h; sourceTree = "<group>"; };
+		89B1943B1CAB42DC00FC7F88 /* DoubleElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubleElement.h; sourceTree = "<group>"; };
+		89B1943C1CAB42DC00FC7F88 /* IntArrayElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntArrayElement.h; sourceTree = "<group>"; };
+		89B1943D1CAB42DC00FC7F88 /* IntArrayListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntArrayListener.h; sourceTree = "<group>"; };
+		89B1943E1CAB42DC00FC7F88 /* LongElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LongElement.h; sourceTree = "<group>"; };
+		89B1943F1CAB42DC00FC7F88 /* Room.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Room.h; sourceTree = "<group>"; };
+		89B194401CAB42DC00FC7F88 /* RoomManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomManager.h; sourceTree = "<group>"; };
+		89B194411CAB42DC00FC7F88 /* RoomManagerListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomManagerListener.h; sourceTree = "<group>"; };
+		89B1944A1CAB434F00FC7F88 /* AnchorDownloadRequestImpl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnchorDownloadRequestImpl.cpp; sourceTree = "<group>"; };
+		89B1944B1CAB434F00FC7F88 /* AnchorDownloadRequestImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnchorDownloadRequestImpl.h; sourceTree = "<group>"; };
+		89B1944C1CAB434F00FC7F88 /* AnchorList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnchorList.cpp; sourceTree = "<group>"; };
+		89B1944D1CAB434F00FC7F88 /* AnchorList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnchorList.h; sourceTree = "<group>"; };
+		89B1944E1CAB434F00FC7F88 /* ArrayElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayElement.h; sourceTree = "<group>"; };
+		89B1944F1CAB434F00FC7F88 /* ArrayTransforms.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ArrayTransforms.cpp; sourceTree = "<group>"; };
+		89B194501CAB434F00FC7F88 /* ArrayTransforms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayTransforms.h; sourceTree = "<group>"; };
+		89B194511CAB434F00FC7F88 /* BoolElementImpl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BoolElementImpl.cpp; sourceTree = "<group>"; };
+		89B194521CAB434F00FC7F88 /* BoolElementImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoolElementImpl.h; sourceTree = "<group>"; };
+		89B194531CAB434F00FC7F88 /* DoubleElementImpl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DoubleElementImpl.cpp; sourceTree = "<group>"; };
+		89B194541CAB434F00FC7F88 /* DoubleElementImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubleElementImpl.h; sourceTree = "<group>"; };
+		89B194551CAB434F00FC7F88 /* InsertOperation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InsertOperation.cpp; sourceTree = "<group>"; };
+		89B194561CAB434F00FC7F88 /* InsertOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsertOperation.h; sourceTree = "<group>"; };
+		89B194571CAB434F00FC7F88 /* IntArrayAdapter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IntArrayAdapter.cpp; sourceTree = "<group>"; };
+		89B194581CAB434F00FC7F88 /* IntArrayAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntArrayAdapter.h; sourceTree = "<group>"; };
+		89B194591CAB434F00FC7F88 /* IntArrayElementImpl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IntArrayElementImpl.cpp; sourceTree = "<group>"; };
+		89B1945A1CAB434F00FC7F88 /* IntArrayElementImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntArrayElementImpl.h; sourceTree = "<group>"; };
+		89B1945B1CAB434F00FC7F88 /* InverseTransform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InverseTransform.h; sourceTree = "<group>"; };
+		89B1945C1CAB434F00FC7F88 /* LongElementImpl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LongElementImpl.cpp; sourceTree = "<group>"; };
+		89B1945D1CAB434F00FC7F88 /* LongElementImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LongElementImpl.h; sourceTree = "<group>"; };
+		89B1945E1CAB434F00FC7F88 /* NetworkThreadCommands.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NetworkThreadCommands.cpp; sourceTree = "<group>"; };
+		89B1945F1CAB434F00FC7F88 /* NetworkThreadCommands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkThreadCommands.h; sourceTree = "<group>"; };
+		89B194601CAB434F00FC7F88 /* RemoveOperation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RemoveOperation.cpp; sourceTree = "<group>"; };
+		89B194611CAB434F00FC7F88 /* RemoveOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoveOperation.h; sourceTree = "<group>"; };
+		89B194621CAB434F00FC7F88 /* RoomImpl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RoomImpl.cpp; sourceTree = "<group>"; };
+		89B194631CAB434F00FC7F88 /* RoomImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomImpl.h; sourceTree = "<group>"; };
+		89B194641CAB434F00FC7F88 /* RoomManagerImpl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RoomManagerImpl.cpp; sourceTree = "<group>"; };
+		89B194651CAB434F00FC7F88 /* RoomManagerImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomManagerImpl.h; sourceTree = "<group>"; };
+		89B194661CAB434F00FC7F88 /* RoomMessageID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomMessageID.h; sourceTree = "<group>"; };
+		89B194671CAB434F00FC7F88 /* RoomUserList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomUserList.h; sourceTree = "<group>"; };
+		89B194681CAB434F00FC7F88 /* SpeexProcessor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpeexProcessor.cpp; sourceTree = "<group>"; };
+		89B194691CAB434F00FC7F88 /* SpeexProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeexProcessor.h; sourceTree = "<group>"; };
+		89B1946A1CAB434F00FC7F88 /* Syncable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Syncable.cpp; sourceTree = "<group>"; };
+		89B1946B1CAB434F00FC7F88 /* Syncable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Syncable.h; sourceTree = "<group>"; };
+		89B1946C1CAB434F00FC7F88 /* SyncArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncArray.h; sourceTree = "<group>"; };
+		89B1946D1CAB434F00FC7F88 /* SyncEnum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncEnum.h; sourceTree = "<group>"; };
+		89B1946E1CAB434F00FC7F88 /* SyncObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SyncObject.cpp; sourceTree = "<group>"; };
+		89B1946F1CAB434F00FC7F88 /* SyncObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncObject.h; sourceTree = "<group>"; };
+		89B194701CAB434F00FC7F88 /* SyncPrimitives.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncPrimitives.h; sourceTree = "<group>"; };
+		89B194711CAB434F00FC7F88 /* UpdateOperation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UpdateOperation.cpp; sourceTree = "<group>"; };
+		89B194721CAB434F00FC7F88 /* UpdateOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateOperation.h; sourceTree = "<group>"; };
+		89B1949D1CAB43DC00FC7F88 /* AprilTagIncludes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AprilTagIncludes.h; path = ../../../Source/Client/AprilTagIncludes.h; sourceTree = "<group>"; };
+		89B1949E1CAB43DC00FC7F88 /* PairingResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PairingResult.h; path = ../../../Source/Client/PairingResult.h; sourceTree = "<group>"; };
+		89B1949F1CAB43DC00FC7F88 /* SharingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SharingManager.h; path = ../../../Source/Client/SharingManager.h; sourceTree = "<group>"; };
+		89B194A01CAB43DC00FC7F88 /* SharingManagerImpl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SharingManagerImpl.cpp; path = ../../../Source/Client/SharingManagerImpl.cpp; sourceTree = "<group>"; };
+		89B194A11CAB43DC00FC7F88 /* SharingManagerImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SharingManagerImpl.h; path = ../../../Source/Client/SharingManagerImpl.h; sourceTree = "<group>"; };
 		9F0D72D41A856AF500316457 /* DownloadBufferImpl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DownloadBufferImpl.cpp; sourceTree = "<group>"; };
 		9F0D72D51A856AF500316457 /* DownloadBufferImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadBufferImpl.h; sourceTree = "<group>"; };
 		9F0D72D81A856B2E00316457 /* DownloadBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadBuffer.h; sourceTree = "<group>"; };
@@ -773,13 +829,6 @@
 		9F13A5701AC36B69000FD8F7 /* libzint.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libzint.a; path = "../../../External/zint-2.4.3/lib/MACOS/Release/libzint.a"; sourceTree = "<group>"; };
 		9F17F9BD1AEB138C00ABC53A /* IPAddress.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IPAddress.cpp; sourceTree = "<group>"; };
 		9F17F9BF1AEB141300ABC53A /* IPAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPAddress.h; sourceTree = "<group>"; };
-		9F1A48AD1A54A18100F0F806 /* MouseXServer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MouseXServer.cpp; sourceTree = "<group>"; };
-		9F1A48AE1A54A18100F0F806 /* MouseXServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MouseXServer.h; sourceTree = "<group>"; };
-		9F1A48B01A54A18100F0F806 /* MouseShakeDetector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MouseShakeDetector.cpp; sourceTree = "<group>"; };
-		9F1A48B11A54A18100F0F806 /* MouseShakeDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MouseShakeDetector.h; sourceTree = "<group>"; };
-		9F1A48B21A54A18100F0F806 /* MouseXServerInputManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MouseXServerInputManager.cpp; sourceTree = "<group>"; };
-		9F1A48B31A54A18100F0F806 /* MouseXServerInputManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MouseXServerInputManager.h; sourceTree = "<group>"; };
-		9F1A48B41A54A18100F0F806 /* MouseXStatesAndMessages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MouseXStatesAndMessages.h; sourceTree = "<group>"; };
 		9F2F793A1A5365B00071561F /* libSideCarTest.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libSideCarTest.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F2F79651A5366200071561F /* SideCarTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SideCarTest.cpp; sourceTree = "<group>"; };
 		9F2F79661A5366200071561F /* SideCarTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideCarTest.h; sourceTree = "<group>"; };
@@ -1072,7 +1121,7 @@
 		9F4D90621A785BE900BE05C8 /* AudioSessionProcessorClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioSessionProcessorClient.h; sourceTree = "<group>"; };
 		9F515D131B04892C001FC726 /* RegistrationReceipt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RegistrationReceipt.cpp; sourceTree = "<group>"; };
 		9F64D0F61ACC888D00578EF4 /* NetworkConnectionListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkConnectionListener.h; sourceTree = "<group>"; };
-		9F69D2A01A8E7BBF006B3988 /* libcurl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcurl.dylib; path = usr/lib/libcurl.dylib; sourceTree = SDKROOT; };
+		9F69D2A01A8E7BBF006B3988 /* libcurl.4.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcurl.4.tbd; path = usr/lib/libcurl.4.tbd; sourceTree = SDKROOT; };
 		9F69ED261A4121AC00939E3C /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		9F69ED271A4121AC00939E3C /* CommonPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonPrivate.h; sourceTree = "<group>"; };
 		9F69ED291A4121AC00939E3C /* AckOperation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AckOperation.cpp; sourceTree = "<group>"; };
@@ -1143,10 +1192,6 @@
 		9F69ED701A4121AC00939E3C /* ListSessionsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListSessionsRequest.h; sourceTree = "<group>"; };
 		9F69ED711A4121AC00939E3C /* Message.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Message.cpp; sourceTree = "<group>"; };
 		9F69ED721A4121AC00939E3C /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
-		9F69ED731A4121AC00939E3C /* MessageInterceptor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MessageInterceptor.cpp; sourceTree = "<group>"; };
-		9F69ED741A4121AC00939E3C /* MessageInterceptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageInterceptor.h; sourceTree = "<group>"; };
-		9F69ED751A4121AC00939E3C /* MessageQueue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MessageQueue.cpp; sourceTree = "<group>"; };
-		9F69ED761A4121AC00939E3C /* MessageQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageQueue.h; sourceTree = "<group>"; };
 		9F69ED771A4121AC00939E3C /* ModifyDeleteTransform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ModifyDeleteTransform.cpp; sourceTree = "<group>"; };
 		9F69ED781A4121AC00939E3C /* ModifyDeleteTransform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModifyDeleteTransform.h; sourceTree = "<group>"; };
 		9F69ED791A4121AC00939E3C /* ModifyModifyTransform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ModifyModifyTransform.cpp; sourceTree = "<group>"; };
@@ -1326,8 +1371,6 @@
 		9F8BC4FF1AE7F30F004343DA /* DiscoveredSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DiscoveredSystem.cpp; sourceTree = "<group>"; };
 		9F8BC5001AE7F30F004343DA /* DiscoveryClientImpl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DiscoveryClientImpl.cpp; sourceTree = "<group>"; };
 		9F8BC5011AE7F30F004343DA /* DiscoveryClientImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoveryClientImpl.h; sourceTree = "<group>"; };
-		9F8BC5021AE7F30F004343DA /* DiscoveryServerImpl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DiscoveryServerImpl.cpp; sourceTree = "<group>"; };
-		9F8BC5031AE7F30F004343DA /* DiscoveryServerImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoveryServerImpl.h; sourceTree = "<group>"; };
 		9F8BC5041AE7F30F004343DA /* PacketWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PacketWrapper.h; sourceTree = "<group>"; };
 		9F8BC5051AE7F30F004343DA /* Profile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Profile.cpp; sourceTree = "<group>"; };
 		9F8BC5061AE7F30F004343DA /* ProfileEntry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ProfileEntry.cpp; sourceTree = "<group>"; };
@@ -1338,29 +1381,12 @@
 		9F8BC5171AE7F383004343DA /* DiscoveredSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoveredSystem.h; sourceTree = "<group>"; };
 		9F8BC5181AE7F383004343DA /* DiscoveryClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoveryClient.h; sourceTree = "<group>"; };
 		9F8BC5191AE7F383004343DA /* DiscoveryClientListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoveryClientListener.h; sourceTree = "<group>"; };
-		9F8BC51A1AE7F383004343DA /* DiscoveryServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoveryServer.h; sourceTree = "<group>"; };
 		9F8BC51B1AE7F383004343DA /* Profile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Profile.h; sourceTree = "<group>"; };
 		9F8BC51C1AE7F383004343DA /* ProfileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileManager.h; sourceTree = "<group>"; };
 		9F8BC51D1AE7F383004343DA /* ScopedProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScopedProfile.h; sourceTree = "<group>"; };
 		9F8BC51E1AE7F383004343DA /* SystemRole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemRole.h; sourceTree = "<group>"; };
 		9F8BC5271AE7F390004343DA /* SwigHelperMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwigHelperMacros.h; sourceTree = "<group>"; };
-		9FAB899E1A5C86A4002723D4 /* MouseXInputManager */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MouseXInputManager; sourceTree = BUILT_PRODUCTS_DIR; };
-		9FAB89A61A5C8737002723D4 /* main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = main.mm; path = Server/main.mm; sourceTree = "<group>"; };
-		9FAB89A81A5C887C002723D4 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Server/AppDelegate.h; sourceTree = "<group>"; };
-		9FAB89A91A5C887C002723D4 /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = Server/AppDelegate.mm; sourceTree = "<group>"; };
-		9FAB89AB1A5C8A1A002723D4 /* MouseXMacInputManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MouseXMacInputManager.cpp; path = Server/MouseXMacInputManager.cpp; sourceTree = "<group>"; };
-		9FAB89AC1A5C8A1A002723D4 /* MouseXMacInputManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MouseXMacInputManager.h; path = Server/MouseXMacInputManager.h; sourceTree = "<group>"; };
 		9FAB89B41A5C92A3002723D4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		9FAB89B81A5C995F002723D4 /* RemotingProtocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemotingProtocols.h; sourceTree = "<group>"; };
-		9FAB89B91A5C9AB0002723D4 /* MouseXMacSideCarServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MouseXMacSideCarServer.h; sourceTree = "<group>"; };
-		9FAB89BA1A5C9AB0002723D4 /* MouseXMacSideCarServer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MouseXMacSideCarServer.mm; sourceTree = "<group>"; };
-		9FAB89BC1A5C9FC7002723D4 /* RemotingInitialization.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RemotingInitialization.h; sourceTree = "<group>"; };
-		9FAB89BE1A5DE0A7002723D4 /* MouseLocatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MouseLocatorView.h; path = Server/MouseLocatorView.h; sourceTree = "<group>"; };
-		9FAB89BF1A5DE0A7002723D4 /* MouseLocatorView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MouseLocatorView.mm; path = Server/MouseLocatorView.mm; sourceTree = "<group>"; };
-		9FAB89C11A5DE5D0002723D4 /* MouseLocatorAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MouseLocatorAnimation.h; path = Server/MouseLocatorAnimation.h; sourceTree = "<group>"; };
-		9FAB89C21A5DE5D0002723D4 /* MouseLocatorAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MouseLocatorAnimation.m; path = Server/MouseLocatorAnimation.m; sourceTree = "<group>"; };
-		9FAF7F6B1AC5B49800B2E4E2 /* XToolsManagerImpl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = XToolsManagerImpl.cpp; path = ../../../Source/Client/XToolsManagerImpl.cpp; sourceTree = "<group>"; };
-		9FAF7F6C1AC5B49800B2E4E2 /* XToolsManagerImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XToolsManagerImpl.h; path = ../../../Source/Client/XToolsManagerImpl.h; sourceTree = "<group>"; };
 		9FAF7F6F1AC5B4CF00B2E4E2 /* StringUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringUtils.h; sourceTree = "<group>"; };
 		9FAF7F711AC5B4E000B2E4E2 /* StringUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StringUtils.cpp; sourceTree = "<group>"; };
 		9FB478871AEED897007D9B98 /* Log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Log.cpp; sourceTree = "<group>"; };
@@ -1373,13 +1399,8 @@
 		9FD4FD861A3B95B700B570FC /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Settings.h; path = ../../../Source/Client/Settings.h; sourceTree = SOURCE_ROOT; };
 		9FD4FD871A3B95B700B570FC /* SideCarContextImpl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SideCarContextImpl.cpp; path = ../../../Source/Client/SideCarContextImpl.cpp; sourceTree = SOURCE_ROOT; };
 		9FD4FD881A3B95B700B570FC /* SideCarContextImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SideCarContextImpl.h; path = ../../../Source/Client/SideCarContextImpl.h; sourceTree = SOURCE_ROOT; };
-		9FD4FD8A1A3B95B700B570FC /* XToolsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XToolsManager.h; path = ../../../Source/Client/XToolsManager.h; sourceTree = SOURCE_ROOT; };
-		9FF9AEC41A5DF23C0010B9B5 /* MouseXAnimationConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MouseXAnimationConstants.h; sourceTree = "<group>"; };
 		9FFC24D31A54756100F03B68 /* stdafx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stdafx.cpp; sourceTree = "<group>"; };
 		9FFC24D41A54756100F03B68 /* stdafx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stdafx.h; sourceTree = "<group>"; };
-		9FFC24F41A547D7C00F03B68 /* libSideCarMouseXMac.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libSideCarMouseXMac.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		9FFC25431A54857000F03B68 /* MouseXMacSideCar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MouseXMacSideCar.cpp; sourceTree = "<group>"; };
-		9FFC25441A54857000F03B68 /* MouseXMacSideCar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MouseXMacSideCar.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1395,7 +1416,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F302B911ACA096D00D7C678 /* libapriltag.a in Frameworks */,
-				9F69D2A61A8E7F7C006B3988 /* libcurl.dylib in Frameworks */,
+				9F69D2A61A8E7F7C006B3988 /* libcurl.4.tbd in Frameworks */,
 				9F69EF6A1A425B6000939E3C /* libXTools.Common.a in Frameworks */,
 				9F69EF691A42497200939E3C /* ApplicationServices.framework in Frameworks */,
 				9F13A5261AC2280C000FD8F7 /* libzxing.a in Frameworks */,
@@ -1418,58 +1439,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9FAB899B1A5C86A4002723D4 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9FAB89B51A5C92A3002723D4 /* Cocoa.framework in Frameworks */,
-				9FAB89AE1A5C8AA4002723D4 /* libXTools.Common.a in Frameworks */,
-				9FAB89AF1A5C8B17002723D4 /* ApplicationServices.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9FFC24F11A547D7C00F03B68 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9F1A48D21A54B74F00F0F806 /* libXTools.Common.a in Frameworks */,
-				9F1A48C91A54A48D00F0F806 /* ApplicationServices.framework in Frameworks */,
-				9F302B691A97D5E400D7C678 /* AppKit.framework in Frameworks */,
-				9F302B671A97AF6D00D7C678 /* Security.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9F1A48AC1A54A18100F0F806 /* MouseXShared */ = {
-			isa = PBXGroup;
-			children = (
-				9F1A48AF1A54A18100F0F806 /* MouseXServerInputManager */,
-				9F1A48AD1A54A18100F0F806 /* MouseXServer.cpp */,
-				9F1A48AE1A54A18100F0F806 /* MouseXServer.h */,
-				9F1A48B41A54A18100F0F806 /* MouseXStatesAndMessages.h */,
-				9FF9AEC41A5DF23C0010B9B5 /* MouseXAnimationConstants.h */,
-			);
-			path = MouseXShared;
-			sourceTree = "<group>";
-		};
-		9F1A48AF1A54A18100F0F806 /* MouseXServerInputManager */ = {
-			isa = PBXGroup;
-			children = (
-				9F1A48B01A54A18100F0F806 /* MouseShakeDetector.cpp */,
-				9F1A48B11A54A18100F0F806 /* MouseShakeDetector.h */,
-				9F1A48B21A54A18100F0F806 /* MouseXServerInputManager.cpp */,
-				9F1A48B31A54A18100F0F806 /* MouseXServerInputManager.h */,
-			);
-			path = MouseXServerInputManager;
-			sourceTree = "<group>";
-		};
 		9F2F79591A5366200071561F /* SideCar */ = {
 			isa = PBXGroup;
 			children = (
-				9F1A48AC1A54A18100F0F806 /* MouseXShared */,
-				9FFC25421A54857000F03B68 /* MouseXMac */,
 				9F2F79641A5366200071561F /* Tests */,
 			);
 			name = SideCar;
@@ -1495,7 +1470,7 @@
 				9F13A5251AC2280C000FD8F7 /* libzxing.a */,
 				9F302B681A97D5E400D7C678 /* AppKit.framework */,
 				9F302B661A97AF6D00D7C678 /* Security.framework */,
-				9F69D2A01A8E7BBF006B3988 /* libcurl.dylib */,
+				9F69D2A01A8E7BBF006B3988 /* libcurl.4.tbd */,
 				9FAB89B41A5C92A3002723D4 /* Cocoa.framework */,
 				9F69EF681A42497200939E3C /* ApplicationServices.framework */,
 				9F69EF761A43547200939E3C /* JavaTestApp */,
@@ -1514,8 +1489,6 @@
 				9F434C061A3A68FB00B7615D /* libXTools.Common.a */,
 				9F434C181A3A6EF700B7615D /* libRakNet.a */,
 				9F2F793A1A5365B00071561F /* libSideCarTest.dylib */,
-				9FFC24F41A547D7C00F03B68 /* libSideCarMouseXMac.dylib */,
-				9FAB899E1A5C86A4002723D4 /* MouseXInputManager */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1523,6 +1496,11 @@
 		9F434C121A3A6EB100B7615D /* XToolsClient */ = {
 			isa = PBXGroup;
 			children = (
+				89B1949D1CAB43DC00FC7F88 /* AprilTagIncludes.h */,
+				89B1949E1CAB43DC00FC7F88 /* PairingResult.h */,
+				89B1949F1CAB43DC00FC7F88 /* SharingManager.h */,
+				89B194A01CAB43DC00FC7F88 /* SharingManagerImpl.cpp */,
+				89B194A11CAB43DC00FC7F88 /* SharingManagerImpl.h */,
 				9F302B7E1ACA085300D7C678 /* ImageTagLocation.h */,
 				9F302B7F1ACA085300D7C678 /* ImageTagLocationListener.h */,
 				9F302B801ACA085300D7C678 /* ImageTagLocationImpl.cpp */,
@@ -1532,8 +1510,6 @@
 				9F302B841ACA085300D7C678 /* ImageTagManager.h */,
 				9F302B851ACA085300D7C678 /* ImageTagManagerImpl.cpp */,
 				9F302B861ACA085300D7C678 /* ImageTagManagerImpl.h */,
-				9FAF7F6B1AC5B49800B2E4E2 /* XToolsManagerImpl.cpp */,
-				9FAF7F6C1AC5B49800B2E4E2 /* XToolsManagerImpl.h */,
 				9F13A5371AC22CED000FD8F7 /* DirectPairConnector.cpp */,
 				9F13A5381AC22CED000FD8F7 /* DirectPairConnector.h */,
 				9F13A5391AC22CED000FD8F7 /* DirectPairReceiver.cpp */,
@@ -1570,7 +1546,6 @@
 				9FD4FD861A3B95B700B570FC /* Settings.h */,
 				9FD4FD871A3B95B700B570FC /* SideCarContextImpl.cpp */,
 				9FD4FD881A3B95B700B570FC /* SideCarContextImpl.h */,
-				9FD4FD8A1A3B95B700B570FC /* XToolsManager.h */,
 			);
 			name = XToolsClient;
 			sourceTree = SOURCE_ROOT;
@@ -1868,12 +1843,51 @@
 		9F69ED281A4121AC00939E3C /* Private */ = {
 			isa = PBXGroup;
 			children = (
+				89B1944A1CAB434F00FC7F88 /* AnchorDownloadRequestImpl.cpp */,
+				89B1944B1CAB434F00FC7F88 /* AnchorDownloadRequestImpl.h */,
+				89B1944C1CAB434F00FC7F88 /* AnchorList.cpp */,
+				89B1944D1CAB434F00FC7F88 /* AnchorList.h */,
+				89B1944E1CAB434F00FC7F88 /* ArrayElement.h */,
+				89B1944F1CAB434F00FC7F88 /* ArrayTransforms.cpp */,
+				89B194501CAB434F00FC7F88 /* ArrayTransforms.h */,
+				89B194511CAB434F00FC7F88 /* BoolElementImpl.cpp */,
+				89B194521CAB434F00FC7F88 /* BoolElementImpl.h */,
+				89B194531CAB434F00FC7F88 /* DoubleElementImpl.cpp */,
+				89B194541CAB434F00FC7F88 /* DoubleElementImpl.h */,
+				89B194551CAB434F00FC7F88 /* InsertOperation.cpp */,
+				89B194561CAB434F00FC7F88 /* InsertOperation.h */,
+				89B194571CAB434F00FC7F88 /* IntArrayAdapter.cpp */,
+				89B194581CAB434F00FC7F88 /* IntArrayAdapter.h */,
+				89B194591CAB434F00FC7F88 /* IntArrayElementImpl.cpp */,
+				89B1945A1CAB434F00FC7F88 /* IntArrayElementImpl.h */,
+				89B1945B1CAB434F00FC7F88 /* InverseTransform.h */,
+				89B1945C1CAB434F00FC7F88 /* LongElementImpl.cpp */,
+				89B1945D1CAB434F00FC7F88 /* LongElementImpl.h */,
+				89B1945E1CAB434F00FC7F88 /* NetworkThreadCommands.cpp */,
+				89B1945F1CAB434F00FC7F88 /* NetworkThreadCommands.h */,
+				89B194601CAB434F00FC7F88 /* RemoveOperation.cpp */,
+				89B194611CAB434F00FC7F88 /* RemoveOperation.h */,
+				89B194621CAB434F00FC7F88 /* RoomImpl.cpp */,
+				89B194631CAB434F00FC7F88 /* RoomImpl.h */,
+				89B194641CAB434F00FC7F88 /* RoomManagerImpl.cpp */,
+				89B194651CAB434F00FC7F88 /* RoomManagerImpl.h */,
+				89B194661CAB434F00FC7F88 /* RoomMessageID.h */,
+				89B194671CAB434F00FC7F88 /* RoomUserList.h */,
+				89B194681CAB434F00FC7F88 /* SpeexProcessor.cpp */,
+				89B194691CAB434F00FC7F88 /* SpeexProcessor.h */,
+				89B1946A1CAB434F00FC7F88 /* Syncable.cpp */,
+				89B1946B1CAB434F00FC7F88 /* Syncable.h */,
+				89B1946C1CAB434F00FC7F88 /* SyncArray.h */,
+				89B1946D1CAB434F00FC7F88 /* SyncEnum.h */,
+				89B1946E1CAB434F00FC7F88 /* SyncObject.cpp */,
+				89B1946F1CAB434F00FC7F88 /* SyncObject.h */,
+				89B194701CAB434F00FC7F88 /* SyncPrimitives.h */,
+				89B194711CAB434F00FC7F88 /* UpdateOperation.cpp */,
+				89B194721CAB434F00FC7F88 /* UpdateOperation.h */,
 				9F17F9BD1AEB138C00ABC53A /* IPAddress.cpp */,
 				9F8BC4FF1AE7F30F004343DA /* DiscoveredSystem.cpp */,
 				9F8BC5001AE7F30F004343DA /* DiscoveryClientImpl.cpp */,
 				9F8BC5011AE7F30F004343DA /* DiscoveryClientImpl.h */,
-				9F8BC5021AE7F30F004343DA /* DiscoveryServerImpl.cpp */,
-				9F8BC5031AE7F30F004343DA /* DiscoveryServerImpl.h */,
 				9F8BC5041AE7F30F004343DA /* PacketWrapper.h */,
 				9F8BC5051AE7F30F004343DA /* Profile.cpp */,
 				9F8BC5061AE7F30F004343DA /* ProfileEntry.cpp */,
@@ -1945,10 +1959,6 @@
 				9F69ED701A4121AC00939E3C /* ListSessionsRequest.h */,
 				9F69ED711A4121AC00939E3C /* Message.cpp */,
 				9F69ED721A4121AC00939E3C /* Message.h */,
-				9F69ED731A4121AC00939E3C /* MessageInterceptor.cpp */,
-				9F69ED741A4121AC00939E3C /* MessageInterceptor.h */,
-				9F69ED751A4121AC00939E3C /* MessageQueue.cpp */,
-				9F69ED761A4121AC00939E3C /* MessageQueue.h */,
 				9F69ED771A4121AC00939E3C /* ModifyDeleteTransform.cpp */,
 				9F69ED781A4121AC00939E3C /* ModifyDeleteTransform.h */,
 				9F69ED791A4121AC00939E3C /* ModifyModifyTransform.cpp */,
@@ -2111,13 +2121,20 @@
 		9F69EDDB1A4121AC00939E3C /* Public */ = {
 			isa = PBXGroup;
 			children = (
+				89B1943A1CAB42DC00FC7F88 /* BoolElement.h */,
+				89B1943B1CAB42DC00FC7F88 /* DoubleElement.h */,
+				89B1943C1CAB42DC00FC7F88 /* IntArrayElement.h */,
+				89B1943D1CAB42DC00FC7F88 /* IntArrayListener.h */,
+				89B1943E1CAB42DC00FC7F88 /* LongElement.h */,
+				89B1943F1CAB42DC00FC7F88 /* Room.h */,
+				89B194401CAB42DC00FC7F88 /* RoomManager.h */,
+				89B194411CAB42DC00FC7F88 /* RoomManagerListener.h */,
 				9FC208501AEFE670006D7D95 /* SideCarFunctions.h */,
 				9FC208511AEFE670006D7D95 /* SideCarMacros.h */,
 				9F17F9BF1AEB141300ABC53A /* IPAddress.h */,
 				9F8BC5171AE7F383004343DA /* DiscoveredSystem.h */,
 				9F8BC5181AE7F383004343DA /* DiscoveryClient.h */,
 				9F8BC5191AE7F383004343DA /* DiscoveryClientListener.h */,
-				9F8BC51A1AE7F383004343DA /* DiscoveryServer.h */,
 				9F8BC51B1AE7F383004343DA /* Profile.h */,
 				9F8BC51C1AE7F383004343DA /* ProfileManager.h */,
 				9F8BC51D1AE7F383004343DA /* ScopedProfile.h */,
@@ -2182,6 +2199,8 @@
 		9F69EE061A4121AC00939E3C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				89B194381CAB42AF00FC7F88 /* ListenerList.h */,
+				89B194361CAB42A200FC7F88 /* RefPtrProxyTS.h */,
 				9FB478891AEED8B8007D9B98 /* Log.h */,
 				9FB4788A1AEED8B8007D9B98 /* LogManager.h */,
 				9F8BC5271AE7F390004343DA /* SwigHelperMacros.h */,
@@ -2223,36 +2242,6 @@
 			path = ../../../Projects/JavaTestApp;
 			sourceTree = "<group>";
 		};
-		9FAB89A51A5C86D2002723D4 /* Server */ = {
-			isa = PBXGroup;
-			children = (
-				9FAB89A81A5C887C002723D4 /* AppDelegate.h */,
-				9FAB89A91A5C887C002723D4 /* AppDelegate.mm */,
-				9FAB89A61A5C8737002723D4 /* main.mm */,
-				9FAB89C11A5DE5D0002723D4 /* MouseLocatorAnimation.h */,
-				9FAB89C21A5DE5D0002723D4 /* MouseLocatorAnimation.m */,
-				9FAB89BE1A5DE0A7002723D4 /* MouseLocatorView.h */,
-				9FAB89BF1A5DE0A7002723D4 /* MouseLocatorView.mm */,
-				9FAB89AB1A5C8A1A002723D4 /* MouseXMacInputManager.cpp */,
-				9FAB89AC1A5C8A1A002723D4 /* MouseXMacInputManager.h */,
-			);
-			name = Server;
-			sourceTree = "<group>";
-		};
-		9FFC25421A54857000F03B68 /* MouseXMac */ = {
-			isa = PBXGroup;
-			children = (
-				9FAB89A51A5C86D2002723D4 /* Server */,
-				9FFC25431A54857000F03B68 /* MouseXMacSideCar.cpp */,
-				9FFC25441A54857000F03B68 /* MouseXMacSideCar.h */,
-				9FAB89BC1A5C9FC7002723D4 /* RemotingInitialization.h */,
-				9FAB89B81A5C995F002723D4 /* RemotingProtocols.h */,
-				9FAB89BA1A5C9AB0002723D4 /* MouseXMacSideCarServer.mm */,
-				9FAB89B91A5C9AB0002723D4 /* MouseXMacSideCarServer.h */,
-			);
-			path = MouseXMac;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -2269,27 +2258,50 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89B194961CAB434F00FC7F88 /* SyncEnum.h in Headers */,
 				9FD4FD8B1A3B95B700B570FC /* ClientWrapperAPI.h in Headers */,
 				9F0D72DD1A856B3A00316457 /* TypedLFQueue.h in Headers */,
 				9F0D72DB1A856B2E00316457 /* DownloadCommon.h in Headers */,
+				89B194431CAB42DC00FC7F88 /* DoubleElement.h in Headers */,
+				89B194421CAB42DC00FC7F88 /* BoolElement.h in Headers */,
+				89B1949B1CAB434F00FC7F88 /* UpdateOperation.h in Headers */,
 				9F7B5DDB1A5364190030D83D /* DynamicLibrary.h in Headers */,
-				9F1A48BB1A54A18100F0F806 /* MouseShakeDetector.h in Headers */,
+				89B194451CAB42DC00FC7F88 /* IntArrayListener.h in Headers */,
 				9F302B8A1ACA085300D7C678 /* ImageTagLocationImpl.h in Headers */,
 				9F302B8D1ACA085300D7C678 /* ImageTagManager.h in Headers */,
 				9F13A55F1AC22CED000FD8F7 /* PairingManagerImpl.h in Headers */,
 				9F13A55B1AC22CED000FD8F7 /* PairingInfo.h in Headers */,
-				9FAF7F6E1AC5B49800B2E4E2 /* XToolsManagerImpl.h in Headers */,
-				9FD4FD911A3B95B700B570FC /* XToolsManager.h in Headers */,
+				89B194441CAB42DC00FC7F88 /* IntArrayElement.h in Headers */,
 				9F302B871ACA085300D7C678 /* ImageTagLocation.h in Headers */,
+				89B194881CAB434F00FC7F88 /* NetworkThreadCommands.h in Headers */,
+				89B194941CAB434F00FC7F88 /* Syncable.h in Headers */,
 				9F13A5621AC22CED000FD8F7 /* stdafx.h in Headers */,
 				9F0D72DA1A856B2E00316457 /* DownloadBuffer.h in Headers */,
 				9F13A5661AC22CED000FD8F7 /* VisualPairConnector.h in Headers */,
+				89B194A31CAB43DC00FC7F88 /* PairingResult.h in Headers */,
+				89B194471CAB42DC00FC7F88 /* Room.h in Headers */,
+				89B194811CAB434F00FC7F88 /* IntArrayAdapter.h in Headers */,
+				89B194921CAB434F00FC7F88 /* SpeexProcessor.h in Headers */,
+				89B194831CAB434F00FC7F88 /* IntArrayElementImpl.h in Headers */,
+				89B194981CAB434F00FC7F88 /* SyncObject.h in Headers */,
 				9F13A5601AC22CED000FD8F7 /* PairMaker.h in Headers */,
+				89B194A61CAB43DC00FC7F88 /* SharingManagerImpl.h in Headers */,
+				89B1948F1CAB434F00FC7F88 /* RoomMessageID.h in Headers */,
+				89B194841CAB434F00FC7F88 /* InverseTransform.h in Headers */,
+				89B194901CAB434F00FC7F88 /* RoomUserList.h in Headers */,
 				9F0D72D71A856AF500316457 /* DownloadBufferImpl.h in Headers */,
 				9F302B8C1ACA085300D7C678 /* ImageTagLocator.h in Headers */,
 				9F13A5531AC22CED000FD8F7 /* DirectPairConnector.h in Headers */,
+				89B194861CAB434F00FC7F88 /* LongElementImpl.h in Headers */,
+				89B1948C1CAB434F00FC7F88 /* RoomImpl.h in Headers */,
+				89B194491CAB42DC00FC7F88 /* RoomManagerListener.h in Headers */,
+				89B1947F1CAB434F00FC7F88 /* InsertOperation.h in Headers */,
 				9F13A5551AC22CED000FD8F7 /* DirectPairReceiver.h in Headers */,
 				9F13A5691AC22CED000FD8F7 /* VisualPairReceiver.h in Headers */,
+				89B1947B1CAB434F00FC7F88 /* BoolElementImpl.h in Headers */,
+				89B194741CAB434F00FC7F88 /* AnchorDownloadRequestImpl.h in Headers */,
+				89B194461CAB42DC00FC7F88 /* LongElement.h in Headers */,
+				89B1947D1CAB434F00FC7F88 /* DoubleElementImpl.h in Headers */,
 				9F13A5681AC22CED000FD8F7 /* VisualPairConnectorImpl.h in Headers */,
 				9FD4FD8F1A3B95B700B570FC /* SideCarContextImpl.h in Headers */,
 				9F302B881ACA085300D7C678 /* ImageTagLocationListener.h in Headers */,
@@ -2297,12 +2309,24 @@
 				9F13A5591AC22CED000FD8F7 /* ImageLuminanceSource.h in Headers */,
 				9F13A56C1AC22CED000FD8F7 /* ZXingIncludes.h in Headers */,
 				9F69EF861A5221C100939E3C /* ClientWrapperAPI_Java.h in Headers */,
+				89B194761CAB434F00FC7F88 /* AnchorList.h in Headers */,
 				9F13A5571AC22CED000FD8F7 /* ImageData.h in Headers */,
+				89B194481CAB42DC00FC7F88 /* RoomManager.h in Headers */,
+				89B194371CAB42A200FC7F88 /* RefPtrProxyTS.h in Headers */,
+				89B1948E1CAB434F00FC7F88 /* RoomManagerImpl.h in Headers */,
 				9FD4FD8D1A3B95B700B570FC /* Settings.h in Headers */,
+				89B194A41CAB43DC00FC7F88 /* SharingManager.h in Headers */,
 				9F302B8F1ACA085300D7C678 /* ImageTagManagerImpl.h in Headers */,
+				89B1948A1CAB434F00FC7F88 /* RemoveOperation.h in Headers */,
 				9F13A5651AC22CED000FD8F7 /* TagImageImpl.h in Headers */,
 				9F13A56B1AC22CED000FD8F7 /* VisualPairReceiverImpl.h in Headers */,
+				89B194951CAB434F00FC7F88 /* SyncArray.h in Headers */,
 				9F13A55C1AC22CED000FD8F7 /* PairingListener.h in Headers */,
+				89B194991CAB434F00FC7F88 /* SyncPrimitives.h in Headers */,
+				89B194A21CAB43DC00FC7F88 /* AprilTagIncludes.h in Headers */,
+				89B194771CAB434F00FC7F88 /* ArrayElement.h in Headers */,
+				89B194791CAB434F00FC7F88 /* ArrayTransforms.h in Headers */,
+				89B194391CAB42AF00FC7F88 /* ListenerList.h in Headers */,
 				9F13A5631AC22CED000FD8F7 /* TagImage.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2381,13 +2405,11 @@
 				9F69EF321A4121AC00939E3C /* Callback3.h in Headers */,
 				9F64D0F71ACC888D00578EF4 /* NetworkConnectionListener.h in Headers */,
 				9F8BC5151AE7F30F004343DA /* ProfileManagerImpl.h in Headers */,
-				9F8BC5221AE7F383004343DA /* DiscoveryServer.h in Headers */,
 				9F69EF361A4121AC00939E3C /* LogWriter.h in Headers */,
 				9F69EEFB1A4121AC00939E3C /* ScopedLock.h in Headers */,
 				9F69EF451A4121AC00939E3C /* XSocketListener.h in Headers */,
 				9F69EE831A4121AC00939E3C /* FloatElementImpl.h in Headers */,
 				9F69EEDE1A4121AC00939E3C /* TunnelBridge.h in Headers */,
-				9F8BC50F1AE7F30F004343DA /* DiscoveryServerImpl.h in Headers */,
 				9FB4788C1AEED8B8007D9B98 /* LogManager.h in Headers */,
 				9F69EE801A4121AC00939E3C /* ElementFactory.h in Headers */,
 				9F69EEAF1A4121AC00939E3C /* NetworkMessagePool.h in Headers */,
@@ -2425,7 +2447,6 @@
 				9F69EEF01A4121AC00939E3C /* FileLogWriter.h in Headers */,
 				9F17F9C01AEB141300ABC53A /* IPAddress.h in Headers */,
 				9F69EF141A4121AC00939E3C /* Listener.h in Headers */,
-				9F69EEA11A4121AC00939E3C /* MessageQueue.h in Headers */,
 				9F69EE5A1A4121AC00939E3C /* AudioConnection.h in Headers */,
 				9F69EF3D1A4121AC00939E3C /* RefPtr.h in Headers */,
 				9F69EF471A4121AC00939E3C /* XString.h in Headers */,
@@ -2464,7 +2485,6 @@
 				9F8BC5281AE7F390004343DA /* SwigHelperMacros.h in Headers */,
 				9F69EF1F1A4121AC00939E3C /* Reflection.h in Headers */,
 				9F69EF3C1A4121AC00939E3C /* RefCounted.h in Headers */,
-				9F69EE9F1A4121AC00939E3C /* MessageInterceptor.h in Headers */,
 				9F69EEF91A4121AC00939E3C /* RegistrationReceipt.h in Headers */,
 				9F8BC51F1AE7F383004343DA /* DiscoveredSystem.h in Headers */,
 				9F69EF3E1A4121AC00939E3C /* RefPtrProxy.h in Headers */,
@@ -2658,15 +2678,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9FFC24F21A547D7C00F03B68 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9FFC25461A54857000F03B68 /* MouseXMacSideCar.h in Headers */,
-				9F1A48BC1A54A18100F0F806 /* MouseShakeDetector.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXLegacyTarget section */
@@ -2679,8 +2690,6 @@
 			buildToolPath = /usr/bin/make;
 			buildWorkingDirectory = ../../../Projects/JavaTestApp;
 			dependencies = (
-				9FAB89B71A5C9490002723D4 /* PBXTargetDependency */,
-				9FFC24F91A547DED00F03B68 /* PBXTargetDependency */,
 				9F2F79751A53665B0071561F /* PBXTargetDependency */,
 				9F69EF701A43511000939E3C /* PBXTargetDependency */,
 				9F69EF721A43511200939E3C /* PBXTargetDependency */,
@@ -2766,40 +2775,6 @@
 			productReference = 9F434C181A3A6EF700B7615D /* libRakNet.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		9FAB899D1A5C86A4002723D4 /* MouseXInputManager */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9FAB89A41A5C86AA002723D4 /* Build configuration list for PBXNativeTarget "MouseXInputManager" */;
-			buildPhases = (
-				9FAB899A1A5C86A4002723D4 /* Sources */,
-				9FAB899B1A5C86A4002723D4 /* Frameworks */,
-				9FAB899C1A5C86A4002723D4 /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = MouseXInputManager;
-			productName = MouseXServer;
-			productReference = 9FAB899E1A5C86A4002723D4 /* MouseXInputManager */;
-			productType = "com.apple.product-type.tool";
-		};
-		9FFC24F31A547D7C00F03B68 /* SideCarMouseXMac */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9FFC24F51A547D7C00F03B68 /* Build configuration list for PBXNativeTarget "SideCarMouseXMac" */;
-			buildPhases = (
-				9FFC24F01A547D7C00F03B68 /* Sources */,
-				9FFC24F11A547D7C00F03B68 /* Frameworks */,
-				9FFC24F21A547D7C00F03B68 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = SideCarMouseXMac;
-			productName = SideCarMouseXMac;
-			productReference = 9FFC24F41A547D7C00F03B68 /* libSideCarMouseXMac.dylib */;
-			productType = "com.apple.product-type.library.dynamic";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -2824,12 +2799,6 @@
 					9F69EF6B1A4350F600939E3C = {
 						CreatedOnToolsVersion = 6.1.1;
 					};
-					9FAB899D1A5C86A4002723D4 = {
-						CreatedOnToolsVersion = 6.1.1;
-					};
-					9FFC24F31A547D7C00F03B68 = {
-						CreatedOnToolsVersion = 6.1.1;
-					};
 				};
 			};
 			buildConfigurationList = 9F434BEF1A3A68C200B7615D /* Build configuration list for PBXProject "XToolsClient" */;
@@ -2848,9 +2817,7 @@
 				9F434C051A3A68FB00B7615D /* XTools.Common */,
 				9F434C171A3A6EF700B7615D /* RakNet */,
 				9F2F79391A5365B00071561F /* SideCarTest */,
-				9FFC24F31A547D7C00F03B68 /* SideCarMouseXMac */,
 				9F69EF6B1A4350F600939E3C /* JavaTestApp */,
-				9FAB899D1A5C86A4002723D4 /* MouseXInputManager */,
 			);
 		};
 /* End PBXProject section */
@@ -2867,7 +2834,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd ../../../External/swigwin-3.0.2/\nif [ $CURRENT_ARCH == x86_64 ]\nthen\n_SWIG_ARCH=__LP64__\nelif [ $CURRENT_ARCH == i386 ]\nthen\n_SWIG_ARCH=_M_IX86\nfi\nSOURCE=../../Source\nDEST=../../GeneratedInterface/JavaAPI/com/microsoft/xtools\nmkdir -p $DEST\n./swig -Fmicrosoft -c++ -java -D$_SWIG_ARCH -D__APPLE__ -DTARGET_OS_MAC -package com.microsoft.xtools -ILib -ILib/java -outdir $DEST -o $SOURCE/Client/ClientWrapperAPI_Java.cpp -includeall $SOURCE/Client/WrapperAPI/Client_Java.i";
+			shellScript = "cd ../../../External/swigwin-3.0.2/\nif [ $CURRENT_ARCH == x86_64 ]\nthen\n_SWIG_ARCH=__LP64__\nelif [ $CURRENT_ARCH == i386 ]\nthen\n_SWIG_ARCH=_M_IX86\nfi\nSOURCE=../../Source\nDEST=../../GeneratedInterface/JavaAPI/com/microsoft/holotoolkit/sharing\nmkdir -p $DEST\n./swig -Fmicrosoft -c++ -java -D$_SWIG_ARCH -D__APPLE__ -DTARGET_OS_MAC -package com.microsoft.holotoolkit.sharing -ILib -ILib/java -outdir $DEST -o $SOURCE/Client/ClientWrapperAPI_Java.cpp -includeall $SOURCE/Client/WrapperAPI/Client_Java.i";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -2885,25 +2852,42 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89B1948B1CAB434F00FC7F88 /* RoomImpl.cpp in Sources */,
 				9FD4FD8C1A3B95B700B570FC /* Settings.cpp in Sources */,
 				9F13A5561AC22CED000FD8F7 /* ImageData.cpp in Sources */,
+				89B1947A1CAB434F00FC7F88 /* BoolElementImpl.cpp in Sources */,
 				9F13A5581AC22CED000FD8F7 /* ImageLuminanceSource.cpp in Sources */,
 				9F7B5DDA1A5364190030D83D /* DynamicLibrary.cpp in Sources */,
+				89B194731CAB434F00FC7F88 /* AnchorDownloadRequestImpl.cpp in Sources */,
 				9F13A5521AC22CED000FD8F7 /* DirectPairConnector.cpp in Sources */,
+				89B194A51CAB43DC00FC7F88 /* SharingManagerImpl.cpp in Sources */,
+				89B1949A1CAB434F00FC7F88 /* UpdateOperation.cpp in Sources */,
+				89B194891CAB434F00FC7F88 /* RemoveOperation.cpp in Sources */,
 				9F302B8B1ACA085300D7C678 /* ImageTagLocator.cpp in Sources */,
 				9F13A5611AC22CED000FD8F7 /* stdafx.cpp in Sources */,
-				9FAF7F6D1AC5B49800B2E4E2 /* XToolsManagerImpl.cpp in Sources */,
+				89B194931CAB434F00FC7F88 /* Syncable.cpp in Sources */,
 				9F13A56A1AC22CED000FD8F7 /* VisualPairReceiverImpl.cpp in Sources */,
+				89B194781CAB434F00FC7F88 /* ArrayTransforms.cpp in Sources */,
+				89B1948D1CAB434F00FC7F88 /* RoomManagerImpl.cpp in Sources */,
 				9F13A5641AC22CED000FD8F7 /* TagImageImpl.cpp in Sources */,
+				89B194801CAB434F00FC7F88 /* IntArrayAdapter.cpp in Sources */,
+				89B1947C1CAB434F00FC7F88 /* DoubleElementImpl.cpp in Sources */,
 				9F0D72D61A856AF500316457 /* DownloadBufferImpl.cpp in Sources */,
+				89B194851CAB434F00FC7F88 /* LongElementImpl.cpp in Sources */,
 				9F13A5671AC22CED000FD8F7 /* VisualPairConnectorImpl.cpp in Sources */,
 				9F13A55E1AC22CED000FD8F7 /* PairingManagerImpl.cpp in Sources */,
+				89B194751CAB434F00FC7F88 /* AnchorList.cpp in Sources */,
 				9FD4FD8E1A3B95B700B570FC /* SideCarContextImpl.cpp in Sources */,
+				89B1947E1CAB434F00FC7F88 /* InsertOperation.cpp in Sources */,
 				9F302B891ACA085300D7C678 /* ImageTagLocationImpl.cpp in Sources */,
+				89B194871CAB434F00FC7F88 /* NetworkThreadCommands.cpp in Sources */,
 				9F69EF851A5221C100939E3C /* ClientWrapperAPI_Java.cpp in Sources */,
 				9F302B8E1ACA085300D7C678 /* ImageTagManagerImpl.cpp in Sources */,
+				89B194971CAB434F00FC7F88 /* SyncObject.cpp in Sources */,
 				9F13A5541AC22CED000FD8F7 /* DirectPairReceiver.cpp in Sources */,
 				9F13A55A1AC22CED000FD8F7 /* PairingInfo.cpp in Sources */,
+				89B194821CAB434F00FC7F88 /* IntArrayElementImpl.cpp in Sources */,
+				89B194911CAB434F00FC7F88 /* SpeexProcessor.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2915,7 +2899,6 @@
 				9F69EEAE1A4121AC00939E3C /* NetworkMessagePool.cpp in Sources */,
 				9F69EEEF1A4121AC00939E3C /* FileLogWriter.cpp in Sources */,
 				9F69EE861A4121AC00939E3C /* JoinSessionReply.cpp in Sources */,
-				9F69EE9E1A4121AC00939E3C /* MessageInterceptor.cpp in Sources */,
 				9F4D90631A785BE900BE05C8 /* AudioConnection.cpp in Sources */,
 				9F69EEAC1A4121AC00939E3C /* NetworkInMessageImpl.cpp in Sources */,
 				9F515D141B04892C001FC726 /* RegistrationReceipt.cpp in Sources */,
@@ -2998,14 +2981,12 @@
 				9F69EE931A4121AC00939E3C /* json_parsing.cpp in Sources */,
 				9F69EECB1A4121AC00939E3C /* SessionDescriptorImpl.cpp in Sources */,
 				9F69EEC01A4121AC00939E3C /* Peer.cpp in Sources */,
-				9F8BC50E1AE7F30F004343DA /* DiscoveryServerImpl.cpp in Sources */,
 				9F69EE9A1A4121AC00939E3C /* ListSessionsRequest.cpp in Sources */,
 				9F69EEC51A4121AC00939E3C /* ResampleProcessor.cpp in Sources */,
 				9F69EEDF1A4121AC00939E3C /* TunnelConnection.cpp in Sources */,
 				9F69EEF61A4121AC00939E3C /* MemoryManager.cpp in Sources */,
 				9F69EE9C1A4121AC00939E3C /* Message.cpp in Sources */,
 				9F69EED91A4121AC00939E3C /* SyncManagerImpl.cpp in Sources */,
-				9F69EEA01A4121AC00939E3C /* MessageQueue.cpp in Sources */,
 				9F69EE5B1A4121AC00939E3C /* AudioConnectionClient.cpp in Sources */,
 				9F69EE671A4121AC00939E3C /* BufferQueue.cpp in Sources */,
 				9F8BC5111AE7F30F004343DA /* Profile.cpp in Sources */,
@@ -3135,30 +3116,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9FAB899A1A5C86A4002723D4 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9FAB89AA1A5C887C002723D4 /* AppDelegate.mm in Sources */,
-				9FAB89B31A5C8D0F002723D4 /* MouseXServer.cpp in Sources */,
-				9FAB89A71A5C8737002723D4 /* main.mm in Sources */,
-				9FAB89B21A5C8D04002723D4 /* MouseXServerInputManager.cpp in Sources */,
-				9FAB89C01A5DE0A7002723D4 /* MouseLocatorView.mm in Sources */,
-				9FAB89B11A5C8CF5002723D4 /* MouseShakeDetector.cpp in Sources */,
-				9FAB89B01A5C8CD3002723D4 /* MouseXMacInputManager.cpp in Sources */,
-				9FAB89C31A5DE5D0002723D4 /* MouseLocatorAnimation.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9FFC24F01A547D7C00F03B68 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9FFC25451A54857000F03B68 /* MouseXMacSideCar.cpp in Sources */,
-				9FAB89BD1A5CA027002723D4 /* MouseXMacSideCarServer.mm in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -3202,16 +3159,6 @@
 			target = 9F434C171A3A6EF700B7615D /* RakNet */;
 			targetProxy = 9F69EF731A43511400939E3C /* PBXContainerItemProxy */;
 		};
-		9FAB89B71A5C9490002723D4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9FAB899D1A5C86A4002723D4 /* MouseXInputManager */;
-			targetProxy = 9FAB89B61A5C9490002723D4 /* PBXContainerItemProxy */;
-		};
-		9FFC24F91A547DED00F03B68 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9FFC24F31A547D7C00F03B68 /* SideCarMouseXMac */;
-			targetProxy = 9FFC24F81A547DED00F03B68 /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
@@ -3232,7 +3179,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx;
 				USE_HEADERMAP = NO;
 			};
 			name = Debug;
@@ -3254,7 +3201,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx;
 				USE_HEADERMAP = NO;
 			};
 			name = Release;
@@ -3346,11 +3293,12 @@
 					"../../../Source/Common/**",
 					"../../../External/RakNet-4.081/include/Source/**",
 					"../../../External/RakNet-4.081/include/DependentExtensions",
-					"/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/include/**",
+					"/Library/Java/JavaVirtualMachines/jdk1.8.0_77.jdk/Contents/Home/include/**",
 					"../../../External/curl-7.39.0/include",
 					"../../../External/zxing-cpp/include",
 					"../../../External/zint-2.4.3/include",
-					"../../../External/apriltag-2015-03-18",
+					"../../../External/apriltag-2015-03-18/src",
+					"../../../External/speex-1.2rc1/include",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3358,9 +3306,9 @@
 					"../../../External/zint-2.4.3/lib/$OS/$CONFIGURATION",
 					"../../../External/apriltag-2015-03-18",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_NAME = SharingClient;
+				SDKROOT = macosx;
 				USE_HEADERMAP = NO;
 			};
 			name = Debug;
@@ -3381,11 +3329,12 @@
 					"../../../Source/Common/**",
 					"../../../External/RakNet-4.081/include/Source/**",
 					"../../../External/RakNet-4.081/include/DependentExtensions",
-					"/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/include/**",
+					"/Library/Java/JavaVirtualMachines/jdk1.8.0_77.jdk/Contents/Home/include/**",
 					"../../../External/curl-7.39.0/include",
 					"../../../External/zxing-cpp/include",
 					"../../../External/zint-2.4.3/include",
-					"../../../External/apriltag-2015-03-18",
+					"../../../External/apriltag-2015-03-18/src",
+					"../../../External/speex-1.2rc1/include",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3393,9 +3342,9 @@
 					"../../../External/zint-2.4.3/lib/$OS/$CONFIGURATION",
 					"../../../External/apriltag-2015-03-18",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_NAME = SharingClient;
+				SDKROOT = macosx;
 				USE_HEADERMAP = NO;
 			};
 			name = Release;
@@ -3413,12 +3362,13 @@
 					"../../../Source/Common/**",
 					"../../../External/RakNet-4.081/include/Source/**",
 					"../../../External/RakNet-4.081/include/DependentExtensions",
+					"../../../External/apriltag-2015-03-18/src",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRELINK_LIBS = libCurl.a;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx;
 				USER_HEADER_SEARCH_PATHS = "
 ";
 				USE_HEADERMAP = NO;
@@ -3438,12 +3388,13 @@
 					"../../../Source/Common/**",
 					"../../../External/RakNet-4.081/include/Source/**",
 					"../../../External/RakNet-4.081/include/DependentExtensions",
+					"../../../External/apriltag-2015-03-18/src",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRELINK_LIBS = libCurl.a;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx;
 				USER_HEADER_SEARCH_PATHS = "
 ";
 				USE_HEADERMAP = NO;
@@ -3460,7 +3411,7 @@
 				GCC_WARN_INHIBIT_ALL_WARNINGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx;
 				USE_HEADERMAP = NO;
 			};
 			name = Debug;
@@ -3475,7 +3426,7 @@
 				GCC_WARN_INHIBIT_ALL_WARNINGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx;
 				USE_HEADERMAP = NO;
 			};
 			name = Release;
@@ -3554,11 +3505,12 @@
 					"../../../Source/Common/**",
 					"../../../External/RakNet-4.081/include/Source/**",
 					"../../../External/RakNet-4.081/include/DependentExtensions",
-					"/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/include/**",
+					"/Library/Java/JavaVirtualMachines/jdk1.8.0_77.jdk/Contents/Home/include/**",
 					"../../../External/curl-7.39.0/include",
 					"../../../External/zxing-cpp/include",
 					"../../../External/zint-2.4.3/include",
-					"../../../External/apriltag-2015-03-18",
+					"../../../External/apriltag-2015-03-18/src",
+					"../../../External/speex-1.2rc1/include",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3566,9 +3518,9 @@
 					"../../../External/zint-2.4.3/lib/$OS/Release",
 					"../../../External/apriltag-2015-03-18",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_NAME = SharingClient;
+				SDKROOT = macosx;
 				USE_HEADERMAP = NO;
 			};
 			name = MSTest;
@@ -3586,12 +3538,13 @@
 					"../../../Source/Common/**",
 					"../../../External/RakNet-4.081/include/Source/**",
 					"../../../External/RakNet-4.081/include/DependentExtensions",
+					"../../../External/apriltag-2015-03-18/src",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRELINK_LIBS = libCurl.a;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx;
 				USER_HEADER_SEARCH_PATHS = "
 ";
 				USE_HEADERMAP = NO;
@@ -3608,7 +3561,7 @@
 				GCC_WARN_INHIBIT_ALL_WARNINGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx;
 				USE_HEADERMAP = NO;
 			};
 			name = MSTest;
@@ -3630,30 +3583,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.9;
-				USE_HEADERMAP = NO;
-			};
-			name = MSTest;
-		};
-		9FA444CE1AC21C1D0054DA51 /* MSTest */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				EXECUTABLE_PREFIX = lib;
-				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"../../../Source/Common/**",
-					"../../../External/RakNet-4.081/include/Source/**",
-					"../../../External/RakNet-4.081/include/DependentExtensions",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx;
 				USE_HEADERMAP = NO;
 			};
 			name = MSTest;
@@ -3667,103 +3597,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = MSTest;
-		};
-		9FA444D01AC21C1D0054DA51 /* MSTest */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"../../../Source/Common/**",
-					"../../../External/RakNet-4.081/include/Source/**",
-					"../../../External/RakNet-4.081/include/DependentExtensions",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.9;
-				USE_HEADERMAP = NO;
-			};
-			name = MSTest;
-		};
-		9FAB89A21A5C86A5002723D4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"../../../Source/Common/**",
-					"../../../External/RakNet-4.081/include/Source/**",
-					"../../../External/RakNet-4.081/include/DependentExtensions",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.9;
-				USE_HEADERMAP = NO;
-			};
-			name = Debug;
-		};
-		9FAB89A31A5C86A5002723D4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"../../../Source/Common/**",
-					"../../../External/RakNet-4.081/include/Source/**",
-					"../../../External/RakNet-4.081/include/DependentExtensions",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.9;
-				USE_HEADERMAP = NO;
-			};
-			name = Release;
-		};
-		9FFC24F61A547D7C00F03B68 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				EXECUTABLE_PREFIX = lib;
-				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"../../../Source/Common/**",
-					"../../../External/RakNet-4.081/include/Source/**",
-					"../../../External/RakNet-4.081/include/DependentExtensions",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.9;
-				USE_HEADERMAP = NO;
-			};
-			name = Debug;
-		};
-		9FFC24F71A547D7C00F03B68 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				EXECUTABLE_PREFIX = lib;
-				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"../../../Source/Common/**",
-					"../../../External/RakNet-4.081/include/Source/**",
-					"../../../External/RakNet-4.081/include/DependentExtensions",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.9;
-				USE_HEADERMAP = NO;
-			};
-			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
@@ -3824,26 +3657,6 @@
 				9F69EF6C1A4350F600939E3C /* Debug */,
 				9F69EF6D1A4350F600939E3C /* Release */,
 				9FA444CF1AC21C1D0054DA51 /* MSTest */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9FAB89A41A5C86AA002723D4 /* Build configuration list for PBXNativeTarget "MouseXInputManager" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9FAB89A21A5C86A5002723D4 /* Debug */,
-				9FAB89A31A5C86A5002723D4 /* Release */,
-				9FA444D01AC21C1D0054DA51 /* MSTest */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9FFC24F51A547D7C00F03B68 /* Build configuration list for PBXNativeTarget "SideCarMouseXMac" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9FFC24F61A547D7C00F03B68 /* Debug */,
-				9FFC24F71A547D7C00F03B68 /* Release */,
-				9FA444CE1AC21C1D0054DA51 /* MSTest */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

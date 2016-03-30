@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "SpeexProcessor.h"
 
+#if !defined(XTOOLS_PLATFORM_OSX)
+
 XTOOLS_NAMESPACE_BEGIN
 
 SpeexProcessor::SpeexProcessor()
@@ -129,4 +131,7 @@ void SpeexProcessor::ProcessAudioPacket(AudioConnectionPtr& /*audioConnection*/,
 		}
 	}
 }
+
 XTOOLS_NAMESPACE_END
+
+#endif // !defined(XTOOLS_PLATFORM_OSX)

@@ -78,7 +78,7 @@ RoomPtr RoomManagerImpl::CreateRoom(const XStringPtr& roomName, RoomID roomID, b
 		if (m_roomList[i]->GetID() == roomID)
 		{
 			LogError("Failed to create room with ID %lli: a room with that ID already exists", roomID);
-			return false;
+			return nullptr;
 		}
 	}
 

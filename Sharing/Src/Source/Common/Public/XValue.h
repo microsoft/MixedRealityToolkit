@@ -134,29 +134,12 @@ private:
 		T m_value;
 	};
 
-	// Template specialization for bools to make sure they don't get cast to ints
-	template<>
-	class ValueT<bool> : public ValueWrapper
-	{
-	public:
-		ValueT(const bool& value) : m_value(value) {}
-
-		virtual Type GetType() const { return ValueMapper<bool>::value; }
-
-		virtual void Serialize(const NetworkOutMessagePtr& msg) const { msg->Write((byte)((m_value) ? 1 : 0)); }
-
-		virtual bool Equals(const ValueWrapper* other) const
-		{
-			return (static_cast<const ValueT<bool>*>(other)->m_value == m_value);
-		}
-
-		const bool* Get() const { return &m_value; }
-	private:
-		bool m_value;
-	};
+	
 
 	ref_ptr<ValueWrapper> m_wrappedValue;
 };
+
+
 
 #if defined(XTOOLS_PLATFORM_OSX)
 template<>
@@ -181,6 +164,27 @@ template<> struct XValue::TypeMapper< XValue::Type::Float >     { typedef float 
 template<> struct XValue::TypeMapper< XValue::Type::Double >	{ typedef double ValueType; };
 template<> struct XValue::TypeMapper< XValue::Type::String >	{ typedef std::string ValueType; };
 #endif
+
+// Template specialization for bools to make sure they don't get cast to ints
+template<>
+class XValue::ValueT<bool> : public XValue::ValueWrapper
+{
+public:
+    ValueT(const bool& value) : m_value(value) {}
+    
+    virtual Type GetType() const { return ValueMapper<bool>::value; }
+    
+    virtual void Serialize(const NetworkOutMessagePtr& msg) const { msg->Write((byte)((m_value) ? 1 : 0)); }
+    
+    virtual bool Equals(const ValueWrapper* other) const
+    {
+        return (static_cast<const ValueT<bool>*>(other)->m_value == m_value);
+    }
+    
+    const bool* Get() const { return &m_value; }
+private:
+    bool m_value;
+};
 
 inline bool operator==(const XValue& lhs, const XValue& rhs)
 {

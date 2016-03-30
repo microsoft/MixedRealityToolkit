@@ -8,6 +8,8 @@
 
 #pragma once
 
+#if !defined(XTOOLS_PLATFORM_OSX)
+
 #include <Private/AudioProcessor.h>
 #include <speex/speex.h>
 #include <speex/speex_resampler.h>
@@ -39,3 +41,5 @@ class SpeexProcessor : public AudioProcessor
 DECLARE_PTR(SpeexProcessor)
 
 XTOOLS_NAMESPACE_END
+
+#endif //!defined(XTOOLS_PLATFORM_OSX)

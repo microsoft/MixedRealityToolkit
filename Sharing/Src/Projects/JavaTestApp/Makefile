@@ -10,17 +10,13 @@ default:
 
 # Generate file lists to pass to the Java compiler
 	ls $(SRC_ROOT)/Source/JavaTestApp/*.java > $(INT_DIR)/JavaFiles
-	ls $(SRC_ROOT)/GeneratedInterface/JavaAPI/com/microsoft/xtools/*.java >> $(INT_DIR)/JavaFiles
+	ls $(SRC_ROOT)/GeneratedInterface/JavaAPI/com/microsoft/holotoolkit/sharing/*.java >> $(INT_DIR)/JavaFiles
 
 # Compile java -> class
 	javac -d $(INT_DIR)/Classes @$(INT_DIR)/JavaFiles
 
 # Link class -> jar
 	jar cvfm $(OUT_DIR)/$(PRODUCT_NAME).jar $(SRC_ROOT)/Source/JavaTestApp/Manifest.txt -C $(INT_CLASSES)/ .
-
-# Copy sidecars
-	mkdir -p $(OUT_DIR)/SideCars
-	cp $(OUT_DIR)/libSideCarMouseXMac.dylib $(OUT_DIR)/SideCars
 
 clean:
 	rm -rf $(INT_CLASSES)

@@ -27,7 +27,7 @@
 #include <stdio.h>
 
 /// MICROSOFT PROJECT B CHANGES BEGIN
-std::atomic<int> WSAStartupSingleton::refCount=0;
+std::atomic<int> WSAStartupSingleton::refCount(0);
 /// MICROSOFT PROJECT B CHANGES END
 
 WSAStartupSingleton::WSAStartupSingleton() {}
