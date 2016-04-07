@@ -20,7 +20,7 @@ class XSocketImpl : public XSocket
 	XTOOLS_REFLECTION_DECLARE(XSocketImpl)
 
 public:
-	XSocketImpl(const std::string& remoteName, uint16 remotePort);
+	XSocketImpl(PeerID peerID, const std::string& remoteName, uint16 remotePort);
 
 	//////////////////////////////////////////////////////////////////////////
 	// XSocket Functions:
@@ -57,6 +57,8 @@ public:
 	PeerConstPtr				GetPeer() const;
 	void						SetPeer(const PeerPtr& peer);
 
+	PeerID						GetPeerID() const;
+
 	RakNet::SystemAddress		GetAddress() const;
 	void						SetAddress(const RakNet::SystemAddress& newAddress);
 
@@ -73,6 +75,7 @@ private:
 	void						OnConnectionAttemptFailed(byte failureID);
 
 	SocketID	                m_id;
+	PeerID						m_peerID;
 	PeerPtr						m_peer;
 	XSocketListener*			m_listener;
 	std::string					m_address;

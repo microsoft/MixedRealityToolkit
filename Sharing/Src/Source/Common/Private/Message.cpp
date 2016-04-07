@@ -15,6 +15,7 @@ Message::Message()
 	: m_payload(0)
 	, m_peerID(kInvalidPeerID)
 	, m_address(RakNet::UNASSIGNED_SYSTEM_ADDRESS)
+	, m_guid(RakNet::UNASSIGNED_RAKNET_GUID)
 {
 	
 }
@@ -23,18 +24,6 @@ Message::Message()
 bool Message::IsValid() const
 {
 	return m_payload.GetSize() > 0;
-}
-
-
-const XSocketImplPtr& Message::GetSocket() const
-{
-	return m_socket;
-}
-
-
-void Message::SetSocket(const XSocketImplPtr& socket)
-{
-	m_socket = socket;
 }
 
 
@@ -59,6 +48,18 @@ const RakNet::SystemAddress& Message::GetSystemAddress() const
 void Message::SetSystemAddress(const RakNet::SystemAddress& sysAddress)
 {
 	m_address = sysAddress;
+}
+
+
+const RakNet::RakNetGUID& Message::GetRakNetGUID() const
+{
+	return m_guid;
+}
+
+
+void Message::SetRakNetGUID(const RakNet::RakNetGUID& guid)
+{
+	m_guid = guid;
 }
 
 

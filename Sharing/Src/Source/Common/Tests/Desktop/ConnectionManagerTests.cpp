@@ -48,13 +48,13 @@ namespace CommonDesktopTests
 			XSocketManagerPtr server = XSocketManager::Create();
 
 			Microsoft::VisualStudio::CppUnitTestFramework::Logger::WriteMessage(L"Beginning listening...\r\n");
-			ReceiptPtr listenerReceipt = server->AcceptConnections(57005, 2, listener);
+			ReceiptPtr listenerReceipt = server->AcceptConnections(kSessionServerPort, 2, listener);
 			server->Update();
 
 			Assert::IsTrue(nullptr == listener->Connection, L"The listener already has a connection", LINE_INFO());
 
 			XSocketManagerPtr client = XSocketManager::Create();
-			XSocketPtr connection = client->OpenConnection("localhost", 57005);
+			XSocketPtr connection = client->OpenConnection("localhost", kSessionServerPort);
 			Microsoft::VisualStudio::CppUnitTestFramework::Logger::WriteMessage(L"Client connecting...\r\n");
 
 			MicrosoftTest::WaitForCompletion(
@@ -96,13 +96,13 @@ namespace CommonDesktopTests
 			XSocketManagerPtr server = XSocketManager::Create();
 
 			Microsoft::VisualStudio::CppUnitTestFramework::Logger::WriteMessage(L"Beginning listening...\r\n");
-			ReceiptPtr listenerReceipt = server->AcceptConnections(57005, 2, listener);
+			ReceiptPtr listenerReceipt = server->AcceptConnections(kSessionServerPort, 2, listener);
 			server->Update();
 
 			Assert::IsTrue(nullptr == listener->Connection, L"The listener already has a connection", LINE_INFO());
 
 			XSocketManagerPtr client = XSocketManager::Create();
-			XSocketPtr connection = client->OpenConnection("localhost", 57005);
+			XSocketPtr connection = client->OpenConnection("localhost", kSessionServerPort);
 			Microsoft::VisualStudio::CppUnitTestFramework::Logger::WriteMessage(L"Client connecting...\r\n");
 
 			MicrosoftTest::WaitForCompletion(

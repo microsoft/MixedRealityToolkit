@@ -27,6 +27,9 @@ public:
 	// Get the unique ID of this peer, assigned at creation
 	PeerID							GetPeerID() const;
 
+	RakNet::RakPeerInterface*		GetRakPeer() { return m_rakPeer; }
+	const RakNet::RakPeerInterface*	GetRakPeer() const { return m_rakPeer; }
+
 	static PeerID					CreatePeerID();
 
 private:

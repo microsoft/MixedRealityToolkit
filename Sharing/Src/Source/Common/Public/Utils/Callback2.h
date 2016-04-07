@@ -42,7 +42,7 @@ public:
 	void Clear() { m_memberFunction = NULL; }
 
 private:
-	class MemberFunc : public RefCounted
+	class MemberFunc : public AtomicRefCounted
 	{
 	public:
 		virtual void Call(T param1, R param2) const = 0;

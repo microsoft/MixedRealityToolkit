@@ -53,11 +53,11 @@ namespace CommonDesktopTests
 			{
 				// Start the server listening for connections
 				SyncMultiConnectionListenerPtr listener = new SyncMultiConnectionListener();
-				ReceiptPtr listenerReceipt = server->AcceptConnections(57005, 1, listener.get());
+				ReceiptPtr listenerReceipt = server->AcceptConnections(kSessionServerPort, 1, listener.get());
 				server->Update();
 
 				// Make the client connect to the server
-				XSocketPtr connection1 = client1->OpenConnection("localhost", 57005);
+				XSocketPtr connection1 = client1->OpenConnection("localhost", kSessionServerPort);
 				MicrosoftTest::WaitForCompletion(
 					[&]() {
 					return connection1->GetStatus() != XSocket::Status::Connecting && listener->m_connections.size() == 1;
@@ -235,21 +235,21 @@ namespace CommonDesktopTests
 			{
 				// Start the server listening for connections
 				SyncMultiConnectionListenerPtr serverListener = new SyncMultiConnectionListener();
-				ReceiptPtr serverListenerReceipt = server->AcceptConnections(57005, 2, serverListener.get());
+				ReceiptPtr serverListenerReceipt = server->AcceptConnections(kSessionServerPort, 2, serverListener.get());
 				server->Update();
 
 				SyncMultiConnectionListenerPtr msliceListener1 = new SyncMultiConnectionListener();
-				ReceiptPtr msliceListenerReceipt1 = mslice1->AcceptConnections(57006, 1, msliceListener1.get());
+				ReceiptPtr msliceListenerReceipt1 = mslice1->AcceptConnections(kAppPluginPort, 1, msliceListener1.get());
 
 				SyncMultiConnectionListenerPtr msliceListener2 = new SyncMultiConnectionListener();
-				ReceiptPtr msliceListenerReceipt2 = mslice2->AcceptConnections(57007, 1, msliceListener2.get());
+				ReceiptPtr msliceListenerReceipt2 = mslice2->AcceptConnections(kAppPluginPort+1, 1, msliceListener2.get());
 
 				// Make the client connect to the server
-				XSocketPtr connection1 = mslice1->OpenConnection("localhost", 57005);
-				XSocketPtr connection2 = mslice2->OpenConnection("localhost", 57005);
+				XSocketPtr connection1 = mslice1->OpenConnection("localhost", kSessionServerPort);
+				XSocketPtr connection2 = mslice2->OpenConnection("localhost", kSessionServerPort);
 
-				XSocketPtr connection3 = onsight1->OpenConnection("localhost", 57006);
-				XSocketPtr connection4 = onsight2->OpenConnection("localhost", 57007);
+				XSocketPtr connection3 = onsight1->OpenConnection("localhost", kAppPluginPort);
+				XSocketPtr connection4 = onsight2->OpenConnection("localhost", kAppPluginPort+1);
 
 				MicrosoftTest::WaitForCompletion(
 					[&]() {

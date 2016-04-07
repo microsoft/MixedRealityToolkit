@@ -13,20 +13,32 @@
 namespace CommonDesktopTests
 {
 	//////////////////////////////////////////////////////////////////////////
-	class SyncTestbedConnectionListener : public XTools::RefCounted, public XTools::IncomingXSocketListener
+	class SyncTestbedConnectionListener : public XTools::AtomicRefCounted, public XTools::IncomingXSocketListener
 	{
 	public:
 		virtual void OnNewConnection(const XTools::XSocketPtr& newConnection) XTOVERRIDE;
 
 		std::vector<XTools::XSocketPtr> m_connections;
 	};
-
-
 	DECLARE_PTR(SyncTestbedConnectionListener)
 
 
+	class TestLogWriter : public XTools::LogWriter
+	{
+	public:
+		static void Init();
+		static void Release();
+		virtual void WriteLogEntry(XTools::LogSeverity, const std::string& message) XTOVERRIDE;
+
+	private:
+		TestLogWriter();
+		LoggerPtr	m_logManager;
+		static TestLogWriter* m_sInstance;
+	};
+
+
 	//////////////////////////////////////////////////////////////////////////
-	class SyncTestbed : public XTools::RefCounted, public LogWriter
+	class SyncTestbed : public XTools::AtomicRefCounted
 	{
 	public:
 		SyncTestbed(bool bConnectOnSight);
@@ -40,7 +52,6 @@ namespace CommonDesktopTests
 		void ValidatePair(const Sync::SyncManagerPtr& syncMgr1, const SyncTestObjectPtr& syncObj1, const Sync::SyncManagerPtr& syncMgr2, const SyncTestObjectPtr& syncObj2) const;
 
 		void WriteLogEntry(const std::string& message) const;
-		virtual void WriteLogEntry(LogSeverity severity, const std::string& message) XTOVERRIDE;
 
 		XSocketManagerPtr m_serverSocketMgr;
 		XSocketManagerPtr m_mslice1SocketMgr;
@@ -65,8 +76,6 @@ namespace CommonDesktopTests
 		UserPtr m_userOnSight1;
 		UserPtr m_userClient2;
 		UserPtr m_userOnSight2;
-
-		LoggerPtr	m_logManager;
 
 		bool m_bConnectOnSight;
 
