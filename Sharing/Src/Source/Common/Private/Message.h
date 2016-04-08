@@ -21,29 +21,29 @@ public:
 	Message();
 
 	// Returns false if the size is zero
-	bool					IsValid() const;
-	
-	const XSocketImplPtr&	GetSocket() const;
-	void					SetSocket(const XSocketImplPtr& socket);
+	bool							IsValid() const;
 
-	PeerID					GetPeerID() const;
-	void					SetPeerID(PeerID peerID);
+	PeerID							GetPeerID() const;
+	void							SetPeerID(PeerID peerID);
 
-	const RakNet::SystemAddress& GetSystemAddress() const;
-	void					SetSystemAddress(const RakNet::SystemAddress& sysAddress);
+	const RakNet::SystemAddress&	GetSystemAddress() const;
+	void							SetSystemAddress(const RakNet::SystemAddress& sysAddress);
 
-	const byte*				GetData() const;
-	uint32					GetSize() const;
-	void					SetData(const byte* buffer, uint32 size);
+	const RakNet::RakNetGUID&		GetRakNetGUID() const;
+	void							SetRakNetGUID(const RakNet::RakNetGUID& guid);
+
+	const byte*						GetData() const;
+	uint32							GetSize() const;
+	void							SetData(const byte* buffer, uint32 size);
 
 	// Return the ID of the message, which is the first byte of the payload
-	byte					GetMessageID() const;
+	byte							GetMessageID() const;
 
 private:
 	Buffer					m_payload;
-	XSocketImplPtr			m_socket;
 	PeerID					m_peerID;
 	RakNet::SystemAddress	m_address;
+	RakNet::RakNetGUID		m_guid;
 };
 
 DECLARE_PTR(Message)

@@ -35,6 +35,8 @@ public:
 		}
 	}
 
+	int GetRefCount() const { return m_refCount; }
+
 private:
 	// Prevent copy construction
 	AtomicRefCounted(const RefCounted&);

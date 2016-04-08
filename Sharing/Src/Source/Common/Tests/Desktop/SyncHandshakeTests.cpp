@@ -61,11 +61,11 @@ namespace CommonDesktopTests
 			{
 				// Start the server listening for connections
 				SyncConnectionListenerPtr listener = new SyncConnectionListener();
-				ReceiptPtr listenerReceipt = server->AcceptConnections(57005, 2, listener.get());
+				ReceiptPtr listenerReceipt = server->AcceptConnections(kSessionServerPort, 2, listener.get());
 				server->Update();
 
 				// Make the client connect to the server
-				XSocketPtr connection = client->OpenConnection("localhost", 57005);
+				XSocketPtr connection = client->OpenConnection("localhost", kSessionServerPort);
 				MicrosoftTest::WaitForCompletion(
 					[&]() {
 					return connection->GetStatus() != XSocket::Status::Connecting && listener->m_connection != NULL;
@@ -118,11 +118,11 @@ namespace CommonDesktopTests
 			{
 				// Start the server listening for connections
 				SyncConnectionListenerPtr listener = new SyncConnectionListener();
-				ReceiptPtr listenerReceipt = server->AcceptConnections(57005, 2, listener.get());
+				ReceiptPtr listenerReceipt = server->AcceptConnections(kSessionServerPort, 2, listener.get());
 				server->Update();
 
 				// Make the client connect to the server
-				XSocketPtr connection = client->OpenConnection("localhost", 57005);
+				XSocketPtr connection = client->OpenConnection("localhost", kSessionServerPort);
 				MicrosoftTest::WaitForCompletion(
 					[&]() {
 					return connection->GetStatus() != XSocket::Status::Connecting && listener->m_connection != NULL;
@@ -151,7 +151,7 @@ namespace CommonDesktopTests
 			clientSyncMgr->AddConnection(clientConnection);
 
 			// allow the handshake messages to go back and forth
-			for (int i = 0; i < 10 && serverConnection->IsConnected(); ++i)
+			for (int i = 0; i < 10 && (serverConnection->IsConnected() || clientConnection->IsConnected()); ++i)
 			{
 				server->Update();
 				client->Update();

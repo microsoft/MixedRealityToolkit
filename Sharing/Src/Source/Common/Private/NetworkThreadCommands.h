@@ -17,13 +17,21 @@ public:
 	{
 		Open = 0,
 		Accept,
-		DiscoveryResponse
+		DiscoveryResponse,
+		RemovePeerReference
 	};
 
-	explicit Command(Type commandType, const XSocketImplPtr& socket) 
-		: m_socket(socket)
-		, m_peerID(kInvalidPeerID)
+	Command(Type commandType, PeerID peerID)
+		: m_peerID(peerID)
 		, m_port(0)
+		, m_maxConnections(0)
+		, m_type(commandType)
+		, m_role(SystemRole::PrimaryClientRole) {}
+
+	Command(Type commandType, PeerID peerID, const std::string& address, uint16 port) 
+		: m_address(address)
+		, m_peerID(peerID)
+		, m_port(port)
 		, m_maxConnections(0)
 		, m_type(commandType)
 		, m_role(SystemRole::PrimaryClientRole) {}
@@ -35,15 +43,15 @@ public:
 		, m_type(commandType) 
 		, m_role(role) {}
 
-	const XSocketImplPtr& GetSocket() const { return m_socket; }
-	PeerID GetPeerID() const { return m_peerID; }
-	uint16 GetPort() const { return m_port; }
-	uint16 GetMaxConnections() const { return m_maxConnections; }
-	Type GetType() const { return m_type; }
-	SystemRole GetRole() const { return m_role; }
+	PeerID GetPeerID() const				{ return m_peerID; }
+	const std::string& GetAddress() const	{ return m_address; }
+	uint16 GetPort() const					{ return m_port; }
+	uint16 GetMaxConnections() const		{ return m_maxConnections; }
+	Type GetType() const					{ return m_type; }
+	SystemRole GetRole() const				{ return m_role; }
 
 private:
-	XSocketImplPtr	m_socket;
+	std::string m_address;
 	PeerID m_peerID;
 	uint16 m_port;
 	uint16 m_maxConnections;
@@ -54,7 +62,7 @@ DECLARE_PTR(Command)
 
 inline CommandPtr CreateOpenCommand(const XSocketImplPtr& socket)
 {
-	return new Command(Command::Type::Open, socket);
+	return new Command(Command::Type::Open, socket->GetPeerID(), socket->GetRemoteSystemName(), socket->GetRemoteSystemPort());
 }
 
 inline CommandPtr CreateAcceptCommand(PeerID peerID, uint16 port, uint16 maxConnections)
@@ -65,6 +73,11 @@ inline CommandPtr CreateAcceptCommand(PeerID peerID, uint16 port, uint16 maxConn
 inline CommandPtr CreateDiscoveryResponseCommand(PeerID peerID, uint16 port, SystemRole role)
 {
 	return new Command(Command::Type::DiscoveryResponse, peerID, port, 2, role);
+}
+
+inline CommandPtr CreateRemovePeerReferenceCommand(PeerID peerID)
+{
+	return new Command(Command::Type::RemovePeerReference, peerID);
 }
 
 XTOOLS_NAMESPACE_END

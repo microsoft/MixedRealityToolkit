@@ -24,12 +24,42 @@ namespace CommonDesktopTests
 		m_connections.push_back(newConnection);
 	}
 
+	TestLogWriter* TestLogWriter::m_sInstance = nullptr;
+
+	//static
+	void TestLogWriter::Init()
+	{
+		if (m_sInstance == nullptr)
+		{
+			m_sInstance = new TestLogWriter();
+		}
+	}
+
+	void TestLogWriter::Release()
+	{
+		if (m_sInstance != nullptr)
+		{
+			delete m_sInstance;
+			m_sInstance = nullptr;
+		}
+	}
+
+	TestLogWriter::TestLogWriter()
+		: m_logManager(new ::XTools::Logger())
+	{
+		m_logManager->SetWriter(this);
+	}
+
+	void TestLogWriter::WriteLogEntry(XTools::LogSeverity, const std::string& message)
+	{
+		Microsoft::VisualStudio::CppUnitTestFramework::Logger::WriteMessage(message.c_str());
+	}
+
 
 	SyncTestbed::SyncTestbed(bool bConnectOnSight)
 		: m_bConnectOnSight(bConnectOnSight)
-		, m_logManager(new ::XTools::Logger())
 	{
-		m_logManager->SetWriter(this);
+		TestLogWriter::Init();
 
 		m_userServer = new UserImpl("Server", User::kInvalidUserID, false);
 		m_userClient1 = new UserImpl("Client1", 1, false);
@@ -58,31 +88,32 @@ namespace CommonDesktopTests
 		{
 			// Start the server listening for connections
 			SyncTestbedConnectionListenerPtr serverListener = new SyncTestbedConnectionListener();
-			ReceiptPtr serverListenerReceipt = m_serverSocketMgr->AcceptConnections(57005, 2, serverListener.get());
-			m_serverSocketMgr->Update();
+			ReceiptPtr serverListenerReceipt = m_serverSocketMgr->AcceptConnections(kSessionServerPort, 2, serverListener.get());
 
 			SyncTestbedConnectionListenerPtr msliceListener1 = new SyncTestbedConnectionListener();
-			ReceiptPtr msliceListenerReceipt1 = m_mslice1SocketMgr->AcceptConnections(57006, 1, msliceListener1.get());
+			ReceiptPtr msliceListenerReceipt1 = m_mslice1SocketMgr->AcceptConnections(kAppPluginPort, 1, msliceListener1.get());
 
 			SyncTestbedConnectionListenerPtr msliceListener2 = new SyncTestbedConnectionListener();
-			ReceiptPtr msliceListenerReceipt2 = m_mslice2SocketMgr->AcceptConnections(57007, 1, msliceListener2.get());
+			ReceiptPtr msliceListenerReceipt2 = m_mslice2SocketMgr->AcceptConnections(kAppPluginPort+1, 1, msliceListener2.get());
 
 			// Make the client connect to the server
-			XSocketPtr connection1 = m_mslice1SocketMgr->OpenConnection("localhost", 57005);
-			XSocketPtr connection2 = m_mslice2SocketMgr->OpenConnection("localhost", 57005);
+			XSocketPtr connection1 = m_mslice1SocketMgr->OpenConnection("localhost", kSessionServerPort);
+			XSocketPtr connection2 = m_mslice2SocketMgr->OpenConnection("localhost", kSessionServerPort);
 
-			XSocketPtr connection3 = m_onsight1SocketMgr->OpenConnection("localhost", 57006);
-			XSocketPtr connection4 = m_onsight2SocketMgr->OpenConnection("localhost", 57007);
+			XSocketPtr connection3 = m_onsight1SocketMgr->OpenConnection("localhost", kAppPluginPort);
+			XSocketPtr connection4 = m_onsight2SocketMgr->OpenConnection("localhost", kAppPluginPort+1);
 
 			MicrosoftTest::WaitForCompletion(
 				[&]() {
-				return connection1->GetStatus() != XSocket::Status::Connecting &&
+				return 
+					connection1->GetStatus() != XSocket::Status::Connecting &&
 					connection2->GetStatus() != XSocket::Status::Connecting &&
 					connection3->GetStatus() != XSocket::Status::Connecting &&
 					connection4->GetStatus() != XSocket::Status::Connecting &&
 					serverListener->m_connections.size() == 2 &&
 					msliceListener1->m_connections.size() == 1 &&
-					msliceListener2->m_connections.size() == 1;
+					msliceListener2->m_connections.size() == 1
+					;
 			},
 				[&]() {
 				m_serverSocketMgr->Update();
@@ -107,7 +138,6 @@ namespace CommonDesktopTests
 			m_onsightConnection2->SetSocket(connection4);
 		}
 	}
-
 
 	void SyncTestbed::ResetTestBed()
 	{
@@ -229,11 +259,6 @@ namespace CommonDesktopTests
 	}
 
 	void SyncTestbed::WriteLogEntry(const std::string& message) const
-	{
-		Microsoft::VisualStudio::CppUnitTestFramework::Logger::WriteMessage(message.c_str());
-	}
-
-	void SyncTestbed::WriteLogEntry(LogSeverity , const std::string& message)
 	{
 		Microsoft::VisualStudio::CppUnitTestFramework::Logger::WriteMessage(message.c_str());
 	}

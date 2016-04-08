@@ -86,11 +86,19 @@ private:
 	void ProcessOpenCommand(const CommandPtr& openCommand);
 	void ProcessAcceptCommand(const CommandPtr& acceptCommand);
 	void ProcessDiscoveryResponseCommand(const CommandPtr& discoveryCommand);
-	void SendConnectionFailedMessage(const XSocketImplPtr& socket);
+	void ProcessRemovePeerReferenceCommand(const CommandPtr& command);
+
+	void SendConnectionFailedMessage(const std::string& address, uint16 port);
 	bool SendMessageToMainThread(const MessagePtr& msg);
+
+	std::list<XSocketImpl*> m_connectingSockets;
 
 	// Maps peers to callbacks that should be notified when a new incoming connection is made
 	std::map<PeerID, IncomingXSocketListener*> m_incomingConnectionListeners;
+
+	// List of the active sockets, mapped by their RakNetGUID
+	std::map<RakNet::RakNetGUID, XSocketImpl*> m_sockets;
+
 
 	// Maps peerIDs to peer connections.  Only used on the network thread
 	std::map<PeerID, PeerConnectionPtr>	m_peers;

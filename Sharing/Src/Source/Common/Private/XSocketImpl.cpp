@@ -34,8 +34,9 @@ XTOOLS_REFLECTION_DEFINE(XSocketImpl)
 std::atomic<SocketID> XSocketImpl::m_sCounter(0);
 
 
-XSocketImpl::XSocketImpl(const std::string& remoteName, uint16 remotePort)
+XSocketImpl::XSocketImpl(PeerID peerID, const std::string& remoteName, uint16 remotePort)
 	: m_id(++m_sCounter)
+	, m_peerID(peerID)
 	, m_listener(NULL)
 	, m_address(remoteName)
 	, m_port(remotePort)
@@ -192,6 +193,12 @@ void XSocketImpl::SetPeer(const PeerPtr& peer)
 	{
 		m_status = Connected;
 	}
+}
+
+
+PeerID XSocketImpl::GetPeerID() const
+{
+	return m_peerID;
 }
 
 
