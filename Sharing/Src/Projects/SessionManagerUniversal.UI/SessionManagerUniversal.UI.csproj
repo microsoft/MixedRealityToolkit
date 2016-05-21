@@ -1,0 +1,346 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{D643855A-7865-41F2-906E-499840702458}</ProjectGuid>
+    <OutputType>AppContainerExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SessionManagerUniversal.UI</RootNamespace>
+    <AssemblyName>SessionManagerUniversal.UI</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion>10.0.10586.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <PackageCertificateKeyFile>SessionManagerUniversal.UI_TemporaryKey.pfx</PackageCertificateKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\..\bin\Debug\Win32\SessionManagerUniversal.UI\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>..\..\bin\Release\Win32\SessionManagerUniversal.UI\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+    <WarningLevel>1</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\..\bin\Debug\ARM\SessionManagerUniversal.UI\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>..\..\bin\Release\ARM\SessionManagerUniversal.UI\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\..\bin\Debug\x64\SessionManagerUniversal.UI\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>..\..\bin\Release\x64\SessionManagerUniversal.UI\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <None Include="project.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\generatedinterface\csharpapi\AnchorDownloadRequest.cs">
+      <Link>Generated Files\AnchorDownloadRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\AudioManager.cs">
+      <Link>Generated Files\AudioManager.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\BoolElement.cs">
+      <Link>Generated Files\BoolElement.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\ClientConfig.cs">
+      <Link>Generated Files\ClientConfig.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\ClientRole.cs">
+      <Link>Generated Files\ClientRole.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\DirectPairConnector.cs">
+      <Link>Generated Files\DirectPairConnector.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\DirectPairReceiver.cs">
+      <Link>Generated Files\DirectPairReceiver.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\DoubleElement.cs">
+      <Link>Generated Files\DoubleElement.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\Element.cs">
+      <Link>Generated Files\Element.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\ElementType.cs">
+      <Link>Generated Files\ElementType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\FloatElement.cs">
+      <Link>Generated Files\FloatElement.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\ImageTagLocation.cs">
+      <Link>Generated Files\ImageTagLocation.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\ImageTagLocationListener.cs">
+      <Link>Generated Files\ImageTagLocationListener.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\ImageTagLocationType.cs">
+      <Link>Generated Files\ImageTagLocationType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\ImageTagManager.cs">
+      <Link>Generated Files\ImageTagManager.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\IntArrayElement.cs">
+      <Link>Generated Files\IntArrayElement.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\IntArrayListener.cs">
+      <Link>Generated Files\IntArrayListener.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\IntElement.cs">
+      <Link>Generated Files\IntElement.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\Listener.cs">
+      <Link>Generated Files\Listener.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\Log.cs">
+      <Link>Generated Files\Log.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\LogManager.cs">
+      <Link>Generated Files\LogManager.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\LogSeverity.cs">
+      <Link>Generated Files\LogSeverity.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\LogWriter.cs">
+      <Link>Generated Files\LogWriter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\LongElement.cs">
+      <Link>Generated Files\LongElement.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\MachineSessionState.cs">
+      <Link>Generated Files\MachineSessionState.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\MessageChannel.cs">
+      <Link>Generated Files\MessageChannel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\MessageID.cs">
+      <Link>Generated Files\MessageID.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\MessagePriority.cs">
+      <Link>Generated Files\MessagePriority.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\MessageReliability.cs">
+      <Link>Generated Files\MessageReliability.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\NetworkConnection.cs">
+      <Link>Generated Files\NetworkConnection.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\NetworkConnectionListener.cs">
+      <Link>Generated Files\NetworkConnectionListener.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\NetworkInMessage.cs">
+      <Link>Generated Files\NetworkInMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\NetworkOutMessage.cs">
+      <Link>Generated Files\NetworkOutMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\ObjectElement.cs">
+      <Link>Generated Files\ObjectElement.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\ObjectElementListener.cs">
+      <Link>Generated Files\ObjectElementListener.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\PairingListener.cs">
+      <Link>Generated Files\PairingListener.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\PairingManager.cs">
+      <Link>Generated Files\PairingManager.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\PairingResult.cs">
+      <Link>Generated Files\PairingResult.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\PairMaker.cs">
+      <Link>Generated Files\PairMaker.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\Profile.cs">
+      <Link>Generated Files\Profile.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\Receipt.cs">
+      <Link>Generated Files\Receipt.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\Room.cs">
+      <Link>Generated Files\Room.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\RoomManager.cs">
+      <Link>Generated Files\RoomManager.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\RoomManagerListener.cs">
+      <Link>Generated Files\RoomManagerListener.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\Session.cs">
+      <Link>Generated Files\Session.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\SessionListener.cs">
+      <Link>Generated Files\SessionListener.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\SessionManager.cs">
+      <Link>Generated Files\SessionManager.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\SessionManagerListener.cs">
+      <Link>Generated Files\SessionManagerListener.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\SessionType.cs">
+      <Link>Generated Files\SessionType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\Settings.cs">
+      <Link>Generated Files\Settings.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\SharingClient.cs">
+      <Link>Generated Files\SharingClient.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\SharingClientPINVOKE.cs">
+      <Link>Generated Files\SharingClientPINVOKE.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\SharingManager.cs">
+      <Link>Generated Files\SharingManager.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\StringElement.cs">
+      <Link>Generated Files\StringElement.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\SyncListener.cs">
+      <Link>Generated Files\SyncListener.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\TagImage.cs">
+      <Link>Generated Files\TagImage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\User.cs">
+      <Link>Generated Files\User.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\UserPresenceManager.cs">
+      <Link>Generated Files\UserPresenceManager.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\UserPresenceManagerListener.cs">
+      <Link>Generated Files\UserPresenceManagerListener.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\VisualPairConnector.cs">
+      <Link>Generated Files\VisualPairConnector.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\VisualPairReceiver.cs">
+      <Link>Generated Files\VisualPairReceiver.cs</Link>
+    </Compile>
+    <Compile Include="..\..\generatedinterface\csharpapi\XString.cs">
+      <Link>Generated Files\XString.cs</Link>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CrossPlatform\HandleRef.cs" />
+    <Compile Include="CrossPlatform\ApplicationException.cs" />
+    <Compile Include="CrossPlatform\ReflectionExtensions.cs" />
+    <Compile Include="CrossPlatform\SystemException.cs" />
+    <Compile Include="CrossPlatform\TypeUtils.cs" />
+    <Compile Include="Helpers\ConsoleLogWriter.cs" />
+    <Compile Include="Network\NetworkConnectionAdapter.cs" />
+    <Compile Include="Network\XToolsApp.cs" />
+    <Compile Include="Network\XToolsSessionListener.cs" />
+    <Compile Include="Network\XToolsSessionManagerListener.cs" />
+    <Compile Include="Views\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+    <None Include="SessionManagerUniversal.UI_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Properties\Default.rd.xml" />
+    <Content Include="Assets\LockScreenLogo.scale-200.png" />
+    <Content Include="Assets\SplashScreen.scale-200.png" />
+    <Content Include="Assets\Square150x150Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Content Include="Assets\StoreLogo.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="Views\MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Converters\" />
+    <Folder Include="DataModel\" />
+    <Folder Include="ViewModels\" />
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy ..\ClientUniversalCSharp\SharingClient.dll Appx\SharingClient.dll</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
