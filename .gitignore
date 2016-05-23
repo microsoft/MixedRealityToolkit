@@ -43,3 +43,13 @@
 /Sharing/Src/Projects/ProfilerX/bin
 /Sharing/Src/Docs/C++/html
 Sharing/Src/Solutions/Xcode/XToolsClient/build
+/SpatialMapping/PlaneFinding/Debug
+/SpatialMapping/PlaneFinding/Release
+/SpatialMapping/PlaneFinding/PlaneFinding/PlaneFinding.UAP/Debug
+/SpatialMapping/PlaneFinding/PlaneFinding/PlaneFinding.UAP/Release
+/SpatialMapping/PlaneFinding/Tests/TestApp/bin
+/SpatialMapping/PlaneFinding/Tests/TestApp/obj
+/SpatialMapping/PlaneFinding/Tests/TestHelpers/bin
+/SpatialMapping/PlaneFinding/Tests/TestHelpers/obj
+/SpatialMapping/PlaneFinding/Tests/UnitTests/bin
+/SpatialMapping/PlaneFinding/Tests/UnitTests/obj
