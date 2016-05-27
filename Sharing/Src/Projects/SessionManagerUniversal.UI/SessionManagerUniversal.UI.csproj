@@ -332,7 +332,11 @@
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy ..\ClientUniversalCSharp\SharingClient.dll Appx\SharingClient.dll</PostBuildEvent>
+    <PostBuildEvent>mkdir Appx
+copy ..\ClientUniversalCSharp\SharingClient.dll Appx\SharingClient.dll
+if $(ConfigurationName) == Debug (
+copy ..\ClientUniversalCSharp\SharingClient.pdb Appx\SharingClient.pdb
+)</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
