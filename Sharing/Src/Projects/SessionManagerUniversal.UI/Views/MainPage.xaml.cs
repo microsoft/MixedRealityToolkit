@@ -23,13 +23,9 @@ namespace SessionManagerUniversal.UI.Views
 
         public MainPage()
         {
-
             this.InitializeComponent();
             SharingStage = new XToolsApp();
             SharingStage.LogWriter.Log += LogAction;
-
-            this.IPText.Text = "192.168.0.19";
-            this.UserText.Text = "TestUserUniversal";
         }
 
         #region Connection
