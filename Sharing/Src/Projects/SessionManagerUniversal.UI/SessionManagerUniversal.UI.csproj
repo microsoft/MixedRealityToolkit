@@ -283,11 +283,13 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\BoolToVisibleConverter.cs" />
     <Compile Include="CrossPlatform\HandleRef.cs" />
     <Compile Include="CrossPlatform\ApplicationException.cs" />
     <Compile Include="CrossPlatform\ReflectionExtensions.cs" />
     <Compile Include="CrossPlatform\SystemException.cs" />
     <Compile Include="CrossPlatform\TypeUtils.cs" />
+    <Compile Include="DataModel\SessionData.cs" />
     <Compile Include="Helpers\ConsoleLogWriter.cs" />
     <Compile Include="Network\NetworkConnectionAdapter.cs" />
     <Compile Include="Network\XToolsApp.cs" />
@@ -324,11 +326,7 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Converters\" />
-    <Folder Include="DataModel\" />
-    <Folder Include="ViewModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

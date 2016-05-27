@@ -38,7 +38,7 @@ namespace SessionManagerUniversal.UI.Network
             this.LogWriter = new ConsoleLogWriter();
         }
 
-        public void Connect(string server, int port = 20602, ClientRole clientRole = ClientRole.Primary)
+        public void Connect(string server, string userName = "TestUserUniversal", int port = 20602, ClientRole clientRole = ClientRole.Primary)
         {
             ClientConfig config = new ClientConfig(clientRole);
             config.SetServerAddress(server);
@@ -46,10 +46,12 @@ namespace SessionManagerUniversal.UI.Network
             config.SetLogWriter(LogWriter);
 
             this.SharingManager = SharingManager.Create(config);
+            this.SharingManager.SetUserName(userName);
+            
             this.viewerConnection = this.SharingManager.GetPairedConnection();
             this.serverConnection = this.SharingManager.GetServerConnection();
             this.SessionManager = this.SharingManager.GetSessionManager();
-
+            
             BeginPairing();
 
             ViewerListener = new NetworkConnectionAdapter();
@@ -70,21 +72,64 @@ namespace SessionManagerUniversal.UI.Network
 
             SessionManagerListener = new XToolsSessionManagerListener(this.LogWriter);
             this.SessionManager.AddListener(SessionManagerListener);
-
             networkMessageLoop = new Timer(new TimerCallback((a) => Update()), null, 0, 1000);
         }
 
         public void Disconnect()
         {
-            SharingManager.GetPairedConnection().Disconnect();
-            SharingManager.GetServerConnection().Disconnect();
+            if (networkMessageLoop != null)
+            {
+                networkMessageLoop.Dispose();
+                networkMessageLoop = null;
+            }
 
-            networkMessageLoop.Dispose();
-            networkMessageLoop = null;
+            if (this.rootObject != null)
+            {
+                this.rootObject.RemoveListener(this.syncListener);
+                this.rootObject.Dispose();
+                this.rootObject = null;
+            }
 
-            // Release the XTools manager so that it cleans up the C++ copy
-            SharingManager.Dispose();
-            SharingManager = null;
+            if (this.syncListener != null)
+            {
+                this.syncListener.Dispose();
+                this.syncListener = null;
+            }
+
+            if (viewerConnection != null)
+            {
+                viewerConnection.RemoveListener((byte)MessageID.StatusOnly, ViewerListener);
+                viewerConnection.Disconnect();
+                this.viewerConnection.Dispose();
+                this.viewerConnection = null;
+            }
+
+            if (serverConnection != null)
+            {
+                serverConnection.RemoveListener((byte)MessageID.StatusOnly, ServerListener);
+                serverConnection.Disconnect();
+                this.serverConnection.Dispose();
+                this.serverConnection = null;
+            }
+          
+            if (this.SessionManager != null)
+            {
+                this.SessionManager.RemoveListener(this.SessionManagerListener);
+                this.SessionManager.Dispose();
+                this.SessionManager = null;
+            }
+            if (this.SessionManagerListener !=  null)
+            {
+                this.SessionManagerListener.Dispose();
+                this.SessionManagerListener = null;
+            }
+
+            if (SharingManager != null)
+            {
+                SharingManager.Dispose();
+                SharingManager = null;
+            }
+
             IsServerConnected = false;
             // Forces a garbage collection to try to clean up any additional reference to SWIG-wrapped objects
             System.GC.Collect();
