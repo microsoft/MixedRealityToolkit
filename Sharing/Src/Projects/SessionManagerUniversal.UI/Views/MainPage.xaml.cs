@@ -1,13 +1,14 @@
 ﻿using System;
-using HoloToolkit.Sharing;
-using SessionManagerUniversal.UI.Network;
-using Windows.UI;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Media;
 using System.Collections.ObjectModel;
-using SessionManagerUniversal.UI.DataModel;
 using System.Linq;
+using Windows.UI;
+using Windows.UI.Core;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
+using HoloToolkit.Sharing;
+using SessionManagerUniversal.UI.DataModel;
+using SessionManagerUniversal.UI.Network;
 
 namespace SessionManagerUniversal.UI.Views
 {
@@ -83,7 +84,7 @@ namespace SessionManagerUniversal.UI.Views
 
         private void OnSessionServerDisconnected()
         {
-            Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, new Windows.UI.Core.DispatchedHandler(() =>
+            Dispatcher.RunAsync(CoreDispatcherPriority.Normal, new DispatchedHandler(() =>
             {
                 ConnectButton.IsEnabled = true;
                 _isConnected = false;
@@ -94,7 +95,7 @@ namespace SessionManagerUniversal.UI.Views
 
         private void OnSessionServerConnected()
         {
-            Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, new Windows.UI.Core.DispatchedHandler(() =>
+            Dispatcher.RunAsync(CoreDispatcherPriority.Normal, new DispatchedHandler(() =>
             {
                 ConnectButton.IsEnabled = true;
                 _isConnected = true;
@@ -105,7 +106,7 @@ namespace SessionManagerUniversal.UI.Views
 
         private void OnSessionUserLeft(Session session, User user)
         {
-            Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, new Windows.UI.Core.DispatchedHandler(() =>
+            Dispatcher.RunAsync(CoreDispatcherPriority.Normal, new DispatchedHandler(() =>
             {
                 FindSession(session)?.RemoveUser(user);
             }));
@@ -113,7 +114,7 @@ namespace SessionManagerUniversal.UI.Views
 
         private void OnSessionUserJoined(Session session, User user)
         {
-            Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, new Windows.UI.Core.DispatchedHandler(() =>
+            Dispatcher.RunAsync(CoreDispatcherPriority.Normal, new DispatchedHandler(() =>
             {
                 FindSession(session)?.AddUser(user);
             }));
@@ -121,7 +122,7 @@ namespace SessionManagerUniversal.UI.Views
 
         private void OnSessionUserChanged(Session session, User user)
         {
-            Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, new Windows.UI.Core.DispatchedHandler(() =>
+            Dispatcher.RunAsync(CoreDispatcherPriority.Normal, new DispatchedHandler(() =>
             {
                 FindSession(session)?.UpdateUser(user);
             }));
@@ -129,7 +130,7 @@ namespace SessionManagerUniversal.UI.Views
 
         private void OnSessionClosed(Session obj)
         {
-            Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, new Windows.UI.Core.DispatchedHandler(() =>
+            Dispatcher.RunAsync(CoreDispatcherPriority.Normal, new DispatchedHandler(() =>
             {
                 //TODO: Any other way to identify a session? How do we handle duplicate session names?
                 var currentSession = FindSession(obj);
@@ -140,7 +141,7 @@ namespace SessionManagerUniversal.UI.Views
 
         private void OnSessionAdded(Session obj)
         {
-            Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, new Windows.UI.Core.DispatchedHandler(() =>
+            Dispatcher.RunAsync(CoreDispatcherPriority.Normal, new DispatchedHandler(() =>
             {
                 _sessions.Add(new SessionData(obj));
             }));
@@ -173,7 +174,7 @@ namespace SessionManagerUniversal.UI.Views
 
         private async void LogAction(LogSeverity s, string msg)
         {
-            await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, new Windows.UI.Core.DispatchedHandler(() =>
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, new DispatchedHandler(() =>
             {
                 //logCount++;
                 if (this.LogTextList.Items.Count > 1000)
@@ -181,7 +182,7 @@ namespace SessionManagerUniversal.UI.Views
                     this.LogTextList.Items.RemoveAt(0);
                 }
 
-                this.LogTextList.Items.Add(new Windows.UI.Xaml.Controls.TextBlock()
+                this.LogTextList.Items.Add(new TextBlock()
                 {
                     Text = string.Format("{0} - {1}", System.DateTime.Now.ToString("HH:mm:ss"), msg),
                     Foreground = s == LogSeverity.Error ? new SolidColorBrush(Colors.Red) : (s == LogSeverity.Warning ? new SolidColorBrush(Colors.Orange) : new SolidColorBrush(Colors.Black)),

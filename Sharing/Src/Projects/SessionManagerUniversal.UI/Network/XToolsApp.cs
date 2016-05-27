@@ -77,58 +77,7 @@ namespace SessionManagerUniversal.UI.Network
 
         public void Disconnect()
         {
-            if (networkMessageLoop != null)
-            {
-                networkMessageLoop.Dispose();
-                networkMessageLoop = null;
-            }
-
-            if (this.rootObject != null)
-            {
-                this.rootObject.RemoveListener(this.syncListener);
-                this.rootObject.Dispose();
-                this.rootObject = null;
-            }
-
-            if (this.syncListener != null)
-            {
-                this.syncListener.Dispose();
-                this.syncListener = null;
-            }
-
-            if (viewerConnection != null)
-            {
-                viewerConnection.RemoveListener((byte)MessageID.StatusOnly, ViewerListener);
-                viewerConnection.Disconnect();
-                this.viewerConnection.Dispose();
-                this.viewerConnection = null;
-            }
-
-            if (serverConnection != null)
-            {
-                serverConnection.RemoveListener((byte)MessageID.StatusOnly, ServerListener);
-                serverConnection.Disconnect();
-                this.serverConnection.Dispose();
-                this.serverConnection = null;
-            }
-          
-            if (this.SessionManager != null)
-            {
-                this.SessionManager.RemoveListener(this.SessionManagerListener);
-                this.SessionManager.Dispose();
-                this.SessionManager = null;
-            }
-            if (this.SessionManagerListener !=  null)
-            {
-                this.SessionManagerListener.Dispose();
-                this.SessionManagerListener = null;
-            }
-
-            if (SharingManager != null)
-            {
-                SharingManager.Dispose();
-                SharingManager = null;
-            }
+            CleanupNetworkObjects();
 
             IsServerConnected = false;
             // Forces a garbage collection to try to clean up any additional reference to SWIG-wrapped objects
@@ -277,6 +226,63 @@ namespace SessionManagerUniversal.UI.Network
             return this.SharingManager.GetPairingManager().BeginPairing(new DirectPairReceiver(), PairingListener) == PairingResult.Ok;
         }
 
+        private void CleanupNetworkObjects()
+        {
+            if (networkMessageLoop != null)
+            {
+                networkMessageLoop.Dispose();
+                networkMessageLoop = null;
+            }
+
+            if (this.rootObject != null)
+            {
+                this.rootObject.RemoveListener(this.syncListener);
+                this.rootObject.Dispose();
+                this.rootObject = null;
+            }
+
+            if (this.syncListener != null)
+            {
+                this.syncListener.Dispose();
+                this.syncListener = null;
+            }
+
+            if (viewerConnection != null)
+            {
+                viewerConnection.RemoveListener((byte)MessageID.StatusOnly, ViewerListener);
+                viewerConnection.Disconnect();
+                this.viewerConnection.Dispose();
+                this.viewerConnection = null;
+            }
+
+            if (serverConnection != null)
+            {
+                serverConnection.RemoveListener((byte)MessageID.StatusOnly, ServerListener);
+                serverConnection.Disconnect();
+                this.serverConnection.Dispose();
+                this.serverConnection = null;
+            }
+
+            if (this.SessionManager != null)
+            {
+                this.SessionManager.RemoveListener(this.SessionManagerListener);
+                this.SessionManager.Dispose();
+                this.SessionManager = null;
+            }
+
+            if (this.SessionManagerListener != null)
+            {
+                this.SessionManagerListener.Dispose();
+                this.SessionManagerListener = null;
+            }
+
+            if (SharingManager != null)
+            {
+                SharingManager.Dispose();
+                SharingManager = null;
+            }
+        }
+
         #region Properties
 
         public SessionManager SessionManager { get; private set; }
@@ -316,41 +322,7 @@ namespace SessionManagerUniversal.UI.Network
             {
                 if (disposing)
                 {
-                    if (this.syncListener != null)
-                    {
-                        this.syncListener.Dispose();
-                        this.syncListener = null;
-                    }
-
-                    if (this.viewerConnection != null)
-                    {
-                        this.viewerConnection.Dispose();
-                        this.viewerConnection = null;
-                    }
-
-                    if (this.serverConnection != null)
-                    {
-                        this.serverConnection.Dispose();
-                        this.serverConnection = null;
-                    }
-
-                    if (this.rootObject != null)
-                    {
-                        this.rootObject.Dispose();
-                        this.rootObject = null;
-                    }
-
-                    if (this.SessionManager != null)
-                    {
-                        this.SessionManager.Dispose();
-                        this.SessionManager = null;
-                    }
-
-                    if (this.SharingManager != null)
-                    {
-                        this.SharingManager.Dispose();
-                        this.SharingManager = null;
-                    }
+                    CleanupNetworkObjects();
                 }
 
                 this.disposed = true;

@@ -45,11 +45,7 @@ namespace SessionManagerUniversal.UI.DataModel
 
         public void RemoveUser(User user)
         {
-            var myUser = _users.FirstOrDefault(u => u.GetID() == user.GetID());
-            if (myUser != null)
-            {
-                _users.Remove(myUser);
-            }
+            _users.RemoveAll(u => u.GetID() == user.GetID());
             UpdateUserNames();
         }
 
