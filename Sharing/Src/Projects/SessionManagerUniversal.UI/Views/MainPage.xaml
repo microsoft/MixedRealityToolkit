@@ -1,0 +1,90 @@
+﻿<Page
+    x:Class="SessionManagerUniversal.UI.Views.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SessionManagerUniversal.UI"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <RelativePanel>
+
+        <RelativePanel x:Name="ConnectionPanel"  RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True">
+            <Ellipse x:Name="StatusIcon" Margin="8" Width="30" Height="30" Fill="Red"
+                         RelativePanel.AlignVerticalCenterWithPanel="True"/>
+            <TextBox x:Name="IPText" Margin="4" PlaceholderText="Ip address" Header="Server address" Width="200"
+                         RelativePanel.RightOf="StatusIcon"/>
+            <TextBox x:Name="UserText" Margin="4" PlaceholderText="Username" Header="Username" Width="200"
+                         RelativePanel.RightOf="IPText"/>
+            <Button x:Name="ConnectButton" Margin="8" Content="Connect" Click="ConnectButton_Click"
+                    RelativePanel.AlignRightWithPanel="True" RelativePanel.RightOf="UserText" RelativePanel.AlignVerticalCenterWithPanel="True"/>
+        </RelativePanel>
+
+        <Border x:Name="ConnectionSeparator" Height="1" BorderThickness="1" BorderBrush="Black" Margin="0,8" RelativePanel.Below="ConnectionPanel" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True"/>
+
+        <RelativePanel x:Name="NewSessionPanel" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.Below="ConnectionSeparator" >
+            <TextBlock x:Name="NewSessionText" Margin="8" Text="New Session" RelativePanel.AlignVerticalCenterWithPanel="True"/>
+            <TextBox x:Name="SessionName" Margin="4" PlaceholderText="Session Name" Width="200" RelativePanel.RightOf="NewSessionText" RelativePanel.AlignVerticalCenterWithPanel="True"/>
+            <Button x:Name="CreateButton" Margin="8" Content="Create" Click="CreateButton_Click"
+                    RelativePanel.AlignRightWithPanel="True" RelativePanel.RightOf="SessionName" RelativePanel.AlignVerticalCenterWithPanel="True"/>
+        </RelativePanel>
+
+        <Border x:Name="NewSessionSeparator" Height="1" BorderThickness="1" BorderBrush="Black" Margin="0,8" RelativePanel.Below="NewSessionPanel" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True"/>
+
+        <RelativePanel x:Name="SessionsPanel" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.Below="NewSessionSeparator" RelativePanel.Above="LogPanelSeparator">
+            <TextBlock x:Name="SessionsText" Margin="8" Text="Sessions"/>
+
+            <ListView x:Name="SessionsList" RelativePanel.Below="SessionsText" RelativePanel.Above="JoinButton" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+                    </Style>
+                </ListView.ItemContainerStyle>
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.8*"/>
+                                <ColumnDefinition Width="0.1*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0">
+                                <StackPanel Orientation="Horizontal" >
+                                    <TextBlock FontSize="16" Text="{Binding SessionName}" FontWeight="Bold" />
+                                    <TextBlock FontSize="16" Text=":" />
+                                    <TextBlock FontSize="16" Text="{Binding SessionType}" />
+                                    <TextBlock FontSize="16" Text=", " />
+                                    <TextBlock FontSize="16" Text="{Binding SessionUserCount}" />
+                                    <TextBlock FontSize="16" Text=" Users" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" >
+                                     <TextBlock Text="{Binding UserNames}"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+
+            <Button x:Name="JoinButton" Content="Join" Margin="4" RelativePanel.AlignBottomWithPanel="True" Click="JoinButton_Click"/>
+            <Button x:Name="LeaveButton" Content="Leave" Margin="4" RelativePanel.RightOf="JoinButton" RelativePanel.AlignBottomWithPanel="True" Click="LeaveButton_Click"/>
+
+        </RelativePanel>
+
+        <Border x:Name="LogPanelSeparator" Height="1" BorderThickness="1" BorderBrush="Black" Margin="0,8" RelativePanel.Above="LogPanel" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True"/>
+
+        <RelativePanel x:Name="LogPanel" Margin="8" Height="200" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" >
+            <ScrollViewer x:Name="LogScroller">
+                <ItemsControl x:Name="LogTextList" FontFamily="Consolas" FontSize="11" />
+            </ScrollViewer>
+        </RelativePanel>
+
+
+        <!--<CheckBox x:Name="SpinBool" Content="Spin" Checked="SpinBool_Checked" Unchecked="SpinBool_Unchecked"/>
+            <Slider x:Name="XSlider" Minimum="0" Maximum="360" ValueChanged="Slider_ValueChanged"/>
+            <Slider x:Name="YSlider" Minimum="0" Maximum="360" ValueChanged="Slider_ValueChanged"/>
+            <Slider x:Name="ZSlider" Minimum="0" Maximum="360" ValueChanged="Slider_ValueChanged"/>-->
+    </RelativePanel>
+</Page>
