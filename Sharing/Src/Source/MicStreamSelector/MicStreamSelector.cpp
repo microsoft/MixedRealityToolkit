@@ -19,6 +19,7 @@ using namespace Windows::Media::Transcoding;
 
 #define API __declspec(dllexport)
 
+// #define MEMORYLEAKDETECT // Enables memory leak debugging output on program.
 
 #ifdef MEMORYLEAKDETECT
 #define _CRTDBG_MAP_ALLOC
