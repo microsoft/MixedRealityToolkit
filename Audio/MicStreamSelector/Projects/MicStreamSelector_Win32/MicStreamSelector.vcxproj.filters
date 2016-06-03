@@ -6,10 +6,4 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tga;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="..\src\MicStream.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\src\MicStreamSelector.cpp" />
-  </ItemGroup>
 </Project>
