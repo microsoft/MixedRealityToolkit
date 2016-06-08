@@ -17,7 +17,6 @@ The HoloToolkit.Sharing library allows applications to span multiple devices, an
 * Runs on any platform, and can work with any programming language
 * Lobby & Session system
 * Synchronization System
-* Group Voice Chat
 * Visual Pairing
 * Anchor Sharing
 * Profiler
