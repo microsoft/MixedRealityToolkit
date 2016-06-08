@@ -43,10 +43,6 @@ Synchronize data across all participants in session
 * Responsive: no delay in your own changes
 * Ownership: your data leaves session when you do
 
-### Group Voice Chat
-Support for VOIP is built-in
-* Server-based mixing lowers processing and bandwidth requirements for clients
-
 ### Visual Pairing
 Connect devices just by looking at them
 * One device displays a QR code with connection info and security code
