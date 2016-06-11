@@ -88,7 +88,10 @@ namespace PlaneFinding
 
         XMFLOAT3 GetMean()
         {
-            return{ m_sum.x / m_numVerts, m_sum.y / m_numVerts, m_sum.z / m_numVerts };
+            if (m_numVerts == 0) {
+                return { 0.0f, 0.0f, 0.0f };
+            }
+            return { m_sum.x / m_numVerts, m_sum.y / m_numVerts, m_sum.z / m_numVerts };
         }
 
         void AddVertex(XMFLOAT3 vertex)
@@ -270,7 +273,7 @@ namespace PlaneFinding
                 numNeighbors = 1;
             }
 
-            // the curvature 
+            // the curvature
             vertexData->push_back({ 1.0f - dSum / (numNeighbors), INVALID_PLANE });
         }
     }
@@ -445,7 +448,7 @@ namespace PlaneFinding
                 {
                     // return true if
                     // 1. this vertex isn't already considered part of a plane (on the second pass)
-                    // 2.  the vertex and normal are in the appropriate range to consider 
+                    // 2.  the vertex and normal are in the appropriate range to consider
 
                     XMVECTOR vert = XMLoadFloat3(&verts[vertIndex]);
                     float distance = XMVectorGetX(XMVectorAbs(XMPlaneDotCoord(plane, vert)));
@@ -535,7 +538,7 @@ namespace PlaneFinding
             NBest<cMaxPlanesPerSurface, PlaneData> bestPlanes;
             FloodFillLowCurvatureRegions(&vertexData, &halfEdge, normals, verts, vertCount, &bestPlanes);
 
-            // and we then generate the plane equation 
+            // and we then generate the plane equation
             XMMATRIX observerToSurface = XMMatrixInverse(nullptr, surfaceToObserver);
             XMVECTOR vUpInSurfaceSpace = XMVector3Normalize(XMVector3TransformNormal(cUpDirection, observerToSurface));
             GeneratePlaneEquations(&vertexData, &halfEdge, vertCount, verts, &bestPlanes, meshToMetersScale, snapToGravityThreshold, vUpInSurfaceSpace);

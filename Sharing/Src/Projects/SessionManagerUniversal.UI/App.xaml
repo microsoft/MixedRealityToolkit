@@ -1,0 +1,11 @@
+﻿<Application
+    x:Class="SessionManagerUniversal.UI.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SessionManagerUniversal.UI"
+    xmlns:converters="using:SessionManagerUniversal.UI.Converters"
+    RequestedTheme="Light">
+    <Application.Resources>
+        <converters:BoolToVisibleConverter x:Key="bool2vis"/>
+    </Application.Resources>
+</Application>
