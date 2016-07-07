@@ -1,10 +1,10 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 //////////////////////////////////////////////////////////////////////////
 // NetworkMessagePool.cpp
-//
 // Manages a pool of NetworkOutMessages, helping to avoid some frequent allocations
 // when sending messages
-//
-// Copyright (C) 2014 Microsoft Corp.  All Rights Reserved
 //////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"

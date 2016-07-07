@@ -1,6 +1,8 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /*
  *  Copyright (c) 2014, Oculus VR, Inc.
- *  All rights reserved.
  *
  *  This source code is licensed under the BSD-style license found in the
  *  LICENSE file in the root directory of this source tree. An additional grant 
@@ -87,10 +89,8 @@ void PrintParameters(void)
 }
 
 
-//
 // Utility function to obtain a Console Window Handle (HWND), as explained in:
 // http://support.microsoft.com/kb/124103
-//
 HWND GetConsoleHwnd(void)
 {
 #define MY_BUFSIZE 1024 // Buffer size for console window titles.

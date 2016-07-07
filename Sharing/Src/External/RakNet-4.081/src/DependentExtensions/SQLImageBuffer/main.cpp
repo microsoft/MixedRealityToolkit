@@ -1,6 +1,8 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /*
  *  Copyright (c) 2014, Oculus VR, Inc.
- *  All rights reserved.
  *
  *  This source code is licensed under the BSD-style license found in the
  *  LICENSE file in the root directory of this source tree. An additional grant 
@@ -26,11 +28,9 @@ struct my_error_mgr {
 
 METHODDEF(void) my_error_exit (j_common_ptr cinfo);
 
-//
 //	to handle fatal errors.
 //	the original JPEG code will just exit(0). can't really
 //	do that in Windows....
-//
 
 METHODDEF(void) my_error_exit (j_common_ptr cinfo)
 {

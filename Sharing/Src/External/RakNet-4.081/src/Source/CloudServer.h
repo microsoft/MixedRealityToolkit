@@ -1,6 +1,8 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /*
  *  Copyright (c) 2014, Oculus VR, Inc.
- *  All rights reserved.
  *
  *  This source code is licensed under the BSD-style license found in the
  *  LICENSE file in the root directory of this source tree. An additional grant 
@@ -338,46 +340,35 @@ protected:
 
 
 // Key subscription
-//
 // A given system can subscribe to one or more keys.
 // The subscription can be further be defined as only subscribing to keys uploaded by or changed by a given system.
 // It is possible to subscribe to keys not yet uploaded, or uploaded to another system
-//
 // Operations:
-//
 // 1. SubscribeToKey() - Get() operation with subscription
 // A. Add to key subscription list for the client, which contains a keyId / specificUploaderList pair
 // B. Send to remote servers that for this key, they should send us updates
 // C. (Done, get operation returns current values)
-//
 // 2. UpdateData() - Post() operation
 // A. Find all subscribers to this data, for the uploading system.
 // B. Send them the uploaded data
 // C. Find all servers that subscribe to this data
 // D. Send them the uploaded data
-//
 // 3. DeleteData() - Release() operation
 // A. Find all subscribers to this data, for the deleting system.
 // B. Inform them of the deletion
 // C. Find all servers that subscribe to this data
 // D. Inform them of the deletion
-//
 // 4. Unsubscribe()
 // A. Find this subscriber, and remove their subscription
 // B. If no one else is subscribing to this key for any system, notify remote servers we no longer need subscription updates
-//
 // Internal operations:
-//
 // 1. Find if any connected client has subscribed to a given key
 // A. This is used add and remove our subscription for this key to remote servers
-//
 // 2. For a given key and updating address, find all connected clients that care
 // A. First find connected clients that have subscribed to this key, regardless of address
 // B. Then find connected clients that have subscribed to this key for this particular address
-//
 // 3. Find all remote servers that have subscribed to a given key
 // A. This is so when the key is updated or deleted, we know who to send it to
-//
 // 4. For a given client (such as on disconnect), remove all records of their subscriptions
 
 #endif // _RAKNET_SUPPORT_*

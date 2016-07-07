@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /*
  * $Id: PlaybackNode.h,v 1.1.1.1 2002/01/22 00:52:08 phil Exp $
  * PortAudio Portable Real-Time Audio Library

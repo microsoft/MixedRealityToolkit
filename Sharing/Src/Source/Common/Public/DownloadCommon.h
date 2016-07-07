@@ -1,9 +1,9 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 //////////////////////////////////////////////////////////////////////////
 // DownloadCommon.h
-//
 // Collection of types that are used in multiple places in the download code
-//
-// Copyright (C) 2015 Microsoft Corp.  All Rights Reserved
 //////////////////////////////////////////////////////////////////////////
 
 #pragma once

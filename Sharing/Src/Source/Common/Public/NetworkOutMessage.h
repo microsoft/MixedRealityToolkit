@@ -1,9 +1,9 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 //////////////////////////////////////////////////////////////////////////
 // NetworkOutMessage.h
-//
 // Interface for creating messages to send to remote machines
-//
-// Copyright (C) 2014 Microsoft Corp.  All Rights Reserved
 //////////////////////////////////////////////////////////////////////////
 
 #pragma once

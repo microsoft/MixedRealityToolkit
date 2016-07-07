@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /****************************************************************************/
 /*! \mainpage XMLParser library
  * \section intro_sec Introduction
@@ -42,7 +45,6 @@
  *
  * Copyright (c) 2002, Business-Insight
  * <a href="http://www.Business-Insight.com">Business-Insight</a>
- * All rights reserved.
  *
  * \section tutorial First Tutorial
  * You can follow a simple <a href="../../xmlParser.html">Tutorial</a> to know the basics...

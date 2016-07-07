@@ -1,10 +1,10 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 //////////////////////////////////////////////////////////////////////////
 // WrapperAPIs.h
-//
 // Single place to include all the APIs that should be exposed to 
 // Java and C# through SWIG
-//
-// Copyright (C) 2014 Microsoft Corp.  All Rights Reserved
 //////////////////////////////////////////////////////////////////////////
 
 #pragma once

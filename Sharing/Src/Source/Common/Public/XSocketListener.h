@@ -1,10 +1,10 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 //////////////////////////////////////////////////////////////////////////
 // XSocketListener.h
-//
 // Interface for objects to listen for events coming from a socket.  
 // Must first be registered with XSocket::RegisterListener()
-//
-// Copyright (C) 2014 Microsoft Corp.  All Rights Reserved
 //////////////////////////////////////////////////////////////////////////
 
 #pragma once

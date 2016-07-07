@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /**********************************************************************
 
 Filename    :   FxGameDelegate.cpp
@@ -5,7 +8,6 @@ Content     :   Communication logic for CLIK GameDelegate
 Created     :
 Authors     :   Prasad Silva
 
-Copyright   :   (c) 2005-2009 Scaleform Corp. All Rights Reserved.
 
 This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING
 THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR ANY PURPOSE.
@@ -14,9 +16,7 @@ THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR ANY PURPOSE.
 
 #include "FxGameDelegate.h"
 
-//
 // Visitor to register callbacks
-//
 class AddCallbackVisitor : public FxDelegateHandler::CallbackProcessor
 {
 public:
@@ -37,9 +37,7 @@ private:
 };
 
 
-//
 // Visitor to unregister callbacks
-//
 class RemoveCallbackVisitor : public FxDelegateHandler::CallbackProcessor
 {
 public:

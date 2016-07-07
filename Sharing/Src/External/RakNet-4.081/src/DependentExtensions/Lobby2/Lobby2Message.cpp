@@ -1,6 +1,8 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /*
  *  Copyright (c) 2014, Oculus VR, Inc.
- *  All rights reserved.
  *
  *  This source code is licensed under the BSD-style license found in the
  *  LICENSE file in the root directory of this source tree. An additional grant 
@@ -485,7 +487,6 @@ void System_CreateTitle::Serialize( bool writeToBitstream, bool serializeOutput,
 }
 bool System_CreateTitle::PrevalidateInput(void)
 {
-	//
 	if (!ValidateRequiredText(&titleName)) return false;
 	if (!ValidatePassword(&titleSecretKey)) return false;
 	if (!ValidateBinary(binaryData)) return false;
@@ -644,7 +645,6 @@ void CDKey_FlagStolen::Serialize( bool writeToBitstream, bool serializeOutput, B
 
 bool CDKey_FlagStolen::PrevalidateInput( void )
 {
-//	
 	if (!ValidateRequiredText(&cdKey)) return false;
 	if (!ValidateRequiredText(&titleName)) return false;
 	return true;

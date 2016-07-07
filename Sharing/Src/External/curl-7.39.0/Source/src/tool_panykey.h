@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 #ifndef HEADER_CURL_TOOL_PANYKEY_H
 #define HEADER_CURL_TOOL_PANYKEY_H
 /***************************************************************************

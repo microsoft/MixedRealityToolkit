@@ -1,10 +1,10 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 //////////////////////////////////////////////////////////////////////////
 // Logger.cpp
-//
 // Simple logging class to capture info, warnings, and errors to help with 
 // debugging and telemetry
-//
-// Copyright (C) 2014 Microsoft Corp.  All Rights Reserved
 //////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"

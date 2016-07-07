@@ -1,10 +1,10 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 //////////////////////////////////////////////////////////////////////////
 // TypedLFQueue.h
-//
 // A wrapper around the lock-free queue that makes it easier to use with 
 // objects with a valid copy constructor, and preserves RefCounted objects
-//
-// Copyright (C) 2015 Microsoft Corp.  All Rights Reserved
 //////////////////////////////////////////////////////////////////////////
 
 #pragma once

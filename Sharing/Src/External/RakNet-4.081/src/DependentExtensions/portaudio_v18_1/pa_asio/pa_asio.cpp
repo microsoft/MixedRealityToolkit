@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /*
  * $Id: pa_asio.cpp,v 1.7.4.5 2003/06/30 16:27:10 stephane Exp $
  * Portable Audio I/O Library for ASIO Drivers

@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /**
  ****************************************************************************
  * <P> XML.c - implementation file for basic XML parser written in ANSI C++
@@ -75,7 +78,6 @@
  *
  * Copyright (c) 2002, Business-Insight
  * <a href="http://www.Business-Insight.com">Business-Insight</a>
- * All rights reserved.
  *
  ****************************************************************************
  */
@@ -754,7 +756,6 @@ XMLSTR fromXMLString(XMLCSTR s, int lo, XML *pXML)
     // sequences &amp;, &quot;, &apos;, &lt;, &gt; and replace them by the characters
     // &,",',<,>. This function is used internally by the XML Parser. All the calls to
     // the XML library will always gives you back "decoded" strings.
-    //
     // in: string (s) and length (lo) of string
     // out:  new allocated string converted from xml
     if (!s) return NULL;
@@ -1877,7 +1878,6 @@ static inline void charmemset(XMLSTR dest,XMLCHAR c,int l) { while (l--) *(dest+
 // private:
 // Creates an user friendly XML string from a given element with
 // appropriate white space and carriage returns.
-//
 // This recurses through all subnodes then adds contents of the nodes to the
 // string.
 int XMLNode::CreateXMLStringR(XMLNodeData *pEntry, XMLSTR lpszMarker, int nFormat)

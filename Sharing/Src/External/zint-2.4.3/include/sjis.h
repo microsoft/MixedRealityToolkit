@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /*  sjis.h - Unicode to Shift JIS lookup table
 
     libzint - the open source barcode library
@@ -34,8 +37,6 @@
 ## 
 ## Date: 06 Mar 2002 06:01:22 GMT
 ## License:
-## 	Copyright (C) 2001 earthian@tama.or.jp, All Rights Reserved.
-## 	Copyright (C) 2001 I'O, All Rights Reserved.
 ## 	You can use, modify, distribute this table freely.
 */
 

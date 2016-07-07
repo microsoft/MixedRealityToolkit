@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /*
 Real-time DXT1 & YCoCg DXT5 compression (Cg 2.0)
 Copyright (c) NVIDIA Corporation.

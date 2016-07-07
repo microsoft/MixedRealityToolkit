@@ -1,6 +1,8 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /*
  *  Copyright (c) 2014, Oculus VR, Inc.
- *  All rights reserved.
  *
  *  This source code is licensed under the BSD-style license found in the
  *  LICENSE file in the root directory of this source tree. An additional grant 
@@ -389,9 +391,7 @@ class AllGamesRoomsContainer
 	void GetRoomProperties(RoomID roomId, Room **room, DataStructures::Table *table);
 
 	// Quick join algorithm:
-	//
 	// -- ROOM JOIN --
-	//
 	// For all rooms:
 	// 1. Clear all quickJoinWorkingList from all rooms
 	// For all quick join members
@@ -399,19 +399,14 @@ class AllGamesRoomsContainer
 	// 3. For each of these rooms, record that this member can potentially join by storing a copy of the pointer into quickJoinWorkingList, if minimumPlayers => total room slots
 	// For all rooms:
 	// 4. For each room where there are enough potential quick join members to fill the room, join all those members at once. Remove these members from the quick join list. Go to 1.
-	//
 	// -- ROOM CREATE --
-	//
 	// 5. Sort quick join members by minimumPlayers, excluding members where minimumPlayers > total number of quick join members
 	// From greatest minimumPlayers to least
 	// 6. If the current member created a room, find out how many subsequent members would join based on the custom filter
 	// 7. If this satisfies minimumPlayers, have that user create a room and those subsequent members join.
-	// 
 	// -- EXPIRE
-	//
 	// 5. Remove from list if timeout has expired.
 	// 6. Return results of operation (List<timeoutExpired>, List<joinedARoom>, List<RoomsThatWereJoined>
-	//
 	// Returns false if processing skipped due to optimization timer
 	RoomsErrorCode ProcessQuickJoins( 
 		DataStructures::List<QuickJoinUser*> &timeoutExpired,

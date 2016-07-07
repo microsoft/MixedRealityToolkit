@@ -1,11 +1,11 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 //////////////////////////////////////////////////////////////////////////
 // IncomingConnectionListener.h
-//
 // Interface for objects that want to receive a callback when a new 
 // incoming connection is made.  Use with ConnectionManager::AcceptConnections
 // to start listening for incoming connection requests.  
-//
-// Copyright (C) 2014 Microsoft Corp.  All Rights Reserved
 //////////////////////////////////////////////////////////////////////////
 
 #pragma once

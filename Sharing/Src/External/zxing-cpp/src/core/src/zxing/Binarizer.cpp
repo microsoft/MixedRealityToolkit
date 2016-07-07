@@ -1,10 +1,12 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 // -*- mode:c++; tab-width:2; indent-tabs-mode:nil; c-basic-offset:2 -*-
 /*
  *  Binarizer.cpp
  *  zxing
  *
  *  Created by Ralf Kistner on 16/10/2009.
- *  Copyright 2008 ZXing authors All rights reserved.
  *  Modified by Lukasz Warchol on 02/02/2010.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");

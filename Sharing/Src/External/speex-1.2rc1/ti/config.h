@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /* Copyright (C) 2005 Psi Systems, Inc.
    File: config.h
    Main Speex option include file for TI C64xx, C54xx and C55xx processors

@@ -1,6 +1,8 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /*
  *  Copyright (c) 2014, Oculus VR, Inc.
- *  All rights reserved.
  *
  *  This source code is licensed under the BSD-style license found in the
  *  LICENSE file in the root directory of this source tree. An additional grant 
@@ -50,10 +52,8 @@ enum OutOfBandIdentifiers
 /// \note All these enumerations should be casted to (unsigned char) before writing them to RakNet::BitStream
 enum DefaultMessageIDTypes
 {
-	//
 	// RESERVED TYPES - DO NOT CHANGE THESE
 	// All types from RakPeer
-	//
 	/// These types are never returned to the user.
 	/// Ping from a connected system.  Update timestamps (internal use only)
 	ID_CONNECTED_PING,  
@@ -103,9 +103,7 @@ enum DefaultMessageIDTypes
 	ID_SND_RECEIPT_LOSS,
 	
 
-	//
 	// USER TYPES - DO NOT CHANGE THESE
-	//
 
 	/// RakPeer - In a client/server environment, our connection request to the server has been accepted.
 	ID_CONNECTION_REQUEST_ACCEPTED,

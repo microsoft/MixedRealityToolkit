@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /* $Id: miniwget.h,v 1.6 2010/12/09 16:11:33 nanard Exp $ */
 /* Project : miniupnp
  * Author : Thomas Bernard

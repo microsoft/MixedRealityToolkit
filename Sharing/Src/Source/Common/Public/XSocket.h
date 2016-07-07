@@ -1,12 +1,12 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 //////////////////////////////////////////////////////////////////////////
 // XSocket.h
-//
 // Represents a network socket connection to a single remote machine.  All network
 // communications should be sent and received through here.  
 // XSocket is reference counted, so only access through XSocketPtr.
 // Once there are no more references, the socket will automatically close.  
-//
-// Copyright (C) 2014 Microsoft Corp.  All Rights Reserved
 //////////////////////////////////////////////////////////////////////////
 
 #pragma once

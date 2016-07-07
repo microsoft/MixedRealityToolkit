@@ -1,6 +1,8 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /*
  *  Copyright (c) 2014, Oculus VR, Inc.
- *  All rights reserved.
  *
  *  This source code is licensed under the BSD-style license found in the
  *  LICENSE file in the root directory of this source tree. An additional grant 
@@ -214,9 +216,7 @@ public:
 	// RNS2_NativeClient doesn't automatically call recvfrom in a thread - user must call Update() from the main thread
 	// This causes buffered sends to send, until send is asynch pending
 	// It causes recvfrom events to trigger the callback, and push a message to the event handler
-	//
 	// Example:
-	// 
 	// DataStructures::List< RakNet::RakNetSocket2* > sockets;
 	// rakPeerInterface->GetSockets(sockets);
 	// for (unsigned int i=0; i < sockets.Size(); i++)

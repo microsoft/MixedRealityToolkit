@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /**
 * Original file by the_viking, fixed by R√¥mulo Fernandes, fixed by Emmanuel Nars
 * Should emulate windows finddata structure

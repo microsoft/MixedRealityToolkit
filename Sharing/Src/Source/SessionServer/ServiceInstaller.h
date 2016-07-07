@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /****************************** Module Header ******************************\
 * Module Name:  ServiceInstaller.h
 * Project:      CppWindowsService
@@ -17,12 +20,9 @@
 #pragma once
 
 
-//
 //   FUNCTION: InstallService
-//
 //   PURPOSE: Install the current application as a service to the local 
 //   service control manager database.
-//
 //   PARAMETERS:
 //   * pszServiceName - the name of the service to be installed
 //   * pszDisplayName - the display name of the service
@@ -34,10 +34,8 @@
 //     must start before this service.
 //   * pszAccount - the name of the account under which the service runs.
 //   * pszPassword - the password to the account name.
-//
 //   NOTE: If the function fails to install the service, it prints the error 
 //   in the standard output stream for users to diagnose the problem.
-//
 void InstallService(PWSTR pszServiceName, 
                     PWSTR pszDisplayName, 
                     DWORD dwStartType,
@@ -46,28 +44,19 @@ void InstallService(PWSTR pszServiceName,
                     PWSTR pszPassword);
 
 
-//
 //   FUNCTION: UninstallService
-//
 //   PURPOSE: Stop and remove the service from the local service control 
 //   manager database.
-//
 //   PARAMETERS: 
 //   * pszServiceName - the name of the service to be removed.
-//
 //   NOTE: If the function fails to uninstall the service, it prints the 
 //   error in the standard output stream for users to diagnose the problem.
-//
 void UninstallService(PWSTR pszServiceName);
 
 
 
-//
 //   FUNCTION: RunService
-//
 //   PURPOSE: Start the service running
-//
 //   PARAMETERS: 
 //   * pszServiceName - the name of the service to run.
-//
 bool RunService(PWSTR pszServiceName);

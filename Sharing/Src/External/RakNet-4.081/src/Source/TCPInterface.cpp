@@ -1,6 +1,8 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /*
  *  Copyright (c) 2014, Oculus VR, Inc.
- *  All rights reserved.
  *
  *  This source code is licensed under the BSD-style license found in the
  *  LICENSE file in the root directory of this source tree. An additional grant 
@@ -1032,7 +1034,7 @@ RAK_THREAD_DECLARATION(RakNet::UpdateTCPInterfaceLoop)
 				sts->remoteClients[i].isActiveMutex.Lock();
 				if (sts->remoteClients[i].isActive)
 				{
-					// calling FD_ISSET with -1 as socket (that’s what 0 is set to) produces a bus error under Linux 64-Bit
+					// calling FD_ISSET with -1 as socket (thatï¿½s what 0 is set to) produces a bus error under Linux 64-Bit
 					__TCPSOCKET__ socketCopy = sts->remoteClients[i].socket;
 					if (socketCopy != 0)
 					{
@@ -1134,7 +1136,7 @@ RAK_THREAD_DECLARATION(RakNet::UpdateTCPInterfaceLoop)
 						i++;
 						continue;
 					}
-					// calling FD_ISSET with -1 as socket (that’s what 0 is set to) produces a bus error under Linux 64-Bit
+					// calling FD_ISSET with -1 as socket (thatï¿½s what 0 is set to) produces a bus error under Linux 64-Bit
 					__TCPSOCKET__ socketCopy = sts->remoteClients[i].socket;
 					if (socketCopy == 0)
 					{
@@ -1154,7 +1156,6 @@ RAK_THREAD_DECLARATION(RakNet::UpdateTCPInterfaceLoop)
 // 							in.s_addr = sts->remoteClients[i].systemAddress.binaryAddress;
 // 							RAKNET_DEBUG_PRINTF("Socket error %i on %s:%i\n", err,inet_ntoa( in ), sts->remoteClients[i].systemAddress.GetPort() );
 // 						}
-// 						
 // #endif
 						// Connection lost abruptly
 						SystemAddress *lostConnectionSystemAddress=sts->lostConnections.Allocate( _FILE_AND_LINE_ );

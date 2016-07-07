@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /* $Id: minisoap.h,v 1.4 2010/04/12 20:39:41 nanard Exp $ */
 /* Project : miniupnp
  * Author : Thomas Bernard

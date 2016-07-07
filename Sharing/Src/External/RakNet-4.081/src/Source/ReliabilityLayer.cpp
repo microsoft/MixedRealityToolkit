@@ -1,6 +1,8 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /*
  *  Copyright (c) 2014, Oculus VR, Inc.
- *  All rights reserved.
  *
  *  This source code is licensed under the BSD-style license found in the
  *  LICENSE file in the root directory of this source tree. An additional grant 
@@ -798,7 +800,6 @@ bool ReliabilityLayer::HandleSocketReceiveFromConnectedPlayer(
 // 				{
 // 					// Previously used slot, rather than empty unreliable slot
 // 					printf("%p Ack %i is duplicate\n", this, datagramNumber.val);
-// 
 //  					congestionManager.OnDuplicateAck(timeRead, datagramNumber);
 // 				}
 			}
@@ -1775,7 +1776,6 @@ void ReliabilityLayer::Update( RakNetSocket2 *s, SystemAddress &systemAddress, i
 					{
 						// 						if (cur==end)
 						// 							break;
-						// 
 						// 						cur=cur->unreliableNext;
 
 						// They should be inserted in-order, so no need to iterate past the first failure
@@ -3739,7 +3739,6 @@ void ReliabilityLayer::ValidateResendList(void) const
 // 	for (unsigned int i=0; i < RESEND_BUFFER_ARRAY_LENGTH; i++)
 // 	if (resendBuffer[i])
 // 	count1++;
-// 
 // 	if (resendLinkedListHead)
 // 	{
 // 	InternalPacket *internalPacket = resendLinkedListHead;

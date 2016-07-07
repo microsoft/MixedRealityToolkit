@@ -1,9 +1,11 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /*
 ** The OpenGL Extension Wrangler Library
 ** Copyright (C) 2002-2008, Milan Ikits <milan ikits[]ieee org>
 ** Copyright (C) 2002-2008, Marcelo E. Magallon <mmagallo[]debian org>
 ** Copyright (C) 2002, Lev Povalahev
-** All rights reserved.
 ** 
 ** Redistribution and use in source and binary forms, with or without 
 ** modification, are permitted provided that the following conditions are met:
@@ -33,7 +35,6 @@
  * Mesa 3-D graphics library
  * Version:  7.0
  *
- * Copyright (C) 1999-2007  Brian Paul   All Rights Reserved.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the "Software"),

@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <memory.h>
@@ -123,7 +126,6 @@ int main( int argc, const char* argv[] )
 // 			void*	pOutputData;
 // 			int		outputLength;
 // 			bool bCompressSuccess = DXTCompressor::CompressRGBAImageData( DXT1, pSourceData, w, h, &pOutputData, &outputLength, false );
-// 
 // 			// Clean up
 // 			delete [] pOutputData;
 // 			pOutputData = NULL;

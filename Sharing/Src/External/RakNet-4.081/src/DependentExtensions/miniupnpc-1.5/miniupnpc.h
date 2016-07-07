@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /* $Id: miniupnpc.h,v 1.19 2009/10/10 19:15:35 nanard Exp $ */
 /* Project: miniupnp
  * http://miniupnp.free.fr/

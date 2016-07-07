@@ -1,6 +1,8 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /* $Id: upnperrors.h,v 1.2 2008/07/02 23:31:15 nanard Exp $ */
 /* (c) 2007 Thomas Bernard
- * All rights reserved.
  * MiniUPnP Project.
  * http://miniupnp.free.fr/ or http://miniupnp.tuxfamily.org/
  * This software is subjet to the conditions detailed in the

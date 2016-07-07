@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /* (C) 2013-2015, The Regents of The University of Michigan
 All rights reserved.
 
@@ -62,18 +65,15 @@ static inline void homography_project(const matd_t *H, double x, double y, doubl
 // [ fx 0  cx 0 ]
 // [  0 fy cy 0 ]
 // [  0  0  1 0 ]
-//
 // And that the homography is equal to the projection matrix times the model matrix,
 // recover the model matrix (which is returned). Note that the third column of the model
 // matrix is missing in the expresison below, reflecting the fact that the homography assumes
 // all points are at z=0 (i.e., planar) and that the element of z is thus omitted.
 // (3x1 instead of 4x1).
-//
 // [ fx 0  cx 0 ] [ R00  R01  TX ]    [ H00 H01 H02 ]
 // [  0 fy cy 0 ] [ R10  R11  TY ] =  [ H10 H11 H12 ]
 // [  0  0  1 0 ] [ R20  R21  TZ ] =  [ H20 H21 H22 ]
 //                [  0    0    1 ]
-//
 // fx*R00 + cx*R20 = H00   (note, H only known up to scale; some additional adjustments required; see code.)
 // fx*R01 + cx*R21 = H01
 // fx*TX  + cx*TZ  = H02
@@ -87,7 +87,6 @@ matd_t *homography_to_pose(const matd_t *H, double fx, double fy, double cx, dou
 
 // Similar to above
 // Recover the model view matrix assuming that the projection matrix is:
-//
 // [ F  0  A  0 ]     (see glFrustrum)
 // [ 0  G  B  0 ]
 // [ 0  0  C  D ]

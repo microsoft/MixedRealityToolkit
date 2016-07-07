@@ -1,11 +1,11 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 //////////////////////////////////////////////////////////////////////////
 // NetworkHandshake.cpp
-//
 // Class that validates a new connection by passing back and forth handshake
 // messages using user-provided handshake logic.  Notifies the given callback
 // when the handshake either succeeds or fails
-//
-// Copyright (C) 2014 Microsoft Corp.  All Rights Reserved
 //////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"

@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 // jpgd.h - C++ class for JPEG decompression.
 // Public domain, Rich Geldreich <richgel99@gmail.com>
 #ifndef JPEG_DECODER_H

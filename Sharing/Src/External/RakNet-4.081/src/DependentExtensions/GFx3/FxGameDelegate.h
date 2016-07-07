@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /**********************************************************************
 
 Filename    :   FxGameDelegate.h
@@ -5,7 +8,6 @@ Content     :   Communication logic for CLIK GameDelegate
 Created     :
 Authors     :   Prasad Silva
 
-Copyright   :   (c) 2005-2009 Scaleform Corp. All Rights Reserved.
 
 This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING
 THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR ANY PURPOSE.
@@ -22,25 +24,19 @@ class FxDelegate;
 class FxDelegateArgs;
 
 
-//
 // Interface implemented by all callback handlers. These handlers register 
 // callbacks with the FxGameDelegate.
-//
 class FxDelegateHandler : public GRefCountBase<FxDelegateHandler, GStat_Default_Mem>
 {
 public:
     virtual ~FxDelegateHandler() {}
 
-    //
     // All callback methods must have the following signature. To produce a response
     // to the callback, push parameters to the game delegate.
-    //
     typedef void (*CallbackFn)(const FxDelegateArgs& params);
 
-    //
     // Interface implemented by callback registrars. The handler should 
     // pass the appropriate parameters to the Visit method.
-    //
     class CallbackProcessor
     {
     public:
@@ -48,11 +44,9 @@ public:
         virtual void    Process(const GString& methodName, CallbackFn method) = 0;
     };
 
-    //
     // Callback registrar visitor method
     // Implementations are expected to call the registrar's Process method
     // for all callbacks.
-    //
     virtual void        Accept(CallbackProcessor* cbreg) = 0;
 };
 
@@ -60,10 +54,8 @@ public:
 //////////////////////////////////////////////////////////////////////////
 
 
-//
 // Callback response parameters
 // The 
-//
 class FxResponseArgsBase
 {
 public:
@@ -71,9 +63,7 @@ public:
     virtual UInt GetValues(GFxValue** pparams) = 0;
 };
 
-//
 // Callback response that uses stack based storage
-//
 template <int N>
 class FxResponseArgs : public FxResponseArgsBase
 {
@@ -94,9 +84,7 @@ private:
     UInt        Index;
 };
 
-//
 // Callback response that uses dynamically allocated storage
-//
 class FxResponseArgsList : public FxResponseArgsBase
 {
 public:
@@ -111,9 +99,7 @@ private:
 //////////////////////////////////////////////////////////////////////////
 
 
-//
 // Parameters passed to the callback handler
-//
 class FxDelegateArgs
 {
 public:
@@ -145,24 +131,18 @@ private:
 //////////////////////////////////////////////////////////////////////////
 
 
-//
 // Callback manager that marshals calls from ActionScript 
-//
 class FxDelegate : public GFxExternalInterface
 {
 public:
-    //
     // Callback target
-    //
     struct CallbackDefn
     {
         GPtr<FxDelegateHandler>         pThis;
         FxDelegateHandler::CallbackFn   pCallback;
     };
 
-    //
     // Callback hash
-    //
     struct CallbackHashFunctor
     {
         UPInt  operator()(const char* data) const
@@ -176,15 +156,11 @@ public:
 
     FxDelegate();
 
-    //
     // Install and uninstall callbacks
-    //
     void            RegisterHandler(FxDelegateHandler* callback);
     void            UnregisterHandler(FxDelegateHandler* callback);
 
-    //
     // Call a method registered with the AS2 GameDelegate instance
-    //
     static void    Invoke(GFxMovieView* pmovieView, const char* methodName, 
                             FxResponseArgsBase& args);
 	
@@ -192,16 +168,12 @@ public:
 	static void    Invoke2(GFxMovieView* pmovieView, const char* methodName, 
 		FxResponseArgsBase& args);
 
-    //
     // ExternalInterface callback entry point
-    //
     void            Callback(GFxMovieView* pmovieView, const char* methodName, 
                                 const GFxValue* args, UInt argCount);
 
 private:
-    //
     // Callbacks installed with the game delegate
-    //
     CallbackHash    Callbacks;
 };
 

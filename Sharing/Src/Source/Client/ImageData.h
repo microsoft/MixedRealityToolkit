@@ -1,10 +1,10 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 //////////////////////////////////////////////////////////////////////////
 // ImageData.h
-//
 // Simple container for image data.  Uses thread-safe reference counting
 // so it can be passed around to different threads for processing
-//
-// Copyright (C) 2015 Microsoft Corp.  All Rights Reserved
 //////////////////////////////////////////////////////////////////////////
 
 #pragma once

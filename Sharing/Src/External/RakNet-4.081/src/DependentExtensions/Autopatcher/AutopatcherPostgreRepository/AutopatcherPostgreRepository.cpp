@@ -1,6 +1,8 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /*
  *  Copyright (c) 2014, Oculus VR, Inc.
- *  All rights reserved.
  *
  *  This source code is licensed under the BSD-style license found in the
  *  LICENSE file in the root directory of this source tree. An additional grant 
@@ -487,7 +489,6 @@ int AutopatcherPostgreRepository::GetPatches(const char *applicationName, FileLi
 
 
 						// Otherwise, write the hash of the new version and then write the patch to get to that version.
-						// 
 						// int patchAlgorithm = ntohl(*((int*)PQgetvalue(result, 0, patchAlgorithmColumnIndex)));
 
 						const char *tv = PQgetvalue(patchResult, 0, patchAlgorithmColumnIndex);

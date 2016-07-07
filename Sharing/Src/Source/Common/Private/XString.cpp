@@ -1,11 +1,11 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 //////////////////////////////////////////////////////////////////////////
 // XString.cpp
-//
 // String class that is exposed across the interface boundary.  Using this
 // class allows us to reduce the number of times full strings need to be passed
 // back and forth across the boundary, which can be expensive.  
-//
-// Copyright (C) 2014 Microsoft Corp.  All Rights Reserved
 //////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"

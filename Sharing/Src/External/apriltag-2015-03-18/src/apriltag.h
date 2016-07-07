@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /* (C) 2013-2015, The Regents of The University of Michigan
 All rights reserved.
 
@@ -150,7 +153,6 @@ struct apriltag_detector
     // to" strong gradients nearby. This is useful when decimation is
     // employed, as it can increase the quality of the initial quad
     // estimate substantially. Generally recommended to be on (1).
-    //
     // Very computationally inexpensive. Option is ignored if
     // quad_decimate = 1.
     int refine_edges;
@@ -167,7 +169,6 @@ struct apriltag_detector
     // the tag. This generally increases the number of successfully
     // detected tags, though not as effectively (or quickly) as
     // refine_decode.
-    //
     // This option must be enabled in order for "goodness" to be
     // computed.
     int refine_pose;

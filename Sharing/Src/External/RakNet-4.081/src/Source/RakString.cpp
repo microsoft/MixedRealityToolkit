@@ -1,6 +1,8 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /*
  *  Copyright (c) 2014, Oculus VR, Inc.
- *  All rights reserved.
  *
  *  This source code is licensed under the BSD-style license found in the
  *  LICENSE file in the root directory of this source tree. An additional grant 
@@ -452,18 +454,14 @@ void RakString::SetChar( unsigned index, RakNet::RakString s )
 #ifdef _WIN32
 WCHAR * RakString::ToWideChar(void)
 {
-	//
 	// Special case of NULL or empty input string
-	//
 	if ( (sharedString->c_str == NULL) || (*sharedString->c_str == '\0') )
 	{
 		// Return empty string
 		return L"";
 	}
 
-	//
 	// Get size of destination UTF-16 buffer, in WCHAR's
-	//
 	int cchUTF16 = ::MultiByteToWideChar(
 		CP_UTF8,                // convert from UTF-8
 		0,						// Flags
@@ -480,14 +478,10 @@ WCHAR * RakString::ToWideChar(void)
 		return 0;
 	}
 
-	//
 	// Allocate destination buffer to store UTF-16 string
-	//
 	WCHAR * pszUTF16 = RakNet::OP_NEW_ARRAY<WCHAR>(cchUTF16,__FILE__,__LINE__);
 
-	//
 	// Do the conversion from UTF-8 to UTF-16
-	//
 	int result = ::MultiByteToWideChar(
 		CP_UTF8,                // convert from UTF-8
 		0,						// Buffer

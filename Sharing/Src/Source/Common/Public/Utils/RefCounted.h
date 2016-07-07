@@ -1,10 +1,10 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /////////////////////////////////////////////////////////
 // RefCounted.h
-//
 // Base class for types that use internal reference
 // counting.  Use with ref_ptr.  
-//
-// Copyright (C) 2014 Microsoft Inc, All rights reserved
 /////////////////////////////////////////////////////////
 
 #pragma once

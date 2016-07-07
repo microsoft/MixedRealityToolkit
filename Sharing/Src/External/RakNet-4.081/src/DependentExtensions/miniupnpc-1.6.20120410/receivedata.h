@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /* $Id: receivedata.h,v 1.2 2012/03/05 19:42:47 nanard Exp $ */
 /* Project: miniupnp
  * http://miniupnp.free.fr/ or http://miniupnp.tuxfamily.org/

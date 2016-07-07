@@ -1,7 +1,9 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /***
 * ==++==
 *
-* Copyright (c) Microsoft Corporation. All rights reserved. 
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
 * You may obtain a copy of the License at
@@ -52,9 +54,7 @@ namespace utility
 typedef uint64_t size64_t;
 
 #ifdef _UTF16_STRINGS
-//
 // On Windows, all strings are wide
-//
 typedef wchar_t char_t ;
 typedef std::wstring string_t;
 #define _XPLATSTR(x) L ## x
@@ -69,9 +69,7 @@ typedef std::wstringstream stringstream_t;
 #define ucin std::wcin
 #define ucerr std::wcerr
 #else
-//
 // On POSIX platforms, all strings are narrow
-//
 typedef char char_t;
 typedef std::string string_t;
 #define _XPLATSTR(x) x

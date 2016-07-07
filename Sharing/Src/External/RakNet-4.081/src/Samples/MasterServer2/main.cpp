@@ -1,6 +1,8 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /*
  *  Copyright (c) 2014, Oculus VR, Inc.
- *  All rights reserved.
  *
  *  This source code is licensed under the BSD-style license found in the
  *  LICENSE file in the root directory of this source tree. An additional grant 
@@ -63,7 +65,7 @@ void main_RakNet_Post(void)
 	json_object_set(jsonObject, "__gameId", json_string("MotoGP_13") );
 	json_object_set(jsonObject, "__clientReqId", json_integer(0) );
 	json_object_set(jsonObject, "__timeoutSec", json_integer(60) );
-	//json_object_set(jsonObject, "mapname", json_string(RakString::NonVariadic("Joué-lés-tours").URLEncode().C_String()) );
+	//json_object_set(jsonObject, "mapname", json_string(RakString::NonVariadic("Jouï¿½-lï¿½s-tours").URLEncode().C_String()) );
 
 	char *ds = json_dumps(jsonObject,0);
 	RakString rspost = RakString::FormatForPOST(

@@ -1,5 +1,7 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /* ====================================================================
- * Copyright (c) 2008 The OpenSSL Project. All rights reserved.
  *
  * Rights for redistribution and usage in source and binary
  * forms are granted according to the OpenSSL license.

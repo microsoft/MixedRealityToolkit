@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /* (C) 2013-2015, The Regents of The University of Michigan
 All rights reserved.
 
@@ -389,7 +392,6 @@ matd_svd_t matd_svd(matd_t *A);
 // LU decomposition such that A = PLU, where P is a permutation
 // matrix, L is a lower triangular matrix, and U is an upper
 // triangular matrix.
-//
 typedef struct
 {
     // was the input matrix singular? When a zero pivot is found, this

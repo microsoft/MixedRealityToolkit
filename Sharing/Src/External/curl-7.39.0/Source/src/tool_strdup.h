@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 #ifndef HEADER_TOOL_STRDUP_H
 #define HEADER_TOOL_STRDUP_H
 /***************************************************************************

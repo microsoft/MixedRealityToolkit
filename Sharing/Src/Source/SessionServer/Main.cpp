@@ -1,12 +1,12 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 //////////////////////////////////////////////////////////////////////////
 // Main.cpp
-//
 // The file defines the entry point of the application.  According to the
 // arguments in the command line, the function installs or uninstalls or
 // starts the service by calling into different routines.  Code from Windows
 // Service sample code.  
-//
-// Copyright (C) 2014 Microsoft Corp.  All Rights Reserved
 //////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
@@ -16,9 +16,7 @@
 #include <iostream>
 #include <iosfwd>
 
-// 
 // Settings of the service
-// 
 
 // Internal name of the service
 #define SERVICE_NAME             L"SharingService"

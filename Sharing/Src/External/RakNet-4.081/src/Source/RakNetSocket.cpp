@@ -1,6 +1,8 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /*
  *  Copyright (c) 2014, Oculus VR, Inc.
- *  All rights reserved.
  *
  *  This source code is licensed under the BSD-style license found in the
  *  LICENSE file in the root directory of this source tree. An additional grant 
@@ -60,7 +62,6 @@ RakNetSocket::~RakNetSocket()
 	}
 #endif
 }
-// 
 // void RakNetSocket::Accept(
 // struct sockaddr *addr,
 // 	int *addrlen)
@@ -68,7 +69,6 @@ RakNetSocket::~RakNetSocket()
 // 	accept__(s, addr, addrlen);
 // }
 
-// 
 // void RakNetSocket::Close( void )
 // {
 // 	closesocket__(s);

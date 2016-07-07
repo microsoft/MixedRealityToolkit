@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /* $Id: codelength.h,v 1.1 2008/10/06 22:04:06 nanard Exp $ */
 /* Project : miniupnp
  * Author : Thomas BERNARD

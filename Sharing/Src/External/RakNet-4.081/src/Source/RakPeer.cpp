@@ -1,6 +1,8 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /*
  *  Copyright (c) 2014, Oculus VR, Inc.
- *  All rights reserved.
  *
  *  This source code is licensed under the BSD-style license found in the
  *  LICENSE file in the root directory of this source tree. An additional grant 
@@ -9,7 +11,6 @@
  */
 
 // \file
-//
 
 
 
@@ -79,7 +80,6 @@ RAK_THREAD_DECLARATION(UDTConnect);
 
 
 #if   defined(_WIN32)
-//
 #else
 /*
 #include <alloca.h> // Console 2
@@ -765,14 +765,10 @@ StartupResult RakPeer::Startup( unsigned int maxConnections, SocketDescriptor *s
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Description:
 // Must be called while offline
-//
 // If you accept connections, you must call this or else security will not be enabled for incoming connections.
-//
 // This feature requires more round trips, bandwidth, and CPU time for the connection handshake
 // x64 builds require under 25% of the CPU time of other builds
-//
 // See the Encryption sample for example usage
-//
 // Parameters:
 // publicKey = A pointer to the public key for accepting new connections
 // privateKey = A pointer to the private key for accepting new connections
@@ -915,7 +911,6 @@ bool RakPeer::IsInSecurityExceptionList(const char *ip)
 // Sets how many incoming connections are allowed.  If this is less than the number of players currently connected, no
 // more players will be allowed to connect.  If this is greater than the maximum number of peers allowed, it will be reduced
 // to the maximum number of peers allowed.  Defaults to 0.
-//
 // Parameters:
 // numberAllowed - Maximum number of incoming connections allowed.
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -949,7 +944,6 @@ unsigned short RakPeer::NumberOfConnections(void) const
 // Description:
 // Sets the password incoming connections must match in the call to Connect (defaults to none)
 // Pass 0 to passwordData to specify no password
-//
 // Parameters:
 // passwordData: A data block that incoming connections must match.  This can be just a password, or can be a stream of data.
 // - Specify 0 for no password data
@@ -997,13 +991,11 @@ void RakPeer::GetIncomingPassword( char* passwordData, int *passwordDataLength  
 // or receive gets a packet with the type identifier ID_CONNECTION_REQUEST_ACCEPTED.  If the connection is not
 // successful, such as rejected connection or no response then neither of these things will happen.
 // Requires that you first call Initialize
-//
 // Parameters:
 // host: Either a dotted IP address or a domain name
 // remotePort: Which port to connect to on the remote machine.
 // passwordData: A data block that must match the data block on the server.  This can be just a password, or can be a stream of data
 // passwordDataLength: The length in bytes of passwordData
-//
 // Returns:
 // True on successful initiation. False on incorrect parameters, internal error, or too many existing peers
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1252,7 +1244,6 @@ inline bool RakPeer::IsActive( void ) const
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Description:
 // Fills the array remoteSystems with the systemAddress of all the systems we are connected to
-//
 // Parameters:
 // remoteSystems (out): An array of SystemAddress structures to be filled with the SystemAddresss of the systems we are connected to
 // - pass 0 to remoteSystems to only get the number of systems we are connected to
@@ -1311,7 +1302,6 @@ uint32_t RakPeer::IncrementNextSendReceipt(void)
 // Sends a block of data to the specified system that you are connected to.
 // This function only works while the client is connected (Use the Connect function).
 // The first byte should be a message identifier starting at ID_USER_PACKET_ENUM
-//
 // Parameters:
 // data: The block of data to send
 // length: The size in bytes of the data to send
@@ -1432,14 +1422,12 @@ uint32_t RakPeer::Send( const RakNet::BitStream * bitStream, PacketPriority prio
 }
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Sends multiple blocks of data, concatenating them automatically.
-//
 // This is equivalent to:
 // RakNet::BitStream bs;
 // bs.WriteAlignedBytes(block1, blockLength1);
 // bs.WriteAlignedBytes(block2, blockLength2);
 // bs.WriteAlignedBytes(block3, blockLength3);
 // Send(&bs, ...)
-//
 // This function only works while connected
 // \param[in] data An array of pointers to blocks of data
 // \param[in] lengths An array of integers indicating the length of each block of data
@@ -1487,7 +1475,6 @@ uint32_t RakPeer::SendList( const char **data, const int *lengths, const int num
 // Description:
 // Gets a packet from the incoming packet queue. Use DeallocatePacket to deallocate the packet after you are done with it.
 // Check the Packet struct at the top of CoreNetworkStructures.h for the format of the struct
-//
 // Returns:
 // 0 if no packets are waiting to be handled, otherwise an allocated packet
 // If the client is not active this will also return 0, as all waiting packets are flushed when the client is Disconnected
@@ -1661,7 +1648,6 @@ unsigned int RakPeer::GetMaximumNumberOfPeers( void ) const
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Description:
 // Close the connection to another host (if we initiated the connection it will disconnect, if they did it will kick them out).
-//
 // Parameters:
 // target: Which connection to close
 // sendDisconnectionNotification: True to send ID_DISCONNECTION_NOTIFICATION to the recipient. False to close it silently.
@@ -1794,10 +1780,8 @@ ConnectionState RakPeer::GetConnectionState(const AddressOrGUID systemIdentifier
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Description:
 // Given a systemAddress, returns an index from 0 to the maximum number of players allowed - 1.
-//
 // Parameters
 // systemAddress - The systemAddress to search for
-//
 // Returns
 // An integer from 0 to the maximum number of peers -1, or -1 if that player is not found
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1809,10 +1793,8 @@ int RakPeer::GetIndexFromSystemAddress( const SystemAddress systemAddress ) cons
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Description:
 // This function is only useful for looping through all players.
-//
 // Parameters
 // index - an integer between 0 and the maximum number of players allowed - 1.
-//
 // Returns
 // A valid systemAddress or UNASSIGNED_SYSTEM_ADDRESS if no such player at that index
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1872,7 +1854,6 @@ void RakPeer::GetSystemList(DataStructures::List<SystemAddress> &addresses, Data
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Description:
 // Bans an IP from connecting. Banned IPs persist between connections.
-//
 // Parameters
 // IP - Dotted IP address.  Can use * as a wildcard, such as 128.0.0.* will ban
 // All IP addresses starting with 128.0.0
@@ -1922,7 +1903,6 @@ void RakPeer::AddToBanList( const char *IP, RakNet::TimeMS milliseconds )
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Description:
 // Allows a previously banned IP to connect.
-//
 // Parameters
 // IP - Dotted IP address.  Can use * as a wildcard, such as 128.0.0.* will ban
 // All IP addresses starting with 128.0.0
@@ -1990,10 +1970,8 @@ void RakPeer::SetLimitIPConnectionFrequency(bool b)
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Description:
 // Determines if a particular IP is banned.
-//
 // Parameters
 // IP - Complete dotted IP address
-//
 // Returns
 // True if IP matches any IPs in the ban list, accounting for any wildcards.
 // False otherwise.
@@ -2086,7 +2064,6 @@ bool RakPeer::IsBanned( const char *IP )
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Description:
 // Send a ping to the specified connected system.
-//
 // Parameters:
 // target - who to ping
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -2100,7 +2077,6 @@ void RakPeer::Ping( const SystemAddress target )
 // Send a ping to the specified unconnected system.
 // The remote system, if it is Initialized, will respond with ID_UNCONNECTED_PONG.
 // The final ping time will be encoded in the following sizeof(RakNet::TimeMS) bytes.  (Default is 4 bytes - See __GET_TIME_64BIT in RakNetTypes.h
-//
 // Parameters:
 // host: Either a dotted IP address or a domain name.  Can be 255.255.255.255 for LAN broadcast.
 // remotePort: Which port to connect to on the remote machine.
@@ -2162,7 +2138,6 @@ bool RakPeer::Ping( const char* host, unsigned short remotePort, bool onlyReplyO
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Description:
 // Returns the average of all ping times read for a specified target
-//
 // Parameters:
 // target - whose time to read
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -2191,7 +2166,6 @@ int RakPeer::GetAveragePing( const AddressOrGUID systemIdentifier )
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Description:
 // Returns the last ping time read for the specific player or -1 if none read yet
-//
 // Parameters:
 // target - whose time to read
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -2213,7 +2187,6 @@ int RakPeer::GetLastPing( const AddressOrGUID systemIdentifier ) const
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Description:
 // Returns the lowest ping time read or -1 if none read yet
-//
 // Parameters:
 // target - whose time to read
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -2231,7 +2204,6 @@ int RakPeer::GetLowestPing( const AddressOrGUID systemIdentifier ) const
 // Description:
 // Ping the remote systems every so often.  This is off by default
 // This will work anytime
-//
 // Parameters:
 // doPing - True to start occasional pings.  False to stop them.
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -2364,7 +2336,6 @@ void RakPeer::SetInternalID(SystemAddress systemAddress, int index)
 // Return the unique address identifier that represents you on the the network and is based on your external
 // IP / port (the IP / port the specified player uses to communicate with you)
 // Note that unlike in previous versions, this is a struct and is not sequential
-//
 // Parameters:
 // target: Which remote system you are referring to for your external ID
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -2680,7 +2651,6 @@ bool RakPeer::IsLocalIP( const char *ip )
 // Description:
 // Allow or disallow connection responses from any IP. Normally this should be false, but may be necessary
 // when connection to servers with multiple IP addresses
-//
 // Parameters:
 // allow - True to allow this behavior, false to not allow.  Defaults to false.  Value persists between connections
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -2693,10 +2663,8 @@ void RakPeer::AllowConnectionResponseIPMigration( bool allow )
 // Description:
 // Sends a message ID_ADVERTISE_SYSTEM to the remote unconnected system.
 // This will tell the remote system our external IP outside the LAN, and can be used for NAT punch through
-//
 // Requires:
 // The sender and recipient must already be started via a successful call to Initialize
-//
 // host: Either a dotted IP address or a domain name
 // remotePort: Which port to connect to on the remote machine.
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -2774,7 +2742,6 @@ void RakPeer::SendTTL( const char* host, unsigned short remotePort, int ttl, uns
 
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Attatches a Plugin interface to run code automatically on message receipt in the Receive call
-//
 // \param messageHandler Pointer to a plugin to attach
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 void RakPeer::AttachPlugin( PluginInterface2 *plugin )
@@ -2802,7 +2769,6 @@ void RakPeer::AttachPlugin( PluginInterface2 *plugin )
 
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Detaches a Plugin interface to run code automatically on message receipt
-//
 // \param messageHandler Pointer to a plugin to detach
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 void RakPeer::DetachPlugin( PluginInterface2 *plugin )
@@ -2839,7 +2805,6 @@ void RakPeer::DetachPlugin( PluginInterface2 *plugin )
 
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Put a packet back at the end of the receive queue in case you don't want to deal with it immediately
-//
 // packet The packet you want to push back.
 // pushAtHead True to push the packet so that the next receive call returns it.  False to push it at the end of the queue (obviously pushing it at the end makes the packets out of order)
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -4553,7 +4518,6 @@ void RakPeer::GenerateGUID(void)
 // 	(void) binaryAddress;
 // 	(void) port;
 // 	(void) rakPeer;
-//
 // }
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 namespace RakNet {
@@ -6369,7 +6333,6 @@ RAK_THREAD_DECLARATION(RakNet::UpdateNetworkLoop)
 		+ cat::AuthenticatedEncryption::OVERHEAD_BYTES
 #endif
 		);
-// 
 	rakPeer->isMainLoopThreadActive = true;
 
 	while ( rakPeer->endThreads == false )

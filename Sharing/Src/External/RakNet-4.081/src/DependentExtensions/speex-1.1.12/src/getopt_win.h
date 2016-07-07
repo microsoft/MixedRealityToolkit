@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /* Declarations for getopt.
    Copyright (C) 1989,90,91,92,93,94,96,97,98 Free Software Foundation, Inc.
    This file is part of the GNU C Library.

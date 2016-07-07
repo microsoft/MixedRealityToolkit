@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /* (C) 2013-2015, The Regents of The University of Michigan
 All rights reserved.
 
@@ -51,30 +54,21 @@ struct image_u32
 
 /////////////////////////////////////
 // IMPORTANT NOTE ON BYTE ORDER
-//
 // This format is designed to make dealing with 4 color channel images
 // efficient by loading an entire pixel into a single uint32_t. This
 // raises a number of endian-ness and format issues.
-//
 // The SUPPORTED format is byte-ordered: R, G, B, A. Whether the R
 // channel ends up mapped to high-order bits or low-order bits depends
 // on the endianness of your platform..
-//
 // On little-endian machines (x86, ARM), this will look like:
-//
 //     uint32_t v = (a<<24) + (b<<16) + (g<<8) + (r<<0)
-//
 // On big-endian machines, this will look like:
-//
 //     uint32_t v = (r<<24) + (g<<16) + (b<<8) + (a<<0)
-//
 // Obviously, you can do whatever you want, but if you don't adhere
 // to this convention, you may find your color channels oddly swapped around
 // if you convert between formats.
-//
 // Since most platforms are little endian, you could simply assume
 // little-endian ordering and add:
-//
 // #ifdef __ORDER_BIG_ENDIAN
 //   #error big endian not supported
 // #endif

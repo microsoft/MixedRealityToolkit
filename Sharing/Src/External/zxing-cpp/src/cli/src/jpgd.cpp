@@ -1,10 +1,11 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 // jpgd.cpp - C++ class for JPEG decompression.
 // Public domain, Rich Geldreich <richgel99@gmail.com>
 // Alex Evans: Linear memory allocator (taken from jpge.h).
 // v1.04, May. 19, 2012: Code tweaks to fix VS2008 static code analysis warnings (all looked harmless)
-//
 // Supports progressive and baseline sequential JPEG image files, and the most common chroma subsampling factors: Y, H1V1, H2V1, H1V2, and H2V2.
-//
 // Chroma upsampling quality: H2V2 is upsampled in the frequency domain, H2V1 and H1V2 are upsampled using point sampling.
 // Chroma upsampling reference: "Fast Scheme for Image Size Change in the Compressed Domain"
 // http://vision.ai.uiuc.edu/~dugad/research/dct/index.html

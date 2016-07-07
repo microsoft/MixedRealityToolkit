@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /* ------------------------------------------------------------------------------------------------------------------------------------ */
 // Portions of this file have been written by using the "Compress YCOCgDXT" sample as a reference.
 // Please refer to http://developer.download.nvidia.com/SDK/10/opengl/samples.html#compress_YCoCgDXT for more information.

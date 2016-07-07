@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /**********************************************************************
 
 Filename    :   GFxPlayerTinyD3D9.cpp
@@ -5,7 +8,6 @@ Content     :   Tiny GFxPlayer sample for Direct3D 9.
 Created     :   March 13, 2008
 Authors     :   Michael Antonov, Dmitry Polenur
 
-Copyright   :   (c) 2001-2008 Scaleform Corp. All Rights Reserved.
 
 Licensees may use this file in accordance with the valid Scaleform
 Commercial License Agreement provided with the software.

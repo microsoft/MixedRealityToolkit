@@ -1,6 +1,8 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /*
  *  Copyright (c) 2014, Oculus VR, Inc.
- *  All rights reserved.
  *
  *  This source code is licensed under the BSD-style license found in the
  *  LICENSE file in the root directory of this source tree. An additional grant 
@@ -368,7 +370,6 @@ int AutopatcherMySQLRepository::GetPatches(const char *applicationName, FileList
 					else
 					{
 						// Otherwise, write the hash of the new version and then write the patch to get to that version.
-						// 
 						char * patch = row [0];
 						unsigned long patchLength = mysql_fetch_lengths (patchResult) [0];
 

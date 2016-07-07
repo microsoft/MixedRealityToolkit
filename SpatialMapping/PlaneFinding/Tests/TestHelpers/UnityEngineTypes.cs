@@ -1,4 +1,7 @@
-﻿using System;
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
+using System;
 
 // Define a few types that normally exist in the UnityEngine namespace so our test code can leverage
 // the PlaneFinding.cs script file from the Unity addon.  This ensures that our tests are calling into

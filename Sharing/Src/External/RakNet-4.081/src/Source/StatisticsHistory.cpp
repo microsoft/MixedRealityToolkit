@@ -1,6 +1,8 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /*
  *  Copyright (c) 2014, Oculus VR, Inc.
- *  All rights reserved.
  *
  *  This source code is licensed under the BSD-style license found in the
  *  LICENSE file in the root directory of this source tree. An additional grant 
@@ -356,7 +358,6 @@ void StatisticsHistory::TimeAndValueQueue::MergeSets( const TimeAndValueQueue *l
 	// 1. Treat rhs as just more data points.
 	// 1A. Sums are just added. If two values have the same time, just put in queue twice
 	// 1B. longTermLowest and longTermHighest are the lowest and highest of the two sets
-	// 
 	// 2. Add by time. If time for the other set is missing, calculate slope to extrapolate
 	// 2A. Have to recalculate recentSum, recentSumOfSquares.
 	// 2B. longTermSum, longTermCount, longTermLowest, longTermHighest are unknown
