@@ -1,10 +1,13 @@
-﻿Microsoft Visual Studio Solution File, Format Version 12.00
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MicStreamSelector_Win32", "..\Projects\MicStreamSelector_Win32\MicStreamSelector.vcxproj", "{736065EE-9C6D-468F-90D5-470B92FE7FA8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicDemoApp", "..\Projects\MicDemoApp\MicDemoApp.csproj", "{E1E23D23-2A2E-4E03-8C2F-112D27365BB9}"
 EndProject
-Project("{9BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MicStreamSelector_UWP", "..\Projects\MicStreamSelector_UWP\MicStreamSelector_UWP.vcxproj", "{D9536467-5A1A-4C69-8BD9-ADCF70BB776A}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MicStreamSelector", "..\Projects\MicStreamSelector_Win32\MicStreamSelector.vcxproj", "{736065EE-9C6D-468F-90D5-470B92FE7FA8}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MicStreamSelector_UWP", "..\Projects\MicStreamSelector_UWP\MicStreamSelector_UWP.vcxproj", "{D9536467-5A1A-4C69-8BD9-ADCF70BB776A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -40,6 +43,24 @@ Global
 		{D9536467-5A1A-4C69-8BD9-ADCF70BB776A}.Release|x64.Build.0 = Release|x64
 		{D9536467-5A1A-4C69-8BD9-ADCF70BB776A}.Release|x86.ActiveCfg = Release|Win32
 		{D9536467-5A1A-4C69-8BD9-ADCF70BB776A}.Release|x86.Build.0 = Release|Win32
+		{E1E23D23-2A2E-4E03-8C2F-112D27365BB9}.Debug|ARM.ActiveCfg = Debug|ARM
+		{E1E23D23-2A2E-4E03-8C2F-112D27365BB9}.Debug|ARM.Build.0 = Debug|ARM
+		{E1E23D23-2A2E-4E03-8C2F-112D27365BB9}.Debug|ARM.Deploy.0 = Debug|ARM
+		{E1E23D23-2A2E-4E03-8C2F-112D27365BB9}.Debug|x64.ActiveCfg = Debug|x64
+		{E1E23D23-2A2E-4E03-8C2F-112D27365BB9}.Debug|x64.Build.0 = Debug|x64
+		{E1E23D23-2A2E-4E03-8C2F-112D27365BB9}.Debug|x64.Deploy.0 = Debug|x64
+		{E1E23D23-2A2E-4E03-8C2F-112D27365BB9}.Debug|x86.ActiveCfg = Debug|x86
+		{E1E23D23-2A2E-4E03-8C2F-112D27365BB9}.Debug|x86.Build.0 = Debug|x86
+		{E1E23D23-2A2E-4E03-8C2F-112D27365BB9}.Debug|x86.Deploy.0 = Debug|x86
+		{E1E23D23-2A2E-4E03-8C2F-112D27365BB9}.Release|ARM.ActiveCfg = Release|ARM
+		{E1E23D23-2A2E-4E03-8C2F-112D27365BB9}.Release|ARM.Build.0 = Release|ARM
+		{E1E23D23-2A2E-4E03-8C2F-112D27365BB9}.Release|ARM.Deploy.0 = Release|ARM
+		{E1E23D23-2A2E-4E03-8C2F-112D27365BB9}.Release|x64.ActiveCfg = Release|x64
+		{E1E23D23-2A2E-4E03-8C2F-112D27365BB9}.Release|x64.Build.0 = Release|x64
+		{E1E23D23-2A2E-4E03-8C2F-112D27365BB9}.Release|x64.Deploy.0 = Release|x64
+		{E1E23D23-2A2E-4E03-8C2F-112D27365BB9}.Release|x86.ActiveCfg = Release|x86
+		{E1E23D23-2A2E-4E03-8C2F-112D27365BB9}.Release|x86.Build.0 = Release|x86
+		{E1E23D23-2A2E-4E03-8C2F-112D27365BB9}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

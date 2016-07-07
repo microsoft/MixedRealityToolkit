@@ -53,3 +53,5 @@ Sharing/Src/Solutions/Xcode/XToolsClient/build
 /SpatialMapping/PlaneFinding/Tests/TestHelpers/obj
 /SpatialMapping/PlaneFinding/Tests/UnitTests/bin
 /SpatialMapping/PlaneFinding/Tests/UnitTests/obj
+*.cache
+*.config

@@ -20,7 +20,6 @@ using namespace Windows::Media::Transcoding;
 #define API __declspec(dllexport)
 
 // #define MEMORYLEAKDETECT // Enables memory leak debugging output on program.
-
 #ifdef MEMORYLEAKDETECT
 #define _CRTDBG_MAP_ALLOC
 #include <stdlib.h>
@@ -35,32 +34,36 @@ using namespace Windows::Media::Transcoding;
 void	OnQuantumProcessed(Windows::Media::Audio::AudioGraph ^sender, Platform::Object ^args);
 static	AudioGraph^				graph;							// we will only use one graph
 static	AudioDeviceInputNode^	deviceInputNode;				// we will only use one device input node
-static	AudioFrameOutputNode^	frameoutputnode;				// this is where we will grab our data to send back to Unity
+static	AudioFrameOutputNode^	frameoutputnode;				// this is where we will grab our data to send back to the app
 static	AudioFileOutputNode^	fileOutputNode;					// so we can very easily record files
+static	AudioDeviceOutputNode^	deviceOutputNode;				// so we can preview the stream if desired
 static	MediaEncodingProfile^	mediaEncodingProfile;			// we can set the type of file we want to record
 static	StorageFolder^			localFolder;					// current folder we're using to record files
 static	StorageFile^			wavFile;						// the file we'll be recording to. we drop the handle after we save it, and this will recycle and point to the next file.
-static	char					filepath_char[255];				// stores the full file path to return to Unity for easy wav loading
-static	std::queue<Windows::Media::AudioFrame^> audioqueue;		// stores our microphone data to hand back to Unity
+static	char					filepath_char[255];				// stores the full file path to return to the app for easy wav loading
+static	std::queue<Windows::Media::AudioFrame^> audioqueue;		// stores our microphone data to hand back to the app
 
 // error codes to hand back to engine with nice printed output
-private enum ErrorCodes { ALREADY_RUNNING = -10, NO_AUDIO_DEVICE, NO_INPUT_DEVICE, ALREADY_RECORDING, GRAPH_NOT_EXIST, CHANNEL_COUNT_MISMATCH, FILE_CREATION_PERMISSION_ERROR};
+private enum ErrorCodes { ALREADY_RUNNING = -10, NO_AUDIO_DEVICE, NO_INPUT_DEVICE, ALREADY_RECORDING, GRAPH_NOT_EXIST, CHANNEL_COUNT_MISMATCH, FILE_CREATION_PERMISSION_ERROR, NOT_ENOUGH_DATA, NEED_ENABLED_MIC_CAPABILITY};
 
-// Keeping all data can cause voice the microphone to accumulate large lag if the program ever blocks or breaks.
-bool		keepAllData = false;
+bool		keepAllData = false;	// Keeping all data can cause voice the microphone to accumulate large lag and memory if the program ever blocks or breaks, but is sometimes needed
 bool		recording = false;
-int			unityExpectedBufferLength = -1; // By making negative, we won't output data until we get at least one unity call.
+int			appExpectedBufferLength = -1; // By making negative, we won't output data until we get at least one app call.
 int			dataInBuffer = 0;
 int			samplesPerQuantum = 256;
 int			numChannels = 2;
 int			indexInFrame = 0;
-std::mutex	mtx;
+float		micGain = 1.f;
+std::mutex	mtx, creationmtx, readmtx;	// these attempt to safegaurd bad memory states regardless of how applications attempt to access the mic data
+
+typedef void(__stdcall * CallbackIntoHost)();	// a potential callback into non-polled apps where the audio engine drives behaviour in the app, like VOIP
+static CallbackIntoHost hostCallback = nullptr;
 
 // This is the callback after every frame the audio device captures.
 void OnQuantumProcessed(Windows::Media::Audio::AudioGraph ^sender, Platform::Object ^args)
 {
 	// If we're under our desired queue size or are keeping everything, take a frame and account for it.
-	if (dataInBuffer < unityExpectedBufferLength*2 && !keepAllData || keepAllData)
+	if (dataInBuffer < appExpectedBufferLength*2 && !keepAllData || keepAllData)
 	{
 		mtx.lock();	// Ensure thread safety on this hand-off point.
 		audioqueue.push(frameoutputnode->GetFrame());
@@ -71,15 +74,23 @@ void OnQuantumProcessed(Windows::Media::Audio::AudioGraph ^sender, Platform::Obj
 	{
 		frameoutputnode->GetFrame();
 	}
+
+	if (dataInBuffer >= appExpectedBufferLength * 2 && hostCallback)	// if we're using a callback, let the host know that there is a buffer ready to go
+	{
+		hostCallback();
+	}
 }
 
 // TODO allow saving to designated folder?
-int MakeSaveFile(char* c_filename) {
+int MakeSaveFile(char* c_filename) 
+{
 	std::string str = std::string(c_filename);
 	std::wstring widestr = std::wstring(str.begin(), str.end());
 	String^ filename = ref new String(widestr.c_str());
-	try {
-		localFolder = KnownFolders::MusicLibrary;	// Works by default on HoloLens.
+	try														// need MusicLibrary capabilities enabled on WSA appxmanifest
+	{
+		Platform::String^ micFolderName = ref new Platform::String(L"MicStreamRecordings");
+		localFolder = concurrency::create_task(KnownFolders::MusicLibrary->CreateFolderAsync(micFolderName, Windows::Storage::CreationCollisionOption::OpenIfExists)).get();
 	}
 	catch (Exception^ e) {
 		return ErrorCodes::FILE_CREATION_PERMISSION_ERROR;	// Didn't have access to folder.
@@ -98,26 +109,48 @@ int MakeSaveFile(char* c_filename) {
 	return 0;
 }
 
-extern "C" {
-	API int MicInitialize(int category, int fftsize, int numBuffers, int samplerate) {  // If category is 1 or 2, we'll do speech things, otherwise we'll do environment.
+extern "C" 
+{
+	API int MicInitializeCustomRateWithGraph(int category, int samplerate, AudioGraph^ appGraph) // If category is 1 or 2, we'll do speech things, otherwise we'll do environment.
+	{  
+		std::lock_guard<std::mutex> lock(creationmtx); // allows only one process to access this function at a time
 #ifdef MEMORYLEAKDETECT
 		_CrtSetReportMode(_CRT_ERROR, _CRTDBG_MODE_DEBUG);
 #endif
-		if (graph)
-			return ErrorCodes::ALREADY_RUNNING;	// No need to start if it's already running.
+		if (appGraph != nullptr)
+		{
+			if (graph == appGraph)
+			{
+				return ErrorCodes::ALREADY_RUNNING;	// No need to start if it's already running.
+			}
 
-		AudioGraphSettings^ settings = ref new AudioGraphSettings(AudioRenderCategory::Media);
-		settings->QuantumSizeSelectionMode = QuantumSizeSelectionMode::LowestLatency;	// Usually good to try even if device doesn't have a low latency mode.
-		settings->EncodingProperties = AudioEncodingProperties::CreatePcm(samplerate, 2, 16);	// HoloLens is a 2 channel 16 bit endpoint.
-		auto outputdevices = concurrency::create_task(DeviceInformation::FindAllAsync(MediaDevice::GetAudioRenderSelector())).get();
-		settings->PrimaryRenderDevice = outputdevices->GetAt(0);	// First indexed device is always the default render device as set by OS.
-		CreateAudioGraphResult^ result = concurrency::create_task(AudioGraph::CreateAsync(settings)).get();
+			graph = appGraph;	// if the app itself made its own graph, lets attach to that
+		}
+		else					// otherwise, we need to make our graph
+		{
+			if (graph)
+			{
+				return ErrorCodes::ALREADY_RUNNING;	// No need to start if it's already running.
+			}
 
-		if (result->Status != AudioGraphCreationStatus::Success)
-			return ErrorCodes::NO_AUDIO_DEVICE;	// No audio device present on machine.
+			AudioGraphSettings^ settings = ref new AudioGraphSettings(AudioRenderCategory::Media);
+			settings->QuantumSizeSelectionMode = QuantumSizeSelectionMode::LowestLatency;	// Usually good to try even if device doesn't have a low latency mode.
+			if (samplerate != 0)	// if not default, then try to set to requested size
+			{
+				settings->EncodingProperties = AudioEncodingProperties::CreatePcm(samplerate, 2, 16);	// HoloLens is a 2 channel 16 bit endpoint.
+			}
+			auto outputdevices = concurrency::create_task(DeviceInformation::FindAllAsync(MediaDevice::GetAudioRenderSelector())).get();
+			settings->PrimaryRenderDevice = outputdevices->GetAt(0);	// First indexed device is always the default render device as set by OS.
+			CreateAudioGraphResult^ result = concurrency::create_task(AudioGraph::CreateAsync(settings)).get();
 
-		graph = result->Graph;
-		samplesPerQuantum = graph->SamplesPerQuantum;
+			if (result->Status != AudioGraphCreationStatus::Success)
+			{
+				return ErrorCodes::NO_AUDIO_DEVICE;	// No audio device present on machine.
+			}
+
+			graph = result->Graph;
+		}
+		appExpectedBufferLength = samplesPerQuantum = graph->SamplesPerQuantum;
 
 		CreateAudioDeviceInputNodeResult^ deviceInputNodeResult;
 		if (category == 0)
@@ -132,30 +165,68 @@ extern "C" {
 		}
 		else
 		{
-			// This will return an outward facing capture of the HoloLens' environment, explicitly not using the vocal microphones. 
+			// This will return an outward facing capture of the HoloLens' environment, explicitly not capturing the vocal microphones. 
 			deviceInputNodeResult = concurrency::create_task(graph->CreateDeviceInputNodeAsync(Windows::Media::Capture::MediaCategory::Media)).get();
 		}
 		if (deviceInputNodeResult->Status != AudioDeviceNodeCreationStatus::Success)
+		{
 			return ErrorCodes::NO_INPUT_DEVICE;
+		}
 
 		deviceInputNode = deviceInputNodeResult->DeviceInputNode;
+
+		CreateAudioDeviceOutputNodeResult^ deviceOutputNodeResult;
+		deviceOutputNodeResult = concurrency::create_task(graph->CreateDeviceOutputNodeAsync()).get();
+		deviceOutputNode = deviceOutputNodeResult->DeviceOutputNode;
 		
 		AudioEncodingProperties^ props = ref new AudioEncodingProperties();
 		props = deviceInputNode->EncodingProperties;
 		frameoutputnode = graph->CreateFrameOutputNode(props);
 		deviceInputNode->AddOutgoingConnection(frameoutputnode);
+		deviceInputNode->AddOutgoingConnection(deviceOutputNode);
+		deviceInputNode->OutgoingGain = micGain;
 
-		// Make a callback at the end of every frame to store our data until Unity wants it.
+		// Make a callback at the end of every frame to store our data until the app wants it.
 		graph->QuantumProcessed += ref new Windows::Foundation::TypedEventHandler<Windows::Media::Audio::AudioGraph ^, Platform::Object ^>(&OnQuantumProcessed);
 
 		return 0;
 	}
 
-	API int MicStartStream(bool keepData)
+	API int MicInitializeCustomRate(int category, int samplerate) // same as before, but uses custom samplerate 
 	{
-		if (!graph)
-			return ErrorCodes::GRAPH_NOT_EXIST;
+		return MicInitializeCustomRateWithGraph(category, samplerate, nullptr);
+	}
+
+	API int MicInitializeDefault(int category) // same as before, but uses default samplerate
+	{  
+		return MicInitializeCustomRateWithGraph(category, 0, nullptr);
+	}
+
+	API int MicInitializeDefaultWithGraph(int category, AudioGraph^ appGraph) // same as before, but uses default samplerate and graph from app
+	{
+		return MicInitializeCustomRateWithGraph(category, 0, appGraph);
+	}
+
+	API int MicStartStream(bool keepData, bool previewOnDevice, CallbackIntoHost cb)
+	{
+		if (!graph) 
+		{
+			int err = MicInitializeDefault(0);
+			if (err != 0)
+			{
+				return err;
+			}
+		}
 		keepAllData = keepData;
+		if (previewOnDevice)
+		{
+			deviceOutputNode->OutgoingGain = 1;
+		}
+		else if (deviceOutputNode)
+		{
+			deviceOutputNode->OutgoingGain = 0;
+		}
+		hostCallback = cb;
 		graph->Start();
 		return 0;
 	}
@@ -163,19 +234,38 @@ extern "C" {
 	API int MicStopStream()
 	{
 		if (!graph)
+		{
 			return ErrorCodes::GRAPH_NOT_EXIST;
+		}
 		graph->Stop();
+		hostCallback = nullptr;
 		return 0;
 	}
 
-	API int MicStartRecording(char* c_filename) 
+	API int MicStartRecording(char* c_filename, bool previewOnDevice) 
 	{
 		if (recording)
 		{
 			return ErrorCodes::ALREADY_RECORDING;
 		}
+		if (!graph)
+		{
+			int err = MicInitializeDefault(0);
+			if (err != 0)
+			{
+				return err;
+			}
+		}
 		MakeSaveFile(c_filename);
 		deviceInputNode->AddOutgoingConnection(fileOutputNode);
+		if (previewOnDevice)
+		{
+			deviceOutputNode->OutgoingGain = 1;
+		}
+		else if (deviceOutputNode)
+		{
+			deviceOutputNode->OutgoingGain = 0;
+		}
 		graph->Start();
 		recording = true;
 		return 0;
@@ -198,7 +288,8 @@ extern "C" {
 		{
 			wcstombs_s(&nConverted, filepath_char, 255, finalizeResult.ToString()->Data(), 255);
 		}
-		else {
+		else 
+		{
 			wcstombs_s(&nConverted, filepath_char, 255, wavFile->Path->Data(), 255);
 		}
 		filepath_char[nConverted] = '\0';
@@ -206,17 +297,30 @@ extern "C" {
 	}
 
 	API int MicGetFrame(float* buffer, int length, int numchannels) {
+		std::lock_guard<std::mutex> lock(readmtx); // allows only one process to access this function at a time
+
 		if (!graph)
+		{
 			return ErrorCodes::GRAPH_NOT_EXIST;
+		}
 
-		unityExpectedBufferLength = length; // Let the system know what our program is trying to deal with for background buffering reasons.
+		if (length != 0)
+		{
+			appExpectedBufferLength = length; // Let the system know what our program is trying to deal with for background buffering reasons.
+		}
+		else
+		{
+			appExpectedBufferLength = samplesPerQuantum;	// use defualt size if not custom set by application
+		}
 
-		if (dataInBuffer < length)	// Make sure we have enough data to hand back to Unity.
-			return 0;					// This should only hit when we first start the application.
+		if (dataInBuffer < length)	// Make sure we have enough data to hand back to the app.
+		{
+			return ErrorCodes::NOT_ENOUGH_DATA;					// This should only hit when we first start the application.
+		}
 		
 		int framesize = samplesPerQuantum * numChannels;
 		
-		if (numchannels != numChannels)	// This is the gross assumption of this entire plug-in.
+		if (numchannels != numChannels)	// This is a gross assumption of this entire plug-in.
 		{
 			return ErrorCodes::CHANNEL_COUNT_MISMATCH;
 		}
@@ -235,7 +339,8 @@ extern "C" {
 		float* outdataInFloat = (float*)outdataInBytes;
 		for (int i = 0; i < length; i++)
 		{
-			if (indexInFrame == framesize) {	// If we've reached the end of our audio frame, get the next frame.
+			if (indexInFrame == framesize)	// If we've reached the end of our audio frame, get the next frame.
+			{	
 				mtx.lock();
 				frame = nullptr;			// release last frame (probably unnecessary)
 				audioqueue.pop();			// remove old front frame in queue (the one we just released)
@@ -257,38 +362,56 @@ extern "C" {
 
 	API int MicPause() {
 		if (!graph)
+		{
 			return ErrorCodes::GRAPH_NOT_EXIST;
+		}
 		graph->Stop();
 		return 0;
 	}
 
 	API int MicResume() {
 		if (!graph)
+		{
 			return ErrorCodes::GRAPH_NOT_EXIST;
+		}
 		graph->Start();
 		return 0;
 	}
 
 	API int MicSetGain(float gain) {
+		micGain = gain;
 		if (!graph || !deviceInputNode)
-			return ErrorCodes::GRAPH_NOT_EXIST;;
+		{
+			return 0;// ErrorCodes::GRAPH_NOT_EXIST;;	//allow early setting of Volume before graph init. not an error
+		}
 
 		// The range of this parameter is not documented, but 1 is default and 0 is silence. Can go very high and distorts quickly.
 		deviceInputNode->OutgoingGain = gain;
 		return 0;
 	}
 
-	API int MicDestroy() 
+	API int MicDestroy()
 	{
 		if (!graph)	// If there isn't a graph, there is nothing to stop, so just return
-			return ErrorCodes::GRAPH_NOT_EXIST;;
+		{
+			return ErrorCodes::GRAPH_NOT_EXIST;
+		}
+		hostCallback = nullptr;
 		graph->Stop(); 
 		//graph->Close();	// this should work, but appears bugged in current APIs
-		graph = nullptr;	// Luckily, ref pointers are smart enough to deconstruct properly when not referenced?
 #ifdef MEMORYLEAKDETECT
 		_CrtDumpMemoryLeaks(); // output our memory stats if desired
 #endif // MEMORYLEAKDETECT
 		return 0;
+	}
+
+	API int MicGetDefaultBufferSize() // if you were doing default setup, you need to know what's going on sometimes
+	{
+		return appExpectedBufferLength;
+	}
+	API int MicGetDefaultNumChannels() // if you were doing default setup, you need to know what's going on sometimes
+	{
+		return numChannels;
 	}
 }
 
