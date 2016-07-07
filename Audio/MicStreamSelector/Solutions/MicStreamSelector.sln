@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicDemoApp", "..\Projects\MicDemoApp\MicDemoApp.csproj", "{E1E23D23-2A2E-4E03-8C2F-112D27365BB9}"
+EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MicStreamSelector", "..\Projects\MicStreamSelector_Win32\MicStreamSelector.vcxproj", "{736065EE-9C6D-468F-90D5-470B92FE7FA8}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MicStreamSelector_UWP", "..\Projects\MicStreamSelector_UWP\MicStreamSelector_UWP.vcxproj", "{D9536467-5A1A-4C69-8BD9-ADCF70BB776A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicDemoApp", "..\Projects\MicDemoApp\MicDemoApp.csproj", "{E1E23D23-2A2E-4E03-8C2F-112D27365BB9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

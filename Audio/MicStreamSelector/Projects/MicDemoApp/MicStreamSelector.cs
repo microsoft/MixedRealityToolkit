@@ -15,16 +15,16 @@ namespace MicDemoApp
         // Make sure you enable MusicLibrary and Microphone capabilities in APPX Manifest
 
         // Can't call blocking APIs from the UI thread. It's annoying to deal with, but your safest bet is to Task-ify everything, which is why this code is bloated.
-        // Concurrency::invalid_operation and SEHExceptions if you try to call blocking APIs from the UI thread
+        // Concurrency::invalid_operation and SEHExceptions will occur if you try to call blocking APIs from the UI thread
 
-        // To use:
+        // To use this API first:
         //    await CreateAudioGraph();
-        //    Call anything else
-        // you really only have to create the graph once and it will run forever with all sorts of functions. I only stop it here as an example. 
+        // then, call anything else
+        // you really only have to create the graph once and it will run forever with all sorts of functions. I only stop the graph here as an example. 
 
         // CheckForErrorOnCall() is entirely optional, but incredibly helpful for debugging
 
-        // this class is made for hololens mic stream selection, but should work well on all windows 10 devices
+        // this class is made for hololens mic stream selection, but does work well on all windows 10 devices
         // chooses from one of three possible microphone modes on HoloLens. More modes exist on other devices, so this can be extended.
 
         // Streams: SPEECH is optimized for voice transmission, COMMUNICATIONS is higher quality voice capture, MEDIA is a "room capture"
@@ -80,22 +80,26 @@ namespace MicDemoApp
 
             // my app uses the data to set average mic volume as opacity on an ellipse! neat!
             // mic data will ALWAYS be stored as interleaved float data from [-1,+1]. 
-            // opacity is from [0,+1], so we're averaging and then scaling
+            // opacity on my XAML object in this example is from [0,+1], so we're averaging and then scaling
             float average = 0;
             for (int i=0; i<buffersize; i++)
             {
                 // this condition is letting us always consider amplitude as a positive number, because it roughly maps to volume as long as its non zero
-                if (audiodata[i] <0)
+                if (audiodata[i] < 0)
+                {
                     average += -audiodata[i];
+                }
                 else
+                {
                     average += audiodata[i];
+                }
             }
             average /= buffersize;
             MainPage.Instance.SetVolumeMonitor(average);    // the actual call back into the app to change the opacity of the mic monitor 
         };
 
-        // if we pass the last parameter (the LiveMicCallback) as null, we won't get signalled when a buffer is ready
-        // this is preferable if you're in a polled engine, like a game like Unity, so you can grab mic data when the game engine is ready
+        // if we pass the last parameter (the LiveMicCallback) as null, the app won't get signalled when a buffer is ready for consumption
+        // this is preferable if you're in a polled engine, like a game like Unity, so you can grab mic data whenever the game engine is ready for it
         // if your app is not self-polled, like this XAML app is not, youll want to pass the callback into the plugin so the plugin can drive audio data handling in the LiveMicCallback micSignal above
         public static void StartStream()
         {
@@ -165,7 +169,9 @@ namespace MicDemoApp
         private static async Task CreateAudioGraph()
         {
             if (graph != null)
+            {
                 return;
+            }
             AudioGraphSettings settings = new AudioGraphSettings(AudioRenderCategory.Media);    // Create an AudioGraph with default settings
             CreateAudioGraphResult result = await AudioGraph.CreateAsync(settings);             // this graph is bound to this process
 
