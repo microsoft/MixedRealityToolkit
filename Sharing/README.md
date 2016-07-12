@@ -10,6 +10,10 @@ Originally developed for OnSight, a collaboration between SOTA (a Microsoft stud
 
 Users can also collaborate with other users (who are also using multiple devices) who may be in the same room or working remotely.  
 
+## First: Build Dependencies Before Building Solution
+
+Before using any projects or solutions related to Sharing, make sure you run BuildDependencies.bat from a command prompt. This will build the Speex audio compression library and the RakNet networking library to be used by your projects.
+
 ## Features
 
 ### Multi-Platform, Multi-language
