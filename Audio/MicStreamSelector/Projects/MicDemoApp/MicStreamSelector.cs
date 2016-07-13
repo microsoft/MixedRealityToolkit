@@ -1,12 +1,13 @@
-﻿using System;
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
+using System;
 using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 using Windows.Media.Audio;
 using Windows.Media.Render;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml;
 
 namespace MicDemoApp
 {

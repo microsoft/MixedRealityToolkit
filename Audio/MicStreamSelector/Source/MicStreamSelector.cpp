@@ -1,4 +1,7 @@
-﻿#include <ppltasks.h>
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
+#include <ppltasks.h>
 #include <MemoryBuffer.h>
 #include <mutex>
 #include <queue>
