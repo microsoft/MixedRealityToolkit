@@ -35,7 +35,7 @@ namespace MicDemoApp
             Instance = this;
 
             micGain = (float)((Slider)this.FindName("slider")).Value;   // these lines automatically sets the mic volume based off of the XAML slider element's starting point
-            MicStreamSelector.MicSetGain(micGain);
+            //MicStreamSelector.MicSetGain(micGain);
         }
 
         private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -64,12 +64,14 @@ namespace MicDemoApp
 
         private void StartStream_Click(object sender, RoutedEventArgs e)
         {
+            MicStreamSelector.MicSetGain(micGain);
             MicStreamSelector.StartStream();
             ActiveMicColor = Colors.Green;
         }
 
         private void StartRecording_Click(object sender, RoutedEventArgs e)
         {
+            MicStreamSelector.MicSetGain(micGain);
             MicStreamSelector.StartRecording("myfilenamewithextension.wav");
             ActiveMicColor = Colors.Green;
         }

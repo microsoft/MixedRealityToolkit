@@ -138,6 +138,9 @@ namespace MicDemoApp
                 MicStopRecording(sb);
                 Debug.WriteLine(sb.ToString());
                 CheckForErrorOnCall(MicDestroy());
+
+                graph.Dispose();    // unfortunately, the app needs to do this to be able to re-init plugin later
+                graph = null;       // this, too
             }
             );
         }
@@ -182,7 +185,7 @@ namespace MicDemoApp
             graph = result.Graph;
             CheckForErrorOnCall(MicInitializeDefaultWithGraph((int)streamtype, graph)); // pass the bound graph to the mic plugin. this lets our current process hear audio. 
         }
-
+        
         static void CheckForErrorOnCall(int returnCode)
         {
             switch (returnCode)

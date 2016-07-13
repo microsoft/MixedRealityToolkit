@@ -396,9 +396,32 @@ extern "C"
 		{
 			return ErrorCodes::GRAPH_NOT_EXIST;
 		}
+
+		std::lock_guard<std::mutex> lock(readmtx); // dont destroy graph if in the middle of reading data
+		
+		graph->Stop();
+
+		// since we're "destroying" the object, let's reset everything to default values
+		
+		//graph->Dispose(); // this should work, but appears bugged in current APIs
+		graph = nullptr;	// this does work currently, but is scarier
+		mtx.lock();	// Ensure we aren't writing to the graph, which should be stopped and dying anyway
+		{
+			while (audioqueue.size() > 0)
+			{
+				audioqueue.pop();
+			}
+		}
+		mtx.unlock();
+
 		hostCallback = nullptr;
-		graph->Stop(); 
-		//graph->Close();	// this should work, but appears bugged in current APIs
+		appExpectedBufferLength = -1; // By making negative, we won't output data until we get at least one app call.
+		dataInBuffer = 0;
+		samplesPerQuantum = 256;
+		numChannels = 2;
+		indexInFrame = 0;
+		micGain = 1.f;
+
 #ifdef MEMORYLEAKDETECT
 		_CrtDumpMemoryLeaks(); // output our memory stats if desired
 #endif // MEMORYLEAKDETECT
