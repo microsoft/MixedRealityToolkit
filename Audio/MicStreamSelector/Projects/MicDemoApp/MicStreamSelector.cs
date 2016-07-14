@@ -31,7 +31,7 @@ namespace MicDemoApp
         // Streams: SPEECH is optimized for voice transmission, COMMUNICATIONS is higher quality voice capture, MEDIA is a "room capture"
         // can only be set on initialization
         public enum StreamCategory { SPEECH, COMMUNICATIONS, MEDIA }
-        public static StreamCategory streamtype = StreamCategory.SPEECH;
+        public static StreamCategory streamType = StreamCategory.SPEECH;
         private enum ErrorCodes { ALREADY_RUNNING = -10, NO_AUDIO_DEVICE, NO_INPUT_DEVICE, ALREADY_RECORDING, GRAPH_NOT_EXIST, CHANNEL_COUNT_MISMATCH, FILE_CREATION_PERMISSION_ERROR, NOT_ENOUGH_DATA, NEED_ENABLED_MIC_CAPABILITY };
 
         // Unfortunately, we can't create AudioGraph from Task because it attaches to the background. We have to make our graph here and pass that to the plugin.
@@ -150,7 +150,7 @@ namespace MicDemoApp
         public static void StopRecording()
         {
 
-            StringBuilder sb = new StringBuilder(256);
+            StringBuilder sb = new StringBuilder(260);
             Task.Factory.StartNew(() =>
             {
                 MicStopRecording(sb);
@@ -184,7 +184,7 @@ namespace MicDemoApp
                 return; // Cannot create graph
             }
             graph = result.Graph;
-            CheckForErrorOnCall(MicInitializeDefaultWithGraph((int)streamtype, graph)); // pass the bound graph to the mic plugin. this lets our current process hear audio. 
+            CheckForErrorOnCall(MicInitializeDefaultWithGraph((int)streamType, graph)); // pass the bound graph to the mic plugin. this lets our current process hear audio. 
         }
         
         static void CheckForErrorOnCall(int returnCode)

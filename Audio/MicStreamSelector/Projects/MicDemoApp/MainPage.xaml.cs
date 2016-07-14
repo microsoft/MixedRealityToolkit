@@ -25,7 +25,6 @@ namespace MicDemoApp
             Instance = this;
 
             micGain = (float)((Slider)this.FindName("slider")).Value;   // these lines automatically sets the mic volume based off of the XAML slider element's starting point
-            //MicStreamSelector.MicSetGain(micGain);
         }
 
         private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -35,13 +34,13 @@ namespace MicDemoApp
             switch (value)
             {
                 case "Speech":
-                    MicStreamSelector.streamtype = MicStreamSelector.StreamCategory.SPEECH;
+                    MicStreamSelector.streamType = MicStreamSelector.StreamCategory.SPEECH;
                     break;
                 case "Communications":
-                    MicStreamSelector.streamtype = MicStreamSelector.StreamCategory.COMMUNICATIONS;
+                    MicStreamSelector.streamType = MicStreamSelector.StreamCategory.COMMUNICATIONS;
                     break;
                 case "Media":
-                    MicStreamSelector.streamtype = MicStreamSelector.StreamCategory.MEDIA;
+                    MicStreamSelector.streamType = MicStreamSelector.StreamCategory.MEDIA;
                     break;
             }
         }
@@ -49,7 +48,7 @@ namespace MicDemoApp
         private void slider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
         {
             micGain = (float)e.NewValue;
-            MicStreamSelector.MicSetGain(micGain); 
+            MicStreamSelector.MicSetGain(micGain); // changes volume immediately if already running
         }
 
         private void StartStream_Click(object sender, RoutedEventArgs e)

@@ -43,7 +43,7 @@ static	AudioDeviceOutputNode^	deviceOutputNode;				// so we can preview the stre
 static	MediaEncodingProfile^	mediaEncodingProfile;			// we can set the type of file we want to record
 static	StorageFolder^			localFolder;					// current folder we're using to record files
 static	StorageFile^			wavFile;						// the file we'll be recording to. we drop the handle after we save it, and this will recycle and point to the next file.
-static	char					filepath_char[255];				// stores the full file path to return to the app for easy wav loading
+static	char					filepath_char[MAX_PATH];				// stores the full file path to return to the app for easy wav loading. 260 is maximum path length
 static	std::queue<Windows::Media::AudioFrame^> audioqueue;		// stores our microphone data to hand back to the app
 
 // error codes to hand back to engine with nice printed output
