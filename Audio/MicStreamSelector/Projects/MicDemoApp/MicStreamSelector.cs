@@ -34,6 +34,8 @@ namespace MicDemoApp
         public static StreamCategory streamType = StreamCategory.SPEECH;
         private enum ErrorCodes { ALREADY_RUNNING = -10, NO_AUDIO_DEVICE, NO_INPUT_DEVICE, ALREADY_RECORDING, GRAPH_NOT_EXIST, CHANNEL_COUNT_MISMATCH, FILE_CREATION_PERMISSION_ERROR, NOT_ENOUGH_DATA, NEED_ENABLED_MIC_CAPABILITY };
 
+        const int MAX_PATH = 260; // maximum filepath size in windows. to be used by a string builder to return file path from plugin
+        
         // Unfortunately, we can't create AudioGraph from Task because it attaches to the background. We have to make our graph here and pass that to the plugin.
         private static AudioGraph graph;
 
@@ -150,7 +152,7 @@ namespace MicDemoApp
         public static void StopRecording()
         {
 
-            StringBuilder sb = new StringBuilder(260);
+            StringBuilder sb = new StringBuilder(MAX_PATH);
             Task.Factory.StartNew(() =>
             {
                 MicStopRecording(sb);

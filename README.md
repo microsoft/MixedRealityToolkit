@@ -44,7 +44,7 @@ Starts microphone for selected category, as defined above. Uses default settings
 Same as above, but uses custom samplerate. 
 
 * MicGetFrame(float[] buffer, int length, int numchannels); 
-Fills buffer of length and numchannels to the app. This is how Unity3d and Unreal will want to access audio data -- from a poll in the game engine's audio engine. This is used in the example from Fills buffer of length and numchannels to the app. This is how Unity3d and Unreal will want to access audio data -- from a poll in the game engine's audio engine. This is used in the example from Fills buffer of length and numchannels to the app. This is how Unity3d and Unreal will want to access audio data -- from a poll in the game engine's audio engine. This is used in the example from https://github.com/Microsoft/HoloToolkit-Unity/Assets/HoloToolkit/Input/Tests/Scripts/MicStreamDemo.cs
+Fills buffer of length and numchannels to the app. This is how Unity3d and Unreal will want to access audio data -- from a poll in the game engine's audio engine. This is used in the example from https://github.com/Microsoft/HoloToolkit-Unity/Assets/HoloToolkit/Input/Tests/Scripts/MicStreamDemo.cs
 
 ### Initialize with callback for passive, state-driven apps (e.g. XAML)
 * MicInitializeDefaultWithGraph(int category, AudioGraph appGraph); 
