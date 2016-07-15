@@ -308,5 +308,23 @@ private:
     void swig_init_callbacks();
 };
 
+class SwigDirector_DiscoveryClientListener : public XTools::DiscoveryClientListener, public Swig::Director {
+
+public:
+    SwigDirector_DiscoveryClientListener();
+    virtual ~SwigDirector_DiscoveryClientListener();
+    virtual void OnRemoteSystemDiscovered(XTools::DiscoveredSystemPtr const &remoteSystem);
+    virtual void OnRemoteSystemLost(XTools::DiscoveredSystemPtr const &remoteSystem);
+
+    typedef void (SWIGSTDCALL* SWIG_Callback0_t)(void *);
+    typedef void (SWIGSTDCALL* SWIG_Callback1_t)(void *);
+    void swig_connect_director(SWIG_Callback0_t callbackOnRemoteSystemDiscovered, SWIG_Callback1_t callbackOnRemoteSystemLost);
+
+private:
+    SWIG_Callback0_t swig_callbackOnRemoteSystemDiscovered;
+    SWIG_Callback1_t swig_callbackOnRemoteSystemLost;
+    void swig_init_callbacks();
+};
+
 
 #endif
