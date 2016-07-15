@@ -1,10 +1,12 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 // -*- mode:c++; tab-width:2; indent-tabs-mode:nil; c-basic-offset:2 -*-
 /*
  *  Detector.cpp
  *  zxing
  *
  *  Created by Lukas Stabe on 08/02/2012.
- *  Copyright 2012 ZXing authors All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -92,7 +94,6 @@ void Detector::extractParameters(std::vector<Ref<Point> > bullEyeCornerPoints) {
   }
             
   //d      a
-  //
   //c      b
             
   //flatten the bits in a single array
@@ -240,7 +241,6 @@ std::vector<Ref<Point> > Detector::getBullEyeCornerPoints(Ref<zxing::aztec::Poin
     Ref<Point> poutd = getFirstDifferent(pind, color, -1, -1);
             
     //d    a
-    //
     //c    b
                 
     if (nbCenterLayers_ > 2) {

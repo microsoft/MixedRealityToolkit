@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /* Copyright (C) 2004 Jean-Marc Valin */
 /**
    @file cb_search_arm4.h

@@ -1,9 +1,9 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /////////////////////////////////////////////////////////
 // RefPtr.h
-//
 // Smart pointer for classes that support internal reference counting
-//
-// Copyright (C) 2014 Microsoft Inc, All rights reserved
 /////////////////////////////////////////////////////////
 
 #pragma once

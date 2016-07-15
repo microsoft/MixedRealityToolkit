@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /* $Id: miniupnpctypes.h,v 1.1 2011/02/15 11:10:40 nanard Exp $ */
 /* Miniupnp project : http://miniupnp.free.fr/ or http://miniupnp.tuxfamily.org
  * Author : Thomas Bernard

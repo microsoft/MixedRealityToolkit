@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 #ifndef _RINGBUFFER_H
 #define _RINGBUFFER_H
 #ifdef __cplusplus

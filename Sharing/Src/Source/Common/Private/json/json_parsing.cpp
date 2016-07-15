@@ -1,7 +1,9 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /***
 * ==++==
 *
-* Copyright (c) Microsoft Corporation. All rights reserved. 
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
 * You may obtain a copy of the License at
@@ -50,9 +52,7 @@ namespace json
 namespace details
 {
 
-//
 // JSON Parsing
-//
 
 template <typename Token>
 #ifdef _MS_WINDOWS
@@ -289,9 +289,7 @@ CharType JSON_StringParser<CharType>::PeekCharacter()
     return (CharType)*m_position;
 }
 
-//
 // Consume whitespace characters and return the first non-space character or EOF
-//
 template <typename CharType>
 CharType JSON_Parser<CharType>::EatWhitespace()
 {

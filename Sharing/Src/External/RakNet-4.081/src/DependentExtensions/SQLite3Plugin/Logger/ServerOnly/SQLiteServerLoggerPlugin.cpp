@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 #include "SQLiteServerLoggerPlugin.h"
 #include "RakPeerInterface.h"
 #include "PacketizedTCP.h"
@@ -302,7 +305,6 @@ SQLiteServerLoggerPlugin::CPUThreadOutput* ExecCPULoggingThread(SQLiteServerLogg
 						outputNode->parameterList[parameterCountIndex].linePitch,
 						outputNode->parameterList[parameterCountIndex].input_components
 						);
-// 
 // 						static bool testWriteToDisk=true;
 // 						if (testWriteToDisk)
 // 						{

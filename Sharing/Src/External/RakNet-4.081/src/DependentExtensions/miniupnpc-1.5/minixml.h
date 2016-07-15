@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /* $Id: minixml.h,v 1.6 2006/11/30 11:47:21 nanard Exp $ */
 /* minimal xml parser
  *

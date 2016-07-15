@@ -1,6 +1,8 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /*
  *  Copyright (c) 2014, Oculus VR, Inc.
- *  All rights reserved.
  *
  *  This source code is licensed under the BSD-style license found in the
  *  LICENSE file in the root directory of this source tree. An additional grant 
@@ -105,13 +107,11 @@ void C::ClassMemberFunc(A *a1, A &a2, C *c1, D *d1, RakNet::BitStream *bs1, RakN
 	{
 		// The RakNet::RPC3 * parameter can be passed to Call() if you want to - it is skipped and not serialized or deserialized so it doesn't matter.
 		// The point of it is so when this function is called on the remote system, it is set to the instance of the plugin so you can query network parameters from the caller
-		// 
 		// By default, pointers to objects that derive from NetworkIDObject (classes C and D), only transmit the NetworkID of the object.
 		// If you also want to dereference the pointer and serialize the object itself, use RakNet::_RPC3::Deref(myVariable)
 		// In this case, parameters that both derive from NetworkIDObject and are pointers are the variables c1 and d1
 		// c1 will only transmit c1->GetNetworkID() (default behavior)
 		// d1 will transmit d1->GetNetworkID() and also bitStream << (*d1) (contents of the pointer)
-		//
 		rpc3Inst->CallCPP("&C::ClassMemberFunc", GetNetworkID(), a1,a2,c1,RakNet::_RPC3::Deref(d1),bs1,bs2,rpcFromNetwork);
 	}
 }	
@@ -123,13 +123,11 @@ void C::ClassMemberFunc2(RakNet::RPC3 *rpcFromNetwork)	{
 	{
 		// The RakNet::RPC3 * parameter can be passed to Call() if you want to - it is skipped and not serialized or deserialized so it doesn't matter.
 		// The point of it is so when this function is called on the remote system, it is set to the instance of the plugin so you can query network parameters from the caller
-		// 
 		// By default, pointers to objects that derive from NetworkIDObject (classes C and D), only transmit the NetworkID of the object.
 		// If you also want to dereference the pointer and serialize the object itself, use RakNet::_RPC3::Deref(myVariable)
 		// In this case, parameters that both derive from NetworkIDObject and are pointers are the variables c1 and d1
 		// c1 will only transmit c1->GetNetworkID() (default behavior)
 		// d1 will transmit d1->GetNetworkID() and also bitStream << (*d1) (contents of the pointer)
-		//
 		rpc3Inst->CallCPP("&C::ClassMemberFunc2", GetNetworkID(), rpcFromNetwork);
 	}
 }	

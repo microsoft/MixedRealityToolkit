@@ -1,8 +1,10 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /*
  * This file is part of the Airplay SDK Code Samples.
  *
  * Copyright (C) 2001-2011 Ideaworks3D Ltd.
- * All Rights Reserved.
  *
  * This source code is intended only as a supplement to Ideaworks Labs
  * Development Tools and/or on-line documentation.

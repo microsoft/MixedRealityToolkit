@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /* (C) 2013-2015, The Regents of The University of Michigan
 All rights reserved.
 
@@ -44,16 +47,13 @@ either expressed or implied, of the FreeBSD Project.
 //    3) and compiled with -Ofast
 // can result in inconsistent values being computed. You can force the function
 // NOT to be inlined with __attribute__ ((noinline)).
-//
 // It's also tempting to do:
 //    #define TKEYEQUAL(pka, pkb) (!memcmp(pka, pkb, sizeof(my_key_tyep)))
-//
 // But this will not work as expected if the structure contains
 // padding that is not consistently cleared to zero. It appears that
 // in C99, copying a struct by value does NOT necessarily copy
 // padding, and so it may be difficult to guarantee that padding is
 // zero, even when the code otherwise appears sane.
-//
 // You can use the "performance" method to evaluate how well your hash
 // function is doing.  Bad hash functions (obviously) are very bad for
 // performance!

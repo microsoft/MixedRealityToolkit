@@ -1,9 +1,9 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 //////////////////////////////////////////////////////////////////////////
 // TransformManager.h
-//
 // Starting point for transforming incoming operations against local operations
-//
-// Copyright (C) 2014 Microsoft Corp.  All Rights Reserved
 //////////////////////////////////////////////////////////////////////////
 
 #pragma once
@@ -19,8 +19,8 @@ public:
 	TransformManager();
 
 	// Given two operations c and s, return another pair of operations such that if the client
-	// applies c followed by s’, and the server applies s followed
-	// by c’, then the client and server will wind up in the same final state.
+	// applies c followed by sï¿½, and the server applies s followed
+	// by cï¿½, then the client and server will wind up in the same final state.
 	TransformedPair Transform(const OperationConstPtr& localOp, const OperationConstPtr& remoteOp) const;
 
 private:

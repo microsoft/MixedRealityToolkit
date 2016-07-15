@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /* (C) 2013-2015, The Regents of The University of Michigan
 All rights reserved.
 
@@ -102,7 +105,6 @@ static inline uint32_t unionfind_get_representative(unionfind_t *uf, uint32_t id
     }
 
     // go back and collapse the tree.
-    //
     // XXX: on some of our workloads that have very shallow trees
     // (e.g. image segmentation), we are actually faster not doing
     // this...

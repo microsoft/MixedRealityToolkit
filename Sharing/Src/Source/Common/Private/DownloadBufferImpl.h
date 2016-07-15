@@ -1,11 +1,11 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 //////////////////////////////////////////////////////////////////////////
 // DownloadBufferImpl.h
-//
 // Simple class that wraps a buffer used to hold data as it is downloaded,
 // then pass it off to the user ensuring ownership is transferred safely and
 // memory is released when the buffer is no longer needed
-//
-// Copyright (C) 2015 Microsoft Corp.  All Rights Reserved
 //////////////////////////////////////////////////////////////////////////
 
 #pragma once

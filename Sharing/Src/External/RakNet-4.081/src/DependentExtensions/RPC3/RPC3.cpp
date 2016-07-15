@@ -1,6 +1,8 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /*
  *  Copyright (c) 2014, Oculus VR, Inc.
- *  All rights reserved.
  *
  *  This source code is licensed under the BSD-style license found in the
  *  LICENSE file in the root directory of this source tree. An additional grant 
@@ -336,7 +338,6 @@ void RPC3::OnRPC3Call(const SystemAddress &systemAddress, unsigned char *data, u
 // 			{
 // 				bool isObjectMember = boost::fusion::get<0>(localFunctions[functionIndex].functionPointer);
 // 				//		boost::function<_RPC3::InvokeResultCodes (_RPC3::InvokeArgs)> functionPtr = boost::fusion::get<0>(localFunctions[functionIndex].functionPointer);
-// 
 // 				if (isObjectMember == (networkIdObject!=0) &&
 // 					strcmp(localFunctions[functionIndex].identifier.C_String(), strIdentifier)==0)
 // 				{
@@ -500,10 +501,8 @@ void RPC3::InvokeSignal(DataStructures::HashIndex functionIndex, RakNet::BitStre
 // 	bs.ReadCompressed(remoteIndex);
 // 	bs.Read(strIdentifier);
 // 	bs.Read(isCall);
-// 
 // 	if (strIdentifier.IsEmpty())
 // 		return;
-// 
 // 	DataStructures::OrderedList<RPCIdentifier, RemoteRPCFunction, RPC3::RemoteRPCFunctionComp> *theList;
 // 	if (
 // 		(isCall==true && remoteFunctions.Has(systemAddress)) ||
@@ -525,11 +524,9 @@ void RPC3::InvokeSignal(DataStructures::HashIndex functionIndex, RakNet::BitStre
 // 	else
 // 	{
 // 		theList = RakNet::OP_NEW<DataStructures::OrderedList<RPCIdentifier, RemoteRPCFunction, RPC3::RemoteRPCFunctionComp> >(_FILE_AND_LINE_);
-// 
 // 		newRemoteFunction.functionIndex=remoteIndex;
 // 		newRemoteFunction.identifier = strIdentifier;
 // 		theList->InsertAtEnd(newRemoteFunction, _FILE_AND_LINE_ );
-// 
 // 		if (isCall==true)
 // 			remoteFunctions.SetNew(systemAddress,theList);
 // 		else
@@ -545,7 +542,6 @@ void RPC3::OnClosedConnection(const SystemAddress &systemAddress, RakNetGUID rak
 // 		delete theList;
 // 		remoteFunctions.Delete(systemAddress);
 // 	}
-// 
 // 	if (remoteSlots.Has(systemAddress))
 // 	{
 // 		DataStructures::OrderedList<RPCIdentifier, RemoteRPCFunction, RPC3::RemoteRPCFunctionComp> *theList = remoteSlots.Get(systemAddress);

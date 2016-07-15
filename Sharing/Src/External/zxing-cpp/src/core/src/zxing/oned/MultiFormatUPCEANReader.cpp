@@ -1,9 +1,11 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 // -*- mode:c++; tab-width:2; indent-tabs-mode:nil; c-basic-offset:2 -*-
 /*
  *  MultiFormatUPCEANReader.cpp
  *  ZXing
  *
- *  Copyright 2010 ZXing authors All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -80,7 +82,6 @@ Ref<Result> MultiFormatUPCEANReader::decodeRow(int rowNumber, Ref<BitArray> row)
     // EAN-13 as a 13-digit string starting with "0".  Individually
     // these are correct and their readers will both read such a
     // code and correctly call it EAN-13, or UPC-A, respectively.
-    //
     // In this case, if we've been looking for both types, we'd like
     // to call it a UPC-A code. But for efficiency we only run the
     // EAN-13 decoder to also read UPC-A. So we special case it

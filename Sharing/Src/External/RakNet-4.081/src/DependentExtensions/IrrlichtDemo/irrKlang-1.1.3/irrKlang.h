@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /* irrKlang.h -- interface of the 'irrKlang' library
 
   Copyright (C) 2002-2009 Nikolaus Gebhardt

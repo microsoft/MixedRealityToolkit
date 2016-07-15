@@ -1,6 +1,8 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /*
  *  Copyright (c) 2014, Oculus VR, Inc.
- *  All rights reserved.
  *
  *  This source code is licensed under the BSD-style license found in the
  *  LICENSE file in the root directory of this source tree. An additional grant 
@@ -110,11 +112,7 @@ bool DSoundVoiceAdapter::SetupAdapter(RakVoice *rakVoice)
 bool DSoundVoiceAdapter::SetupIncomingBuffer()
 {
 
-	//
-	//
 	// Create the buffer for incoming sound
-	//
-	//
 
 	WAVEFORMATEX wfx; 
 	DSBUFFERDESC dsbdesc; 
@@ -148,9 +146,7 @@ bool DSoundVoiceAdapter::SetupIncomingBuffer()
 		DXTRACE_ERR_MSGBOX(L"IDirectSoundBuffer::QueryInterface, when getting IDirectSoundBuffer8 interface for incoming sound", hr);
 		return false;
 	}
-	//
 	// Setup the notification events
-	//
 	for (int i=0; i<FRAMES_IN_SOUND; i++)
 	{
 		incomingBufferNotifications[i].dwOffset = i*rakVoice->GetBufferSizeBytes();
@@ -191,11 +187,7 @@ bool DSoundVoiceAdapter::SetupOutgoingBuffer()
 {
 	HRESULT hr;
 
-	//
-	//
 	// Create the buffer for outgoing sound
-	//
-	//
 	if (FAILED(hr=DirectSoundCaptureCreate8(NULL, &dsC, NULL)))
 	{
 		DXTRACE_ERR_MSGBOX(L"DirectSoundCaptureCreate8", hr);
@@ -235,9 +227,7 @@ bool DSoundVoiceAdapter::SetupOutgoingBuffer()
 		DXTRACE_ERR_MSGBOX(L"IDirectSoundBuffer::QueryInterface, when getting IDirectSoundCaptureBuffer8 interface for outgoing sound", hr);
 		return false;
 	}
-	//
 	// Setup the notification events
-	//
 	for (int i=0; i<FRAMES_IN_SOUND; i++)
 	{
 		outgoingBufferNotifications[i].dwOffset = i*rakVoice->GetBufferSizeBytes();
@@ -330,9 +320,7 @@ void DSoundVoiceAdapter::Update()
 
 	for (int i=0; i<FRAMES_IN_SOUND; i++)
 	{
-		//
 		// Update incoming sound
-		//
 		if (WaitForSingleObject(incomingBufferNotifications[i].hEventNotify, 0)==WAIT_OBJECT_0)
 		{
 			// The lock offset is the buffer right before the one the event refers to
@@ -347,9 +335,7 @@ void DSoundVoiceAdapter::Update()
 			ResetEvent(incomingBufferNotifications[i].hEventNotify);
 		}
 
-		//
 		// Update outgoing sound
-		//
 		if (WaitForSingleObject(outgoingBufferNotifications[i].hEventNotify, 0)==WAIT_OBJECT_0)
 		{
 

@@ -1,6 +1,8 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /*-
  * Parts of this code are copyright 2003-2005 Colin Percival
- * All rights reserved
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted providing that the following conditions 

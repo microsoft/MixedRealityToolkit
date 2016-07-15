@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 // MICROSOFT PROJECT B CHANGES BEGIN
 #ifndef _STACHALLOC_H
 #define _STACHALLOC_H

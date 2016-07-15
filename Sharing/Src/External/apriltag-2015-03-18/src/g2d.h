@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 /* (C) 2013-2015, The Regents of The University of Michigan
 All rights reserved.
 
@@ -35,16 +38,13 @@ either expressed or implied, of the FreeBSD Project.
 #include "zarray.h"
 
 // This library tries to avoid needless proliferation of types.
-//
 // A point is a double[2]. (Note that when passing a double[2] as an
 // argument, it is passed by pointer, not by value.)
-//
 // A polygon is a zarray_t of double[2]. (Note that in this case, the
 // zarray contains the actual vertex data, and not merely a pointer to
 // some other data. IMPORTANT: A polygon must be specified in CCW
 // order.  It is implicitly closed (do not list the same point at the
 // beginning at the end.
-//
 // Where sensible, it is assumed that objects should be allocated
 // sparingly; consequently "init" style methods, rather than "create"
 // methods are used.

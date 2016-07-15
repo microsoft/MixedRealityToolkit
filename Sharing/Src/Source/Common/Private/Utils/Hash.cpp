@@ -1,9 +1,8 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 //////////////////////////////////////////////////////////////////////////
 // Hash.cpp
-//
-// 
-//
-// Copyright (C) 2014 Microsoft Corp.  All Rights Reserved
 //////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
@@ -48,7 +47,6 @@ uint64 HashBuffer(const char* buff, uint64 count)
 //		h = (h * kHashPrimeA) ^ (str[0] * kHashPrimeB);
 //		++str;
 //	}
-//
 //	return h;
 //}
 
