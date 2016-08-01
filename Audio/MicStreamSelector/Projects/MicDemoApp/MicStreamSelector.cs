@@ -135,7 +135,7 @@ namespace MicDemoApp
 
         public static void StopMicDevice()
         {
-            StringBuilder sb = new StringBuilder(256);
+            StringBuilder sb = new StringBuilder(260);  // 260 is Windows MAX_PATH as defined in c++. paths cant be longer than this and the plugin knows it, too
             Task.Factory.StartNew(() =>
             {
                 MicStopRecording(sb);
