@@ -1,0 +1,375 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|ARM">
+      <Configuration>Debug</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|ARM">
+      <Configuration>Release</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{33ca633a-8863-4480-85f3-bcd07b9bd3fd}</ProjectGuid>
+    <Keyword>DynamicLibrary</Keyword>
+    <RootNamespace>WorldUnderstanding</RootNamespace>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
+    <AppContainerApplication>true</AppContainerApplication>
+    <ApplicationType>Windows Store</ApplicationType>
+    <WindowsTargetPlatformVersion>10.0.10586.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformMinVersion>10.0.10240.0</WindowsTargetPlatformMinVersion>
+    <ApplicationTypeRevision>10.0</ApplicationTypeRevision>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <GenerateManifest>false</GenerateManifest>
+    <IgnoreImportLibrary>false</IgnoreImportLibrary>
+    <OutDir>$(SolutionDir)\bin\$(Configuration)\$(MSBuildProjectName)\</OutDir>
+    <IntDir>Obj\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <GenerateManifest>false</GenerateManifest>
+    <IgnoreImportLibrary>false</IgnoreImportLibrary>
+    <OutDir>$(SolutionDir)\bin\$(Configuration)\$(MSBuildProjectName)\</OutDir>
+    <IntDir>Obj\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+    <GenerateManifest>false</GenerateManifest>
+    <IgnoreImportLibrary>false</IgnoreImportLibrary>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
+    <GenerateManifest>false</GenerateManifest>
+    <IgnoreImportLibrary>false</IgnoreImportLibrary>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <GenerateManifest>false</GenerateManifest>
+    <IgnoreImportLibrary>false</IgnoreImportLibrary>
+    <OutDir>$(SolutionDir)\bin\$(Configuration)\$(MSBuildProjectName)\</OutDir>
+    <IntDir>Obj\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <GenerateManifest>false</GenerateManifest>
+    <IgnoreImportLibrary>false</IgnoreImportLibrary>
+    <OutDir>$(SolutionDir)\bin\$(Configuration)\$(MSBuildProjectName)\</OutDir>
+    <IntDir>Obj\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <CompileAsWinRT>false</CompileAsWinRT>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories);Engine;Playspace;Dll_Interface</AdditionalIncludeDirectories>
+      <UndefinePreprocessorDefinitions>
+      </UndefinePreprocessorDefinitions>
+      <PreprocessorDefinitions>_WINDLL;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <ForcedIncludeFiles>pch.h</ForcedIncludeFiles>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy /Y "$(TargetDir)$(ProjectName).dll" "$(SolutionDir)..\Unity-Sample\Assets\HoloToolkit\SpatialUnderstanding\Plugins\WSA\x86\$(ProjectName).dll"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <CompileAsWinRT>false</CompileAsWinRT>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories);Engine;Playspace;Dll_Interface</AdditionalIncludeDirectories>
+      <UndefinePreprocessorDefinitions>
+      </UndefinePreprocessorDefinitions>
+      <PreprocessorDefinitions>_WINDLL;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <ForcedIncludeFiles>pch.h</ForcedIncludeFiles>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy /Y "$(TargetDir)$(ProjectName).dll" "$(SolutionDir)..\Unity-Sample\Assets\HoloToolkit\SpatialUnderstanding\Plugins\WSA\x86\$(ProjectName).dll"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|arm'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <CompileAsWinRT>false</CompileAsWinRT>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories);Engine;Playspace;Dll_Interface</AdditionalIncludeDirectories>
+      <UndefinePreprocessorDefinitions>
+      </UndefinePreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy /Y "$(TargetDir)$(ProjectName).dll" "$(SolutionDir)..\Unity-Sample\Assets\HoloToolkit\SpatialUnderstanding\Plugins\ARM\x86\$(ProjectName).dll"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|arm'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <CompileAsWinRT>false</CompileAsWinRT>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories);Engine;Playspace;Dll_Interface</AdditionalIncludeDirectories>
+      <UndefinePreprocessorDefinitions>
+      </UndefinePreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy /Y "$(TargetDir)$(ProjectName).dll" "$(SolutionDir)..\Unity-Sample\Assets\HoloToolkit\SpatialUnderstanding\Plugins\ARM\x86\$(ProjectName).dll"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <CompileAsWinRT>false</CompileAsWinRT>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories);Engine;Playspace;Dll_Interface</AdditionalIncludeDirectories>
+      <UndefinePreprocessorDefinitions>
+      </UndefinePreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy /Y "$(TargetDir)$(ProjectName).dll" "$(SolutionDir)..\Unity-Sample\Assets\HoloToolkit\SpatialUnderstanding\Plugins\WSA\x64\$(ProjectName).dll"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <CompileAsWinRT>false</CompileAsWinRT>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories);Engine;Playspace;Dll_Interface</AdditionalIncludeDirectories>
+      <UndefinePreprocessorDefinitions>
+      </UndefinePreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy /Y "$(TargetDir)$(ProjectName).dll" "$(SolutionDir)..\Unity-Sample\Assets\HoloToolkit\SpatialUnderstanding\Plugins\WSA\x64\$(ProjectName).dll"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="Dll_Interface\Dll_Debug.h" />
+    <ClInclude Include="Dll_Interface\Dll_Interface.h" />
+    <ClInclude Include="Dll_Interface\Dll_Shapes.h" />
+    <ClInclude Include="Dll_Interface\Dll_Solver.h" />
+    <ClInclude Include="Dll_Interface\Dll_Topology.h" />
+    <ClInclude Include="Dll_Interface\UnderstandingMgr_W.h" />
+    <ClInclude Include="Engine\Assert_Z.h" />
+    <ClInclude Include="Engine\BeginDef_Z.h" />
+    <ClInclude Include="Engine\BitArray_Z.h" />
+    <ClInclude Include="Engine\BnkDynArray_Z.h" />
+    <ClInclude Include="Engine\Bresenham2D_Z.h" />
+    <ClInclude Include="Engine\ByteColor_Z.h" />
+    <ClInclude Include="Engine\CheckSumCRC32_Z.h" />
+    <ClInclude Include="Engine\collisiontool_z.h" />
+    <ClInclude Include="Engine\Color_Z.h" />
+    <ClInclude Include="Engine\DynArray_Z.h" />
+    <ClInclude Include="Engine\Eigen_Z.h" />
+    <ClInclude Include="Engine\FIFO_Z.h" />
+    <ClInclude Include="Engine\GenericQSort_Z.h" />
+    <ClInclude Include="Engine\HashTable_Z.h" />
+    <ClInclude Include="Engine\HugeDynArray_Z.h" />
+    <ClInclude Include="Engine\System_Z.h" />
+    <ClInclude Include="Engine\Mat3x3_Z.h" />
+    <ClInclude Include="Engine\Mat4x4_Z.h" />
+    <ClInclude Include="Engine\MathInlineEngine_Z.h" />
+    <ClInclude Include="Engine\MathInlinePc_Z.h" />
+    <ClInclude Include="Engine\Math_Z.h" />
+    <ClInclude Include="Engine\Memory_Z.h" />
+    <ClInclude Include="Engine\Mutex_Z.h" />
+    <ClInclude Include="Engine\name_z.h" />
+    <ClInclude Include="Engine\NonCopyable_Z.h" />
+    <ClInclude Include="Engine\Position3D_L.h" />
+    <ClInclude Include="Engine\Quat_Z.h" />
+    <ClInclude Include="Engine\Random_Z.h" />
+    <ClInclude Include="Engine\StaticArray_Z.h" />
+    <ClInclude Include="Engine\Std_Z.h" />
+    <ClInclude Include="Engine\String_Z.h" />
+    <ClInclude Include="Engine\SystemObject_Z.h" />
+    <ClInclude Include="Engine\TaskScheduler_Z.h" />
+    <ClInclude Include="Engine\thread_z.h" />
+    <ClInclude Include="Engine\Timer_Z.h" />
+    <ClInclude Include="Engine\TypeInfo_Z.h" />
+    <ClInclude Include="Engine\Types_Z.h" />
+    <ClInclude Include="Engine\Vec2f_Z.h" />
+    <ClInclude Include="Engine\Vec3f_Z.h" />
+    <ClInclude Include="Engine\Vec4f_Z.h" />
+    <ClInclude Include="Engine\VectorLib.h" />
+    <ClInclude Include="FRGSolver\FRGConstraint_W.h" />
+    <ClInclude Include="FRGSolver\FRGPathFinding_W.h" />
+    <ClInclude Include="FRGSolver\FRGPosition_W.h" />
+    <ClInclude Include="FRGSolver\FRGRule_W.h" />
+    <ClInclude Include="FRGSolver\FRGSolver_W.h" />
+    <ClInclude Include="FRGSolver\FRGSolvingInfos_W.h" />
+    <ClInclude Include="FRGSolver\FRGUtils_W.h" />
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="PlaySpace\PlaySpaceInfos_Cst_W.h" />
+    <ClInclude Include="PlaySpace\PlaySpaceInfos_W.h" />
+    <ClInclude Include="PlaySpace\PlaySpace_Mesh_W.h" />
+    <ClInclude Include="PlaySpace\PlaySpace_OldScan_W.h" />
+    <ClInclude Include="PlaySpace\PlaySpace_ScanBase_W.h" />
+    <ClInclude Include="PlaySpace\PlaySpace_ScanMesh_W.h" />
+    <ClInclude Include="PlaySpace\PlaySpace_ScanV3_W.h" />
+    <ClInclude Include="PlaySpace\PlaySpace_SR_W.h" />
+    <ClInclude Include="PlaySpace\PlaySpace_Surfel_W.h" />
+    <ClInclude Include="PlaySpace\PlaySpace_Tools_W.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="Topology\ShapeAnalyzerCharacteristics_W.h" />
+    <ClInclude Include="Topology\ShapeAnalyzerConstraints_W.h" />
+    <ClInclude Include="Topology\ShapeAnalyzerTools_W.h" />
+    <ClInclude Include="Topology\ShapeAnalyzerTypes_W.h" />
+    <ClInclude Include="Topology\ShapeAnalyzer_W.h" />
+    <ClInclude Include="Topology\TopologyAnalyzer_W.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="Dll_Interface\Dll_Debug.cpp" />
+    <ClCompile Include="Dll_Interface\Dll_Interface.cpp" />
+    <ClCompile Include="Dll_Interface\Dll_Shapes.cpp" />
+    <ClCompile Include="Dll_Interface\Dll_Solver.cpp" />
+    <ClCompile Include="Dll_Interface\Dll_Topology.cpp" />
+    <ClCompile Include="Dll_Interface\UnderstandingMgr_W.cpp" />
+    <ClCompile Include="Engine\BitArray_Z.cpp" />
+    <ClCompile Include="Engine\CollisionTool_Z.cpp" />
+    <ClCompile Include="Engine\Eigen_Z.cpp" />
+    <ClCompile Include="Engine\Mat3x3_Z.cpp" />
+    <ClCompile Include="Engine\Math_Z.cpp" />
+    <ClCompile Include="Engine\Memory_Z.cpp" />
+    <ClCompile Include="Engine\Name_Z.cpp" />
+    <ClCompile Include="Engine\Position3D_L.cpp" />
+    <ClCompile Include="Engine\Quat_Z.cpp" />
+    <ClCompile Include="Engine\Random_Z.cpp" />
+    <ClCompile Include="Engine\SystemObject_Z.cpp" />
+    <ClCompile Include="Engine\TaskScheduler_Z.cpp" />
+    <ClCompile Include="Engine\Thread_Z.cpp" />
+    <ClCompile Include="Engine\Timer_Z.cpp" />
+    <ClCompile Include="Engine\Vec2f_Z.cpp" />
+    <ClCompile Include="Engine\Vec3f_Z.cpp" />
+    <ClCompile Include="Engine\Vec4f_Z.cpp" />
+    <ClCompile Include="Engine\WinMutex_Z.cpp" />
+    <ClCompile Include="Engine\WinThread_Z.cpp" />
+    <ClCompile Include="FRGSolver\FRGPathFinding_W.cpp" />
+    <ClCompile Include="FRGSolver\FRGSolver_W.cpp" />
+    <ClCompile Include="FRGSolver\FRGSolvingInfos_W.cpp" />
+    <ClCompile Include="FRGSolver\FRGUtils_W.cpp" />
+    <ClCompile Include="pch.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="PlaySpace\PlaySpaceInfos_W.cpp" />
+    <ClCompile Include="PlaySpace\PlaySpace_Mesh_W.cpp" />
+    <ClCompile Include="PlaySpace\PlaySpace_ScanBase_W.cpp" />
+    <ClCompile Include="PlaySpace\PlaySpace_ScanMesh_W.cpp" />
+    <ClCompile Include="PlaySpace\PlaySpace_ScanV3_W.cpp" />
+    <ClCompile Include="PlaySpace\PlaySpace_SR_W.cpp" />
+    <ClCompile Include="PlaySpace\PlaySpace_Tools_W.cpp" />
+    <ClCompile Include="Topology\ShapeAnalyzer_W.cpp" />
+    <ClCompile Include="Topology\TopologyAnalyzer_W.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Engine\ByteColor_Z.inl" />
+    <None Include="Engine\Color_Z.inl" />
+    <None Include="Engine\Mat3x3_Z.inl" />
+    <None Include="Engine\Mat4x4_Z.inl" />
+    <None Include="Engine\Quat_Z.inl" />
+    <None Include="Engine\Vec3f_Z.inl" />
+    <None Include="Engine\Vec4f_Z.inl" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,385 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="PlaySpace">
+      <UniqueIdentifier>{8e217b0d-5410-4493-b50c-07dac311d01c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine">
+      <UniqueIdentifier>{2f12b36c-5a0a-4c00-ae0d-ecc3b18fe772}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Topology">
+      <UniqueIdentifier>{754a6f63-6f4d-4dd9-92be-b1e9ee11c157}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dll_Interface">
+      <UniqueIdentifier>{21058527-33b9-4ecf-bb2f-ca4c61329ab4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FRGSolver">
+      <UniqueIdentifier>{ebf581c6-bbd8-45a6-9132-1b489d01e992}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Container">
+      <UniqueIdentifier>{ad58e806-5efb-4e02-b58e-3e7e76aa5f13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Math">
+      <UniqueIdentifier>{cab72bd3-df44-48eb-a4aa-bde6acca7792}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Geometry">
+      <UniqueIdentifier>{d45756ff-156c-46e3-907d-1116a88d579e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\System">
+      <UniqueIdentifier>{2e9d4d06-a9cf-44df-8c3f-06ceb06a3b3d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="PlaySpace\PlaySpace_Mesh_W.cpp">
+      <Filter>PlaySpace</Filter>
+    </ClCompile>
+    <ClCompile Include="PlaySpace\PlaySpace_ScanBase_W.cpp">
+      <Filter>PlaySpace</Filter>
+    </ClCompile>
+    <ClCompile Include="PlaySpace\PlaySpace_ScanMesh_W.cpp">
+      <Filter>PlaySpace</Filter>
+    </ClCompile>
+    <ClCompile Include="PlaySpace\PlaySpace_ScanV3_W.cpp">
+      <Filter>PlaySpace</Filter>
+    </ClCompile>
+    <ClCompile Include="PlaySpace\PlaySpace_SR_W.cpp">
+      <Filter>PlaySpace</Filter>
+    </ClCompile>
+    <ClCompile Include="PlaySpace\PlaySpace_Tools_W.cpp">
+      <Filter>PlaySpace</Filter>
+    </ClCompile>
+    <ClCompile Include="PlaySpace\PlaySpaceInfos_W.cpp">
+      <Filter>PlaySpace</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="Topology\ShapeAnalyzer_W.cpp">
+      <Filter>Topology</Filter>
+    </ClCompile>
+    <ClCompile Include="Topology\TopologyAnalyzer_W.cpp">
+      <Filter>Topology</Filter>
+    </ClCompile>
+    <ClCompile Include="Dll_Interface\Dll_Interface.cpp">
+      <Filter>Dll_Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>Dll_Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="Dll_Interface\UnderstandingMgr_W.cpp" />
+    <ClCompile Include="FRGSolver\FRGPathFinding_W.cpp">
+      <Filter>FRGSolver</Filter>
+    </ClCompile>
+    <ClCompile Include="FRGSolver\FRGSolver_W.cpp">
+      <Filter>FRGSolver</Filter>
+    </ClCompile>
+    <ClCompile Include="FRGSolver\FRGSolvingInfos_W.cpp">
+      <Filter>FRGSolver</Filter>
+    </ClCompile>
+    <ClCompile Include="FRGSolver\FRGUtils_W.cpp">
+      <Filter>FRGSolver</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\BitArray_Z.cpp">
+      <Filter>Engine\Container</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Mat3x3_Z.cpp">
+      <Filter>Engine\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Math_Z.cpp">
+      <Filter>Engine\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Quat_Z.cpp">
+      <Filter>Engine\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Position3D_L.cpp">
+      <Filter>Engine\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Eigen_Z.cpp">
+      <Filter>Engine\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\CollisionTool_Z.cpp">
+      <Filter>Engine\Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Vec2f_Z.cpp">
+      <Filter>Engine\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Vec3f_Z.cpp">
+      <Filter>Engine\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Vec4f_Z.cpp">
+      <Filter>Engine\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Memory_Z.cpp">
+      <Filter>Engine\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Name_Z.cpp">
+      <Filter>Engine\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Random_Z.cpp">
+      <Filter>Engine\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\SystemObject_Z.cpp">
+      <Filter>Engine\Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\TaskScheduler_Z.cpp">
+      <Filter>Engine\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Thread_Z.cpp">
+      <Filter>Engine\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Timer_Z.cpp">
+      <Filter>Engine\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\WinMutex_Z.cpp">
+      <Filter>Engine\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\WinThread_Z.cpp">
+      <Filter>Engine\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Dll_Interface\Dll_Topology.cpp">
+      <Filter>Dll_Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="Dll_Interface\Dll_Debug.cpp">
+      <Filter>Dll_Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="Dll_Interface\Dll_Shapes.cpp">
+      <Filter>Dll_Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="Dll_Interface\Dll_Solver.cpp">
+      <Filter>Dll_Interface</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="PlaySpace\PlaySpace_Mesh_W.h">
+      <Filter>PlaySpace</Filter>
+    </ClInclude>
+    <ClInclude Include="PlaySpace\PlaySpace_ScanBase_W.h">
+      <Filter>PlaySpace</Filter>
+    </ClInclude>
+    <ClInclude Include="PlaySpace\PlaySpace_ScanMesh_W.h">
+      <Filter>PlaySpace</Filter>
+    </ClInclude>
+    <ClInclude Include="PlaySpace\PlaySpace_ScanV3_W.h">
+      <Filter>PlaySpace</Filter>
+    </ClInclude>
+    <ClInclude Include="PlaySpace\PlaySpace_SR_W.h">
+      <Filter>PlaySpace</Filter>
+    </ClInclude>
+    <ClInclude Include="PlaySpace\PlaySpace_Surfel_W.h">
+      <Filter>PlaySpace</Filter>
+    </ClInclude>
+    <ClInclude Include="PlaySpace\PlaySpace_Tools_W.h">
+      <Filter>PlaySpace</Filter>
+    </ClInclude>
+    <ClInclude Include="PlaySpace\PlaySpaceInfos_Cst_W.h">
+      <Filter>PlaySpace</Filter>
+    </ClInclude>
+    <ClInclude Include="PlaySpace\PlaySpaceInfos_W.h">
+      <Filter>PlaySpace</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="Topology\TopologyAnalyzer_W.h">
+      <Filter>Topology</Filter>
+    </ClInclude>
+    <ClInclude Include="Topology\ShapeAnalyzer_W.h">
+      <Filter>Topology</Filter>
+    </ClInclude>
+    <ClInclude Include="Topology\ShapeAnalyzerCharacteristics_W.h">
+      <Filter>Topology</Filter>
+    </ClInclude>
+    <ClInclude Include="Topology\ShapeAnalyzerConstraints_W.h">
+      <Filter>Topology</Filter>
+    </ClInclude>
+    <ClInclude Include="Topology\ShapeAnalyzerTools_W.h">
+      <Filter>Topology</Filter>
+    </ClInclude>
+    <ClInclude Include="Topology\ShapeAnalyzerTypes_W.h">
+      <Filter>Topology</Filter>
+    </ClInclude>
+    <ClInclude Include="PlaySpace\PlaySpace_OldScan_W.h">
+      <Filter>Topology</Filter>
+    </ClInclude>
+    <ClInclude Include="Dll_Interface\Dll_Interface.h">
+      <Filter>Dll_Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Dll_Interface\UnderstandingMgr_W.h" />
+    <ClInclude Include="FRGSolver\FRGPathFinding_W.h">
+      <Filter>FRGSolver</Filter>
+    </ClInclude>
+    <ClInclude Include="FRGSolver\FRGPosition_W.h">
+      <Filter>FRGSolver</Filter>
+    </ClInclude>
+    <ClInclude Include="FRGSolver\FRGRule_W.h">
+      <Filter>FRGSolver</Filter>
+    </ClInclude>
+    <ClInclude Include="FRGSolver\FRGSolver_W.h">
+      <Filter>FRGSolver</Filter>
+    </ClInclude>
+    <ClInclude Include="FRGSolver\FRGSolvingInfos_W.h">
+      <Filter>FRGSolver</Filter>
+    </ClInclude>
+    <ClInclude Include="FRGSolver\FRGUtils_W.h">
+      <Filter>FRGSolver</Filter>
+    </ClInclude>
+    <ClInclude Include="FRGSolver\FRGConstraint_W.h">
+      <Filter>FRGSolver</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\BitArray_Z.h">
+      <Filter>Engine\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\BnkDynArray_Z.h">
+      <Filter>Engine\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DynArray_Z.h">
+      <Filter>Engine\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\HashTable_Z.h">
+      <Filter>Engine\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\HugeDynArray_Z.h">
+      <Filter>Engine\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Mat3x3_Z.h">
+      <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Mat4x4_Z.h">
+      <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Math_Z.h">
+      <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Quat_Z.h">
+      <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Position3D_L.h">
+      <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Bresenham2D_Z.h">
+      <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Eigen_Z.h">
+      <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\FIFO_Z.h">
+      <Filter>Engine\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\GenericQSort_Z.h">
+      <Filter>Engine\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\collisiontool_z.h">
+      <Filter>Engine\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\MathInlineEngine_Z.h">
+      <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\MathInlinePc_Z.h">
+      <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Vec2f_Z.h">
+      <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Vec3f_Z.h">
+      <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Vec4f_Z.h">
+      <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\CheckSumCRC32_Z.h">
+      <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Assert_Z.h">
+      <Filter>Engine\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\BeginDef_Z.h">
+      <Filter>Engine\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\System_Z.h">
+      <Filter>Engine\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Memory_Z.h">
+      <Filter>Engine\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Mutex_Z.h">
+      <Filter>Engine\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\name_z.h">
+      <Filter>Engine\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\NonCopyable_Z.h">
+      <Filter>Engine\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\StaticArray_Z.h">
+      <Filter>Engine\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Random_Z.h">
+      <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\SystemObject_Z.h">
+      <Filter>Engine\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\TaskScheduler_Z.h">
+      <Filter>Engine\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\thread_z.h">
+      <Filter>Engine\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Timer_Z.h">
+      <Filter>Engine\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\VectorLib.h">
+      <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Types_Z.h">
+      <Filter>Engine\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\TypeInfo_Z.h">
+      <Filter>Engine\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\String_Z.h">
+      <Filter>Engine\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Std_Z.h">
+      <Filter>Engine\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\ByteColor_Z.h">
+      <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Color_Z.h">
+      <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Dll_Interface\Dll_Topology.h">
+      <Filter>Dll_Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Dll_Interface\Dll_Debug.h">
+      <Filter>Dll_Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Dll_Interface\Dll_Shapes.h">
+      <Filter>Dll_Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Dll_Interface\Dll_Solver.h">
+      <Filter>Dll_Interface</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Engine\Mat3x3_Z.inl">
+      <Filter>Engine\Math</Filter>
+    </None>
+    <None Include="Engine\Mat4x4_Z.inl">
+      <Filter>Engine\Math</Filter>
+    </None>
+    <None Include="Engine\Quat_Z.inl">
+      <Filter>Engine\Math</Filter>
+    </None>
+    <None Include="Engine\Vec3f_Z.inl">
+      <Filter>Engine\Math</Filter>
+    </None>
+    <None Include="Engine\Vec4f_Z.inl">
+      <Filter>Engine\Math</Filter>
+    </None>
+    <None Include="Engine\ByteColor_Z.inl">
+      <Filter>Engine\Math</Filter>
+    </None>
+    <None Include="Engine\Color_Z.inl">
+      <Filter>Engine\Math</Filter>
+    </None>
+  </ItemGroup>
+</Project>
