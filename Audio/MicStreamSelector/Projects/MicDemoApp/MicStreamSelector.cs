@@ -1,12 +1,13 @@
-﻿using System;
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
+using System;
 using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 using Windows.Media.Audio;
 using Windows.Media.Render;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml;
 
 namespace MicDemoApp
 {
@@ -30,9 +31,11 @@ namespace MicDemoApp
         // Streams: SPEECH is optimized for voice transmission, COMMUNICATIONS is higher quality voice capture, MEDIA is a "room capture"
         // can only be set on initialization
         public enum StreamCategory { SPEECH, COMMUNICATIONS, MEDIA }
-        public static StreamCategory streamtype = StreamCategory.SPEECH;
+        public static StreamCategory streamType = StreamCategory.SPEECH;
         private enum ErrorCodes { ALREADY_RUNNING = -10, NO_AUDIO_DEVICE, NO_INPUT_DEVICE, ALREADY_RECORDING, GRAPH_NOT_EXIST, CHANNEL_COUNT_MISMATCH, FILE_CREATION_PERMISSION_ERROR, NOT_ENOUGH_DATA, NEED_ENABLED_MIC_CAPABILITY };
 
+        const int MAX_PATH = 260; // maximum filepath size in windows. to be used by a string builder to return file path from plugin
+        
         // Unfortunately, we can't create AudioGraph from Task because it attaches to the background. We have to make our graph here and pass that to the plugin.
         private static AudioGraph graph;
 
@@ -132,12 +135,15 @@ namespace MicDemoApp
 
         public static void StopMicDevice()
         {
-            StringBuilder sb = new StringBuilder(256);
+            StringBuilder sb = new StringBuilder(260);  // 260 is Windows MAX_PATH as defined in c++. paths cant be longer than this and the plugin knows it, too
             Task.Factory.StartNew(() =>
             {
                 MicStopRecording(sb);
                 Debug.WriteLine(sb.ToString());
                 CheckForErrorOnCall(MicDestroy());
+
+                graph.Dispose();    // unfortunately, the app needs to do this to be able to re-init plugin later
+                graph = null;       // this, too
             }
             );
         }
@@ -146,7 +152,7 @@ namespace MicDemoApp
         public static void StopRecording()
         {
 
-            StringBuilder sb = new StringBuilder(256);
+            StringBuilder sb = new StringBuilder(MAX_PATH);
             Task.Factory.StartNew(() =>
             {
                 MicStopRecording(sb);
@@ -180,9 +186,9 @@ namespace MicDemoApp
                 return; // Cannot create graph
             }
             graph = result.Graph;
-            CheckForErrorOnCall(MicInitializeDefaultWithGraph((int)streamtype, graph)); // pass the bound graph to the mic plugin. this lets our current process hear audio. 
+            CheckForErrorOnCall(MicInitializeDefaultWithGraph((int)streamType, graph)); // pass the bound graph to the mic plugin. this lets our current process hear audio. 
         }
-
+        
         static void CheckForErrorOnCall(int returnCode)
         {
             switch (returnCode)

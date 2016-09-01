@@ -1,24 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Threading.Tasks;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.Media.Audio;
-using Windows.Media.Render;
-using Windows.Storage;
-using Windows.Storage.Pickers;
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
+
+using System;
 using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Media.Imaging;
-using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Shapes;
 
 namespace MicDemoApp
@@ -35,7 +25,6 @@ namespace MicDemoApp
             Instance = this;
 
             micGain = (float)((Slider)this.FindName("slider")).Value;   // these lines automatically sets the mic volume based off of the XAML slider element's starting point
-            MicStreamSelector.MicSetGain(micGain);
         }
 
         private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -45,13 +34,13 @@ namespace MicDemoApp
             switch (value)
             {
                 case "Speech":
-                    MicStreamSelector.streamtype = MicStreamSelector.StreamCategory.SPEECH;
+                    MicStreamSelector.streamType = MicStreamSelector.StreamCategory.SPEECH;
                     break;
                 case "Communications":
-                    MicStreamSelector.streamtype = MicStreamSelector.StreamCategory.COMMUNICATIONS;
+                    MicStreamSelector.streamType = MicStreamSelector.StreamCategory.COMMUNICATIONS;
                     break;
                 case "Media":
-                    MicStreamSelector.streamtype = MicStreamSelector.StreamCategory.MEDIA;
+                    MicStreamSelector.streamType = MicStreamSelector.StreamCategory.MEDIA;
                     break;
             }
         }
@@ -59,17 +48,19 @@ namespace MicDemoApp
         private void slider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
         {
             micGain = (float)e.NewValue;
-            MicStreamSelector.MicSetGain(micGain); 
+            MicStreamSelector.MicSetGain(micGain); // changes volume immediately if already running
         }
 
         private void StartStream_Click(object sender, RoutedEventArgs e)
         {
+            MicStreamSelector.MicSetGain(micGain);
             MicStreamSelector.StartStream();
             ActiveMicColor = Colors.Green;
         }
 
         private void StartRecording_Click(object sender, RoutedEventArgs e)
         {
+            MicStreamSelector.MicSetGain(micGain);
             MicStreamSelector.StartRecording("myfilenamewithextension.wav");
             ActiveMicColor = Colors.Green;
         }
