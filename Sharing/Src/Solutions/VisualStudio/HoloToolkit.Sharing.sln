@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{378A7004-7125-4C1F-BB36-C282173D05CC}"
 EndProject
@@ -90,6 +90,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ClientUniversalCSharp", "..
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SessionManagerUniversal.UI", "..\..\Projects\SessionManagerUniversal.UI\SessionManagerUniversal.UI.csproj", "{D643855A-7865-41F2-906E-499840702458}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E7408E12-4F94-4950-AE23-4C5F98AA3089} = {E7408E12-4F94-4950-AE23-4C5F98AA3089}
+		{025D2EB8-5035-498E-94A1-DEB8EA752868} = {025D2EB8-5035-498E-94A1-DEB8EA752868}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
