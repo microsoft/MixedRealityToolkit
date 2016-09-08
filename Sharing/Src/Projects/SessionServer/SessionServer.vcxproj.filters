@@ -8,12 +8,12 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
+    <Filter Include="Source\Rooms">
+      <UniqueIdentifier>{e174820b-ddba-4ff8-86d5-b3a484359316}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{63c7b351-96cf-465a-b91a-d3fd6dbbf6da}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="Source\Rooms">
-      <UniqueIdentifier>{e174820b-ddba-4ff8-86d5-b3a484359316}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -23,93 +23,12 @@
     <ClCompile Include="..\..\Source\SessionServer\Main.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\SessionServer\SessionServer.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\SessionServer\BroadcastForwarder.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\SessionServer\ServiceBase.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\SessionServer\ServiceInstaller.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\SessionServer\XSessionImpl.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\SessionServer\AudioRouterWithMixer.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\SessionServer\AudioSessionProcessorServer.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\SessionServer\SendToForwarder.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\SessionServer\ServerRoomManager.cpp">
-      <Filter>Source\Rooms</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\SessionServer\ServerRoom.cpp">
-      <Filter>Source\Rooms</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\SessionServer\ServerAnchorList.cpp">
-      <Filter>Source\Rooms</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\SessionServer\PortPool.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\SessionServer\stdafx.h">
       <Filter>Precompiled Header</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\SessionServer\SessionServer.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\SessionServer\XSession.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\SessionServer\BroadcastForwarder.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\SessionServer\ServiceBase.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\SessionServer\ServiceInstaller.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\SessionServer\SessionChangeCallback.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\SessionServer\XSessionImpl.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\SessionServer\AudioConnectionTypes.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\SessionServer\AudioRouterWithMixer.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\SessionServer\AudioSessionProcessorServer.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\SessionServer\SendToForwarder.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\SessionServer\ServerRoomManager.h">
-      <Filter>Source\Rooms</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\SessionServer\ServerRoom.h">
-      <Filter>Source\Rooms</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\SessionServer\ServerAnchorList.h">
-      <Filter>Source\Rooms</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Source\SessionServer\resource.h" />
-    <ClInclude Include="..\..\Source\SessionServer\PortPool.h">
-      <Filter>Source</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\..\Source\SessionServer\SessionServer.rc">

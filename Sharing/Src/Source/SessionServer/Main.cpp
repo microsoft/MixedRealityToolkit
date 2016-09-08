@@ -10,9 +10,8 @@
 //////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
-#include "SessionServer.h"
-#include "ServiceInstaller.h"
-#include <windows.h>
+#include "../SharingService/SessionServer.h"
+#include "../SharingService/ServiceInstaller.h"
 #include <iostream>
 #include <iosfwd>
 
