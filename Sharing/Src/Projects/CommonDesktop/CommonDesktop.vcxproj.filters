@@ -1121,6 +1121,9 @@
     <ClInclude Include="..\..\Source\Common\Private\BoolElementImpl.h">
       <Filter>Source\Private\Sync\Elements</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\SyncContext.h">
+      <Filter>Source\Private\Sync</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <RakNetSymbols Include="..\..\External\RakNet-4.081\lib\*.pdb">

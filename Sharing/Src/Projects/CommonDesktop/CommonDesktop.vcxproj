@@ -212,6 +212,7 @@
     <ClInclude Include="..\..\Source\Common\Private\SpeexProcessor.h" />
     <ClInclude Include="..\..\Source\Common\Private\Syncable.h" />
     <ClInclude Include="..\..\Source\Common\Private\SyncArray.h" />
+    <ClInclude Include="..\..\Source\Common\Private\SyncContext.h" />
     <ClInclude Include="..\..\Source\Common\Private\SyncEnum.h" />
     <ClInclude Include="..\..\Source\Common\Private\SyncObject.h" />
     <ClInclude Include="..\..\Source\Common\Private\SyncPrimitives.h" />
