@@ -13,6 +13,18 @@ Standalone Visual Studio solution containing the source code for the PlaneFindin
 
 ---
 
+## Spatial Understanding
+
+Standalone Visual Studio solution containing the source code for the SpatialUnderstanding DLL. 
+
+SpatialUnderstanding library encapsulates the world understanding technology by for Conker and Fragments. It allows you to quickly find empty spaces on the walls, place objects on the ceiling, identify placed for character to sit, and a myriad of other spatial understanding queries. 
+
+There are three primary interfaces exposed by the module: topology for simple surface and spatial queries, shape for object detection, and the object placement solver for constraint based placement of object sets. Each of these is described below.
+
+In addition to the three primary module interfaces, a ray casting interface can be used to retrieve tagged surface types and a custom watertight playspace mesh can be copied out.
+
+---
+
 ## Sharing
 
 The HoloToolkit.Sharing library allows applications to span multiple devices, and enables collaboration between users in the same room or working remotely.  Features include:
