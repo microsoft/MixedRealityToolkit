@@ -17,6 +17,10 @@ public:
 	/// If the given Element is a LongElement, cast it to the derived type.  Otherwise return null
 	static ref_ptr<LongElement> Cast(const ElementPtr& element);
 
+#if !defined(SWIG)
+	static ref_ptr<const LongElement> Cast(const ElementConstPtr& element);
+#endif
+
 	/// Get the current value of the element.  Returns immediately, does not allocate.  
 	virtual int64 GetValue() const = 0;
 

@@ -17,6 +17,10 @@ public:
 	/// If the given Element is a DoubleElement, cast it to the derived type.  Otherwise return null
 	static ref_ptr<DoubleElement> Cast(const ElementPtr& element);
 
+#if !defined(SWIG)
+	static ref_ptr<const DoubleElement> Cast(const ElementConstPtr& element);
+#endif
+	
 	/// Get the current value of the element.  Returns immediately, does not allocate.  
 	virtual double GetValue() const = 0;
 

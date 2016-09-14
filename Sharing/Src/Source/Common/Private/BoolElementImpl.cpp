@@ -22,6 +22,20 @@ BoolElementPtr BoolElement::Cast(const ElementPtr& element)
 	}
 }
 
+#if !defined(SWIG)
+BoolElementConstPtr BoolElement::Cast(const ElementConstPtr& element)
+{
+	if (element != NULL && element->GetElementType() == ElementType::BoolType)
+	{
+		return static_cast<const BoolElement*>(element.get());
+	}
+	else
+	{
+		return NULL;
+	}
+}
+#endif
+
 
 NAMESPACE_BEGIN(Sync)
 

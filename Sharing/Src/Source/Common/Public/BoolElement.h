@@ -19,6 +19,10 @@ public:
 	/// If the given Element is a BoolElement, cast it to the derived type.  Otherwise return null
 	static ref_ptr<BoolElement> Cast(const ElementPtr& element);
 
+#if !defined(SWIG)
+	static ref_ptr<const BoolElement> Cast(const ElementConstPtr& element);
+#endif
+
 	/// Get the current value of the element.  Returns immediately, does not allocate.  
 	virtual bool GetValue() const = 0;
 

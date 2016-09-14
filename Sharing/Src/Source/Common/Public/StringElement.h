@@ -17,6 +17,10 @@ public:
 	/// If the given Element is a StringElement, cast it to the derived type.  Otherwise return null
 	static ref_ptr<StringElement> Cast(const ElementPtr& element);
 
+#if !defined(SWIG)
+	static ref_ptr<const StringElement> Cast(const ElementConstPtr& element);
+#endif
+
 	/// Get the current value of the element.  Returns immediately.  XString wrapper is allocated, as well as a C++ XString object.  
 	/// The string is not passed across the C++ boundary until XString.GetString() is called.  
 	virtual const XStringPtr& GetValue() const = 0;

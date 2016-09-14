@@ -22,6 +22,19 @@ DoubleElementPtr DoubleElement::Cast(const ElementPtr& element)
 	}
 }
 
+#if !defined(SWIG)
+DoubleElementConstPtr DoubleElement::Cast(const ElementConstPtr& element)
+{
+	if (element != NULL && element->GetElementType() == ElementType::DoubleType)
+	{
+		return static_cast<const DoubleElement*>(element.get());
+	}
+	else
+	{
+		return NULL;
+	}
+}
+#endif
 
 NAMESPACE_BEGIN(Sync)
 

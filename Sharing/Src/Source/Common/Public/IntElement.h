@@ -19,6 +19,10 @@ public:
 	/// If the given Element is an IntElement, cast it to the derived type.  Otherwise return null
 	static ref_ptr<IntElement> Cast(const ElementPtr& element);
 
+#if !defined(SWIG)
+	static ref_ptr<const IntElement> Cast(const ElementConstPtr& element);
+#endif
+
 	/// Get the current value of the element.  Returns immediately, does not allocate.  
 	virtual int32 GetValue() const = 0;
 

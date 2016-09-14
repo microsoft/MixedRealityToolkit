@@ -21,6 +21,21 @@ IntArrayElementPtr IntArrayElement::Cast(const ElementPtr& element)
 	}
 }
 
+
+#if !defined(SWIG)
+IntArrayElementConstPtr IntArrayElement::Cast(const ElementConstPtr& element)
+{
+	if (element != NULL && element->GetElementType() == ElementType::Int32ArrayType)
+	{
+		return static_cast<const IntArrayElement*>(element.get());
+	}
+	else
+	{
+		return NULL;
+	}
+}
+#endif
+
 NAMESPACE_BEGIN(Sync)
 
 XTOOLS_REFLECTION_DEFINE(ArrayElement);

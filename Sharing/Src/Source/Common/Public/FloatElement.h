@@ -19,6 +19,10 @@ public:
 	/// If the given Element is a FloatElement, cast it to the derived type.  Otherwise return null
 	static ref_ptr<FloatElement> Cast(const ElementPtr& element);
 
+#if !defined(SWIG)
+	static ref_ptr<const FloatElement> Cast(const ElementConstPtr& element);
+#endif
+
 	/// Get the current value of the element.  Returns immediately, does not allocate.  
 	virtual float GetValue() const = 0;
 

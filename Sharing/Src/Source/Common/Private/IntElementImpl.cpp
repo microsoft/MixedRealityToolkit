@@ -24,6 +24,20 @@ IntElementPtr IntElement::Cast(const ElementPtr& element)
 	}
 }
 
+#if !defined(SWIG)
+IntElementConstPtr IntElement::Cast(const ElementConstPtr& element)
+{
+	if (element != NULL && element->GetElementType() == ElementType::Int32Type)
+	{
+		return static_cast<const IntElement*>(element.get());
+	}
+	else
+	{
+		return NULL;
+	}
+}
+#endif
+
 NAMESPACE_BEGIN(Sync)
 
 IntElementImpl::IntElementImpl(SyncContext* context, const XStringPtr& name, XGuid id, const XValue& startingValue)
