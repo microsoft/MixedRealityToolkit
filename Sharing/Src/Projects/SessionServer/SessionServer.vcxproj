@@ -118,46 +118,19 @@
     <ResourceCompile Include="..\..\Source\SessionServer\SessionServer.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\SessionServer\AudioSessionProcessorServer.cpp" />
-    <ClCompile Include="..\..\Source\SessionServer\AudioRouterWithMixer.cpp" />
-    <ClCompile Include="..\..\Source\SessionServer\BroadcastForwarder.cpp" />
     <ClCompile Include="..\..\Source\SessionServer\Main.cpp" />
-    <ClCompile Include="..\..\Source\SessionServer\PortPool.cpp" />
-    <ClCompile Include="..\..\Source\SessionServer\SendToForwarder.cpp" />
-    <ClCompile Include="..\..\Source\SessionServer\ServerAnchorList.cpp" />
-    <ClCompile Include="..\..\Source\SessionServer\ServerRoom.cpp" />
-    <ClCompile Include="..\..\Source\SessionServer\ServerRoomManager.cpp" />
-    <ClCompile Include="..\..\Source\SessionServer\ServiceBase.cpp" />
-    <ClCompile Include="..\..\Source\SessionServer\ServiceInstaller.cpp" />
-    <ClCompile Include="..\..\Source\SessionServer\SessionServer.cpp" />
     <ClCompile Include="..\..\Source\SessionServer\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="..\..\Source\SessionServer\XSessionImpl.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\SessionServer\AudioConnectionTypes.h" />
-    <ClInclude Include="..\..\Source\SessionServer\AudioSessionProcessorServer.h" />
-    <ClInclude Include="..\..\Source\SessionServer\AudioRouterWithMixer.h" />
-    <ClInclude Include="..\..\Source\SessionServer\BroadcastForwarder.h" />
-    <ClInclude Include="..\..\Source\SessionServer\PortPool.h" />
     <ClInclude Include="..\..\Source\SessionServer\resource.h" />
-    <ClInclude Include="..\..\Source\SessionServer\SendToForwarder.h" />
-    <ClInclude Include="..\..\Source\SessionServer\ServerAnchorList.h" />
-    <ClInclude Include="..\..\Source\SessionServer\ServerRoom.h" />
-    <ClInclude Include="..\..\Source\SessionServer\ServerRoomManager.h" />
-    <ClInclude Include="..\..\Source\SessionServer\ServiceBase.h" />
-    <ClInclude Include="..\..\Source\SessionServer\ServiceInstaller.h" />
-    <ClInclude Include="..\..\Source\SessionServer\SessionChangeCallback.h" />
-    <ClInclude Include="..\..\Source\SessionServer\SessionServer.h" />
     <ClInclude Include="..\..\Source\SessionServer\stdafx.h" />
-    <ClInclude Include="..\..\Source\SessionServer\XSession.h" />
-    <ClInclude Include="..\..\Source\SessionServer\XSessionImpl.h" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CommonDesktop\CommonDesktop.vcxproj">
-      <Project>{58299519-1341-48ce-a3c4-e76a1531ffbf}</Project>
+    <ProjectReference Include="..\SharingService\SharingService.vcxproj">
+      <Project>{4c7b2c22-7786-4f30-acdb-0703f04be0a0}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="..\XTools.targets" />
