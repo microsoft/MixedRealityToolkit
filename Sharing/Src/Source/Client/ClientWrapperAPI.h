@@ -29,3 +29,9 @@
 #include "TagImage.h"
 #include "VisualPairReceiver.h"
 #include "VisualPairConnector.h"
+
+//Discovery
+#include "../Common/Public/SystemRole.h"
+#include "../Common/Public/DiscoveredSystem.h"
+#include "../Common/Public/DiscoveryClientListener.h"
+#include "../Common/Public/DiscoveryClient.h"
