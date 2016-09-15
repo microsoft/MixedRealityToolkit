@@ -36,6 +36,8 @@ The HoloToolkit.Sharing library allows applications to span multiple devices, an
 * Anchor Sharing
 * Profiler
 
+[Learn More...](Sharing/README.md)
+
 ---
 
 ## Microphone Stream Selector
