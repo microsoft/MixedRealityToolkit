@@ -41,7 +41,7 @@ public:
 
 
 
-XSessionImpl::XSessionImpl(const std::string& name, uint16 port, SessionType type, unsigned int id)
+XSessionImpl::XSessionImpl(const std::string& name, uint16 port, SessionType type, unsigned int id, const Sync::SyncDataPtr& syncData)
 : m_messagePool(new NetworkMessagePool(kDefaultMessagePoolSize))
 , m_broadcaster(new BroadcastForwarder())
 , m_sendToForwarder(new SendToForwarder())
@@ -56,6 +56,9 @@ XSessionImpl::XSessionImpl(const std::string& name, uint16 port, SessionType typ
 , m_bEmptyCheckApplied(false)
 {
 	m_syncMgr = Sync::SyncManager::Create(MessageID::SyncMessage, Sync::AuthorityLevel::High, new UserImpl("SessionServer", User::kInvalidUserID, false));
+	if (syncData)
+		syncData->Load(m_syncMgr->GetRootObject());
+
 	m_internalSyncMgr = Sync::SyncManager::Create(MessageID::InternalSyncMessage, Sync::AuthorityLevel::High, new UserImpl("SessionServer", User::kInvalidUserID, false));
 	m_roomMgr = new ServerRoomManager(m_internalSyncMgr);
 
@@ -261,6 +264,10 @@ uint16 XSessionImpl::GetPort() const
 	return m_port;
 }
 
+Sync::SyncManagerPtr XSessionImpl::GetSyncManager() const
+{
+	return m_syncMgr;
+}
 
 SessionDescriptorImplPtr XSessionImpl::GetSessionDescription(const XSocketPtr& targetRemoteSystem) const
 {
@@ -472,13 +479,12 @@ void XSessionImpl::CheckIfEmpty(bool resetImmediately)
 			// Delete the old sync manager and create a new one to ensure that all the old
 			// sync data is cleaned up
 			UserPtr serverUser = m_syncMgr->GetLocalUser();
-			m_syncMgr = Sync::SyncManager::Create(MessageID::SyncMessage, Sync::AuthorityLevel::High, serverUser);
-
-			m_callback->OnSessionEmpty(this);
 
 			// If we're an adhoc session, and we're empty, then start closing our connections
 			if (m_TypeOfSession == SessionType::ADHOC)
 			{
+				m_syncMgr = Sync::SyncManager::Create(MessageID::SyncMessage, Sync::AuthorityLevel::High, serverUser);
+
 				// Stop receiving new connections
 				m_listenerReceipt = NULL;
 
@@ -486,6 +492,8 @@ void XSessionImpl::CheckIfEmpty(bool resetImmediately)
 				m_pendingClients.clear();
 				m_pendingConnections.clear();
 			}
+
+			m_callback->OnSessionEmpty(this);
 
 			m_bEmptyCheckApplied = true;
 		}

@@ -24,12 +24,13 @@ XTOOLS_NAMESPACE_BEGIN
 
 const std::string SessionServer::s_defaultLogBaseLocation = "C:\\";
 
-SessionServer::SessionServer(PWSTR pszServiceName)
-: ServiceBase(pszServiceName, TRUE, TRUE, FALSE)
-, m_messagePool(new NetworkMessagePool(kDefaultMessagePoolSize))
-, m_socketMgr(XSocketManager::Create())
-, m_stopping(FALSE)
-, m_nextSessionId(0)
+SessionServer::SessionServer(PWSTR pszServiceName, const Sync::SyncDataProviderPtr& persistentData)
+	: ServiceBase(pszServiceName, TRUE, TRUE, FALSE)
+	, m_messagePool(new NetworkMessagePool(kDefaultMessagePoolSize))
+	, m_socketMgr(XSocketManager::Create())
+	, m_persistentSessionProvider(persistentData)
+	, m_stopping(FALSE)
+	, m_nextSessionId(0)
 {
 #if defined(XTOOLS_DEBUG)
 	// Enable debug memory tracking and verification. 
@@ -49,12 +50,12 @@ SessionServer::SessionServer(PWSTR pszServiceName)
 
 void SessionServer::OnStart(DWORD dwArgc, PWSTR *pszArgv)
 {
-    InitializeFileLogger();
+	InitializeFileLogger();
 
-    // Log out an obvious piece of text to help distinguish between server sessions.
-    LogInfo("***********************************");
-    LogInfo("****** Sharing Service OnStart ******");
-    LogInfo("***********************************");
+	// Log out an obvious piece of text to help distinguish between server sessions.
+	LogInfo("***********************************");
+	LogInfo("****** Sharing Service OnStart ******");
+	LogInfo("***********************************");
 
 	// Log a service start message to the Application log.
 	WriteEventLogEntry(L"Sharing Server starting", EVENTLOG_INFORMATION_TYPE);
@@ -74,12 +75,37 @@ void SessionServer::OnStart(DWORD dwArgc, PWSTR *pszArgv)
 	{
 		LogInfo("\t%s", addressList[i].ToString().c_str());
 	}
-	
-	// Allocate a pool of ports to use for sessions
-	m_portPool = new PortPool(kSessionServerPort-1, 256);
 
-	// TODO: Read from a configuration file for persistent sessions. 
-	XTVERIFY(CreateNewSession("Default", SessionType::PERSISTENT) != NULL);
+	// Allocate a pool of ports to use for sessions
+	m_portPool = new PortPool(kSessionServerPort - 1, 256);
+
+	if (m_persistentSessionProvider)
+	{
+		const size_t syncDataCount = m_persistentSessionProvider->DataCount();
+		m_persistentSessionSavers.resize(syncDataCount);
+
+		for (int i = 0; i < syncDataCount; ++i)
+		{
+			Sync::SyncDataPtr syncData = m_persistentSessionProvider->GetData(i);
+			const std::string sessionName = syncData->SessionName();
+
+			XSessionImplPtr session = CreateNewSession(sessionName, SessionType::PERSISTENT, syncData);
+			if (session == nullptr)
+			{
+				LogError("Failed to create persistent session(%s)", sessionName.c_str());
+				continue;
+			}
+
+			PersistentSessionSaver& saver = m_persistentSessionSavers[i];
+			saver.SyncData = syncData;
+			saver.Session = session;
+			session->GetSyncManager()->RegisterListener(&saver);
+		}
+	}
+	else
+	{
+		XTVERIFY(CreateNewSession("Default", SessionType::PERSISTENT, Sync::SyncDataPtr()) != NULL);
+	}
 
 	// Start a thread to run the main service logic. 
 	m_serverThread = new MemberFuncThread(&SessionServer::ServerThreadFunc, this);
@@ -88,9 +114,9 @@ void SessionServer::OnStart(DWORD dwArgc, PWSTR *pszArgv)
 
 void SessionServer::OnStop()
 {
-    LogInfo("**********************************");
-    LogInfo("****** Sharing Service OnStop ******");
-    LogInfo("**********************************");
+	LogInfo("**********************************");
+	LogInfo("****** Sharing Service OnStop ******");
+	LogInfo("**********************************");
 
 	// Log a service stop message to the Application log.
 	WriteEventLogEntry(L"Sharing Server stopping", EVENTLOG_INFORMATION_TYPE);
@@ -100,8 +126,7 @@ void SessionServer::OnStop()
 	m_stopping = TRUE;
 	m_serverThread->WaitForThreadExit();
 
-    TeardownFileLogger();
-
+	TeardownFileLogger();
 }
 
 
@@ -110,7 +135,7 @@ void SessionServer::OnUserJoinedSession(uint32 sessionID, const std::string& use
 	// Hold the lock during callbacks from the sessions, which run in their own threads 
 	ScopedLock lock(m_mutex);
 
-    UserJoinedSessionMsg joinedMsg(sessionID, userName, userID, muteState);
+	UserJoinedSessionMsg joinedMsg(sessionID, userName, userID, muteState);
 	SendSessionMessageToAllClients(joinedMsg.ToJSONString());
 }
 
@@ -127,10 +152,10 @@ void SessionServer::OnUserLeftSession(uint32 sessionID, UserID userID)
 
 void SessionServer::OnUserChanged(uint32 sessionID, const std::string& userName, UserID userID, bool muteState)
 {
-    ScopedLock lock(m_mutex);
+	ScopedLock lock(m_mutex);
 
-    UserChangedSessionMsg changedMsg(sessionID, userName, userID, muteState);
-    SendSessionMessageToAllClients(changedMsg.ToJSONString());
+	UserChangedSessionMsg changedMsg(sessionID, userName, userID, muteState);
+	SendSessionMessageToAllClients(changedMsg.ToJSONString());
 }
 
 
@@ -159,7 +184,7 @@ void SessionServer::OnSessionEmpty(const XSessionConstPtr& session)
 				// Erase the session from the list
 				m_sessionChangeListener.erase(m_sessionChangeListener.find(m_sessions[i]));
 				m_sessions.erase(m_sessions.begin() + i);
-				
+
 				// Notify the clients that the session has closed
 				SessionClosedMsg closedMsg(sessionID);
 				SendSessionMessageToAllClients(closedMsg.ToJSONString());
@@ -178,10 +203,9 @@ void SessionServer::OnNewConnection(const XSocketPtr& newConnection)
 	m_pendingConnections[newConnection->GetID()] = new NetworkHandshake(newConnection, new SessionListHandshakeLogic(true), callback);
 }
 
-
 void SessionServer::OnHandshakeComplete(const XSocketPtr& newConnection, SocketID socketID, HandshakeResult result)
 {
-    if (newConnection && result == HandshakeResult::Success)
+	if (newConnection && result == HandshakeResult::Success)
 	{
 		Client newClient;
 
@@ -199,11 +223,11 @@ void SessionServer::OnHandshakeComplete(const XSocketPtr& newConnection, SocketI
 		m_broadcaster->AddConnection(newClient.m_connection);
 #endif
 	}
-    else
-    {
-        LogInfo("ListServer: Handshake failed with error %u", result);
-    }
-	
+	else
+	{
+		LogInfo("ListServer: Handshake failed with error %u", result);
+	}
+
 	XTVERIFY(m_pendingConnections.erase(socketID));
 }
 
@@ -227,7 +251,7 @@ void SessionServer::OnDisconnected(const NetworkConnectionPtr& connection)
 
 void SessionServer::OnMessageReceived(const NetworkConnectionPtr& connection, NetworkInMessage& message)
 {
-    XStringPtr command = message.ReadString();
+	XStringPtr command = message.ReadString();
 
 	JSONMessagePtr jMsg = JSONMessage::CreateFromMessage(command->GetString());
 
@@ -241,17 +265,17 @@ void SessionServer::OnMessageReceived(const NetworkConnectionPtr& connection, Ne
 
 
 
-XSessionImplPtr SessionServer::CreateNewSession(const std::string& sessionName, SessionType type)
+XSessionImplPtr SessionServer::CreateNewSession(const std::string& sessionName, SessionType type, const Sync::SyncDataPtr& syncData)
 {
-    XSessionImplPtr xsession;
+	XSessionImplPtr xsession;
 	uint16 sessionPort;
 
-    // Better way to check for error?
-    if (m_portPool->GetPort(sessionPort))
-    {
-        uint32 id = GetNewSessionId();
+	// Better way to check for error?
+	if (m_portPool->GetPort(sessionPort))
+	{
+		uint32 id = GetNewSessionId();
 
-        xsession = new XSessionImpl(sessionName, sessionPort, type, id);
+		xsession = new XSessionImpl(sessionName, sessionPort, type, id, syncData);
 
 		// Check that the session was able to set itself up, open a socket to listen on, etc
 		for (int creationCount = 0; !xsession->IsInitialized() && creationCount < 10; ++creationCount)
@@ -260,7 +284,7 @@ XSessionImplPtr SessionServer::CreateNewSession(const std::string& sessionName, 
 
 			if (m_portPool->GetPort(sessionPort))
 			{
-				xsession = new XSessionImpl(sessionName, sessionPort, type, id);
+				xsession = new XSessionImpl(sessionName, sessionPort, type, id, syncData);
 			}
 			else
 			{
@@ -291,17 +315,17 @@ XSessionImplPtr SessionServer::CreateNewSession(const std::string& sessionName, 
 			LogError("Failed to create new session %s", sessionName.c_str());
 			xsession = NULL;
 		}
-    }
+	}
 
-    return xsession;
+	return xsession;
 }
 
 
 uint32 SessionServer::GetNewSessionId()
 {
-    uint32 sessionId = m_nextSessionId;
-    m_nextSessionId++;
-    return sessionId;
+	uint32 sessionId = m_nextSessionId;
+	m_nextSessionId++;
+	return sessionId;
 }
 
 
@@ -335,13 +359,13 @@ void SessionServer::OnNewSessionRequest(const NewSessionRequest& request, const 
 			}
 		}
 	}
-	
+
 
 	if (failureReason.empty())
 	{
-		session = CreateNewSession(name, SessionType::ADHOC);
+		session = CreateNewSession(name, SessionType::ADHOC, Sync::SyncDataPtr());
 	}
-	
+
 	// If the session was successfully created...
 	if (session)
 	{
@@ -350,10 +374,10 @@ void SessionServer::OnNewSessionRequest(const NewSessionRequest& request, const 
 		uint16 port = session->GetPort();
 
 		NewSessionReply reply(
-			session->GetId(), 
+			session->GetId(),
 			session->GetType(),
-			name, 
-			address, 
+			name,
+			address,
 			port);
 
 		NetworkOutMessagePtr response = connection->CreateMessage(MessageID::SessionControl);
@@ -444,93 +468,103 @@ void SessionServer::ServerThreadFunc()
 
 std::string SessionServer::GetCurrentDateTimeString(const tm& tm) const
 {
-    std::string dt;
-    dt += std::to_string(tm.tm_hour) + ":";
-    dt += std::to_string(tm.tm_min) + ":";
-    dt += std::to_string(tm.tm_sec) + ", "; 
-    dt += std::to_string(tm.tm_mon + 1) + "-"; 
-    dt += std::to_string(tm.tm_mday) + "-"; 
-    dt += std::to_string(tm.tm_year + 1900);
-    return dt;
+	std::string dt;
+	dt += std::to_string(tm.tm_hour) + ":";
+	dt += std::to_string(tm.tm_min) + ":";
+	dt += std::to_string(tm.tm_sec) + ", ";
+	dt += std::to_string(tm.tm_mon + 1) + "-";
+	dt += std::to_string(tm.tm_mday) + "-";
+	dt += std::to_string(tm.tm_year + 1900);
+	return dt;
 }
 
 std::string SessionServer::GetLogFileName(const tm& tm) const
 {
-    // File names look like this: SessionServer_YYYYMMDD
+	// File names look like this: SessionServer_YYYYMMDD
 
-    std::string fileName = "SessionServer_";
-    fileName += std::to_string(tm.tm_year + 1900);
+	std::string fileName = "SessionServer_";
+	fileName += std::to_string(tm.tm_year + 1900);
 
-    // Add a leading zero to single digit months.
-    fileName += tm.tm_mon + 1 < 10 ? "0" : "";
-    fileName += std::to_string(tm.tm_mon + 1);
+	// Add a leading zero to single digit months.
+	fileName += tm.tm_mon + 1 < 10 ? "0" : "";
+	fileName += std::to_string(tm.tm_mon + 1);
 
-    // Add a leading zero to single digit days.
-    fileName += tm.tm_mday + 1 < 10 ? "0" : "";
-    fileName += std::to_string(tm.tm_mday);
-    fileName += ".log";
+	// Add a leading zero to single digit days.
+	fileName += tm.tm_mday + 1 < 10 ? "0" : "";
+	fileName += std::to_string(tm.tm_mday);
+	fileName += ".log";
 
-    return fileName;
+	return fileName;
 }
 
 void SessionServer::InitializeFileLogger()
 {
-    time_t curTime = time(NULL);
-    tm curTM;
-    localtime_s(&curTM, &curTime);
+	time_t curTime = time(NULL);
+	tm curTM;
+	localtime_s(&curTM, &curTime);
 
-    if (!m_logWriter)
-    {
-        std::string filePath = s_defaultLogBaseLocation;
-        filePath += "SharingServiceLogs";
-        filePath += "\\";
+	if (!m_logWriter)
+	{
+		std::string filePath = s_defaultLogBaseLocation;
+		filePath += "SharingServiceLogs";
+		filePath += "\\";
 
-        BOOL dirResult = CreateDirectoryA(filePath.c_str(), NULL);
+		BOOL dirResult = CreateDirectoryA(filePath.c_str(), NULL);
 
-        if (dirResult || GetLastError() == ERROR_ALREADY_EXISTS)
-        {
-            // Either we succeeded in creating the directory or it already exists.
-            std::string fileName = "SharingService_";
-            fileName += std::to_string(curTM.tm_year + 1900);
-            fileName += std::to_string(curTM.tm_mon + 1);
-            fileName += std::to_string(curTM.tm_mday);
-            fileName += ".log";
+		if (dirResult || GetLastError() == ERROR_ALREADY_EXISTS)
+		{
+			// Either we succeeded in creating the directory or it already exists.
+			std::string fileName = "SharingService_";
+			fileName += std::to_string(curTM.tm_year + 1900);
+			fileName += std::to_string(curTM.tm_mon + 1);
+			fileName += std::to_string(curTM.tm_mday);
+			fileName += ".log";
 
-            std::string fullPath = filePath + GetLogFileName(curTM);
+			std::string fullPath = filePath + GetLogFileName(curTM);
 
-            m_logWriter = new FileLogWriter();
-            m_logWriter->AddTargetFile(fullPath);
-        }
-    }
+			m_logWriter = new FileLogWriter();
+			m_logWriter->AddTargetFile(fullPath);
+		}
+	}
 
 
 	m_logger = new Logger();
 
 	m_logger->SetWriter(m_logWriter);
-    std::string curTimeString = GetCurrentDateTimeString(curTM);
-    LogInfo(" ** Logging Session Began at %s", curTimeString.c_str());
+	std::string curTimeString = GetCurrentDateTimeString(curTM);
+	LogInfo(" ** Logging Session Began at %s", curTimeString.c_str());
 
 }
 
 
 void SessionServer::TeardownFileLogger()
 {
-    time_t curTime = time(NULL);
-    tm curTM;
-    localtime_s(&curTM, &curTime);
-    
+	time_t curTime = time(NULL);
+	tm curTM;
+	localtime_s(&curTM, &curTime);
+
 	m_logger->ClearWriter();
 
-    std::string curTimeString = GetCurrentDateTimeString(curTM);
+	std::string curTimeString = GetCurrentDateTimeString(curTM);
 
-    LogInfo(" ** Logging Session Ended at %s", curTimeString.c_str());
-    if (m_logWriter)
-    {
-        delete m_logWriter;
-        m_logWriter = NULL;
-    }
+	LogInfo(" ** Logging Session Ended at %s", curTimeString.c_str());
+	if (m_logWriter)
+	{
+		delete m_logWriter;
+		m_logWriter = NULL;
+	}
 }
 
+
+void SessionServer::PersistentSessionSaver::OnSyncChangesBegin()
+{
+	// noop
+}
+
+void SessionServer::PersistentSessionSaver::OnSyncChangesEnd()
+{
+	SyncData->Save(Session->GetSyncManager()->GetRootObject());
+}
 
 
 XTOOLS_NAMESPACE_END

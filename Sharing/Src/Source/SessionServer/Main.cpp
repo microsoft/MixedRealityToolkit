@@ -12,6 +12,8 @@
 #include "stdafx.h"
 #include "../SharingService/SessionServer.h"
 #include "../SharingService/ServiceInstaller.h"
+#include "../Common/Public/FileSystemSyncDataProvider.h"
+#include "../Common/Public/XMLSyncElementSerializer.h"
 #include <iostream>
 #include <iosfwd>
 
@@ -40,6 +42,29 @@
 // Track memory allocations
 //XT_TRACK_MEMORY
 
+namespace
+{
+	void RunLocal(bool save)
+	{
+		wprintf(L"Running Sharing Service locally.  Enter 'q' to quit.  \n");
+
+		XTools::Sync::SyncDataProviderPtr dataProvider;
+		if (save)
+		{
+			dataProvider = new XTools::Sync::FileSystemSyncDataProvider(new XTools::Sync::XMLSyncElementSerializer(true), "./", ".sml");
+		}
+		XTools::SessionServer server(SERVICE_NAME, dataProvider);
+		server.OnStart(0, NULL);
+
+		char input = '\0';
+		while (input != 'q')
+		{
+			std::cin >> input;
+		}
+
+		server.OnStop();
+	}
+}
 
 int _tmain(int argc, _TCHAR* argv[])
 {
@@ -68,18 +93,11 @@ int _tmain(int argc, _TCHAR* argv[])
 		}
 		else if (_wcsicmp(L"local", argv[1] + 1) == 0)
 		{
-			wprintf(L"Running Sharing Service locally.  Enter 'q' to quit.  \n");
-
-			XTools::SessionServer server(SERVICE_NAME);
-			server.OnStart(0, NULL);
-
-			char input = '\0';
-			while (input != 'q')
-			{
-				std::cin >> input;
-			}
-
-			server.OnStop();
+			RunLocal(false);
+		}
+		else if (_wcsicmp(L"local+save", argv[1] + 1) == 0)
+		{
+			RunLocal(true);
 		}
 	}
 	else
@@ -89,7 +107,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		wprintf(L" -remove   to remove the service.\n");
 		wprintf(L" -local    to run from the command line, not as a service.\n");
 
-		XTools::SessionServer server(SERVICE_NAME);
+		XTools::SessionServer server(SERVICE_NAME, nullptr);
 		if (!ServiceBase::Run(server))
 		{
 			wprintf(L"Service failed to run w/err 0x%08lx\n", GetLastError());

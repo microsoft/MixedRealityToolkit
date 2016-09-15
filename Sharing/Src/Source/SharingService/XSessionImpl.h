@@ -14,13 +14,14 @@
 #include "AudioSessionProcessorServer.h"
 #include "ServerRoomManager.h"
 #include <Private/NetworkConnectionImpl.h>
+#include <Public/SyncData.h>
 
 XTOOLS_NAMESPACE_BEGIN
 
 class XSessionImpl : public XSession, public NetworkConnectionListener, public IncomingXSocketListener
 {
 public:
-	explicit XSessionImpl(const std::string& name, uint16 port, SessionType type, unsigned int id);
+	explicit XSessionImpl(const std::string& name, uint16 port, SessionType type, unsigned int id, const Sync::SyncDataPtr& syncData);
 	virtual ~XSessionImpl();
 
 	// Register to receive callbacks when the session changes.  
@@ -38,6 +39,8 @@ public:
     virtual bool        GetUserMuteState(int32 i) const XTOVERRIDE;
 
     uint16 GetPort() const;
+
+	Sync::SyncManagerPtr GetSyncManager() const;
 
 	SessionDescriptorImplPtr GetSessionDescription(const XSocketPtr& targetRemoteSystem) const;
 
