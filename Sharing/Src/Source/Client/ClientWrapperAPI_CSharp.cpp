@@ -1468,6 +1468,59 @@ void SwigDirector_ImageTagLocationListener::swig_init_callbacks() {
   swig_callbackOnTagLocatingCompleted = 0;
 }
 
+SwigDirector_DiscoveryClientListener::SwigDirector_DiscoveryClientListener() : XTools::DiscoveryClientListener(), Swig::Director() {
+  swig_init_callbacks();
+}
+
+SwigDirector_DiscoveryClientListener::~SwigDirector_DiscoveryClientListener() {
+  
+}
+
+
+void SwigDirector_DiscoveryClientListener::OnRemoteSystemDiscovered(XTools::DiscoveredSystemPtr const &remoteSystem) {
+  void * jremoteSystem = 0 ;
+  
+  if (!swig_callbackOnRemoteSystemDiscovered) {
+    XTools::DiscoveryClientListener::OnRemoteSystemDiscovered(remoteSystem);
+    return;
+  } else {
+    // ref_ptr by reference directorin
+    if (remoteSystem) {
+      remoteSystem->AddRef(); 
+    }
+    jremoteSystem = (&remoteSystem)->get();
+    
+    swig_callbackOnRemoteSystemDiscovered(jremoteSystem);
+  }
+}
+
+void SwigDirector_DiscoveryClientListener::OnRemoteSystemLost(XTools::DiscoveredSystemPtr const &remoteSystem) {
+  void * jremoteSystem = 0 ;
+  
+  if (!swig_callbackOnRemoteSystemLost) {
+    XTools::DiscoveryClientListener::OnRemoteSystemLost(remoteSystem);
+    return;
+  } else {
+    // ref_ptr by reference directorin
+    if (remoteSystem) {
+      remoteSystem->AddRef(); 
+    }
+    jremoteSystem = (&remoteSystem)->get();
+    
+    swig_callbackOnRemoteSystemLost(jremoteSystem);
+  }
+}
+
+void SwigDirector_DiscoveryClientListener::swig_connect_director(SWIG_Callback0_t callbackOnRemoteSystemDiscovered, SWIG_Callback1_t callbackOnRemoteSystemLost) {
+  swig_callbackOnRemoteSystemDiscovered = callbackOnRemoteSystemDiscovered;
+  swig_callbackOnRemoteSystemLost = callbackOnRemoteSystemLost;
+}
+
+void SwigDirector_DiscoveryClientListener::swig_init_callbacks() {
+  swig_callbackOnRemoteSystemDiscovered = 0;
+  swig_callbackOnRemoteSystemLost = 0;
+}
+
 
 #ifdef __cplusplus
 extern "C" {
@@ -8110,6 +8163,288 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_VisualPairConnector(void * jarg1) {
 }
 
 
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_DiscoveredSystem(char * jarg1, char * jarg2, int jarg3) {
+  void * jresult ;
+  std::string *arg1 = 0 ;
+  std::string *arg2 = 0 ;
+  XTools::SystemRole arg3 ;
+  XTools::DiscoveredSystem *result = 0 ;
+  
+  if (!jarg1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return 0;
+  }
+  std::string arg1_str(jarg1);
+  arg1 = &arg1_str; 
+  if (!jarg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return 0;
+  }
+  std::string arg2_str(jarg2);
+  arg2 = &arg2_str; 
+  arg3 = (XTools::SystemRole)jarg3; 
+  result = (XTools::DiscoveredSystem *)new XTools::DiscoveredSystem((std::string const &)*arg1,(std::string const &)*arg2,arg3);
+  jresult = (void *)result; 
+  if(result) result->AddRef();
+  return jresult;
+}
+
+
+SWIGEXPORT char * SWIGSTDCALL CSharp_DiscoveredSystem_GetName(void * jarg1) {
+  char * jresult ;
+  XTools::DiscoveredSystem *arg1 = (XTools::DiscoveredSystem *) 0 ;
+  std::string result;
+  
+  arg1 = (XTools::DiscoveredSystem *)jarg1; 
+  result = ((XTools::DiscoveredSystem const *)arg1)->GetName();
+  jresult = SWIG_csharp_string_callback((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT char * SWIGSTDCALL CSharp_DiscoveredSystem_GetAddress(void * jarg1) {
+  char * jresult ;
+  XTools::DiscoveredSystem *arg1 = (XTools::DiscoveredSystem *) 0 ;
+  std::string result;
+  
+  arg1 = (XTools::DiscoveredSystem *)jarg1; 
+  result = ((XTools::DiscoveredSystem const *)arg1)->GetAddress();
+  jresult = SWIG_csharp_string_callback((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_DiscoveredSystem_GetRole(void * jarg1) {
+  int jresult ;
+  XTools::DiscoveredSystem *arg1 = (XTools::DiscoveredSystem *) 0 ;
+  XTools::SystemRole result;
+  
+  arg1 = (XTools::DiscoveredSystem *)jarg1; 
+  result = (XTools::SystemRole)((XTools::DiscoveredSystem const *)arg1)->GetRole();
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_DiscoveredSystem(void * jarg1) {
+  XTools::DiscoveredSystem *arg1 = (XTools::DiscoveredSystem *) 0 ;
+  
+  arg1 = (XTools::DiscoveredSystem *)jarg1; 
+  if(arg1) arg1->RemoveRef();
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_DiscoveryClientListener(void * jarg1) {
+  XTools::DiscoveryClientListener *arg1 = (XTools::DiscoveryClientListener *) 0 ;
+  
+  arg1 = (XTools::DiscoveryClientListener *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_DiscoveryClientListener_OnRemoteSystemDiscovered(void * jarg1, void * jarg2) {
+  XTools::DiscoveryClientListener *arg1 = (XTools::DiscoveryClientListener *) 0 ;
+  XTools::DiscoveredSystemPtr *arg2 = 0 ;
+  XTools::DiscoveredSystemPtr tempnull2 ;
+  XTools::DiscoveredSystemPtr temp2 ;
+  XTools::DiscoveredSystem *smartarg2 ;
+  
+  arg1 = (XTools::DiscoveryClientListener *)jarg1; 
+  
+  // ref_ptr by reference in
+  if ( jarg2 ) {
+    smartarg2 = *( DiscoveredSystem **)&jarg2; 
+    temp2 = XTools::ref_ptr<  DiscoveredSystem >(smartarg2);
+    arg2 = &temp2;
+  } else {
+    arg2 = &tempnull2;
+  }
+  
+  (arg1)->OnRemoteSystemDiscovered((XTools::DiscoveredSystemPtr const &)*arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_DiscoveryClientListener_OnRemoteSystemDiscoveredSwigExplicitDiscoveryClientListener(void * jarg1, void * jarg2) {
+  XTools::DiscoveryClientListener *arg1 = (XTools::DiscoveryClientListener *) 0 ;
+  XTools::DiscoveredSystemPtr *arg2 = 0 ;
+  XTools::DiscoveredSystemPtr tempnull2 ;
+  XTools::DiscoveredSystemPtr temp2 ;
+  XTools::DiscoveredSystem *smartarg2 ;
+  
+  arg1 = (XTools::DiscoveryClientListener *)jarg1; 
+  
+  // ref_ptr by reference in
+  if ( jarg2 ) {
+    smartarg2 = *( DiscoveredSystem **)&jarg2; 
+    temp2 = XTools::ref_ptr<  DiscoveredSystem >(smartarg2);
+    arg2 = &temp2;
+  } else {
+    arg2 = &tempnull2;
+  }
+  
+  (arg1)->XTools::DiscoveryClientListener::OnRemoteSystemDiscovered((XTools::DiscoveredSystemPtr const &)*arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_DiscoveryClientListener_OnRemoteSystemLost(void * jarg1, void * jarg2) {
+  XTools::DiscoveryClientListener *arg1 = (XTools::DiscoveryClientListener *) 0 ;
+  XTools::DiscoveredSystemPtr *arg2 = 0 ;
+  XTools::DiscoveredSystemPtr tempnull2 ;
+  XTools::DiscoveredSystemPtr temp2 ;
+  XTools::DiscoveredSystem *smartarg2 ;
+  
+  arg1 = (XTools::DiscoveryClientListener *)jarg1; 
+  
+  // ref_ptr by reference in
+  if ( jarg2 ) {
+    smartarg2 = *( DiscoveredSystem **)&jarg2; 
+    temp2 = XTools::ref_ptr<  DiscoveredSystem >(smartarg2);
+    arg2 = &temp2;
+  } else {
+    arg2 = &tempnull2;
+  }
+  
+  (arg1)->OnRemoteSystemLost((XTools::DiscoveredSystemPtr const &)*arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_DiscoveryClientListener_OnRemoteSystemLostSwigExplicitDiscoveryClientListener(void * jarg1, void * jarg2) {
+  XTools::DiscoveryClientListener *arg1 = (XTools::DiscoveryClientListener *) 0 ;
+  XTools::DiscoveredSystemPtr *arg2 = 0 ;
+  XTools::DiscoveredSystemPtr tempnull2 ;
+  XTools::DiscoveredSystemPtr temp2 ;
+  XTools::DiscoveredSystem *smartarg2 ;
+  
+  arg1 = (XTools::DiscoveryClientListener *)jarg1; 
+  
+  // ref_ptr by reference in
+  if ( jarg2 ) {
+    smartarg2 = *( DiscoveredSystem **)&jarg2; 
+    temp2 = XTools::ref_ptr<  DiscoveredSystem >(smartarg2);
+    arg2 = &temp2;
+  } else {
+    arg2 = &tempnull2;
+  }
+  
+  (arg1)->XTools::DiscoveryClientListener::OnRemoteSystemLost((XTools::DiscoveredSystemPtr const &)*arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_DiscoveryClientListener() {
+  void * jresult ;
+  XTools::DiscoveryClientListener *result = 0 ;
+  
+  result = (XTools::DiscoveryClientListener *)new SwigDirector_DiscoveryClientListener();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_DiscoveryClientListener_director_connect(void *objarg, SwigDirector_DiscoveryClientListener::SWIG_Callback0_t callback0, SwigDirector_DiscoveryClientListener::SWIG_Callback1_t callback1) {
+  XTools::DiscoveryClientListener *obj = (XTools::DiscoveryClientListener *)objarg;
+  SwigDirector_DiscoveryClientListener *director = dynamic_cast<SwigDirector_DiscoveryClientListener *>(obj);
+  if (director) {
+    director->swig_connect_director(callback0, callback1);
+  }
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_DiscoveryClient_Create() {
+  void * jresult ;
+  XTools::ref_ptr< XTools::DiscoveryClient > result;
+  
+  result = XTools::DiscoveryClient::Create();
+  
+  // ref_ptr by value out
+  if (result) {
+    result->AddRef();
+    *( DiscoveryClient **)&jresult = (&result)->get();
+  } else {
+    *( DiscoveryClient **)&jresult = 0; 
+  }
+  
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_DiscoveryClient_Ping(void * jarg1) {
+  XTools::DiscoveryClient *arg1 = (XTools::DiscoveryClient *) 0 ;
+  
+  arg1 = (XTools::DiscoveryClient *)jarg1; 
+  (arg1)->Ping();
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_DiscoveryClient_GetDiscoveredCount(void * jarg1) {
+  unsigned int jresult ;
+  XTools::DiscoveryClient *arg1 = (XTools::DiscoveryClient *) 0 ;
+  XTools::uint32 result;
+  
+  arg1 = (XTools::DiscoveryClient *)jarg1; 
+  result = (XTools::uint32)((XTools::DiscoveryClient const *)arg1)->GetDiscoveredCount();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_DiscoveryClient_GetDiscoveredSystem(void * jarg1, unsigned int jarg2) {
+  void * jresult ;
+  XTools::DiscoveryClient *arg1 = (XTools::DiscoveryClient *) 0 ;
+  XTools::uint32 arg2 ;
+  XTools::DiscoveredSystemPtr result;
+  
+  arg1 = (XTools::DiscoveryClient *)jarg1; 
+  arg2 = (XTools::uint32)jarg2; 
+  result = ((XTools::DiscoveryClient const *)arg1)->GetDiscoveredSystem(arg2);
+  
+  // ref_ptr by value out
+  if (result) {
+    result->AddRef();
+    *( DiscoveredSystem **)&jresult = (&result)->get();
+  } else {
+    *( DiscoveredSystem **)&jresult = 0; 
+  }
+  
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_DiscoveryClient_Update(void * jarg1) {
+  XTools::DiscoveryClient *arg1 = (XTools::DiscoveryClient *) 0 ;
+  
+  arg1 = (XTools::DiscoveryClient *)jarg1; 
+  (arg1)->Update();
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_DiscoveryClient_AddListener(void * jarg1, void * jarg2) {
+  XTools::DiscoveryClient *arg1 = (XTools::DiscoveryClient *) 0 ;
+  XTools::DiscoveryClientListener *arg2 = (XTools::DiscoveryClientListener *) 0 ;
+  
+  arg1 = (XTools::DiscoveryClient *)jarg1; 
+  arg2 = (XTools::DiscoveryClientListener *)jarg2; 
+  (arg1)->AddListener(arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_DiscoveryClient_RemoveListener(void * jarg1, void * jarg2) {
+  XTools::DiscoveryClient *arg1 = (XTools::DiscoveryClient *) 0 ;
+  XTools::DiscoveryClientListener *arg2 = (XTools::DiscoveryClientListener *) 0 ;
+  
+  arg1 = (XTools::DiscoveryClient *)jarg1; 
+  arg2 = (XTools::DiscoveryClientListener *)jarg2; 
+  (arg1)->RemoveListener(arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_DiscoveryClient(void * jarg1) {
+  XTools::DiscoveryClient *arg1 = (XTools::DiscoveryClient *) 0 ;
+  
+  arg1 = (XTools::DiscoveryClient *)jarg1; 
+  if(arg1) arg1->RemoveRef();
+}
+
+
 SWIGEXPORT XTools::Listener * SWIGSTDCALL CSharp_NetworkConnectionListener_SWIGUpcast(XTools::NetworkConnectionListener *jarg1) {
     return (XTools::Listener *)jarg1;
 }
@@ -8196,6 +8531,10 @@ SWIGEXPORT XTools::PairMaker * SWIGSTDCALL CSharp_VisualPairReceiver_SWIGUpcast(
 
 SWIGEXPORT XTools::PairMaker * SWIGSTDCALL CSharp_VisualPairConnector_SWIGUpcast(XTools::VisualPairConnector *jarg1) {
     return (XTools::PairMaker *)jarg1;
+}
+
+SWIGEXPORT XTools::Listener * SWIGSTDCALL CSharp_DiscoveryClientListener_SWIGUpcast(XTools::DiscoveryClientListener *jarg1) {
+    return (XTools::Listener *)jarg1;
 }
 
 #ifdef __cplusplus

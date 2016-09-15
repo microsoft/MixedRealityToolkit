@@ -230,5 +230,21 @@ protected:
     bool swig_override[2];
 };
 
+class SwigDirector_DiscoveryClientListener : public XTools::DiscoveryClientListener, public Swig::Director {
+
+public:
+    void swig_connect_director(JNIEnv *jenv, jobject jself, jclass jcls, bool swig_mem_own, bool weak_global);
+    SwigDirector_DiscoveryClientListener(JNIEnv *jenv);
+    virtual ~SwigDirector_DiscoveryClientListener();
+    virtual void OnRemoteSystemDiscovered(XTools::DiscoveredSystemPtr const &remoteSystem);
+    virtual void OnRemoteSystemLost(XTools::DiscoveredSystemPtr const &remoteSystem);
+public:
+    bool swig_overrides(int n) {
+      return (n < 2 ? swig_override[n] : false);
+    }
+protected:
+    bool swig_override[2];
+};
+
 
 #endif
