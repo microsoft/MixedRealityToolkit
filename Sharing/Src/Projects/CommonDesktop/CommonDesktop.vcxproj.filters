@@ -97,6 +97,15 @@
     <Filter Include="Source\Private\Sync\Utils">
       <UniqueIdentifier>{6b37e562-9e43-4023-8777-f0b836f3817c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Private\XML">
+      <UniqueIdentifier>{0ad92ae9-800e-46ab-ac7e-23c91f013d8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Public\Sync\Data">
+      <UniqueIdentifier>{6db59d8c-5457-431b-9f8d-8f9bc7f0fa4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Private\Sync\Data">
+      <UniqueIdentifier>{cc5b809c-4bd0-43f2-9ce7-6bb1a8d75b4e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Common\Private\XString.cpp">
@@ -458,6 +467,15 @@
     </ClCompile>
     <ClCompile Include="..\..\Source\Common\Private\BoolElementImpl.cpp">
       <Filter>Source\Private\Sync\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\External\tinyXML2\tinyxml2.cpp">
+      <Filter>Source\Private\XML</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\XMLSyncElementSerializer.cpp">
+      <Filter>Source\Private\Sync\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\FileSystemSyncDataProvider.cpp">
+      <Filter>Source\Private\Sync\Data</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1123,6 +1141,18 @@
     </ClInclude>
     <ClInclude Include="..\..\Source\Common\Private\SyncContext.h">
       <Filter>Source\Private\Sync</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\SyncData.h">
+      <Filter>Source\Public\Sync\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\XMLSyncElementSerializer.h">
+      <Filter>Source\Public\Sync\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\FileSystemSyncDataProvider.h">
+      <Filter>Source\Public\Sync\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\SyncElementSerializer.h">
+      <Filter>Source\Public\Sync\Elements</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

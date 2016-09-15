@@ -20,6 +20,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\External\tinyXML2\tinyxml2.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\AckOperation.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\AnchorDownloadRequestImpl.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\AnchorList.cpp" />
@@ -52,6 +53,7 @@
     <ClCompile Include="..\..\Source\Common\Private\DeleteOperation.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\ElementFactory.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\Environment.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\FileSystemSyncDataProvider.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\FloatElementImpl.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\InsertOperation.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\IntArrayAdapter.cpp" />
@@ -134,6 +136,7 @@
     <ClCompile Include="..\..\Source\Common\Private\Utils\ScopedLock.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\Utils\StringUtils.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\Utils\XThread.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\XMLSyncElementSerializer.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\XSocketImpl.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\XSocketManagerImpl.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\XString.cpp" />
@@ -274,6 +277,7 @@
     <ClInclude Include="..\..\Source\Common\Public\DownloadManager.h" />
     <ClInclude Include="..\..\Source\Common\Public\Element.h" />
     <ClInclude Include="..\..\Source\Common\Public\Environment.h" />
+    <ClInclude Include="..\..\Source\Common\Public\FileSystemSyncDataProvider.h" />
     <ClInclude Include="..\..\Source\Common\Public\FloatElement.h" />
     <ClInclude Include="..\..\Source\Common\Public\HandshakeLogic.h" />
     <ClInclude Include="..\..\Source\Common\Public\IncomingXSocketListener.h" />
@@ -294,6 +298,8 @@
     <ClInclude Include="..\..\Source\Common\Public\ScopedProfile.h" />
     <ClInclude Include="..\..\Source\Common\Public\SideCarFunctions.h" />
     <ClInclude Include="..\..\Source\Common\Public\SideCarMacros.h" />
+    <ClInclude Include="..\..\Source\Common\Public\SyncData.h" />
+    <ClInclude Include="..\..\Source\Common\Public\SyncElementSerializer.h" />
     <ClInclude Include="..\..\Source\Common\Public\SyncListener.h" />
     <ClInclude Include="..\..\Source\Common\Public\SystemRole.h" />
     <ClInclude Include="..\..\Source\Common\Public\UserPresenceManager.h" />
@@ -350,6 +356,7 @@
     <ClInclude Include="..\..\Source\Common\Public\Utils\XThread.h" />
     <ClInclude Include="..\..\Source\Common\Public\Utils\XThreadId.h" />
     <ClInclude Include="..\..\Source\Common\Public\XGuid.h" />
+    <ClInclude Include="..\..\Source\Common\Public\XMLSyncElementSerializer.h" />
     <ClInclude Include="..\..\Source\Common\Public\XSocket.h" />
     <ClInclude Include="..\..\Source\Common\Public\XSocketListener.h" />
     <ClInclude Include="..\..\Source\Common\Public\XSocketManager.h" />
@@ -450,7 +457,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <AdditionalUsingDirectories>
       </AdditionalUsingDirectories>
-      <AdditionalIncludeDirectories>..\..\Source\Common;..\..\External\RakNet-4.081\include\Source;..\..\External\curl-7.39.0\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\Source\Common;..\..\External\RakNet-4.081\include\Source;..\..\External\curl-7.39.0\include;..\..\External\tinyXML2</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
@@ -481,7 +488,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <AdditionalUsingDirectories>
       </AdditionalUsingDirectories>
-      <AdditionalIncludeDirectories>..\..\Source\Common;..\..\External\RakNet-4.081\include\Source;..\..\External\curl-7.39.0\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\Source\Common;..\..\External\RakNet-4.081\include\Source;..\..\External\curl-7.39.0\include;..\..\External\tinyXML2</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
@@ -510,7 +517,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <AdditionalUsingDirectories>
       </AdditionalUsingDirectories>
-      <AdditionalIncludeDirectories>..\..\Source\Common;..\..\External\RakNet-4.081\include\Source;..\..\External\curl-7.39.0\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\Source\Common;..\..\External\RakNet-4.081\include\Source;..\..\External\curl-7.39.0\include;..\..\External\tinyXML2</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
     </ClCompile>
@@ -539,7 +546,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <AdditionalUsingDirectories>
       </AdditionalUsingDirectories>
-      <AdditionalIncludeDirectories>..\..\Source\Common;..\..\External\RakNet-4.081\include\Source;..\..\External\curl-7.39.0\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\Source\Common;..\..\External\RakNet-4.081\include\Source;..\..\External\curl-7.39.0\include;..\..\External\tinyXML2</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
     </ClCompile>
