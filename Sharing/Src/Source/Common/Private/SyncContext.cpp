@@ -88,19 +88,19 @@ void SyncContext::AddAppliedOperation(const OperationPtr& op)
 {
 	// Special case for delete ops: 
 
-	m_appliedChanges.push_back(op);
+	m_appliedOperations.push_back(op);
 }
 
 
 const OperationList& SyncContext::GetAppliedOperations() const
 {
-	return m_appliedChanges;
+	return m_appliedOperations;
 }
 
 
 void SyncContext::ClearAppliedOperations()
 {
-	m_appliedChanges.clear();
+	m_appliedOperations.clear();
 }
 
 

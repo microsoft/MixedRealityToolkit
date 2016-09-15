@@ -66,7 +66,7 @@ private:
 
 	ObjectElementImplPtr			m_rootObject;
 	TransformManager				m_transformMgr;
-	OperationList					m_appliedChanges;
+	OperationList					m_appliedOperations;
 	std::map<XGuid, ElementPtr>		m_guidMap;
 	AuthorityLevel					m_authorityLevel;
 	SystemID						m_localSystemID;
