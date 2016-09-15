@@ -121,6 +121,15 @@
     <Compile Include="..\..\generatedinterface\csharpapi\DirectPairReceiver.cs">
       <Link>Generated Files\DirectPairReceiver.cs</Link>
     </Compile>
+    <Compile Include="..\..\GeneratedInterface\CSharpAPI\DiscoveredSystem.cs">
+      <Link>Generated Files\DiscoveredSystem.cs</Link>
+    </Compile>
+    <Compile Include="..\..\GeneratedInterface\CSharpAPI\DiscoveryClient.cs">
+      <Link>Generated Files\DiscoveryClient.cs</Link>
+    </Compile>
+    <Compile Include="..\..\GeneratedInterface\CSharpAPI\DiscoveryClientListener.cs">
+      <Link>Generated Files\DiscoveryClientListener.cs</Link>
+    </Compile>
     <Compile Include="..\..\generatedinterface\csharpapi\DoubleElement.cs">
       <Link>Generated Files\DoubleElement.cs</Link>
     </Compile>
@@ -264,6 +273,9 @@
     </Compile>
     <Compile Include="..\..\generatedinterface\csharpapi\SyncListener.cs">
       <Link>Generated Files\SyncListener.cs</Link>
+    </Compile>
+    <Compile Include="..\..\GeneratedInterface\CSharpAPI\SystemRole.cs">
+      <Link>Generated Files\SystemRole.cs</Link>
     </Compile>
     <Compile Include="..\..\generatedinterface\csharpapi\TagImage.cs">
       <Link>Generated Files\TagImage.cs</Link>
