@@ -29,7 +29,7 @@ namespace
 		}
 
 		// Inherited via SyncData
-		virtual std::string SessionName() override { return m_sessionName;}
+		virtual std::string Name() override { return m_sessionName;}
 
 		virtual void Load(const ObjectElementPtr & syncRoot) XTOVERRIDE
 		{

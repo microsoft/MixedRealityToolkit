@@ -12,7 +12,7 @@ NAMESPACE_BEGIN(Sync)
 class SyncData : public RefCounted
 {
 public:
-	virtual std::string SessionName() = 0;
+	virtual std::string Name() = 0;
 	virtual void Load(const ObjectElementPtr& syncRoot) = 0;
 	virtual void Save(const ObjectElementConstPtr& syncRoot) = 0;
 };
