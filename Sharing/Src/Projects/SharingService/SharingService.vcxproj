@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<Import Project="..\XTools.props" />
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -124,8 +125,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);../../External/speex-1.2rc1/include</IncludePath>
-    <OutDir>$(BaseOutputPath)$(ProjectName)\</OutDir>
-    <IntDir>$(BaseIntermediateOutputPath)$(Configuration)\$(Platform)\$(ProjectName)\</IntDir>
+    <OutDir>$(BaseOutputPath)$(ProjectName)Lib\</OutDir>
+    <IntDir>$(BaseIntermediateOutputPath)$(Configuration)\$(Platform)\$(ProjectName)Lib\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);../../External/speex-1.2rc1/include</IncludePath>
