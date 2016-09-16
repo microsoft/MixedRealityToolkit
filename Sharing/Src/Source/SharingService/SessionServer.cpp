@@ -86,8 +86,8 @@ void SessionServer::OnStart(DWORD dwArgc, PWSTR *pszArgv)
 
 		for (int i = 0; i < syncDataCount; ++i)
 		{
-			Sync::SyncDataPtr syncData = m_persistentSessionProvider->GetData(i);
-			const std::string sessionName = syncData->Name();
+			const std::string sessionName = m_persistentSessionProvider->GetDataName(i);
+			const Sync::SyncDataPtr syncData = m_persistentSessionProvider->GetData(i);
 
 			XSessionImplPtr session = CreateNewSession(sessionName, SessionType::PERSISTENT, syncData);
 			if (session == nullptr)

@@ -12,7 +12,6 @@ NAMESPACE_BEGIN(Sync)
 class SyncData : public RefCounted
 {
 public:
-	virtual std::string Name() = 0;
 	virtual void Load(const ObjectElementPtr& syncRoot) = 0;
 	virtual void Save(const ObjectElementConstPtr& syncRoot) = 0;
 };
@@ -25,6 +24,7 @@ class SyncDataProvider : public RefCounted
 public:
 
 	virtual size_t DataCount() = 0;
+	virtual std::string GetDataName(int index) = 0;
 	virtual SyncDataPtr GetData(int index) = 0;
 };
 

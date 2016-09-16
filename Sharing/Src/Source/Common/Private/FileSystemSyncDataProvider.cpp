@@ -25,12 +25,10 @@ namespace
 			: m_dataPath(path) 
 			, m_serializer(serializer)
 		{
-			m_sessionName = m_dataPath.filename().replace_extension().generic_string();
+			
 		}
 
 		// Inherited via SyncData
-		virtual std::string Name() override { return m_sessionName;}
-
 		virtual void Load(const ObjectElementPtr & syncRoot) XTOVERRIDE
 		{
 			std::ifstream file(m_dataPath, std::ios::binary);
@@ -45,7 +43,6 @@ namespace
 	private:
 
 		path m_dataPath;
-		std::string m_sessionName;
 		SyncElementSerializerPtr m_serializer;
 	};
 }
@@ -74,6 +71,7 @@ FileSystemSyncDataProvider::FileSystemSyncDataProvider(const SyncElementSerializ
 	{
 		if (!is_regular_file(entry.status())) { continue; }
 		if (entry.path().extension() != extension) { continue; }
+		m_syncDataNames.push_back(entry.path().filename().replace_extension().generic_string());
 		m_syncData.push_back(new FileSystemSyncData(serializer, entry.path()));
 	}
 }
@@ -81,6 +79,17 @@ FileSystemSyncDataProvider::FileSystemSyncDataProvider(const SyncElementSerializ
 size_t FileSystemSyncDataProvider::DataCount()
 {
 	return m_syncData.size();
+}
+
+
+std::string FileSystemSyncDataProvider::GetDataName(int index)
+{
+	if (!XTVERIFY(index >= 0 && index < m_syncDataNames.size()))
+	{
+		return std::string();
+	}
+
+	return m_syncDataNames[index];
 }
 
 SyncDataPtr FileSystemSyncDataProvider::GetData(int index)

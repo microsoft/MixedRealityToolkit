@@ -19,12 +19,14 @@ public:
 	FileSystemSyncDataProvider(const SyncElementSerializerPtr& serializer, const char* directory, const char* extension);
 
 	// Inherited via SyncDataProvider
-	virtual size_t DataCount() override;
-	virtual SyncDataPtr GetData(int index) override;
+	virtual size_t DataCount() XTOVERRIDE;
+	virtual std::string GetDataName(int index) XTOVERRIDE;
+	virtual SyncDataPtr GetData(int index) XTOVERRIDE;
 
 private:
 
 	std::vector<SyncDataPtr> m_syncData;
+	std::vector<std::string> m_syncDataNames;
 	SyncElementSerializerPtr m_serializer;
 };
 
