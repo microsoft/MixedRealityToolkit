@@ -84,7 +84,7 @@ size_t FileSystemSyncDataProvider::DataCount()
 
 std::string FileSystemSyncDataProvider::GetDataName(int index)
 {
-	if (!XTVERIFY(index >= 0 && index < m_syncDataNames.size()))
+	if (!XTVERIFY(index >= 0 && index < (int)m_syncDataNames.size()))
 	{
 		return std::string();
 	}
@@ -94,7 +94,7 @@ std::string FileSystemSyncDataProvider::GetDataName(int index)
 
 SyncDataPtr FileSystemSyncDataProvider::GetData(int index)
 {
-	if (!XTVERIFY(index >=0 && index < m_syncData.size()))
+	if (!XTVERIFY(index >=0 && index < (int)m_syncData.size()))
 	{
 		return SyncDataPtr();
 	}

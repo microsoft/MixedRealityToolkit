@@ -256,7 +256,7 @@ bool XMLSyncElementSerializer::Load(std::istream& stream, const ObjectElementPtr
 	const std::streampos length = stream.tellg();
 	stream.seekg(0, stream.beg);
 
-	std::vector<char> buffer(length);
+	std::vector<char> buffer((std::vector<char>::size_type)length);
 	stream.read(&buffer[0], buffer.size());
 
 	if (!stream)
