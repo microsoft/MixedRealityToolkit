@@ -12,8 +12,8 @@ NAMESPACE_BEGIN(Sync)
 class SyncData : public RefCounted
 {
 public:
-	virtual void Load(const ObjectElementPtr& syncRoot) = 0;
-	virtual void Save(const ObjectElementConstPtr& syncRoot) = 0;
+	virtual bool Load(const ObjectElementPtr& syncRoot) = 0;
+	virtual bool Save(const ObjectElementConstPtr& syncRoot) = 0;
 };
 
 DECLARE_PTR(SyncData);

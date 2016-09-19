@@ -16,7 +16,7 @@ using std::experimental::filesystem::v1::path;
 using std::experimental::filesystem::v1::directory_iterator;
 using std::experimental::filesystem::v1::is_directory;
 
-namespace
+namespace // Intentionally Anonymous
 {
 	class FileSystemSyncData : public SyncData
 	{
@@ -29,15 +29,48 @@ namespace
 		}
 
 		// Inherited via SyncData
-		virtual void Load(const ObjectElementPtr & syncRoot) XTOVERRIDE
+		virtual bool Load(const ObjectElementPtr & syncRoot) XTOVERRIDE
 		{
 			std::ifstream file(m_dataPath, std::ios::binary);
-			m_serializer->Load(file, syncRoot);
+			if (!file.is_open())
+			{
+				LogError("Could not open file(%s) for read", m_dataPath);
+				return false;
+			}
+
+			return m_serializer->Load(file, syncRoot);
 		}
-		virtual void Save(const ObjectElementConstPtr & syncRoot) XTOVERRIDE
+		virtual bool Save(const ObjectElementConstPtr & syncRoot) XTOVERRIDE
 		{
-			std::ofstream file(m_dataPath, std::ios::binary);
-			m_serializer->Save(file, syncRoot);
+			// First we write out to the Next file
+			path pathToNext = m_dataPath;
+			pathToNext.replace_extension(".next");
+
+			std::ofstream file(pathToNext, std::ios::binary);
+			if (!file.is_open())
+			{
+				LogError("Could not open file(%s) for write", pathToNext);
+				return false;
+			}
+
+			if (!m_serializer->Save(file, syncRoot))
+			{
+				LogError("Could not save to file(%s)", pathToNext);
+				return false;
+			}
+
+			// Make sure the file is flushed.
+			file.close();
+
+			// Then rename Current->Previous and Next->Current; 
+			// Then delete Previous
+			path pathToPrev = m_dataPath;
+			pathToPrev.replace_extension(".prev");
+			rename(m_dataPath, pathToPrev);
+			rename(pathToNext, m_dataPath);
+			remove(pathToPrev);
+
+			return true;
 		}
 
 	private:
