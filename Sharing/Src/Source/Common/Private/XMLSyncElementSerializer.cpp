@@ -18,10 +18,13 @@ namespace // Intentionally Anonymous
 	const char* cAttributeName_Type = "type";
 	const char* cAttributeName_GUID = "guid";
 	const char* cAttributeName_Name = "name";
+	const char* cAttributeName_Version = "version";
 
 	const char* cElementName_Value = "value";
 	const char* cElementName_SyncNode = "SyncNode";
+	const char* cElementName_SyncDocument = "SyncDocument";
 
+	const int cVersion_SyncDocument = 1; // Initial version
 
 	void OpenXMLElement(XMLPrinter& printer, const ElementConstPtr& root)
 	{
@@ -107,7 +110,12 @@ namespace // Intentionally Anonymous
 			printer.PushHeader(/*writeBOM=*/false, /*writeDeclaration=*/true);
 		}
 
+		printer.OpenElement(cElementName_SyncDocument);
+		printer.PushAttribute(cAttributeName_Version, cVersion_SyncDocument);
+
 		Serialize(printer, root, saveUserData);
+
+		printer.CloseElement();
 	}
 
 	template<class T>
@@ -186,7 +194,31 @@ namespace // Intentionally Anonymous
 		}
 	}
 
+	void Parse(XMLDocument& document, const ObjectElementPtr& root)
+	{
+		XMLElement* docElement = document.FirstChildElement(cElementName_SyncDocument);
+		if (docElement == nullptr)
+		{
+			LogError("Could not find sync document root (%s)", cElementName_SyncDocument);
+			return;
+		}
 
+		int version = docElement->IntAttribute(cAttributeName_Version);
+		if (version != cVersion_SyncDocument)
+		{
+			LogError("Could not parse sync document - version(%s) did not match expected(%s)", version, cVersion_SyncDocument);
+			return;
+		}
+
+		XMLElement* nodeElement = docElement->FirstChildElement(cElementName_SyncNode);
+		if (nodeElement == nullptr)
+		{
+			LogError("Could not parse sync document, no sync nodes found");
+			return;
+		}
+
+		Deserialize(nodeElement, root);
+	}
 
 } // anonymous 
 
@@ -244,7 +276,7 @@ bool XMLSyncElementSerializer::Load(FILE* file, const ObjectElementPtr& root)
 		return false;
 	}
 
-	Deserialize(document.RootElement(), root);
+	Parse(document, root);
 
 	return true;
 }
@@ -274,7 +306,7 @@ bool XMLSyncElementSerializer::Load(std::istream& stream, const ObjectElementPtr
 		return false;
 	}
 
-	Deserialize(document.RootElement(), root);
+	Parse(document, root);
 	return true;
 }
 
@@ -290,7 +322,7 @@ bool XMLSyncElementSerializer::Load(const std::string& xmlStr, const ObjectEleme
 		return false;
 	}
 
-	Deserialize(document.RootElement(), root);
+	Parse(document, root);
 	return true;
 }
 

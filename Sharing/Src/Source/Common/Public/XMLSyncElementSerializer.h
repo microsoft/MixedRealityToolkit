@@ -21,12 +21,12 @@ public:
 	XMLSyncElementSerializer(bool writeHeader, bool saveUserData);
 
 	virtual bool Save(FILE* file, const ObjectElementConstPtr& root) XTOVERRIDE;
-	virtual bool Save(std::ostream& stream, const ObjectElementConstPtr& root) XTOVERRIDE;;
-	virtual bool Save(std::string& xmlStr, const ObjectElementConstPtr& root) XTOVERRIDE;;
+	virtual bool Save(std::ostream& stream, const ObjectElementConstPtr& root) XTOVERRIDE;
+	virtual bool Save(std::string& xmlStr, const ObjectElementConstPtr& root) XTOVERRIDE;
 
-	virtual bool Load(FILE* file, const ObjectElementPtr& root) XTOVERRIDE;;
-	virtual bool Load(std::istream& stream, const ObjectElementPtr& root) XTOVERRIDE;;
-	virtual bool Load(const std::string& xmlStr, const ObjectElementPtr& root) XTOVERRIDE;;
+	virtual bool Load(FILE* file, const ObjectElementPtr& root) XTOVERRIDE;
+	virtual bool Load(std::istream& stream, const ObjectElementPtr& root) XTOVERRIDE;
+	virtual bool Load(const std::string& xmlStr, const ObjectElementPtr& root) XTOVERRIDE;
 
 private:
 
