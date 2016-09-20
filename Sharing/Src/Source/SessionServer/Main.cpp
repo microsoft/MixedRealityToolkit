@@ -51,7 +51,8 @@ namespace
 		XTools::Sync::SyncDataProviderPtr dataProvider;
 		if (save)
 		{
-			dataProvider = new XTools::Sync::FileSystemSyncDataProvider(new XTools::Sync::XMLSyncElementSerializer(true), "./", ".sml");
+			dataProvider = new XTools::Sync::FileSystemSyncDataProvider(
+				new XTools::Sync::XMLSyncElementSerializer(true, false), "./", ".sml");
 		}
 		XTools::SessionServer server(SERVICE_NAME, dataProvider);
 		server.OnStart(0, NULL);

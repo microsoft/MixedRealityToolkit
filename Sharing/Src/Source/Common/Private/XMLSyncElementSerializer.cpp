@@ -59,12 +59,12 @@ namespace // Intentionally Anonymous
 	}
 
 	// Declare to avoid calling template from ObjectElementConstPtr
-	void Serialize(XMLPrinter& printer, const ElementConstPtr& root);
+	void Serialize(XMLPrinter& printer, const ElementConstPtr& root, bool saveUserData);
 
-	void Serialize(XMLPrinter& printer, const ObjectElementConstPtr& root)
+	void Serialize(XMLPrinter& printer, const ObjectElementConstPtr& root, bool saveUserData)
 	{
 		// Elements owned by a user are not persistent and thus not serialized
-		if (root->GetOwnerID() != User::kInvalidUserID)
+		if (!saveUserData && root->GetOwnerID() != User::kInvalidUserID)
 		{
 			return;
 		}
@@ -75,13 +75,13 @@ namespace // Intentionally Anonymous
 		for (int i = 0; i < elementCount; ++i)
 		{
 			const ElementConstPtr child = root->GetElementAt(i);
-			Serialize(printer, child);
+			Serialize(printer, child, saveUserData);
 		}
 
 		printer.CloseElement();
 	}
 
-	void Serialize(XMLPrinter& printer, const ElementConstPtr& root)
+	void Serialize(XMLPrinter& printer, const ElementConstPtr& root, bool saveUserData)
 	{
 		switch (root->GetElementType())
 		{
@@ -91,7 +91,7 @@ namespace // Intentionally Anonymous
 		case FloatType: Serialize(printer, FloatElement::Cast(root)); break;
 		case DoubleType: Serialize(printer, DoubleElement::Cast(root)); break;
 		case StringType: Serialize(printer, StringElement::Cast(root)); break;
-		case ObjectType: Serialize(printer, ObjectElement::Cast(root)); break;
+		case ObjectType: Serialize(printer, ObjectElement::Cast(root), saveUserData); break;
 		case Int32ArrayType: Serialize(printer, IntArrayElement::Cast(root)); break;
 		default:
 			LogError("Element(%s) has unknown element type(%d)",
@@ -100,14 +100,14 @@ namespace // Intentionally Anonymous
 		}
 	}
 
-	void Print(XMLPrinter& printer, const ObjectElementConstPtr& root, bool writeHeader)
+	void Print(XMLPrinter& printer, const ObjectElementConstPtr& root, bool writeHeader, bool saveUserData)
 	{
 		if (writeHeader)
 		{
 			printer.PushHeader(/*writeBOM=*/false, /*writeDeclaration=*/true);
 		}
 
-		Serialize(printer, root);
+		Serialize(printer, root, saveUserData);
 	}
 
 	template<class T>
@@ -191,8 +191,9 @@ namespace // Intentionally Anonymous
 } // anonymous 
 
 
-XMLSyncElementSerializer::XMLSyncElementSerializer(bool writeHeader)
+XMLSyncElementSerializer::XMLSyncElementSerializer(bool writeHeader, bool saveUserData)
 	: m_writeHeader(writeHeader)
+	, m_saveUserData(saveUserData)
 {
 
 }
@@ -203,7 +204,7 @@ bool XMLSyncElementSerializer::Save(FILE* file, const ObjectElementConstPtr& roo
 	if (!XTVERIFY(file != nullptr)) { return false; }
 
 	XMLPrinter printer(file);
-	Print(printer, root, m_writeHeader);
+	Print(printer, root, m_writeHeader, m_saveUserData);
 
 	return true;
 }
@@ -213,7 +214,7 @@ bool XMLSyncElementSerializer::Save(std::ostream& stream, const ObjectElementCon
 	if (!XTVERIFY(root != nullptr)) { return false; }
 
 	XMLPrinter printer;
-	Print(printer, root, m_writeHeader);
+	Print(printer, root, m_writeHeader, m_saveUserData);
 
 	stream.write(printer.CStr(), printer.CStrSize()-1);
 	return true;
@@ -224,7 +225,7 @@ bool XMLSyncElementSerializer::Save(std::string& xmlStr, const ObjectElementCons
 	if (!XTVERIFY(root != nullptr)) { return false; }
 
 	XMLPrinter printer;
-	Print(printer, root, m_writeHeader);
+	Print(printer, root, m_writeHeader, m_saveUserData);
 
 	xmlStr.append(printer.CStr(), printer.CStrSize() - 1);
 	return true;

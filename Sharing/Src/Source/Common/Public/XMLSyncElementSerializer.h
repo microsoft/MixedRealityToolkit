@@ -15,7 +15,10 @@ class XMLSyncElementSerializer : public SyncElementSerializer
 {
 public:
 
-	XMLSyncElementSerializer(bool writeHeader);
+	/// Constructs the serializer
+	/// \param writeHeader whether to write the xml header or not
+	/// \param saveUserData whether to save data with an OwnerId or ignore it
+	XMLSyncElementSerializer(bool writeHeader, bool saveUserData);
 
 	virtual bool Save(FILE* file, const ObjectElementConstPtr& root) XTOVERRIDE;
 	virtual bool Save(std::ostream& stream, const ObjectElementConstPtr& root) XTOVERRIDE;;
@@ -28,6 +31,7 @@ public:
 private:
 
 	bool m_writeHeader;
+	bool m_saveUserData;
 };
 
 DECLARE_PTR(XMLSyncElementSerializer);
