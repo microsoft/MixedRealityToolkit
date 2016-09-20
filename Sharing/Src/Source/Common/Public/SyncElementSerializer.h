@@ -9,6 +9,8 @@
 XTOOLS_NAMESPACE_BEGIN
 NAMESPACE_BEGIN(Sync)
 
+/// Saves and loads Sync::Element hierarchies. Used by the SyncData types
+/// and providers to abstract serialization from data sources.
 class SyncElementSerializer : public RefCounted
 {
 public:

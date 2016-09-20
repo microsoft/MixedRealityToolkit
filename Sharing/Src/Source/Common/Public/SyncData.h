@@ -9,6 +9,7 @@
 XTOOLS_NAMESPACE_BEGIN
 NAMESPACE_BEGIN(Sync)
 
+/// Provides abstracted save/load functionality for Sync::Element hierarchies
 class SyncData : public AtomicRefCounted
 {
 public:
@@ -18,7 +19,7 @@ public:
 
 DECLARE_PTR(SyncData);
 
-
+/// Used to provide a set of known SyncData objects from different sources, e.g. file system, http, etc.
 class SyncDataProvider : public RefCounted
 {
 public:
