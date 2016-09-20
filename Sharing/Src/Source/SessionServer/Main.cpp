@@ -42,76 +42,99 @@
 // Track memory allocations
 //XT_TRACK_MEMORY
 
-namespace
+namespace // Intentionally Anonymous
 {
-	void RunLocal(bool save)
+	bool is_flag(const _TCHAR* arg)
 	{
-		wprintf(L"Running Sharing Service locally.  Enter 'q' to quit.  \n");
+		return (*arg == L'-' || *arg == L'/');
+	}
 
-		XTools::Sync::SyncDataProviderPtr dataProvider;
-		if (save)
+	int find_flag(const _TCHAR* search, int argc, _TCHAR* argv[])
+	{
+		for (int i = 0; i < argc; ++i)
 		{
-			dataProvider = new XTools::Sync::FileSystemSyncDataProvider(
-				new XTools::Sync::XMLSyncElementSerializer(true, false), "./", ".sml");
-		}
-		XTools::SessionServer server(SERVICE_NAME, dataProvider);
-		server.OnStart(0, NULL);
+			const _TCHAR* arg = argv[i];
 
-		char input = '\0';
-		while (input != 'q')
-		{
-			std::cin >> input;
+			// Only consider entries that are flagged
+			if (!is_flag(arg)) { continue; }
+			if (_wcsicmp(search, arg + 1) == 0) return i;
 		}
 
-		server.OnStop();
+		return -1;
+	}
+
+	const _TCHAR* find_arg(const _TCHAR* search, int argc, _TCHAR* argv[], const _TCHAR* defaultValue = L"")
+	{
+		int flag = find_flag(search, argc, argv);
+		if (flag < 0) return nullptr; // Flag not found
+		if (flag + 1 >= argc) return defaultValue; // Found the flag, but no following arg
+		if (is_flag(argv[flag + 1])) return defaultValue; // Found the flag, but following arg is another flag
+
+		return argv[flag + 1];
 	}
 }
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	if ((argc > 1) && ((*argv[1] == L'-' || (*argv[1] == L'/'))))
+	if (find_flag(L"install", argc, argv) >= 0)
 	{
-		if (_wcsicmp(L"install", argv[1] + 1) == 0)
-		{
-			// Install the service when the command is 
-			// "-install" or "/install".
-			InstallService(
-				SERVICE_NAME,               // Name of service
-				SERVICE_DISPLAY_NAME,       // Name to display
-				SERVICE_START_TYPE,         // Service start type
-				SERVICE_DEPENDENCIES,       // Dependencies
-				SERVICE_ACCOUNT,			// Service running account
-				SERVICE_PASSWORD            // Password of the account
-				);
+		// Install the service when the command is 
+		// "-install" or "/install".
+		InstallService(
+			SERVICE_NAME,               // Name of service
+			SERVICE_DISPLAY_NAME,       // Name to display
+			SERVICE_START_TYPE,         // Service start type
+			SERVICE_DEPENDENCIES,       // Dependencies
+			SERVICE_ACCOUNT,			// Service running account
+			SERVICE_PASSWORD            // Password of the account
+		);
 
-			RunService(SERVICE_NAME);
-		}
-		else if (_wcsicmp(L"remove", argv[1] + 1) == 0)
-		{
-			// Uninstall the service when the command is 
-			// "-remove" or "/remove".
-			UninstallService(SERVICE_NAME);
-		}
-		else if (_wcsicmp(L"local", argv[1] + 1) == 0)
-		{
-			RunLocal(false);
-		}
-		else if (_wcsicmp(L"local+save", argv[1] + 1) == 0)
-		{
-			RunLocal(true);
-		}
+		RunService(SERVICE_NAME);
+	}
+	else if (find_flag(L"remove", argc, argv) >= 0)
+	{
+		// Uninstall the service when the command is 
+		// "-remove" or "/remove".
+		UninstallService(SERVICE_NAME);
 	}
 	else
 	{
-		wprintf(L"Parameters:\n");
-		wprintf(L" -install  to install the service.\n");
-		wprintf(L" -remove   to remove the service.\n");
-		wprintf(L" -local    to run from the command line, not as a service.\n");
+		XTools::Sync::SyncDataProviderPtr dataProvider;
 
-		XTools::SessionServer server(SERVICE_NAME, nullptr);
-		if (!ServiceBase::Run(server))
+		// Look for save flag, if no path specified, use cwd
+		if (const _TCHAR* path = find_arg(L"save", argc, argv, L"./"))
 		{
-			wprintf(L"Service failed to run w/err 0x%08lx\n", GetLastError());
+			dataProvider = new XTools::Sync::FileSystemSyncDataProvider(
+				new XTools::Sync::XMLSyncElementSerializer(true, false), path, L".sml");
+		}
+
+		XTools::SessionServer server(SERVICE_NAME, dataProvider);
+
+		if (find_flag(L"local", argc, argv) >= 0)
+		{
+			wprintf(L"Running Sharing Service locally.  Enter 'q' to quit.  \n");
+
+			server.OnStart(0, NULL);
+
+			char input = '\0';
+			while (input != 'q')
+			{
+				std::cin >> input;
+			}
+
+			server.OnStop();
+		}
+		else
+		{
+			wprintf(L"Parameters:\n");
+			wprintf(L" -install  to install the service.\n");
+			wprintf(L" -remove   to remove the service.\n");
+			wprintf(L" -local    to run from the command line, not as a service.\n");
+
+			if (!ServiceBase::Run(server))
+			{
+				wprintf(L"Service failed to run w/err 0x%08lx\n", GetLastError());
+			}
 		}
 	}
 

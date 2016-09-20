@@ -80,7 +80,7 @@ namespace // Intentionally Anonymous
 	};
 }
 
-FileSystemSyncDataProvider::FileSystemSyncDataProvider(const SyncElementSerializerPtr& serializer, const char* _directory, const char* _extension)
+FileSystemSyncDataProvider::FileSystemSyncDataProvider(const SyncElementSerializerPtr& serializer, const wchar_t* _directory, const wchar_t* _extension)
 {
 	if (!XTVERIFY(serializer != nullptr)) { return; }
 	if (!XTVERIFY(_directory != nullptr)) { return; }

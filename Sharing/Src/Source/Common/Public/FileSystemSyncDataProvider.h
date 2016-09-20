@@ -16,7 +16,7 @@ class FileSystemSyncDataProvider : public SyncDataProvider
 {
 public:
 
-	FileSystemSyncDataProvider(const SyncElementSerializerPtr& serializer, const char* directory, const char* extension);
+	FileSystemSyncDataProvider(const SyncElementSerializerPtr& serializer, const wchar_t* directory, const wchar_t* extension);
 
 	// Inherited via SyncDataProvider
 	virtual size_t DataCount() XTOVERRIDE;
