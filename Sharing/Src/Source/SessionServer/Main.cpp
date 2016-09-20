@@ -130,6 +130,8 @@ int _tmain(int argc, _TCHAR* argv[])
 			wprintf(L" -install  to install the service.\n");
 			wprintf(L" -remove   to remove the service.\n");
 			wprintf(L" -local    to run from the command line, not as a service.\n");
+			wprintf(L" -save [path]  to load from and save persistent sessions to [path]\n");
+
 
 			if (!ServiceBase::Run(server))
 			{
