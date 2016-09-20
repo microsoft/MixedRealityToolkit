@@ -9,7 +9,7 @@
 XTOOLS_NAMESPACE_BEGIN
 NAMESPACE_BEGIN(Sync)
 
-class SyncData : public RefCounted
+class SyncData : public AtomicRefCounted
 {
 public:
 	virtual bool Load(const ObjectElementPtr& syncRoot) = 0;
