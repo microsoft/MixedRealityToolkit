@@ -71,14 +71,6 @@ private:
 	void InitializeFileLogger();
 	void TeardownFileLogger();
 
-	struct PersistentSessionSaver : public SyncListener
-	{
-		XSessionImplPtr Session;
-		Sync::SyncDataPtr SyncData;
-		virtual void OnSyncChangesBegin() XTOVERRIDE;
-		virtual void OnSyncChangesEnd() XTOVERRIDE;
-	};
-
 
 	struct Client
 	{
@@ -113,7 +105,6 @@ private:
 	Mutex									m_mutex;
 
 	std::vector<XSessionImplPtr>			m_sessionsPendingDeletion;
-	std::vector<PersistentSessionSaver>		m_persistentSessionSavers;
 
 	// list of the ongoing handshakes for remote clients that want to connect
 	std::map<SocketID, NetworkHandshakePtr>		m_pendingConnections;

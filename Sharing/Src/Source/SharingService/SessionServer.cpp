@@ -82,7 +82,6 @@ void SessionServer::OnStart(DWORD dwArgc, PWSTR *pszArgv)
 	if (m_persistentSessionProvider)
 	{
 		const size_t syncDataCount = m_persistentSessionProvider->DataCount();
-		m_persistentSessionSavers.resize(syncDataCount);
 
 		for (int i = 0; i < syncDataCount; ++i)
 		{
@@ -95,11 +94,6 @@ void SessionServer::OnStart(DWORD dwArgc, PWSTR *pszArgv)
 				LogError("Failed to create persistent session(%s)", sessionName.c_str());
 				continue;
 			}
-
-			PersistentSessionSaver& saver = m_persistentSessionSavers[i];
-			saver.SyncData = syncData;
-			saver.Session = session;
-			session->GetSyncManager()->RegisterListener(&saver);
 		}
 	}
 	else
@@ -555,16 +549,6 @@ void SessionServer::TeardownFileLogger()
 	}
 }
 
-
-void SessionServer::PersistentSessionSaver::OnSyncChangesBegin()
-{
-	// noop
-}
-
-void SessionServer::PersistentSessionSaver::OnSyncChangesEnd()
-{
-	SyncData->Save(Session->GetSyncManager()->GetRootObject());
-}
 
 
 XTOOLS_NAMESPACE_END

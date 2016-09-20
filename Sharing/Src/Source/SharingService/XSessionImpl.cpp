@@ -50,6 +50,7 @@ XSessionImpl::XSessionImpl(const std::string& name, uint16 port, SessionType typ
 , m_name(name)
 , m_stopping(0)
 , m_port(port)
+, m_syncData(syncData)
 , m_TypeOfSession(type)
 , m_id(id)
 , m_emptyTime(0)
@@ -57,7 +58,10 @@ XSessionImpl::XSessionImpl(const std::string& name, uint16 port, SessionType typ
 {
 	m_syncMgr = Sync::SyncManager::Create(MessageID::SyncMessage, Sync::AuthorityLevel::High, new UserImpl("SessionServer", User::kInvalidUserID, false));
 	if (syncData)
+	{
 		syncData->Load(m_syncMgr->GetRootObject());
+		m_syncMgr->RegisterListener(this);
+	}
 
 	m_internalSyncMgr = Sync::SyncManager::Create(MessageID::InternalSyncMessage, Sync::AuthorityLevel::High, new UserImpl("SessionServer", User::kInvalidUserID, false));
 	m_roomMgr = new ServerRoomManager(m_internalSyncMgr);
@@ -264,11 +268,6 @@ uint16 XSessionImpl::GetPort() const
 	return m_port;
 }
 
-Sync::SyncManagerPtr XSessionImpl::GetSyncManager() const
-{
-	return m_syncMgr;
-}
-
 SessionDescriptorImplPtr XSessionImpl::GetSessionDescription(const XSocketPtr& targetRemoteSystem) const
 {
 	int32 numUsers = GetUserCount();
@@ -423,6 +422,16 @@ void XSessionImpl::OnJoinSessionRequest(const JoinSessionRequest& request, const
 			m_callback->OnUserJoinedSession(m_id, remoteClient->m_userName, remoteClient->m_userID, remoteClient->m_userMuteState);
 		}
 	}
+}
+
+void XSessionImpl::OnSyncChangesBegin()
+{
+	// noop
+}
+
+void XSessionImpl::OnSyncChangesEnd()
+{
+	m_syncData->Save(m_syncMgr->GetRootObject());
 }
 
 
