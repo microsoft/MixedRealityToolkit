@@ -33,9 +33,6 @@ static const uint32 kDefaultMessagePoolSize = 50;
 // The minimum required length of a session's name
 static const uint32 kMinSessionNameLength = 1;
 
-// The maximum allowed length of a session's name
-static const uint32 kMaxSessionNameLength = 30;
-
 // The minimum required length of a user's name
 static const uint32 kMinUserNameLength = 1;
 

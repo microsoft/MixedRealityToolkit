@@ -318,11 +318,6 @@ void SessionServer::OnNewSessionRequest(const NewSessionRequest& request, const 
 		failureReason = "Session name must have at least " + std::to_string(kMinSessionNameLength) + " letters";
 	}
 
-	// Cannot create a session with a name that is too long
-	else if (name.length() > kMaxSessionNameLength)
-	{
-		failureReason = "Session name cannot be more than " + std::to_string(kMaxSessionNameLength) + " letters";
-	}
 	else
 	{
 		// Check to make sure that the requested session name is not already taken
