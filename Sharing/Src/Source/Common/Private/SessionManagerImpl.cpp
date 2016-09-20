@@ -72,13 +72,6 @@ bool SessionManagerImpl::CreateSession(const XStringPtr& sessionName)
 		return false;
 	}
 
-	// Cannot create a session with a name that is too long
-	if (sessionName->GetLength() > kMaxSessionNameLength)
-	{
-		LogWarning("Cannot create a new session: name cannot be more than %i letters", kMaxSessionNameLength);
-		return false;
-	}
-
 	m_bNewSessionRequestPending = true;
 
 	size_t sessionCount = m_sessions.size();
