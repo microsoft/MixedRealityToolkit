@@ -62,6 +62,8 @@
 #include <Public/DiscoveryClientListener.h>
 #include <Public/DiscoveryClient.h>
 
+#include <Public/XMLSyncElementSerializer.h>
+
 #include <Public/ProfileManager.h>
 
 #include <Private/json/cpprest/json.h>
