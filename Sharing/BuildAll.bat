@@ -4,10 +4,10 @@ echo ****************************************************
 echo ********* Building All HoloToolkit.Sharing *********
 echo ****************************************************
 
-call BuildDependencies.bat
+call BuildDependencies.bat %*
 IF NOT %ERRORLEVEL% == 0 goto BuildError
 
-call BuildSharingLib.bat
+call BuildSharingLib.bat %*
 IF NOT %ERRORLEVEL% == 0 goto BuildError
 
 call CopyToSDK.bat
