@@ -10,22 +10,22 @@ IF NOT %ERRORLEVEL% == 0 goto BuildError
 call Src\External\nuget restore "Src\Projects\SessionManagerUniversal.UI\project.json"
 IF NOT %ERRORLEVEL% == 0 goto BuildError
 
-call MSBuild Src\Solutions\VisualStudio\HoloToolkit.Sharing.sln /p:Configuration=Debug;Platform=ARM /t:rebuild /m
+call MSBuild Src\Solutions\VisualStudio\HoloToolkit.Sharing.sln /p:Configuration=Debug;Platform=ARM /m %*
 IF NOT %ERRORLEVEL% == 0 goto BuildError
 
-call MSBuild Src\Solutions\VisualStudio\HoloToolkit.Sharing.sln /p:Configuration=Release;Platform=ARM /t:rebuild /m
+call MSBuild Src\Solutions\VisualStudio\HoloToolkit.Sharing.sln /p:Configuration=Release;Platform=ARM /m %*
 IF NOT %ERRORLEVEL% == 0 goto BuildError
 
-call MSBuild Src\Solutions\VisualStudio\HoloToolkit.Sharing.sln /p:Configuration=Debug;Platform=Win32 /t:rebuild /m
+call MSBuild Src\Solutions\VisualStudio\HoloToolkit.Sharing.sln /p:Configuration=Debug;Platform=Win32 /m %*
 IF NOT %ERRORLEVEL% == 0 goto BuildError
 
-call MSBuild Src\Solutions\VisualStudio\HoloToolkit.Sharing.sln /p:Configuration=Release;Platform=Win32 /t:rebuild /m
+call MSBuild Src\Solutions\VisualStudio\HoloToolkit.Sharing.sln /p:Configuration=Release;Platform=Win32 /m %*
 IF NOT %ERRORLEVEL% == 0 goto BuildError
 
-call MSBuild Src\Solutions\VisualStudio\HoloToolkit.Sharing.sln /p:Configuration=Debug;Platform=x64 /t:rebuild /m
+call MSBuild Src\Solutions\VisualStudio\HoloToolkit.Sharing.sln /p:Configuration=Debug;Platform=x64 /m %*
 IF NOT %ERRORLEVEL% == 0 goto BuildError
 
-call MSBuild Src\Solutions\VisualStudio\HoloToolkit.Sharing.sln /p:Configuration=Release;Platform=x64 /t:rebuild /m
+call MSBuild Src\Solutions\VisualStudio\HoloToolkit.Sharing.sln /p:Configuration=Release;Platform=x64 /m %*
 IF NOT %ERRORLEVEL% == 0 goto BuildError
 
 :End

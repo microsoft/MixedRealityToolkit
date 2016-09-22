@@ -1,6 +1,6 @@
 @echo off
 
-del /f .\builds\ 
+IF "%1" == "/t:rebuild" del /F /Q .\builds\ 
 
 start "" /wait cmd.exe /C Build_x64.bat
 start "" /wait cmd.exe /C Build_x86.bat
