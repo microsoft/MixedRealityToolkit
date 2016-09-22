@@ -12,7 +12,7 @@ Users can also collaborate with other users (who are also using multiple devices
 
 ## First: Environment and Dependencies
 
-Follow the required steps for **Setting up the Build Environment** and **Building the Sharing Library** outlined here: [Getting Started](Src\Source\Docs\ExtendedDocs\GettingStarted.md)
+Follow the required steps for **Setting up the Build Environment** and **Building the Sharing Library** outlined here: [Getting Started](Src/Source/Docs/ExtendedDocs/GettingStarted.md)
 
 ## Features
 

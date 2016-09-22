@@ -4,22 +4,28 @@ REM vsvars32.bat appears to have issues if you call it too many times from one c
 REM We'll use "DevEnvDir" to determine if we already ran it or if we need to run it again.
 @if "%DevEnvDir%"=="" call "%VS140COMNTOOLS%vsvars32.bat"
 
-call MSBuild Src\Solutions\VisualStudio\HoloToolkit.Sharing.sln /p:Configuration=Debug;Platform=ARM /t:rebuild /m
+call Src\External\nuget restore "Src\Projects\ClientWrapper.UAP\project.json"
 IF NOT %ERRORLEVEL% == 0 goto BuildError
 
-call MSBuild Src\Solutions\VisualStudio\HoloToolkit.Sharing.sln /p:Configuration=Release;Platform=ARM /t:rebuild /m
+call Src\External\nuget restore "Src\Projects\SessionManagerUniversal.UI\project.json"
 IF NOT %ERRORLEVEL% == 0 goto BuildError
 
-call MSBuild Src\Solutions\VisualStudio\HoloToolkit.Sharing.sln /p:Configuration=Debug;Platform=Win32 /t:rebuild /m
+call MSBuild Src\Solutions\VisualStudio\HoloToolkit.Sharing.sln /p:Configuration=Debug;Platform=ARM /m %*
 IF NOT %ERRORLEVEL% == 0 goto BuildError
 
-call MSBuild Src\Solutions\VisualStudio\HoloToolkit.Sharing.sln /p:Configuration=Release;Platform=Win32 /t:rebuild /m
+call MSBuild Src\Solutions\VisualStudio\HoloToolkit.Sharing.sln /p:Configuration=Release;Platform=ARM /m %*
 IF NOT %ERRORLEVEL% == 0 goto BuildError
 
-call MSBuild Src\Solutions\VisualStudio\HoloToolkit.Sharing.sln /p:Configuration=Debug;Platform=x64 /t:rebuild /m
+call MSBuild Src\Solutions\VisualStudio\HoloToolkit.Sharing.sln /p:Configuration=Debug;Platform=Win32 /m %*
 IF NOT %ERRORLEVEL% == 0 goto BuildError
 
-call MSBuild Src\Solutions\VisualStudio\HoloToolkit.Sharing.sln /p:Configuration=Release;Platform=x64 /t:rebuild /m
+call MSBuild Src\Solutions\VisualStudio\HoloToolkit.Sharing.sln /p:Configuration=Release;Platform=Win32 /m %*
+IF NOT %ERRORLEVEL% == 0 goto BuildError
+
+call MSBuild Src\Solutions\VisualStudio\HoloToolkit.Sharing.sln /p:Configuration=Debug;Platform=x64 /m %*
+IF NOT %ERRORLEVEL% == 0 goto BuildError
+
+call MSBuild Src\Solutions\VisualStudio\HoloToolkit.Sharing.sln /p:Configuration=Release;Platform=x64 /m %*
 IF NOT %ERRORLEVEL% == 0 goto BuildError
 
 :End
