@@ -113,7 +113,10 @@ namespace // Intentionally Anonymous
 		printer.OpenElement(cElementName_SyncDocument);
 		printer.PushAttribute(cAttributeName_Version, cVersion_SyncDocument);
 
-		Serialize(printer, root, saveUserData);
+		if( root != nullptr)
+		{
+			Serialize(printer, root, saveUserData);
+		}
 
 		printer.CloseElement();
 	}
@@ -210,14 +213,12 @@ namespace // Intentionally Anonymous
 			return;
 		}
 
+		// If we have a sync node then deserialize
 		XMLElement* nodeElement = docElement->FirstChildElement(cElementName_SyncNode);
-		if (nodeElement == nullptr)
+		if (nodeElement != nullptr)
 		{
-			LogError("Could not parse sync document, no sync nodes found");
-			return;
+			Deserialize(nodeElement, root);
 		}
-
-		Deserialize(nodeElement, root);
 	}
 
 } // anonymous 
@@ -232,7 +233,6 @@ XMLSyncElementSerializer::XMLSyncElementSerializer(bool writeHeader, bool saveUs
 
 bool XMLSyncElementSerializer::Save(FILE* file, const ObjectElementConstPtr& root)
 {
-	if (!XTVERIFY(root != nullptr)) { return false; }
 	if (!XTVERIFY(file != nullptr)) { return false; }
 
 	XMLPrinter printer(file);
@@ -243,8 +243,6 @@ bool XMLSyncElementSerializer::Save(FILE* file, const ObjectElementConstPtr& roo
 
 bool XMLSyncElementSerializer::Save(std::ostream& stream, const ObjectElementConstPtr& root)
 {
-	if (!XTVERIFY(root != nullptr)) { return false; }
-
 	XMLPrinter printer;
 	Print(printer, root, m_writeHeader, m_saveUserData);
 
@@ -254,8 +252,6 @@ bool XMLSyncElementSerializer::Save(std::ostream& stream, const ObjectElementCon
 
 bool XMLSyncElementSerializer::Save(std::string& xmlStr, const ObjectElementConstPtr& root)
 {
-	if (!XTVERIFY(root != nullptr)) { return false; }
-
 	XMLPrinter printer;
 	Print(printer, root, m_writeHeader, m_saveUserData);
 
@@ -288,6 +284,12 @@ bool XMLSyncElementSerializer::Load(std::istream& stream, const ObjectElementPtr
 	stream.seekg(0, stream.end);
 	const std::streampos length = stream.tellg();
 	stream.seekg(0, stream.beg);
+
+	if (length == std::streampos(0))
+	{
+		LogError("Stream is zero length");
+		return false;
+	}
 
 	std::vector<char> buffer((std::vector<char>::size_type)length);
 	stream.read(&buffer[0], buffer.size());
