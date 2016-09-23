@@ -20,13 +20,16 @@ public:
 DECLARE_PTR(SyncData);
 
 /// Used to provide a set of known SyncData objects from different sources, e.g. file system, http, etc.
-class SyncDataProvider : public RefCounted
+class SyncDataProvider : public AtomicRefCounted
 {
 public:
 
 	virtual size_t DataCount() = 0;
 	virtual std::string GetDataName(int index) = 0;
 	virtual SyncDataPtr GetData(int index) = 0;
+
+	virtual SyncDataPtr FindData(std::string name) = 0;
+	virtual SyncDataPtr FindOrCreateData(std::string name) = 0;
 };
 
 DECLARE_PTR(SyncDataProvider)

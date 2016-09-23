@@ -79,27 +79,7 @@ void SessionServer::OnStart(DWORD dwArgc, PWSTR *pszArgv)
 	// Allocate a pool of ports to use for sessions
 	m_portPool = new PortPool(kSessionServerPort - 1, 256);
 
-	if (m_persistentSessionProvider)
-	{
-		const size_t syncDataCount = m_persistentSessionProvider->DataCount();
-
-		for (int i = 0; i < syncDataCount; ++i)
-		{
-			const std::string sessionName = m_persistentSessionProvider->GetDataName(i);
-			const Sync::SyncDataPtr syncData = m_persistentSessionProvider->GetData(i);
-
-			XSessionImplPtr session = CreateNewSession(sessionName, SessionType::PERSISTENT, syncData);
-			if (session == nullptr)
-			{
-				LogError("Failed to create persistent session(%s)", sessionName.c_str());
-				continue;
-			}
-		}
-	}
-	else
-	{
-		XTVERIFY(CreateNewSession("Default", SessionType::PERSISTENT, Sync::SyncDataPtr()) != NULL);
-	}
+	InitializePersistentSessions();
 
 	// Start a thread to run the main service logic. 
 	m_serverThread = new MemberFuncThread(&SessionServer::ServerThreadFunc, this);
@@ -257,7 +237,31 @@ void SessionServer::OnMessageReceived(const NetworkConnectionPtr& connection, Ne
 	}
 }
 
+void SessionServer::InitializePersistentSessions()
+{
+	ScopedLock lock(m_persistentSessionProviderMutex);
+	if (m_persistentSessionProvider)
+	{
+		const size_t syncDataCount = m_persistentSessionProvider->DataCount();
 
+		for (int i = 0; i < syncDataCount; ++i)
+		{
+			const std::string sessionName = m_persistentSessionProvider->GetDataName(i);
+			const Sync::SyncDataPtr syncData = m_persistentSessionProvider->GetData(i);
+
+			XSessionImplPtr session = CreateNewSession(sessionName, SessionType::PERSISTENT, syncData);
+			if (session == nullptr)
+			{
+				LogError("Failed to create persistent session(%s)", sessionName.c_str());
+				continue;
+			}
+		}
+	}
+	else
+	{
+		XTVERIFY(CreateNewSession("Default", SessionType::PERSISTENT, Sync::SyncDataPtr()) != NULL);
+	}
+}
 
 XSessionImplPtr SessionServer::CreateNewSession(const std::string& sessionName, SessionType type, const Sync::SyncDataPtr& syncData)
 {
@@ -353,7 +357,6 @@ void SessionServer::OnNewSessionRequest(const NewSessionRequest& request, const 
 			}
 		}
 	}
-
 
 	if (failureReason.empty())
 	{

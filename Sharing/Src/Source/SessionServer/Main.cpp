@@ -104,7 +104,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		// Look for save flag, if no path specified, use cwd
 		if (const _TCHAR* path = find_arg(L"save", argc, argv, L"./"))
 		{
-			dataProvider = new XTools::Sync::FileSystemSyncDataProvider(
+			dataProvider = XTools::Sync::FileSystemSyncDataProvider::Create(
 				new XTools::Sync::XMLSyncElementSerializer(true, false), path, L".sml");
 		}
 

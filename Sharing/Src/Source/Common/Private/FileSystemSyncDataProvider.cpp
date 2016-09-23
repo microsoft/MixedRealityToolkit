@@ -6,31 +6,33 @@
 
 #include "stdafx.h"
 #include <Public/FileSystemSyncDataProvider.h>
-#include <filesystem>
 #include <fstream>
 
 XTOOLS_NAMESPACE_BEGIN
 NAMESPACE_BEGIN(Sync)
 
-using std::experimental::filesystem::v1::path;
 using std::experimental::filesystem::v1::directory_iterator;
-using std::experimental::filesystem::v1::is_directory;
+using namespace std::experimental::filesystem::v1;
 
 namespace // Intentionally Anonymous
 {
 	class FileSystemSyncData : public SyncData
 	{
 	public:
-		FileSystemSyncData(const SyncElementSerializerPtr& serializer, const path& path) 
-			: m_dataPath(path) 
+		FileSystemSyncData(const SyncElementSerializerPtr& serializer, const path& path)
+			: m_dataPath(path)
 			, m_serializer(serializer)
 		{
-			
+
 		}
+
 
 		// Inherited via SyncData
 		virtual bool Load(const ObjectElementPtr & syncRoot) XTOVERRIDE
 		{
+			if (!exists(m_dataPath)) { return true; }
+			if (file_size(m_dataPath) == 0) { return true; }
+
 			std::ifstream file(m_dataPath, std::ios::binary);
 			if (!file.is_open())
 			{
@@ -40,6 +42,7 @@ namespace // Intentionally Anonymous
 
 			return m_serializer->Load(file, syncRoot);
 		}
+
 		virtual bool Save(const ObjectElementConstPtr & syncRoot) XTOVERRIDE
 		{
 			// First we write out to the Next file
@@ -80,40 +83,39 @@ namespace // Intentionally Anonymous
 	};
 }
 
-FileSystemSyncDataProvider::FileSystemSyncDataProvider(const SyncElementSerializerPtr& serializer, const wchar_t* _directory, const wchar_t* _extension)
+FileSystemSyncDataProviderPtr FileSystemSyncDataProvider::Create(
+	const SyncElementSerializerPtr& serializer, const path& directory, const path& extension)
 {
-	if (!XTVERIFY(serializer != nullptr)) { return; }
-	if (!XTVERIFY(_directory != nullptr)) { return; }
-	if (!XTVERIFY(_extension != nullptr)) { return; }
+	// Need this for errors to print if a session hasn't started yet
+	XTools::LoggerPtr logger = new XTools::Logger();
 
-	path extension(_extension);
-	if (!extension.has_extension())
+	if (!XTVERIFY(serializer != nullptr)) { return FileSystemSyncDataProviderPtr(); }
+
+	if (!extension.has_extension() || extension.extension() != extension)
 	{
-		LogError("Extension(%s) was not an extension", _extension);
-		return;
+		LogError("Extension(%s) was not an extension", extension.generic_string().c_str());
+		return FileSystemSyncDataProviderPtr();
 	}
 
-	path directory(_directory);
-	if (!is_directory(directory))
+	const bool directoryExists = exists(directory);
+	if (directoryExists && !is_directory(directory))
 	{
-		LogError("Directory(%s) was not a directory", _directory);
-		return;
+		LogError("Directory(%s) was not a directory", directory.generic_string().c_str());
+		return FileSystemSyncDataProviderPtr();
 	}
-	
-	for (const auto& entry : directory_iterator(directory))
+	else if (!directoryExists && !create_directory(directory))
 	{
-		if (!is_regular_file(entry.status())) { continue; }
-		if (entry.path().extension() != extension) { continue; }
-		m_syncDataNames.push_back(entry.path().filename().replace_extension().generic_string());
-		m_syncData.push_back(new FileSystemSyncData(serializer, entry.path()));
+		LogError("Could not create directory(%s)", directory.generic_string().c_str());
+		return FileSystemSyncDataProviderPtr();
 	}
+
+	return new FileSystemSyncDataProvider(serializer, directory, extension);
 }
 
 size_t FileSystemSyncDataProvider::DataCount()
 {
 	return m_syncData.size();
 }
-
 
 std::string FileSystemSyncDataProvider::GetDataName(int index)
 {
@@ -127,12 +129,67 @@ std::string FileSystemSyncDataProvider::GetDataName(int index)
 
 SyncDataPtr FileSystemSyncDataProvider::GetData(int index)
 {
-	if (!XTVERIFY(index >=0 && index < (int)m_syncData.size()))
+	if (!XTVERIFY(index >= 0 && index < (int)m_syncData.size()))
 	{
 		return SyncDataPtr();
 	}
 
 	return m_syncData[index];
+}
+
+SyncDataPtr FileSystemSyncDataProvider::FindData(std::string name)
+{
+	for (int i = 0; i < DataCount(); ++i)
+	{
+		if (m_syncDataNames[i] == name)
+		{
+			return m_syncData[i];
+		}
+	}
+
+	return SyncDataPtr();
+}
+
+SyncDataPtr FileSystemSyncDataProvider::FindOrCreateData(std::string name)
+{
+	SyncDataPtr result = FindData(name);
+	if (result == nullptr)
+	{
+		path filePath = (path(m_directory) / name).replace_extension(m_extension);
+		if (!exists(filePath))
+		{
+			// Create an empty sync document
+			std::ofstream file(filePath, std::ios::binary);
+			if (file.is_open())
+			{
+				m_serializer->Save(file, nullptr);
+				file.close();
+			}
+		}
+
+		result = new FileSystemSyncData(m_serializer, filePath);
+		m_syncDataNames.push_back(name);
+		m_syncData.push_back(result);
+	}
+
+	return result;
+}
+
+FileSystemSyncDataProvider::FileSystemSyncDataProvider(
+	const SyncElementSerializerPtr& serializer, const path& directory, const path& extension)
+{
+	m_serializer = serializer;
+	m_directory = directory;
+	m_extension = extension;
+
+	for (const auto& entry : directory_iterator(m_directory))
+	{
+		if (!is_regular_file(entry.status())) { continue; }
+		if (entry.path().extension() != m_extension) { continue; }
+
+		m_syncDataNames.push_back(entry.path().filename().replace_extension().generic_string());
+		m_syncData.push_back(new FileSystemSyncData(serializer, entry.path()));
+	}
 }
 
 NAMESPACE_END(Sync)

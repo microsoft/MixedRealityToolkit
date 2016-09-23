@@ -52,6 +52,7 @@ private:
 
 	void OnHandshakeComplete(const XSocketPtr& newConnection, SocketID socketID, HandshakeResult result);
 
+	void InitializePersistentSessions();
 	virtual XSessionImplPtr CreateNewSession(const std::string& sessionName, SessionType type, const Sync::SyncDataPtr& syncData);
 
 	virtual uint32 GetNewSessionId();
@@ -83,7 +84,9 @@ private:
 	XSocketManagerPtr						m_socketMgr;
 	SessionMessageRouter					m_messageRouter;
 	ProfileManagerPtr						m_profileMgr;
+
 	Sync::SyncDataProviderPtr				m_persistentSessionProvider;
+	Mutex									m_persistentSessionProviderMutex;
 
 #if defined(MSTEST)
 	BroadcastForwarderPtr					m_broadcaster;
