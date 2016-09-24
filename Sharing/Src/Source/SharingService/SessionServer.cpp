@@ -360,7 +360,17 @@ void SessionServer::OnNewSessionRequest(const NewSessionRequest& request, const 
 
 	if (failureReason.empty())
 	{
-		session = CreateNewSession(name, request.GetSessionType(), Sync::SyncDataPtr());
+		SessionType sessionType = request.GetSessionType();
+		Sync::SyncDataPtr syncData;
+
+		if (sessionType == SessionType::PERSISTENT)
+		{
+			ScopedLock lock(m_persistentSessionProviderMutex);
+			if (m_persistentSessionProvider != nullptr)
+				syncData = m_persistentSessionProvider->FindOrCreateData(name);
+		}
+
+		session = CreateNewSession(name, sessionType, syncData);
 	}
 
 	// If the session was successfully created...
