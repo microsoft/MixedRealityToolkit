@@ -139,7 +139,7 @@ SyncDataPtr FileSystemSyncDataProvider::GetData(int index)
 
 SyncDataPtr FileSystemSyncDataProvider::FindData(std::string name)
 {
-	for (int i = 0; i < DataCount(); ++i)
+	for (size_t i = 0; i < DataCount(); ++i)
 	{
 		if (m_syncDataNames[i] == name)
 		{
