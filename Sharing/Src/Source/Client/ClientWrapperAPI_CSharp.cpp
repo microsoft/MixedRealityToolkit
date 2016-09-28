@@ -5275,7 +5275,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_SessionManager_RemoveListener(void * jarg1, v
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SessionManager_CreateSession(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SessionManager_CreateSession__SWIG_0(void * jarg1, void * jarg2) {
   unsigned int jresult ;
   XTools::SessionManager *arg1 = (XTools::SessionManager *) 0 ;
   XTools::XStringPtr *arg2 = 0 ;
@@ -5296,6 +5296,34 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SessionManager_CreateSession(void * j
   }
   
   result = (bool)(arg1)->CreateSession((XTools::XStringPtr const &)*arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SessionManager_CreateSession__SWIG_1(void * jarg1, void * jarg2, int jarg3) {
+  unsigned int jresult ;
+  XTools::SessionManager *arg1 = (XTools::SessionManager *) 0 ;
+  XTools::XStringPtr *arg2 = 0 ;
+  XTools::SessionType arg3 ;
+  XTools::XStringPtr tempnull2 ;
+  XTools::XStringPtr temp2 ;
+  XTools::XString *smartarg2 ;
+  bool result;
+  
+  arg1 = (XTools::SessionManager *)jarg1; 
+  
+  // ref_ptr by reference in
+  if ( jarg2 ) {
+    smartarg2 = *( XString **)&jarg2; 
+    temp2 = XTools::ref_ptr<  XString >(smartarg2);
+    arg2 = &temp2;
+  } else {
+    arg2 = &tempnull2;
+  }
+  
+  arg3 = (XTools::SessionType)jarg3; 
+  result = (bool)(arg1)->CreateSession((XTools::XStringPtr const &)*arg2,arg3);
   jresult = result; 
   return jresult;
 }

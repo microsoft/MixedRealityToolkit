@@ -13,11 +13,12 @@ XTOOLS_NAMESPACE_BEGIN
 
 const std::string NewSessionRequest::gMessageType("NewSessionRequest");
 const std::string NewSessionRequest::gSessionNameKey("Name");
+const std::string NewSessionRequest::gSessionTypeKey("Type");
 
 NewSessionRequest::NewSessionRequest()
 	: m_message(JSONMessage::Create(gMessageType))
 {
-	
+	SetSessionType(SessionType::ADHOC);
 }
 
 
@@ -50,6 +51,16 @@ std::string NewSessionRequest::GetSessionName() const
 void NewSessionRequest::SetSessionName(const std::string& name)
 {
 	m_message->SetValue(gSessionNameKey, name);
+}
+
+SessionType NewSessionRequest::GetSessionType() const
+{
+	return (SessionType)m_message->GetIntValue(gSessionTypeKey);
+}
+
+void NewSessionRequest::SetSessionType(SessionType type)
+{
+	m_message->SetValue(gSessionTypeKey, (int32)type);
 }
 
 

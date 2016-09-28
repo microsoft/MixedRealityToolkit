@@ -20,7 +20,7 @@ public:
 	// SessionManager Functions:
 	virtual void			AddListener(SessionManagerListener* newListener) XTOVERRIDE;
 	virtual void			RemoveListener(SessionManagerListener* oldListener) XTOVERRIDE;
-	virtual bool			CreateSession(const XStringPtr& sessionName) XTOVERRIDE;
+	virtual bool			CreateSession(const XStringPtr& sessionName, SessionType type) XTOVERRIDE;
 	virtual int32			GetSessionCount() const XTOVERRIDE;
 	virtual SessionPtr		GetSession(int32 index) XTOVERRIDE;
 	virtual SessionPtr		GetCurrentSession() XTOVERRIDE;

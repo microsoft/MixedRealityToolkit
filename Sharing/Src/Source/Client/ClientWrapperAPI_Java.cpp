@@ -8121,7 +8121,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_SessionManager_1CreateSession(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT jboolean JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_SessionManager_1CreateSession_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   jboolean jresult = 0 ;
   XTools::SessionManager *arg1 = (XTools::SessionManager *) 0 ;
   XTools::XStringPtr *arg2 = 0 ;
@@ -8146,6 +8146,38 @@ SWIGEXPORT jboolean JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClient
   }
   
   result = (bool)(arg1)->CreateSession((XTools::XStringPtr const &)*arg2);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_SessionManager_1CreateSession_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3) {
+  jboolean jresult = 0 ;
+  XTools::SessionManager *arg1 = (XTools::SessionManager *) 0 ;
+  XTools::XStringPtr *arg2 = 0 ;
+  XTools::SessionType arg3 ;
+  XTools::XStringPtr tempnull2 ;
+  XTools::XStringPtr temp2 ;
+  XTools::XString *smartarg2 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  arg1 = *(XTools::SessionManager **)&jarg1; 
+  
+  // ref_ptr by reference in
+  if ( jarg2 ) {
+    smartarg2 = *( XString **)&jarg2; 
+    temp2 = XTools::ref_ptr<  XString >(smartarg2);
+    arg2 = &temp2;
+  } else {
+    arg2 = &tempnull2;
+  }
+  
+  arg3 = (XTools::SessionType)jarg3; 
+  result = (bool)(arg1)->CreateSession((XTools::XStringPtr const &)*arg2,arg3);
   jresult = (jboolean)result; 
   return jresult;
 }
