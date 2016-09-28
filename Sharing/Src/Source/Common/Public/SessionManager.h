@@ -27,8 +27,10 @@ public:
 	/// SessionManagerListener::OnCreateSucceeded() will be called if the request succeeds, 
 	/// SessionManagerListener::OnCreateFailed() will be called if it fails
 	/// \param sessionName The new name to give the session
+	/// \param type The type of the the new session
 	/// \returns Returns true if the creation request was successfully sent to the server.  This does not mean that the session was created.  
-	virtual bool CreateSession(const XStringPtr& sessionName) = 0;
+	virtual bool CreateSession(const XStringPtr& sessionName) { return CreateSession(sessionName, SessionType::ADHOC); }
+	virtual bool CreateSession(const XStringPtr& sessionName, SessionType type) = 0;
 
 	/// Returns the number of active sessions
 	virtual int32 GetSessionCount() const = 0;

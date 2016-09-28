@@ -2,22 +2,22 @@
 
 call "%VS140COMNTOOLS%vsvars32.bat"
 
-call MSBuild RakNet.sln /p:Configuration=Debug;Platform=ARM /t:rebuild /m
+call MSBuild RakNet.sln /p:Configuration=Debug;Platform=ARM /m %*
 IF NOT %ERRORLEVEL% == 0 goto BuildError
 
-call MSBuild RakNet.sln /p:Configuration=Release;Platform=ARM /t:rebuild /m
+call MSBuild RakNet.sln /p:Configuration=Release;Platform=ARM /m %*
 IF NOT %ERRORLEVEL% == 0 goto BuildError
 
-call MSBuild RakNet.sln /p:Configuration=Debug;Platform=Win32 /t:rebuild /m
+call MSBuild RakNet.sln /p:Configuration=Debug;Platform=Win32 /m %*
 IF NOT %ERRORLEVEL% == 0 goto BuildError
 
-call MSBuild RakNet.sln /p:Configuration=Release;Platform=Win32 /t:rebuild /m
+call MSBuild RakNet.sln /p:Configuration=Release;Platform=Win32 /m %*
 IF NOT %ERRORLEVEL% == 0 goto BuildError
 
-call MSBuild RakNet.sln /p:Configuration=Debug;Platform=x64 /t:rebuild /m
+call MSBuild RakNet.sln /p:Configuration=Debug;Platform=x64 /m %*
 IF NOT %ERRORLEVEL% == 0 goto BuildError
 
-call MSBuild RakNet.sln /p:Configuration=Release;Platform=x64 /t:rebuild /m
+call MSBuild RakNet.sln /p:Configuration=Release;Platform=x64 /m %*
 IF NOT %ERRORLEVEL% == 0 goto BuildError
 
 xcopy Lib\*.lib ..\lib\ /I /F /H /R /K /Y

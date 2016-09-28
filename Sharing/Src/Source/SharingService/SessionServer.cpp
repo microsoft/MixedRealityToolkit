@@ -360,7 +360,7 @@ void SessionServer::OnNewSessionRequest(const NewSessionRequest& request, const 
 
 	if (failureReason.empty())
 	{
-		session = CreateNewSession(name, SessionType::ADHOC, Sync::SyncDataPtr());
+		session = CreateNewSession(name, request.GetSessionType(), Sync::SyncDataPtr());
 	}
 
 	// If the session was successfully created...

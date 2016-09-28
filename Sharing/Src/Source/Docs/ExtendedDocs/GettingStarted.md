@@ -10,7 +10,7 @@ To build the HoloToolkit.Sharing library, you will need to install:
 
 # Building the Sharing library
 On Windows, run HoloToolkit\Sharing\BuildAll.bat.  This will run all the other scripts necessary to build the library from scratch:  
-* **BuildDependencies.bat** Builds all of the open source 3rd party libraries that the Sharing library uses.  These are located in HoloToolkit\Sharing\Src\External
+* **BuildDependencies.bat** Builds all of the open source 3rd party libraries that the Sharing library uses, e.g the Speex audio compression library and the RakNet networking library. These are located in HoloToolkit\Sharing\Src\External
 * **BuildSharingLib.bat** Builds the Sharing library itself by using MSBuild with the Visual Studio solution in HoloToolkit\Sharing\Src\Solutions\VisualStudio
 * **CopyToSDK.bat** Copies the built binaries, wrapper APIs, headers, and tools ready to be used in your projects to HoloToolkit\Sharing\SDK
 

@@ -22,12 +22,16 @@ public:
 
 	virtual std::string GetSessionName() const;
 	virtual void		SetSessionName(const std::string& name);
+
+	virtual SessionType GetSessionType() const;
+	virtual void		SetSessionType(SessionType type);
     
 private:
 	JSONMessagePtr	m_message;
 
 	static const std::string gMessageType;
 	static const std::string gSessionNameKey;
+	static const std::string gSessionTypeKey;
 };
 
 DECLARE_PTR(NewSessionRequest)

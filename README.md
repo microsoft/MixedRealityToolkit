@@ -36,13 +36,15 @@ The HoloToolkit.Sharing library allows applications to span multiple devices, an
 * Anchor Sharing
 * Profiler
 
+[Learn More...](Sharing/README.md)
+
 ---
 
 ## Microphone Stream Selector
 
 The MicStreamSelector library allows applications to easily access the different Microphone Stream Categories of any windows 10 device. On HoloLens, those capture types can be optimized for either: high-quality speech capture, VOIP transmission, or general room captures. The library can record wav files of indeterminate length, and it also allows realtime access to the mic data. The microphone audio data can be polled as desired (which works well for game engines that are running on a framerate, like Unity), or can be provided via an embedded callback in your app to deliver realtime data as it is available (in a state driven app, like flat XAML).
 
-The provided XAML demo app is a uses the embedded callback method. It shows how to use the raw data from the microphone and also how to record wav files. https://github.com/Microsoft/HoloToolkit-Unity/Assets/HoloToolkit/Input/Tests/Scripts/MicStreamDemo.cs has an alternate example showing how to use this library inside of Unity. 
+The provided XAML demo app is a uses the embedded callback method. It shows how to use the raw data from the microphone and also how to record wav files. https://github.com/Microsoft/HoloToolkit-Unity/blob/master/Assets/HoloToolkit/Input/Tests/Scripts/MicStreamDemo.cs has an alternate example showing how to use this library inside of Unity. 
 
 To use, you want to call the proper MicInitialize function for your app, whether you will poll the data yourself every frame, like in Unity, or whether you want the plugin to provide the data to the app whenever it is ready, like in the provided XAML example. After initialization, you can call any of the functions in any order. When you are closing your application, you want to call MicDestroy() to properly deconstruct. If you have called MicDestroy() already in your app, you need to call MicInitialize before using again. 
 
@@ -56,7 +58,7 @@ Starts microphone for selected category, as defined above. Uses default settings
 Same as above, but uses custom samplerate. 
 
 * MicGetFrame(float[] buffer, int length, int numchannels); 
-Fills buffer of length and numchannels. This is how Unity3d and Unreal will want to access audio data -- from a poll in the game engine's audio engine. This is used in the example from https://github.com/Microsoft/HoloToolkit-Unity/Assets/HoloToolkit/Input/Tests/Scripts/MicStreamDemo.cs
+Fills buffer of length and numchannels. This is how Unity3d and Unreal will want to access audio data -- from a poll in the game engine's audio engine. This is used in the example from https://github.com/Microsoft/HoloToolkit-Unity/blob/master/Assets/HoloToolkit/Input/Tests/Scripts/MicStreamDemo.cs
 
 ### Initialize with callback for passive, state-driven apps (e.g. XAML)
 * MicInitializeDefaultWithGraph(int category, AudioGraph appGraph); 
