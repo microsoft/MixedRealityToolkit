@@ -335,11 +335,10 @@ void SessionServer::OnNewSessionRequest(const NewSessionRequest& request, const 
 			}
 		}
 	}
-	
 
 	if (failureReason.empty())
 	{
-		session = CreateNewSession(name, SessionType::ADHOC);
+		session = CreateNewSession(name, request.GetSessionType());
 	}
 	
 	// If the session was successfully created...

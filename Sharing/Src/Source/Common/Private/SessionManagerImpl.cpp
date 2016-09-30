@@ -43,7 +43,7 @@ void SessionManagerImpl::RemoveListener(SessionManagerListener* oldListener)
 }
 
 
-bool SessionManagerImpl::CreateSession(const XStringPtr& sessionName)
+bool SessionManagerImpl::CreateSession(const XStringPtr& sessionName, SessionType type)
 {
 	if (!sessionName)
 	{
@@ -96,6 +96,7 @@ bool SessionManagerImpl::CreateSession(const XStringPtr& sessionName)
 	// Create the request data
 	NewSessionRequest request;
 	request.SetSessionName(sessionName->GetString());
+	request.SetSessionType(type);
 
 	// Send the request to the session list server
 	NetworkConnectionPtr serverConnection = m_context->GetSessionListConnection();
