@@ -141,12 +141,5 @@ namespace HoloToolkit.Sharing
             }
             Profile.EndRange();
         }
-
-        public override void Dispose()
-        {
-            ObjectElementRoot.RemoveListener(this);
-            ObjectElementRoot = null;
-            base.Dispose();
-        }
     }
 }
