@@ -20,11 +20,6 @@ namespace HoloToolkit.Sharing
         public event System.Action<Element> ElementDeletedEvent;
 
         /// <summary>
-        /// The Object Elemet we're currently listening to.
-        /// </summary>
-        public ObjectElement ObjectElementRoot { get; private set; }
-
-        /// <summary>
         /// Initializes a new instance of <see cref="ObjectElementAdapter"/> that creates a new Object Element and starts to listen to it.
         /// </summary>
         public ObjectElementAdapter() { }
