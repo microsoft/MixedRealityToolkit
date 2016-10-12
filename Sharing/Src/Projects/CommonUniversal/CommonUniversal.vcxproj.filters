@@ -438,6 +438,12 @@
     <ClCompile Include="..\..\Source\Common\Private\BoolElementImpl.cpp">
       <Filter>Source\Private\Sync\Elements</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\QuerySessionSyncDataReply.cpp">
+      <Filter>Source\Private\Sessions\Messages</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\QuerySessionSyncDataRequest.cpp">
+      <Filter>Source\Private\Sessions\Messages</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\Common\Common.h">
@@ -1000,6 +1006,12 @@
     </ClInclude>
     <ClInclude Include="..\..\Source\Common\Public\BoolElement.h">
       <Filter>Source\Public\Sync\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\QuerySessionSyncDataReply.h">
+      <Filter>Source\Private\Sessions\Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\QuerySessionSyncDataRequest.h">
+      <Filter>Source\Private\Sessions\Messages</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

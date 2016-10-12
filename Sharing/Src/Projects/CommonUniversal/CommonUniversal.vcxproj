@@ -95,6 +95,8 @@
     <ClCompile Include="..\..\Source\Common\Private\Profile.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\ProfileEntry.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\ProfileManagerImpl.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\QuerySessionSyncDataReply.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\QuerySessionSyncDataRequest.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\Reflection.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\RemoveOperation.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\ResampleProcessor.cpp" />
@@ -217,6 +219,8 @@
     <ClInclude Include="..\..\Source\Common\Private\Peer.h" />
     <ClInclude Include="..\..\Source\Common\Private\ProfileEntry.h" />
     <ClInclude Include="..\..\Source\Common\Private\ProfileManagerImpl.h" />
+    <ClInclude Include="..\..\Source\Common\Private\QuerySessionSyncDataReply.h" />
+    <ClInclude Include="..\..\Source\Common\Private\QuerySessionSyncDataRequest.h" />
     <ClInclude Include="..\..\Source\Common\Private\RakNetIncludes.h" />
     <ClInclude Include="..\..\Source\Common\Private\RemoveOperation.h" />
     <ClInclude Include="..\..\Source\Common\Private\ResampleProcessor.h" />
