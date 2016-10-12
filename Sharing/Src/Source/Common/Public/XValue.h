@@ -8,6 +8,10 @@
 
 #pragma once
 
+#if !defined(SWIG) 
+#include <Private/json/cpprest/json.h>
+#endif
+
 XTOOLS_NAMESPACE_BEGIN
 
 class XValue
@@ -80,6 +84,13 @@ public:
 			( m_wrappedValue == nullptr || m_wrappedValue->Equals(other.m_wrappedValue.get()))
 			);
 	}
+
+	// JSON guts to parse or create the data structure
+#if !defined(SWIG) 
+	static XValue FromJSON(const web::json::object& object);
+	web::json::value AsJSON() const;
+#endif
+	
 
 	std::string ToString() const;
 
