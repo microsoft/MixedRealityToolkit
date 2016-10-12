@@ -48,6 +48,9 @@ public:
 
     /// Callback for when connectivity to the Session List Server has gone away.
     virtual void OnServerDisconnected() {}
+
+	/// Callback for sync data gets updated.
+	virtual void OnSyncDataChanged(const SessionPtr& session) {}
 };
 
 #pragma warning( pop )

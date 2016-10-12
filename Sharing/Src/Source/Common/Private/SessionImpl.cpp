@@ -197,6 +197,30 @@ NetworkConnectionPtr SessionImpl::GetSessionNetworkConnection() const
 }
 
 
+int32 SessionImpl::GetSyncData(const std::string& uri, int32 defaultValue) const
+{
+	auto data = m_syncData.find(uri);
+
+	if (data != m_syncData.end())
+	{
+		auto value = data->second.Get<int32>();
+
+		if (value != nullptr)
+		{
+			return *value;
+		}
+	}
+
+	return defaultValue;
+}
+
+
+void SessionImpl::SetSyncData(const std::string& uri, const XValue& value)
+{
+	m_syncData[uri] = value;
+}
+
+
 void SessionImpl::SetState(MachineSessionState newState)
 {
 	m_curState = newState;

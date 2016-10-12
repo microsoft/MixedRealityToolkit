@@ -1022,7 +1022,24 @@ void SwigDirector_SessionManagerListener::OnServerDisconnected() {
   }
 }
 
-void SwigDirector_SessionManagerListener::swig_connect_director(SWIG_Callback0_t callbackOnCreateSucceeded, SWIG_Callback1_t callbackOnCreateFailed, SWIG_Callback2_t callbackOnSessionAdded, SWIG_Callback3_t callbackOnSessionClosed, SWIG_Callback4_t callbackOnUserJoinedSession, SWIG_Callback5_t callbackOnUserLeftSession, SWIG_Callback6_t callbackOnUserChanged, SWIG_Callback7_t callbackOnServerConnected, SWIG_Callback8_t callbackOnServerDisconnected) {
+void SwigDirector_SessionManagerListener::OnSyncDataChanged(XTools::SessionPtr const &session) {
+  void * jsession = 0 ;
+  
+  if (!swig_callbackOnSyncDataChanged) {
+    XTools::SessionManagerListener::OnSyncDataChanged(session);
+    return;
+  } else {
+    // ref_ptr by reference directorin
+    if (session) {
+      session->AddRef(); 
+    }
+    jsession = (&session)->get();
+    
+    swig_callbackOnSyncDataChanged(jsession);
+  }
+}
+
+void SwigDirector_SessionManagerListener::swig_connect_director(SWIG_Callback0_t callbackOnCreateSucceeded, SWIG_Callback1_t callbackOnCreateFailed, SWIG_Callback2_t callbackOnSessionAdded, SWIG_Callback3_t callbackOnSessionClosed, SWIG_Callback4_t callbackOnUserJoinedSession, SWIG_Callback5_t callbackOnUserLeftSession, SWIG_Callback6_t callbackOnUserChanged, SWIG_Callback7_t callbackOnServerConnected, SWIG_Callback8_t callbackOnServerDisconnected, SWIG_Callback9_t callbackOnSyncDataChanged) {
   swig_callbackOnCreateSucceeded = callbackOnCreateSucceeded;
   swig_callbackOnCreateFailed = callbackOnCreateFailed;
   swig_callbackOnSessionAdded = callbackOnSessionAdded;
@@ -1032,6 +1049,7 @@ void SwigDirector_SessionManagerListener::swig_connect_director(SWIG_Callback0_t
   swig_callbackOnUserChanged = callbackOnUserChanged;
   swig_callbackOnServerConnected = callbackOnServerConnected;
   swig_callbackOnServerDisconnected = callbackOnServerDisconnected;
+  swig_callbackOnSyncDataChanged = callbackOnSyncDataChanged;
 }
 
 void SwigDirector_SessionManagerListener::swig_init_callbacks() {
@@ -1044,6 +1062,7 @@ void SwigDirector_SessionManagerListener::swig_init_callbacks() {
   swig_callbackOnUserChanged = 0;
   swig_callbackOnServerConnected = 0;
   swig_callbackOnServerDisconnected = 0;
+  swig_callbackOnSyncDataChanged = 0;
 }
 
 SwigDirector_UserPresenceManagerListener::SwigDirector_UserPresenceManagerListener() : XTools::UserPresenceManagerListener(), Swig::Director() {
@@ -3992,6 +4011,30 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_ObjectElement_Cast(void * jarg1) {
 }
 
 
+SWIGEXPORT void * SWIGSTDCALL CSharp_ObjectElement_FindElement(void * jarg1, char * jarg2, unsigned long jarg3) {
+  void * jresult ;
+  XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
+  char *arg2 = (char *) 0 ;
+  size_t arg3 ;
+  XTools::ElementPtr result;
+  
+  arg1 = (XTools::ObjectElement *)jarg1; 
+  arg2 = (char *)jarg2; 
+  arg3 = (size_t)jarg3; 
+  result = (arg1)->FindElement((char const *)arg2,arg3);
+  
+  // ref_ptr by value out
+  if (result) {
+    result->AddRef();
+    *( Element **)&jresult = (&result)->get();
+  } else {
+    *( Element **)&jresult = 0; 
+  }
+  
+  return jresult;
+}
+
+
 SWIGEXPORT void * SWIGSTDCALL CSharp_ObjectElement_CreateBoolElement(void * jarg1, void * jarg2, unsigned int jarg3) {
   void * jresult ;
   XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
@@ -4796,6 +4839,27 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_Session_GetSessionNetworkConnection(void * 
 }
 
 
+SWIGEXPORT int SWIGSTDCALL CSharp_Session_GetSyncData(void * jarg1, char * jarg2, int jarg3) {
+  int jresult ;
+  XTools::Session *arg1 = (XTools::Session *) 0 ;
+  std::string *arg2 = 0 ;
+  XTools::int32 arg3 ;
+  XTools::int32 result;
+  
+  arg1 = (XTools::Session *)jarg1; 
+  if (!jarg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return 0;
+  }
+  std::string arg2_str(jarg2);
+  arg2 = &arg2_str; 
+  arg3 = (XTools::int32)jarg3; 
+  result = (XTools::int32)((XTools::Session const *)arg1)->GetSyncData((std::string const &)*arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
 SWIGEXPORT void SWIGSTDCALL CSharp_delete_Session(void * jarg1) {
   XTools::Session *arg1 = (XTools::Session *) 0 ;
   
@@ -5236,6 +5300,50 @@ SWIGEXPORT void SWIGSTDCALL CSharp_SessionManagerListener_OnServerDisconnectedSw
 }
 
 
+SWIGEXPORT void SWIGSTDCALL CSharp_SessionManagerListener_OnSyncDataChanged(void * jarg1, void * jarg2) {
+  XTools::SessionManagerListener *arg1 = (XTools::SessionManagerListener *) 0 ;
+  XTools::SessionPtr *arg2 = 0 ;
+  XTools::SessionPtr tempnull2 ;
+  XTools::SessionPtr temp2 ;
+  XTools::Session *smartarg2 ;
+  
+  arg1 = (XTools::SessionManagerListener *)jarg1; 
+  
+  // ref_ptr by reference in
+  if ( jarg2 ) {
+    smartarg2 = *( Session **)&jarg2; 
+    temp2 = XTools::ref_ptr<  Session >(smartarg2);
+    arg2 = &temp2;
+  } else {
+    arg2 = &tempnull2;
+  }
+  
+  (arg1)->OnSyncDataChanged((XTools::SessionPtr const &)*arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_SessionManagerListener_OnSyncDataChangedSwigExplicitSessionManagerListener(void * jarg1, void * jarg2) {
+  XTools::SessionManagerListener *arg1 = (XTools::SessionManagerListener *) 0 ;
+  XTools::SessionPtr *arg2 = 0 ;
+  XTools::SessionPtr tempnull2 ;
+  XTools::SessionPtr temp2 ;
+  XTools::Session *smartarg2 ;
+  
+  arg1 = (XTools::SessionManagerListener *)jarg1; 
+  
+  // ref_ptr by reference in
+  if ( jarg2 ) {
+    smartarg2 = *( Session **)&jarg2; 
+    temp2 = XTools::ref_ptr<  Session >(smartarg2);
+    arg2 = &temp2;
+  } else {
+    arg2 = &tempnull2;
+  }
+  
+  (arg1)->XTools::SessionManagerListener::OnSyncDataChanged((XTools::SessionPtr const &)*arg2);
+}
+
+
 SWIGEXPORT void * SWIGSTDCALL CSharp_new_SessionManagerListener() {
   void * jresult ;
   XTools::SessionManagerListener *result = 0 ;
@@ -5246,11 +5354,11 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_new_SessionManagerListener() {
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_SessionManagerListener_director_connect(void *objarg, SwigDirector_SessionManagerListener::SWIG_Callback0_t callback0, SwigDirector_SessionManagerListener::SWIG_Callback1_t callback1, SwigDirector_SessionManagerListener::SWIG_Callback2_t callback2, SwigDirector_SessionManagerListener::SWIG_Callback3_t callback3, SwigDirector_SessionManagerListener::SWIG_Callback4_t callback4, SwigDirector_SessionManagerListener::SWIG_Callback5_t callback5, SwigDirector_SessionManagerListener::SWIG_Callback6_t callback6, SwigDirector_SessionManagerListener::SWIG_Callback7_t callback7, SwigDirector_SessionManagerListener::SWIG_Callback8_t callback8) {
+SWIGEXPORT void SWIGSTDCALL CSharp_SessionManagerListener_director_connect(void *objarg, SwigDirector_SessionManagerListener::SWIG_Callback0_t callback0, SwigDirector_SessionManagerListener::SWIG_Callback1_t callback1, SwigDirector_SessionManagerListener::SWIG_Callback2_t callback2, SwigDirector_SessionManagerListener::SWIG_Callback3_t callback3, SwigDirector_SessionManagerListener::SWIG_Callback4_t callback4, SwigDirector_SessionManagerListener::SWIG_Callback5_t callback5, SwigDirector_SessionManagerListener::SWIG_Callback6_t callback6, SwigDirector_SessionManagerListener::SWIG_Callback7_t callback7, SwigDirector_SessionManagerListener::SWIG_Callback8_t callback8, SwigDirector_SessionManagerListener::SWIG_Callback9_t callback9) {
   XTools::SessionManagerListener *obj = (XTools::SessionManagerListener *)objarg;
   SwigDirector_SessionManagerListener *director = dynamic_cast<SwigDirector_SessionManagerListener *>(obj);
   if (director) {
-    director->swig_connect_director(callback0, callback1, callback2, callback3, callback4, callback5, callback6, callback7, callback8);
+    director->swig_connect_director(callback0, callback1, callback2, callback3, callback4, callback5, callback6, callback7, callback8, callback9);
   }
 }
 
@@ -5326,6 +5434,21 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SessionManager_CreateSession__SWIG_1(
   result = (bool)(arg1)->CreateSession((XTools::XStringPtr const &)*arg2,arg3);
   jresult = result; 
   return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_SessionManager_QuerySyncData(void * jarg1, char * jarg2) {
+  XTools::SessionManager *arg1 = (XTools::SessionManager *) 0 ;
+  std::string *arg2 = 0 ;
+  
+  arg1 = (XTools::SessionManager *)jarg1; 
+  if (!jarg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return ;
+  }
+  std::string arg2_str(jarg2);
+  arg2 = &arg2_str; 
+  ((XTools::SessionManager const *)arg1)->QuerySyncData((std::string const &)*arg2);
 }
 
 

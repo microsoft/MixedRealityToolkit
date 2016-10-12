@@ -15,6 +15,8 @@
 #include "Private/NewSessionReply.h"
 #include "Private/JoinSessionRequest.h"
 #include "Private/JoinSessionReply.h"
+#include "Private/QuerySessionSyncDataRequest.h"
+#include "Private/QuerySessionSyncDataReply.h"
 #include "Private/Utils/ScopedLock.h"
 #include "Private/SessionDescriptorImpl.h"
 #include "Private/Utils/FileLogWriter.h"
@@ -38,6 +40,7 @@ SessionServer::SessionServer(PWSTR pszServiceName)
 
 	m_messageRouter.RegisterHandler(new MessageHandlerProxyT<const NewSessionRequest&>(CreateCallback2(this, &SessionServer::OnNewSessionRequest)));
 	m_messageRouter.RegisterHandler(new MessageHandlerProxyT<const ListSessionsRequest&>(CreateCallback2(this, &SessionServer::OnListSessionsRequest)));
+	m_messageRouter.RegisterHandler(new MessageHandlerProxyT<const QuerySessionSyncDataRequest&>(CreateCallback2(this, &SessionServer::OnQuerySessionSyncDataRequest)));
 
 	m_profileMgr = new ProfileManagerImpl(m_socketMgr, SystemRole::SessionDiscoveryServerRole);
 
@@ -396,6 +399,26 @@ void SessionServer::OnListSessionsRequest(const ListSessionsRequest&, const Netw
 	connection->Send(msg);
 }
 
+
+void SessionServer::OnQuerySessionSyncDataRequest(const QuerySessionSyncDataRequest& request, const NetworkConnectionPtr& connection)
+{
+	QuerySessionSyncDataReply::SyncData syncData;
+	request.GetSyncDataUris(syncData.Uris);
+
+	for (size_t i = 0; i < m_sessions.size(); ++i)
+	{
+		XSessionImplPtr currentSession = m_sessions[i];
+		syncData.SessionNames.push_back(currentSession->GetName());
+		currentSession->QuerySyncData(&syncData.Uris[0], syncData.Uris.size(), syncData.Values);
+	}
+
+	QuerySessionSyncDataReply reply(syncData);
+
+	NetworkOutMessagePtr msg = connection->CreateMessage(MessageID::SessionControl);
+	msg->Write(reply.ToJSONString());
+
+	connection->Send(msg);
+}
 
 void SessionServer::SendSessionMessageToAllClients(const std::string& message)
 {

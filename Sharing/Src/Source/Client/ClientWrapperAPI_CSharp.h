@@ -163,6 +163,7 @@ public:
     virtual void OnUserChanged(XTools::SessionPtr const &session, XTools::UserPtr const &user);
     virtual void OnServerConnected();
     virtual void OnServerDisconnected();
+    virtual void OnSyncDataChanged(XTools::SessionPtr const &session);
 
     typedef void (SWIGSTDCALL* SWIG_Callback0_t)(void *);
     typedef void (SWIGSTDCALL* SWIG_Callback1_t)(void *);
@@ -173,7 +174,8 @@ public:
     typedef void (SWIGSTDCALL* SWIG_Callback6_t)(void *, void *);
     typedef void (SWIGSTDCALL* SWIG_Callback7_t)();
     typedef void (SWIGSTDCALL* SWIG_Callback8_t)();
-    void swig_connect_director(SWIG_Callback0_t callbackOnCreateSucceeded, SWIG_Callback1_t callbackOnCreateFailed, SWIG_Callback2_t callbackOnSessionAdded, SWIG_Callback3_t callbackOnSessionClosed, SWIG_Callback4_t callbackOnUserJoinedSession, SWIG_Callback5_t callbackOnUserLeftSession, SWIG_Callback6_t callbackOnUserChanged, SWIG_Callback7_t callbackOnServerConnected, SWIG_Callback8_t callbackOnServerDisconnected);
+    typedef void (SWIGSTDCALL* SWIG_Callback9_t)(void *);
+    void swig_connect_director(SWIG_Callback0_t callbackOnCreateSucceeded, SWIG_Callback1_t callbackOnCreateFailed, SWIG_Callback2_t callbackOnSessionAdded, SWIG_Callback3_t callbackOnSessionClosed, SWIG_Callback4_t callbackOnUserJoinedSession, SWIG_Callback5_t callbackOnUserLeftSession, SWIG_Callback6_t callbackOnUserChanged, SWIG_Callback7_t callbackOnServerConnected, SWIG_Callback8_t callbackOnServerDisconnected, SWIG_Callback9_t callbackOnSyncDataChanged);
 
 private:
     SWIG_Callback0_t swig_callbackOnCreateSucceeded;
@@ -185,6 +187,7 @@ private:
     SWIG_Callback6_t swig_callbackOnUserChanged;
     SWIG_Callback7_t swig_callbackOnServerConnected;
     SWIG_Callback8_t swig_callbackOnServerDisconnected;
+    SWIG_Callback9_t swig_callbackOnSyncDataChanged;
     void swig_init_callbacks();
 };
 

@@ -41,6 +41,9 @@ public:
 
 	SessionDescriptorImplPtr GetSessionDescription(const XSocketPtr& targetRemoteSystem) const;
 
+	void QuerySyncData(const std::string syncUris[], size_t syncUriCount, std::vector<XValue>& out) const;
+
+
 	// Returns false if the session was unable to initialize itself correctly
 	bool IsInitialized() const;
 

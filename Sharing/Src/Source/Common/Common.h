@@ -79,6 +79,8 @@
 #include <Private/ListSessionsReply.h>
 #include <Private/SessionAddedMsg.h>
 #include <Private/SessionClosedMsg.h>
+#include <Private/QuerySessionSyncDataRequest.h>
+#include <Private/QuerySessionSyncDataReply.h>
 
 #include <Private/Syncable.h>
 #include <Private/SyncObject.h>

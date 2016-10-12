@@ -20,5 +20,6 @@
 
 #include <string>
 #include <stddef.h>
+#include <unordered_map>
 #include "Common.h"
 #include "CommonPrivate.h"
