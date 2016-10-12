@@ -32,6 +32,40 @@ ObjectElementPtr ObjectElement::Cast(const ElementPtr& element)
 	}
 }
 
+ElementPtr ObjectElement::FindElement(const char* uri, size_t uriLength)
+{
+	if (uri == nullptr) { return nullptr; }
+
+	// Skip starting seperators
+	while (uri[0] == '/' && uriLength > 0)
+	{
+		uri += 1;
+		uriLength -= 1;
+	}
+
+	if (uriLength == 0) { return nullptr; }
+
+	// Get the name for the element at our level in the tree
+	const char* endName = strchr(uri, '/');
+	if (endName == nullptr) { endName = uri + uriLength; }
+
+	const XStringPtr name = new XString(std::string(uri, endName));
+	const ElementPtr element = GetElement(name);
+
+	uri += name->GetLength();
+	uriLength -= name->GetLength();
+
+	if (uriLength > 0 && element != nullptr)
+	{
+		const ObjectElementPtr objectElement = ObjectElement::Cast(element);
+		if (objectElement == nullptr) { return nullptr; }
+
+		return objectElement->FindElement(uri, uriLength);
+	}
+
+	return element;
+}
+
 NAMESPACE_BEGIN(Sync)
 
 XTOOLS_REFLECTION_DEFINE(ObjectElementImpl)
