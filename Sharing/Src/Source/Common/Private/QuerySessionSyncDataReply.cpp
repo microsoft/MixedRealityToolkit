@@ -44,7 +44,7 @@ const XValue& QuerySessionSyncDataReply::SyncData::GetValue(size_t uriIndex, siz
 		return kInvalidXValue;
 	}
 
-	size_t index = uriIndex * sessionIndex;
+	size_t index = (sessionIndex * Uris.size()) + uriIndex;
 
 	if (!XTVERIFY(index < Values.size()))
 	{
