@@ -61,9 +61,16 @@ void XValue::Deserialize(NetworkInMessage& msg)
 web::json::value XValue::AsJSON() const
 {
 	web::json::value result = web::json::value::object();
+	Type type = Unknown;
 
-	result[kType] = m_wrappedValue->GetType();
-	switch (m_wrappedValue->GetType())
+	if (m_wrappedValue != nullptr)
+	{
+		type = m_wrappedValue->GetType();
+	}
+
+	result[kType] = (int)type;
+
+	switch (type)
 	{
 	case XTools::XValue::Bool: result[kValue] = web::json::value::boolean(*Get<bool>()); break;
 	case XTools::XValue::Int: result[kValue] = web::json::value::number(*Get<int32>()); break;
@@ -76,7 +83,6 @@ web::json::value XValue::AsJSON() const
 	}
 
 	return result;
-
 }
 
 XValue XValue::FromJSON(const web::json::object& object)
