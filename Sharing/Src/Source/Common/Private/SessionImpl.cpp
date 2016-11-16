@@ -375,6 +375,8 @@ void SessionImpl::TeardownConnection()
 
 	SetState(MachineSessionState::DISCONNECTED);
 
+	ref_ptr<SessionImpl> thisPtr(this);
+
 	m_handshake = nullptr;
 	m_tunnelBridge = nullptr;
 	m_sessionConnection->RemoveListener(MessageID::SessionControl, this);

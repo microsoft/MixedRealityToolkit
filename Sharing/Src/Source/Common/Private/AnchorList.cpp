@@ -10,6 +10,7 @@
 XTOOLS_NAMESPACE_BEGIN
 
 AnchorList::AnchorList()
+	: SyncObject("AnchorList")
 {
 }
 

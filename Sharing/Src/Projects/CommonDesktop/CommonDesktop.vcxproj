@@ -46,12 +46,11 @@
     <ClCompile Include="..\..\Source\Common\Private\DiscoveredSystem.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\DiscoveryClientImpl.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\DoubleElementImpl.cpp" />
-    <ClCompile Include="..\..\Source\Common\Private\DownloadBufferImpl.cpp" />
-    <ClCompile Include="..\..\Source\Common\Private\DownloadManagerImpl.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\CreateOperation.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\DeleteOperation.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\ElementFactory.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\Environment.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\FloatArrayElementImpl.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\FloatElementImpl.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\InsertOperation.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\IntArrayAdapter.cpp" />
@@ -79,10 +78,13 @@
     <ClCompile Include="..\..\Source\Common\Private\ProfileManagerImpl.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\Reflection.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\RemoveOperation.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\ReplaceOperation.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\ReplaceTransforms.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\ResampleProcessor.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\RoomImpl.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\RoomManagerImpl.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\SpeexProcessor.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\StringArrayElementImpl.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\Syncable.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\SyncObject.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\UpdateOperation.cpp" />
@@ -172,11 +174,10 @@
     <ClInclude Include="..\..\Source\Common\Private\DeleteModifyTransform.h" />
     <ClInclude Include="..\..\Source\Common\Private\DiscoveryClientImpl.h" />
     <ClInclude Include="..\..\Source\Common\Private\DoubleElementImpl.h" />
-    <ClInclude Include="..\..\Source\Common\Private\DownloadBufferImpl.h" />
-    <ClInclude Include="..\..\Source\Common\Private\DownloadManagerImpl.h" />
     <ClInclude Include="..\..\Source\Common\Private\CreateOperation.h" />
     <ClInclude Include="..\..\Source\Common\Private\DeleteOperation.h" />
     <ClInclude Include="..\..\Source\Common\Private\ElementFactory.h" />
+    <ClInclude Include="..\..\Source\Common\Private\FloatArrayElementImpl.h" />
     <ClInclude Include="..\..\Source\Common\Private\FloatElementImpl.h" />
     <ClInclude Include="..\..\Source\Common\Private\InsertOperation.h" />
     <ClInclude Include="..\..\Source\Common\Private\IntArrayAdapter.h" />
@@ -205,11 +206,14 @@
     <ClInclude Include="..\..\Source\Common\Private\ProfileEntry.h" />
     <ClInclude Include="..\..\Source\Common\Private\ProfileManagerImpl.h" />
     <ClInclude Include="..\..\Source\Common\Private\RemoveOperation.h" />
+    <ClInclude Include="..\..\Source\Common\Private\ReplaceOperation.h" />
+    <ClInclude Include="..\..\Source\Common\Private\ReplaceTransforms.h" />
     <ClInclude Include="..\..\Source\Common\Private\ResampleProcessor.h" />
     <ClInclude Include="..\..\Source\Common\Private\RoomImpl.h" />
     <ClInclude Include="..\..\Source\Common\Private\RoomManagerImpl.h" />
     <ClInclude Include="..\..\Source\Common\Private\RoomMessageID.h" />
     <ClInclude Include="..\..\Source\Common\Private\SpeexProcessor.h" />
+    <ClInclude Include="..\..\Source\Common\Private\StringArrayElementImpl.h" />
     <ClInclude Include="..\..\Source\Common\Private\Syncable.h" />
     <ClInclude Include="..\..\Source\Common\Private\SyncArray.h" />
     <ClInclude Include="..\..\Source\Common\Private\SyncEnum.h" />
@@ -267,12 +271,10 @@
     <ClInclude Include="..\..\Source\Common\Public\DiscoveryClient.h" />
     <ClInclude Include="..\..\Source\Common\Public\DiscoveryClientListener.h" />
     <ClInclude Include="..\..\Source\Common\Public\DoubleElement.h" />
-    <ClInclude Include="..\..\Source\Common\Public\DownloadBuffer.h" />
-    <ClInclude Include="..\..\Source\Common\Public\DownloadCallback.h" />
-    <ClInclude Include="..\..\Source\Common\Public\DownloadCommon.h" />
-    <ClInclude Include="..\..\Source\Common\Public\DownloadManager.h" />
     <ClInclude Include="..\..\Source\Common\Public\Element.h" />
     <ClInclude Include="..\..\Source\Common\Public\Environment.h" />
+    <ClInclude Include="..\..\Source\Common\Public\FloatArrayElement.h" />
+    <ClInclude Include="..\..\Source\Common\Public\FloatArrayListener.h" />
     <ClInclude Include="..\..\Source\Common\Public\FloatElement.h" />
     <ClInclude Include="..\..\Source\Common\Public\HandshakeLogic.h" />
     <ClInclude Include="..\..\Source\Common\Public\IncomingXSocketListener.h" />
@@ -293,6 +295,8 @@
     <ClInclude Include="..\..\Source\Common\Public\ScopedProfile.h" />
     <ClInclude Include="..\..\Source\Common\Public\SideCarFunctions.h" />
     <ClInclude Include="..\..\Source\Common\Public\SideCarMacros.h" />
+    <ClInclude Include="..\..\Source\Common\Public\StringArrayElement.h" />
+    <ClInclude Include="..\..\Source\Common\Public\StringArrayListener.h" />
     <ClInclude Include="..\..\Source\Common\Public\SyncListener.h" />
     <ClInclude Include="..\..\Source\Common\Public\SystemRole.h" />
     <ClInclude Include="..\..\Source\Common\Public\UserPresenceManager.h" />
@@ -372,7 +376,7 @@
     <SccAuxPath>SAK</SccAuxPath>
     <SccLocalPath>SAK</SccLocalPath>
     <SccProvider>SAK</SccProvider>
-    <WindowsTargetPlatformVersion>10.0.10240.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.10586.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -449,7 +453,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <AdditionalUsingDirectories>
       </AdditionalUsingDirectories>
-      <AdditionalIncludeDirectories>..\..\Source\Common;..\..\External\RakNet-4.081\include\Source;..\..\External\curl-7.39.0\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\Source\Common;..\..\External\RakNet-4.081\include\Source</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
@@ -464,8 +468,8 @@
       <LinkLibraryDependencies>true</LinkLibraryDependencies>
     </ProjectReference>
     <Lib>
-      <AdditionalDependencies>RakNet_WinDesktop_$(PlatformTarget)_$(Configuration).lib;libcurl_a_debug.lib;libspeex_libstatic_$(Configuration)_$(Platform).lib;libspeexdsp_libstatic_$(Configuration)_$(Platform).lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\External\RakNet-4.081\lib;..\..\External\curl-7.39.0\lib\$(Configuration)\$(PlatformName);..\..\External\speex-1.2rc1\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>RakNet_WinDesktop_$(PlatformTarget)_$(Configuration).lib;libspeex_libstatic_$(Configuration)_$(Platform).lib;libspeexdsp_libstatic_$(Configuration)_$(Platform).lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\External\RakNet-4.081\lib;..\..\External\speex-1.2rc1\lib</AdditionalLibraryDirectories>
       <AdditionalOptions>/ignore:4006 /ignore:4221 %(AdditionalOptions)</AdditionalOptions>
     </Lib>
     <Bscmake>
@@ -480,7 +484,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <AdditionalUsingDirectories>
       </AdditionalUsingDirectories>
-      <AdditionalIncludeDirectories>..\..\Source\Common;..\..\External\RakNet-4.081\include\Source;..\..\External\curl-7.39.0\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\Source\Common;..\..\External\RakNet-4.081\include\Source</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
@@ -493,8 +497,8 @@
       <LinkLibraryDependencies>true</LinkLibraryDependencies>
     </ProjectReference>
     <Lib>
-      <AdditionalLibraryDirectories>..\..\External\RakNet-4.081\lib;..\..\External\curl-7.39.0\lib\$(Configuration)\$(PlatformName);..\..\External\speex-1.2rc1\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>RakNet_WinDesktop_$(PlatformTarget)_$(Configuration).lib;libcurl_a_debug.lib;libspeex_libstatic_$(Configuration)_$(Platform).lib;libspeexdsp_libstatic_$(Configuration)_$(Platform).lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\External\RakNet-4.081\lib;..\..\External\speex-1.2rc1\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>RakNet_WinDesktop_$(PlatformTarget)_$(Configuration).lib;libspeex_libstatic_$(Configuration)_$(Platform).lib;libspeexdsp_libstatic_$(Configuration)_$(Platform).lib</AdditionalDependencies>
       <AdditionalOptions>/ignore:4006 /ignore:4221 %(AdditionalOptions)</AdditionalOptions>
     </Lib>
   </ItemDefinitionGroup>
@@ -509,7 +513,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <AdditionalUsingDirectories>
       </AdditionalUsingDirectories>
-      <AdditionalIncludeDirectories>..\..\Source\Common;..\..\External\RakNet-4.081\include\Source;..\..\External\curl-7.39.0\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\Source\Common;..\..\External\RakNet-4.081\include\Source</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
     </ClCompile>
@@ -522,8 +526,8 @@
       <LinkLibraryDependencies>true</LinkLibraryDependencies>
     </ProjectReference>
     <Lib>
-      <AdditionalLibraryDirectories>..\..\External\RakNet-4.081\lib;..\..\External\curl-7.39.0\lib\$(Configuration)\$(PlatformName);..\..\External\speex-1.2rc1\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>RakNet_WinDesktop_$(PlatformTarget)_$(Configuration).lib;ws2_32.lib;libcurl_a.lib;libspeex_libstatic_$(Configuration)_$(Platform).lib;libspeexdsp_libstatic_$(Configuration)_$(Platform).lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\External\RakNet-4.081\lib;..\..\External\speex-1.2rc1\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>RakNet_WinDesktop_$(PlatformTarget)_$(Configuration).lib;ws2_32.lib;libspeex_libstatic_$(Configuration)_$(Platform).lib;libspeexdsp_libstatic_$(Configuration)_$(Platform).lib</AdditionalDependencies>
       <AdditionalOptions>/ignore:4006 /ignore:4221 %(AdditionalOptions)</AdditionalOptions>
     </Lib>
   </ItemDefinitionGroup>
@@ -538,7 +542,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <AdditionalUsingDirectories>
       </AdditionalUsingDirectories>
-      <AdditionalIncludeDirectories>..\..\Source\Common;..\..\External\RakNet-4.081\include\Source;..\..\External\curl-7.39.0\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\Source\Common;..\..\External\RakNet-4.081\include\Source</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
     </ClCompile>
@@ -551,8 +555,8 @@
       <LinkLibraryDependencies>true</LinkLibraryDependencies>
     </ProjectReference>
     <Lib>
-      <AdditionalLibraryDirectories>..\..\External\RakNet-4.081\lib;..\..\External\curl-7.39.0\lib\$(Configuration)\$(PlatformName);..\..\External\speex-1.2rc1\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>RakNet_WinDesktop_$(PlatformTarget)_$(Configuration).lib;libcurl_a.lib;libspeex_libstatic_$(Configuration)_$(Platform).lib;libspeexdsp_libstatic_$(Configuration)_$(Platform).lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\External\RakNet-4.081\lib;..\..\External\speex-1.2rc1\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>RakNet_WinDesktop_$(PlatformTarget)_$(Configuration).lib;libspeex_libstatic_$(Configuration)_$(Platform).lib;libspeexdsp_libstatic_$(Configuration)_$(Platform).lib</AdditionalDependencies>
       <AdditionalOptions>/ignore:4006 /ignore:4221 %(AdditionalOptions)</AdditionalOptions>
     </Lib>
   </ItemDefinitionGroup>

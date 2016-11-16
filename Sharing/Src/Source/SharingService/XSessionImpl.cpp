@@ -76,13 +76,24 @@ XSessionImpl::XSessionImpl(const std::string& name, uint16 port, SessionType typ
 
 XSessionImpl::~XSessionImpl()
 {
+	// Stop listening for new connections
+	m_listenerReceipt = nullptr;
+
 	// trigger the thread exit and wait for it...
 	m_stopping = 1;
 	if (m_serverThread)
 	{
 		m_serverThread->WaitForThreadExit();
 	}
-	
+
+	for (size_t i = 0; i < m_clients.size(); ++i)
+	{
+		RemoteClientPtr remoteClient = m_clients[i];
+
+		m_audioSessionProcessor->RemoveConnection(remoteClient->m_primaryConnection);
+		m_audioSessionProcessor->RemoveConnection(remoteClient->m_secondaryConnection);
+	}
+
 	LogInfo("Session %s closed", m_name.c_str());
 }
 
@@ -178,6 +189,8 @@ void XSessionImpl::OnDisconnected(const NetworkConnectionPtr& connection)
 			m_broadcaster->RemoveConnection(remoteClient->m_primaryConnection);
 			m_broadcaster->RemoveConnection(remoteClient->m_secondaryConnection);
 			m_sendToForwarder->RemoveConnection(remoteClient->m_userID);
+
+			m_audioSessionProcessor->RemoveConnection(remoteClient->m_primaryConnection);
 			m_audioSessionProcessor->RemoveConnection(remoteClient->m_secondaryConnection);
 
 			m_roomMgr->RemoveConnection(remoteClient->m_primaryConnection);
@@ -310,8 +323,7 @@ void XSessionImpl::ServerThreadFunc()
 
 		CheckIfEmpty(false);
 
-		// Don't hog the whole CPU
-		Platform::SleepMS(10);
+		m_socketMgr->GetMessageArrivedEvent().WaitTimeout(10);
 	}
 }
 
@@ -402,6 +414,7 @@ void XSessionImpl::OnJoinSessionRequest(const JoinSessionRequest& request, const
 			m_sendToForwarder->AddConnection(remoteClient->m_userID, remoteClient->m_primaryConnection, remoteClient->m_secondaryConnection);
 
 			// Add the remoteClient to the audio packet processor
+			m_audioSessionProcessor->AddConnection(remoteClient->m_primaryConnection);
 			m_audioSessionProcessor->AddConnection(remoteClient->m_secondaryConnection);
 
 			// Add the connections to the room manager
@@ -474,7 +487,10 @@ void XSessionImpl::CheckIfEmpty(bool resetImmediately)
 			UserPtr serverUser = m_syncMgr->GetLocalUser();
 			m_syncMgr = Sync::SyncManager::Create(MessageID::SyncMessage, Sync::AuthorityLevel::High, serverUser);
 
-			m_callback->OnSessionEmpty(this);
+			if (m_callback)
+			{
+				m_callback->OnSessionEmpty(this);
+			}
 
 			// If we're an adhoc session, and we're empty, then start closing our connections
 			if (m_TypeOfSession == SessionType::ADHOC)

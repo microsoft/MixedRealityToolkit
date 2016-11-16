@@ -19,7 +19,7 @@ inline ByteColor::ByteColor( const U32 _rgbaColor )	 { Set(_rgbaColor); }
 
 inline void ByteColor::Set(const Color &_c)
 {
-	//TODO: ne plus clamper la valeur en [0,1], Color doit TOUJOURS y �tre
+	//TODO Raf: ne plus clamper la valeur en [0,1], Color doit TOUJOURS y �tre
 	Set( _c.xyzw() );
 }
 

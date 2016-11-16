@@ -20,7 +20,11 @@ enum ElementType : byte
 	DoubleType,
 	StringType,
 	ObjectType,
-	Int32ArrayType
+	Int32ArrayType,
+	FloatArrayType,
+	StringArrayType,
+
+	ElementTypeCount
 };
 
 DECLARE_PTR_PRE(Element)

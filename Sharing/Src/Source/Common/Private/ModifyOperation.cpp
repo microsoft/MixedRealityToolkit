@@ -35,6 +35,14 @@ ModifyOperation::ModifyOperation(XGuid guid, XValue newValue, AuthorityLevel aut
 
 }
 
+ModifyOperation::ModifyOperation(XGuid guid, XValue newValue, AuthorityLevel authLevel, const std::vector<XGuid>& hierarchy)
+	: Operation(Operation::Modify, authLevel, hierarchy)
+	, m_elementGuid(guid)
+	, m_newValue(newValue)
+{
+
+}
+
 
 ModifyOperation::ModifyOperation(const ModifyOperation& rhs)
 	: Operation(Operation::Modify, rhs.GetAuthorityLevel(), rhs.m_hierarchy)

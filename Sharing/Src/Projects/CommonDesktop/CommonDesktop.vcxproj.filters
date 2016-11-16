@@ -129,9 +129,6 @@
     <ClCompile Include="..\..\Source\Common\Private\NetworkMessagePool.cpp">
       <Filter>Source\Private\Networking</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Common\Private\DownloadManagerImpl.cpp">
-      <Filter>Source\Private\Networking</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Source\Common\Private\UserImpl.cpp">
       <Filter>Source\Private</Filter>
     </ClCompile>
@@ -372,9 +369,6 @@
     <ClCompile Include="..\..\Source\Common\Private\AudioConnection.cpp">
       <Filter>Source\Private\Audio</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Common\Private\DownloadBufferImpl.cpp">
-      <Filter>Source\Private\Networking</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Source\Common\Private\SpeexProcessor.cpp">
       <Filter>Source\Private\Audio</Filter>
     </ClCompile>
@@ -459,6 +453,18 @@
     <ClCompile Include="..\..\Source\Common\Private\BoolElementImpl.cpp">
       <Filter>Source\Private\Sync\Elements</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\FloatArrayElementImpl.cpp">
+      <Filter>Source\Private\Sync\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\StringArrayElementImpl.cpp">
+      <Filter>Source\Private\Sync\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\ReplaceOperation.cpp">
+      <Filter>Source\Private\Sync\Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\ReplaceTransforms.cpp">
+      <Filter>Source\Private\Sync\Transforms</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\Common\Private\Utils\ScopedLock.h">
@@ -534,15 +540,6 @@
       <Filter>Source\Public\SideCar</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Common\Private\NetworkMessagePool.h">
-      <Filter>Source\Private\Networking</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Common\Public\DownloadManager.h">
-      <Filter>Source\Public\Networking</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Common\Public\DownloadCallback.h">
-      <Filter>Source\Public\Networking</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Common\Private\DownloadManagerImpl.h">
       <Filter>Source\Private\Networking</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Common\Private\SyncManagerImpl.h">
@@ -926,17 +923,8 @@
     <ClInclude Include="..\..\Source\Common\Private\AudioSessionProcessorClient.h">
       <Filter>Source\Private\Audio</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Common\Public\DownloadBuffer.h">
-      <Filter>Source\Public\Networking</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Common\Public\DownloadCommon.h">
-      <Filter>Source\Public\Networking</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Source\Common\Private\Utils\TypedLFQueue.h">
       <Filter>Source\Private\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Common\Private\DownloadBufferImpl.h">
-      <Filter>Source\Private\Networking</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Common\Private\SpeexProcessor.h">
       <Filter>Source\Private\Audio</Filter>
@@ -1088,9 +1076,6 @@
     <ClInclude Include="..\..\Source\Common\Private\RemoveOperation.h">
       <Filter>Source\Private\Sync\Operations</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Common\Private\ArrayElement.h">
-      <Filter>Source\Private\Sync\Operations</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Source\Common\Private\ArrayTransforms.h">
       <Filter>Source\Private\Sync\Transforms</Filter>
     </ClInclude>
@@ -1120,6 +1105,33 @@
     </ClInclude>
     <ClInclude Include="..\..\Source\Common\Private\BoolElementImpl.h">
       <Filter>Source\Private\Sync\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\FloatArrayElement.h">
+      <Filter>Source\Public\Sync\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\FloatArrayListener.h">
+      <Filter>Source\Public\Sync\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\StringArrayElement.h">
+      <Filter>Source\Public\Sync\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\StringArrayListener.h">
+      <Filter>Source\Public\Sync\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\FloatArrayElementImpl.h">
+      <Filter>Source\Private\Sync\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\StringArrayElementImpl.h">
+      <Filter>Source\Private\Sync\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\ArrayElement.h">
+      <Filter>Source\Private\Sync\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\ReplaceOperation.h">
+      <Filter>Source\Private\Sync\Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\ReplaceTransforms.h">
+      <Filter>Source\Private\Sync\Transforms</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

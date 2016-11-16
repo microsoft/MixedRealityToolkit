@@ -9,6 +9,7 @@
 #pragma once
 
 #include "SyncTestObject.h"
+#include "TestLogWriter.h"
 
 namespace CommonDesktopTests
 {
@@ -21,20 +22,6 @@ namespace CommonDesktopTests
 		std::vector<XTools::XSocketPtr> m_connections;
 	};
 	DECLARE_PTR(SyncTestbedConnectionListener)
-
-
-	class TestLogWriter : public XTools::LogWriter
-	{
-	public:
-		static void Init();
-		static void Release();
-		virtual void WriteLogEntry(XTools::LogSeverity, const std::string& message) XTOVERRIDE;
-
-	private:
-		TestLogWriter();
-		LoggerPtr	m_logManager;
-		static TestLogWriter* m_sInstance;
-	};
 
 
 	//////////////////////////////////////////////////////////////////////////
@@ -50,6 +37,8 @@ namespace CommonDesktopTests
 		void ValidateSyncState();
 
 		void ValidatePair(const Sync::SyncManagerPtr& syncMgr1, const SyncTestObjectPtr& syncObj1, const Sync::SyncManagerPtr& syncMgr2, const SyncTestObjectPtr& syncObj2) const;
+
+		void CompareElementRecurs(const ElementPtr& element1, const ElementPtr& element2) const;
 
 		void WriteLogEntry(const std::string& message) const;
 

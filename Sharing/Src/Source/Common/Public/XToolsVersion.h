@@ -30,6 +30,8 @@ XTOOLS_NAMESPACE_BEGIN
 //static const uint32 kXToolsSchemaVersion = 12;	// Changed pairing logic
 //static const uint32 kXToolsSchemaVersion = 13;	// Added support for SendTo
 //static const uint32 kXToolsSchemaVersion = 14;	// Added Room/Anchor support
-static const uint32 kXToolsSchemaVersion = 15;		// Added Boolean sync element type
+//static const uint32 kXToolsSchemaVersion = 15;	// Added Boolean sync element type
+//static const uint32 kXToolsSchemaVersion = 16;	// Added Float Array and String Array sync types
+static const uint32 kXToolsSchemaVersion = 17;		// Added support for Types in sync system ObjectElements
 
 XTOOLS_NAMESPACE_END

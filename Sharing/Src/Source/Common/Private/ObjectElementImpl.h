@@ -20,7 +20,7 @@ public:
 	DECLARE_PTR(ListenerList);
 
 
-	ObjectElementImpl(SyncContext* syncContext, const XStringPtr& name, XGuid id, const XValue& startingValue);
+	ObjectElementImpl(SyncContext* syncContext, const XStringPtr& name, XGuid id, UserID ownerID, const XValue& typeValue);
 
 	// ObjectElement Functions:
 
@@ -50,11 +50,19 @@ public:
 
 	/// Create an ObjectElement as a child of this object.   
 	/// Creating this element will cause the same element to automatically be created on all the remote systems
-	virtual ObjectElementPtr CreateObjectElement(const XStringPtr& name, const User* owner) XTOVERRIDE;
+	virtual ObjectElementPtr CreateObjectElement(const XStringPtr& name, const XStringPtr& objectType, const User* owner) XTOVERRIDE;
 
 	/// Create an IntArrayElement as a child of this object.    
 	/// Creating this element will cause the same element to automatically be created on all the remote systems
 	virtual IntArrayElementPtr CreateIntArrayElement(const XStringPtr& name) XTOVERRIDE;
+
+	/// Create a FloatArrayElement as a child of this object.    
+	/// Creating this element will cause the same element to automatically be created on all the remote systems
+	virtual FloatArrayElementPtr CreateFloatArrayElement(const XStringPtr& name) XTOVERRIDE;
+
+	/// Create a StringArrayElement as a child of this object.    
+	/// Creating this element will cause the same element to automatically be created on all the remote systems
+	virtual StringArrayElementPtr CreateStringArrayElement(const XStringPtr& name) XTOVERRIDE;
 
 	/// Returns the number of elements that are immediate children of this element
 	virtual int32 GetElementCount() const XTOVERRIDE;
@@ -95,6 +103,10 @@ public:
 	/// set of synced data when their owner disconnects
 	virtual UserID GetOwnerID() const XTOVERRIDE;
 
+	/// Returns the type of this Object element, ie: the type of the class that this Object Element represents
+	/// in the synced data set.  
+	virtual const XStringPtr& GetObjectType() const XTOVERRIDE;
+
 	/// Returns an ID defining what type of element this is 
 	virtual ElementType GetElementType() const XTOVERRIDE;
 
@@ -132,7 +144,7 @@ public:
 
 private:
 
-	ElementPtr CreateElement(ElementType type, const XStringPtr& name, const XValue& value);
+	ElementPtr CreateElement(ElementType type, const XStringPtr& name, UserID ownerID, const XValue& value);
 
 	SyncContext*						m_syncContext;
 	Element*							m_parent;
@@ -141,6 +153,7 @@ private:
 	XGuid								m_guid;
 	ListenerListPtr						m_listenerList;
 	UserID								m_ownerID;
+	XStringPtr							m_objectType;
 };
 
 DECLARE_PTR(ObjectElementImpl)

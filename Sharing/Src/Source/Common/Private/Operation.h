@@ -24,6 +24,7 @@ public:
 		Create,
 		Modify,
 		Delete,
+		Replace,
 
 		// Arrays only:
 		Insert,

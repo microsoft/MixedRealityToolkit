@@ -45,7 +45,7 @@ void AudioPacket::Initialize(uint64 timeReceivedAsMicroscondsSinceEpoch, uint16 
 		m_streamInfo[stream].isSilent = false;
 		m_streamInfo[stream].isAverageAmplitudeCalculated = false;
 		m_streamInfo[stream].averageAmplitude = 0.0f;
-		m_streamInfo[stream].audioSamples = m_audioSampleBuffer + stream * samplesPerStream;
+		m_streamInfo[stream].audioSamples = m_audioSampleBuffer.get() + stream * samplesPerStream;
 	}
 
 }

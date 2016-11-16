@@ -19,9 +19,6 @@
     <Filter Include="Private\Pairing\PairMakers\Visual">
       <UniqueIdentifier>{62bde77d-0f1b-4e33-a339-93e8183e4c58}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Private\ImageTagProcessing">
-      <UniqueIdentifier>{f97aacc4-cf7c-4cc1-82e2-9892d16e1908}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Public">
       <UniqueIdentifier>{08bea9a4-0a55-4066-883f-39f030d76f85}</UniqueIdentifier>
     </Filter>
@@ -36,9 +33,6 @@
     </Filter>
     <Filter Include="Public\Pairing\PairMakers\Visual">
       <UniqueIdentifier>{19e4ba9a-ec68-444d-a316-825d661c9679}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Public\ImageTagProcessing">
-      <UniqueIdentifier>{df89639f-f9c7-4e43-8a14-5b9da9aac7c4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -81,15 +75,6 @@
     <ClCompile Include="..\..\Source\Client\VisualPairReceiverImpl.cpp">
       <Filter>Private\Pairing\PairMakers\Visual</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Client\ImageTagLocationImpl.cpp">
-      <Filter>Private\ImageTagProcessing</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Client\ImageTagLocator.cpp">
-      <Filter>Private\ImageTagProcessing</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Client\ImageTagManagerImpl.cpp">
-      <Filter>Private\ImageTagProcessing</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Source\Client\SharingManagerImpl.cpp">
       <Filter>Private</Filter>
     </ClCompile>
@@ -128,15 +113,6 @@
     <ClInclude Include="..\..\Source\Client\ZXingIncludes.h">
       <Filter>Private\Pairing\PairMakers\Visual</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Client\ImageTagLocationImpl.h">
-      <Filter>Private\ImageTagProcessing</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Client\ImageTagLocator.h">
-      <Filter>Private\ImageTagProcessing</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Client\ImageTagManagerImpl.h">
-      <Filter>Private\ImageTagProcessing</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Source\Client\ClientWrapperAPI.h">
       <Filter>Public</Filter>
     </ClInclude>
@@ -169,15 +145,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Source\Client\VisualPairReceiver.h">
       <Filter>Public\Pairing\PairMakers\Visual</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Client\ImageTagLocation.h">
-      <Filter>Public\ImageTagProcessing</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Client\ImageTagLocationListener.h">
-      <Filter>Public\ImageTagProcessing</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Client\ImageTagManager.h">
-      <Filter>Public\ImageTagProcessing</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Client\SharingManagerImpl.h">
       <Filter>Private</Filter>

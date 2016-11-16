@@ -93,7 +93,6 @@ private:
 	std::string						m_name;
 	uint32							m_id;
 	SessionType						m_TypeOfSession;
-	ReceiptPtr						m_networkCallbackReceipt;
 	ReceiptPtr						m_listenerReceipt;
 	XSocketManagerPtr				m_socketMgr;
 	Mutex							m_mutex;

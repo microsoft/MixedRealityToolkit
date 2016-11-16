@@ -108,8 +108,6 @@ SharingManagerImpl::SharingManagerImpl(const ClientConfigPtr& config)
 
 	m_updateableSubsystems.push_back(m_clientContext->GetInternalSyncManager().get());
 
-	m_updateableSubsystems.push_back(reflection_cast<IUpdateable>(m_sidecarContext));
-
 	m_updateableSubsystems.push_back(m_clientContext->GetSyncManager().get());
 
 	m_updateableSubsystems.push_back(reflection_cast<IUpdateable>(m_paringManager));
@@ -210,7 +208,10 @@ void SharingManagerImpl::Update()
 		for (size_t i = 0; i < m_updateableSubsystems.size(); ++i)
 		{
 			IUpdateable* currentSubsystem = m_updateableSubsystems[i];
-			currentSubsystem->Update();
+			if (currentSubsystem)
+			{
+				currentSubsystem->Update();
+			}
 		}
 
 

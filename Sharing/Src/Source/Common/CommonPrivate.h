@@ -9,13 +9,6 @@
 
 #pragma once
 
-#if defined(XTOOLS_PLATFORM_WINDOWS_DESKTOP)
-# define CURL_STATICLIB
-# include <curl/curl.h>
-#elif defined(XTOOLS_PLATFORM_OSX)
-# include <curl/curl.h>
-#endif
-
 #include <Private/RakNetIncludes.h>
 #include <Private/Utils/ScopedLock.h>
 #include <Private/Utils/TypeUtils.h>
@@ -33,6 +26,7 @@
 #include <Private/UpdateOperation.h>
 #include <Private/InsertOperation.h>
 #include <Private/RemoveOperation.h>
+#include <Private/ReplaceOperation.h>
 #include <Private/ArrayElement.h>
 #include <Private/IntElementImpl.h>
 #include <Private/FloatElementImpl.h>

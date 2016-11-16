@@ -13,6 +13,9 @@
     <ClInclude Include="..\..\Source\Common\Tests\Utilities.h">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Tests\Desktop\TestLogWriter.h">
+      <Filter>Source</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Common\Tests\Desktop\ConnectionManagerTests.cpp">
@@ -46,6 +49,15 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Common\Tests\Desktop\SyncArrayTests.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Tests\Desktop\NetworkSpeedTests.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Tests\Desktop\TestLogWriter.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Tests\Desktop\SyncReplaceTests.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>

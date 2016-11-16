@@ -36,5 +36,6 @@
 #include <RakNetTypes.h>
 #include <StringCompressor.h>
 #include <PluginInterface2.h>
+#include <SignaledEvent.h>
 
 #pragma warning(pop)

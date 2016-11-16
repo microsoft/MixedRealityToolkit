@@ -21,6 +21,8 @@
 #include "DeleteDeleteTransform.h"
 
 #include "ArrayTransforms.h"
+#include "ReplaceTransforms.h"
+
 #include "InverseTransform.h"
 
 XTOOLS_NAMESPACE_BEGIN
@@ -47,6 +49,14 @@ TransformManager::TransformManager()
 	m_transformMatrix[OpPair(Operation::Update, Operation::Delete)] = new InverseTransform<DeleteModifyTransform>();
 	m_transformMatrix[OpPair(Operation::Insert, Operation::Delete)] = new InverseTransform<DeleteModifyTransform>();
 	m_transformMatrix[OpPair(Operation::Remove, Operation::Delete)] = new InverseTransform<DeleteModifyTransform>();
+
+	m_transformMatrix[OpPair(Operation::Replace, Operation::Create)] = new ReplaceCreateTransform();
+	m_transformMatrix[OpPair(Operation::Replace, Operation::Modify)] = new ReplaceModifyTransform();
+	m_transformMatrix[OpPair(Operation::Replace, Operation::Delete)] = new ReplaceDeleteTransform();
+	m_transformMatrix[OpPair(Operation::Create, Operation::Replace)] = new InverseTransform<ReplaceCreateTransform>();
+	m_transformMatrix[OpPair(Operation::Modify, Operation::Replace)] = new InverseTransform<ReplaceModifyTransform>();
+	m_transformMatrix[OpPair(Operation::Delete, Operation::Replace)] = new InverseTransform<ReplaceDeleteTransform>();
+	m_transformMatrix[OpPair(Operation::Replace, Operation::Replace)] = new ReplaceReplaceTransform();
 	
 	m_transformMatrix[OpPair(Operation::Update, Operation::Update)] = new UpdateUpdateTransform();
 	m_transformMatrix[OpPair(Operation::Update, Operation::Insert)] = new UpdateInsertTransform();

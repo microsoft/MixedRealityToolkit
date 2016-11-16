@@ -4,6 +4,7 @@
     <None Include="..\..\..\..\Source\Client\WrapperAPI\APIGen_CSharp.bat" />
     <None Include="..\..\..\..\Source\Client\WrapperAPI\Common.i" />
     <None Include="..\..\..\..\Source\Client\WrapperAPI\ref_ptr.i" />
+    <None Include="..\..\..\..\Source\Client\WrapperAPI\arrays_csharp_pinned.i" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\..\..\..\Source\Client\WrapperAPI\Client_CSharp.i" />

@@ -97,7 +97,7 @@ private:
 	uint32            m_sampleCount;				// samples per channel per stream
 	uint32            m_sampleRate;					// samples per second
 	StreamInfo        m_streamInfo[kMaxStreamCount];
-	float *           m_audioSampleBuffer;			      // guaranteed to be big enough to hold m_streamCount * m_channelCount * m_sampleCount float samples
+	scoped_array<float>           m_audioSampleBuffer;			      // guaranteed to be big enough to hold m_streamCount * m_channelCount * m_sampleCount float samples
 	uint32            m_audioSampleBufferAllocatedSize;
 	uint32            m_sequenceNumber;
 

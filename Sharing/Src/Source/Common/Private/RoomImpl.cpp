@@ -10,7 +10,8 @@
 XTOOLS_NAMESPACE_BEGIN
 
 RoomImpl::RoomImpl(const RoomListenerListPtr& listeners)
-	: m_listeners(listeners)
+	: SyncObject("Room")
+	, m_listeners(listeners)
 	, m_name(new XString("UnnamedRoom"))
 	, m_id(kInvalidRoomID)
 	, m_keepOpen(false)
@@ -21,7 +22,8 @@ RoomImpl::RoomImpl(const RoomListenerListPtr& listeners)
 
 
 RoomImpl::RoomImpl(const RoomListenerListPtr& listeners, const XStringPtr& name, RoomID id, bool bKeepOpen)
-	: m_listeners(listeners)
+	: SyncObject("Room")
+	, m_listeners(listeners)
 	, m_name(name)
 	, m_id(id)
 	, m_keepOpen(bKeepOpen)

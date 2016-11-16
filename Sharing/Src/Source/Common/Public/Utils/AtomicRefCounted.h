@@ -29,7 +29,7 @@ public:
 
 	void RemoveRef() const
 	{
-		if (m_refCount.fetch_sub(1) <= 1)
+		if (m_refCount.fetch_sub(1) == 1)
 		{
 			delete this;
 		}
@@ -44,7 +44,7 @@ private:
 
 	// mutable so that the ref count can still change
 	// when the class is referenced as a const type
-	mutable std::atomic<int> m_refCount;
+	volatile mutable std::atomic<int> m_refCount;
 
 };
 

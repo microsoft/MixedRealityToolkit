@@ -357,8 +357,10 @@ RNS2SendResult RNS2_WindowsStore8::Send( RNS2_SendParameters *sendParameters, co
     {
         try
         {
-            // Try getting an excpetion.
-     //       writeTask.get();
+            /// MICROSOFT PROJECT B CHANGES BEGIN
+            //Try getting an excpetion.
+            writeTask.get();
+            /// MICROSOFT PROJECT B CHANGES END
      //       SendOutput->Style = dynamic_cast<Windows::UI::Xaml::Style^>(rootPage->Resources->Lookup("StatusStyle"));
      //       SendOutput->Text = "\"" + stringToSend + "\" sent successfully";
         }
