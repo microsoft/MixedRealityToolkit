@@ -194,8 +194,8 @@ EXTERN_C __declspec(dllexport) int GeneratePlayspace_ExtractMesh_Extract(
 	quatDLLToWorld.GetMatrix(matDLLToWorld);
 
 	// Setup the vertices
-	size_t vertexCount = extractedMesh->m_TabPoints.GetSize();
-	for (size_t vertIdx = 0; vertIdx < vertexCount; vertIdx++)
+	int vertexCount = extractedMesh->m_TabPoints.GetSize();
+	for (int vertIdx = 0; vertIdx < vertexCount; vertIdx++)
 	{
 		Vec4f vertex = extractedMesh->m_TabPoints[vertIdx];
 

@@ -3679,7 +3679,7 @@ Bool	PlaySpaceInfos_W::SnapToEdge(Vec3f &_pos, const Vec3f &_Dir, Float DistFrom
 
 U32		PlaySpaceInfos_W::ComputeCRC()
 {
-	U32 MyCRC = Name_Z::GetID((U8*)(&(this->CRC_ZoneStart)),(U32)&(this->CRC_ZoneEnd) - (U32)&(this->CRC_ZoneStart),0);
+	U32 MyCRC = Name_Z::GetID((U8*)(&(this->CRC_ZoneStart)),&(this->CRC_ZoneEnd) - &(this->CRC_ZoneStart),0);
 
 	return MyCRC;
 }
