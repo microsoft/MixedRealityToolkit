@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- In order to turn on automatic deployment after build, make a copy of this "HoloToolkitDeployment.props.example"
+       file and name it "HoloToolkitDeployment.props". Then, change the value of HoloToolkitDeploymentProjectPath to
+       match the deployment location you want.
+
+       Alternatively, you can set HoloToolkitDeploymentProjectPath as an environment variable before you open Visual
+       Studio (or run msbuild) and avoid using this props file entirely.
+  -->
+  <PropertyGroup>
+    <HoloToolkitDeploymentProjectPath Condition=" ('$(HoloToolkitDeploymentProjectPath)' == '') AND Exists('..\..\..\HoloToolkit-Unity') ">..\..\..\HoloToolkit-Unity</HoloToolkitDeploymentProjectPath>
+  </PropertyGroup>
+</Project>
