@@ -3484,7 +3484,7 @@ void	Playspace_SR_W::RefreshSRFromDevice(Playspace_SR_DeviceSR *_pDeviceSR, Bool
 		pBlock->m_CounthForDelete = 0;
 
 		// Refresh it ?s
-		if (pBlock->m_FrameRefresh == CurSurfaceData.FrameUpdate)
+		if ((!IsNewBloc) && (pBlock->m_FrameRefresh == CurSurfaceData.FrameUpdate))
 		{
 			// Not Updated Block
 			Stats_NbKeep++;
@@ -3493,7 +3493,7 @@ void	Playspace_SR_W::RefreshSRFromDevice(Playspace_SR_DeviceSR *_pDeviceSR, Bool
 
 		// CRC Filter (because updated block are not always updated :P)
 		U32 MyCRC = Name_Z::GetID((U8*)CurSurfaceData.pVertexPos, CurSurfaceData.NbVertex * sizeof(Vec3f));
-		if (!IsNewBloc && (MyCRC == pBlock->m_CRCRefresh))
+		if ((!IsNewBloc) && (MyCRC == pBlock->m_CRCRefresh))
 		{
 			// bloc don't change...
 			pBlock->m_FrameRefresh = CurSurfaceData.FrameUpdate;
