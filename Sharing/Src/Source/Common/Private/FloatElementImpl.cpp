@@ -24,6 +24,19 @@ FloatElementPtr FloatElement::Cast(const ElementPtr& element)
 	}
 }
 
+#if !defined(SWIG)
+FloatElementConstPtr FloatElement::Cast(const ElementConstPtr& element)
+{
+	if (element != NULL && element->GetElementType() == ElementType::FloatType)
+	{
+		return static_cast<const FloatElement*>(element.get());
+	}
+	else
+	{
+		return NULL;
+	}
+}
+#endif
 
 NAMESPACE_BEGIN(Sync)
 

@@ -15,13 +15,14 @@
 #include "Private/Utils/FileLogWriter.h"
 #include "BroadcastForwarder.h"
 #include "PortPool.h"
+#include <Public/SyncData.h>
 
 XTOOLS_NAMESPACE_BEGIN
 
 class SessionServer : public ServiceBase, public IncomingXSocketListener, public SessionChangeCallback, public NetworkConnectionListener
 {
 public:
-	SessionServer(PWSTR pszServiceName);
+	SessionServer(PWSTR pszServiceName, const Sync::SyncDataProviderPtr& persistentData);
 
 	// ServiceBase Functions:
 
@@ -41,17 +42,18 @@ public:
 
 private:
 	// SessionChangeCallback Functions:
-    virtual void OnUserJoinedSession(uint32 sessionID, const std::string& userName, UserID userID, bool muteState) XTOVERRIDE;
+	virtual void OnUserJoinedSession(uint32 sessionID, const std::string& userName, UserID userID, bool muteState) XTOVERRIDE;
 	virtual void OnUserLeftSession(uint32 sessionID, UserID userID) XTOVERRIDE;
 	virtual void OnSessionEmpty(const XSessionConstPtr& session) XTOVERRIDE;
-    virtual void OnUserChanged(uint32 sessionID, const std::string& userName, UserID userId, bool muteState) XTOVERRIDE;
+	virtual void OnUserChanged(uint32 sessionID, const std::string& userName, UserID userId, bool muteState) XTOVERRIDE;
 
 	// IncomingConnectionListener Functions:
 	virtual void OnNewConnection(const XSocketPtr& newConnection) XTOVERRIDE;
 
-    void OnHandshakeComplete(const XSocketPtr& newConnection, SocketID socketID, HandshakeResult result);
+	void OnHandshakeComplete(const XSocketPtr& newConnection, SocketID socketID, HandshakeResult result);
 
-    virtual XSessionImplPtr CreateNewSession(const std::string& sessionName, SessionType type);
+	void InitializePersistentSessions();
+	virtual XSessionImplPtr CreateNewSession(const std::string& sessionName, SessionType type, const Sync::SyncDataPtr& syncData);
 
 	virtual uint32 GetNewSessionId();
 
@@ -64,11 +66,11 @@ private:
 	// The entry point for the main thread of the session server
 	void ServerThreadFunc();
 
-    // Private Logging Helpers
-    std::string GetCurrentDateTimeString(const tm& tm) const;
-    std::string GetLogFileName(const tm& tm) const;
-    void InitializeFileLogger();
-    void TeardownFileLogger();
+	// Private Logging Helpers
+	std::string GetCurrentDateTimeString(const tm& tm) const;
+	std::string GetLogFileName(const tm& tm) const;
+	void InitializeFileLogger();
+	void TeardownFileLogger();
 
 
 	struct Client
@@ -83,12 +85,15 @@ private:
 	SessionMessageRouter					m_messageRouter;
 	ProfileManagerPtr						m_profileMgr;
 
+	Sync::SyncDataProviderPtr				m_persistentSessionProvider;
+	Mutex									m_persistentSessionProviderMutex;
+
 #if defined(MSTEST)
 	BroadcastForwarderPtr					m_broadcaster;
 #endif
 
-    ReceiptPtr                              m_listenerReceipt;
-    ReceiptPtr                              m_netConnectionCallbackReceipt;
+	ReceiptPtr                              m_listenerReceipt;
+	ReceiptPtr                              m_netConnectionCallbackReceipt;
 	std::vector<XSessionImplPtr>            m_sessions;
 	std::map<XSessionImplPtr, ReceiptPtr>   m_sessionChangeListener;
 	std::vector<Client>						m_clients;
@@ -108,9 +113,11 @@ private:
 	std::map<SocketID, NetworkHandshakePtr>		m_pendingConnections;
 
 	LoggerPtr									m_logger;
-    FileLogWriter*                              m_logWriter;
+	FileLogWriter*                              m_logWriter;
 
-    static const std::string s_defaultLogBaseLocation;
+	static const std::string s_defaultLogBaseLocation;
+
+	
 };
 
 XTOOLS_NAMESPACE_END

@@ -22,6 +22,19 @@ LongElementPtr LongElement::Cast(const ElementPtr& element)
 	}
 }
 
+#if !defined(SWIG)
+LongElementConstPtr LongElement::Cast(const ElementConstPtr& element)
+{
+	if (element != NULL && element->GetElementType() == ElementType::Int64Type)
+	{
+		return static_cast<const LongElement*>(element.get());
+	}
+	else
+	{
+		return NULL;
+	}
+}
+#endif
 
 NAMESPACE_BEGIN(Sync)
 

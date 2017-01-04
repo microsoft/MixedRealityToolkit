@@ -32,6 +32,20 @@ ObjectElementPtr ObjectElement::Cast(const ElementPtr& element)
 	}
 }
 
+#if !defined(SWIG)
+ObjectElementConstPtr ObjectElement::Cast(const ElementConstPtr& element)
+{
+	if (element != NULL && element->GetElementType() == ElementType::ObjectType)
+	{
+		return static_cast<const ObjectElement*>(element.get());
+	}
+	else
+	{
+		return NULL;
+	}
+}
+#endif
+
 NAMESPACE_BEGIN(Sync)
 
 XTOOLS_REFLECTION_DEFINE(ObjectElementImpl)

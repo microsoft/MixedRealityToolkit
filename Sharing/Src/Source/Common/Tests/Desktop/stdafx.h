@@ -17,3 +17,6 @@
 
 // Headers for CppUnitTest
 #include "CppUnitTest.h"
+
+#undef min
+#undef max

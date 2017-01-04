@@ -24,6 +24,19 @@ StringElementPtr StringElement::Cast(const ElementPtr& element)
 	}
 }
 
+#if !defined(SWIG)
+StringElementConstPtr StringElement::Cast(const ElementConstPtr& element)
+{
+	if (element != NULL && element->GetElementType() == ElementType::StringType)
+	{
+		return static_cast<const StringElement*>(element.get());
+	}
+	else
+	{
+		return NULL;
+	}
+}
+#endif
 
 NAMESPACE_BEGIN(Sync)
 

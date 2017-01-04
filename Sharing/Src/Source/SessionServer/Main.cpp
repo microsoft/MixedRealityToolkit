@@ -12,6 +12,8 @@
 #include "stdafx.h"
 #include "../SharingService/SessionServer.h"
 #include "../SharingService/ServiceInstaller.h"
+#include "../Common/Public/FileSystemSyncDataProvider.h"
+#include "../Common/Public/XMLSyncElementSerializer.h"
 #include <iostream>
 #include <iosfwd>
 
@@ -40,37 +42,78 @@
 // Track memory allocations
 //XT_TRACK_MEMORY
 
+namespace // Intentionally Anonymous
+{
+	bool is_flag(const _TCHAR* arg)
+	{
+		return (*arg == L'-' || *arg == L'/');
+	}
+
+	int find_flag(const _TCHAR* search, int argc, _TCHAR* argv[])
+	{
+		for (int i = 0; i < argc; ++i)
+		{
+			const _TCHAR* arg = argv[i];
+
+			// Only consider entries that are flagged
+			if (!is_flag(arg)) { continue; }
+			if (_wcsicmp(search, arg + 1) == 0) return i;
+		}
+
+		return -1;
+	}
+
+	const _TCHAR* find_arg(const _TCHAR* search, int argc, _TCHAR* argv[], const _TCHAR* defaultValue = L"")
+	{
+		int flag = find_flag(search, argc, argv);
+		if (flag < 0) return nullptr; // Flag not found
+		if (flag + 1 >= argc) return defaultValue; // Found the flag, but no following arg
+		if (is_flag(argv[flag + 1])) return defaultValue; // Found the flag, but following arg is another flag
+
+		return argv[flag + 1];
+	}
+}
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	if ((argc > 1) && ((*argv[1] == L'-' || (*argv[1] == L'/'))))
+	if (find_flag(L"install", argc, argv) >= 0)
 	{
-		if (_wcsicmp(L"install", argv[1] + 1) == 0)
-		{
-			// Install the service when the command is 
-			// "-install" or "/install".
-			InstallService(
-				SERVICE_NAME,               // Name of service
-				SERVICE_DISPLAY_NAME,       // Name to display
-				SERVICE_START_TYPE,         // Service start type
-				SERVICE_DEPENDENCIES,       // Dependencies
-				SERVICE_ACCOUNT,			// Service running account
-				SERVICE_PASSWORD            // Password of the account
-				);
+		// Install the service when the command is 
+		// "-install" or "/install".
+		InstallService(
+			SERVICE_NAME,               // Name of service
+			SERVICE_DISPLAY_NAME,       // Name to display
+			SERVICE_START_TYPE,         // Service start type
+			SERVICE_DEPENDENCIES,       // Dependencies
+			SERVICE_ACCOUNT,			// Service running account
+			SERVICE_PASSWORD            // Password of the account
+		);
 
-			RunService(SERVICE_NAME);
-		}
-		else if (_wcsicmp(L"remove", argv[1] + 1) == 0)
+		RunService(SERVICE_NAME);
+	}
+	else if (find_flag(L"remove", argc, argv) >= 0)
+	{
+		// Uninstall the service when the command is 
+		// "-remove" or "/remove".
+		UninstallService(SERVICE_NAME);
+	}
+	else
+	{
+		XTools::Sync::SyncDataProviderPtr dataProvider;
+
+		// Look for save flag, if no path specified, use cwd
+		if (const _TCHAR* path = find_arg(L"save", argc, argv, L"./"))
 		{
-			// Uninstall the service when the command is 
-			// "-remove" or "/remove".
-			UninstallService(SERVICE_NAME);
+			dataProvider = XTools::Sync::FileSystemSyncDataProvider::Create(
+				new XTools::Sync::XMLSyncElementSerializer(true, false), path, L".sml");
 		}
-		else if (_wcsicmp(L"local", argv[1] + 1) == 0)
+
+		XTools::SessionServer server(SERVICE_NAME, dataProvider);
+
+		if (find_flag(L"local", argc, argv) >= 0)
 		{
 			wprintf(L"Running Sharing Service locally.  Enter 'q' to quit.  \n");
 
-			XTools::SessionServer server(SERVICE_NAME);
 			server.OnStart(0, NULL);
 
 			char input = '\0';
@@ -81,18 +124,19 @@ int _tmain(int argc, _TCHAR* argv[])
 
 			server.OnStop();
 		}
-	}
-	else
-	{
-		wprintf(L"Parameters:\n");
-		wprintf(L" -install  to install the service.\n");
-		wprintf(L" -remove   to remove the service.\n");
-		wprintf(L" -local    to run from the command line, not as a service.\n");
-
-		XTools::SessionServer server(SERVICE_NAME);
-		if (!ServiceBase::Run(server))
+		else
 		{
-			wprintf(L"Service failed to run w/err 0x%08lx\n", GetLastError());
+			wprintf(L"Parameters:\n");
+			wprintf(L" -install  to install the service.\n");
+			wprintf(L" -remove   to remove the service.\n");
+			wprintf(L" -local    to run from the command line, not as a service.\n");
+			wprintf(L" -save [path]  to load from and save persistent sessions to [path]\n");
+
+
+			if (!ServiceBase::Run(server))
+			{
+				wprintf(L"Service failed to run w/err 0x%08lx\n", GetLastError());
+			}
 		}
 	}
 

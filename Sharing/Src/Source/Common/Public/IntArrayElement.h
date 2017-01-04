@@ -19,6 +19,10 @@ public:
 	/// If the given Element is an IntArrayElement, cast it to the derived type.  Otherwise return null
 	static ref_ptr<IntArrayElement> Cast(const ElementPtr& element);
 
+#if !defined(SWIG)
+	static ref_ptr<const IntArrayElement> Cast(const ElementConstPtr& element);
+#endif
+
 	/// Returns the number of elements in the array
 	virtual int32 GetCount() const = 0;
 

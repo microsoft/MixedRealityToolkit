@@ -14,13 +14,14 @@
 #include "AudioSessionProcessorServer.h"
 #include "ServerRoomManager.h"
 #include <Private/NetworkConnectionImpl.h>
+#include <Public/SyncData.h>
 
 XTOOLS_NAMESPACE_BEGIN
 
-class XSessionImpl : public XSession, public NetworkConnectionListener, public IncomingXSocketListener
+class XSessionImpl : public XSession, public NetworkConnectionListener, public IncomingXSocketListener, private SyncListener
 {
 public:
-	explicit XSessionImpl(const std::string& name, uint16 port, SessionType type, unsigned int id);
+	explicit XSessionImpl(const std::string& name, uint16 port, SessionType type, unsigned int id, const Sync::SyncDataPtr& syncData);
 	virtual ~XSessionImpl();
 
 	// Register to receive callbacks when the session changes.  
@@ -68,6 +69,9 @@ private:
 	void OnJoinSessionRequest(const JoinSessionRequest& request, const NetworkConnectionPtr& connection);
 	void OnUserChanged(const UserChangedSessionMsg& request, const NetworkConnectionPtr& connection);
 
+	virtual void OnSyncChangesBegin() XTOVERRIDE;
+	virtual void OnSyncChangesEnd() XTOVERRIDE;
+
 
 	struct RemoteClient;
 	DECLARE_PTR(RemoteClient)
@@ -99,6 +103,7 @@ private:
 	Mutex							m_mutex;
 	SessionChangeCallback*			m_callback;
 	uint16							m_port;
+	Sync::SyncDataPtr				m_syncData;
 	Sync::SyncManagerPtr			m_syncMgr;
 	Sync::SyncManagerPtr			m_internalSyncMgr;
 	ServerRoomManagerPtr			m_roomMgr;

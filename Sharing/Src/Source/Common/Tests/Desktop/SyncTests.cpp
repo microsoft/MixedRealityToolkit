@@ -242,14 +242,14 @@ namespace CommonDesktopTests
 				ReceiptPtr msliceListenerReceipt1 = mslice1->AcceptConnections(kAppPluginPort, 1, msliceListener1.get());
 
 				SyncMultiConnectionListenerPtr msliceListener2 = new SyncMultiConnectionListener();
-				ReceiptPtr msliceListenerReceipt2 = mslice2->AcceptConnections(kAppPluginPort+1, 1, msliceListener2.get());
+				ReceiptPtr msliceListenerReceipt2 = mslice2->AcceptConnections(kAppPluginPort + 1, 1, msliceListener2.get());
 
 				// Make the client connect to the server
 				XSocketPtr connection1 = mslice1->OpenConnection("localhost", kSessionServerPort);
 				XSocketPtr connection2 = mslice2->OpenConnection("localhost", kSessionServerPort);
 
 				XSocketPtr connection3 = onsight1->OpenConnection("localhost", kAppPluginPort);
-				XSocketPtr connection4 = onsight2->OpenConnection("localhost", kAppPluginPort+1);
+				XSocketPtr connection4 = onsight2->OpenConnection("localhost", kAppPluginPort + 1);
 
 				MicrosoftTest::WaitForCompletion(
 					[&]() {
@@ -424,6 +424,108 @@ namespace CommonDesktopTests
 				testBed->ValidateSyncState();
 				MicrosoftTest::LogMessageFormat("Loop %d took %dms\r\n", i, GetTickCount() - startTime);
 			}
+		}
+
+		void AddTestDataElements(ObjectElementPtr root)
+		{
+			root->CreateBoolElement(new XString("bool1"), true);
+			root->CreateBoolElement(new XString("bool2"), false);
+
+			root->CreateIntElement(new XString("int1"), std::numeric_limits<int32>::min());
+			root->CreateIntElement(new XString("int2"), 0);
+			root->CreateIntElement(new XString("int3"), std::numeric_limits<int32>::max());
+
+			root->CreateFloatElement(new XString("float1"), std::numeric_limits<float>::min());
+			root->CreateFloatElement(new XString("float2"), 0.f);
+			root->CreateFloatElement(new XString("float3"), std::numeric_limits<float>::max());
+
+			root->CreateDoubleElement(new XString("double1"), std::numeric_limits<double>::min());
+			root->CreateDoubleElement(new XString("double2"), 0.0);
+			root->CreateDoubleElement(new XString("double3"), std::numeric_limits<double>::max());
+
+			root->CreateLongElement(new XString("long1"), std::numeric_limits<int64>::min());
+			root->CreateLongElement(new XString("long2"), 0);
+			root->CreateLongElement(new XString("long3"), std::numeric_limits<int64>::max());
+
+			root->CreateStringElement(new XString("str1"), new XString("strValue1"));
+			root->CreateStringElement(new XString("str2"), new XString(""));
+
+			root->CreateIntArrayElement(new XString("arr1"));
+			IntArrayElementPtr arr = root->CreateIntArrayElement(new XString("arr2"));
+			arr->InsertValue(0, std::numeric_limits<int32>::min());
+			arr->InsertValue(0, 0);
+			arr->InsertValue(0, std::numeric_limits<int32>::max());
+		}
+
+		void TestEquals(ElementPtr r0, ElementPtr r1)
+		{
+
+			Assert::AreEqual<int>(r0->GetElementType(), r1->GetElementType());
+			switch (r0->GetElementType())
+			{
+			case ElementType::ObjectType:
+				TestEquals(ObjectElement::Cast(r0), ObjectElement::Cast(r1));
+				break;
+			case ElementType::Int32ArrayType:
+				TestEquals(IntArrayElement::Cast(r0), IntArrayElement::Cast(r1));
+			default:
+				Assert::AreEqual(r0->GetGUID(), r1->GetGUID());
+				Assert::IsTrue(r0->GetName()->IsEqual(r1->GetName()));
+				Assert::IsTrue(r0->GetXValue().Equals(r1->GetXValue()));
+				break;
+			}
+		}
+
+		void TestEquals(ObjectElementPtr r0, ObjectElementPtr r1)
+		{
+			Assert::AreEqual(r0->GetGUID(), r1->GetGUID());
+			Assert::IsTrue(r0->GetName()->IsEqual(r1->GetName()));
+			Assert::AreEqual(r0->GetElementCount(), r1->GetElementCount());
+			for (int i = 0; i < r0->GetElementCount(); ++i)
+			{
+				TestEquals(r0->GetElementAt(i), r1->GetElementAt(i));
+			}
+		}
+
+		void TestEquals(IntArrayElementPtr r0, IntArrayElementPtr r1)
+		{
+			Assert::AreEqual(r0->GetGUID(), r1->GetGUID());
+			Assert::IsTrue(r0->GetName()->IsEqual(r1->GetName()));
+			Assert::AreEqual(r0->GetCount(), r1->GetCount());
+
+			for (int i = 0; i < r0->GetCount(); ++i)
+			{
+				Assert::AreEqual(r0->GetValue(i), r1->GetValue(i));
+			}
+		}
+
+		TEST_METHOD(TestSync_XmlElementSerialize_RoundTrip)
+		{
+			// Create an input sync manager and build out a complex element hierarchy
+			SyncManagerPtr inputSync = SyncManager::Create(
+				MessageID::SyncMessage, AuthorityLevel::High, new UserImpl("input", User::kInvalidUserID, false));
+
+			ObjectElementPtr inputRoot = inputSync->GetRootObject();
+			{
+				ObjectElementPtr subObject = inputRoot->CreateObjectElement(new XString("obj1"));
+				AddTestDataElements(subObject);
+			}
+			AddTestDataElements(inputRoot);
+
+			// Serialize the hierarchy out to our stream
+			XMLSyncElementSerializer serializer(true, false);
+			std::stringstream iostream;
+			serializer.Save(iostream, inputRoot);
+
+			// Create an output sync manager and serialize in from the stream
+			SyncManagerPtr outputSync = SyncManager::Create(
+				MessageID::SyncMessage, AuthorityLevel::High, new UserImpl("output", User::kInvalidUserID, false));
+
+			ObjectElementPtr outputRoot = outputSync->GetRootObject();
+			serializer.Load(iostream, outputRoot);
+
+			// Test that the hierarchies are equal
+			TestEquals(inputRoot, outputRoot);
 		}
 	};
 }
