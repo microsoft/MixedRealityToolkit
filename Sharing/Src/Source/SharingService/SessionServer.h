@@ -58,6 +58,7 @@ private:
 	// Callbacks for Json message types
 	void OnNewSessionRequest(const NewSessionRequest& request, const NetworkConnectionPtr& connection);
 	void OnListSessionsRequest(const ListSessionsRequest& request, const NetworkConnectionPtr& connection);
+	void OnQuerySessionSyncDataRequest(const QuerySessionSyncDataRequest& request, const NetworkConnectionPtr& connection);
 
 	void SendSessionMessageToAllClients(const std::string& message);
 

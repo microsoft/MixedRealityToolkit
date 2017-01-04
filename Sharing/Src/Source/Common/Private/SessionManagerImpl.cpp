@@ -28,6 +28,7 @@ SessionManagerImpl::SessionManagerImpl(const ClientContextConstPtr& context, con
 	m_messageRouter.RegisterHandler(new MessageHandlerProxyT<const SessionAddedMsg&>(CreateCallback2(this, &SessionManagerImpl::OnSessionAdded)));
 	m_messageRouter.RegisterHandler(new MessageHandlerProxyT<const SessionClosedMsg&>(CreateCallback2(this, &SessionManagerImpl::OnSessionClosed)));
 	m_messageRouter.RegisterHandler(new MessageHandlerProxyT<const UserChangedSessionMsg&>(CreateCallback2(this, &SessionManagerImpl::OnUserChanged)));
+	m_messageRouter.RegisterHandler(new MessageHandlerProxyT<const QuerySessionSyncDataReply&>(CreateCallback2(this, &SessionManagerImpl::OnQuerySessionSyncDataReply)));
 }
 
 
@@ -107,6 +108,17 @@ bool SessionManagerImpl::CreateSession(const XStringPtr& sessionName, SessionTyp
 	serverConnection->Send(message);
 
 	return true;
+}
+
+
+void SessionManagerImpl::QuerySyncData(const std::string& uri) const
+{
+	QuerySessionSyncDataRequest request(&uri, 1);
+
+	NetworkConnectionPtr serverConnection = m_context->GetSessionListConnection();
+	NetworkOutMessagePtr msg = serverConnection->CreateMessage(MessageID::SessionControl);
+	msg->Write(request.ToJSONString());
+	serverConnection->Send(msg);
 }
 
 
@@ -602,6 +614,30 @@ void SessionManagerImpl::OnUserChanged(const UserChangedSessionMsg& msg, const N
 }
 
 
+void SessionManagerImpl::OnQuerySessionSyncDataReply(const QuerySessionSyncDataReply& msg, const NetworkConnectionPtr&)
+{
+	QuerySessionSyncDataReply::SyncData syncData;
+	msg.GetSyncData(syncData);
+
+	for (size_t sessionIndex = 0; sessionIndex < syncData.SessionNames.size(); ++sessionIndex)
+	{
+		SessionImplPtr curSession = GetLocalSessionByName(syncData.SessionNames[sessionIndex]);
+
+		if (curSession == nullptr)
+		{
+			continue;
+		}
+
+		for (size_t uriIndex = 0; uriIndex < syncData.Uris.size(); ++uriIndex)
+		{
+			curSession->SetSyncData(syncData.Uris[uriIndex], syncData.GetValue(uriIndex, sessionIndex));
+		}
+
+		m_listenerList->NotifyListeners(&SessionManagerListener::OnSyncDataChanged, curSession);
+	}
+}
+
+
 SessionImplPtr SessionManagerImpl::GetLocalSessionById(unsigned int id) const
 {
 	SessionImplPtr session = NULL;
@@ -612,6 +648,26 @@ SessionImplPtr SessionManagerImpl::GetLocalSessionById(unsigned int id) const
 	{
 		SessionImplPtr curSession = m_sessions[i];
 		if (curSession->GetSessionId() == id)
+		{
+			session = curSession;
+			break;
+		}
+	}
+
+	return session;
+}
+
+
+SessionImplPtr SessionManagerImpl::GetLocalSessionByName(const std::string& name) const
+{
+	SessionImplPtr session = NULL;
+
+	size_t sessionCount = m_sessions.size();
+
+	for (size_t i = 0; i < sessionCount; i++)
+	{
+		SessionImplPtr curSession = m_sessions[i];
+		if (curSession->GetName() == name)
 		{
 			session = curSession;
 			break;

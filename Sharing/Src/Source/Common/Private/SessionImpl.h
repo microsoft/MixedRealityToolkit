@@ -46,6 +46,8 @@ public:
 
     virtual NetworkConnectionPtr GetSessionNetworkConnection() const XTOVERRIDE;
 
+	virtual int32 GetSyncData(const std::string& uri, int32 defaultValue) const XTOVERRIDE;
+	void SetSyncData(const std::string& uri, const XValue& value);
 
     unsigned int GetSessionId() const;
     void SetSessionId(unsigned int id);
@@ -95,6 +97,8 @@ private:
 	XStringPtr						m_name;
 	std::string						m_address;
 	uint16							m_port;
+
+	std::unordered_map<std::string, XValue> m_syncData;
 };
 
 DECLARE_PTR(SessionImpl)

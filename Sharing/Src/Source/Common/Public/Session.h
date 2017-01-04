@@ -63,6 +63,8 @@ public:
 	virtual const XStringPtr&	GetName() const = 0;
 
     virtual NetworkConnectionPtr GetSessionNetworkConnection() const = 0;
+
+	virtual int32 GetSyncData(const std::string& uri, int32 defaultValue) const = 0;
 };
 
 DECLARE_PTR(Session)

@@ -32,6 +32,8 @@ public:
 	virtual bool CreateSession(const XStringPtr& sessionName) { return CreateSession(sessionName, SessionType::ADHOC); }
 	virtual bool CreateSession(const XStringPtr& sessionName, SessionType type) = 0;
 
+	virtual void QuerySyncData(const std::string& uri) const = 0;
+
 	/// Returns the number of active sessions
 	virtual int32 GetSessionCount() const = 0;
 

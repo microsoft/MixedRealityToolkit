@@ -601,7 +601,7 @@ namespace Swig {
 namespace Swig {
   namespace {
     jclass jclass_SharingClientJNI = NULL;
-    jmethodID director_methids[53];
+    jmethodID director_methids[54];
   }
 }
 
@@ -2468,6 +2468,37 @@ void SwigDirector_SessionManagerListener::OnServerDisconnected() {
   if (swigjobj) jenv->DeleteLocalRef(swigjobj);
 }
 
+void SwigDirector_SessionManagerListener::OnSyncDataChanged(XTools::SessionPtr const &session) {
+  JNIEnvWrapper swigjnienv(this) ;
+  JNIEnv * jenv = swigjnienv.getJNIEnv() ;
+  jobject swigjobj = (jobject) NULL ;
+  jlong jsession = 0 ;
+  
+  if (!swig_override[9]) {
+    XTools::SessionManagerListener::OnSyncDataChanged(session);
+    return;
+  }
+  swigjobj = swig_get_self(jenv);
+  if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
+    // ref_ptr by reference directorin
+    if (session) {
+      session->AddRef(); 
+    }
+    *( Session **)&jsession = (&session)->get();
+    
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[31], swigjobj, jsession);
+    jthrowable swigerror = jenv->ExceptionOccurred();
+    if (swigerror) {
+      jenv->ExceptionClear();
+      throw Swig::DirectorException(jenv, swigerror);
+    }
+    
+  } else {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in XTools::SessionManagerListener::OnSyncDataChanged ");
+  }
+  if (swigjobj) jenv->DeleteLocalRef(swigjobj);
+}
+
 void SwigDirector_SessionManagerListener::swig_connect_director(JNIEnv *jenv, jobject jself, jclass jcls, bool swig_mem_own, bool weak_global) {
   static struct {
     const char *mname;
@@ -2500,6 +2531,9 @@ void SwigDirector_SessionManagerListener::swig_connect_director(JNIEnv *jenv, jo
     },
     {
       "OnServerDisconnected", "()V", NULL 
+    },
+    {
+      "OnSyncDataChanged", "(Lcom/microsoft/holotoolkit/sharing/Session;)V", NULL 
     }
   };
   
@@ -2512,7 +2546,7 @@ void SwigDirector_SessionManagerListener::swig_connect_director(JNIEnv *jenv, jo
       baseclass = (jclass) jenv->NewGlobalRef(baseclass);
     }
     bool derived = (jenv->IsSameObject(baseclass, jcls) ? false : true);
-    for (int i = 0; i < 9; ++i) {
+    for (int i = 0; i < 10; ++i) {
       if (!methods[i].base_methid) {
         methods[i].base_methid = jenv->GetMethodID(baseclass, methods[i].mname, methods[i].mdesc);
         if (!methods[i].base_methid) return;
@@ -2554,7 +2588,7 @@ void SwigDirector_UserPresenceManagerListener::OnUserPresenceChanged(XTools::Use
     }
     *( User **)&juser = (&user)->get();
     
-    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[31], swigjobj, juser);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[32], swigjobj, juser);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2629,7 +2663,7 @@ void SwigDirector_RoomManagerListener::OnRoomAdded(XTools::RoomPtr const &newRoo
     }
     *( Room **)&jnewRoom = (&newRoom)->get();
     
-    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[32], swigjobj, jnewRoom);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[33], swigjobj, jnewRoom);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2660,7 +2694,7 @@ void SwigDirector_RoomManagerListener::OnRoomClosed(XTools::RoomPtr const &room)
     }
     *( Room **)&jroom = (&room)->get();
     
-    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[33], swigjobj, jroom);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[34], swigjobj, jroom);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2693,7 +2727,7 @@ void SwigDirector_RoomManagerListener::OnUserJoinedRoom(XTools::RoomPtr const &r
     *( Room **)&jroom = (&room)->get();
     
     juser = (jint) user;
-    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[34], swigjobj, jroom, juser);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[35], swigjobj, jroom, juser);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2726,7 +2760,7 @@ void SwigDirector_RoomManagerListener::OnUserLeftRoom(XTools::RoomPtr const &roo
     *( Room **)&jroom = (&room)->get();
     
     juser = (jint) user;
-    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[35], swigjobj, jroom, juser);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[36], swigjobj, jroom, juser);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2757,7 +2791,7 @@ void SwigDirector_RoomManagerListener::OnAnchorsChanged(XTools::RoomPtr const &r
     }
     *( Room **)&jroom = (&room)->get();
     
-    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[36], swigjobj, jroom);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[37], swigjobj, jroom);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2799,7 +2833,7 @@ void SwigDirector_RoomManagerListener::OnAnchorsDownloaded(bool successful, XToo
     }
     *( XString **)&jfailureReason = (&failureReason)->get();
     
-    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[37], swigjobj, jsuccessful, jrequest, jfailureReason);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[38], swigjobj, jsuccessful, jrequest, jfailureReason);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2833,7 +2867,7 @@ void SwigDirector_RoomManagerListener::OnAnchorUploadComplete(bool successful, X
     }
     *( XString **)&jfailureReason = (&failureReason)->get();
     
-    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[38], swigjobj, jsuccessful, jfailureReason);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[39], swigjobj, jsuccessful, jfailureReason);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2920,7 +2954,7 @@ bool SwigDirector_PairMaker::IsReceiver() {
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    jresult = (jboolean) jenv->CallStaticBooleanMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[39], swigjobj);
+    jresult = (jboolean) jenv->CallStaticBooleanMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[40], swigjobj);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2948,7 +2982,7 @@ XTools::int32 SwigDirector_PairMaker::GetAddressCount() {
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[40], swigjobj);
+    jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[41], swigjobj);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -2978,7 +3012,7 @@ XTools::XStringPtr SwigDirector_PairMaker::GetAddress(XTools::int32 index) {
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
     jindex = (jint) index;
-    jresult = (jlong) jenv->CallStaticLongMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[41], swigjobj, jindex);
+    jresult = (jlong) jenv->CallStaticLongMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[42], swigjobj, jindex);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -3010,7 +3044,7 @@ XTools::uint16 SwigDirector_PairMaker::GetPort() {
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[42], swigjobj);
+    jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[43], swigjobj);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -3036,7 +3070,7 @@ void SwigDirector_PairMaker::Update() {
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[43], swigjobj);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[44], swigjobj);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -3061,7 +3095,7 @@ bool SwigDirector_PairMaker::IsReadyToConnect() {
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    jresult = (jboolean) jenv->CallStaticBooleanMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[44], swigjobj);
+    jresult = (jboolean) jenv->CallStaticBooleanMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[45], swigjobj);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -3088,7 +3122,7 @@ XTools::int32 SwigDirector_PairMaker::GetLocalKey() {
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[45], swigjobj);
+    jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[46], swigjobj);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -3115,7 +3149,7 @@ XTools::int32 SwigDirector_PairMaker::GetRemoteKey() {
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[46], swigjobj);
+    jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[47], swigjobj);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -3206,7 +3240,7 @@ void SwigDirector_PairingListener::PairingConnectionSucceeded() {
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[47], swigjobj);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[48], swigjobj);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -3232,7 +3266,7 @@ void SwigDirector_PairingListener::PairingConnectionFailed(XTools::PairingResult
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
     jreason = (jint) reason;
-    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[48], swigjobj, jreason);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[49], swigjobj, jreason);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -3310,7 +3344,7 @@ void SwigDirector_ImageTagLocationListener::OnTagLocated(XTools::ImageTagLocatio
     }
     *( ImageTagLocation **)&jlocation = (&location)->get();
     
-    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[49], swigjobj, jlocation);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[50], swigjobj, jlocation);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -3334,7 +3368,7 @@ void SwigDirector_ImageTagLocationListener::OnTagLocatingCompleted() {
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[50], swigjobj);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[51], swigjobj);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -3412,7 +3446,7 @@ void SwigDirector_DiscoveryClientListener::OnRemoteSystemDiscovered(XTools::Disc
     }
     *( DiscoveredSystem **)&jremoteSystem = (&remoteSystem)->get();
     
-    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[51], swigjobj, jremoteSystem);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[52], swigjobj, jremoteSystem);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -3443,7 +3477,7 @@ void SwigDirector_DiscoveryClientListener::OnRemoteSystemLost(XTools::Discovered
     }
     *( DiscoveredSystem **)&jremoteSystem = (&remoteSystem)->get();
     
-    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[52], swigjobj, jremoteSystem);
+    jenv->CallStaticVoidMethod(Swig::jclass_SharingClientJNI, Swig::director_methids[53], swigjobj, jremoteSystem);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -6564,6 +6598,38 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI
 }
 
 
+SWIGEXPORT jlong JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_ObjectElement_1FindElement(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jlong jarg3) {
+  jlong jresult = 0 ;
+  XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
+  char *arg2 = (char *) 0 ;
+  size_t arg3 ;
+  XTools::ElementPtr result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(XTools::ObjectElement **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return 0;
+  }
+  arg3 = (size_t)jarg3; 
+  result = (arg1)->FindElement((char const *)arg2,arg3);
+  
+  // ref_ptr by value out
+  if (result) {
+    result->AddRef();
+    *( Element **)&jresult = result.get();
+  } else {
+    *( Element **)&jresult = 0; 
+  }
+  
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  return jresult;
+}
+
+
 SWIGEXPORT jlong JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_ObjectElement_1CreateBoolElement(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jboolean jarg3) {
   jlong jresult = 0 ;
   XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
@@ -7543,6 +7609,33 @@ SWIGEXPORT jlong JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI
 }
 
 
+SWIGEXPORT jint JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_Session_1GetSyncData(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jint jarg3) {
+  jint jresult = 0 ;
+  XTools::Session *arg1 = (XTools::Session *) 0 ;
+  std::string *arg2 = 0 ;
+  XTools::int32 arg3 ;
+  XTools::int32 result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(XTools::Session **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null string");
+    return 0;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  arg3 = (XTools::int32)jarg3; 
+  result = (XTools::int32)((XTools::Session const *)arg1)->GetSyncData((std::string const &)*arg2,arg3);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
 SWIGEXPORT void JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_delete_1Session(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   XTools::Session *arg1 = (XTools::Session *) 0 ;
   
@@ -8061,6 +8154,58 @@ SWIGEXPORT void JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_
 }
 
 
+SWIGEXPORT void JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_SessionManagerListener_1OnSyncDataChanged(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+  XTools::SessionManagerListener *arg1 = (XTools::SessionManagerListener *) 0 ;
+  XTools::SessionPtr *arg2 = 0 ;
+  XTools::SessionPtr tempnull2 ;
+  XTools::SessionPtr temp2 ;
+  XTools::Session *smartarg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  arg1 = *(XTools::SessionManagerListener **)&jarg1; 
+  
+  // ref_ptr by reference in
+  if ( jarg2 ) {
+    smartarg2 = *( Session **)&jarg2; 
+    temp2 = XTools::ref_ptr<  Session >(smartarg2);
+    arg2 = &temp2;
+  } else {
+    arg2 = &tempnull2;
+  }
+  
+  (arg1)->OnSyncDataChanged((XTools::SessionPtr const &)*arg2);
+}
+
+
+SWIGEXPORT void JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_SessionManagerListener_1OnSyncDataChangedSwigExplicitSessionManagerListener(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+  XTools::SessionManagerListener *arg1 = (XTools::SessionManagerListener *) 0 ;
+  XTools::SessionPtr *arg2 = 0 ;
+  XTools::SessionPtr tempnull2 ;
+  XTools::SessionPtr temp2 ;
+  XTools::Session *smartarg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  arg1 = *(XTools::SessionManagerListener **)&jarg1; 
+  
+  // ref_ptr by reference in
+  if ( jarg2 ) {
+    smartarg2 = *( Session **)&jarg2; 
+    temp2 = XTools::ref_ptr<  Session >(smartarg2);
+    arg2 = &temp2;
+  } else {
+    arg2 = &tempnull2;
+  }
+  
+  (arg1)->XTools::SessionManagerListener::OnSyncDataChanged((XTools::SessionPtr const &)*arg2);
+}
+
+
 SWIGEXPORT jlong JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_new_1SessionManagerListener(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   XTools::SessionManagerListener *result = 0 ;
@@ -8180,6 +8325,27 @@ SWIGEXPORT jboolean JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClient
   result = (bool)(arg1)->CreateSession((XTools::XStringPtr const &)*arg2,arg3);
   jresult = (jboolean)result; 
   return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_SessionManager_1QuerySyncData(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  XTools::SessionManager *arg1 = (XTools::SessionManager *) 0 ;
+  std::string *arg2 = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(XTools::SessionManager **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null string");
+    return ;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return ;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  ((XTools::SessionManager const *)arg1)->QuerySyncData((std::string const &)*arg2);
 }
 
 
@@ -12222,7 +12388,7 @@ SWIGEXPORT void JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_
   static struct {
     const char *method;
     const char *signature;
-  } methods[53] = {
+  } methods[54] = {
     {
       "SwigDirector_LogWriter_WriteLogEntry", "(Lcom/microsoft/holotoolkit/sharing/LogWriter;ILjava/lang/String;)V" 
     },
@@ -12315,6 +12481,9 @@ SWIGEXPORT void JNICALL Java_com_microsoft_holotoolkit_sharing_SharingClientJNI_
     },
     {
       "SwigDirector_SessionManagerListener_OnServerDisconnected", "(Lcom/microsoft/holotoolkit/sharing/SessionManagerListener;)V" 
+    },
+    {
+      "SwigDirector_SessionManagerListener_OnSyncDataChanged", "(Lcom/microsoft/holotoolkit/sharing/SessionManagerListener;J)V" 
     },
     {
       "SwigDirector_UserPresenceManagerListener_OnUserPresenceChanged", "(Lcom/microsoft/holotoolkit/sharing/UserPresenceManagerListener;J)V" 

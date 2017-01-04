@@ -132,12 +132,13 @@ public:
     virtual void OnUserChanged(XTools::SessionPtr const &session, XTools::UserPtr const &user);
     virtual void OnServerConnected();
     virtual void OnServerDisconnected();
+    virtual void OnSyncDataChanged(XTools::SessionPtr const &session);
 public:
     bool swig_overrides(int n) {
-      return (n < 9 ? swig_override[n] : false);
+      return (n < 10 ? swig_override[n] : false);
     }
 protected:
-    bool swig_override[9];
+    bool swig_override[10];
 };
 
 class SwigDirector_UserPresenceManagerListener : public XTools::UserPresenceManagerListener, public Swig::Director {

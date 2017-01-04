@@ -288,6 +288,22 @@ SessionDescriptorImplPtr XSessionImpl::GetSessionDescription(const XSocketPtr& t
 	return sessionDesc;
 }
 
+void XSessionImpl::QuerySyncData(const std::string syncUris[], size_t syncUriCount, std::vector<XValue>& out) const
+{
+	for (size_t i = 0; i < syncUriCount; ++i)
+	{
+		ElementPtr element = m_syncMgr->GetRootObject()->FindElement(syncUris[i].c_str(), syncUris[i].length());
+		if (element != nullptr)
+		{
+			out.push_back(element->GetXValue());
+		}
+		else
+		{
+			out.push_back(XValue());
+		}
+	}
+}
+
 
 // Returns false if the session was unable to initialize itself correctly
 bool XSessionImpl::IsInitialized() const

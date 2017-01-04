@@ -21,6 +21,7 @@ public:
 	virtual void			AddListener(SessionManagerListener* newListener) XTOVERRIDE;
 	virtual void			RemoveListener(SessionManagerListener* oldListener) XTOVERRIDE;
 	virtual bool			CreateSession(const XStringPtr& sessionName, SessionType type) XTOVERRIDE;
+	virtual void			QuerySyncData(const std::string& uri) const XTOVERRIDE;
 	virtual int32			GetSessionCount() const XTOVERRIDE;
 	virtual SessionPtr		GetSession(int32 index) XTOVERRIDE;
 	virtual SessionPtr		GetCurrentSession() XTOVERRIDE;
@@ -52,8 +53,10 @@ private:
 	void					OnSessionAdded(const SessionAddedMsg& msg, const NetworkConnectionPtr& connection);
 	void					OnSessionClosed(const SessionClosedMsg& msg, const NetworkConnectionPtr& connection);
 	void					OnUserChanged(const UserChangedSessionMsg& msg, const NetworkConnectionPtr& connection);
+	void					OnQuerySessionSyncDataReply(const QuerySessionSyncDataReply& msg, const NetworkConnectionPtr& connection);
 
     SessionImplPtr			GetLocalSessionById(unsigned int id) const;
+	SessionImplPtr			GetLocalSessionByName(const std::string& name) const;
 
 	ClientContextConstPtr					m_context;
     UserPresenceManagerPtr                  m_userPresenceMgr;

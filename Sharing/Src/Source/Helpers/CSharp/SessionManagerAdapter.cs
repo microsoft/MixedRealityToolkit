@@ -17,6 +17,7 @@ namespace HoloToolkit.Sharing
         public event System.Action<Session, User> UserJoinedSessionEvent;
         public event System.Action<Session, User> UserLeftSessionEvent;
         public event System.Action<Session, User> UserChangedEvent;
+        public event System.Action<Session> SyncDataChangedEvent;
         public event System.Action ServerConnectedEvent;
         public event System.Action ServerDisconnectedEvent;
 
@@ -108,6 +109,16 @@ namespace HoloToolkit.Sharing
             if (this.ServerDisconnectedEvent != null)
             {
                 this.ServerDisconnectedEvent();
+            }
+            Profile.EndRange();
+        }
+
+        public override void OnSyncDataChanged(Session session)
+        {
+            Profile.BeginRange("OnSyncDataChanged");
+            if (this.SyncDataChangedEvent != null)
+            {
+                this.SyncDataChangedEvent(session);
             }
             Profile.EndRange();
         }
