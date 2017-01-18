@@ -55,3 +55,4 @@ Sharing/Src/Solutions/Xcode/XToolsClient/build
 /SpatialMapping/PlaneFinding/Tests/UnitTests/obj
 *.cache
 *.config
+/Input/MicStreamSelector/Projects/MicDemoApp/obj

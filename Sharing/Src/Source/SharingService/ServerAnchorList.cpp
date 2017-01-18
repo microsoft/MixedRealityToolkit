@@ -10,6 +10,7 @@
 XTOOLS_NAMESPACE_BEGIN
 
 ServerAnchorList::ServerAnchorList()
+	: SyncObject("AnchorList")
 {
 }
 
@@ -36,7 +37,7 @@ void ServerAnchorList::SetAnchor(const std::string& name, const BufferPtr& data)
 	ObjectElementPtr newAnchorElement = ObjectElement::Cast(GetObjectElement()->GetElement(nameXString));
 	if (newAnchorElement == nullptr)
 	{
-		newAnchorElement = GetObjectElement()->CreateObjectElement(nameXString);
+		newAnchorElement = GetObjectElement()->CreateObjectElement(nameXString, GetObjectType());
 	}
 
 	m_anchors[name] = Anchor(newAnchorElement, data);

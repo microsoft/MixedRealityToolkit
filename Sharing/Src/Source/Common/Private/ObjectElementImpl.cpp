@@ -37,19 +37,20 @@ NAMESPACE_BEGIN(Sync)
 XTOOLS_REFLECTION_DEFINE(ObjectElementImpl)
 .BaseClass<ObjectElement>();
 
-ObjectElementImpl::ObjectElementImpl(SyncContext* syncContext, const XStringPtr& name, XGuid id, const XValue& value)
+ObjectElementImpl::ObjectElementImpl(SyncContext* syncContext, const XStringPtr& name, XGuid id, UserID ownerID, const XValue& typeValue)
 	: m_syncContext(syncContext)
 	, m_parent(NULL)
 	, m_name(name)
 	, m_guid(id)
 	, m_listenerList(ListenerList::Create())
+	, m_ownerID(ownerID)
 {
 	XTASSERT(name);
 
-	const UserID* ownerID = value.Get<int32>();
-	if (XTVERIFY(ownerID))
+	const std::string* typeString = typeValue.Get<std::string>();
+	if (XTVERIFY(typeString))
 	{
-		m_ownerID = *ownerID;
+		m_objectType = new XString(*typeString);
 	}
 
 #if defined(SYNC_DEBUG)
@@ -66,7 +67,7 @@ BoolElementPtr ObjectElementImpl::CreateBoolElement(const XStringPtr& name, bool
 		return NULL;
 	}
 
-	ElementPtr newElement = CreateElement(ElementType::BoolType, name, value);
+	ElementPtr newElement = CreateElement(ElementType::BoolType, name, User::kInvalidUserID, value);
 	return BoolElement::Cast(newElement);
 }
 
@@ -79,7 +80,7 @@ IntElementPtr ObjectElementImpl::CreateIntElement(const XStringPtr& name, int va
 		return NULL;
 	}
 
-	ElementPtr newElement = CreateElement(ElementType::Int32Type, name, value);
+	ElementPtr newElement = CreateElement(ElementType::Int32Type, name, User::kInvalidUserID, value);
 	return IntElement::Cast(newElement);
 }
 
@@ -92,7 +93,7 @@ LongElementPtr ObjectElementImpl::CreateLongElement(const XStringPtr& name, int6
 		return NULL;
 	}
 
-	ElementPtr newElement = CreateElement(ElementType::Int64Type, name, value);
+	ElementPtr newElement = CreateElement(ElementType::Int64Type, name, User::kInvalidUserID, value);
 	return LongElement::Cast(newElement);
 }
 
@@ -105,7 +106,7 @@ FloatElementPtr ObjectElementImpl::CreateFloatElement(const XStringPtr& name, fl
 		return NULL;
 	}
 
-	ElementPtr newElement = CreateElement(ElementType::FloatType, name, value);
+	ElementPtr newElement = CreateElement(ElementType::FloatType, name, User::kInvalidUserID, value);
 	return FloatElement::Cast(newElement);
 }
 
@@ -118,7 +119,7 @@ DoubleElementPtr ObjectElementImpl::CreateDoubleElement(const XStringPtr& name, 
 		return NULL;
 	}
 
-	ElementPtr newElement = CreateElement(ElementType::DoubleType, name, value);
+	ElementPtr newElement = CreateElement(ElementType::DoubleType, name, User::kInvalidUserID, value);
 	return DoubleElement::Cast(newElement);
 }
 
@@ -137,12 +138,12 @@ StringElementPtr ObjectElementImpl::CreateStringElement(const XStringPtr& name, 
 		return NULL;
 	}
 
-	ElementPtr newElement = CreateElement(ElementType::StringType, name, value->GetString());
+	ElementPtr newElement = CreateElement(ElementType::StringType, name, User::kInvalidUserID, value->GetString());
 	return StringElement::Cast(newElement);
 }
 
 
-ObjectElementPtr ObjectElementImpl::CreateObjectElement(const XStringPtr& name, const User* user)
+ObjectElementPtr ObjectElementImpl::CreateObjectElement(const XStringPtr& name, const XStringPtr& objectType, const User* user)
 {
 	if (!name)
 	{
@@ -156,7 +157,7 @@ ObjectElementPtr ObjectElementImpl::CreateObjectElement(const XStringPtr& name, 
 		userID = user->GetID();
 	}
 
-	ElementPtr newElement = CreateElement(ElementType::ObjectType, name, userID);
+	ElementPtr newElement = CreateElement(ElementType::ObjectType, name, userID, objectType->GetString());
 	return ObjectElement::Cast(newElement);
 }
 
@@ -169,8 +170,34 @@ IntArrayElementPtr ObjectElementImpl::CreateIntArrayElement(const XStringPtr& na
 		return NULL;
 	}
 
-	ElementPtr newElement = CreateElement(ElementType::Int32ArrayType, name, XValue());
+	ElementPtr newElement = CreateElement(ElementType::Int32ArrayType, name, User::kInvalidUserID, XValue());
 	return IntArrayElement::Cast(newElement);
+}
+
+
+FloatArrayElementPtr ObjectElementImpl::CreateFloatArrayElement(const XStringPtr& name)
+{
+	if (!name)
+	{
+		LogError("Null name passed to CreateFloatArrayElement");
+		return NULL;
+	}
+
+	ElementPtr newElement = CreateElement(ElementType::FloatArrayType, name, User::kInvalidUserID, XValue());
+	return FloatArrayElement::Cast(newElement);
+}
+
+
+StringArrayElementPtr ObjectElementImpl::CreateStringArrayElement(const XStringPtr& name)
+{
+	if (!name)
+	{
+		LogError("Null name passed to CreateStringArrayElement");
+		return NULL;
+	}
+
+	ElementPtr newElement = CreateElement(ElementType::StringArrayType, name, User::kInvalidUserID, XValue());
+	return StringArrayElement::Cast(newElement);
 }
 
 
@@ -292,6 +319,12 @@ UserID ObjectElementImpl::GetOwnerID() const
 }
 
 
+const XStringPtr& ObjectElementImpl::GetObjectType() const
+{
+	return m_objectType;
+}
+
+
 ElementType ObjectElementImpl::GetElementType() const
 {
 	return ElementType::ObjectType;
@@ -326,7 +359,7 @@ bool ObjectElementImpl::IsValid() const
 
 XValue ObjectElementImpl::GetXValue() const
 {
-	return m_ownerID;
+	return m_objectType;
 }
 
 
@@ -334,10 +367,10 @@ void ObjectElementImpl::SetXValue(const XValue& value)
 {
 	XTASSERT(IsValid());
 
-	const UserID* ownerID = value.Get<int32>();
-	if (XTVERIFY(ownerID))
+	const std::string* typeString = value.Get<std::string>();
+	if (XTVERIFY(typeString))
 	{
-		m_ownerID = *ownerID;
+		m_objectType = new XString(*typeString);
 	}
 }
 
@@ -385,7 +418,7 @@ void ObjectElementImpl::RemoveChild(const ElementPtr& element)
 }
 
 
-ElementPtr ObjectElementImpl::CreateElement(ElementType type, const XStringPtr& name, const XValue& value)
+ElementPtr ObjectElementImpl::CreateElement(ElementType type, const XStringPtr& name, UserID ownerID, const XValue& value)
 {
 	XTASSERT(name);
 
@@ -408,7 +441,7 @@ ElementPtr ObjectElementImpl::CreateElement(ElementType type, const XStringPtr& 
 	}
 
 	// Create an Operation to represent this change
-	CreateOperationPtr createOp = new CreateOperation(type, name, elementGuid, m_guid, value, m_syncContext->GetAuthorityLevel(), m_syncContext);
+	CreateOperationPtr createOp = new CreateOperation(type, name, elementGuid, m_guid, ownerID, value, m_syncContext->GetAuthorityLevel(), m_syncContext);
 
 	// Execute the creation operations
 	createOp->Apply(m_syncContext);

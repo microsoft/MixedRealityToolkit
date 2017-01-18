@@ -41,6 +41,10 @@
 #include <Public/StringElement.h>
 #include <Public/IntArrayListener.h>
 #include <Public/IntArrayElement.h>
+#include <Public/FloatArrayListener.h>
+#include <Public/FloatArrayElement.h>
+#include <Public/StringArrayListener.h>
+#include <Public/StringArrayElement.h>
 #include <Public/ObjectElementListener.h>
 #include <Public/ObjectElement.h>
 #include <Public/SyncListener.h>

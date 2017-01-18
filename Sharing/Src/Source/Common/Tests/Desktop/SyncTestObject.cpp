@@ -34,15 +34,22 @@ SyncTestObject::SyncTestObject(const ObjectElementPtr& element, bool bCreatedLoc
 		m_stringElement = m_element->CreateStringElement(new XString("stringMember"), new XString(m_stringMember));
 		m_longElement = m_element->CreateLongElement(new XString("longMember"), m_longMember);
 		m_doubleElement = m_element->CreateDoubleElement(new XString("doubleMember"), m_doubleMember);
+
 		m_intArrayElement = m_element->CreateIntArrayElement(new XString("intArrayMember"));
 		m_intArrayElement->AddListener(this);
+
+		m_floatArrayElement = m_element->CreateFloatArrayElement(new XString("floatArrayMember"));
+		m_floatArrayElement->AddListener(this);
+
+		m_stringArrayElement = m_element->CreateStringArrayElement(new XString("stringArrayMember"));
+		m_stringArrayElement->AddListener(this);
 	}
 }
 
 
 ref_ptr<SyncTestObject> SyncTestObject::AddChild(const std::string& name)
 {
-	ObjectElementPtr childElement = m_element->CreateObjectElement(new XString(name));
+	ObjectElementPtr childElement = m_element->CreateObjectElement(new XString(name), new XString("SyncTestObject"));
 
 	SyncTestObject* newChild = new SyncTestObject(childElement, true);
 
@@ -63,6 +70,12 @@ void SyncTestObject::RemoveChild(const std::string& name)
 			break;
 		}
 	}
+}
+
+
+const ObjectElementPtr& SyncTestObject::GetElement() const
+{
+	return m_element;
 }
 
 
@@ -231,6 +244,48 @@ void SyncTestObject::RemoveIntArrayValue(int32 index)
 }
 
 
+void SyncTestObject::SetFloatArrayValue(int32 index, float value)
+{
+	m_floatArrayMember[index] = value;
+	m_floatArrayElement->SetValue(index, value);
+}
+
+
+void SyncTestObject::InsertFloatArrayValue(int32 index, float value)
+{
+	m_floatArrayMember.insert(m_floatArrayMember.begin() + index, value);
+	m_floatArrayElement->InsertValue(index, value);
+}
+
+
+void SyncTestObject::RemoveFloatArrayValue(int32 index)
+{
+	m_floatArrayMember.erase(m_floatArrayMember.begin() + index);
+	m_floatArrayElement->RemoveValue(index);
+}
+
+
+void SyncTestObject::SetStringArrayValue(int32 index, const XStringPtr& value)
+{
+	m_stringArrayMember[index] = value;
+	m_stringArrayElement->SetValue(index, value);
+}
+
+
+void SyncTestObject::InsertStringArrayValue(int32 index, const XStringPtr& value)
+{
+	m_stringArrayMember.insert(m_stringArrayMember.begin() + index, value);
+	m_stringArrayElement->InsertValue(index, value);
+}
+
+
+void SyncTestObject::RemoveStringArrayValue(int32 index)
+{
+	m_stringArrayMember.erase(m_stringArrayMember.begin() + index);
+	m_stringArrayElement->RemoveValue(index);
+}
+
+
 bool SyncTestObject::Equals(const ref_ptr<const SyncTestObject>& otherObj) const
 {
 	if (!m_element->IsValid())
@@ -335,6 +390,55 @@ bool SyncTestObject::Equals(const ref_ptr<const SyncTestObject>& otherObj) const
 		for (size_t i = 0; i < m_intArrayMember.size(); ++i)
 		{
 			if (m_intArrayMember[i] != otherObj->m_intArrayMember[i])
+			{
+				return false;
+			}
+		}
+	}
+
+
+	if ((m_floatArrayElement == NULL) != (otherObj->m_floatArrayElement == NULL)) return false;
+	if (m_floatArrayElement != NULL)
+	{
+		if (otherObj->m_floatArrayElement == NULL ||
+			m_floatArrayElement->GetGUID() != otherObj->m_floatArrayElement->GetGUID() ||
+			!m_floatArrayElement->GetName()->IsEqual(otherObj->m_floatArrayElement->GetName()))
+		{
+			return false;
+		}
+
+		if (m_floatArrayMember.size() != otherObj->m_floatArrayMember.size())
+		{
+			return false;
+		}
+
+		for (size_t i = 0; i < m_floatArrayMember.size(); ++i)
+		{
+			if (m_floatArrayMember[i] != otherObj->m_floatArrayMember[i])
+			{
+				return false;
+			}
+		}
+	}
+
+	if ((m_stringArrayElement == NULL) != (otherObj->m_stringArrayElement == NULL)) return false;
+	if (m_stringArrayElement != NULL)
+	{
+		if (otherObj->m_stringArrayElement == NULL ||
+			m_stringArrayElement->GetGUID() != otherObj->m_stringArrayElement->GetGUID() ||
+			!m_stringArrayElement->GetName()->IsEqual(otherObj->m_stringArrayElement->GetName()))
+		{
+			return false;
+		}
+
+		if (m_stringArrayMember.size() != otherObj->m_stringArrayMember.size())
+		{
+			return false;
+		}
+
+		for (size_t i = 0; i < m_stringArrayMember.size(); ++i)
+		{
+			if (m_stringArrayMember[i]->GetString() != otherObj->m_stringArrayMember[i]->GetString())
 			{
 				return false;
 			}
@@ -446,52 +550,78 @@ void SyncTestObject::OnElementAdded(const ElementPtr& element)
 		{
 			ObjectElementPtr objElement = ObjectElement::Cast(element);
 			XTASSERT(objElement);
-			m_children.push_back(new SyncTestObject(objElement, false));
+
+			if (objElement->GetObjectType()->GetString() == "SyncTestObject")
+			{
+				m_children.push_back(new SyncTestObject(objElement, false));
+			}
 		}
-		
 	}
-	else if (element->GetElementType() == ElementType::BoolType)
+	else if (element->GetName()->GetString() == "boolMember")
 	{
+		XTASSERT(element->GetElementType() == ElementType::BoolType);
 		XTASSERT(m_boolElement == NULL);
 		m_boolElement = BoolElement::Cast(element);
 		m_boolMember = m_boolElement->GetValue();
 	}
-	else if (element->GetElementType() == ElementType::FloatType)
+	else if (element->GetName()->GetString() == "floatMember")
 	{
+		XTASSERT(element->GetElementType() == ElementType::FloatType);
 		XTASSERT(m_floatElement == NULL);
 		m_floatElement = FloatElement::Cast(element);
 		m_floatMember = m_floatElement->GetValue();
 	}
-	else if (element->GetElementType() == ElementType::Int32Type)
+	else if (element->GetName()->GetString() == "intMember")
 	{
+		XTASSERT(element->GetElementType() == ElementType::Int32Type);
 		XTASSERT(m_intElement == NULL);
 		m_intElement = IntElement::Cast(element);
 		m_intMember = m_intElement->GetValue();
 	}
-	else if (element->GetElementType() == ElementType::StringType)
+	else if (element->GetName()->GetString() == "stringMember")
 	{
+		XTASSERT(element->GetElementType() == ElementType::StringType);
 		XTASSERT(m_stringElement == NULL);
 		m_stringElement = StringElement::Cast(element);
 		m_stringMember = m_stringElement->GetValue()->GetString();
 	}
-	else if (element->GetElementType() == ElementType::Int64Type)
+	else if (element->GetName()->GetString() == "longMember")
 	{
+		XTASSERT(element->GetElementType() == ElementType::Int64Type);
 		XTASSERT(m_longElement == NULL);
 		m_longElement = LongElement::Cast(element);
 		m_longMember = m_longElement->GetValue();
 	}
-	else if (element->GetElementType() == ElementType::DoubleType)
+	else if (element->GetName()->GetString() == "doubleMember")
 	{
+		XTASSERT(element->GetElementType() == ElementType::DoubleType);
 		XTASSERT(m_doubleElement == NULL);
 		m_doubleElement = DoubleElement::Cast(element);
 		m_doubleMember = m_doubleElement->GetValue();
 	}
-	else if (element->GetElementType() == ElementType::Int32ArrayType)
+	else if (element->GetName()->GetString() == "intArrayMember")
 	{
+		XTASSERT(element->GetElementType() == ElementType::Int32ArrayType);
 		XTASSERT(m_intArrayElement == NULL);
 		m_intArrayElement = IntArrayElement::Cast(element);
 		m_intArrayElement->AddListener(this);
 		m_intArrayMember.clear();
+	}
+	else if (element->GetName()->GetString() == "floatArrayMember")
+	{
+		XTASSERT(element->GetElementType() == ElementType::FloatArrayType);
+		XTASSERT(m_floatArrayElement == NULL);
+		m_floatArrayElement = FloatArrayElement::Cast(element);
+		m_floatArrayElement->AddListener(this);
+		m_floatArrayMember.clear();
+	}
+	else if (element->GetName()->GetString() == "stringArrayMember")
+	{
+		XTASSERT(element->GetElementType() == ElementType::StringArrayType);
+		XTASSERT(m_stringArrayElement == NULL);
+		m_stringArrayElement = StringArrayElement::Cast(element);
+		m_stringArrayElement->AddListener(this);
+		m_stringArrayMember.clear();
 	}
 }
 
@@ -556,4 +686,41 @@ void SyncTestObject::OnValueInserted(int32 index, int32 value)
 void SyncTestObject::OnValueRemoved(int32 index, int32 )
 {
 	m_intArrayMember.erase(m_intArrayMember.begin() + index);
+}
+
+
+
+void SyncTestObject::OnValueChanged(int32 index, float newValue)
+{
+	m_floatArrayMember[index] = newValue;
+}
+
+
+void SyncTestObject::OnValueInserted(int32 index, float value)
+{
+	m_floatArrayMember.insert(m_floatArrayMember.begin() + index, value);
+}
+
+
+void SyncTestObject::OnValueRemoved(int32 index, float )
+{
+	m_floatArrayMember.erase(m_floatArrayMember.begin() + index);
+}
+
+
+void SyncTestObject::OnValueChanged(int32 index, const XStringPtr& newValue)
+{
+	m_stringArrayMember[index] = newValue;
+}
+
+
+void SyncTestObject::OnValueInserted(int32 index, const XStringPtr& value)
+{
+	m_stringArrayMember.insert(m_stringArrayMember.begin() + index, value);
+}
+
+
+void SyncTestObject::OnValueRemoved(int32 index, const XStringPtr& )
+{
+	m_stringArrayMember.erase(m_stringArrayMember.begin() + index);
 }

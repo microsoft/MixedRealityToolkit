@@ -21,9 +21,6 @@ public:
 	// You can get the connection whether the pairing active or not, and use it to 
 	// listen for when the connection happens
 	virtual NetworkConnectionPtr GetBarabooConnection() = 0;
-	
-	// Get the download manager for downloading data over http  
-	virtual DownloadManagerPtr	GetDownloadManager() = 0;
 };
 
 DECLARE_PTR(SideCarContext)

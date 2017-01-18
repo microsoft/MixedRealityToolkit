@@ -25,6 +25,10 @@
 #include "RakNetSmartPtr.h"
 #include "RakNetSocket2.h"
 
+/// Microsoft Project B Changes Begin
+#include "SignaledEvent.h"
+/// Microsoft Project B Changes End
+
 namespace RakNet
 {
 // Forward declarations
@@ -61,7 +65,7 @@ public:
 	/// \param[in] socketDescriptorCount The size of the \a socketDescriptors array.  Pass 1 if you are not sure what to pass.
 	/// \param[in] threadPriority Passed to the thread creation routine. Use THREAD_PRIORITY_NORMAL for Windows. For Linux based systems, you MUST pass something reasonable based on the thread priorities for your application.
 	/// \return RAKNET_STARTED on success, otherwise appropriate failure enumeration.
-	virtual StartupResult Startup( unsigned int maxConnections, SocketDescriptor *socketDescriptors, unsigned socketDescriptorCount, int threadPriority=-99999 )=0;
+	virtual StartupResult Startup( unsigned int maxConnections, SocketDescriptor *socketDescriptors, unsigned socketDescriptorCount, /* Microsoft Project B Changes Begin*/ RakNetSmartPtr<SignaledEvent> networkThreadWaitEvent = nullptr , /* Microsoft Project B Changes End*/ int threadPriority=-99999 )=0;
 
 	/// If you accept connections, you must call this or else security will not be enabled for incoming connections.
 	/// This feature requires more round trips, bandwidth, and CPU time for the connection handshake

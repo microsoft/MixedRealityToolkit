@@ -18,6 +18,7 @@ public:
 	virtual ~SyncObject();
 
 	const ObjectElementPtr& GetObjectElement() const;
+	const XStringPtr& GetObjectType() const;
 
 	// Syncable Functions
 	virtual XGuid GetGUID() const XTOVERRIDE;
@@ -30,7 +31,7 @@ public:
 protected:
 	typedef Callback<XGuid> MemberCallback;
 
-	SyncObject();
+	explicit SyncObject(const std::string& objectType);
 
 	void AddMember(Syncable* memberSyncable, const std::string& name);
 	void AddMember(Syncable* memberSyncable, const std::string& name, MemberCallback onChangeCallback);
@@ -56,6 +57,7 @@ private:
 	std::map<Syncable*, MemberCallback>		m_callbackMap;
 
 	ObjectElementPtr						m_element;
+	XStringPtr								m_objectType;
 };
 
 XTOOLS_NAMESPACE_END

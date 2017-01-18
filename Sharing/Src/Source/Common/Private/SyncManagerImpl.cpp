@@ -742,12 +742,21 @@ void SyncManagerImpl::AddCreateOpForElementRecurs(RemoteSyncPeer& peer, const El
 		parentGuid = parent->GetGUID();
 	}
 
+	ObjectElementPtr objElement = ObjectElement::Cast(element);
+
 	{
+		UserID ownerID = User::kInvalidUserID;
+		if (objElement)
+		{
+			ownerID = objElement->GetOwnerID();
+		}
+
 		CreateOperationPtr createOp = new CreateOperation(
 			element->GetElementType(),
 			element->GetName(),
 			element->GetGUID(),
 			parentGuid,
+			ownerID,
 			element->GetXValue(),
 			m_syncContext->GetAuthorityLevel(),
 			m_syncContext);
@@ -757,7 +766,7 @@ void SyncManagerImpl::AddCreateOpForElementRecurs(RemoteSyncPeer& peer, const El
 	}
 
 	// If this is an object element...
-	ObjectElementPtr objElement = ObjectElement::Cast(element);
+	
 	if (objElement)
 	{
 		// Recurs to the children of this element

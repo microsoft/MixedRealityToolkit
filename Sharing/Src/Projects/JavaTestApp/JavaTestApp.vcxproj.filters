@@ -65,18 +65,6 @@
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\FloatElement.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\ImageTagLocation.java">
-      <Filter>Source Files\Generated Files</Filter>
-    </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\ImageTagLocationListener.java">
-      <Filter>Source Files\Generated Files</Filter>
-    </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\ImageTagLocationType.java">
-      <Filter>Source Files\Generated Files</Filter>
-    </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\ImageTagManager.java">
-      <Filter>Source Files\Generated Files</Filter>
-    </None>
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\IntArrayElement.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>

@@ -46,6 +46,7 @@
 
 %ignore XTools::XValue;
 %ignore operator==(const XValue&, const XValue&);
+%ignore operator!=(const XValue&, const XValue&);
 
 %ignore XTools::Element::GetXValue;
 %ignore XTools::Element::SetXValue;

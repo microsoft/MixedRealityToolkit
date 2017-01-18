@@ -16,11 +16,13 @@
 #include "DoubleElementImpl.h"
 #include "StringElementImpl.h"
 #include "IntArrayElementImpl.h"
+#include "FloatArrayElementImpl.h"
+#include "StringArrayElementImpl.h"
 
 XTOOLS_NAMESPACE_BEGIN
 NAMESPACE_BEGIN(Sync)
 
-const char* kElementTypeNames[ElementType::Int32ArrayType + 1] =
+const char* kElementTypeNames[ElementType::ElementTypeCount] =
 {
 	"UnknownType",
 	"BoolType",
@@ -30,7 +32,9 @@ const char* kElementTypeNames[ElementType::Int32ArrayType + 1] =
 	"DoubleType",
 	"StringType",
 	"ObjectType",
-	"Int32ArrayType"
+	"Int32ArrayType",
+	"FloatArrayType",
+	"StringArrayType"
 };
 
 SyncContext::SyncContext(AuthorityLevel authorityLevel, SystemID localSystemID, const UserPtr& localUser)
@@ -41,7 +45,7 @@ SyncContext::SyncContext(AuthorityLevel authorityLevel, SystemID localSystemID, 
 	// Create the root object
 	XStringPtr rootObjectName = new XString("Root");
 	XGuid rootObjectGuid = CreateGUID(rootObjectName, kInvalidXGuid);
-	m_rootObject = new ObjectElementImpl(this, rootObjectName, rootObjectGuid, User::kInvalidUserID);
+	m_rootObject = new ObjectElementImpl(this, rootObjectName, rootObjectGuid, User::kInvalidUserID, XValue(std::string("Root")));
 	m_guidMap[rootObjectGuid] = m_rootObject.get();
 
 	// Add makers for all the operations to the operation factory
@@ -50,6 +54,7 @@ SyncContext::SyncContext(AuthorityLevel authorityLevel, SystemID localSystemID, 
 	m_opFactory.RegisterMaker(Operation::Create, new OpMakerT<CreateOperation>());
 	m_opFactory.RegisterMaker(Operation::Modify, new OpMakerT<ModifyOperation>());
 	m_opFactory.RegisterMaker(Operation::Delete, new OpMakerT<DeleteOperation>());
+	m_opFactory.RegisterMaker(Operation::Replace, new OpMakerT<ReplaceOperation>());
 	m_opFactory.RegisterMaker(Operation::Insert, new OpMakerT<InsertOperation>());
 	m_opFactory.RegisterMaker(Operation::Update, new OpMakerT<UpdateOperation>());
 	m_opFactory.RegisterMaker(Operation::Remove, new OpMakerT<RemoveOperation>());
@@ -61,8 +66,10 @@ SyncContext::SyncContext(AuthorityLevel authorityLevel, SystemID localSystemID, 
 	m_elementFactory.RegisterMaker(ElementType::FloatType, new ElementMakerT<FloatElementImpl>());
 	m_elementFactory.RegisterMaker(ElementType::DoubleType, new ElementMakerT<DoubleElementImpl>());
 	m_elementFactory.RegisterMaker(ElementType::StringType, new ElementMakerT<StringElementImpl>());
-	m_elementFactory.RegisterMaker(ElementType::ObjectType, new ElementMakerT<ObjectElementImpl>());
+	m_elementFactory.RegisterMaker(ElementType::ObjectType, new ElementMakerWithOwnerT<ObjectElementImpl>());
 	m_elementFactory.RegisterMaker(ElementType::Int32ArrayType, new ElementMakerT<IntArrayElementImpl>());
+	m_elementFactory.RegisterMaker(ElementType::FloatArrayType, new ElementMakerT<FloatArrayElementImpl>());
+	m_elementFactory.RegisterMaker(ElementType::StringArrayType, new ElementMakerT<StringArrayElementImpl>());
 }
 
 
@@ -144,7 +151,7 @@ AuthorityLevel SyncContext::GetAuthorityLevel() const
 }
 
 
-ElementPtr SyncContext::CreateElement(ElementType type, const XStringPtr& name, XGuid guid, XGuid parentGuid, XValue startingValue)
+ElementPtr SyncContext::CreateElement(ElementType type, const XStringPtr& name, XGuid guid, XGuid parentGuid, UserID ownerID, XValue startingValue)
 {
 	XTASSERT(type != ElementType::UnknownType);
 	XTASSERT(guid != kInvalidXGuid);
@@ -154,7 +161,7 @@ ElementPtr SyncContext::CreateElement(ElementType type, const XStringPtr& name, 
 	// So verify that the GUID is not already in use.  
 	XTASSERT(m_guidMap.find(guid) == m_guidMap.end());
 
-	ElementPtr newElement = m_elementFactory.Make(type, this, name, guid, startingValue);
+	ElementPtr newElement = m_elementFactory.Make(type, this, name, guid, ownerID, startingValue);
 	XTASSERT(newElement);
 	
 	m_guidMap[guid] = newElement.get();

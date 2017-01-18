@@ -16,6 +16,7 @@ class ModifyOperation : public Operation
 public:
 	ModifyOperation(AuthorityLevel authLevel);
 	ModifyOperation(XGuid guid, XValue newValue, AuthorityLevel authLevel, const SyncContextPtr& context);
+	ModifyOperation(XGuid guid, XValue newValue, AuthorityLevel authLevel, const std::vector<XGuid>& hierarchy);
 	explicit ModifyOperation(const ModifyOperation& rhs);
 	explicit ModifyOperation(const CreateOperationConstPtr& createOp);
 

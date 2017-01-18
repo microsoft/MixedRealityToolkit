@@ -39,10 +39,6 @@
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\Element.java" />
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\ElementType.java" />
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\FloatElement.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\ImageTagLocation.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\ImageTagLocationListener.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\ImageTagLocationType.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\ImageTagManager.java" />
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\IntArrayElement.java" />
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\IntArrayListener.java" />
     <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\IntElement.java" />
@@ -108,7 +104,7 @@
     <SccAuxPath>SAK</SccAuxPath>
     <SccLocalPath>SAK</SccLocalPath>
     <SccProvider>SAK</SccProvider>
-    <WindowsTargetPlatformVersion>10.0.10240.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.10586.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

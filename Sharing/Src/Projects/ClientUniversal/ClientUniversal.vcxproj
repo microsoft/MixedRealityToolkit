@@ -33,9 +33,6 @@
     <ClCompile Include="..\..\Source\Client\DynamicLibrary.cpp" />
     <ClCompile Include="..\..\Source\Client\ImageData.cpp" />
     <ClCompile Include="..\..\Source\Client\ImageLuminanceSource.cpp" />
-    <ClCompile Include="..\..\Source\Client\ImageTagLocationImpl.cpp" />
-    <ClCompile Include="..\..\Source\Client\ImageTagLocator.cpp" />
-    <ClCompile Include="..\..\Source\Client\ImageTagManagerImpl.cpp" />
     <ClCompile Include="..\..\Source\Client\PairingInfo.cpp" />
     <ClCompile Include="..\..\Source\Client\PairingManagerImpl.cpp" />
     <ClCompile Include="..\..\Source\Client\Settings.cpp" />
@@ -60,12 +57,6 @@
     <ClInclude Include="..\..\Source\Client\DynamicLibrary.h" />
     <ClInclude Include="..\..\Source\Client\ImageData.h" />
     <ClInclude Include="..\..\Source\Client\ImageLuminanceSource.h" />
-    <ClInclude Include="..\..\Source\Client\ImageTagLocation.h" />
-    <ClInclude Include="..\..\Source\Client\ImageTagLocationImpl.h" />
-    <ClInclude Include="..\..\Source\Client\ImageTagLocationListener.h" />
-    <ClInclude Include="..\..\Source\Client\ImageTagLocator.h" />
-    <ClInclude Include="..\..\Source\Client\ImageTagManager.h" />
-    <ClInclude Include="..\..\Source\Client\ImageTagManagerImpl.h" />
     <ClInclude Include="..\..\Source\Client\PairingInfo.h" />
     <ClInclude Include="..\..\Source\Client\PairingListener.h" />
     <ClInclude Include="..\..\Source\Client\PairingManager.h" />
@@ -99,7 +90,7 @@
     <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
     <AppContainerApplication>true</AppContainerApplication>
     <ApplicationType>Windows Store</ApplicationType>
-    <WindowsTargetPlatformVersion>10.0.10240.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.10586.0</WindowsTargetPlatformVersion>
     <WindowsTargetPlatformMinVersion>10.0.10240.0</WindowsTargetPlatformMinVersion>
     <ApplicationTypeRevision>10.0</ApplicationTypeRevision>
     <SccProjectName>SAK</SccProjectName>
@@ -208,7 +199,7 @@
       <SDLCheck>true</SDLCheck>
       <WarningLevel>Level4</WarningLevel>
       <TreatWarningAsError>true</TreatWarningAsError>
-      <AdditionalIncludeDirectories>..\..\Source\Common;..\..\External\zxing-cpp\include;..\..\External\zint-2.4.3\include;..\..\External\apriltag-2015-03-18\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\Source\Common;..\..\External\zxing-cpp\include;..\..\External\zint-2.4.3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <BrowseInformation>true</BrowseInformation>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -219,8 +210,8 @@
       <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>..\..\External\zxing-cpp\lib\Windows;..\..\External\zint-2.4.3\lib;..\..\External\apriltag-2015-03-18\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>apriltag_UAP_$(PlatformTarget)_$(Configuration).lib;zxing_UAP_$(PlatformTarget)_$(Configuration).lib;zint_UAP_$(PlatformTarget)_$(Configuration).lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\External\zxing-cpp\lib\Windows;..\..\External\zint-2.4.3\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>zxing_UAP_$(PlatformTarget)_$(Configuration).lib;zint_UAP_$(PlatformTarget)_$(Configuration).lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalOptions>/ignore:4264 /ignore:4221 %(AdditionalOptions)</AdditionalOptions>
     </Lib>
     <Bscmake>
@@ -233,7 +224,7 @@
       <SDLCheck>true</SDLCheck>
       <WarningLevel>Level4</WarningLevel>
       <TreatWarningAsError>true</TreatWarningAsError>
-      <AdditionalIncludeDirectories>..\..\Source\Common;..\..\External\zxing-cpp\include;..\..\External\zint-2.4.3\include;..\..\External\apriltag-2015-03-18\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\Source\Common;..\..\External\zxing-cpp\include;..\..\External\zint-2.4.3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
@@ -242,8 +233,8 @@
       <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>..\..\External\zxing-cpp\lib\Windows;..\..\External\zint-2.4.3\lib;..\..\External\apriltag-2015-03-18\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>apriltag_UAP_$(PlatformTarget)_$(Configuration).lib;zxing_UAP_$(PlatformTarget)_$(Configuration).lib;zint_UAP_$(PlatformTarget)_$(Configuration).lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\External\zxing-cpp\lib\Windows;..\..\External\zint-2.4.3\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>zxing_UAP_$(PlatformTarget)_$(Configuration).lib;zint_UAP_$(PlatformTarget)_$(Configuration).lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalOptions>/ignore:4264 /ignore:4221 %(AdditionalOptions)</AdditionalOptions>
     </Lib>
   </ItemDefinitionGroup>
@@ -253,7 +244,7 @@
       <SDLCheck>true</SDLCheck>
       <WarningLevel>Level4</WarningLevel>
       <TreatWarningAsError>true</TreatWarningAsError>
-      <AdditionalIncludeDirectories>..\..\Source\Common;..\..\External\zxing-cpp\include;..\..\External\zint-2.4.3\include;..\..\External\apriltag-2015-03-18\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\Source\Common;..\..\External\zxing-cpp\include;..\..\External\zint-2.4.3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
@@ -263,8 +254,8 @@
       <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>..\..\External\zxing-cpp\lib\Windows;..\..\External\zint-2.4.3\lib;..\..\External\apriltag-2015-03-18\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>apriltag_UAP_$(PlatformTarget)_$(Configuration).lib;zxing_UAP_$(PlatformTarget)_$(Configuration).lib;zint_UAP_$(PlatformTarget)_$(Configuration).lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\External\zxing-cpp\lib\Windows;..\..\External\zint-2.4.3\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>zxing_UAP_$(PlatformTarget)_$(Configuration).lib;zint_UAP_$(PlatformTarget)_$(Configuration).lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalOptions>/ignore:4264 /ignore:4221 %(AdditionalOptions)</AdditionalOptions>
     </Lib>
   </ItemDefinitionGroup>
@@ -274,7 +265,7 @@
       <SDLCheck>true</SDLCheck>
       <WarningLevel>Level4</WarningLevel>
       <TreatWarningAsError>true</TreatWarningAsError>
-      <AdditionalIncludeDirectories>..\..\Source\Common;..\..\External\zxing-cpp\include;..\..\External\zint-2.4.3\include;..\..\External\apriltag-2015-03-18\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\Source\Common;..\..\External\zxing-cpp\include;..\..\External\zint-2.4.3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
@@ -283,8 +274,8 @@
       <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>..\..\External\zxing-cpp\lib\Windows;..\..\External\zint-2.4.3\lib;..\..\External\apriltag-2015-03-18\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>apriltag_UAP_$(PlatformTarget)_$(Configuration).lib;zxing_UAP_$(PlatformTarget)_$(Configuration).lib;zint_UAP_$(PlatformTarget)_$(Configuration).lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\External\zxing-cpp\lib\Windows;..\..\External\zint-2.4.3\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>zxing_UAP_$(PlatformTarget)_$(Configuration).lib;zint_UAP_$(PlatformTarget)_$(Configuration).lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalOptions>/ignore:4264 /ignore:4221 %(AdditionalOptions)</AdditionalOptions>
     </Lib>
   </ItemDefinitionGroup>
@@ -294,7 +285,7 @@
       <SDLCheck>true</SDLCheck>
       <WarningLevel>Level4</WarningLevel>
       <TreatWarningAsError>true</TreatWarningAsError>
-      <AdditionalIncludeDirectories>..\..\Source\Common;..\..\External\zxing-cpp\include;..\..\External\zint-2.4.3\include;..\..\External\apriltag-2015-03-18\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\Source\Common;..\..\External\zxing-cpp\include;..\..\External\zint-2.4.3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
@@ -304,8 +295,8 @@
       <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>..\..\External\zxing-cpp\lib\Windows;..\..\External\zint-2.4.3\lib;..\..\External\apriltag-2015-03-18\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>apriltag_UAP_$(PlatformTarget)_$(Configuration).lib;zxing_UAP_$(PlatformTarget)_$(Configuration).lib;zint_UAP_$(PlatformTarget)_$(Configuration).lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\External\zxing-cpp\lib\Windows;..\..\External\zint-2.4.3\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>zxing_UAP_$(PlatformTarget)_$(Configuration).lib;zint_UAP_$(PlatformTarget)_$(Configuration).lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalOptions>/ignore:4264 /ignore:4221 %(AdditionalOptions)</AdditionalOptions>
     </Lib>
   </ItemDefinitionGroup>
@@ -315,7 +306,7 @@
       <SDLCheck>true</SDLCheck>
       <WarningLevel>Level4</WarningLevel>
       <TreatWarningAsError>true</TreatWarningAsError>
-      <AdditionalIncludeDirectories>..\..\Source\Common;..\..\External\zxing-cpp\include;..\..\External\zint-2.4.3\include;..\..\External\apriltag-2015-03-18\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\Source\Common;..\..\External\zxing-cpp\include;..\..\External\zint-2.4.3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
@@ -324,8 +315,8 @@
       <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>..\..\External\zxing-cpp\lib\Windows;..\..\External\zint-2.4.3\lib;..\..\External\apriltag-2015-03-18\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>apriltag_UAP_$(PlatformTarget)_$(Configuration).lib;zxing_UAP_$(PlatformTarget)_$(Configuration).lib;zint_UAP_$(PlatformTarget)_$(Configuration).lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\External\zxing-cpp\lib\Windows;..\..\External\zint-2.4.3\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>zxing_UAP_$(PlatformTarget)_$(Configuration).lib;zint_UAP_$(PlatformTarget)_$(Configuration).lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalOptions>/ignore:4264 /ignore:4221 %(AdditionalOptions)</AdditionalOptions>
     </Lib>
   </ItemDefinitionGroup>

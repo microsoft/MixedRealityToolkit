@@ -70,8 +70,8 @@ int _tmain(int argc, _TCHAR* argv[])
 		{
 			wprintf(L"Running Sharing Service locally.  Enter 'q' to quit.  \n");
 
-			XTools::SessionServer server(SERVICE_NAME);
-			server.OnStart(0, NULL);
+			XTools::SessionServer* server = new XTools::SessionServer(SERVICE_NAME);
+			server->OnStart(0, NULL);
 
 			char input = '\0';
 			while (input != 'q')
@@ -79,7 +79,9 @@ int _tmain(int argc, _TCHAR* argv[])
 				std::cin >> input;
 			}
 
-			server.OnStop();
+			server->OnStop();
+
+			delete server;
 		}
 	}
 	else

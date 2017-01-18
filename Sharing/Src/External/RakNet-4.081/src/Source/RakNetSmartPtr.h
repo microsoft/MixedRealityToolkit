@@ -16,6 +16,9 @@
 
 #include "RakMemoryOverride.h"
 #include "Export.h"
+/// Microsoft Project B Changes Begin
+#include <atomic>
+/// Microsoft Project B Changes End
 
 //static int allocCount=0;
 //static int deallocCount=0;
@@ -26,12 +29,21 @@ namespace RakNet
 class RAK_DLL_EXPORT ReferenceCounter
 {
 private:
-	int refCount;
+	/// Microsoft Project B Changes Begin
+	std::atomic<int> refCount;
+	/// Microsoft Project B Changes End
 
 public:
-	ReferenceCounter() {refCount=0;}
+	/// Microsoft Project B Changes Begin
+	ReferenceCounter() : refCount(0) {}
+	/// Microsoft Project B Changes End
+
 	~ReferenceCounter() {}
-	void AddRef() {refCount++;}
+
+	/// Microsoft Project B Changes Begin
+	void AddRef() { ++refCount; }
+	/// Microsoft Project B Changes END
+
 	int Release() {return --refCount;}
 	int GetRefCount(void) const {return refCount;}
 };

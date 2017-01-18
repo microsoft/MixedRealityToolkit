@@ -10,7 +10,8 @@
 XTOOLS_NAMESPACE_BEGIN
 
 ServerRoom::ServerRoom(RoomEmptyListener* listener)
-	: m_name(new XString("UnnamedRoom"))
+	: SyncObject("Room")
+	, m_name(new XString("UnnamedRoom"))
 	, m_id(Room::kInvalidRoomID)
 	, m_keepOpen(false)
 	, m_roomEmptylistener(listener)

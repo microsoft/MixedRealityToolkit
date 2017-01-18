@@ -8,16 +8,11 @@ using namespace XTools;
 
 %include <windows.i>
 %include <stl.i>
-%include "arrays_csharp.i"
 %include "../../Client/WrapperAPI/Common.i"
+%include "../../Client/WrapperAPI/arrays_csharp_pinned.i"
 
-%csmethodmodifiers XTools::NetworkOutMessage::WriteArray "public unsafe";
-%csmethodmodifiers XTools::NetworkInMessage::ReadArray "public unsafe";
-%csmethodmodifiers XTools::VisualPairConnector::ProcessImage "public unsafe";
-%csmethodmodifiers XTools::TagImage::CopyImageData "public unsafe";
-%csmethodmodifiers XTools::ImageTagManager::FindTags "public unsafe";
-%apply unsigned char FIXED[] { ::XTools::byte *data, const ::XTools::byte *data, const ::XTools::byte *image, ::XTools::byte *image, byte *data, const byte *data };
-
+// Apply the PINNED typemap the function parameters that match the following signatures
+%apply unsigned char PINNED[] { ::XTools::byte *data, const ::XTools::byte *data, const ::XTools::byte *image, ::XTools::byte *image, byte *data, const byte *data };
 
 // Define typemaps for parameter to register and unregister listener types
 %define %listener_declare(ListenerType, RegisterName, UnregisterName)

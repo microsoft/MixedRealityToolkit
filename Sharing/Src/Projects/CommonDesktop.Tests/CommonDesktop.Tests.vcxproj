@@ -205,9 +205,11 @@
     <ClInclude Include="..\..\Source\Common\Tests\Desktop\stdafx.h" />
     <ClInclude Include="..\..\Source\Common\Tests\Desktop\SyncTestbed.h" />
     <ClInclude Include="..\..\Source\Common\Tests\Desktop\SyncTestObject.h" />
+    <ClInclude Include="..\..\Source\Common\Tests\Desktop\TestLogWriter.h" />
     <ClInclude Include="..\..\Source\Common\Tests\Utilities.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\Common\Tests\Desktop\NetworkSpeedTests.cpp" />
     <ClCompile Include="..\..\Source\Common\Tests\Desktop\ReflectionTests.cpp" />
     <ClCompile Include="..\..\Source\Common\Tests\Desktop\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -220,9 +222,11 @@
     <ClCompile Include="..\..\Source\Common\Tests\Desktop\SyncArrayTests.cpp" />
     <ClCompile Include="..\..\Source\Common\Tests\Desktop\SyncDeleteTests.cpp" />
     <ClCompile Include="..\..\Source\Common\Tests\Desktop\SyncHandshakeTests.cpp" />
+    <ClCompile Include="..\..\Source\Common\Tests\Desktop\SyncReplaceTests.cpp" />
     <ClCompile Include="..\..\Source\Common\Tests\Desktop\SyncTestbed.cpp" />
     <ClCompile Include="..\..\Source\Common\Tests\Desktop\SyncTestObject.cpp" />
     <ClCompile Include="..\..\Source\Common\Tests\Desktop\SyncTests.cpp" />
+    <ClCompile Include="..\..\Source\Common\Tests\Desktop\TestLogWriter.cpp" />
     <ClCompile Include="..\..\Source\Common\Tests\Utilities.cpp" />
   </ItemGroup>
   <ItemGroup>

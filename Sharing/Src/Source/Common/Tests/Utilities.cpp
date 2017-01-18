@@ -22,7 +22,7 @@ namespace MicrosoftTest
 		{
 			Assert::IsTrue((GetTickCount() - startTime) <= timeout, L"Timed out waiting for the operation to complete.", LINE_INFO());
 
-			Sleep(5);
+			Sleep(0);
 			update();
 		}
 	}

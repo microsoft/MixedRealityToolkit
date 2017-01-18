@@ -438,6 +438,18 @@
     <ClCompile Include="..\..\Source\Common\Private\BoolElementImpl.cpp">
       <Filter>Source\Private\Sync\Elements</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\FloatArrayElementImpl.cpp">
+      <Filter>Source\Private\Sync\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\StringArrayElementImpl.cpp">
+      <Filter>Source\Private\Sync\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\ReplaceOperation.cpp">
+      <Filter>Source\Private\Sync\Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\ReplaceTransforms.cpp">
+      <Filter>Source\Private\Sync\Transforms</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\Common\Common.h">
@@ -959,9 +971,6 @@
     <ClInclude Include="..\..\Source\Common\Private\IntArrayElementImpl.h">
       <Filter>Source\Private\Sync\Elements</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Common\Private\ArrayElement.h">
-      <Filter>Source\Private\Sync\Operations</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Source\Common\Private\InsertOperation.h">
       <Filter>Source\Private\Sync\Operations</Filter>
     </ClInclude>
@@ -1000,6 +1009,33 @@
     </ClInclude>
     <ClInclude Include="..\..\Source\Common\Public\BoolElement.h">
       <Filter>Source\Public\Sync\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\FloatArrayElement.h">
+      <Filter>Source\Public\Sync\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\FloatArrayListener.h">
+      <Filter>Source\Public\Sync\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\StringArrayElement.h">
+      <Filter>Source\Public\Sync\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\StringArrayListener.h">
+      <Filter>Source\Public\Sync\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\FloatArrayElementImpl.h">
+      <Filter>Source\Private\Sync\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\StringArrayElementImpl.h">
+      <Filter>Source\Private\Sync\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\ArrayElement.h">
+      <Filter>Source\Private\Sync\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\ReplaceOperation.h">
+      <Filter>Source\Private\Sync\Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Private\ReplaceTransforms.h">
+      <Filter>Source\Private\Sync\Transforms</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

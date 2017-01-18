@@ -18,4 +18,6 @@
 #define RESEND_BUFFER_ARRAY_LENGTH 2048
 #define RESEND_BUFFER_ARRAY_MASK 2047
 
+#define RAKPEER_USER_THREADED 1
+
 #define RakAssert(x) assert(x);

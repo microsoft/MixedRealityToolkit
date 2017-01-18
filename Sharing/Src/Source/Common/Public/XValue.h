@@ -87,24 +87,6 @@ private:
 	template<typename T> struct ValueMapper			{ static const Type value = Unknown; };
 	
 	template<Type T> struct TypeMapper				{ typedef void ValueType; };
-
-#if !defined(XTOOLS_PLATFORM_OSX)
-	template<> struct ValueMapper < bool >			{ static const Type value = Type::Bool; };
-	template<> struct ValueMapper < int32 >			{ static const Type value = Type::Int; };
-	template<> struct ValueMapper < uint32 >		{ static const Type value = Type::UInt; };
-	template<> struct ValueMapper < int64 >			{ static const Type value = Type::Int64; };
-	template<> struct ValueMapper < float >			{ static const Type value = Type::Float; };
-	template<> struct ValueMapper < double >		{ static const Type value = Type::Double; };
-	template<> struct ValueMapper < std::string >	{ static const Type value = Type::String; };
-
-	template<> struct TypeMapper<Type::Bool>		{ typedef bool ValueType; };
-	template<> struct TypeMapper<Type::Int>			{ typedef int32 ValueType; };
-	template<> struct TypeMapper<Type::UInt>		{ typedef uint32 ValueType; };
-	template<> struct TypeMapper<Type::Int64>		{ typedef int64 ValueType; };
-	template<> struct TypeMapper<Type::Float>		{ typedef float ValueType; };
-	template<> struct TypeMapper<Type::Double>		{ typedef double ValueType; };
-	template<> struct TypeMapper<Type::String>		{ typedef std::string ValueType; };
-#endif
 	
 	class ValueWrapper : public RefCounted
 	{
@@ -113,6 +95,26 @@ private:
 		virtual void Serialize(const NetworkOutMessagePtr& msg) const = 0;
 		virtual bool Equals(const ValueWrapper* other) const = 0;
 	};
+
+#if !defined(XTOOLS_PLATFORM_OSX)
+	template<> struct ValueMapper < bool > { static const Type value = Type::Bool; };
+	template<> struct ValueMapper < int32 > { static const Type value = Type::Int; };
+	template<> struct ValueMapper < uint32 > { static const Type value = Type::UInt; };
+	template<> struct ValueMapper < int64 > { static const Type value = Type::Int64; };
+	template<> struct ValueMapper < float > { static const Type value = Type::Float; };
+	template<> struct ValueMapper < double > { static const Type value = Type::Double; };
+	template<> struct ValueMapper < std::string > { static const Type value = Type::String; };
+
+	template<> struct TypeMapper<Type::Bool> { typedef bool ValueType; };
+	template<> struct TypeMapper<Type::Int> { typedef int32 ValueType; };
+	template<> struct TypeMapper<Type::UInt> { typedef uint32 ValueType; };
+	template<> struct TypeMapper<Type::Int64> { typedef int64 ValueType; };
+	template<> struct TypeMapper<Type::Float> { typedef float ValueType; };
+	template<> struct TypeMapper<Type::Double> { typedef double ValueType; };
+	template<> struct TypeMapper<Type::String> { typedef std::string ValueType; };
+
+#endif
+
 
 	template<typename T>
 	class ValueT : public ValueWrapper
@@ -134,7 +136,28 @@ private:
 		T m_value;
 	};
 
-	
+#if !defined(XTOOLS_PLATFORM_OSX)
+	// Template specialization for bools to make sure they don't get cast to ints
+	template<>
+	class ValueT<bool> : public ValueWrapper
+	{
+	public:
+		ValueT(const bool& value) : m_value(value) {}
+
+		virtual Type GetType() const { return ValueMapper<bool>::value; }
+
+		virtual void Serialize(const NetworkOutMessagePtr& msg) const { msg->Write((byte)((m_value) ? 1 : 0)); }
+
+		virtual bool Equals(const ValueWrapper* other) const
+		{
+			return (static_cast<const ValueT<bool>*>(other)->m_value == m_value);
+		}
+
+		const bool* Get() const { return &m_value; }
+	private:
+		bool m_value;
+	};
+#endif
 
 	ref_ptr<ValueWrapper> m_wrappedValue;
 };
@@ -163,7 +186,6 @@ template<> struct XValue::TypeMapper< XValue::Type::Int64 >		{ typedef int64 Val
 template<> struct XValue::TypeMapper< XValue::Type::Float >     { typedef float ValueType; };
 template<> struct XValue::TypeMapper< XValue::Type::Double >	{ typedef double ValueType; };
 template<> struct XValue::TypeMapper< XValue::Type::String >	{ typedef std::string ValueType; };
-#endif
 
 // Template specialization for bools to make sure they don't get cast to ints
 template<>
@@ -185,10 +207,16 @@ public:
 private:
     bool m_value;
 };
+#endif
 
 inline bool operator==(const XValue& lhs, const XValue& rhs)
 {
 	return lhs.Equals(rhs);
+}
+
+inline bool operator!=(const XValue& lhs, const XValue& rhs)
+{
+	return !lhs.Equals(rhs);
 }
 
 XTOOLS_NAMESPACE_END

@@ -43,7 +43,7 @@
     <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|Win32' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -52,7 +52,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
     <PlatformTarget>x64</PlatformTarget>
@@ -74,9 +74,6 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\Solutions\FullSolution\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -97,7 +94,6 @@
       <Link>Scripts\CopyDependencies.bat</Link>
     </None>
     <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="..\..\Source\SessionManager.UI\App.xaml">
@@ -143,20 +139,14 @@
     <Compile Include="..\..\GeneratedInterface\CSharpAPI\ElementType.cs">
       <Link>Generated Files\ElementType.cs</Link>
     </Compile>
+    <Compile Include="..\..\GeneratedInterface\CSharpAPI\FloatArrayElement.cs">
+      <Link>Generated Files\FloatArrayElement.cs</Link>
+    </Compile>
+    <Compile Include="..\..\GeneratedInterface\CSharpAPI\FloatArrayListener.cs">
+      <Link>Generated Files\FloatArrayListener.cs</Link>
+    </Compile>
     <Compile Include="..\..\GeneratedInterface\CSharpAPI\FloatElement.cs">
       <Link>Generated Files\FloatElement.cs</Link>
-    </Compile>
-    <Compile Include="..\..\GeneratedInterface\CSharpAPI\ImageTagLocation.cs">
-      <Link>Generated Files\ImageTagLocation.cs</Link>
-    </Compile>
-    <Compile Include="..\..\GeneratedInterface\CSharpAPI\ImageTagLocationListener.cs">
-      <Link>Generated Files\ImageTagLocationListener.cs</Link>
-    </Compile>
-    <Compile Include="..\..\GeneratedInterface\CSharpAPI\ImageTagLocationType.cs">
-      <Link>Generated Files\ImageTagLocationType.cs</Link>
-    </Compile>
-    <Compile Include="..\..\GeneratedInterface\CSharpAPI\ImageTagManager.cs">
-      <Link>Generated Files\ImageTagManager.cs</Link>
     </Compile>
     <Compile Include="..\..\GeneratedInterface\CSharpAPI\IntArrayElement.cs">
       <Link>Generated Files\IntArrayElement.cs</Link>
@@ -271,6 +261,12 @@
     </Compile>
     <Compile Include="..\..\GeneratedInterface\CSharpAPI\SharingManager.cs">
       <Link>Generated Files\SharingManager.cs</Link>
+    </Compile>
+    <Compile Include="..\..\GeneratedInterface\CSharpAPI\StringArrayElement.cs">
+      <Link>Generated Files\StringArrayElement.cs</Link>
+    </Compile>
+    <Compile Include="..\..\GeneratedInterface\CSharpAPI\StringArrayListener.cs">
+      <Link>Generated Files\StringArrayListener.cs</Link>
     </Compile>
     <Compile Include="..\..\GeneratedInterface\CSharpAPI\StringElement.cs">
       <Link>Generated Files\StringElement.cs</Link>

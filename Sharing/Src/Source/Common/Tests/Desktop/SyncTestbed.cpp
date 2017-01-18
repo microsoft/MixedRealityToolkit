@@ -24,37 +24,7 @@ namespace CommonDesktopTests
 		m_connections.push_back(newConnection);
 	}
 
-	TestLogWriter* TestLogWriter::m_sInstance = nullptr;
-
-	//static
-	void TestLogWriter::Init()
-	{
-		if (m_sInstance == nullptr)
-		{
-			m_sInstance = new TestLogWriter();
-		}
-	}
-
-	void TestLogWriter::Release()
-	{
-		if (m_sInstance != nullptr)
-		{
-			delete m_sInstance;
-			m_sInstance = nullptr;
-		}
-	}
-
-	TestLogWriter::TestLogWriter()
-		: m_logManager(new ::XTools::Logger())
-	{
-		m_logManager->SetWriter(this);
-	}
-
-	void TestLogWriter::WriteLogEntry(XTools::LogSeverity, const std::string& message)
-	{
-		Microsoft::VisualStudio::CppUnitTestFramework::Logger::WriteMessage(message.c_str());
-	}
-
+	
 
 	SyncTestbed::SyncTestbed(bool bConnectOnSight)
 		: m_bConnectOnSight(bConnectOnSight)
@@ -234,6 +204,16 @@ namespace CommonDesktopTests
 
 	void SyncTestbed::ValidateSyncState()
 	{
+		// First compare the internal values in the sync system
+		CompareElementRecurs(m_serverRoot->GetElement(), m_client1Root->GetElement());
+		CompareElementRecurs(m_serverRoot->GetElement(), m_client2Root->GetElement());
+		if (m_bConnectOnSight)
+		{
+			CompareElementRecurs(m_client1Root->GetElement(), m_onsight1Root->GetElement());
+			CompareElementRecurs(m_client2Root->GetElement(), m_onsight2Root->GetElement());
+		}
+
+		// Then compare the values in the synced objects, to ensure callbacks worked correctly
 		ValidatePair(m_serverSyncMgr, m_serverRoot, m_client1SyncMgr, m_client1Root);
 		ValidatePair(m_serverSyncMgr, m_serverRoot, m_client2SyncMgr, m_client2Root);
 
@@ -255,6 +235,49 @@ namespace CommonDesktopTests
 			syncMgr2->PrintSyncData();
 
 			Assert::Fail(L"Sync pair does not match");
+		}
+	}
+
+	void SyncTestbed::CompareElementRecurs(const ElementPtr& element1, const ElementPtr& element2) const
+	{
+		Assert::AreEqual(element1->GetName()->GetString(), element2->GetName()->GetString());
+		Assert::IsTrue(element1->GetGUID() == element2->GetGUID());
+		Assert::IsTrue(element1->GetElementType() == element2->GetElementType());
+		Assert::IsTrue(element1->GetXValue() == element2->GetXValue());
+
+		if (element1->GetElementType() == ElementType::ObjectType)
+		{
+			ObjectElementPtr objElement1 = ObjectElement::Cast(element1);
+			Assert::IsNotNull(objElement1.get());
+			ObjectElementPtr objElement2 = ObjectElement::Cast(element2);
+			Assert::IsNotNull(objElement2.get());
+
+			Assert::AreEqual(objElement1->GetElementCount(), objElement2->GetElementCount());
+
+			for (int32 i = 0; i < objElement1->GetElementCount(); ++i)
+			{
+				ElementPtr childElement1 = objElement1->GetElementAt(i);
+
+				ElementPtr childElement2 = objElement2->GetElement(childElement1->GetName());
+				Assert::IsNotNull(childElement2.get());
+
+				CompareElementRecurs(childElement1, childElement2);
+			}
+		}
+		else if (IsFrom<ArrayElement>(element1))
+		{
+			ArrayElement* arrayElement1 = reflection_cast<ArrayElement>(element1);
+			Assert::IsNotNull(arrayElement1);
+
+			ArrayElement* arrayElement2 = reflection_cast<ArrayElement>(element2);
+			Assert::IsNotNull(arrayElement2);
+
+			Assert::AreEqual(arrayElement1->GetCount(), arrayElement2->GetCount());
+
+			for (int32 i = 0; i < arrayElement1->GetCount(); ++i)
+			{
+				Assert::IsTrue(arrayElement1->GetXValue(i) == arrayElement2->GetXValue(i));
+			}
 		}
 	}
 

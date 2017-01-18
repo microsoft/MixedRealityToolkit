@@ -30,6 +30,7 @@ SessionServer::SessionServer(PWSTR pszServiceName)
 , m_socketMgr(XSocketManager::Create())
 , m_stopping(FALSE)
 , m_nextSessionId(0)
+, m_logWriter(nullptr)
 {
 #if defined(XTOOLS_DEBUG)
 	// Enable debug memory tracking and verification. 
@@ -39,7 +40,7 @@ SessionServer::SessionServer(PWSTR pszServiceName)
 	m_messageRouter.RegisterHandler(new MessageHandlerProxyT<const NewSessionRequest&>(CreateCallback2(this, &SessionServer::OnNewSessionRequest)));
 	m_messageRouter.RegisterHandler(new MessageHandlerProxyT<const ListSessionsRequest&>(CreateCallback2(this, &SessionServer::OnListSessionsRequest)));
 
-	m_profileMgr = new ProfileManagerImpl(m_socketMgr, SystemRole::SessionDiscoveryServerRole);
+	//m_profileMgr = new ProfileManagerImpl(m_socketMgr, SystemRole::SessionDiscoveryServerRole);
 
 #if defined(MSTEST)
 	m_broadcaster = new BroadcastForwarder();
@@ -335,10 +336,11 @@ void SessionServer::OnNewSessionRequest(const NewSessionRequest& request, const 
 			}
 		}
 	}
+	
 
 	if (failureReason.empty())
 	{
-		session = CreateNewSession(name, request.GetSessionType());
+		session = CreateNewSession(name, SessionType::ADHOC);
 	}
 	
 	// If the session was successfully created...
@@ -418,26 +420,27 @@ void SessionServer::ServerThreadFunc()
 	// Periodically check if the service is stopping.
 	while (!m_stopping)
 	{
-		// Hold the lock while processing incoming messages, 
-		// so we don't have race conditions with callbacks from other
-		// the sessions, which run in their own threads
-		ScopedLock lock(m_mutex);
-
-		// Release the ports that the closing session were using
-		for (size_t i = 0; i < m_sessionsPendingDeletion.size(); ++i)
 		{
-			m_portPool->ReleasePort(m_sessionsPendingDeletion[i]->GetPort());
+			// Hold the lock while processing incoming messages, 
+			// so we don't have race conditions with callbacks from other
+			// the sessions, which run in their own threads
+			ScopedLock lock(m_mutex);
+
+			// Release the ports that the closing session were using
+			for (size_t i = 0; i < m_sessionsPendingDeletion.size(); ++i)
+			{
+				m_portPool->ReleasePort(m_sessionsPendingDeletion[i]->GetPort());
+			}
+
+			// Clear any sessions pending deletion
+			m_sessionsPendingDeletion.clear();
+
+			m_socketMgr->Update();
+
+			//reflection_cast<IUpdateable>(m_profileMgr)->Update();
 		}
 
-		// Clear any sessions pending deletion
-		m_sessionsPendingDeletion.clear();
-
-		m_socketMgr->Update();
-
-		reflection_cast<IUpdateable>(m_profileMgr)->Update();
-
-		// Don't hog the whole CPU
-		Platform::SleepMS(10);
+		m_socketMgr->GetMessageArrivedEvent().WaitTimeout(10);
 	}
 }
 

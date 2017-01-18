@@ -34,12 +34,6 @@
     <Filter Include="Private\Pairing\PairMakers\Visual">
       <UniqueIdentifier>{69c41da2-0722-43c6-9397-7dbf8abe6d8d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Public\ImageTagProcessing">
-      <UniqueIdentifier>{61b1ccc8-3b2b-45aa-a874-d6b2c4c8f100}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Private\ImageTagProcessing">
-      <UniqueIdentifier>{80c3ea74-7464-4bcf-ae99-aea8c2bf2dec}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\Source\Client\stdafx.h">
@@ -108,27 +102,6 @@
     <ClInclude Include="..\..\..\..\Source\Client\PairingResult.h">
       <Filter>Public\Pairing</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Source\Client\ImageTagLocation.h">
-      <Filter>Public\ImageTagProcessing</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Source\Client\ImageTagManager.h">
-      <Filter>Public\ImageTagProcessing</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Source\Client\ImageTagLocationImpl.h">
-      <Filter>Private\ImageTagProcessing</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Source\Client\ImageTagLocator.h">
-      <Filter>Private\ImageTagProcessing</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Source\Client\ImageTagManagerImpl.h">
-      <Filter>Private\ImageTagProcessing</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Source\Client\AprilTagIncludes.h">
-      <Filter>Private\ImageTagProcessing</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Source\Client\ImageTagLocationListener.h">
-      <Filter>Public\ImageTagProcessing</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\Source\Client\SharingManager.h">
       <Filter>Public</Filter>
     </ClInclude>
@@ -175,15 +148,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\Source\Client\PairingInfo.cpp">
       <Filter>Private\Pairing</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\Source\Client\ImageTagLocationImpl.cpp">
-      <Filter>Private\ImageTagProcessing</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\Source\Client\ImageTagLocator.cpp">
-      <Filter>Private\ImageTagProcessing</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\Source\Client\ImageTagManagerImpl.cpp">
-      <Filter>Private\ImageTagProcessing</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\Source\Client\SharingManagerImpl.cpp">
       <Filter>Private</Filter>
