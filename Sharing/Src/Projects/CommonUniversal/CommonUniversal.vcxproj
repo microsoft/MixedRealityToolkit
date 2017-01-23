@@ -58,6 +58,7 @@
     <ClCompile Include="..\..\Source\Common\Private\DoubleElementImpl.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\ElementFactory.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\Environment.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\FloatArrayElementImpl.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\FloatElementImpl.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\InsertOperation.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\IntArrayAdapter.cpp" />
@@ -97,6 +98,8 @@
     <ClCompile Include="..\..\Source\Common\Private\ProfileManagerImpl.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\Reflection.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\RemoveOperation.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\ReplaceOperation.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\ReplaceTransforms.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\ResampleProcessor.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\RoomImpl.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\RoomManagerImpl.cpp" />
@@ -108,6 +111,7 @@
     <ClCompile Include="..\..\Source\Common\Private\SessionListHandshakeLogic.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\SessionManagerImpl.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\SessionMessageRouter.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\StringArrayElementImpl.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\StringElementImpl.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\Syncable.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\SyncContext.cpp" />
@@ -180,6 +184,7 @@
     <ClInclude Include="..\..\Source\Common\Private\DiscoveryClientImpl.h" />
     <ClInclude Include="..\..\Source\Common\Private\DoubleElementImpl.h" />
     <ClInclude Include="..\..\Source\Common\Private\ElementFactory.h" />
+    <ClInclude Include="..\..\Source\Common\Private\FloatArrayElementImpl.h" />
     <ClInclude Include="..\..\Source\Common\Private\FloatElementImpl.h" />
     <ClInclude Include="..\..\Source\Common\Private\InsertOperation.h" />
     <ClInclude Include="..\..\Source\Common\Private\IntArrayAdapter.h" />
@@ -219,6 +224,8 @@
     <ClInclude Include="..\..\Source\Common\Private\ProfileManagerImpl.h" />
     <ClInclude Include="..\..\Source\Common\Private\RakNetIncludes.h" />
     <ClInclude Include="..\..\Source\Common\Private\RemoveOperation.h" />
+    <ClInclude Include="..\..\Source\Common\Private\ReplaceOperation.h" />
+    <ClInclude Include="..\..\Source\Common\Private\ReplaceTransforms.h" />
     <ClInclude Include="..\..\Source\Common\Private\ResampleProcessor.h" />
     <ClInclude Include="..\..\Source\Common\Private\RoomImpl.h" />
     <ClInclude Include="..\..\Source\Common\Private\RoomManagerImpl.h" />
@@ -229,6 +236,7 @@
     <ClInclude Include="..\..\Source\Common\Private\SessionImpl.h" />
     <ClInclude Include="..\..\Source\Common\Private\SessionManagerImpl.h" />
     <ClInclude Include="..\..\Source\Common\Private\SessionMessageRouter.h" />
+    <ClInclude Include="..\..\Source\Common\Private\StringArrayElementImpl.h" />
     <ClInclude Include="..\..\Source\Common\Private\StringElementImpl.h" />
     <ClInclude Include="..\..\Source\Common\Private\Syncable.h" />
     <ClInclude Include="..\..\Source\Common\Private\SyncArray.h" />
@@ -268,6 +276,8 @@
     <ClInclude Include="..\..\Source\Common\Public\DoubleElement.h" />
     <ClInclude Include="..\..\Source\Common\Public\Element.h" />
     <ClInclude Include="..\..\Source\Common\Public\Environment.h" />
+    <ClInclude Include="..\..\Source\Common\Public\FloatArrayElement.h" />
+    <ClInclude Include="..\..\Source\Common\Public\FloatArrayListener.h" />
     <ClInclude Include="..\..\Source\Common\Public\FloatElement.h" />
     <ClInclude Include="..\..\Source\Common\Public\HandshakeLogic.h" />
     <ClInclude Include="..\..\Source\Common\Public\IncomingXSocketListener.h" />
@@ -299,6 +309,8 @@
     <ClInclude Include="..\..\Source\Common\Public\SideCarContext.h" />
     <ClInclude Include="..\..\Source\Common\Public\SideCarFunctions.h" />
     <ClInclude Include="..\..\Source\Common\Public\SideCarMacros.h" />
+    <ClInclude Include="..\..\Source\Common\Public\StringArrayElement.h" />
+    <ClInclude Include="..\..\Source\Common\Public\StringArrayListener.h" />
     <ClInclude Include="..\..\Source\Common\Public\StringElement.h" />
     <ClInclude Include="..\..\Source\Common\Public\SyncListener.h" />
     <ClInclude Include="..\..\Source\Common\Public\SyncManager.h" />
@@ -353,7 +365,7 @@
     <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
     <AppContainerApplication>true</AppContainerApplication>
     <ApplicationType>Windows Store</ApplicationType>
-    <WindowsTargetPlatformVersion>10.0.10240.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.10586.0</WindowsTargetPlatformVersion>
     <WindowsTargetPlatformMinVersion>10.0.10240.0</WindowsTargetPlatformMinVersion>
     <ApplicationTypeRevision>10.0</ApplicationTypeRevision>
     <SccProjectName>SAK</SccProjectName>

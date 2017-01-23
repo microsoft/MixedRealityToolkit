@@ -30,10 +30,6 @@
 #include <Public/NetworkConnectionListener.h>
 #include <Public/User.h>
 #include <Public/NetworkConnection.h>
-#include <Public/DownloadCommon.h>
-#include <Public/DownloadBuffer.h>
-#include <Public/DownloadCallback.h>
-#include <Public/DownloadManager.h>
 #include <Public/ProfileManager.h>
 #include <Public/SideCarContext.h>
 #include <Public/SideCar.h>

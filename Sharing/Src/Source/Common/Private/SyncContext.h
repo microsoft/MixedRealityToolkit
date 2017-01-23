@@ -45,7 +45,7 @@ public:
 	SystemID					GetLocalSystemID() const;
 	AuthorityLevel				GetAuthorityLevel() const;
 
-	ElementPtr					CreateElement(ElementType type, const XStringPtr& name, XGuid guid, XGuid parentGuid, XValue startingValue);
+	ElementPtr					CreateElement(ElementType type, const XStringPtr& name, XGuid guid, XGuid parentGuid, UserID owner, XValue startingValue);
 	void						DeleteElement(const ElementPtr& element);
 
 	// Return the full path string of the given element

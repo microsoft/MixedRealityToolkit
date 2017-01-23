@@ -46,6 +46,9 @@ public:
 
 	virtual std::string GetLocalAddressForRemoteClient(const XSocketPtr& socket) const XTOVERRIDE;
 
+	// Get a reference to an event that will get signalled when a message has arrived.  
+	virtual Event& GetMessageArrivedEvent() XTOVERRIDE;
+
 	// Processes any network messages that have arrived since the last call to Update().  
 	// When called, it will process any connection or disconnection notifications, then
 	// forward on any packets to the appropriate Connection object
@@ -56,16 +59,7 @@ private:
 	struct PeerConnection;
 	DECLARE_PTR(PeerConnection)
 
-	struct ClosingPeer
-	{
-		ClosingPeer() {}
-		ClosingPeer(std::chrono::high_resolution_clock::time_point shutdownTime, const PeerPtr& peer)
-			: m_shutdownStartTime(shutdownTime)
-			, m_peer(peer) {}
-
-		std::chrono::high_resolution_clock::time_point	m_shutdownStartTime;
-		PeerPtr                                         m_peer;
-	};
+	struct ClosingPeer;
 
 	void SendCommandToNetworkThread(const CommandPtr& command);
 
@@ -80,6 +74,8 @@ private:
 	// Process commands sent from the main thread to the network thread via the commandQueue
 	void ProcessCommands();
 
+	void UpdatePeers();
+
 	// Process incoming packets from the network
 	void ProcessMessages();
 
@@ -88,7 +84,7 @@ private:
 	void ProcessDiscoveryResponseCommand(const CommandPtr& discoveryCommand);
 	void ProcessRemovePeerReferenceCommand(const CommandPtr& command);
 
-	void SendConnectionFailedMessage(const std::string& address, uint16 port);
+	void SendConnectionFailedMessage(const std::string& address, uint16 port, PeerID peerID);
 	bool SendMessageToMainThread(const MessagePtr& msg);
 
 	std::list<XSocketImpl*> m_connectingSockets;
@@ -111,13 +107,15 @@ private:
 	TypedLFQueue<CommandPtr>	m_commandQueue;
 	TypedLFQueue<MessagePtr>	m_messageQueue;
 
-	Event						m_networkThreadEvent;
+	RakNet::RakNetSmartPtr<RakNet::SignaledEvent>		m_networkThreadEvent;
 
 	MemberFuncThreadPtr			m_networkThread;
 	volatile int				m_stopping;
 
 	// If the main lock-free queue is full, store the messages here to be sent later
 	std::queue<MessagePtr>		m_backupQueue;
+
+	Event						m_messagesAvailableEvent;
 };
 
 DECLARE_PTR(XSocketManagerImpl)

@@ -17,7 +17,7 @@ ServerRoomManager::ServerRoomManager(const Sync::SyncManagerPtr& syncMgr)
 	m_element = ObjectElement::Cast(syncMgr->GetRootObject()->GetElement(roomMgrElementName));
 	if (m_element == nullptr)
 	{
-		m_element = syncMgr->GetRootObject()->CreateObjectElement(roomMgrElementName);
+		m_element = syncMgr->GetRootObject()->CreateObjectElement(roomMgrElementName, new XString("RoomManager"));
 	}
 
 	XTASSERT(m_element);

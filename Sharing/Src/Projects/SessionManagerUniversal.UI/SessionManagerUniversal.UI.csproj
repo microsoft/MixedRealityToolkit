@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <Import Project="..\XTools.props" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
@@ -29,7 +30,8 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <UseDotNetNativeToolchain>false</UseDotNetNativeToolchain>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <OutputPath>..\..\bin\Release\Win32\SessionManagerUniversal.UI\</OutputPath>
@@ -41,9 +43,9 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
-    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+    <UseDotNetNativeToolchain>false</UseDotNetNativeToolchain>
     <WarningLevel>1</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <DebugSymbols>true</DebugSymbols>
@@ -56,6 +58,7 @@
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <UseDotNetNativeToolchain>false</UseDotNetNativeToolchain>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
     <OutputPath>..\..\bin\Release\ARM\SessionManagerUniversal.UI\</OutputPath>
@@ -67,7 +70,7 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
-    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+    <UseDotNetNativeToolchain>false</UseDotNetNativeToolchain>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
@@ -81,6 +84,7 @@
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <UseDotNetNativeToolchain>false</UseDotNetNativeToolchain>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <OutputPath>..\..\bin\Release\x64\SessionManagerUniversal.UI\</OutputPath>
@@ -92,7 +96,7 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
-    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+    <UseDotNetNativeToolchain>false</UseDotNetNativeToolchain>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
@@ -121,15 +125,15 @@
     <Compile Include="..\..\generatedinterface\csharpapi\DirectPairReceiver.cs">
       <Link>Generated Files\DirectPairReceiver.cs</Link>
     </Compile>
-    <Compile Include="..\..\GeneratedInterface\CSharpAPI\DiscoveredSystem.cs">
-      <Link>Generated Files\DiscoveredSystem.cs</Link>
-    </Compile>
-    <Compile Include="..\..\GeneratedInterface\CSharpAPI\DiscoveryClient.cs">
-      <Link>Generated Files\DiscoveryClient.cs</Link>
-    </Compile>
-    <Compile Include="..\..\GeneratedInterface\CSharpAPI\DiscoveryClientListener.cs">
-      <Link>Generated Files\DiscoveryClientListener.cs</Link>
-    </Compile>
+    <Compile Include="..\..\GeneratedInterface\CSharpAPI\DiscoveredSystem.cs"> 
+        <Link>Generated Files\DiscoveredSystem.cs</Link> 
+    </Compile> 
+    <Compile Include="..\..\GeneratedInterface\CSharpAPI\DiscoveryClient.cs"> 
+        <Link>Generated Files\DiscoveryClient.cs</Link> 
+    </Compile> 
+    <Compile Include="..\..\GeneratedInterface\CSharpAPI\DiscoveryClientListener.cs"> 
+        <Link>Generated Files\DiscoveryClientListener.cs</Link> 
+    </Compile> 
     <Compile Include="..\..\generatedinterface\csharpapi\DoubleElement.cs">
       <Link>Generated Files\DoubleElement.cs</Link>
     </Compile>
@@ -139,20 +143,14 @@
     <Compile Include="..\..\generatedinterface\csharpapi\ElementType.cs">
       <Link>Generated Files\ElementType.cs</Link>
     </Compile>
+    <Compile Include="..\..\GeneratedInterface\CSharpAPI\FloatArrayElement.cs">
+      <Link>Generated Files\FloatArrayElement.cs</Link>
+    </Compile>
+    <Compile Include="..\..\GeneratedInterface\CSharpAPI\FloatArrayListener.cs">
+      <Link>Generated Files\FloatArrayListener.cs</Link>
+    </Compile>
     <Compile Include="..\..\generatedinterface\csharpapi\FloatElement.cs">
       <Link>Generated Files\FloatElement.cs</Link>
-    </Compile>
-    <Compile Include="..\..\generatedinterface\csharpapi\ImageTagLocation.cs">
-      <Link>Generated Files\ImageTagLocation.cs</Link>
-    </Compile>
-    <Compile Include="..\..\generatedinterface\csharpapi\ImageTagLocationListener.cs">
-      <Link>Generated Files\ImageTagLocationListener.cs</Link>
-    </Compile>
-    <Compile Include="..\..\generatedinterface\csharpapi\ImageTagLocationType.cs">
-      <Link>Generated Files\ImageTagLocationType.cs</Link>
-    </Compile>
-    <Compile Include="..\..\generatedinterface\csharpapi\ImageTagManager.cs">
-      <Link>Generated Files\ImageTagManager.cs</Link>
     </Compile>
     <Compile Include="..\..\generatedinterface\csharpapi\IntArrayElement.cs">
       <Link>Generated Files\IntArrayElement.cs</Link>
@@ -268,15 +266,21 @@
     <Compile Include="..\..\generatedinterface\csharpapi\SharingManager.cs">
       <Link>Generated Files\SharingManager.cs</Link>
     </Compile>
+    <Compile Include="..\..\GeneratedInterface\CSharpAPI\StringArrayElement.cs">
+      <Link>Generated Files\StringArrayElement.cs</Link>
+    </Compile>
+    <Compile Include="..\..\GeneratedInterface\CSharpAPI\StringArrayListener.cs">
+      <Link>Generated Files\StringArrayListener.cs</Link>
+    </Compile>
     <Compile Include="..\..\generatedinterface\csharpapi\StringElement.cs">
       <Link>Generated Files\StringElement.cs</Link>
     </Compile>
     <Compile Include="..\..\generatedinterface\csharpapi\SyncListener.cs">
       <Link>Generated Files\SyncListener.cs</Link>
     </Compile>
-    <Compile Include="..\..\GeneratedInterface\CSharpAPI\SystemRole.cs">
-      <Link>Generated Files\SystemRole.cs</Link>
-    </Compile>
+    <Compile Include="..\..\GeneratedInterface\CSharpAPI\SystemRole.cs"> 
+      <Link>Generated Files\SystemRole.cs</Link> 
+    </Compile> 
     <Compile Include="..\..\generatedinterface\csharpapi\TagImage.cs">
       <Link>Generated Files\TagImage.cs</Link>
     </Compile>
@@ -325,6 +329,14 @@
     <None Include="SessionManagerUniversal.UI_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="$(OutDir)..\ClientUniversalCSharp\SharingClient.dll">
+      <Link>SharingClient.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="$(OutDir)..\ClientUniversalCSharp\SharingClient.pdb">
+      <Link>SharingClient.pdb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -350,12 +362,10 @@
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>mkdir Appx
-copy ..\ClientUniversalCSharp\SharingClient.dll Appx\SharingClient.dll
-if $(ConfigurationName) == Debug (
-copy ..\ClientUniversalCSharp\SharingClient.pdb Appx\SharingClient.pdb
-)</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
+  <Import Project="..\XTools.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

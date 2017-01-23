@@ -46,7 +46,7 @@ void SignaledEvent::InitEvent(void)
 	/// MICROSOFT PROJECT B CHANGES BEGIN
 #if defined(_WIN32) || defined(WINDOWS_PHONE_8) || defined(WINDOWS_STORE_RT)
 	
-	eventList = CreateEventEx(NULL, NULL, 0, STANDARD_RIGHTS_ALL);
+	eventList = CreateEventEx(NULL, NULL, 0, STANDARD_RIGHTS_ALL | EVENT_MODIFY_STATE);
 	RakAssert(eventList != NULL);
 	/// MICROSOFT PROJECT B CHANGES END
 

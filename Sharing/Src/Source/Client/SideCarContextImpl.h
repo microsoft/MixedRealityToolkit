@@ -10,7 +10,7 @@
 
 XTOOLS_NAMESPACE_BEGIN
 
-class SideCarContextImpl : public SideCarContext, public IUpdateable
+class SideCarContextImpl : public SideCarContext
 {
 	XTOOLS_REFLECTION_DECLARE(SideCarContextImpl)
 
@@ -25,18 +25,8 @@ public:
 	// listen for when the connection happens
 	virtual NetworkConnectionPtr GetBarabooConnection() XTOVERRIDE;
 
-	// Get the download manager for downloading data over http  
-	virtual DownloadManagerPtr GetDownloadManager() XTOVERRIDE;
-
-
-	//////////////////////////////////////////////////////////////////////////
-	// IUpdateable Functions
-
-	virtual void Update();
-
 private:
 	NetworkConnectionPtr	m_barabooConnection;
-	DownloadManagerPtr		m_downloadManager;
 };
 
 DECLARE_PTR(SideCarContextImpl)

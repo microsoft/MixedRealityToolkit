@@ -15,10 +15,6 @@ Public\NetworkOutMessage.h
 Public\NetworkInMessage.h
 Public\NetworkConnectionListener.h
 Public\NetworkConnection.h
-Public\DownloadCommon.h
-Public\DownloadManager.h
-Public\DownloadBuffer.h
-Public\DownloadCallback.h
 Public\SideCarContext.h
 Public\SideCar.h
 Public\ProfileManager.h

@@ -18,14 +18,14 @@ void ElementFactory::RegisterMaker(ElementType type, const ElementMakerPtr& make
 }
 
 
-ElementPtr ElementFactory::Make(ElementType type, SyncContext* syncContext, const XStringPtr& name, XGuid id, const XValue& startingValue) const
+ElementPtr ElementFactory::Make(ElementType type, SyncContext* syncContext, const XStringPtr& name, XGuid id, UserID ownerID, const XValue& startingValue) const
 {
 	XTASSERT(name);
 
 	auto maker = m_makers.find(type);
 	if (maker != m_makers.end())
 	{
-		return maker->second->Create(syncContext, name, id, startingValue);
+		return maker->second->Create(syncContext, name, id, ownerID, startingValue);
 	}
 	else
 	{

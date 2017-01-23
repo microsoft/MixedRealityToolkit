@@ -48,11 +48,19 @@ public:
 	/// Create an ObjectElement as a child of this object.   
 	/// Creating this element will cause the same element to automatically be created on all the remote systems.
 	/// Set the User parameter to your local User ID to have this object removed from remote systems when you disconnect
-	virtual ref_ptr<ObjectElement> CreateObjectElement(const XStringPtr& name, const User* owner = NULL) = 0;
+	virtual ref_ptr<ObjectElement> CreateObjectElement(const XStringPtr& name, const XStringPtr& objectType, const User* owner = NULL) = 0;
 
 	/// Create an IntArrayElement as a child of this object.    
 	/// Creating this element will cause the same element to automatically be created on all the remote systems
 	virtual IntArrayElementPtr CreateIntArrayElement(const XStringPtr& name) = 0;
+
+	/// Create a FloatArrayElement as a child of this object.    
+	/// Creating this element will cause the same element to automatically be created on all the remote systems
+	virtual FloatArrayElementPtr CreateFloatArrayElement(const XStringPtr& name) = 0;
+
+	/// Create a StringArrayElement as a child of this object.    
+	/// Creating this element will cause the same element to automatically be created on all the remote systems
+	virtual StringArrayElementPtr CreateStringArrayElement(const XStringPtr& name) = 0;
 
 	/// Returns the number of elements that are immediate children of this element
 	virtual int32 GetElementCount() const = 0;
@@ -92,6 +100,10 @@ public:
 	/// Return the ID of the user who 'owns' this element.  Owned elements will be deleted from the 
 	/// set of synced data when their owner disconnects
 	virtual UserID GetOwnerID() const = 0;
+
+	/// Returns the type of this Object element, ie: the type of the class that this Object Element represents
+	/// in the synced data set.  
+	virtual const XStringPtr& GetObjectType() const = 0;
 };
 
 DECLARE_PTR_POST(ObjectElement)

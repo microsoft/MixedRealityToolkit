@@ -26,7 +26,7 @@
     <SccLocalPath>SAK</SccLocalPath>
     <SccProvider>SAK</SccProvider>
     <RootNamespace>ClientWindows</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.10240.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.10586.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -96,7 +96,7 @@
       <WarningLevel>Level4</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\..\Source\Common;..\..\..\..\External\zxing-cpp\include;..\..\..\..\External\zint-2.4.3\include;..\..\..\..\External\apriltag-2015-03-18\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\Source\Common;..\..\..\..\External\zxing-cpp\include;..\..\..\..\External\zint-2.4.3\include</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -107,8 +107,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>apriltag_WinDesktop_$(PlatformTarget)_$(Configuration).lib;zxing_WinDesktop_$(PlatformTarget)_$(Configuration).lib;zint_WinDesktop_$(PlatformTarget)_$(Configuration).lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\..\..\External\zxing-cpp\lib\Windows;..\..\..\..\External\zint-2.4.3\lib;..\..\..\..\External\apriltag-2015-03-18\lib\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>zxing_WinDesktop_$(PlatformTarget)_$(Configuration).lib;zint_WinDesktop_$(PlatformTarget)_$(Configuration).lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\..\External\zxing-cpp\lib\Windows;..\..\..\..\External\zint-2.4.3\lib</AdditionalLibraryDirectories>
       <AdditionalOptions>/ignore:4006 /ignore:4221 %(AdditionalOptions)</AdditionalOptions>
     </Lib>
     <ProjectReference>
@@ -123,7 +123,7 @@
       <WarningLevel>Level4</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\..\Source\Common;..\..\..\..\External\zxing-cpp\include;..\..\..\..\External\zint-2.4.3\include;..\..\..\..\External\apriltag-2015-03-18\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\Source\Common;..\..\..\..\External\zxing-cpp\include;..\..\..\..\External\zint-2.4.3\include</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -133,8 +133,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>apriltag_WinDesktop_$(PlatformTarget)_$(Configuration).lib;zxing_WinDesktop_$(PlatformTarget)_$(Configuration).lib;zint_WinDesktop_$(PlatformTarget)_$(Configuration).lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\..\..\External\zxing-cpp\lib\Windows;..\..\..\..\External\zint-2.4.3\lib;..\..\..\..\External\apriltag-2015-03-18\lib\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>zxing_WinDesktop_$(PlatformTarget)_$(Configuration).lib;zint_WinDesktop_$(PlatformTarget)_$(Configuration).lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\..\External\zxing-cpp\lib\Windows;..\..\..\..\External\zint-2.4.3\lib</AdditionalLibraryDirectories>
       <AdditionalOptions>/ignore:4006 /ignore:4221 %(AdditionalOptions)</AdditionalOptions>
     </Lib>
     <ProjectReference>
@@ -148,7 +148,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\..\Source\Common;..\..\..\..\External\zxing-cpp\include;..\..\..\..\External\zint-2.4.3\include;..\..\..\..\External\apriltag-2015-03-18\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\Source\Common;..\..\..\..\External\zxing-cpp\include;..\..\..\..\External\zint-2.4.3\include</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -159,8 +159,8 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <Lib>
-      <AdditionalDependencies>apriltag_WinDesktop_$(PlatformTarget)_$(Configuration).lib;zxing_WinDesktop_$(PlatformTarget)_$(Configuration).lib;zint_WinDesktop_$(PlatformTarget)_$(Configuration).lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\..\..\External\zxing-cpp\lib\Windows;..\..\..\..\External\zint-2.4.3\lib;..\..\..\..\External\apriltag-2015-03-18\lib\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>zxing_WinDesktop_$(PlatformTarget)_$(Configuration).lib;zint_WinDesktop_$(PlatformTarget)_$(Configuration).lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\..\External\zxing-cpp\lib\Windows;..\..\..\..\External\zint-2.4.3\lib</AdditionalLibraryDirectories>
       <AdditionalOptions>/ignore:4006 /ignore:4221 %(AdditionalOptions)</AdditionalOptions>
     </Lib>
     <ProjectReference>
@@ -174,7 +174,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\..\Source\Common;..\..\..\..\External\zxing-cpp\include;..\..\..\..\External\zint-2.4.3\include;..\..\..\..\External\apriltag-2015-03-18\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\Source\Common;..\..\..\..\External\zxing-cpp\include;..\..\..\..\External\zint-2.4.3\include</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -185,8 +185,8 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <Lib>
-      <AdditionalDependencies>apriltag_WinDesktop_$(PlatformTarget)_$(Configuration).lib;zxing_WinDesktop_$(PlatformTarget)_$(Configuration).lib;zint_WinDesktop_$(PlatformTarget)_$(Configuration).lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\..\..\External\zxing-cpp\lib\Windows;..\..\..\..\External\zint-2.4.3\lib;..\..\..\..\External\apriltag-2015-03-18\lib\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>zxing_WinDesktop_$(PlatformTarget)_$(Configuration).lib;zint_WinDesktop_$(PlatformTarget)_$(Configuration).lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\..\External\zxing-cpp\lib\Windows;..\..\..\..\External\zint-2.4.3\lib</AdditionalLibraryDirectories>
       <AdditionalOptions>/ignore:4006 /ignore:4221 %(AdditionalOptions)</AdditionalOptions>
     </Lib>
     <ProjectReference>
@@ -204,19 +204,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\Source\Client\AprilTagIncludes.h" />
     <ClInclude Include="..\..\..\..\Source\Client\ClientWrapperAPI.h" />
     <ClInclude Include="..\..\..\..\Source\Client\DirectPairConnector.h" />
     <ClInclude Include="..\..\..\..\Source\Client\DirectPairReceiver.h" />
     <ClInclude Include="..\..\..\..\Source\Client\DynamicLibrary.h" />
     <ClInclude Include="..\..\..\..\Source\Client\ImageData.h" />
     <ClInclude Include="..\..\..\..\Source\Client\ImageLuminanceSource.h" />
-    <ClInclude Include="..\..\..\..\Source\Client\ImageTagLocation.h" />
-    <ClInclude Include="..\..\..\..\Source\Client\ImageTagLocationListener.h" />
-    <ClInclude Include="..\..\..\..\Source\Client\ImageTagLocationImpl.h" />
-    <ClInclude Include="..\..\..\..\Source\Client\ImageTagLocator.h" />
-    <ClInclude Include="..\..\..\..\Source\Client\ImageTagManager.h" />
-    <ClInclude Include="..\..\..\..\Source\Client\ImageTagManagerImpl.h" />
     <ClInclude Include="..\..\..\..\Source\Client\PairingInfo.h" />
     <ClInclude Include="..\..\..\..\Source\Client\PairingListener.h" />
     <ClInclude Include="..\..\..\..\Source\Client\PairingManager.h" />
@@ -242,9 +235,6 @@
     <ClCompile Include="..\..\..\..\Source\Client\DynamicLibrary.cpp" />
     <ClCompile Include="..\..\..\..\Source\Client\ImageData.cpp" />
     <ClCompile Include="..\..\..\..\Source\Client\ImageLuminanceSource.cpp" />
-    <ClCompile Include="..\..\..\..\Source\Client\ImageTagLocationImpl.cpp" />
-    <ClCompile Include="..\..\..\..\Source\Client\ImageTagLocator.cpp" />
-    <ClCompile Include="..\..\..\..\Source\Client\ImageTagManagerImpl.cpp" />
     <ClCompile Include="..\..\..\..\Source\Client\PairingInfo.cpp" />
     <ClCompile Include="..\..\..\..\Source\Client\PairingManagerImpl.cpp" />
     <ClCompile Include="..\..\..\..\Source\Client\Settings.cpp" />

@@ -13,7 +13,8 @@ XTOOLS_REFLECTION_DEFINE(SyncObject)
 .BaseClass<Syncable>();
 
 
-SyncObject::SyncObject()
+SyncObject::SyncObject(const std::string& objectType)
+	: m_objectType(new XString(objectType))
 {
 
 }
@@ -35,6 +36,12 @@ SyncObject::~SyncObject()
 const ObjectElementPtr& SyncObject::GetObjectElement() const
 {
 	return m_element;
+}
+
+
+const XStringPtr& SyncObject::GetObjectType() const
+{
+	return m_objectType;
 }
 
 
@@ -164,7 +171,7 @@ void SyncObject::OnElementValueChanged(XGuid elementID, T newValue)
 
 bool SyncObject::BindLocal(const ObjectElementPtr& parent, const std::string& name, const UserPtr& owner)
 {
-	m_element = parent->CreateObjectElement(new XString(name), owner.get());
+	m_element = parent->CreateObjectElement(new XString(name), m_objectType, owner.get());
 	if (XTVERIFY(m_element != nullptr))
 	{
 		// Register this object as a listener for change events of its children
@@ -196,6 +203,8 @@ void SyncObject::BindRemote(const ElementPtr& element)
 	m_element = ObjectElement::Cast(element);
 	if (XTVERIFY(m_element != nullptr))
 	{
+		XTASSERT(m_element->GetObjectType()->IsEqual(m_objectType));
+
 		// Register this object as a listener for change events of its children
 		m_element->AddListener(this);
 

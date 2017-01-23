@@ -312,7 +312,10 @@ RakPeer::RakPeer()
 
 	GenerateGUID();
 
-	quitAndDataEvents.InitEvent();
+	/// Microsoft Project B Changes Begin
+	//quitAndDataEvents.Init();
+	/// Microsoft Project B Changes End
+	
 	limitConnectionFrequencyFromTheSameIP=false;
 	ResetSendReceipt();
 }
@@ -331,7 +334,12 @@ RakPeer::~RakPeer()
 	RakNet::StringTable::RemoveReference();
 	WSAStartupSingleton::Deref();
 
-	quitAndDataEvents.CloseEvent();
+	/// Microsoft Project B Changes Begin
+	if (releaseQuitAndDataEvents && !quitAndDataEvents.IsNull())
+	{
+		quitAndDataEvents->CloseEvent();
+	}
+	/// Microsoft Project B Changes End
 
 #if LIBCAT_SECURITY==1
 	// Encryption and security
@@ -373,7 +381,7 @@ RakPeer::~RakPeer()
 // \param[in] socketDescriptorCount The size of the \a socketDescriptors array.  Pass 1 if you are not sure what to pass.
 // \return False on failure (can't create socket or thread), true on success.
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-StartupResult RakPeer::Startup( unsigned int maxConnections, SocketDescriptor *socketDescriptors, unsigned socketDescriptorCount, int threadPriority )
+StartupResult RakPeer::Startup( unsigned int maxConnections, SocketDescriptor *socketDescriptors, unsigned socketDescriptorCount, /* Microsoft Project B Changes Begin*/ RakNetSmartPtr<SignaledEvent> networkThreadWaitEvent, /* Microsoft Project B Changes End*/ int threadPriority)
 {
 	if (IsActive())
 		return RAKNET_ALREADY_STARTED;
@@ -400,6 +408,20 @@ StartupResult RakPeer::Startup( unsigned int maxConnections, SocketDescriptor *s
 		threadPriority=1000;
 #endif
 	}
+
+	/// Microsoft Project B Changes Begin
+	if (networkThreadWaitEvent != nullptr)
+	{
+		quitAndDataEvents = networkThreadWaitEvent;
+		releaseQuitAndDataEvents = false;
+	}
+	else
+	{
+		quitAndDataEvents = new SignaledEvent();
+		quitAndDataEvents->InitEvent();
+		releaseQuitAndDataEvents = true;
+	}
+	/// Microsoft Project B Changes End
 
 
 	FillIPList();
@@ -1114,12 +1136,18 @@ void RakPeer::Shutdown( unsigned int blockDuration, unsigned char orderingChanne
 
 	activeSystemListSize=0;
 
-	quitAndDataEvents.SetEvent();
+	if (!quitAndDataEvents.IsNull())
+	{
+		quitAndDataEvents->SetEvent();
+	}
 
 	endThreads = true;
 
 //	RakNet::TimeMS timeout;
-#if RAKPEER_USER_THREADED!=1
+
+/// Microsoft Project B Changes Begin
+//#if RAKPEER_USER_THREADED!=1
+/// Microsoft Project B Changes End
 
 #if !defined(__native_client__) && !defined(WINDOWS_STORE_RT)
 	for (i=0; i < socketList.Size(); i++)
@@ -1170,8 +1198,9 @@ void RakPeer::Shutdown( unsigned int blockDuration, unsigned char orderingChanne
 	}
 #endif
 
-
-#endif // RAKPEER_USER_THREADED!=1
+/// Microsoft Project B Changes Begin
+//#endif // RAKPEER_USER_THREADED!=1
+/// Microsoft Project B Changes End
 
 //	char c=0;
 //	unsigned int socketIndex;
@@ -4238,7 +4267,7 @@ void RakPeer::SendBuffered( const char *data, BitSize_t numberOfBitsToSend, Pack
 	if (priority==IMMEDIATE_PRIORITY)
 	{
 		// Forces pending sends to go out now, rather than waiting to the next update interval
-		quitAndDataEvents.SetEvent();
+		quitAndDataEvents->SetEvent();
 	}
 }
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -4299,7 +4328,7 @@ void RakPeer::SendBufferedList( const char **data, const int *lengths, const int
 	if (priority==IMMEDIATE_PRIORITY)
 	{
 		// Forces pending sends to go out now, rather than waiting to the next update interval
-		quitAndDataEvents.SetEvent();
+		quitAndDataEvents->SetEvent();
 	}
 }
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -5569,7 +5598,7 @@ bool RakPeer::RunRecvFromOnce( RakNetSocket *s )
 		{
 			RakAssert(recvFromStruct->systemAddress.GetPort());
 			bufferedPackets.Push(recvFromStruct);
-			quitAndDataEvents.SetEvent();
+			quitAndDataEvents->SetEvent();
 
 			// Got data
 			return true;
@@ -5958,7 +5987,7 @@ bool RakPeer::RunUpdateCycle(BitStream &updateBitStream )
 				PingInternal( systemAddress, true, UNRELIABLE );
 
 				// Update again immediately after this tick so the ping goes out right away
-				quitAndDataEvents.SetEvent();
+				quitAndDataEvents->SetEvent();
 			}
 
 			// Find whoever has the lowest player ID
@@ -6041,7 +6070,7 @@ bool RakPeer::RunUpdateCycle(BitStream &updateBitStream )
 							PingInternal( systemAddress, true, UNRELIABLE );
 
 							// Update again immediately after this tick so the ping goes out right away
-							quitAndDataEvents.SetEvent();
+							quitAndDataEvents->SetEvent();
 
 							RakNet::BitStream inBitStream((unsigned char *) data, byteSize, false);
 							SystemAddress bsSystemAddress;
@@ -6119,7 +6148,7 @@ bool RakPeer::RunUpdateCycle(BitStream &updateBitStream )
 						SendImmediate( (char*)outBitStream.GetData(), outBitStream.GetNumberOfBitsUsed(), IMMEDIATE_PRIORITY, UNRELIABLE, 0, systemAddress, false, false, RakNet::GetTimeUS(), 0 );
 
 						// Update again immediately after this tick so the ping goes out right away
-						quitAndDataEvents.SetEvent();
+						quitAndDataEvents->SetEvent();
 
 						rakFree_Ex(data, _FILE_AND_LINE_ );
 					}
@@ -6294,7 +6323,7 @@ void RakPeer::OnRNS2Recv(RNS2RecvStruct *recvStruct)
 	}
 
 	PushBufferedPacket(recvStruct);
-	quitAndDataEvents.SetEvent();
+	quitAndDataEvents->SetEvent();
 }
 
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -6386,7 +6415,7 @@ RAK_THREAD_DECLARATION(RakNet::UpdateNetworkLoop)
 		rakPeer->RunUpdateCycle(updateBitStream);
 
 		// Pending sends go out this often, unless quitAndDataEvents is set
-		rakPeer->quitAndDataEvents.WaitOnEvent(10);
+		rakPeer->quitAndDataEvents->WaitOnEvent(10);
 
 		/*
 

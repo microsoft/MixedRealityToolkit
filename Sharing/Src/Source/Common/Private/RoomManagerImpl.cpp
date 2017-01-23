@@ -19,7 +19,7 @@ RoomManagerImpl::RoomManagerImpl(const ClientContextConstPtr& context)
 	// Create the sync element representing this object.  
 	// NOTE: the room manager should be constructed before a connection to another device is made, so there should never 
 	// be another object with the same name already in the sync system
-	m_element = m_context->GetInternalSyncManager()->GetRootObject()->CreateObjectElement(new XString("RoomMgr"));
+	m_element = m_context->GetInternalSyncManager()->GetRootObject()->CreateObjectElement(new XString("RoomMgr"), new XString("RoomManager"));
 	XTASSERT(m_element);
 
 	m_element->AddListener(this);
@@ -280,15 +280,19 @@ bool RoomManagerImpl::UploadAnchor(const RoomPtr& room, const XStringPtr& anchor
 
 void RoomManagerImpl::OnElementAdded(const ElementPtr& element)
 {
-	// Create a Room object for this element
-	RoomImplPtr newRoom = new RoomImpl(m_listenerList);
-	newRoom->BindRemote(element);
+	ObjectElementPtr objElement = ObjectElement::Cast(element);
+	if (objElement && objElement->GetObjectType()->GetString() == "Room")
+	{
+		// Create a Room object for this element
+		RoomImplPtr newRoom = new RoomImpl(m_listenerList);
+		newRoom->BindRemote(element);
 
-	// Add it to the list of rooms
-	m_roomList.push_back(newRoom);
+		// Add it to the list of rooms
+		m_roomList.push_back(newRoom);
 
-	// Notify the listeners about the new room
-	m_listenerList->NotifyListeners(&RoomManagerListener::OnRoomAdded, newRoom);
+		// Notify the listeners about the new room
+		m_listenerList->NotifyListeners(&RoomManagerListener::OnRoomAdded, newRoom);
+	}
 }
 
 

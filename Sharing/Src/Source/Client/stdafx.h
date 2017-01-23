@@ -19,9 +19,7 @@
 #endif
 
 #include <Common.h>
-#include <Public/DownloadManager.h>
 #include <Public/SideCarContext.h>
 #include <Public/SideCar.h>
 #include "ClientWrapperAPI.h"
 #include "ZXingIncludes.h"
-#include "AprilTagIncludes.h"

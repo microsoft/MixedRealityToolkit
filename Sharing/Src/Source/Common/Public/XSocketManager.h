@@ -39,6 +39,9 @@ public:
 	// Returns the address of this machine as seen by the remote machine connected by the given socket
 	virtual std::string GetLocalAddressForRemoteClient(const XSocketPtr& socket) const = 0;
 
+	// Get a reference to an event that will get signalled when a message has arrived.  
+	virtual Event& GetMessageArrivedEvent() = 0;
+
 	// Returns a list of all the IP addresses for this machine
 	static IPAddressList GetLocalMachineAddresses();
 };

@@ -29,7 +29,7 @@ public:
 	virtual void SetValue(int32 index, int32 newValue) = 0;
 
 	/// Inserts the given value into the array at the given index
-	virtual void InsertValue(int32 index, int value) = 0;
+	virtual void InsertValue(int32 index, int32 value) = 0;
 
 	/// Remove the element at the given index from the array
 	virtual void RemoveValue(int32 index) = 0;

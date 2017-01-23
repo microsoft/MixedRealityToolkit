@@ -102,6 +102,20 @@ namespace Dll_Interface
 		_In_ INT32 bufferIndexCount,
 		_In_ INT32* indices);
 
+	// Voxel extraction
+	EXTERN_C __declspec(dllexport) int GeneratePlayspace_ExtractVoxel_Setup(
+		_Out_ INT32* voxelCount);
+	EXTERN_C __declspec(dllexport) int GeneratePlayspace_ExtractVoxel_Extract(
+		_In_ INT32 bufferVoxelCount,
+		_In_ U8* voxels);
+	EXTERN_C __declspec(dllexport) void GeneratePlayspace_ExtractVoxel_Metadata(
+		_Out_ int* voxelsPerRow,
+		_Out_ float* voxelWidth,
+		_Out_ Vec3f* center,
+		_Out_ Vec3f* origin,
+		_Out_ Vec3f* originHalf,
+		_Out_ Vec4f* orientation );
+
 	// Query functions
 	EXTERN_C __declspec(dllexport) int QueryPlayspaceStats(
 		_In_ Dll_Interface::PlayspaceStats* playspaceStats);

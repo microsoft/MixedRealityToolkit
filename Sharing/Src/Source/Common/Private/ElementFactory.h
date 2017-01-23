@@ -15,7 +15,7 @@ NAMESPACE_BEGIN(Sync)
 class ElementMaker : public RefCounted
 {
 public:
-	virtual ElementPtr Create(SyncContext* syncContext, const XStringPtr& name, XGuid id, const XValue& startingValue) const = 0;
+	virtual ElementPtr Create(SyncContext* syncContext, const XStringPtr& name, XGuid id, UserID ownerID, const XValue& startingValue) const = 0;
 };
 DECLARE_PTR(ElementMaker)
 
@@ -26,7 +26,7 @@ class ElementFactory
 public:
 	void RegisterMaker(ElementType type, const ElementMakerPtr& maker);
 
-	ElementPtr Make(ElementType type, SyncContext* syncContext, const XStringPtr& name, XGuid id, const XValue& startingValue) const;
+	ElementPtr Make(ElementType type, SyncContext* syncContext, const XStringPtr& name, XGuid id, UserID ownerID, const XValue& startingValue) const;
 
 private:
 	std::map<ElementType, ElementMakerPtr> m_makers;
@@ -38,9 +38,20 @@ template<typename T>
 class ElementMakerT : public ElementMaker
 {
 public:
-	virtual ElementPtr Create(SyncContext* syncContext, const XStringPtr& name, XGuid id, const XValue& startingValue) const XTOVERRIDE
+	virtual ElementPtr Create(SyncContext* syncContext, const XStringPtr& name, XGuid id, UserID , const XValue& startingValue) const XTOVERRIDE
 	{
 		return new T(syncContext, name, id, startingValue);
+	}
+};
+
+//////////////////////////////////////////////////////////////////////////
+template<typename T>
+class ElementMakerWithOwnerT : public ElementMaker
+{
+public:
+	virtual ElementPtr Create(SyncContext* syncContext, const XStringPtr& name, XGuid id, UserID ownerID, const XValue& startingValue) const XTOVERRIDE
+	{
+		return new T(syncContext, name, id, ownerID, startingValue);
 	}
 };
 

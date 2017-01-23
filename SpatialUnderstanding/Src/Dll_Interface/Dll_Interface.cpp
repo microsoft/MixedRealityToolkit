@@ -186,7 +186,7 @@ EXTERN_C __declspec(dllexport) int GeneratePlayspace_ExtractMesh_Extract(
 	{
 		return 0;
 	}
-
+		
 	// Rotate back to the external world space (same orientation as the input data - not the aligned internal representation)
 	UnderstandingMgr_W &UnderstandingMgr = UnderstandingMgr_W::GetUnderstandingMgr();
 	Quat quatDLLToWorld = UnderstandingMgr.GetFrameTransfoForOutput();
@@ -217,6 +217,139 @@ EXTERN_C __declspec(dllexport) int GeneratePlayspace_ExtractMesh_Extract(
 	}
 
 	return 1;
+}
+
+// Extracting the voxels is a two step process, the first generates the voxel fiels for extraction & saves it off.
+//	The caller is able to see the voxel count so they can allocate the proper amount of memory
+static U8 * extractedVoxelArray = NULL;
+static int extractedVoxelArraySize = 0;
+static int extractedVoxelsPerRow = 0;
+static float extractedVoxelWidth = 0.0f;
+static Vec3f extractCenter;
+static Vec3f extractOrigin;
+static Vec3f extractOrigin_Half;
+static Quat extractOrientation;
+EXTERN_C __declspec(dllexport) int GeneratePlayspace_ExtractVoxel_Setup(
+	_Out_ INT32* voxelCount)
+{
+	// Defaults
+	*voxelCount = 0;
+
+	// Validate
+	UnderstandingMgr_W &UnderstandingMgr = UnderstandingMgr_W::GetUnderstandingMgr();
+	PlaySpaceInfos_W & playspaceInfos = UnderstandingMgr.GetPlayspaceInfos();
+	if (playspaceInfos.m_pSurfaceSR == NULL)
+	{
+		return 0;
+	}
+
+	// Setup
+	Playspace_SR_W * psrw = playspaceInfos.m_pSurfaceSR;
+	if (psrw == NULL)
+	{
+		return 0;
+	}
+	psrw->ExternalLockBlind(true);	// LOCK!!!
+	Playspace_SR_BlindMap & srBlindMap = psrw->m_BlindMap;
+	if (&srBlindMap == NULL)
+	{
+		return 0;
+	}
+
+	extractedVoxelsPerRow = SR_BLINDRAY_MAP_SIZE;
+	extractedVoxelWidth = SR_BLINDRAY_MAP_TO_WORLD;
+	extractCenter = srBlindMap.m_fCenter;
+	extractOrigin = srBlindMap.m_fOrigin;
+	extractOrigin_Half = srBlindMap.m_fOrigin_Half;
+	extractOrientation = UnderstandingMgr.GetFrameTransfoForOutput();
+
+	PSR_BlindMap_VoxelHUDA & dynBlindMap = srBlindMap.m_BlindMap;
+	if (&dynBlindMap == NULL)
+	{
+		return 0;
+	}
+	*voxelCount = dynBlindMap.GetSize();
+
+	// If there were previous voxels in the array, clear the old stuff first
+	if (extractedVoxelArray != NULL)
+	{
+		delete[] extractedVoxelArray;
+		extractedVoxelArraySize = 0;
+	}
+
+	// construct extractedVoxelArray
+	PSR_BlindMap_Voxel * psrBlindMap = dynBlindMap.GetArrayPtr();
+	extractedVoxelArray = new U8[*voxelCount];
+	extractedVoxelArraySize = *voxelCount;
+	for (int i = 0; i < extractedVoxelArraySize; i++)
+	{
+		extractedVoxelArray[i] = psrBlindMap[i].Flags;
+	}
+
+	psrw->ExternalLockBlind(false);	// UNLOCK!!!
+
+	return 1;
+}
+
+EXTERN_C __declspec(dllexport) int GeneratePlayspace_ExtractVoxel_Extract(
+	_In_ INT32 bufferVoxelCount,
+	_In_ U8* voxels)
+{
+	// Validate
+	if ((extractedVoxelArray == NULL) ||
+		(extractedVoxelArraySize > (int)bufferVoxelCount))
+	{
+		return 0;
+	}
+
+	for (int i = 0; i < extractedVoxelArraySize; i++)
+	{
+		voxels[i] = extractedVoxelArray[i];
+	}
+
+	return 1;
+}
+
+EXTERN_C __declspec(dllexport) void GeneratePlayspace_ExtractVoxel_Metadata(
+	_Out_ int* voxelsPerRow,
+	_Out_ float* voxelWidth,
+	_Out_ Vec3f* center,
+	_Out_ Vec3f* origin,
+	_Out_ Vec3f* originHalf,
+	_Out_ Vec4f* orientation )
+{
+	*voxelsPerRow = extractedVoxelsPerRow;
+	*voxelWidth = extractedVoxelWidth;
+
+	// Rotate back to the external world space (same orientation as the input data - not the aligned internal representation)
+	Quat quatDLLToWorld = extractOrientation;
+	Mat4x4	matDLLToWorld;
+	quatDLLToWorld.GetMatrix(matDLLToWorld);
+
+	VecFloat4 hold;
+	hold.x = extractCenter.x;
+	hold.y = extractCenter.y;
+	hold.z = extractCenter.z;
+	hold.w = 1.0f;
+	*center = VecFloat4x4Transform3(matDLLToWorld, hold);
+
+	hold.x = extractOrigin.x;
+	hold.y = extractOrigin.y;
+	hold.z = extractOrigin.z;
+	hold.w = 1.0f;
+	*origin = VecFloat4x4Transform3(matDLLToWorld, hold);
+
+	hold.x = extractOrigin_Half.x;
+	hold.y = extractOrigin_Half.y;
+	hold.z = extractOrigin_Half.z;
+	hold.w = 1.0f;
+	*originHalf = VecFloat4x4Transform3(matDLLToWorld, hold);
+
+	hold.x = extractOrientation.v.x;
+	hold.y = extractOrientation.v.y;
+	hold.z = extractOrientation.v.z;
+	hold.w = extractOrientation.w;
+	*orientation = hold;
 }
 
 /******************** QUERIES **************************/

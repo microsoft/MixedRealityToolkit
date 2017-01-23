@@ -16,11 +16,6 @@
 #include "PairingManager.h"
 #include "SharingManager.h"
 
-// Image tag processing
-#include "ImageTagManager.h"
-#include "ImageTagLocation.h"
-#include "ImageTagLocationListener.h"
-
 // Direct Pairing
 #include "DirectPairConnector.h"
 #include "DirectPairReceiver.h"

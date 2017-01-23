@@ -26,7 +26,7 @@ public:
 
 	int RemoveRef() const
 	{
-		if (--m_refCount <= 0)
+		if (--m_refCount == 0)
 		{
 			delete this;
 			return 0;
@@ -44,7 +44,7 @@ private:
 
 	// mutable so that the ref count can still change
 	// when the class is referenced as a const type
-	mutable int m_refCount;
+	volatile mutable int m_refCount;
 };
 
 XTOOLS_NAMESPACE_END

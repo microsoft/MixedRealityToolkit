@@ -15,7 +15,8 @@ class CreateOperation : public Operation
 {
 public:
 	CreateOperation(Sync::AuthorityLevel authLevel);
-	CreateOperation(ElementType type, const XStringPtr& name, XGuid guid, XGuid parentGuid, XValue startingValue, Sync::AuthorityLevel authLevel, const SyncContextPtr& context);
+	CreateOperation(ElementType type, const XStringPtr& name, XGuid guid, XGuid parentGuid, UserID ownerID, XValue startingValue, Sync::AuthorityLevel authLevel, const SyncContextPtr& context);
+	CreateOperation(ElementType type, const XStringPtr& name, XGuid guid, UserID ownerID, XValue startingValue, Sync::AuthorityLevel authLevel, const std::vector<XGuid>& hierarchy);
 	explicit CreateOperation(const CreateOperation& rhs);
 
 	// Operation Functions:
@@ -29,15 +30,17 @@ public:
 	// Local Functions:
 	XGuid							GetParentGUID() const;
 	const XValue&					GetValue() const;
+	ElementType						GetElementType() const;
+	const XStringPtr&				GetName() const;
+	UserID							GetOwnerID() const;
 
 private:
 	XStringPtr				m_name;
 	ElementPtr				m_createdElement;
 	ElementType				m_elementType;
 	XGuid					m_elementGuid;
-	XGuid					m_parentGuid;
+	UserID					m_ownerID;
 	XValue					m_startingValue;
-	bool					m_bAlreadyExisted;
 };
 
 DECLARE_PTR(CreateOperation)
