@@ -60,11 +60,12 @@ void NetworkOutMessageImpl::Write(const XStringPtr& value)
 {
 	if (value)
 	{
-		m_stream.Write(RakNet::RakString(value->GetString().c_str()));
+		m_stream.Write((uint32)value->GetString().size());
+		m_stream.WriteAlignedBytes((const unsigned char *)value->GetString().data(), (uint32)value->GetString().size());
 	}
 	else
 	{
-		m_stream.Write(RakNet::RakString(""));
+		m_stream.Write(uint32(0));
 	}
 }
 
@@ -107,7 +108,8 @@ uint32 NetworkOutMessageImpl::GetSize() const
 
 void NetworkOutMessageImpl::Write(const std::string& value)
 {
-	m_stream.Write(RakNet::RakString(value.c_str()));
+	m_stream.Write((uint32)value.size());
+	m_stream.WriteAlignedBytes((const unsigned char *)value.data(), (uint32)value.size());
 }
 
 

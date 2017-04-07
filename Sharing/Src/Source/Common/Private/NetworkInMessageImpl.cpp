@@ -68,9 +68,15 @@ double NetworkInMessageImpl::ReadDouble()
 
 XStringPtr NetworkInMessageImpl::ReadString()
 {
-	RakNet::RakString value;
-	XTVERIFY(m_stream.Read(value));
-	return new XString(value.C_String());
+	uint32 dwSize = 0;
+	m_stream.Read(dwSize);
+	if ( dwSize > 0 )
+	{
+		std::string s(dwSize, '\0');
+		XTVERIFY(m_stream.ReadAlignedBytes(const_cast<unsigned char *>(reinterpret_cast<const unsigned char *>(s.data())), dwSize));
+		return new XString(s);
+	}
+	return new XString();
 }
 
 
@@ -106,9 +112,15 @@ uint64 NetworkInMessageImpl::ReadUInt64()
 
 std::string NetworkInMessageImpl::ReadStdString()
 {
-	RakNet::RakString value;
-	XTVERIFY(m_stream.Read(value));
-	return value.C_String();
+	uint32 dwSize = 0;
+	m_stream.Read(dwSize);
+	if (dwSize > 0)
+	{
+		std::string s(dwSize, '\0');
+		XTVERIFY(m_stream.ReadAlignedBytes(const_cast<unsigned char *>(reinterpret_cast<const unsigned char *>(s.data())), dwSize));
+		return s;
+	}
+	return std::string();
 }
 
 
