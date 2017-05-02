@@ -4,6 +4,7 @@
 #include <pch.h>
 #include <Dll_Interface\Dll_Debug.h>
 #include <UnderstandingMgr_W.h>
+#include <System_Z.h>
 
 /******************** DEBUG DATA **************************/
 #define DebugData_SaveTrace		false
@@ -77,6 +78,7 @@ void DebugData_StaticMesh_Save(
 }
 EXTERN_C __declspec(dllexport) int DebugData_StaticMesh_LoadAndSet(const char* filePath, bool reCenterMesh)
 {
+	SetAndRestoreFloatControlDownward floatControlDownward;
 	UnderstandingMgr_W &UnderstandingMgr = UnderstandingMgr_W::GetUnderstandingMgr();
 
 	char lastChar = filePath[strlen(filePath) - 1];
@@ -154,6 +156,8 @@ void DebugData_Save_DynamicScan_InitScan(
 }
 EXTERN_C __declspec(dllexport) int DebugData_LoadAndSet_DynamicScan_InitScan(FILE* f)
 {
+	SetAndRestoreFloatControlDownward floatControlDownward;
+
 	// Version
 	int version = 0; fread(&version, sizeof(int), 1, f);
 	if (version != DebugData_Version)
@@ -202,6 +206,8 @@ void DebugData_Save_DynamicScan_UpdateScan(
 }
 EXTERN_C __declspec(dllexport) int DebugData_LoadAndSet_DynamicScan_UpdateScan(FILE* f)
 {
+	SetAndRestoreFloatControlDownward floatControlDownward;
+
 	// Data
 	Vec3f camPos, camFwd, camUp;
 	float deltaTime;
@@ -229,6 +235,8 @@ EXTERN_C __declspec(dllexport) int DebugData_LoadAndSet_DynamicScan_UpdateScan(F
 
 EXTERN_C __declspec(dllexport) void DebugData_GeneratePlayspace_OneTimeScan()
 {
+	SetAndRestoreFloatControlDownward floatControlDownward;
+
 	DirectX::XMFLOAT3 cameraPosition = DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f);
 	DirectX::XMFLOAT3 cameraForward = DirectX::XMFLOAT3(0.0f, 0.0f, 1.0f);
 	DirectX::XMFLOAT3 cameraOrientUp = DirectX::XMFLOAT3(0.0f, 1.0f, 0.0f);

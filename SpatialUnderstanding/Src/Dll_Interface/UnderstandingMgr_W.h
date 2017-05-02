@@ -37,8 +37,6 @@ protected:
 	// Solver.
 	FRGSolver_W				m_Solver;
 
-	void					SetAsoboFPU();
-
 public:
 
 	// Basis Manager

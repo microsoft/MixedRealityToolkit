@@ -6,6 +6,7 @@
 #include <Dll_Interface\Dll_Interface.h>
 #include <UnderstandingMgr_W.h>
 #include <PlaySpace\PlaySpace_Mesh_W.h>
+#include <System_Z.h>
 
 // Prototypes
 void MeshData_to_SurfaceInfo(const Dll_Interface::MeshData& meshData, Playspace_SR_SurfaceInfo& surfaceInfo);
@@ -13,17 +14,20 @@ void MeshData_to_SurfaceInfo(const Dll_Interface::MeshData& meshData, Playspace_
 // Functions
 EXTERN_C __declspec(dllexport) int SpatialUnderstanding_Init()
 {
+	SetAndRestoreFloatControlDownward floatControlDownward;
 	UnderstandingMgr_W::GetUnderstandingMgr().Init();
 	return 1;
 }
 
 EXTERN_C __declspec(dllexport) void SpatialUnderstanding_Term()
 {
+	SetAndRestoreFloatControlDownward floatControlDownward;
 	UnderstandingMgr_W::ReleaseUnderstandingMgr();
 }
 
 EXTERN_C __declspec(dllexport) void SetModeFrame_Inside()
 {
+	SetAndRestoreFloatControlDownward floatControlDownward;
 	UnderstandingMgr_W::GetUnderstandingMgr().SetFrameMode(UnderstandingMgr_W::FrameMode::ManageInside, NULL);
 }
 
@@ -31,6 +35,7 @@ EXTERN_C __declspec(dllexport) void SetMeshList_StaticScan(
 	_In_ INT32 meshCount,
 	_In_count_(meshCount) Dll_Interface::MeshData* meshes)
 {
+	SetAndRestoreFloatControlDownward floatControlDownward;
 	UnderstandingMgr_W::GetUnderstandingMgr().SetSRMeshAnReset(meshes, meshCount);
 }
 
@@ -40,6 +45,7 @@ EXTERN_C __declspec(dllexport) void GeneratePlayspace_InitScan(
 	float camUp_X,  float camUp_Y, float  camUp_Z,
 	float searchDst, float optimalSize)
 {
+	SetAndRestoreFloatControlDownward floatControlDownward;
 	Vec3f camPos = Vec3f(camPos_X, camPos_Y, camPos_Z);
 	Vec3f camFwd = Vec3f(camFwd_X, camFwd_Y, camFwd_Z);
 
@@ -56,6 +62,8 @@ EXTERN_C __declspec(dllexport) int GeneratePlayspace_UpdateScan_StaticScan(
 	float camUp_X, float camUp_Y, float  camUp_Z,
 	float deltaTime)
 {
+	SetAndRestoreFloatControlDownward floatControlDownward;
+
 	// Camera data
 	Vec3f camPos = Vec3f(camPos_X, camPos_Y, camPos_Z);
 	Vec3f camFwd = Vec3f(camFwd_X, camFwd_Y, camFwd_Z);
@@ -76,6 +84,8 @@ EXTERN_C __declspec(dllexport) int GeneratePlayspace_UpdateScan(
 	float camUp_X, float camUp_Y, float  camUp_Z,
 	float deltaTime)
 {
+	SetAndRestoreFloatControlDownward floatControlDownward;
+
 	// Camera data
 	Vec3f camPos = Vec3f(camPos_X, camPos_Y, camPos_Z);
 	Vec3f camFwd = Vec3f(camFwd_X, camFwd_Y, camFwd_Z);
@@ -123,6 +133,7 @@ EXTERN_C __declspec(dllexport) int GeneratePlayspace_UpdateScan(
 
 EXTERN_C __declspec(dllexport) void GeneratePlayspace_RequestFinish()
 {
+	SetAndRestoreFloatControlDownward floatControlDownward;
 	UnderstandingMgr_W::GetUnderstandingMgr().RequestFinishScan(false);
 }
 
@@ -133,6 +144,8 @@ EXTERN_C __declspec(dllexport) int GeneratePlayspace_ExtractMesh_Setup(
 	_Out_ INT32* vertexCount,
 	_Out_ INT32* indexCount)
 {
+	SetAndRestoreFloatControlDownward floatControlDownward;
+
 	// Defaults
 	*vertexCount = 0;
 	*indexCount = 0;
@@ -179,6 +192,8 @@ EXTERN_C __declspec(dllexport) int GeneratePlayspace_ExtractMesh_Extract(
 	_In_ INT32 bufferIndexCount,
 	_In_ INT32* indices)
 {
+	SetAndRestoreFloatControlDownward floatControlDownward;
+
 	// Validate
 	if ((extractedMesh == NULL) ||
 		(extractedMesh->m_TabPoints.GetSize() > (int)bufferVertexCount) ||
@@ -232,6 +247,8 @@ static Quat extractOrientation;
 EXTERN_C __declspec(dllexport) int GeneratePlayspace_ExtractVoxel_Setup(
 	_Out_ INT32* voxelCount)
 {
+	SetAndRestoreFloatControlDownward floatControlDownward;
+
 	// Defaults
 	*voxelCount = 0;
 
@@ -295,6 +312,8 @@ EXTERN_C __declspec(dllexport) int GeneratePlayspace_ExtractVoxel_Extract(
 	_In_ INT32 bufferVoxelCount,
 	_In_ U8* voxels)
 {
+	SetAndRestoreFloatControlDownward floatControlDownward;
+
 	// Validate
 	if ((extractedVoxelArray == NULL) ||
 		(extractedVoxelArraySize > (int)bufferVoxelCount))
@@ -318,6 +337,8 @@ EXTERN_C __declspec(dllexport) void GeneratePlayspace_ExtractVoxel_Metadata(
 	_Out_ Vec3f* originHalf,
 	_Out_ Vec4f* orientation )
 {
+	SetAndRestoreFloatControlDownward floatControlDownward;
+
 	*voxelsPerRow = extractedVoxelsPerRow;
 	*voxelWidth = extractedVoxelWidth;
 
@@ -358,6 +379,8 @@ EXTERN_C __declspec(dllexport) int QueryPlayspaceStats(
 	_In_ Dll_Interface::PlayspaceStats* playspaceStats
 )
 {
+	SetAndRestoreFloatControlDownward floatControlDownward;
+
 	// Query the stats
 	UnderstandingMgr_W &UnderstandingMgr = UnderstandingMgr_W::GetUnderstandingMgr();
 	PlaySpaceInfos_W& playspaceInfos = UnderstandingMgr.GetPlayspaceInfos();
@@ -394,6 +417,8 @@ EXTERN_C __declspec(dllexport) int QueryPlayspaceStats(
 EXTERN_C __declspec(dllexport) int QueryPlayspaceAlignment(
 	_In_ Dll_Interface::PlayspaceAlignment* playspaceAlignment)
 {
+	SetAndRestoreFloatControlDownward floatControlDownward;
+
 	// Alignment matrix
 	UnderstandingMgr_W &UnderstandingMgr = UnderstandingMgr_W::GetUnderstandingMgr();
 	Quat quatDLLToWorld = UnderstandingMgr.GetFrameTransfoForOutput();
@@ -418,6 +443,8 @@ EXTERN_C __declspec(dllexport) int PlayspaceRaycast(
 	float rayVec_X, float rayVec_Y, float rayVec_Z,
 	Dll_Interface::RaycastResult* result)
 {
+	SetAndRestoreFloatControlDownward floatControlDownward;
+
 	// Basic checks
 	if (result == NULL)
 	{
@@ -530,6 +557,8 @@ EXTERN_C __declspec(dllexport) void GeneratePlayspace_OneTimeScan(
 	float camFwd_X, float camFwd_Y, float camFwd_Z,
 	float camUp_X, float camUp_Y, float camUp_Z)
 {
+	SetAndRestoreFloatControlDownward floatControlDownward;
+
 	Vec3f camPos = Vec3f(camPos_X, camPos_Y, camPos_Z);
 	Vec3f camFwd = Vec3f(camFwd_X, camFwd_Y, camFwd_Z);
 

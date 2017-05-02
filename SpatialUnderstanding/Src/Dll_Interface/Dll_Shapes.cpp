@@ -4,6 +4,7 @@
 #include <pch.h>
 #include <Dll_Interface\Dll_Shapes.h>
 #include <UnderstandingMgr_W.h>
+#include <System_Z.h>
 
 int OutputShapes(
 	int shapeCount,
@@ -74,6 +75,8 @@ EXTERN_C __declspec(dllexport) int QueryShape_FindPositionsOnShape(
 	_In_ int shapeCount,
 	_Inout_ Dll_Interface::ShapeResult* shapeData)
 {
+	SetAndRestoreFloatControlDownward floatControlDownward;
+
 	Vec3fDA outPos;
 	UnderstandingMgr_W::GetUnderstandingMgr().GetPlayspaceInfos().m_ShapeAnalyzer.GetAllPosOnShape(shapeName, NAME_NULL, minRadius, outPos);
 
@@ -85,6 +88,8 @@ EXTERN_C __declspec(dllexport) int QueryShape_FindShapeHalfDims(
 	_In_ int shapeCount,
 	_Inout_ Dll_Interface::ShapeResult* shapeData)
 {
+	SetAndRestoreFloatControlDownward floatControlDownward;
+
 	DynArray_Z<const TopologyAnalyzer_W::Surface*> outSurfaces;
 	UnderstandingMgr_W::GetUnderstandingMgr().GetPlayspaceInfos().m_ShapeAnalyzer.GetAllSurfacesOnShape(shapeName, NAME_NULL, outSurfaces);
 
@@ -102,6 +107,7 @@ EXTERN_C __declspec(dllexport) int QueryShape_FindShapeHalfDims(
 
 EXTERN_C __declspec(dllexport) void RemoveAllShapes()
 {
+	SetAndRestoreFloatControlDownward floatControlDownward;
 	ShapeReco::ShapeAnalyzer_W& shapeAnalyzer = UnderstandingMgr_W::GetUnderstandingMgr().GetPlayspaceInfos().m_ShapeAnalyzer;
 	shapeAnalyzer.Reset();
 }
@@ -237,6 +243,8 @@ EXTERN_C __declspec(dllexport) int AddShape(
 	_In_ Dll_Interface::ShapeConstraint* constraints
 )
 {
+	SetAndRestoreFloatControlDownward floatControlDownward;
+
 	// Convert to the ShapeDesc structure
 	ShapeReco::ShapeDesc shapeDesc;
 	shapeDesc.SetName(shapeName);
@@ -255,5 +263,6 @@ EXTERN_C __declspec(dllexport) int AddShape(
 
 EXTERN_C __declspec(dllexport) void ActivateShapeAnalysis()
 {
+	SetAndRestoreFloatControlDownward floatControlDownward;
 	UnderstandingMgr_W::GetUnderstandingMgr().ActivateShapeAnalysis();
 }
