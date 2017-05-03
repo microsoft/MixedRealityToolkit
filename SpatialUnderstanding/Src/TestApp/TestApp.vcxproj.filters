@@ -8,6 +8,9 @@
       <UniqueIdentifier>1144aeee-6967-4a77-b7b2-9ce5e68e4cf7</UniqueIdentifier>
       <Extensions>bmp;fbx;gif;jpg;jpeg;tga;tiff;tif;png</Extensions>
     </Filter>
+    <Filter Include="TestData">
+      <UniqueIdentifier>{7993a602-604f-4027-aca1-2da11b1e5375}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml" />
@@ -50,6 +53,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="TestApp_TemporaryKey.pfx" />
+    <None Include="..\bin\dynMeshTest_0.out">
+      <Filter>TestData</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Page Include="MainPage.xaml" />

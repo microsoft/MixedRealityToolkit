@@ -86,13 +86,14 @@ void TestApp::MainPage::Button_Click(Platform::Object^ sender, Windows::UI::Xaml
 #define INPUT_MESH "\\largeSR.out"
 #define DYNMESHTEST "\\dynMeshTest_0.out"
 
-// Note: To run these tests, copy the test data file listed above to your app's localstate folder
-// example: "C:\Users\<username>\AppData\Local\Packages\TestApp_c74ckhh66gw46\LocalState"
-
 const char* TestApp::MainPage::CalcInputMeshFilename()
 {
+	// NOTE: The INPUT_MESH file largeSR.out doesn't seem to be included in this repository.
+	// This file would need to be found/created and added to TestData content in the solution
+	// before this test could be used.
+
 	// Data file path
-	Windows::Storage::StorageFolder^ localFolder = Windows::Storage::ApplicationData::Current->LocalFolder;
+	Windows::Storage::StorageFolder^ localFolder = Windows::ApplicationModel::Package::Current->InstalledLocation;
 	Platform::String^ dir = localFolder->Path;
 	Platform::String^ fullPath = dir + INPUT_MESH;
 
@@ -107,8 +108,8 @@ const char* TestApp::MainPage::CalcInputMeshFilename()
 const char* TestApp::MainPage::CalcInputDynMeshTestFilename()
 {
 	// Data file path
-	Windows::Storage::StorageFolder^ localFolder = Windows::Storage::ApplicationData::Current->LocalFolder;
-	Platform::String^ dir = localFolder->Path;
+	Windows::Storage::StorageFolder^ appFolder = Windows::ApplicationModel::Package::Current->InstalledLocation;
+	Platform::String^ dir = appFolder->Path;
 	Platform::String^ fullPath = dir + DYNMESHTEST;
 
 	// some ugly code to get the LocalState folder into a simple char array:
