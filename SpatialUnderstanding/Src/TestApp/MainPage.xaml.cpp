@@ -35,8 +35,7 @@ EXTERN_C __declspec(dllexport) void SpatialUnderstanding_Term();
 
 EXTERN_C __declspec(dllexport) void SetModeFrame_Inside();
 EXTERN_C __declspec(dllexport) bool DebugData_StaticMesh_LoadAndSet(const char* filePath, bool reCenterMesh);
-EXTERN_C __declspec(dllexport) int DebugData_LoadAndSet_DynamicScan_InitScan(FILE* f);
-EXTERN_C __declspec(dllexport) int DebugData_LoadAndSet_DynamicScan_UpdateScan(FILE* f);
+EXTERN_C __declspec(dllexport) int DebugData_LoadAndSet_DynamicScan(const char* filePath);
 EXTERN_C __declspec(dllexport) void DebugData_GeneratePlayspace_OneTimeScan();
 
 EXTERN_C __declspec(dllexport) void GeneratePlayspace_InitScan(
@@ -216,15 +215,9 @@ void TestApp::MainPage::RunTest_RealTimeScan_DynamicInputData()
 	}
 
 	// Init
-	if (!DebugData_LoadAndSet_DynamicScan_InitScan(f))
+	if (!DebugData_LoadAndSet_DynamicScan(fileName))
 	{
 		return;
-	}
-
-	// Dynamic updates
-	while (DebugData_LoadAndSet_DynamicScan_UpdateScan(f))
-	{
-		Sleep((DWORD)(1000.0f / 60.0f));
 	}
 
 	// Pull out the mesh
