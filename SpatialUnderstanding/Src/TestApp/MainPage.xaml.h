@@ -6,6 +6,7 @@
 #pragma once
 
 #include "MainPage.g.h"
+#include <DirectXMath.h>
 
 namespace TestApp
 {
@@ -22,7 +23,8 @@ namespace TestApp
 
 		void RunTest_OneTimeScan();
 		void RunTest_RealTimeScan_StaticInputData();
-		void RunTest_RealTimeScan_DynamicInputData();
+		std::wstring RunTest_RealTimeScan_DynamicInputData();
+		float GetLength(DirectX::XMFLOAT3 vector);
 
 		const char* CalcInputMeshFilename();
 		const char* CalcInputDynMeshTestFilename();

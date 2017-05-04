@@ -9,6 +9,7 @@
 #include "pch.h"
 #include "MainPage.xaml.h"
 #include <DirectXMath.h>
+#include <sstream>
 
 using namespace TestApp;
 
@@ -28,6 +29,10 @@ using namespace Windows::UI::Xaml::Navigation;
 MainPage::MainPage()
 {
 	InitializeComponent();
+
+	// Clear placeholder test result fields.
+	PassFailText->Text = "";
+	ResultText->Text = "";
 }
 
 EXTERN_C __declspec(dllexport) int SpatialUnderstanding_Init();
@@ -35,8 +40,7 @@ EXTERN_C __declspec(dllexport) void SpatialUnderstanding_Term();
 
 EXTERN_C __declspec(dllexport) void SetModeFrame_Inside();
 EXTERN_C __declspec(dllexport) bool DebugData_StaticMesh_LoadAndSet(const char* filePath, bool reCenterMesh);
-EXTERN_C __declspec(dllexport) int DebugData_LoadAndSet_DynamicScan_InitScan(FILE* f);
-EXTERN_C __declspec(dllexport) int DebugData_LoadAndSet_DynamicScan_UpdateScan(FILE* f);
+EXTERN_C __declspec(dllexport) int DebugData_LoadAndSet_DynamicScan(const char* filePath);
 EXTERN_C __declspec(dllexport) void DebugData_GeneratePlayspace_OneTimeScan();
 
 EXTERN_C __declspec(dllexport) void GeneratePlayspace_InitScan(
@@ -74,7 +78,12 @@ void TestApp::MainPage::Button_Click(Platform::Object^ sender, Windows::UI::Xaml
 	//RunTest_RealTimeScan_StaticInputData();
 
 	// Real-time scan (dynamic input data)
-	RunTest_RealTimeScan_DynamicInputData();
+	std::wstring result = RunTest_RealTimeScan_DynamicInputData();
+
+	bool succeeded = result.empty();
+	PassFailText->Text = succeeded ? "Succeeded" : "Failed";
+	PassFailText->Foreground = ref new SolidColorBrush(succeeded ? Windows::UI::Colors::Green : Windows::UI::Colors::Red);
+	ResultText->Text = ref new String(result.c_str());
 
 	// Init
 	SpatialUnderstanding_Term();
@@ -204,27 +213,26 @@ void TestApp::MainPage::RunTest_RealTimeScan_StaticInputData()
 	delete[] indices;
 }
 
-void TestApp::MainPage::RunTest_RealTimeScan_DynamicInputData()
+// Returns an empty string if it executed successfully. Or returns description of an error that occurred.
+std::wstring TestApp::MainPage::RunTest_RealTimeScan_DynamicInputData()
 {
+	std::wostringstream result;
+
 	// Open the trace file
 	const char* fileName = CalcInputDynMeshTestFilename();
 	FILE* f = NULL;
 	fopen_s(&f, fileName, "rb");
 	if (f == NULL)
 	{
-		return;
+		result << "Couldn't open " << fileName << ".";
+		return result.str();
 	}
 
 	// Init
-	if (!DebugData_LoadAndSet_DynamicScan_InitScan(f))
+	if (!DebugData_LoadAndSet_DynamicScan(fileName))
 	{
-		return;
-	}
-
-	// Dynamic updates
-	while (DebugData_LoadAndSet_DynamicScan_UpdateScan(f))
-	{
-		Sleep((DWORD)(1000.0f / 60.0f));
+		result << "DebugData_LoadAndSet_DynamicScan failed.";
+		return result.str();
 	}
 
 	// Pull out the mesh
@@ -235,15 +243,51 @@ void TestApp::MainPage::RunTest_RealTimeScan_DynamicInputData()
 	int* indices = new int[indexCount];
 	GeneratePlayspace_ExtractMesh_Extract(vertexCount, verticesPos, verticesNormal, indexCount, indices);
 
-	// Look through he data (this is just for debugging)
+	// Look through the data. This is just a sanity check. We don't have exact expected results.
+	const int minimumVertices = 1000;
+	if (vertexCount < minimumVertices)
+	{
+		result << "Only received " << vertexCount << " vertices. Expected at least " << minimumVertices << " vertices.";
+		return result.str();
+	}
+
 	for (int i = 0; i < vertexCount; ++i)
 	{
 		DirectX::XMFLOAT3 pos = verticesPos[i];
+
+		const float maximumPosLength = 100.0f; // All of our expected results are within this size.
+		float posLength = GetLength(pos);
+		if (posLength > maximumPosLength)
+		{
+			result << "Vertex position (" << pos.x << ", " << pos.y << ", " << pos.z << ") is larger than expected maximum length of " << maximumPosLength << ".";
+			return result.str();
+		}
+
 		DirectX::XMFLOAT3 norm = verticesNormal[i];
+		// Strangely, these normals are all very close to zero instead of being normalized to length one.
+		// Not sure what the intent is for these, so for now let's just check that they are not too big.
+		const float maximumNormLength = 1.001f;
+		float normLength = GetLength(norm);
+		if (normLength > maximumNormLength)
+		{
+			result << "Vertex normal (" << norm.x << ", " << norm.y << ", " << norm.z << ") is larger than expected maximum length of " << maximumNormLength << ".";
+			return result.str();
+		}
 	}
 
 	// Cleanup
 	delete[] verticesPos;
 	delete[] verticesNormal;
 	delete[] indices;
+
+	return result.str();
+}
+
+float TestApp::MainPage::GetLength(DirectX::XMFLOAT3 vector)
+{
+	DirectX::XMVECTOR v = DirectX::XMLoadFloat3(&vector);
+	DirectX::XMVECTOR vLength = DirectX::XMVector3Length(v);
+	float length;
+	DirectX::XMStoreFloat(&length, vLength);
+	return length;
 }
