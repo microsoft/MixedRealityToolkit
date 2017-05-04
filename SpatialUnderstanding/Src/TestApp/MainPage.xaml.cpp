@@ -40,8 +40,7 @@ EXTERN_C __declspec(dllexport) void SpatialUnderstanding_Term();
 
 EXTERN_C __declspec(dllexport) void SetModeFrame_Inside();
 EXTERN_C __declspec(dllexport) bool DebugData_StaticMesh_LoadAndSet(const char* filePath, bool reCenterMesh);
-EXTERN_C __declspec(dllexport) int DebugData_LoadAndSet_DynamicScan_InitScan(FILE* f);
-EXTERN_C __declspec(dllexport) int DebugData_LoadAndSet_DynamicScan_UpdateScan(FILE* f);
+EXTERN_C __declspec(dllexport) int DebugData_LoadAndSet_DynamicScan(const char* filePath);
 EXTERN_C __declspec(dllexport) void DebugData_GeneratePlayspace_OneTimeScan();
 
 EXTERN_C __declspec(dllexport) void GeneratePlayspace_InitScan(
@@ -230,23 +229,9 @@ std::wstring TestApp::MainPage::RunTest_RealTimeScan_DynamicInputData()
 	}
 
 	// Init
-	if (!DebugData_LoadAndSet_DynamicScan_InitScan(f))
+	if (!DebugData_LoadAndSet_DynamicScan(fileName))
 	{
-		result << "DebugData_LoadAndSet_DynamicScan_InitScan failed.";
-		return result.str();
-	}
-
-	// Dynamic updates
-	int updateCount = 0;
-	while (DebugData_LoadAndSet_DynamicScan_UpdateScan(f))
-	{
-		++updateCount;
-		Sleep((DWORD)(1000.0f / 60.0f));
-	}
-
-	if (updateCount < 1)
-	{
-		result << "DebugData_LoadAndSet_DynamicScan_UpdateScan failed.";
+		result << "DebugData_LoadAndSet_DynamicScan failed.";
 		return result.str();
 	}
 
