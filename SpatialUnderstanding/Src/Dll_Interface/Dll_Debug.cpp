@@ -154,7 +154,7 @@ void DebugData_Save_DynamicScan_InitScan(
 	// Done
 	fclose(f);
 }
-EXTERN_C __declspec(dllexport) int DebugData_LoadAndSet_DynamicScan_InitScan(FILE* f)
+int DebugData_LoadAndSet_DynamicScan_InitScan(FILE* f)
 {
 	SetAndRestoreFloatControlDownward floatControlDownward;
 
@@ -204,7 +204,7 @@ void DebugData_Save_DynamicScan_UpdateScan(
 	// Done
 	fclose(f);
 }
-EXTERN_C __declspec(dllexport) int DebugData_LoadAndSet_DynamicScan_UpdateScan(FILE* f)
+int DebugData_LoadAndSet_DynamicScan_UpdateScan(FILE* f)
 {
 	SetAndRestoreFloatControlDownward floatControlDownward;
 
@@ -229,6 +229,29 @@ EXTERN_C __declspec(dllexport) int DebugData_LoadAndSet_DynamicScan_UpdateScan(F
 		camFwd.x, camFwd.y, camFwd.z,
 		camUp.x, camUp.y, camUp.z,
 		deltaTime);
+
+	return 1;
+}
+EXTERN_C __declspec(dllexport) int DebugData_LoadAndSet_DynamicScan(const char* filePath)
+{
+	FILE* f = NULL;
+	fopen_s(&f, filePath, "rb");
+	if (f == NULL)
+	{
+		return 0;
+	}
+
+	// Init
+	if (!DebugData_LoadAndSet_DynamicScan_InitScan(f))
+	{
+		return 0;
+	}
+
+	// Dynamic updates
+	while (DebugData_LoadAndSet_DynamicScan_UpdateScan(f))
+	{
+		Sleep((DWORD)(1000.0f / 60.0f));
+	}
 
 	return 1;
 }

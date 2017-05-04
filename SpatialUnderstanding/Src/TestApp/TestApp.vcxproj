@@ -120,6 +120,9 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <None Include="..\bin\dynMeshTest_0.out">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
     <None Include="TestApp_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
