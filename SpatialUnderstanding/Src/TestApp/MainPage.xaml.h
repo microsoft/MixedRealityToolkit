@@ -21,6 +21,8 @@ namespace TestApp
 	private:
 		void Button_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
 
+		std::wstring RunTests();
+
 		void RunTest_OneTimeScan();
 		void RunTest_RealTimeScan_StaticInputData();
 		std::wstring RunTest_RealTimeScan_DynamicInputData();
