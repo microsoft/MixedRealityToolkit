@@ -81,11 +81,6 @@ std::wstring TestApp::MainPage::RunTests()
 
 	SpatialUnderstanding_Init();
 
-	// TODO: Currently SpatialUnderstanding_Init does change the floating point rounding mode.
-	// I'm checking in the test now, but setting initialFloatingPointControl to the changed value so that it passes.
-	// Once I have fixed this problem, this comment and the following line will be deleted.
-	initialFloatingPointControl = _control87(0, 0);
-
 	if (_control87(0, 0) != initialFloatingPointControl)
 		return L"SpatialUnderstanding_Init changed floating point control.";
 
