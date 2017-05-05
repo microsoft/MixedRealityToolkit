@@ -37,14 +37,6 @@ void	UnderstandingMgr_W::ResetFrameTransfo(const Quat &_NewTransfo)
 
 /**********************************************************/
 
-void	UnderstandingMgr_W::SetAsoboFPU()
-{
-	SetFloatControlDownward();
-	//SetFloatControlExceptions();
-}
-
-/**********************************************************/
-
 UnderstandingMgr_W::UnderstandingMgr_W()
 {
 }
@@ -60,6 +52,8 @@ UnderstandingMgr_W::~UnderstandingMgr_W()
 
 void UnderstandingMgr_W::Init()
 {
+	CHECKFTOLMODE();
+
 	// Met les descrpteurs pas défaut.
 	m_PlaySpaceInfos.SetPlayspaceSR(&m_PlayspaceSR);
 
@@ -73,9 +67,6 @@ void UnderstandingMgr_W::Init()
 
 	// Activate Tools.
 	m_PlaySpaceInfos.ActivateTopology();
-
-	// Set FPU control
-	SetAsoboFPU();
 }
 
 /**********************************************************/
@@ -110,8 +101,7 @@ void UnderstandingMgr_W::ActivateShapeAnalysis()
 
 void UnderstandingMgr_W::Update(Float dTime)
 {
-	// Set FPU
-	SetAsoboFPU();
+	CHECKFTOLMODE();
 
 	// Update Playspace.
 	m_PlaySpaceInfos.UpdatePlaySpace(this, dTime);
@@ -124,8 +114,7 @@ void UnderstandingMgr_W::Update(Float dTime)
 
 bool UnderstandingMgr_W::SetSRMeshAnReset(Dll_Interface::MeshData* _TabMesh, S32 _NbMesh)
 {
-	// Set FPU
-	SetAsoboFPU();
+	CHECKFTOLMODE();
 
 	// Reset Frame.
 	ResetFrameTransfo();
@@ -141,8 +130,7 @@ bool UnderstandingMgr_W::SetSRMeshAnReset(Dll_Interface::MeshData* _TabMesh, S32
 
 bool	UnderstandingMgr_W::OnePassScanOnCurrentSR(const Vec3f &_CameraPos, const Vec3f &_CameraDir, Float _MaxPlayspaceSize)
 {
-	// Set FPU
-	SetAsoboFPU();
+	CHECKFTOLMODE();
 
 	m_PlaySpaceInfos.SetPlayspaceSR(&m_PlayspaceSR);
 
@@ -176,8 +164,7 @@ bool	UnderstandingMgr_W::OnePassScanOnCurrentSR(const Vec3f &_CameraPos, const V
 
 bool	UnderstandingMgr_W::OnePassScan(const Vec3f &_CameraPos, const Vec3f &_CameraDir, Float _MaxPlayspaceSize, U32 *_pTabTriIdx, S32 _NbTriIdx, Vec3f *_pTabVtx, S32 _NbVtx)
 {
-	// Set FPU
-	SetAsoboFPU();
+	CHECKFTOLMODE();
 
 	// Reset Frame Transfo.
 	ResetFrameTransfo();
@@ -193,8 +180,7 @@ bool	UnderstandingMgr_W::OnePassScan(const Vec3f &_CameraPos, const Vec3f &_Came
 
 bool	UnderstandingMgr_W::OnePassScan(const Vec3f &_CameraPos, const Vec3f &_CameraDir, Float _MaxPlayspaceSize, Dll_Interface::MeshData* _TabMesh, S32 _NbMesh)
 {
-	// Set FPU
-	SetAsoboFPU();
+	CHECKFTOLMODE();
 
 	// Reset Frame Transfo.
 	ResetFrameTransfo();
@@ -210,8 +196,7 @@ bool	UnderstandingMgr_W::OnePassScan(const Vec3f &_CameraPos, const Vec3f &_Came
 
 bool	UnderstandingMgr_W::OnePassScan(const Vec3f &_CameraPos, const  Vec3f &_CameraDir, Float _MaxPlayspaceSize, char *_FileName)
 {
-	// Set FPU
-	SetAsoboFPU();
+	CHECKFTOLMODE();
 
 	// Reset Frame Transfo.
 	ResetFrameTransfo();
@@ -227,8 +212,7 @@ bool	UnderstandingMgr_W::OnePassScan(const Vec3f &_CameraPos, const  Vec3f &_Cam
 
 Bool	UnderstandingMgr_W::InitScan(const Vec3f& _CameraPos, const Vec3f& _CameraDir, Float _fSearchDist, Float _OptimalSize)
 {
-	// Set FPU
-	SetAsoboFPU();
+	CHECKFTOLMODE();
 
 	// Set Scan mode : MESH and NEW (to be suppressed)
 	PlaySpaceInfos_W::g_TypeScan &= ~PlaySpaceInfos_W::PSI_SCAN_OLD;
@@ -252,8 +236,7 @@ PlaySpaceInfos_W::PSI_State	UnderstandingMgr_W::UpdateScanFromStaticDatas(const 
 
 PlaySpaceInfos_W::PSI_State	UnderstandingMgr_W::UpdateScanFromDeviceSR(Playspace_SR_DeviceSR *_pDeviceSR, const Vec3f& _CameraPos, const Vec3f& _CameraDir, const Vec3f& _CameraDirUp, Float _dTime, PlaySpaceInfos_W::PSI_UpdateMode _Mode, Float _SurfaceValidation)
 {
-	// Set FPU
-	SetAsoboFPU();
+	CHECKFTOLMODE();
 
 	Util_L::SetCurrentCamera(_CameraPos, _CameraDir, _CameraDirUp);
 
@@ -307,8 +290,7 @@ PlaySpaceInfos_W::PSI_State	UnderstandingMgr_W::UpdateScanFromDeviceSR(Playspace
 
 void	UnderstandingMgr_W::RequestFinishScan(Bool _ForceAbort)
 {
-	// Set FPU
-	SetAsoboFPU();
+	CHECKFTOLMODE();
 
 	if (m_PlaySpaceInfos.m_ScanningJobsLastStats.MeshStats.HorizSurface < 0.5f)
 		m_PlaySpaceInfos.RequestFinishUnifiedScanning(true);
@@ -320,8 +302,7 @@ void	UnderstandingMgr_W::RequestFinishScan(Bool _ForceAbort)
 
 void	UnderstandingMgr_W::SetFrameMode(FrameMode _Mode, CallBack_DoAlignWorld pFunction)
 {
-	// Set FPU
-	SetAsoboFPU();
+	CHECKFTOLMODE();
 
 	if (_Mode == ShareFrame)
 	{

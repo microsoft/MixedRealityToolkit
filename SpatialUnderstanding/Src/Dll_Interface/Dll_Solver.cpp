@@ -4,9 +4,12 @@
 #include <pch.h>
 #include <Dll_Interface\Dll_Solver.h>
 #include <UnderstandingMgr_W.h>
+#include <System_Z.h>
 
 EXTERN_C __declspec(dllexport) int Solver_Init()
 {
+	SetAndRestoreFloatControlDownward floatControlDownward;
+
 	FRGSolver_W& solver = UnderstandingMgr_W::GetUnderstandingMgr().GetSolver();
 
 	// Init the solver
@@ -130,6 +133,8 @@ EXTERN_C __declspec(dllexport) int Solver_PlaceObject(
 	_In_ Dll_Interface::ObjectPlacementConstraint* placementConstraints,
 	_Out_ Dll_Interface::ObjectPlacementResult* placementResult)
 {
+	SetAndRestoreFloatControlDownward floatControlDownward;
+
 	FRGSolver_W& solver = UnderstandingMgr_W::GetUnderstandingMgr().GetSolver();
 
 	// Convert to a solvingInfo structure
@@ -172,6 +177,8 @@ EXTERN_C __declspec(dllexport) int Solver_PlaceObject(
 EXTERN_C __declspec(dllexport) int Solver_RemoveObject(
 	_In_ char* placementName)
 {
+	SetAndRestoreFloatControlDownward floatControlDownward;
+
 	FRGSolver_W& solver = UnderstandingMgr_W::GetUnderstandingMgr().GetSolver();
 	const DynArray_Z<FRGSolvingInfos_W>& solvedObjects = solver.GetSolvedObjects();
 	Name_Z placementNameZ = Name_Z(placementName);
@@ -189,6 +196,7 @@ EXTERN_C __declspec(dllexport) int Solver_RemoveObject(
 
 EXTERN_C __declspec(dllexport) void Solver_RemoveAllObjects()
 {
+	SetAndRestoreFloatControlDownward floatControlDownward;
 	FRGSolver_W& solver = UnderstandingMgr_W::GetUnderstandingMgr().GetSolver();
 	solver.RemoveAllSolved();
 }

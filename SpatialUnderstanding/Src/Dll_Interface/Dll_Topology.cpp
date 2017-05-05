@@ -4,6 +4,7 @@
 #include <pch.h>
 #include <Dll_Interface\Dll_Topology.h>
 #include <UnderstandingMgr_W.h>
+#include <System_Z.h>
 
 int OutputLocations(
 	int locationCount,
@@ -156,6 +157,8 @@ EXTERN_C __declspec(dllexport) int QueryTopology_FindPositionsOnWalls(
 	_In_ int locationCount,
 	_Inout_ Dll_Interface::TopologyResult* locationData)
 {
+	SetAndRestoreFloatControlDownward floatControlDownward;
+
 	Vec3fDA outPos, outNormal;
 	UnderstandingMgr_W::GetUnderstandingMgr().GetPlayspaceInfos().m_TopologyAnalyzer.GetAllPosOnWall(minHeightAboveFloor, minHeightOfWallSpace, minWidthOfWallSpace, minFacingClearance, outPos, outNormal, false);
 
@@ -170,6 +173,8 @@ EXTERN_C __declspec(dllexport) int QueryTopology_FindLargePositionsOnWalls(
 	_In_ int locationCount,
 	_Inout_ Dll_Interface::TopologyResult* locationData)
 {
+	SetAndRestoreFloatControlDownward floatControlDownward;
+
 	Vec3fDA outPos, outNormal;
 	FloatDA outWidth;
 	UnderstandingMgr_W::GetUnderstandingMgr().GetPlayspaceInfos().m_TopologyAnalyzer.GetAllLargePosOnWall(minHeightAboveFloor, minHeightOfWallSpace, minWidthOfWallSpace, minFacingClearance, outPos, outNormal, outWidth, false);
@@ -180,6 +185,8 @@ EXTERN_C __declspec(dllexport) int QueryTopology_FindLargePositionsOnWalls(
 EXTERN_C __declspec(dllexport) int QueryTopology_FindLargestWall(
 	_Inout_ Dll_Interface::TopologyResult* wallOut)
 {
+	SetAndRestoreFloatControlDownward floatControlDownward;
+
 	UnderstandingMgr_W &UnderstandingMgr = UnderstandingMgr_W::GetUnderstandingMgr();
 
 	const TopologyAnalyzer_W::Wall* wall = UnderstandingMgr.GetPlayspaceInfos().m_TopologyAnalyzer.GetLargestWall(false, false);
@@ -208,6 +215,8 @@ EXTERN_C __declspec(dllexport) int QueryTopology_FindPositionsOnFloor(
 	_In_ int locationCount,
 	_Inout_ Dll_Interface::TopologyResult* locationData)
 {
+	SetAndRestoreFloatControlDownward floatControlDownward;
+
 	Vec3fDA outPos, outNormal;
 	UnderstandingMgr_W::GetUnderstandingMgr().GetPlayspaceInfos().m_TopologyAnalyzer.GetAllRectanglePosOnFloor(minWidthOfFloorSpace, minLengthOfFloorSpace, outPos, outNormal);
 
@@ -218,6 +227,8 @@ EXTERN_C __declspec(dllexport) int QueryTopology_FindLargestPositionsOnFloor(
 	_In_ int locationCount,
 	_Inout_ Dll_Interface::TopologyResult* locationData)
 {
+	SetAndRestoreFloatControlDownward floatControlDownward;
+
 	Vec3fDA outPos;
 	UnderstandingMgr_W::GetUnderstandingMgr().GetPlayspaceInfos().m_TopologyAnalyzer.GetLargestPosOnFloor(outPos);
 
@@ -231,6 +242,8 @@ EXTERN_C __declspec(dllexport) int QueryTopology_FindPositionsSittable(
 	_In_ int locationCount,
 	_Inout_ Dll_Interface::TopologyResult* locationData)
 {
+	SetAndRestoreFloatControlDownward floatControlDownward;
+
 	Vec3fDA outPos, outNormal;
 	UnderstandingMgr_W::GetUnderstandingMgr().GetPlayspaceInfos().m_TopologyAnalyzer.GetAllPosSittable(minHeight, maxHeight, minFacingClearance, outPos, outNormal);
 

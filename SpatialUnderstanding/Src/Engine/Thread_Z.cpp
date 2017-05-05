@@ -36,7 +36,8 @@ void Thread_Z::Init(ThreadProc_Z _ThreadProc,void* _UserData)
 
 S32 Thread_Z::ThreadProc()
 {
-	SetFloatControlDownward();
+	SetAndRestoreFloatControlDownward floatControlDownward;
+	CHECKFTOLMODE();
 	SetFloatControlExceptions();
 
 	S32 ret;
