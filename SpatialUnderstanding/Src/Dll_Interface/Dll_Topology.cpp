@@ -250,3 +250,17 @@ EXTERN_C __declspec(dllexport) int QueryTopology_FindPositionsSittable(
 	return OutputLocations(locationCount, locationData, outPos, outNormal, 0.0f);
 }
 
+EXTERN_C __declspec(dllexport) int QueryTopology_FindLargePositionsSittable(
+  _In_ float minHeight,
+  _In_ float maxHeight,
+  _In_ float minFacingClearance,
+  _In_ float minWidth,
+  _In_ int locationCount,
+  _Inout_ Dll_Interface::TopologyResult* locationData)
+{
+  Vec3fDA outPos, outNormal;
+  UnderstandingMgr_W::GetUnderstandingMgr().GetPlayspaceInfos().m_TopologyAnalyzer.GetAllLargePosSittable(minHeight, maxHeight, minFacingClearance, minWidth, outPos, outNormal);
+
+  return OutputLocations(locationCount, locationData, outPos, outNormal, 0.0f);
+}
+
