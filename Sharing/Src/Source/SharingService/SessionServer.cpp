@@ -309,6 +309,7 @@ uint32 SessionServer::GetNewSessionId()
 void SessionServer::OnNewSessionRequest(const NewSessionRequest& request, const NetworkConnectionPtr& connection)
 {
 	std::string name = request.GetSessionName();
+	SessionType sessionType = request.GetSessionType();
 
 	XSessionImplPtr session;
 	std::string failureReason;
@@ -340,7 +341,7 @@ void SessionServer::OnNewSessionRequest(const NewSessionRequest& request, const 
 
 	if (failureReason.empty())
 	{
-		session = CreateNewSession(name, SessionType::ADHOC);
+		session = CreateNewSession(name, sessionType);
 	}
 	
 	// If the session was successfully created...
