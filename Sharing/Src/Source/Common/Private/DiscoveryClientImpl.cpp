@@ -77,8 +77,23 @@ DiscoveredSystemPtr DiscoveryClientImpl::GetDiscoveredSystem(uint32 index) const
 void DiscoveryClientImpl::Update()
 {
 	// Process any incoming responses to our ping
-	for (PacketWrapper packet(m_peer, m_peer->Receive()); packet.IsValid(); packet = m_peer->Receive())
+	PacketWrapper packet(m_peer, m_peer->Receive());
+	while (true)
 	{
+#if RAKPEER_USER_THREADED==1
+		if (!packet.IsValid())
+		{
+			RakNet::BitStream updateBitStream( MAXIMUM_MTU_SIZE
+			#if LIBCAT_SECURITY==1
+			    + cat::AuthenticatedEncryption::OVERHEAD_BYTES
+			#endif
+			);
+			m_peer->RunUpdateCycle(updateBitStream);
+			packet = m_peer->Receive();
+		}
+#endif
+		if (!packet.IsValid())
+			break;
 		if (packet->data[0] == ID_UNCONNECTED_PONG)
 		{
 			RakNet::TimeMS time;
@@ -119,6 +134,7 @@ void DiscoveryClientImpl::Update()
 				}
 			}
 		}
+		packet = m_peer->Receive();
 	}
 
 	// Remove any clients that have not responded
