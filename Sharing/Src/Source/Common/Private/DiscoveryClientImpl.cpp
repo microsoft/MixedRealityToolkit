@@ -77,17 +77,20 @@ DiscoveredSystemPtr DiscoveryClientImpl::GetDiscoveredSystem(uint32 index) const
 void DiscoveryClientImpl::Update()
 {
 	// Process any incoming responses to our ping
+#if RAKPEER_USER_THREADED==1
+	RakNet::BitStream updateBitStream( MAXIMUM_MTU_SIZE
+	#if LIBCAT_SECURITY==1
+		+ cat::AuthenticatedEncryption::OVERHEAD_BYTES
+	#endif
+	);
+#endif
 	PacketWrapper packet(m_peer, m_peer->Receive());
 	while (true)
 	{
 #if RAKPEER_USER_THREADED==1
 		if (!packet.IsValid())
 		{
-			RakNet::BitStream updateBitStream( MAXIMUM_MTU_SIZE
-			#if LIBCAT_SECURITY==1
-			    + cat::AuthenticatedEncryption::OVERHEAD_BYTES
-			#endif
-			);
+			updateBitStream.Reset();
 			m_peer->RunUpdateCycle(updateBitStream);
 			packet = m_peer->Receive();
 		}
