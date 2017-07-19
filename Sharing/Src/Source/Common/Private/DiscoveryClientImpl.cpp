@@ -25,6 +25,11 @@ DiscoveryClientImpl::DiscoveryClientImpl()
 	: m_listenerList(ListenerList::Create())
 	, m_peer(new Peer(0))
 	, m_bClearedOutStaleClients(false)
+	, m_updateBitStream(MAXIMUM_MTU_SIZE
+		#if LIBCAT_SECURITY==1
+			+ cat::AuthenticatedEncryption::OVERHEAD_BYTES
+		#endif
+	)
 {
 	RakNet::SocketDescriptor socketDescriptor(kDiscoveryClientPort, 0);
 	socketDescriptor.socketFamily = AF_INET; // IPV4
@@ -76,27 +81,13 @@ DiscoveredSystemPtr DiscoveryClientImpl::GetDiscoveredSystem(uint32 index) const
 
 void DiscoveryClientImpl::Update()
 {
+#if RAKPEER_USER_THREADED==1
+	m_updateBitStream.Reset();
+	m_peer->RunUpdateCycle(m_updateBitStream);
+#endif
 	// Process any incoming responses to our ping
-#if RAKPEER_USER_THREADED==1
-	RakNet::BitStream updateBitStream( MAXIMUM_MTU_SIZE
-	#if LIBCAT_SECURITY==1
-		+ cat::AuthenticatedEncryption::OVERHEAD_BYTES
-	#endif
-	);
-#endif
-	PacketWrapper packet(m_peer, m_peer->Receive());
-	while (true)
+	for (PacketWrapper packet(m_peer, m_peer->Receive()); packet.IsValid(); packet = m_peer->Receive())
 	{
-#if RAKPEER_USER_THREADED==1
-		if (!packet.IsValid())
-		{
-			updateBitStream.Reset();
-			m_peer->RunUpdateCycle(updateBitStream);
-			packet = m_peer->Receive();
-		}
-#endif
-		if (!packet.IsValid())
-			break;
 		if (packet->data[0] == ID_UNCONNECTED_PONG)
 		{
 			RakNet::TimeMS time;
@@ -137,7 +128,6 @@ void DiscoveryClientImpl::Update()
 				}
 			}
 		}
-		packet = m_peer->Receive();
 	}
 
 	// Remove any clients that have not responded
