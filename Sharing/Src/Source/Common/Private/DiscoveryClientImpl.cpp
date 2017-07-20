@@ -25,11 +25,13 @@ DiscoveryClientImpl::DiscoveryClientImpl()
 	: m_listenerList(ListenerList::Create())
 	, m_peer(new Peer(0))
 	, m_bClearedOutStaleClients(false)
+#if RAKPEER_USER_THREADED==1
 	, m_updateBitStream(MAXIMUM_MTU_SIZE
 		#if LIBCAT_SECURITY==1
 			+ cat::AuthenticatedEncryption::OVERHEAD_BYTES
 		#endif
 	)
+#endif
 {
 	RakNet::SocketDescriptor socketDescriptor(kDiscoveryClientPort, 0);
 	socketDescriptor.socketFamily = AF_INET; // IPV4
