@@ -1,3 +1,5 @@
+![](https://github.com/Microsoft/MixedRealityToolkit-Unity/blob/master/External/ReadMeImages/MRTK_Logo_Rev.png)
+
 # MixedRealityToolkit (MRTK)
 The mixed reality toolkit is a collection of scripts and components intended to accelerate the development of applications targeting Windows Mixed Reality.
 
