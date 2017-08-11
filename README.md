@@ -6,9 +6,10 @@ The mixed reality toolkit is a collection of scripts and components intended to 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). 
 For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
----
 # MixedRealityToolkit for Unity
 If you are developing your app using Unity - please visit ![MixedRealityToolkit-Unity](https://github.com/Microsoft/MixedRealityToolkit-Unity).
+
+---
 
 ## Spatial Mapping
 
