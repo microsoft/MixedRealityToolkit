@@ -31,6 +31,9 @@ public:
 	virtual void RemoveListener(DiscoveryClientListener* oldListener) XTOVERRIDE;
 
 private:
+#if RAKPEER_USER_THREADED==1
+	RakNet::BitStream m_updateBitStream;
+#endif
 	
 	struct RemoteClient
 	{
