@@ -55,7 +55,7 @@ EXTERN_C __declspec(dllexport) BOOL TryGetMotionControllerModel(_In_ UINT32 cont
                     return FALSE;
                 }
 
-                IRandomAccessStreamWithContentType ^stream = modelOperation.get();
+                IRandomAccessStreamWithContentType^ stream = modelOperation.get();
 
                 // If the model call failed or the resulting stream is empty, return.
                 if (stream == nullptr || stream->Size == 0)
