@@ -74,13 +74,13 @@ EXTERN_C __declspec(dllexport) BOOL TryGetMotionControllerModel(_In_ UINT32 cont
                     return FALSE;
                 }
 
+                outputSize = buffer->Length;
+
                 // Now, create a DataReader from the buffer, which can then transfer the bytes into a byte array.
                 DataReader^ reader = DataReader::FromBuffer(buffer);
-                BYTE* pixels = new BYTE[buffer->Length];
-                reader->ReadBytes(Platform::ArrayReference<BYTE>(pixels, buffer->Length));
+                outputBuffer = new BYTE[outputSize];
+                reader->ReadBytes(Platform::ArrayReference<BYTE>(outputBuffer, outputSize));
 
-                outputBuffer = pixels;
-                outputSize = buffer->Length;
                 return TRUE;
             }
         }
