@@ -43,7 +43,7 @@ EXTERN_C __declspec(dllexport) BOOL TryGetMotionControllerModel(_In_ UINT32 cont
                 {
                     modelOperation = create_task(sources->GetAt(i)->Source->Controller->TryGetRenderableModelAsync());
                 }
-                catch (std::string e)
+                catch (...)
                 {
                     return FALSE;
                 }
