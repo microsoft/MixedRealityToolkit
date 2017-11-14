@@ -8,9 +8,6 @@
     <Filter Include="Shaders">
       <UniqueIdentifier>{772884be-8bd7-4279-ab23-f6a74ce28c37}</UniqueIdentifier>
     </Filter>
-    <Filter Include="External">
-      <UniqueIdentifier>{7ed259dc-b83d-4de4-b860-9946aabd9ef9}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Shaders\PbrGeometryShaderNoVprt.hlsl">
@@ -42,9 +39,6 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="PbrMaterial.h" />
     <ClInclude Include="PbrPrimitive.h" />
-    <ClInclude Include="..\External\stb_image.h">
-      <Filter>External</Filter>
-    </ClInclude>
     <ClInclude Include="GltfLoader.h" />
   </ItemGroup>
   <ItemGroup>

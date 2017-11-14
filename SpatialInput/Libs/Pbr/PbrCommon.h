@@ -39,8 +39,8 @@ namespace Pbr
         std::vector<Pbr::Vertex> Vertices;
         std::vector<uint32_t> Indices;
 
-        PrimitiveBuilder& CreateSphere(float diameter, uint32_t tessellation, Pbr::NodeIndex_t transformIndex = Pbr::RootNodeIndex);
-        PrimitiveBuilder& CreateCube(Pbr::NodeIndex_t transformIndex = Pbr::RootNodeIndex);
+        PrimitiveBuilder& AddSphere(float diameter, uint32_t tessellation, Pbr::NodeIndex_t transformIndex = Pbr::RootNodeIndex);
+        PrimitiveBuilder& AddCube(float sideLength, Pbr::NodeIndex_t transformIndex = Pbr::RootNodeIndex);
     };
 
     namespace Texture

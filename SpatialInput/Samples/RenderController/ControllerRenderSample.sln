@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ControllerRenderSample", "ControllerRenderSample\ControllerRenderSample.vcxproj", "{0ACFCD90-BE89-11E7-ABC4-CEC278B6B50A}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ControllerRenderSample", "ControllerRenderSample.vcxproj", "{0ACFCD90-BE89-11E7-ABC4-CEC278B6B50A}"
 	ProjectSection(ProjectDependencies) = postProject
 		{20E14C91-B449-4634-A559-2767F783CB77} = {20E14C91-B449-4634-A559-2767F783CB77}
 	EndProjectSection

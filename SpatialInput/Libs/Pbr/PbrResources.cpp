@@ -30,7 +30,7 @@ namespace Pbr
         void Initialize(_In_ ID3D11Device* device)
         {
             // Set up pixel shader.
-            Internal::ThrowIfFailed(device->CreatePixelShader(g_psPbrMain, sizeof(g_psPbrMain), nullptr, Resources.PixelShader.GetAddressOf()));
+            Internal::ThrowIfFailed(device->CreatePixelShader(g_psPbrMain, sizeof(g_psPbrMain), nullptr, &Resources.PixelShader));
 
             // Check for device support for the optional feature that allows setting the render target array index from the vertex shader stage.
             D3D11_FEATURE_DATA_D3D11_OPTIONS3 options{};
@@ -38,21 +38,21 @@ namespace Pbr
             if (options.VPAndRTArrayIndexFromAnyShaderFeedingRasterizer)
             {
                 // Set up vertex shader with VPRT support.
-                Internal::ThrowIfFailed(device->CreateInputLayout(Pbr::Vertex::s_vertexDesc, ARRAYSIZE(Pbr::Vertex::s_vertexDesc), g_vsPbrVprtMain, sizeof(g_vsPbrVprtMain), Resources.InputLayout.GetAddressOf()));
-                Internal::ThrowIfFailed(device->CreateVertexShader(g_vsPbrVprtMain, sizeof(g_vsPbrVprtMain), nullptr, Resources.VertexShader.GetAddressOf()));
+                Internal::ThrowIfFailed(device->CreateInputLayout(Pbr::Vertex::s_vertexDesc, ARRAYSIZE(Pbr::Vertex::s_vertexDesc), g_vsPbrVprtMain, sizeof(g_vsPbrVprtMain), &Resources.InputLayout));
+                Internal::ThrowIfFailed(device->CreateVertexShader(g_vsPbrVprtMain, sizeof(g_vsPbrVprtMain), nullptr, &Resources.VertexShader));
             }
             else
             {
                 // Set up vertex shader with geometry shader due to no VPRT support.
-                Internal::ThrowIfFailed(device->CreateInputLayout(Pbr::Vertex::s_vertexDesc, ARRAYSIZE(Pbr::Vertex::s_vertexDesc), g_vsPbrNoVprtMain, sizeof(g_vsPbrNoVprtMain), Resources.InputLayout.GetAddressOf()));
-                Internal::ThrowIfFailed(device->CreateVertexShader(g_vsPbrNoVprtMain, sizeof(g_vsPbrNoVprtMain), nullptr, Resources.VertexShader.GetAddressOf()));
-                Internal::ThrowIfFailed(device->CreateGeometryShader(g_gsPbrNoVprtMain, sizeof(g_gsPbrNoVprtMain), nullptr, Resources.GeometryShader.GetAddressOf()));
+                Internal::ThrowIfFailed(device->CreateInputLayout(Pbr::Vertex::s_vertexDesc, ARRAYSIZE(Pbr::Vertex::s_vertexDesc), g_vsPbrNoVprtMain, sizeof(g_vsPbrNoVprtMain), &Resources.InputLayout));
+                Internal::ThrowIfFailed(device->CreateVertexShader(g_vsPbrNoVprtMain, sizeof(g_vsPbrNoVprtMain), nullptr, &Resources.VertexShader));
+                Internal::ThrowIfFailed(device->CreateGeometryShader(g_gsPbrNoVprtMain, sizeof(g_gsPbrNoVprtMain), nullptr, &Resources.GeometryShader));
             }
 
             // Set up the constant buffers.
             static_assert((sizeof(SceneConstantBuffer) % 16) == 0, "Constant Buffer must be divisible by 16 bytes");
             const CD3D11_BUFFER_DESC pbrConstantBufferDesc(sizeof(SceneConstantBuffer), D3D11_BIND_CONSTANT_BUFFER);
-            Internal::ThrowIfFailed(device->CreateBuffer(&pbrConstantBufferDesc, nullptr, Resources.ConstantBuffer.GetAddressOf()));
+            Internal::ThrowIfFailed(device->CreateBuffer(&pbrConstantBufferDesc, nullptr, &Resources.ConstantBuffer));
 
             // Samplers for environment map and BRDF.
             Resources.EnvironmentMapSampler = Texture::CreateSampler(device);
@@ -75,7 +75,8 @@ namespace Pbr
         };
 
         DeviceResources Resources;
-        SceneConstantBuffer SceneBuffer;
+        TrackChanges<SceneConstantBuffer> SceneBuffer;
+        uint32_t SceneChangeCountBookmark{ 0 };
     };
 
     /* static */
@@ -100,18 +101,29 @@ namespace Pbr
         m_impl->Resources = {};
     }
 
+    Microsoft::WRL::ComPtr<ID3D11Device> Resources::GetDevice() const
+    {
+        ComPtr<ID3D11Device> device;
+        m_impl->Resources.ConstantBuffer->GetDevice(&device);
+        return device;
+    }
+
     void XM_CALLCONV Resources::SetLight(DirectX::XMVECTOR direction, DirectX::XMVECTOR diffuseColor)
     {
-        XMStoreFloat3(&m_impl->SceneBuffer.LightDirection, direction);
-        XMStoreFloat3(&m_impl->SceneBuffer.LightDiffuseColor, diffuseColor);
+        m_impl->SceneBuffer.Set([&](SceneConstantBuffer& sceneBuffer) {
+            XMStoreFloat3(&sceneBuffer.LightDirection, direction);
+            XMStoreFloat3(&sceneBuffer.LightDiffuseColor, diffuseColor);
+        });
     }
 
     void XM_CALLCONV Resources::SetViewProjection(FXMMATRIX viewLeft, CXMMATRIX viewRight, CXMMATRIX projectionLeft, CXMMATRIX projectionRight)
     {
-        XMStoreFloat4x4(&m_impl->SceneBuffer.ViewProjection[0], XMMatrixTranspose(XMMatrixMultiply(viewLeft, projectionLeft)));
-        XMStoreFloat4x4(&m_impl->SceneBuffer.ViewProjection[1], XMMatrixTranspose(XMMatrixMultiply(viewRight, projectionRight)));
-        XMStoreFloat4(&m_impl->SceneBuffer.EyePosition[0], XMMatrixInverse(nullptr, viewLeft).r[3]);
-        XMStoreFloat4(&m_impl->SceneBuffer.EyePosition[1], XMMatrixInverse(nullptr, viewRight).r[3]);
+        m_impl->SceneBuffer.Set([&](SceneConstantBuffer& sceneBuffer) {
+            XMStoreFloat4x4(&sceneBuffer.ViewProjection[0], XMMatrixTranspose(XMMatrixMultiply(viewLeft, projectionLeft)));
+            XMStoreFloat4x4(&sceneBuffer.ViewProjection[1], XMMatrixTranspose(XMMatrixMultiply(viewRight, projectionRight)));
+            XMStoreFloat4(&sceneBuffer.EyePosition[0], XMMatrixInverse(nullptr, viewLeft).r[3]);
+            XMStoreFloat4(&sceneBuffer.EyePosition[1], XMMatrixInverse(nullptr, viewRight).r[3]);
+        });
     }
 
     void Resources::SetEnvironmentMap(ID3D11DeviceContext3* context, ID3D11ShaderResourceView* specularEnvironmentMap, ID3D11ShaderResourceView* diffuseEnvironmentMap)
@@ -129,12 +141,14 @@ namespace Pbr
             throw std::exception("Specular Resource View Type is not D3D_SRV_DIMENSION_TEXTURECUBE");
         }
         
-        m_impl->SceneBuffer.NumSpecularMipLevels = desc.TextureCube.MipLevels;
+        m_impl->SceneBuffer.Set([&](SceneConstantBuffer& sceneBuffer) {
+            sceneBuffer.NumSpecularMipLevels = desc.TextureCube.MipLevels;
+        });
         m_impl->Resources.SpecularEnvironmentMap = specularEnvironmentMap;
         m_impl->Resources.DiffuseEnvironmentMap = diffuseEnvironmentMap;
     }
 
-    Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> Resources::CreateSolidColorTexture(_In_ ID3D11Device* device, CXMVECTOR color) const
+    Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> Resources::CreateSolidColorTexture(CXMVECTOR color) const
     {
         const std::array<uint8_t, 4> rgba = Texture::CreateRGBA(color);
 
@@ -146,13 +160,19 @@ namespace Pbr
             return textureIt->second;
         }
 
-        Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> texture = Pbr::Texture::CreateTexture(device, rgba.data(), 1, 1, 1, DXGI_FORMAT_R8G8B8A8_UNORM);
+        Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> texture = Pbr::Texture::CreateTexture(GetDevice().Get(), rgba.data(), 1, 1, 1, DXGI_FORMAT_R8G8B8A8_UNORM);
         m_impl->Resources.SolidColorTextureCache.insert(std::make_pair(colorKey, texture));
         return texture;
     }
 
     void Resources::Bind(_In_ ID3D11DeviceContext3* context) const
     {
+        // If the constant buffer parameters changed, update the D3D constant buffer.
+        if (m_impl->SceneBuffer.UpdateChangeCountBookmark(&m_impl->SceneChangeCountBookmark))
+        {
+            context->UpdateSubresource(m_impl->Resources.ConstantBuffer.Get(), 0, nullptr, &m_impl->SceneBuffer, 0, 0);
+        }
+
         context->VSSetShader(m_impl->Resources.VertexShader.Get(), nullptr, 0);
         context->PSSetShader(m_impl->Resources.PixelShader.Get(), nullptr, 0);
         context->GSSetShader(m_impl->Resources.GeometryShader.Get(), nullptr, 0);
@@ -168,10 +188,5 @@ namespace Pbr
         context->PSSetShaderResources(Pbr::ShaderSlots::Brdf, _countof(shaderResources), shaderResources);
         ID3D11SamplerState* samplers[] = { m_impl->Resources.BrdfSampler.Get(), m_impl->Resources.EnvironmentMapSampler.Get() };
         context->PSSetSamplers(ShaderSlots::Brdf, _countof(samplers), samplers);
-    }
-
-    void Resources::UpdateConstantBuffer(_In_ ID3D11DeviceContext3* context)
-    {
-        context->UpdateSubresource(m_impl->Resources.ConstantBuffer.Get(), 0, nullptr, &m_impl->SceneBuffer, 0, 0);
     }
 }

@@ -13,24 +13,26 @@
 
 namespace Pbr
 {
-    // Nodes for a hierarchy of transforms. These transforms are referenced by vertices in the model's primitives.
+    // Node for creating a hierarchy of transforms. These transforms are referenced by vertices in the model's primitives.
     struct Node
     {
         using Collection = std::vector<Node>;
 
-        Node(DirectX::FXMMATRIX localTransform, std::string name, NodeIndex_t index, NodeIndex_t parentNodeIndex)
+        Node(DirectX::CXMMATRIX localTransform, std::string name, NodeIndex_t index, NodeIndex_t parentNodeIndex)
             : Name(std::move(name)), Index(index), ParentNodeIndex(parentNodeIndex)
         {
             SetTransform(localTransform);
         }
 
+        // Set the local transform for this node.
         void XM_CALLCONV SetTransform(DirectX::FXMMATRIX transform)
         {
             DirectX::XMStoreFloat4x4(&m_localTransform, transform);
-            m_modifyCount++;
+            InterlockedIncrement(&m_modifyCount);
         }
 
-        DirectX::XMMATRIX GetTransform() const
+        // Get the local transform for this node.
+        DirectX::XMMATRIX XM_CALLCONV GetTransform() const
         {
             return DirectX::XMLoadFloat4x4(&m_localTransform);
         }
@@ -50,28 +52,40 @@ namespace Pbr
     {
         Model(bool createRootNode = true);
 
+        // Add a node to the model.
         Node& XM_CALLCONV AddNode(DirectX::FXMMATRIX transform, NodeIndex_t parentIndex, std::string name);
+
+        // Add a primitive to the model.
         void AddPrimitive(Primitive primitive);
 
-        void Render(_In_ ID3D11Device* device, _In_ ID3D11DeviceContext3* context) const;
+        // Render the model.
+        void Render(Pbr::Resources const& pbrResources, _In_ ID3D11DeviceContext3* context) const;
 
+        // Remove all primitives.
         void Clear();
-        std::shared_ptr<Model> Clone(_In_ ID3D11Device* device) const;
+
+        // Create a clone of this model.
+        std::shared_ptr<Model> Clone(Pbr::Resources const& pbrResources) const;
 
         NodeIndex_t GetNodeCount() const { return (NodeIndex_t)m_nodes.size(); }
         Node& GetNode(NodeIndex_t nodeIndex) { return m_nodes[nodeIndex]; }
         const Node& GetNode(NodeIndex_t nodeIndex) const { return m_nodes[nodeIndex]; }
+
+        // Find the first node which matches a given name.
         std::optional<NodeIndex_t> FindFirstNode(char const* name, std::optional<NodeIndex_t> const& parentNodeIndex = {}) const;
 
+        // Compute the world transform for a given node.
         DirectX::XMMATRIX GetNodeWorldTransform(NodeIndex_t nodeIndex) const;
 
         uint32_t GetPrimitiveCount() const { return (uint32_t)m_primitives.size(); }
         Primitive& GetPrimitive(uint32_t index) { return m_primitives[index]; }
         const Primitive& GetPrimitive(uint32_t index) const { return m_primitives[index]; }
 
+        std::string Name;
+
     private:
         // Updated the transforms used to render the model. This needs to be called any time a node transform is changed.
-        void UpdateTransforms(_In_ ID3D11Device* device, _In_ ID3D11DeviceContext3* context) const;
+        void UpdateTransforms(Pbr::Resources const& pbrResources, _In_ ID3D11DeviceContext3* context) const;
 
     private:
         // A model is made up of one or more Primitives. Each Primitive has a unique material.

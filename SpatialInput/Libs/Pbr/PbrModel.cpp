@@ -22,9 +22,9 @@ namespace Pbr
         }
     }
 
-    void Model::Render(_In_ ID3D11Device* device, _In_ ID3D11DeviceContext3* context) const
+    void Model::Render(Pbr::Resources const& pbrResources, _In_ ID3D11DeviceContext3* context) const
     {
-        UpdateTransforms(device, context);
+        UpdateTransforms(pbrResources, context);
 
         ID3D11ShaderResourceView* vsShaderResources[] = { m_modelTransformsResourceView.Get() };
         context->VSSetShaderResources(Pbr::ShaderSlots::Transforms, _countof(vsShaderResources), vsShaderResources);
@@ -59,7 +59,7 @@ namespace Pbr
         m_primitives.clear();
     }
 
-    std::shared_ptr<Model> Model::Clone(_In_ ID3D11Device* device) const
+    std::shared_ptr<Model> Model::Clone(Pbr::Resources const& pbrResources) const
     {
         auto clone = std::make_shared<Model>(false /* createRootNode */);
 
@@ -70,7 +70,7 @@ namespace Pbr
 
         for (const Primitive& primitive : m_primitives)
         {
-            clone->AddPrimitive(primitive.Clone(device));
+            clone->AddPrimitive(primitive.Clone(pbrResources));
         }
 
         return clone;
@@ -106,7 +106,7 @@ namespace Pbr
         m_primitives.push_back(std::move(primitive));
     }
 
-    void Model::UpdateTransforms(_In_ ID3D11Device* device, _In_ ID3D11DeviceContext3* context) const
+    void Model::UpdateTransforms(Pbr::Resources const& pbrResources, _In_ ID3D11DeviceContext3* context) const
     {
         const uint32_t newTotalModifyCount = std::accumulate(
             m_nodes.begin(),
@@ -129,13 +129,13 @@ namespace Pbr
                 desc.MiscFlags = D3D11_RESOURCE_MISC_BUFFER_STRUCTURED;
                 desc.StructureByteStride = sizeof(decltype(m_modelTransforms)::value_type);
                 desc.ByteWidth = (UINT)(m_modelTransforms.size() * desc.StructureByteStride);
-                Internal::ThrowIfFailed(device->CreateBuffer(&desc, nullptr, m_modelTransformsStructuredBuffer.GetAddressOf()));
+                Internal::ThrowIfFailed(pbrResources.GetDevice()->CreateBuffer(&desc, nullptr, &m_modelTransformsStructuredBuffer));
 
                 D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc{};
                 srvDesc.ViewDimension = D3D11_SRV_DIMENSION_BUFFER;
                 srvDesc.Buffer.NumElements = (UINT)m_modelTransforms.size();
                 srvDesc.Buffer.ElementWidth = (UINT)m_modelTransforms.size();
-                Internal::ThrowIfFailed(device->CreateShaderResourceView(m_modelTransformsStructuredBuffer.Get(), &srvDesc, m_modelTransformsResourceView.GetAddressOf()));
+                Internal::ThrowIfFailed(pbrResources.GetDevice()->CreateShaderResourceView(m_modelTransformsStructuredBuffer.Get(), &srvDesc, &m_modelTransformsResourceView));
             }
 
             // Nodes are guaranteed to come after their parents, so each node transform can be multiplied by its parent transform in a single pass.

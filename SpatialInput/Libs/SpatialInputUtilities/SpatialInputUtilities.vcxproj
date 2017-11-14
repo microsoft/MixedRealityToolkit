@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\..\Samples\RenderController\packages\cppwinrt.2017.10.13.1\build\native\cppwinrt.props" Condition="Exists('..\..\Samples\RenderController\packages\cppwinrt.2017.10.13.1\build\native\cppwinrt.props')" />
+  <Import Project="..\..\packages\cppwinrt.2017.10.13.1\build\native\cppwinrt.props" Condition="Exists('..\..\packages\cppwinrt.2017.10.13.1\build\native\cppwinrt.props')" />
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|ARM">
       <Configuration>Debug</Configuration>
@@ -39,9 +39,6 @@
     <ProjectReference Include="..\Gltf\Gltf.vcxproj">
       <Project>{63475578-0c83-4b2f-9ac5-a4513de2907f}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\Pbr\Pbr.vcxproj">
-      <Project>{30b0d5f4-52b6-4083-8607-d80d844d9dd7}</Project>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -78,6 +75,7 @@
   </ImportGroup>
   <ImportGroup Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\packages\cppwinrt.2017.10.13.1\build\native\cppwinrt.targets" Condition="Exists('..\..\packages\cppwinrt.2017.10.13.1\build\native\cppwinrt.targets')" />
   </ImportGroup>
   <PropertyGroup>
     <OutDir>$(ProjectDir)bin\$(Configuration)\$(Platform)\</OutDir>
@@ -128,14 +126,11 @@
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
-  <ImportGroup Label="ExtensionTargets">
-    <Import Project="..\..\Samples\RenderController\packages\cppwinrt.2017.10.13.1\build\native\cppwinrt.targets" Condition="Exists('..\..\Samples\RenderController\packages\cppwinrt.2017.10.13.1\build\native\cppwinrt.targets')" />
-  </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\..\Samples\RenderController\packages\cppwinrt.2017.10.13.1\build\native\cppwinrt.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\Samples\RenderController\packages\cppwinrt.2017.10.13.1\build\native\cppwinrt.props'))" />
-    <Error Condition="!Exists('..\..\Samples\RenderController\packages\cppwinrt.2017.10.13.1\build\native\cppwinrt.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\Samples\RenderController\packages\cppwinrt.2017.10.13.1\build\native\cppwinrt.targets'))" />
+    <Error Condition="!Exists('..\..\packages\cppwinrt.2017.10.13.1\build\native\cppwinrt.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\cppwinrt.2017.10.13.1\build\native\cppwinrt.props'))" />
+    <Error Condition="!Exists('..\..\packages\cppwinrt.2017.10.13.1\build\native\cppwinrt.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\cppwinrt.2017.10.13.1\build\native\cppwinrt.targets'))" />
   </Target>
 </Project>

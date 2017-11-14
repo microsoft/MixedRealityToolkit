@@ -109,16 +109,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\External\mikktspace.h" />
-    <ClInclude Include="..\..\External\picojson.h" />
-    <ClInclude Include="..\..\External\stb_image.h" />
-    <ClInclude Include="..\..\External\tiny_gltf.h" />
     <ClInclude Include="GltfHelper.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\External\mikktspace.cpp" />
+    <ClCompile Include="ExternalImpl.cpp" />
     <ClCompile Include="GltfHelper.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeaderOutputFile>$(IntDir)pch.pch</PrecompiledHeaderOutputFile>

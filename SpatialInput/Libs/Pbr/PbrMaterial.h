@@ -34,20 +34,24 @@ namespace Pbr
 
         static_assert((sizeof(ConstantBufferData) % 16) == 0, "Constant Buffer must be divisible by 16 bytes");
 
-        Material(_In_ ID3D11Device* device);
+        // Create a uninitialized material. Textures and shader coefficients must be set.
+        Material(Pbr::Resources const& pbrResources);
 
-        std::shared_ptr<Material> Clone(_In_ ID3D11Device* device) const;
+        // Create a clone of this material.
+        std::shared_ptr<Material> Clone(Pbr::Resources const& pbrResources) const;
 
+        // Create a flat (no texture) material.
         static std::shared_ptr<Material> CreateFlat(
-            _In_ ID3D11Device* device,
             const Resources& pbrResources,
-            std::string name,
             DirectX::CXMVECTOR baseColorFactor,
             float roughnessFactor = 1.0f,
             float metallicFactor = 0.0f,
             DirectX::CXMVECTOR emissiveFactor = DirectX::Colors::Black);
 
+        // Set a Metallic-Roughness texture.
         void SetTexture(ShaderSlots::PSMaterial slot, _In_ ID3D11ShaderResourceView* textureView, _In_opt_ ID3D11SamplerState* sampler);
+
+        // Bind this material to current context.
         void Bind(_In_ ID3D11DeviceContext3* context) const;
 
         std::string Name;

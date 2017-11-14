@@ -124,7 +124,6 @@
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
-    <ClInclude Include="..\External\stb_image.h" />
     <ClInclude Include="GltfLoader.h" />
     <ClInclude Include="PbrCommon.h" />
     <ClInclude Include="PbrMaterial.h" />

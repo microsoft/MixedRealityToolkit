@@ -5,34 +5,14 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tga;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="External">
-      <UniqueIdentifier>{8814e292-967e-46c1-bee5-cca40f52dba7}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GltfHelper.cpp" />
     <ClCompile Include="pch.cpp" />
-    <ClCompile Include="..\..\External\mikktspace.cpp">
-      <Filter>External</Filter>
-    </ClCompile>
+    <ClCompile Include="ExternalImpl.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GltfHelper.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="..\..\External\tiny_gltf.h">
-      <Filter>External</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\External\picojson.h">
-      <Filter>External</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\External\stb_image.h">
-      <Filter>External</Filter>
-    </ClInclude>
-    <ClInclude Include="targetver.h">
-      <Filter>External</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\External\mikktspace.h">
-      <Filter>External</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>

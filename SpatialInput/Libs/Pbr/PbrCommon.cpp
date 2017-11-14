@@ -1,4 +1,5 @@
 #include "pch.h"
+#include <sstream>
 // Implementation is in the Gltf library so this isn't needed: #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 #include "PbrCommon.h"
@@ -16,7 +17,9 @@ namespace Pbr
         {
             if (FAILED(hr))
             {
-                throw std::exception(); // TODO: Put something in the msg.
+                std::stringstream ss;
+                ss << std::hex << "Error in PBR renderer: 0x" << hr;
+                throw std::exception(ss.str().c_str());
             }
         }
     }
@@ -31,7 +34,7 @@ namespace Pbr
     };
 
     // Based on code from DirectXTK
-    PrimitiveBuilder& PrimitiveBuilder::CreateSphere(float diameter, uint32_t tessellation, Pbr::NodeIndex_t transformIndex)
+    PrimitiveBuilder& PrimitiveBuilder::AddSphere(float diameter, uint32_t tessellation, Pbr::NodeIndex_t transformIndex)
     {
         if (tessellation < 3)
         {
@@ -110,7 +113,7 @@ namespace Pbr
     }
 
     // Based on code from DirectXTK
-    PrimitiveBuilder& PrimitiveBuilder::CreateCube(Pbr::NodeIndex_t transformIndex)
+    PrimitiveBuilder& PrimitiveBuilder::AddCube(float sideLength, Pbr::NodeIndex_t transformIndex)
     {
         // A box has six faces, each one pointing in a different direction.
         const int FaceCount = 6;
@@ -134,6 +137,7 @@ namespace Pbr
         };
 
         // Create each face in turn.
+        const float halfSideLength = sideLength / 2;
         for (int i = 0; i < FaceCount; i++)
         {
             XMVECTOR normal = faceNormals[i];
@@ -157,10 +161,10 @@ namespace Pbr
 
             const XMVECTOR positions[4] =
             {
-                { (normal - side1 - side2) * 0.5f },
-                { (normal - side1 + side2) * 0.5f },
-                { (normal + side1 + side2) * 0.5f },
-                { (normal + side1 - side2) * 0.5f }
+                { (normal - side1 - side2) * halfSideLength },
+                { (normal - side1 + side2) * halfSideLength },
+                { (normal + side1 + side2) * halfSideLength },
+                { (normal + side1 - side2) * halfSideLength }
             };
 
             for (int i = 0; i < 4; i++)
@@ -226,7 +230,7 @@ namespace Pbr
             }
 
             ComPtr<ID3D11Texture2D> cubeTexture;
-            Internal::ThrowIfFailed(device->CreateTexture2D(&desc, initData, cubeTexture.GetAddressOf()));
+            Internal::ThrowIfFailed(device->CreateTexture2D(&desc, initData, &cubeTexture));
 
             D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc{};
             srvDesc.Format = desc.Format;
@@ -235,7 +239,7 @@ namespace Pbr
             srvDesc.Texture2D.MostDetailedMip = 0;
 
             ComPtr<ID3D11ShaderResourceView> textureView;
-            Internal::ThrowIfFailed(device->CreateShaderResourceView(cubeTexture.Get(), &srvDesc, textureView.GetAddressOf()));
+            Internal::ThrowIfFailed(device->CreateShaderResourceView(cubeTexture.Get(), &srvDesc, &textureView));
 
             return textureView;
         }
@@ -259,7 +263,7 @@ namespace Pbr
             initData.SysMemSlicePitch = size;
 
             ComPtr<ID3D11Texture2D> texture2D;
-            Internal::ThrowIfFailed(device->CreateTexture2D(&desc, &initData, texture2D.GetAddressOf()));
+            Internal::ThrowIfFailed(device->CreateTexture2D(&desc, &initData, &texture2D));
 
             D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc{};
             srvDesc.Format = desc.Format;
@@ -268,7 +272,7 @@ namespace Pbr
             srvDesc.Texture2D.MostDetailedMip = desc.MipLevels - 1;
 
             ComPtr<ID3D11ShaderResourceView> textureView;
-            Internal::ThrowIfFailed(device->CreateShaderResourceView(texture2D.Get(), &srvDesc, textureView.GetAddressOf()));
+            Internal::ThrowIfFailed(device->CreateShaderResourceView(texture2D.Get(), &srvDesc, &textureView));
 
             return textureView;
         }

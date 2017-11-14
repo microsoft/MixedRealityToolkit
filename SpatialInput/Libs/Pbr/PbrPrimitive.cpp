@@ -20,7 +20,7 @@ namespace
         initData.pSysMem = primitiveBuilder.Vertices.data();
 
         ComPtr<ID3D11Buffer> vertexBuffer;
-        Pbr::Internal::ThrowIfFailed(device->CreateBuffer(&desc, &initData, vertexBuffer.GetAddressOf()));
+        Pbr::Internal::ThrowIfFailed(device->CreateBuffer(&desc, &initData, &vertexBuffer));
         return vertexBuffer;
     }
 
@@ -36,7 +36,7 @@ namespace
         initData.pSysMem = primitiveBuilder.Indices.data();
 
         ComPtr<ID3D11Buffer> indexBuffer;
-        Pbr::Internal::ThrowIfFailed(device->CreateBuffer(&desc, &initData, indexBuffer.GetAddressOf()));
+        Pbr::Internal::ThrowIfFailed(device->CreateBuffer(&desc, &initData, &indexBuffer));
         return indexBuffer;
     }
 }
@@ -51,18 +51,18 @@ namespace Pbr
     {
     }
 
-    Primitive::Primitive(_In_ ID3D11Device* device, const Pbr::PrimitiveBuilder& primitiveBuilder, std::shared_ptr<Pbr::Material> material)
+    Primitive::Primitive(Pbr::Resources const& pbrResources, const Pbr::PrimitiveBuilder& primitiveBuilder, std::shared_ptr<Pbr::Material> material)
         : Primitive(
             (UINT)primitiveBuilder.Indices.size(),
-            CreateIndexBuffer(device, primitiveBuilder).Get(),
-            CreateVertexBuffer(device, primitiveBuilder).Get(),
+            CreateIndexBuffer(pbrResources.GetDevice().Get(), primitiveBuilder).Get(),
+            CreateVertexBuffer(pbrResources.GetDevice().Get(), primitiveBuilder).Get(),
             std::move(material))
     {
     }
 
-    Primitive Primitive::Clone(_In_ ID3D11Device* device) const
+    Primitive Primitive::Clone(Pbr::Resources const& pbrResources) const
     {
-        return Primitive(m_indexCount, m_indexBuffer.Get(), m_vertexBuffer.Get(), m_material->Clone(device));
+        return Primitive(m_indexCount, m_indexBuffer.Get(), m_vertexBuffer.Get(), m_material->Clone(pbrResources));
     }
 
     void Primitive::Render(_In_ ID3D11DeviceContext3* context) const

@@ -2,8 +2,12 @@
 
 #include <winrt\Windows.UI.Input.Spatial.h>
 
-namespace SpatialInputUtilities
+namespace SpatialInputUtilities::Physics
 {
+    // Compute the linear velocity near a SpatialInteractionSourceLocation assuming the position is part of the
+    // spatial interaction source rigid body. When a user does a throwing motion, the user often snaps their
+    // wrist. The angular velocity from snapping will contribute to the linear velocity of the object being thrown
+    // proportional to how far the object is from the pivot location (SpatialInteractionSourceLocation).
     static inline std::optional<winrt::Windows::Foundation::Numerics::float3> GetVelocityNearSourceLocation(
         winrt::Windows::UI::Input::Spatial::SpatialInteractionSourceLocation const& sourceLocation,
         winrt::Windows::Foundation::Numerics::float3 const& positionNearSourceLocation)

@@ -84,7 +84,7 @@ namespace
 
                 // Convert the GltfHelper vertices into the PBR vertex format.
                 primitiveBuilder.Vertices.resize(startVertex + primitive.Vertices.size());
-                for (auto i = 0; i < primitive.Vertices.size(); i++)
+                for (size_t i = 0; i < primitive.Vertices.size(); i++)
                 {
                     const GltfHelper::Vertex& vertex = primitive.Vertices[i];
                     Pbr::Vertex pbrVertex;
@@ -99,7 +99,7 @@ namespace
 
                 // Insert indicies with reverse winding order.
                 primitiveBuilder.Indices.resize(startIndex + primitive.Indices.size());
-                for (auto i = 0; i < primitive.Indices.size(); i += 3)
+                for (size_t i = 0; i < primitive.Indices.size(); i += 3)
                 {
                     primitiveBuilder.Indices[startIndex + i + 0] = startVertex + primitive.Indices[i + 0];
                     primitiveBuilder.Indices[startIndex + i + 1] = startVertex + primitive.Indices[i + 2];
@@ -119,7 +119,6 @@ namespace
 namespace Gltf
 {
     std::shared_ptr<Pbr::Model> FromGltfObject(
-        _In_ ID3D11Device* device,
         const Pbr::Resources& pbrResources,
         const tinygltf::Model& gltfModel,
         CXMMATRIX rootGltfTransform)
@@ -163,14 +162,14 @@ namespace Gltf
                 if (materialIndex == -1) // No material was referenced. Make up a material for it.
                 {
                     // Default material is a grey material, 50% roughness, non-metallic.
-                    pbrMaterial = Pbr::Material::CreateFlat(device, pbrResources, "unspecified", Colors::Gray, 0.5f);
+                    pbrMaterial = Pbr::Material::CreateFlat(pbrResources, Colors::Gray, 0.5f);
                 }
                 else
                 {
                     const tinygltf::Material& gltfMaterial = gltfModel.materials.at(materialIndex);
 
                     const GltfHelper::Material material = GltfHelper::ReadMaterial(gltfModel, gltfMaterial);
-                    pbrMaterial = std::make_shared<Pbr::Material>(device);
+                    pbrMaterial = std::make_shared<Pbr::Material>(pbrResources);
 
                     // Read a tinygltf texture and sampler into the Pbr Material.
                     auto loadTexture = [&](Pbr::ShaderSlots::PSMaterial slot, const GltfHelper::Material::Texture& texture, bool sRGB, CXMVECTOR defaultRGBA)
@@ -183,8 +182,8 @@ namespace Gltf
                             // TODO: Generate mipmaps if sampler's minification filter (minFilter) uses mipmapping.
                             // TODO: If texture is not power-of-two and (sampler has wrapping=repeat/mirrored_repeat OR minFilter uses mipmapping), resize to power-of-two.
                             textureView = texture.Image != nullptr ?
-                                LoadImage(device, *texture.Image, sRGB) :
-                                pbrResources.CreateSolidColorTexture(device, defaultRGBA);
+                                LoadImage(pbrResources.GetDevice().Get(), *texture.Image, sRGB) :
+                                pbrResources.CreateSolidColorTexture(defaultRGBA);
                             imageMap[imageKey] = textureView;
                         }
 
@@ -193,8 +192,8 @@ namespace Gltf
                         if (!samplerState) // If not cached, create the sampler and store it in the sampler cache.
                         {
                             samplerState = texture.Sampler != nullptr ?
-                                CreateSampler(device, gltfModel, *texture.Sampler) :
-                                Pbr::Texture::CreateSampler(device, D3D11_TEXTURE_ADDRESS_WRAP);
+                                CreateSampler(pbrResources.GetDevice().Get(), gltfModel, *texture.Sampler) :
+                                Pbr::Texture::CreateSampler(pbrResources.GetDevice().Get(), D3D11_TEXTURE_ADDRESS_WRAP);
                             samplerMap[texture.Sampler] = samplerState;
                         }
 
@@ -232,14 +231,13 @@ namespace Gltf
         {
             const Pbr::PrimitiveBuilder& primitiveBuilder = primitiveBuilderPair.second;
             const std::shared_ptr<Pbr::Material>& material = materialMap.find(primitiveBuilderPair.first)->second;
-            model->AddPrimitive(Pbr::Primitive(device, primitiveBuilder, material));
+            model->AddPrimitive(Pbr::Primitive(pbrResources, primitiveBuilder, material));
         }
 
         return model;
     }
 
     std::shared_ptr<Pbr::Model> FromGltfBinary(
-        _In_ ID3D11Device* device,
         const Pbr::Resources& pbrResources,
         _In_reads_bytes_(bufferBytes) const byte* buffer,
         uint32_t bufferBytes,
@@ -255,6 +253,6 @@ namespace Gltf
             throw std::exception(msg.c_str());
         }
 
-        return FromGltfObject(device, pbrResources, gltfModel, rootTransform);
+        return FromGltfObject(pbrResources, gltfModel, rootTransform);
     }
 }

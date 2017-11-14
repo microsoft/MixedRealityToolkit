@@ -3,11 +3,13 @@
 #include <algorithm>
 #include <winrt\Windows.UI.Input.Spatial.h>
 
-namespace SpatialInputUtilities
+namespace SpatialInputUtilities::Haptics
 {
+    // Creates a continuous haptic feedback on the given SpatialInteractionSource.
     static inline void SendContinuousBuzzForDuration(
         winrt::Windows::UI::Input::Spatial::SpatialInteractionSource const& source,
-        winrt::Windows::Foundation::TimeSpan const& playDuration)
+        winrt::Windows::Foundation::TimeSpan const& playDuration,
+        float intensity = 1.0f)
     {
         using namespace winrt::Windows::Devices::Haptics;
         using namespace winrt::Windows::Foundation::Collections;
@@ -28,7 +30,7 @@ namespace SpatialInputUtilities
                 // Apply controller haptics
                 if (continuousBuzz != end(supportedFeedback))
                 {
-                    hapticsController.SendHapticFeedbackForDuration(*continuousBuzz, 1.0f, playDuration);
+                    hapticsController.SendHapticFeedbackForDuration(*continuousBuzz, intensity, playDuration);
                 }
             }
         }

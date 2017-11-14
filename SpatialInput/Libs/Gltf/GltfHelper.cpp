@@ -1,6 +1,4 @@
 #include "pch.h"
-#define TINYGLTF_IMPLEMENTATION
-#define STB_IMAGE_IMPLEMENTATION
 #include <tiny_gltf.h>
 #include <mikktspace.h>
 #include "GltfHelper.h"
@@ -20,7 +18,7 @@ namespace
         // Set up the callbacks so that MikkTSpace can read the Primitive data.
         SMikkTSpaceInterface mikkInterface{};
         mikkInterface.m_getNumFaces = [](const SMikkTSpaceContext* pContext) {
-            auto primitive = reinterpret_cast<const GltfHelper::Primitive*>(pContext->m_pUserData);
+            auto primitive = static_cast<const GltfHelper::Primitive*>(pContext->m_pUserData);
             assert((primitive->Indices.size() % TRIANGLE_VERTEX_COUNT) == 0); // Only triangles are supported.
             return (int)(primitive->Indices.size() / TRIANGLE_VERTEX_COUNT);
         };
@@ -28,17 +26,17 @@ namespace
             return TRIANGLE_VERTEX_COUNT;
         };
         mikkInterface.m_getPosition = [](const SMikkTSpaceContext * pContext, float fvPosOut[], const int iFace, const int iVert) {
-            auto primitive = reinterpret_cast<const GltfHelper::Primitive*>(pContext->m_pUserData);
+            auto primitive = static_cast<const GltfHelper::Primitive*>(pContext->m_pUserData);
             const auto vertexIndex = primitive->Indices[(iFace * TRIANGLE_VERTEX_COUNT) + iVert];
             memcpy(fvPosOut, &primitive->Vertices[vertexIndex].Position, sizeof(float) * 3);
         };
         mikkInterface.m_getNormal = [](const SMikkTSpaceContext * pContext, float fvNormOut[], const int iFace, const int iVert) {
-            auto primitive = reinterpret_cast<const GltfHelper::Primitive*>(pContext->m_pUserData);
+            auto primitive = static_cast<const GltfHelper::Primitive*>(pContext->m_pUserData);
             const auto vertexIndex = primitive->Indices[(iFace * TRIANGLE_VERTEX_COUNT) + iVert];
             memcpy(fvNormOut, &primitive->Vertices[vertexIndex].Normal, sizeof(float) * 3);
         };
         mikkInterface.m_getTexCoord = [](const SMikkTSpaceContext * pContext, float fvTexcOut[], const int iFace, const int iVert) {
-            auto primitive = reinterpret_cast<const GltfHelper::Primitive*>(pContext->m_pUserData);
+            auto primitive = static_cast<const GltfHelper::Primitive*>(pContext->m_pUserData);
             const auto vertexIndex = primitive->Indices[(iFace * TRIANGLE_VERTEX_COUNT) + iVert];
             memcpy(fvTexcOut, &primitive->Vertices[vertexIndex].TexCoord0, sizeof(float) * 2);
         };
@@ -100,10 +98,10 @@ namespace
 
     // Some data, like texCoords, can be represented 32bit float or normalized unsigned short or byte.
     // ReadNormalizedFloat provides overloads for all three types.
-    template <typename T> float ReadNormalizedFloat(const byte* ptr);
-    template<> float ReadNormalizedFloat<float>(const byte* ptr) { return *reinterpret_cast<const float*>(ptr); }
-    template<> float ReadNormalizedFloat<unsigned short>(const byte* ptr) { return *reinterpret_cast<const unsigned short*>(ptr) / (float)std::numeric_limits<unsigned short>::max(); }
-    template<> float ReadNormalizedFloat<unsigned char>(const byte* ptr) { return *reinterpret_cast<const unsigned char*>(ptr) / (float)std::numeric_limits<unsigned char>::max(); }
+    template <typename T> float ReadNormalizedFloat(const uint8_t* ptr);
+    template<> float ReadNormalizedFloat<float>(const uint8_t* ptr) { return *reinterpret_cast<const float*>(ptr); }
+    template<> float ReadNormalizedFloat<unsigned short>(const uint8_t* ptr) { return *reinterpret_cast<const unsigned short*>(ptr) / (float)std::numeric_limits<unsigned short>::max(); }
+    template<> float ReadNormalizedFloat<unsigned char>(const uint8_t* ptr) { return *reinterpret_cast<const unsigned char*>(ptr) / (float)std::numeric_limits<unsigned char>::max(); }
 
     // Convert array of 16 doubles to an XMMATRIX.
     XMMATRIX XM_CALLCONV Double4x4ToXMMatrix(FXMMATRIX defaultMatrix, const std::vector<double>& doubleData)
@@ -230,7 +228,7 @@ namespace
         else if (accessor.componentType == TINYGLTF_COMPONENT_TYPE_UNSIGNED_BYTE)
         {
             if (!accessor.normalized) { throw std::exception("Accessor for TEXTCOORD_n unsigned byte must be normalized."); }
-            ReadTexCoordToVertexField<byte, field>(accessor, bufferView, buffer, primitive);
+            ReadTexCoordToVertexField<uint8_t, field>(accessor, bufferView, buffer, primitive);
         }
         else if (accessor.componentType == TINYGLTF_COMPONENT_TYPE_UNSIGNED_SHORT)
         {
@@ -458,7 +456,7 @@ namespace GltfHelper
     Material ReadMaterial(const tinygltf::Model& gltfModel, const tinygltf::Material& gltfMaterial)
     {
         // Read an optional VEC4 parameter if available, otherwise use the default.
-        auto readParameterFactorAsVec4 = [](const tinygltf::ParameterMap& parameters, PCSTR name, const XMFLOAT4& default) {
+        auto readParameterFactorAsVec4 = [](const tinygltf::ParameterMap& parameters, char* name, const XMFLOAT4& default) {
             auto c = parameters.find(name);
             return (c != parameters.end() && c->second.number_array.size() == 4) ?
                 XMFLOAT4((float)c->second.number_array[0], (float)c->second.number_array[1], (float)c->second.number_array[2], (float)c->second.number_array[3]) :
@@ -466,7 +464,7 @@ namespace GltfHelper
         };
 
         // Read an optional VEC3 parameter if available, otherwise use the default.
-        auto readParameterFactorAsVec3 = [](const tinygltf::ParameterMap& parameters, PCSTR name, const XMFLOAT3& default) {
+        auto readParameterFactorAsVec3 = [](const tinygltf::ParameterMap& parameters, char* name, const XMFLOAT3& default) {
             auto c = parameters.find(name);
             return (c != parameters.end() && c->second.number_array.size() == 3) ?
                 XMFLOAT3((float)c->second.number_array[0], (float)c->second.number_array[1], (float)c->second.number_array[2]) :
@@ -474,13 +472,13 @@ namespace GltfHelper
         };
 
         // Read an optional scalar parameter if available, otherwise use the default.
-        auto readParameterFactorAsScalar = [](const tinygltf::ParameterMap& parameters, PCSTR name, double default) {
+        auto readParameterFactorAsScalar = [](const tinygltf::ParameterMap& parameters, char* name, double default) {
             auto c = parameters.find(name);
             return (c != parameters.end() && c->second.number_array.size() == 1) ? c->second.number_array[0] : default;
         };
 
         // Read a specific texture from a tinygltf material parameter map.
-        auto loadTextureFromParameter = [&](const tinygltf::ParameterMap& parameterMap, PCSTR textureName)
+        auto loadTextureFromParameter = [&](const tinygltf::ParameterMap& parameterMap, char* textureName)
         {
             Material::Texture texture{};
 
@@ -504,7 +502,7 @@ namespace GltfHelper
         };
 
         // Read a scalar value from a tinygltf material parameter map.
-        auto loadScalarFromParameter = [&](const tinygltf::ParameterMap& parameterMap, PCSTR name, PCSTR scalarField, double defaultValue)
+        auto loadScalarFromParameter = [&](const tinygltf::ParameterMap& parameterMap, char* name, char* scalarField, double defaultValue)
         {
             const auto& textureIt = parameterMap.find(name);
             if (textureIt != std::end(parameterMap))

@@ -20,13 +20,13 @@ namespace tinygltf
 namespace GltfHelper
 {
     // Vertex data.
-    // Note: Color0 and TexCoord1 in glTF 2 are not currently supported.
     struct Vertex
     {
         DirectX::XMFLOAT3 Position;
         DirectX::XMFLOAT3 Normal;
         DirectX::XMFLOAT4 Tangent;
         DirectX::XMFLOAT2 TexCoord0;
+        // Note: This implementation does not currently support glTF 2's Color0 and TexCoord1 attributes.
     };
 
     // A primitive is a collection of vertices and indices.
