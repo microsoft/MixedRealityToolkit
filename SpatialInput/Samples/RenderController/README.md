@@ -17,9 +17,9 @@ This sample is written using the recently released C++/WinRT library instead of 
 
 3D models are provided for Mixed-Reality motion controllers in the [glTF 2.0](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0) GLB binary format, an open standard for 3D models. glTF uses a Physically-Based Rendering (PBR) material system, specifically using a Metallic-Roughness model. To support loading and rendering glTF 2.0 media, the sample relies on additional projects and open-sourced libraries:
 * [TinyGLTF](https://github.com/syoyo/tinygltf) - A header only C++ glTF 2.0 library.
-* Gltf - A library which provides additional helper functions to parse data returned by TinyGLTF.
-* Pbr - A set of shaders and code for creating and rendering models in DirectX 11 using the PBR Metallic-Roughness model.
-* SpatialInputUtilities - A set utilities for handling spatial input sources including motion controllers.
+* Gltf - Helper functions to parse data returned by TinyGLTF.
+* Pbr - Shaders and code for creating and rendering models in DirectX 11 using the PBR Metallic-Roughness model.
+* SpatialInputUtilities - Utilities for handling spatial input sources including motion controllers.
 
 The ControllerRenderer class in the sample project manages everything needed to load and render controller models.
 
@@ -38,3 +38,16 @@ For each interaction source, get the grasp location by calling TryGetLocation on
 The model can optionally be articulated to match its real-world state. Articulation is provided in ControllerRendering.cpp in the SpatialInputUtilities project. Using the well-known named nodes in the glTF file, local transforms are interpolated based on the state of the controller.
 
 Finally, rendering the model at the pose returned by TryGetLocation will result in a model rendered in the place in the scene.
+
+## System Requirements
+
+*Client:* Windows 10 Fall Creators Update (10.0.16299.0 or newer).
+*Visual Studio:* Visual Studio 2017  Version 15.4 or newer.
+*Windows SDK:* Windows 10  Fall Creators Update SDK.
+
+## Build and run the sample
+
+1. Clone the repo.
+2. Open ControllerRenderSample.sln
+3. Change the active solution platform to X64.
+4. Select **Build** \> **Build Solution** to build or **Debug** \> **Start Without Debugging** to run.

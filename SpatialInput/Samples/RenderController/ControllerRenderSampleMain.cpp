@@ -47,10 +47,6 @@ void ControllerRenderSampleMain::SetHolographicSpace(HolographicSpace const& hol
     // Initialize the sample hologram.
     m_spinningCubeRenderer = std::make_unique<SpinningCubeRenderer>(m_deviceResources, m_pbrResources);
 
-    //
-    // Add code here to initialize your holographic content.
-    //
-
     // Bind a handler to the SourcePressed event.
     m_sourcePressedEventToken = m_interactionManager.SourcePressed(bind(&ControllerRenderSampleMain::OnSourcePressed, this, _1, _2));
 
@@ -148,10 +144,7 @@ HolographicFrame ControllerRenderSampleMain::Update()
 
     m_timer.Tick([&] ()
     {
-        // Put time-based updates here. By default this code will run once per frame,
-        // but if you change the StepTimer to use a fixed time step this code will
-        // run as many times as needed to get to the current step.
-
+        // Run time-based updates.
         m_spinningCubeRenderer->Update(m_timer);
     });
 
@@ -193,11 +186,6 @@ bool ControllerRenderSampleMain::Render(HolographicFrame const& holographicFrame
     {
         return false;
     }
-
-    // Add code for pre-pass rendering here.
-    // Take care of any tasks that are not specific to an individual holographic
-    // camera. This includes anything that doesn't need the final view or projection
-    // matrix, such as lighting maps.
 
     // Lock the set of holographic camera resources, then draw to each camera
     // in this frame.
@@ -255,7 +243,6 @@ bool ControllerRenderSampleMain::Render(HolographicFrame const& holographicFrame
                 if (cameraActive)
                 {
                     // Draw the sample hologram.
-                    // Replace the sample content with your own content.
                     m_spinningCubeRenderer->Render();
                 }
 
@@ -272,16 +259,10 @@ bool ControllerRenderSampleMain::Render(HolographicFrame const& holographicFrame
 
 void ControllerRenderSampleMain::SaveAppState()
 {
-    // Insert code here to save your app state.
-    // This method is called when the app is about to suspend.
-    // For example, store information in the SpatialAnchorStore.
 }
 
 void ControllerRenderSampleMain::LoadAppState()
 {
-    // Insert code here to load your app state.
-    // This method is called when the app resumes.
-    // For example, load information from the SpatialAnchorStore.
 }
 
 // Interaction event handler.
@@ -421,11 +402,6 @@ void ControllerRenderSampleMain::OnCameraAdded(
     HolographicCamera holographicCamera = args.Camera();
     create_task([this, deferral, holographicCamera] ()
     {
-        // Allocate resources for the new camera and load any content specific to
-        // that camera. Note that the render target size (in pixels) is a property
-        // of the HolographicCamera object, and can be used to create off-screen
-        // render targets that match the resolution of the HolographicCamera.
-
         // Create device-based resources for the holographic camera and add it to the list of
         // cameras used for updates and rendering. Notes:
         //   * Since this function may be called at any time, the AddHolographicCamera function
@@ -447,12 +423,6 @@ void ControllerRenderSampleMain::OnCameraRemoved(
     HolographicSpaceCameraRemovedEventArgs const& args
     )
 {
-    create_task([this]()
-    {
-        // Asynchronously unload or deactivate content resources (not back buffer 
-        // resources) that are specific only to the camera that was removed.
-    });
-
     // Before letting this callback return, ensure that all references to the back buffer 
     // are released.
     // Since this function may be called at any time, the RemoveHolographicCamera function

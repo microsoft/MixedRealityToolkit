@@ -64,33 +64,33 @@
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="AppView.cpp" />
     <ClCompile Include="ControllerRenderSampleMain.cpp" />
-    <ClCompile Include="..\..\..\External\DirectXTK\DDSTextureLoader.cpp">
-      <Filter>External\DirectXTK</Filter>
-    </ClCompile>
     <ClCompile Include="ControllerRenderer.cpp" />
     <ClCompile Include="SpinningCubeRenderer.cpp" />
+    <ClCompile Include="..\..\External\DirectXTK\DDSTextureLoader.cpp">
+      <Filter>External\DirectXTK</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
     <ClInclude Include="AppView.h" />
     <ClInclude Include="ControllerRenderSampleMain.h" />
-    <ClInclude Include="..\..\..\External\DirectXTK\DDSTextureLoader.h">
-      <Filter>External\DirectXTK</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\External\DirectXTK\LoaderHelpers.h">
-      <Filter>External\DirectXTK</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\External\DirectXTK\DirectXHelpers.h">
-      <Filter>External\DirectXTK</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\External\DirectXTK\PlatformHelpers.h">
-      <Filter>External\DirectXTK</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\External\DirectXTK\dds.h">
-      <Filter>External\DirectXTK</Filter>
-    </ClInclude>
     <ClInclude Include="ControllerRenderer.h" />
     <ClInclude Include="SpinningCubeRenderer.h" />
+    <ClInclude Include="..\..\External\DirectXTK\LoaderHelpers.h">
+      <Filter>External\DirectXTK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\External\DirectXTK\DDSTextureLoader.h">
+      <Filter>External\DirectXTK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\External\DirectXTK\DirectXHelpers.h">
+      <Filter>External\DirectXTK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\External\DirectXTK\dds.h">
+      <Filter>External\DirectXTK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\External\DirectXTK\PlatformHelpers.h">
+      <Filter>External\DirectXTK</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest" />
