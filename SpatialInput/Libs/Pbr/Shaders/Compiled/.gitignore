@@ -1,0 +1,2 @@
+; Shader header files are built from hlsl and shouldn't be checked in.
+*.h

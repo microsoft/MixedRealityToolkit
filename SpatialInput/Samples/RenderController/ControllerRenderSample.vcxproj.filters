@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Common">
+      <UniqueIdentifier>0acfcd90-be89-11e7-abc4-cec278b6b50a</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets">
+      <UniqueIdentifier>f52582db-1a09-41fd-8660-d563f9c6cbee</UniqueIdentifier>
+      <Extensions>bmp;fbx;gif;jpg;jpeg;tga;tiff;tif;png</Extensions>
+    </Filter>
+    <ClInclude Include="Common\DirectXHelper.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\StepTimer.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\DeviceResources.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClCompile Include="Common\DeviceResources.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClInclude Include="Common\CameraResources.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClCompile Include="Common\CameraResources.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <Image Include="Assets\LockScreenLogo.scale-200.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\SplashScreen.scale-200.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Square150x150Logo.scale-200.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Square44x44Logo.scale-200.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\StoreLogo.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Wide310x150Logo.scale-200.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Filter Include="Media">
+      <UniqueIdentifier>{7f58d2fd-7424-44a4-9218-d5e5359659c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Media\Environment">
+      <UniqueIdentifier>{edc9fc0d-613e-4bca-856b-cf3a2a405df6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="External">
+      <UniqueIdentifier>{b54a3cdb-0f15-40e7-961c-ca27cbf6b26c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="External\DirectXTK">
+      <UniqueIdentifier>{a056ad0d-c783-4b5e-915d-40020f22d2ba}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="AppView.cpp" />
+    <ClCompile Include="ControllerRenderSampleMain.cpp" />
+    <ClCompile Include="ControllerRenderer.cpp" />
+    <ClCompile Include="SpinningCubeRenderer.cpp" />
+    <ClCompile Include="..\..\External\DirectXTK\DDSTextureLoader.cpp">
+      <Filter>External\DirectXTK</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="AppView.h" />
+    <ClInclude Include="ControllerRenderSampleMain.h" />
+    <ClInclude Include="ControllerRenderer.h" />
+    <ClInclude Include="SpinningCubeRenderer.h" />
+    <ClInclude Include="..\..\External\DirectXTK\LoaderHelpers.h">
+      <Filter>External\DirectXTK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\External\DirectXTK\DDSTextureLoader.h">
+      <Filter>External\DirectXTK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\External\DirectXTK\DirectXHelpers.h">
+      <Filter>External\DirectXTK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\External\DirectXTK\dds.h">
+      <Filter>External\DirectXTK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\External\DirectXTK\PlatformHelpers.h">
+      <Filter>External\DirectXTK</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ControllerRenderSample_TemporaryKey.pfx" />
+    <None Include="packages.config" />
+    <None Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Media\Environment\DiffuseHDR.dds">
+      <Filter>Media\Environment</Filter>
+    </Image>
+    <Image Include="Media\Environment\SpecularHDR.dds">
+      <Filter>Media\Environment</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
