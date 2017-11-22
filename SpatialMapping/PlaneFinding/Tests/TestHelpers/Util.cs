@@ -8,7 +8,7 @@ using HoloToolkit.Unity;
 public static class Util
 {
     /// <summary>
-    /// Helper function that creates a simple mesh for use in the PlaneFinding API. The mesh is built as tesselated
+    /// Helper function that creates a simple mesh for use in the PlaneFinding API. The mesh is built as tessellated
     /// quad spanning the x and y dimensions of the specified Bounds. Each vert in the mesh is randomly perturbed
     /// along the z axis with in the specified Bounds. This results in a somewhat more realistic noisy planar mesh
     /// that simulates the sort of data we might get from SR.

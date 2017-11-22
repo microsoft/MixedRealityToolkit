@@ -128,7 +128,7 @@ namespace PlaneFinding
 
         // find the cliques in our graph of PlaneGraphNodes
         // TODO: over large distances, low curvature walls will be handled as a single plane even though they may not be planar
-        // consider whether that causes issues.  We can address the issue by deriving a plane equation and filtering verts again.
+        // consider whether that causes issues.  We can address the issue by deriving a plane equation and filtering vertices again.
 
         // this is a breadth-first search to flood-fill the graph.  We expand each node only one time.
         vector<BoundedPlane> planes;
