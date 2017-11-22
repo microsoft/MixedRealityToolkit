@@ -44,7 +44,7 @@ public static class Util
                     ((dimension + 1) * (x + 1) + (y + 1)),
                 })
             ).ToArray();
-        
+
         PlaneFinding.MeshData mesh = new PlaneFinding.MeshData();
         mesh.Transform = meshTransform;
         mesh.Verts = vertices;
@@ -52,7 +52,7 @@ public static class Util
         mesh.Indices = indices;
         return mesh;
     }
-    
+
     public static PlaneFinding.MeshData CreateSimpleMesh(int dimension, Vector3 bounds)
     {
         return CreateSimpleMesh(dimension, bounds, Matrix4x4.identity, Matrix4x4.identity);

@@ -5,10 +5,10 @@
 #include <memory>
 #include "MathHelpers.h"
 
-/*! 
-    Half Edge meshes represent a mesh by using half edges.  There are three of these half edges per triangle.  They are called half because they are 
-    half of a Winged edge representation.  They are an edge with a direction that goes around a single triangle, three to a loop.  Adjacent triangles will 
-    have an edge going the opposite direction.  Together these two half edges make a whole and represent all the data in a Winged edge.  The big 
+/*!
+    Half Edge meshes represent a mesh by using half edges.  There are three of these half edges per triangle.  They are called half because they are
+    half of a Winged edge representation.  They are an edge with a direction that goes around a single triangle, three to a loop.  Adjacent triangles will
+    have an edge going the opposite direction.  Together these two half edges make a whole and represent all the data in a Winged edge.  The big
     advantage of Half Edge vs Winged Edge representation is that with half edge you don't have to conditionally check which direction you are going.
 */
 
@@ -64,7 +64,7 @@ public:
 
     class VertexNeighborSet
     {
-    private: 
+    private:
         class VertexNeighbor
         {
         public:
