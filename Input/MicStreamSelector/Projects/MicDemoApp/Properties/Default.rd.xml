@@ -19,7 +19,7 @@
   <Application>
     <!--
       An Assembly element with Name="*Application*" applies to all assemblies in
-      the application package. The asterisks are not wildcards.
+      the application package. The asterisks are not wild cards.
     -->
     <Assembly Name="*Application*" Dynamic="Required All" />
     

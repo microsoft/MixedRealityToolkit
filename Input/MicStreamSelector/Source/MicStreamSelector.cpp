@@ -54,9 +54,9 @@ int     appExpectedBufferLength;
 int     dataInBuffer;
 int     samplesPerQuantum;  // preferred sample size per chunk of data from the audio driver. usually you want system default.
 int     numChannels;
-int     indexInFrame;       // keeps track of copying data out of the plugin and into the application
+int     indexInFrame;       // keeps track of copying data out of the plug-in and into the application
 
-void resetToDefaults() {    // used on init to reset state of the plugin
+void resetToDefaults() {    // used on init to reset state of the plug-in
     recording = false;
     appExpectedBufferLength = -1; // By making negative, we won't output data until we get at least one app call.
     dataInBuffer = 0;
@@ -67,9 +67,9 @@ void resetToDefaults() {    // used on init to reset state of the plugin
 
 bool    keepAllData = false;    // Keeping all data can cause voice the microphone to accumulate large lag and memory if the program ever blocks or breaks, but is sometimes needed
 float   micGain = 1;            // recording volume of device
-std::mutex  mtx, creationmtx, readmtx;  // these attempt to safegaurd bad memory states regardless of how applications attempt to access the mic data
+std::mutex  mtx, creationmtx, readmtx;  // these attempt to safeguard bad memory states regardless of how applications attempt to access the mic data
 
-typedef void(__stdcall * CallbackIntoHost)();   // a potential callback into non-polled apps where the audio engine drives behaviour in the app, like VOIP
+typedef void(__stdcall * CallbackIntoHost)();   // a potential callback into non-polled apps where the audio engine drives behavior in the app, like VOIP
 static CallbackIntoHost hostCallback = nullptr;
 
 // This is the callback after every frame the audio device captures.
@@ -207,17 +207,17 @@ extern "C"
         return 0;
     }
 
-    API int MicInitializeCustomRate(int category, int samplerate) // same as before, but uses custom samplerate 
+    API int MicInitializeCustomRate(int category, int samplerate) // same as before, but uses custom sample rate 
     {
         return MicInitializeCustomRateWithGraph(category, samplerate, nullptr);
     }
 
-    API int MicInitializeDefault(int category) // same as before, but uses default samplerate
+    API int MicInitializeDefault(int category) // same as before, but uses default sample rate
     {  
         return MicInitializeCustomRateWithGraph(category, 0, nullptr);
     }
 
-    API int MicInitializeDefaultWithGraph(int category, AudioGraph^ appGraph) // same as before, but uses default samplerate and graph from app
+    API int MicInitializeDefaultWithGraph(int category, AudioGraph^ appGraph) // same as before, but uses default sample rate and graph from app
     {
         return MicInitializeCustomRateWithGraph(category, 0, appGraph);
     }
@@ -325,7 +325,7 @@ extern "C"
         }
         else
         {
-            appExpectedBufferLength = samplesPerQuantum;    // use defualt size if not custom set by application
+            appExpectedBufferLength = samplesPerQuantum;    // use default size if not custom set by application
         }
 
         if (dataInBuffer < length)  // Make sure we have enough data to hand back to the app.
@@ -412,7 +412,7 @@ extern "C"
             return ErrorCodes::GRAPH_NOT_EXIST;
         }
 
-        std::lock_guard<std::mutex> lock(readmtx); // dont destroy graph if in the middle of reading data
+        std::lock_guard<std::mutex> lock(readmtx); // don't destroy graph if in the middle of reading data
         
         graph->Stop();
 
