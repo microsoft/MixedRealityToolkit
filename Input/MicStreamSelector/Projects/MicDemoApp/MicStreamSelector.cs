@@ -35,7 +35,7 @@ namespace MicDemoApp
         private enum ErrorCodes { ALREADY_RUNNING = -10, NO_AUDIO_DEVICE, NO_INPUT_DEVICE, ALREADY_RECORDING, GRAPH_NOT_EXIST, CHANNEL_COUNT_MISMATCH, FILE_CREATION_PERMISSION_ERROR, NOT_ENOUGH_DATA, NEED_ENABLED_MIC_CAPABILITY };
 
         const int MAX_PATH = 260; // maximum file path size in windows. to be used by a string builder to return file path from plug-in
-        
+
         // Unfortunately, we can't create AudioGraph from Task because it attaches to the background. We have to make our graph here and pass that to the plug-in.
         private static AudioGraph graph;
 
@@ -85,7 +85,7 @@ namespace MicDemoApp
             // mic data will ALWAYS be stored as interleaved float data from [-1,+1]. 
             // opacity on my XAML object in this example is from [0,+1], so we're averaging and then scaling
             float average = 0;
-            for (int i=0; i<buffersize; i++)
+            for (int i = 0; i < buffersize; i++)
             {
                 // this condition is letting us always consider amplitude as a positive number, because it roughly maps to volume as long as its non zero
                 if (audiodata[i] < 0)
@@ -125,7 +125,7 @@ namespace MicDemoApp
 
                 // could NOT pass the callback here (pass as null) if we didn't care about handling the live data and just wanted to record a file
                 // could also just skip this call entirely and only record a file without a live data stream back to the app
-                CheckForErrorOnCall(MicStartStream(keepAllData, true, micSignal));   
+                CheckForErrorOnCall(MicStartStream(keepAllData, true, micSignal));
 
                 // can choose to monitor the mic stream here in the second parameter
                 CheckForErrorOnCall(MicStartRecording(fileNameWithExtension, true));
@@ -188,33 +188,33 @@ namespace MicDemoApp
             graph = result.Graph;
             CheckForErrorOnCall(MicInitializeDefaultWithGraph((int)streamType, graph)); // pass the bound graph to the mic plug-in. this lets our current process hear audio. 
         }
-        
+
         static void CheckForErrorOnCall(int returnCode)
         {
             switch (returnCode)
             {
-                
+
                 case (int)ErrorCodes.ALREADY_RECORDING:
-                    Debug.WriteLine ("ERROR: Tried to start recording when you were already doing so. You need to stop your previous recording before you can start again.");
+                    Debug.WriteLine("ERROR: Tried to start recording when you were already doing so. You need to stop your previous recording before you can start again.");
                     break;
                 case (int)ErrorCodes.ALREADY_RUNNING:
-                    Debug.WriteLine ("WARNING: Tried to initialize microphone more than once. Probably not a problem, just letting you know.");
+                    Debug.WriteLine("WARNING: Tried to initialize microphone more than once. Probably not a problem, just letting you know.");
                     break;
                 case (int)ErrorCodes.GRAPH_NOT_EXIST:
                     Debug.WriteLine("ERROR: Tried to do microphone things without a properly initialized microphone device. \n " +
                         "Do you have a mic plugged into a functional audio system and did you call MicInitialize()?");
                     break;
                 case (int)ErrorCodes.NO_AUDIO_DEVICE:
-                    Debug.WriteLine ("ERROR: Tried to start microphone, but you don't appear to have a functional audio device. check your OS audio settings.");
+                    Debug.WriteLine("ERROR: Tried to start microphone, but you don't appear to have a functional audio device. check your OS audio settings.");
                     break;
                 case (int)ErrorCodes.NO_INPUT_DEVICE:
-                    Debug.WriteLine ("ERROR: Tried to start microphone, but you don't have one plugged in, OR you didn't enable Microphone capability for app");
+                    Debug.WriteLine("ERROR: Tried to start microphone, but you don't have one plugged in, OR you didn't enable Microphone capability for app");
                     break;
                 case (int)ErrorCodes.CHANNEL_COUNT_MISMATCH:
-                    Debug.WriteLine ("ERROR: Microphone had a channel count mismatch internally on device. Try setting different mono/stereo options in OS mic settings.");
+                    Debug.WriteLine("ERROR: Microphone had a channel count mismatch internally on device. Try setting different mono/stereo options in OS mic settings.");
                     break;
                 case (int)ErrorCodes.FILE_CREATION_PERMISSION_ERROR:
-                    Debug.WriteLine ("ERROR: Didn't have access to create file in Music library. Make sure permissions in appxmanifest to write to Music library are granted.");
+                    Debug.WriteLine("ERROR: Didn't have access to create file in Music library. Make sure permissions in appxmanifest to write to Music library are granted.");
                     break;
                 case (int)ErrorCodes.NOT_ENOUGH_DATA:
                     Debug.WriteLine("WARNING: Not enough data in mic buffer to fulfill request. Wait a bit for data to accumulate or try requesting a smaller frame size.");

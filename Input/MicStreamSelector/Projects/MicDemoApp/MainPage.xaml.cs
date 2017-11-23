@@ -89,7 +89,7 @@ namespace MicDemoApp
             this.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.High, () =>
             {
                 Ellipse e = (Ellipse)this.FindName("Volume");
-                e.Opacity = f+.05f;
+                e.Opacity = f + .05f;
                 e.Fill = new SolidColorBrush(ActiveMicColor);
             }).AsTask();
         }
