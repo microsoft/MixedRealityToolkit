@@ -29,7 +29,7 @@ The Demo Room Sample is a UWP application which demonstrates a variety of Window
   - How to use SpatialPointerInteractionSourcePose to display a ray from controller
     - [SpatialInteractionSourceProperties::SourcePointerPose](https://docs.microsoft.com/uwp/api/windows.ui.input.spatial.spatialinteractionsourcelocation)
 
-Any details around Motion Controller rendering are better explained in the [Render Controller sample](../RenderController/README.md)
+Any details around Motion Controller rendering are better explained in the [Render Controller sample](../RenderController/)
 
 This sample is written using the recently released C++/WinRT library instead of C++/CX. This requires using the latest features provided by C++17.
 
