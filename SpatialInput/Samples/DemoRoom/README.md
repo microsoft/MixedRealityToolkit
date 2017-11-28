@@ -1,5 +1,7 @@
 # Demo Room Sample
 
+![Screenshot](screenshot.png)
+
 ## Description
 The Demo Room Sample is a UWP application which demonstrates a variety of Windows Perception APIs for Windows Mixed Reality devices. Features and best practices demonstrated include:
 

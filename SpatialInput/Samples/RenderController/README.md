@@ -1,5 +1,7 @@
 # Render Controller Sample
 
+![Screenshot](screenshot.png)
+
 ## Description
 
 The Render Controller Sample is a UWP application which demonstrates how to load and render the Mixed-Reality motion controller models provided by the system through the TryGetRenderableModelAsync API. Features and best practices demonstrated include:
