@@ -99,7 +99,7 @@ void ToolboxSystem::Update(float dt)
 
     const float avgDt = std::accumulate(std::begin(fps), std::end(fps), 0.0f) / _countof(fps);
 
-    m_instructionalText->Get<TextRenderable>()->Text = std::to_wstring(static_cast<int>(1.0f / avgDt)) + L" FPS - " + std::to_wstring(avgDt) + L" ms\n\n" + InstructionalText.data();
+    m_instructionalText->Get<TextRenderable>()->Text = std::to_wstring(static_cast<int>(std::round(1.0f / avgDt))) + L" FPS\n\n" + InstructionalText.data();
 
     if (!m_showToolbox)
     {
