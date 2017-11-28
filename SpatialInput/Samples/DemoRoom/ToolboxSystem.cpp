@@ -19,6 +19,8 @@ struct MotionControllerPrefab : EntityPrefab<Transform, PbrRenderable, MotionCon
 struct TextDisplay : EntityPrefab<Transform, TextRenderable>
 {};
 
+static const std::wstring_view InstructionalText = L"Press the menu button to bring interaction objects toward you.\n\nGrasp (grasp button) an interaction object to use it.";
+
 namespace 
 {
     bool HitTest(float3 positionA, float3 positionB, float diameter)
@@ -65,8 +67,6 @@ void ToolboxSystem::Start()
         m_controllers[i].Controller->Get<MotionControllerComponent>()->attachControllerModel = true;
     }
 
-    auto constexpr InstructionalText = L"Hello World!\n\nPress the menu button to bring interaction objects toward you.\n\nGrasp (grasp button) an interaction object to use it.";
-
     m_instructionalText = m_entityStore->Create<TextDisplay>();
     m_instructionalText->Get<TextRenderable>()->Text = InstructionalText;
     m_instructionalText->Get<Transform>()->position = { 0, 1.5f, -5.f };
@@ -92,6 +92,15 @@ void ToolboxSystem::Stop()
 
 void ToolboxSystem::Update(float dt)
 {
+    static float fps[32] = {};
+    static uint32_t currFps = 0;
+    fps[currFps++] = dt;
+    currFps %= _countof(fps);
+
+    const float avgDt = std::accumulate(std::begin(fps), std::end(fps), 0.0f) / _countof(fps);
+
+    m_instructionalText->Get<TextRenderable>()->Text = std::to_wstring(static_cast<int>(1.0f / avgDt)) + L" FPS - " + std::to_wstring(avgDt) + L" ms\n\n" + InstructionalText.data();
+
     if (!m_showToolbox)
     {
         {

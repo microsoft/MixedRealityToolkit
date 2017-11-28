@@ -10,6 +10,7 @@
 #include <vector>
 #include <tuple>
 #include <sstream>
+#include <numeric>
 
 #define _USE_MATH_DEFINES
 #include <cmath>
