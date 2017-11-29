@@ -33,8 +33,7 @@ std::wstring_view PaintingInteractionSystem::GetInstructions() const
 {
     return L"Press and hold trigger to paint.\n\n"
            L"Touch and press touchpad to choose brush color.\n\n"
-           L"Hold grasp button to move strokes around.\n\n"
-           L"Tilt thumbstick forward/backward to translate strokes.\n\n"
+           L"Hold grasp button to move strokes around. While holding grasp tilt thumbstick forward/backward to translate strokes.\n\n"
            L"Push thumbstick down to delete strokes.\n\n";
 }
 
