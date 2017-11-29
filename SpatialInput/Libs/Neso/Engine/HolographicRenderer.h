@@ -50,7 +50,7 @@ namespace Neso
 
         std::unique_ptr<SkyboxRenderer> m_skyboxRenderer{ nullptr };
 
-        std::unique_ptr<TextRenderer> m_textRenderer{ nullptr };
+        std::unordered_map<float, std::unique_ptr<TextRenderer>> m_textRenderers;
         std::unique_ptr<QuadRenderer> m_quadRenderer{ nullptr };
 
         std::shared_ptr<Pbr::Resources> m_pbrResources{ nullptr };
@@ -59,6 +59,8 @@ namespace Neso
         winrt::event_token m_cameraRemovedToken{};
 
         std::shared_ptr<DX::DeviceResources> m_deviceResources{ nullptr };
+
+        TextRenderer* GetTextRendererForFontSize(float fontSize);
 
         bool RenderAtCameraPose(
             DX::CameraResources *pCameraResources,

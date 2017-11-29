@@ -59,5 +59,6 @@ namespace Neso
     struct TextRenderable : Component<TextRenderable>
     {
         std::wstring Text = L"";
+        float FontSize = 60.0f;
     };
 }

@@ -10,10 +10,12 @@ using namespace Neso;
 TextRenderer::TextRenderer(
     std::shared_ptr<DX::DeviceResources> deviceResources, 
     uint32_t textureWidth, 
-    uint32_t textureHeight) :
+    uint32_t textureHeight,
+    float fontSize) :
     m_deviceResources(std::move(deviceResources)),
     m_textureWidth(textureWidth),
-    m_textureHeight(textureHeight)
+    m_textureHeight(textureHeight),
+    m_fontSize(fontSize)
 {
     CreateDeviceDependentResources();
 }
@@ -22,11 +24,6 @@ TextRenderer::~TextRenderer() = default;
 
 void TextRenderer::RenderTextOffscreen(const std::wstring& str)
 {
-    if (m_previousString == str) 
-    {
-        return;
-    }
-
     // Clear the off-screen render target.
     m_deviceResources->GetD3DDeviceContext()->ClearRenderTargetView(m_renderTargetView.Get(), DirectX::Colors::Transparent);
 
@@ -69,8 +66,6 @@ void TextRenderer::RenderTextOffscreen(const std::wstring& str)
         // Catch errors from D2D.
         DirectX::ThrowIfFailed(hr);
     }
-
-    m_previousString = str;
 }
 
 void TextRenderer::ReleaseDeviceDependentResources()
@@ -130,7 +125,7 @@ void TextRenderer::CreateDeviceDependentResources()
             DWRITE_FONT_WEIGHT_NORMAL,
             DWRITE_FONT_STYLE_NORMAL,
             DWRITE_FONT_STRETCH_NORMAL,
-            60.0f,
+            m_fontSize,
             L"",
             m_textFormat.ReleaseAndGetAddressOf()
         )

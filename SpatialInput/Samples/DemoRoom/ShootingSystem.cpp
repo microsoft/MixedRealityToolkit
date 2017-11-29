@@ -15,7 +15,8 @@ using namespace std::chrono_literals;
 
 std::wstring_view ShootingInteractionSystem::GetInstructions() const
 {
-    return L"Pull the trigger to fire the gun.";
+    return L"Pull the trigger to fire the gun.\n\n"
+           L"You can feel controller vibrate for each bullet.\n\n";
 }
 
 std::wstring_view ShootingInteractionSystem::GetDisplayName() const

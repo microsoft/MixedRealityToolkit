@@ -35,7 +35,6 @@ HolographicRenderer::HolographicRenderer(
     m_deviceResources(std::move(deviceResources)),
     m_pbrResources(std::move(pbrResources))
 {
-    m_textRenderer = std::make_unique<TextRenderer>(m_deviceResources, 1024u, 1024u);
     m_quadRenderer = std::make_unique<QuadRenderer>(m_deviceResources);
     m_skyboxRenderer = std::make_unique<SkyboxRenderer>(m_deviceResources, skyboxTexture);
 }
@@ -57,7 +56,10 @@ std::shared_ptr<DX::DeviceResources> HolographicRenderer::GetDeviceResources()
 void HolographicRenderer::OnDeviceLost()
 {
     m_pbrResources->ReleaseDeviceDependentResources();
-    m_textRenderer->ReleaseDeviceDependentResources();
+    for (auto& rendererPair : m_textRenderers)
+    {
+        rendererPair.second->ReleaseDeviceDependentResources();
+    }
     m_quadRenderer->ReleaseDeviceDependentResources();
     m_skyboxRenderer->ReleaseDeviceDependentResources();
 }
@@ -65,7 +67,10 @@ void HolographicRenderer::OnDeviceLost()
 void HolographicRenderer::OnDeviceRestored()
 {
     m_pbrResources->CreateDeviceDependentResources(m_deviceResources->GetD3DDevice());
-    m_textRenderer->CreateDeviceDependentResources();
+    for (auto& rendererPair : m_textRenderers)
+    {
+        rendererPair.second->CreateDeviceDependentResources();
+    }
     m_quadRenderer->CreateDeviceDependentResources();
     m_skyboxRenderer->CreateDeviceDependentResources();
 }
@@ -134,6 +139,18 @@ void HolographicRenderer::Update(float)
     }
 }
 
+TextRenderer* HolographicRenderer::GetTextRendererForFontSize(float fontSize)
+{
+    auto it = m_textRenderers.find(fontSize);
+    if (it == m_textRenderers.end())
+    {
+        auto textRenderer = std::make_unique<TextRenderer>(m_deviceResources, 1024u, 1024u, fontSize);
+        it = m_textRenderers.insert(it, { fontSize, std::move(textRenderer) });
+    }
+
+    return it->second.get();
+}
+
 bool HolographicRenderer::RenderAtCameraPose(
     DX::CameraResources *pCameraResources,
     winrt::Windows::Perception::Spatial::SpatialCoordinateSystem const& coordinateSystem,
@@ -199,10 +216,19 @@ bool HolographicRenderer::RenderAtCameraPose(
 
         m_quadRenderer->Bind();
 
+        float prevFontSize = std::numeric_limits<float>::quiet_NaN();
+        TextRenderer* textRenderer = nullptr;
+
         for (auto[transform, textRenderable] : m_entityStore->GetComponents<Transform, TextRenderable>())
         {
-            m_textRenderer->RenderTextOffscreen(textRenderable->Text);
-            m_quadRenderer->Render(transform->GetMatrix(), m_textRenderer->GetTexture());
+            if (prevFontSize != textRenderable->FontSize)
+            {
+                prevFontSize = textRenderable->FontSize;
+                textRenderer = GetTextRendererForFontSize(prevFontSize);
+            }
+
+            textRenderer->RenderTextOffscreen(textRenderable->Text);
+            m_quadRenderer->Render(transform->GetMatrix(), textRenderer->GetTexture());
         }
 
         m_quadRenderer->Unbind();

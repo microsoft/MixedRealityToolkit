@@ -73,14 +73,16 @@ void ToolboxSystem::Start()
     m_instructionalText->Get<Transform>()->scale = float3{ 2.0f };
 
     m_controllers[Left].DebugText = m_entityStore->Create<TextDisplay>();
-    m_controllers[Left].DebugText->Get<Transform>()->position = { -2.5, 1.0f, -4.f };
+    m_controllers[Left].DebugText->Get<Transform>()->position = { -2.5, 1.25f, -4.f };
     m_controllers[Left].DebugText->Get<Transform>()->orientation = make_quaternion_from_axis_angle({ 0, 1, 0 }, DirectX::XM_PI * 0.15f);
     m_controllers[Left].DebugText->Get<Transform>()->scale = float3{ 2.0f };
+    m_controllers[Left].DebugText->Get<TextRenderable>()->FontSize = 52.0f;
 
     m_controllers[Right].DebugText = m_entityStore->Create<TextDisplay>();
-    m_controllers[Right].DebugText->Get<Transform>()->position = { 2.5, 1.0f, -4.f };
+    m_controllers[Right].DebugText->Get<Transform>()->position = { 2.5, 1.25f, -4.f };
     m_controllers[Right].DebugText->Get<Transform>()->orientation = make_quaternion_from_axis_angle({ 0, 1, 0 }, -DirectX::XM_PI * 0.15f);
     m_controllers[Right].DebugText->Get<Transform>()->scale = float3{ 2.0f };
+    m_controllers[Right].DebugText->Get<TextRenderable>()->FontSize = 52.0f;
 
     m_engine.Get<SpatialInteractionSystem>()->AddListener(shared_from_this());
 }

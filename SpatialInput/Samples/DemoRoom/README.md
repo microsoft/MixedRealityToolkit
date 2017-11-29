@@ -38,7 +38,6 @@ This sample is written using the recently released C++/WinRT library instead of 
 Instructions are displayed in the environment of the DemoRoom
 - Press 'Menu' on the Motion Controller to bring the tools closer to you
 - Press 'Grasp' while holding the controller near the tool to activate it
-- Press 'Thumbstick' to delete persistent paint strokes created by the Painting Tool.
 - Help text for each tool will be displayed on the text panels in the DemoRoom
   - The left panel will display help text for the left controller and the right panel will display help text for the right controller.
 

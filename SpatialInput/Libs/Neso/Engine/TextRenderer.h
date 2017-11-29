@@ -10,7 +10,8 @@ namespace Neso
         TextRenderer(
             std::shared_ptr<DX::DeviceResources> deviceResources, 
             uint32_t textureWidth, 
-            uint32_t textureHeight);
+            uint32_t textureHeight,
+            float fontSize);
 
         ~TextRenderer();
 
@@ -35,10 +36,9 @@ namespace Neso
         Microsoft::WRL::ComPtr<ID2D1SolidColorBrush>        m_whiteBrush;
         Microsoft::WRL::ComPtr<IDWriteTextFormat>           m_textFormat;
 
-        std::wstring m_previousString;
-
         // CPU-based variables for configuring the offscreen render target.
         const uint32_t m_textureWidth;
         const uint32_t m_textureHeight;
+        const float m_fontSize;
     };
 }

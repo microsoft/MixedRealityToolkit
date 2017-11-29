@@ -32,9 +32,10 @@ void PaintingInteractionSystem::Stop()
 std::wstring_view PaintingInteractionSystem::GetInstructions() const 
 {
     return L"Press and hold trigger to paint.\n\n"
-           L"Select a color by pressing down on the touchpad. \n\n"
-           L"Manipulate the paint using the \"grasp\" button. \n\n"
-           L"While manipulating the paint, use the thumbstick to reposition it.";
+           L"Touch and press touchpad to choose brush color.\n\n"
+           L"Hold grasp button to move strokes around.\n\n"
+           L"Tilt thumbstick forward/backward to translate strokes.\n\n"
+           L"Push thumbstick down to delete strokes.\n\n";
 }
 
 std::wstring_view PaintingInteractionSystem::GetDisplayName() const
@@ -131,6 +132,27 @@ void PaintingInteractionSystem::OnSourcePressed(const SpatialInteractionSourceEv
 {
     if (args.PressKind() == SpatialInteractionPressKind::Thumbstick)
     {
+        // Destroy all the paint strokes currently active
+        for (auto& enabledEntity : GetEnabledEntities())
+        {
+            auto entity = std::get<Entity*>(enabledEntity);
+            auto paint = std::get<PaintComponent*>(enabledEntity);
+            
+            for (auto& stroke : paint->strokes)
+            {
+                stroke->Destroy();
+            }
+
+            paint->strokes.clear();
+
+            if (paint->strokeInProgress)
+            {
+                paint->strokeInProgress->Destroy();
+                paint->strokeInProgress = nullptr;
+            }
+        }
+
+        // Destroy all the persistent strokes
         for (auto& strokeGroup : m_persistentStrokes)
         {
             for (auto& stroke : strokeGroup)
@@ -252,7 +274,7 @@ void PaintingInteractionSystem::OnSourceUpdated(const SpatialInteractionSourceEv
                 // This will result in a smoother paint stroke
                 if (auto location = properties.TryGetLocation(m_engine.Get<HolographicScene>()->WorldCoordinateSystem()))
                 {
-                    if (paint->brushTipOffsetFromHoldingPose)
+                    if (paint->brushTipOffsetFromHoldingPose && paint->strokeInProgress)
                     {
                         float4x4 paintToWorld;
                         XMStoreFloat4x4(&paintToWorld, *paint->brushTipOffsetFromHoldingPose * XMLoadFloat4x4(&location_util::matrix(location)));
