@@ -355,6 +355,7 @@
     <ClInclude Include="PlaySpace\PlaySpace_SR_W.h" />
     <ClInclude Include="PlaySpace\PlaySpace_Surfel_W.h" />
     <ClInclude Include="PlaySpace\PlaySpace_Tools_W.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Topology\ShapeAnalyzerCharacteristics_W.h" />
     <ClInclude Include="Topology\ShapeAnalyzerConstraints_W.h" />
@@ -415,6 +416,9 @@
     <None Include="Engine\Quat_Z.inl" />
     <None Include="Engine\Vec3f_Z.inl" />
     <None Include="Engine\Vec4f_Z.inl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SpatialUnderstanding.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <Import Condition=" Exists('HoloToolkitDeployment.props') " Project="HoloToolkitDeployment.props" />
