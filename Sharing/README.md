@@ -1,5 +1,3 @@
-                        {#mainpage}
-============
 # HoloToolkit.Sharing
 
 ## Description
@@ -41,7 +39,7 @@ Supported Languages, Platforms and Chip Architectures:
 ### Synchronization System
 Synchronize data across all participants in session
 * Everyone in session guaranteed to see the same thing
-* Automatic conflict resolution for simultanious conflicting remote changes
+* Automatic conflict resolution for simultaneous conflicting remote changes
 * Real-time: See remote changes as they happen
 * Shared data sets automatically merged when new users join a session
 * Responsive: no delay in your own changes
