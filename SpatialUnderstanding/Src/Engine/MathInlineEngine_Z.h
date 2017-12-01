@@ -16,11 +16,13 @@ FINLINE_Z	U32	UFTOL(float a)
 {
 #ifdef	_PC
 	U32	b;
-#ifndef _M_X64
+#ifdef _M_IX86
 	__asm fld a;
 	__asm fistp b;
-#else
+#elif defined _M_X64
 	b = _mm_cvtss_si32( _mm_load_ss( &a ) );
+#else
+    b = (int)lrintf(a);
 #endif
 	return b;
 #endif

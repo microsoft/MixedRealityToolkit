@@ -30,7 +30,7 @@ FINLINE_Z	Float Atan2(Float a,Float b)	{return atan2f(a,b);}
 FINLINE_Z	Float Cos(Float x)
 {
 #if ( _MSC_VER >= 1700 ) // __libm_sse2_cosf is buggy!
-    return DirectX::XMScalarCos( x );
+	return DirectX::XMScalarCos( x );
 #else
 	return cosf(x);
 #endif
@@ -39,7 +39,7 @@ FINLINE_Z	Float Cos(Float x)
 FINLINE_Z	Float Sin(Float x)
 {
 #if ( _MSC_VER >= 1700 ) // __libm_sse2_sinf is buggy!
-    return DirectX::XMScalarSin( x );
+	return DirectX::XMScalarSin( x );
 #else
 	return sinf(x);
 #endif
@@ -47,7 +47,7 @@ FINLINE_Z	Float Sin(Float x)
 
 FINLINE_Z	void  SinCos(Vec2f& r,Float x)	
 {
-    return DirectX::XMScalarSinCos( &r.x, &r.y, x );
+	return DirectX::XMScalarSinCos( &r.x, &r.y, x );
 }
 
 FINLINE_Z	Float Tan(Float a)				{return Sin(a)/Cos(a);}
