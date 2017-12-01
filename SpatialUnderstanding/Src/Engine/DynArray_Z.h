@@ -85,7 +85,7 @@ public:
 	}
 	void	Remove(int Id)
 	{
-        DYNARRAY_Z_EXP( (((U32)Id)<Size) );
+		DYNARRAY_Z_EXP( (((U32)Id)<Size) );
 		if (DeleteObject)
 		{
 			ArrayPtr[Id].~T();
@@ -294,22 +294,22 @@ public:
 	}
 	T		&Get(int Id)
 	{
-        DYNARRAY_Z_EXP( (((U32)Id)<Size) );
+		DYNARRAY_Z_EXP( (((U32)Id)<Size) );
 		return 	ArrayPtr[Id];
 	}
 	const T	&Get(int Id) const 
 	{
-        DYNARRAY_Z_EXP( (((U32)Id)<Size) );
+		DYNARRAY_Z_EXP( (((U32)Id)<Size) );
 		return 	ArrayPtr[Id];
 	}
 	T		&operator[](int Id)
 	{
-        DYNARRAY_Z_EXP( (((U32)Id)<Size) );
+		DYNARRAY_Z_EXP( (((U32)Id)<Size) );
 		return 	ArrayPtr[Id];
 	}
 	const T	&operator[](int Id) const
 	{
-        DYNARRAY_Z_EXP( (((U32)Id)<Size) );
+		DYNARRAY_Z_EXP( (((U32)Id)<Size) );
 		return 	ArrayPtr[Id];
 	}
 

@@ -67,14 +67,14 @@ POSTALIGNED128_Z struct   Mat3x3
 
 		Float Determinant() const;
 		
-        void Set ( const Mat4x4& _m);
+		void Set ( const Mat4x4& _m);
 inline	Vec2f	operator*(const Vec2f &_v) const;
 
 inline	Vec3f	operator*(const Vec3f &_v) const;
 inline	Vec4f	operator*(const Vec4f &_v) const;
 		Bool	operator==(const Mat3x3 &_m) const;
 		Bool	operator!=(const Mat3x3 &_m) const;
-        const Vec4f&  GetRow( const int x) const;
+		const Vec4f&  GetRow( const int x) const;
 		Vec4f&  GetRow( const int x);
 		void	GetEular(Vec3f &Eular);
 };

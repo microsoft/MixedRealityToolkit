@@ -85,7 +85,7 @@ public:
 	}
 	void	Remove(int Id)
 	{
-        DYNARRAY_Z_EXP( (((U32)Id)<(U32)Size) );
+		DYNARRAY_Z_EXP( (((U32)Id)<(U32)Size) );
 		if(DeleteObject)
 			Get(Id).~T();
 		memmove(&Get(Id),&Get(Id+1),(Size-Id-1)*sizeof(T));
@@ -222,7 +222,7 @@ public:
 
 	const T	&operator[](int Id) const
 	{
-        DYNARRAY_Z_EXP( (((U32)Id)<(U32)Size) );
+		DYNARRAY_Z_EXP( (((U32)Id)<(U32)Size) );
 		return 	Get(Id);
 	}
 
@@ -343,12 +343,12 @@ public:
 	}
 	T		&operator[](int Id)
 	{
-        DYNARRAY_Z_EXP( (((U32)Id)<(U32)ReservedSize) );
+		DYNARRAY_Z_EXP( (((U32)Id)<(U32)ReservedSize) );
 		return 	Get(Id);
 	}
 	const T	&operator[](int Id) const
 	{
-        DYNARRAY_Z_EXP( (((U32)Id)<(U32)ReservedSize) );
+		DYNARRAY_Z_EXP( (((U32)Id)<(U32)ReservedSize) );
 		return 	Get(Id);
 	}
 	S32 Contains(const T &val,S32 _NbElement) const 

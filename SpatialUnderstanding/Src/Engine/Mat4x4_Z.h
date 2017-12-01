@@ -57,8 +57,8 @@ POSTALIGNED128_Z struct  Mat4x4
 
 	Vec3f MulHomogenous(const Vec3f &_v) const;
 
-    Mat4x4& operator *=(const Mat4x4 &_m);
-    Mat4x4 operator *(const Mat4x4 &_m) const;
+	Mat4x4& operator *=(const Mat4x4 &_m);
+	Mat4x4 operator *(const Mat4x4 &_m) const;
 
 	operator Float *();
 	operator const Float *() const;
@@ -67,11 +67,11 @@ POSTALIGNED128_Z struct  Mat4x4
 	Bool operator !=(const Mat4x4 &_m) const;
 
 	const Vec4f& GetRow( const int x ) const;
-    Vec4f& GetRow( const int x );
+	Vec4f& GetRow( const int x );
 
 	void MulWithoutTrans(const Vec3f &_v,Vec4f &_o) const;
-    void MulWithoutTrans(const Vec3f &_v,Vec3f &_o) const;
-    void MulWithoutTrans(const Vec4f &_v,Vec4f &_o) const;
+	void MulWithoutTrans(const Vec3f &_v,Vec3f &_o) const;
+	void MulWithoutTrans(const Vec4f &_v,Vec4f &_o) const;
 
 	void Transp(Mat4x4 &_Out) const;
 
@@ -80,8 +80,8 @@ POSTALIGNED128_Z struct  Mat4x4
 	const Vec3f& GetMatrixTrans() const;
 	const Vec4f& GetMatrixTrans4()const;
 
-    void SetTRS( const Vec3f &Trans, const Quat &Rot,const Vec3f& Scale );
-    void SetTRS( const Vec3f &Trans, const Quat &Rot, const Float Scale );
+	void SetTRS( const Vec3f &Trans, const Quat &Rot,const Vec3f& Scale );
+	void SetTRS( const Vec3f &Trans, const Quat &Rot, const Float Scale );
 
 	U32	GetCRC() const;
 };

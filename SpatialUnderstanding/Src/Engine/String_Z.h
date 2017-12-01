@@ -58,14 +58,14 @@ public:
 	{
 		return strcmp( str, other.str ) > 0;
 	}
-    template <S32 S> Bool operator == (const String_Z<S>& _str2) const
-    {
-        return strcmp( str, _str2.str) == 0;
-    }
-    template <S32 S> Bool operator != (const String_Z<S>& _str2) const
-    {
-        return !operator==(_str2);
-    }
+	template <S32 S> Bool operator == (const String_Z<S>& _str2) const
+	{
+		return strcmp( str, _str2.str) == 0;
+	}
+	template <S32 S> Bool operator != (const String_Z<S>& _str2) const
+	{
+		return !operator==(_str2);
+	}
 
 	void	Sprintf(const Char *_Str,...)
 			{
@@ -92,7 +92,7 @@ public:
 				EXCEPTIONC_Z(error >= 0,"Overflow String_Z<%d>::SprintfCat %s",Size,_Str);
 				va_end( Marker );
 			}
- 	void	NSprintf(const Char *_Str,...)
+	void	NSprintf(const Char *_Str,...)
 			{
 				va_list Marker;
 				va_start( Marker,_Str);
@@ -236,7 +236,7 @@ public:
 
 	Char *	StrUpr()								{return strupr(str);}
 
-    Char*   StrLwr()                                {return strlwr(str);}
+	Char*   StrLwr()                                {return strlwr(str);}
 
 	Char *	StrStr(const Char *_Str) const			{return (Char*)strstr(str,_Str);}
 
@@ -248,7 +248,7 @@ public:
 
 	Bool	FStriCmp(const Char *_Str) const		{return	fstricmp(str,_Str);}
 
-    Bool    IsEmpty() const                         { return str[0] == '\0'; }
+	Bool    IsEmpty() const                         { return str[0] == '\0'; }
 
 	void	MakeUp(void)							{strupr(str);}
 

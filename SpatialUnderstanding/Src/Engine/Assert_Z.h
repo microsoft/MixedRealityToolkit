@@ -48,7 +48,7 @@ inline  void BreakPoint_Z()
 #else
 	//Exception, Ellipse, Expression, Direct
 	#define	EXCEPTIONC_Z(exp,...)			do { Bool bnExp = (exp); __analysis_assume(bnExp); if(!bnExp) ExceptionBool_Z(FALSE,FALSE,#exp,__FILE__,__LINE__,__VA_ARGS__); } while (0)
-    #define	EXCEPTION_Z(exp)				do { Bool bnExp = (exp); __analysis_assume(bnExp); if(!bnExp) ExceptionBool_Z(FALSE,FALSE,#exp,__FILE__,__LINE__,"");          } while (0)
+	#define	EXCEPTION_Z(exp)				do { Bool bnExp = (exp); __analysis_assume(bnExp); if(!bnExp) ExceptionBool_Z(FALSE,FALSE,#exp,__FILE__,__LINE__,"");          } while (0)
 	#define	CANCEL_EXCEPTIONC_Z(exp,...)	do { Bool bnExp = (exp); __analysis_assume(bnExp); if(!bnExp) ExceptionBool_Z(TRUE, FALSE,#exp,__FILE__,__LINE__,__VA_ARGS__); } while (0)
 	#define BREAKPOINT_Z()					BreakPoint_Z()
 #endif

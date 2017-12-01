@@ -86,16 +86,16 @@ inline Vec3f Vec3f::operator / ( const Vec3f& _v ) const
 
 inline Vec3f Vec3f::operator ^ ( const Vec3f& _v ) const
 {
-    Vec3f result;
+	Vec3f result;
 	result.x = y * _v.z - z * _v.y;
-    result.y = z * _v.x - x * _v.z;
-    result.z = x * _v.y - y * _v.x;
+	result.y = z * _v.x - x * _v.z;
+	result.z = x * _v.y - y * _v.x;
 	return result;
 }
 
 inline Float Vec3f::operator * ( const Vec3f& _v ) const	
 {
-    return x*_v.x + y*_v.y + z*_v.z;
+	return x*_v.x + y*_v.y + z*_v.z;
 }
 
 inline Vec3f Vec3f::operator & ( const Vec3f& _v ) const	
@@ -241,14 +241,14 @@ inline Float Vec3f::HGetNorm() const   { return Sqrt( HGetNorm2() ); }
 
 inline Float Vec3f::DownHGetNorm2( const Vec3f &_down ) const
 {
-    const Vec3f& me ( *this );
+	const Vec3f& me ( *this );
 	const Vec3f HDepl( me - _down * me *_down );
 	return HDepl.GetNorm2();
 }
 
 inline Float Vec3f::DownHGetNorm( const Vec3f &_down ) const
 {
-    const Vec3f& me ( *this );
+	const Vec3f& me ( *this );
 	const Vec3f HDepl( me - _down * me *_down );
 	return HDepl.GetNorm();
 }

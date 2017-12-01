@@ -75,7 +75,7 @@ inline	S32	 GetPower2(Float a)	// R�cup�re l'exposant de la plus proche puis
 		} fi;
 		fi.f = a;
 		return (fi.i>>23)-127;
-    }
+	}
 
 template<typename T>
 T Windowize(T _Value,T _Win)
@@ -184,7 +184,7 @@ template <> inline Float Abs <Float> ( const Float _V )
 
 template <class T> inline T Square(T value)
 {
-    return value*value;
+	return value*value;
 }
 
 template<typename T> static inline T Sign( T _Value )
@@ -541,7 +541,7 @@ inline Vec3f MinVec(const Vec3f &v1,const Vec3f &v2)
 inline Vec3f MaxVec(const Vec3f &v1,const Vec3f &v2)
 {
 	Vec3f result;
-    MaxVec( v1, v2, result );
+	MaxVec( v1, v2, result );
 	return result;
 }
 
@@ -716,15 +716,15 @@ inline	U32	Vec3f::ToU3210(const Float fHeight)const
 	U32 g = FTOL( 511.0f * y + 512.0f );
 	U32 b = FTOL( 511.0f * z + 512.0f );
 	U32 a = FTOL( 3.0f * fHeight );
-    return( (a<<30L) + (b<<20L) + (g<<10L) + (r<<0L) );
+	return( (a<<30L) + (b<<20L) + (g<<10L) + (r<<0L) );
 }
 
 inline	void Vec3f::FromU32( const U32 rgba, Float &fHeight)
 {
 	U32 r = (rgba>>16)&0xff;
-    U32 g = (rgba>>8)&0xff;
-    U32 b = (rgba)&0xff;
-    U32 a = (rgba>>24)&0xff;
+	U32 g = (rgba>>8)&0xff;
+	U32 b = (rgba)&0xff;
+	U32 a = (rgba>>24)&0xff;
 	x= ( static_cast<Float>(r)-128.f ) /127.f;
 	y= ( static_cast<Float>(g)-128.f ) / 127.f;
 	z= ( static_cast<Float>(b)-128.f ) / 127.f;
@@ -734,7 +734,7 @@ inline	void Vec3f::FromU32( const U32 rgba, Float &fHeight)
 
 inline void ByteColor::Set(const Vec4f &_c)
 {
-      RGBA.rgbaColor = VecFloatPackColor8888( VecFloatSaturate(_c) ); 
+	  RGBA.rgbaColor = VecFloatPackColor8888( VecFloatSaturate(_c) ); 
 }
 
 inline void ByteColor::Get(Vec4f &_c)

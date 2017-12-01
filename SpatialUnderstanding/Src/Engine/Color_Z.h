@@ -43,7 +43,7 @@ POSTALIGNED128_Z struct  Color
 	Vec3f& xyz();
 
 
-    Float   GetGreyLevel() const;
+	Float   GetGreyLevel() const;
 	Color	FromRGBToHSV() const; // h goes in r, s in g, v in b, alpha in a. H is in [0;6] not [0;360] as usual!
 	Color	FromHSVToRGB() const; // h must be in [0;6].
 
