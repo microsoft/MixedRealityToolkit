@@ -3,8 +3,8 @@
 
 #include <DirectXMath.h>
 
-#ifndef _M_X64
-	// Not compatible X64 :(
+#ifdef _M_IX86
+	// Not compatible with X64 or ARM :(
 	#define _USE_SQRT_DIRECT_CALL	1		// pb du _exit_math => 5x à 6x plus rapide comme ça.
 #endif
 
@@ -80,11 +80,13 @@ FINLINE_Z	Float Powf(Float x,Float e)		{return powf(x,e);}
 FINLINE_Z	int	FTOL(float a)
 {
 	int	b;
-#ifndef _M_X64
+#ifdef _M_IX86
 	__asm fld a;
 	__asm fistp b;
-#else
+#elif defined _M_X64
 	b = _mm_cvtss_si32( _mm_load_ss( &a ) );
+#else
+	b = (int)lrintf(a);
 #endif
 	return b;
 }
