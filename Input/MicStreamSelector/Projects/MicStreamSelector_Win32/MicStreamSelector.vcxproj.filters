@@ -9,4 +9,12 @@
   <ItemGroup>
     <ClCompile Include="..\..\Source\MicStreamSelector.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\Source\MicStreamSelector.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Source\resource.h" />
+  </ItemGroup>
 </Project>

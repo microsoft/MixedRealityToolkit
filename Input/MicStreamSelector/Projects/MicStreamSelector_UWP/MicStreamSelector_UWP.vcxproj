@@ -29,6 +29,12 @@
   <ItemGroup>
     <ClCompile Include="..\..\Source\MicStreamSelector.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\Source\MicStreamSelector.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Source\resource.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{d9536467-5a1a-4c69-8bd9-adcf70bb776a}</ProjectGuid>
     <Keyword>DynamicLibrary</Keyword>

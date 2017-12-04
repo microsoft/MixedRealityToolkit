@@ -29,6 +29,12 @@
   <ItemGroup>
     <ClCompile Include="..\..\Source\MicStreamSelector.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\Source\MicStreamSelector.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Source\resource.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{736065ee-9c6d-468f-90d5-470b92fe7fa8}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
