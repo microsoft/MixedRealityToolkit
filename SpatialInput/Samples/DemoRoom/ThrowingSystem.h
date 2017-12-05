@@ -1,3 +1,6 @@
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (C) Microsoft Corporation.  All Rights Reserved
+// Licensed under the MIT License. See License.txt in the project root for license information.
 #pragma once
 
 #include "ToolSystem.h"
@@ -15,6 +18,9 @@ namespace DemoRoom
         float scale = 0.25f;
     };
 
+    ////////////////////////////////////////////////////////////////////////////////
+    // ThrowingInteractionSystem
+    // This ToolSystem manages the Throwing tool which allows you to throw baseballs in 3D scene
     class ThrowingInteractionSystem : public ToolSystem<ThrowingInteractionSystem, ThrowingComponent>
     {
     public:
@@ -37,3 +43,4 @@ namespace DemoRoom
             const winrt::Windows::UI::Input::Spatial::SpatialInteractionSourceEventArgs& args) override;
     };
 }
+

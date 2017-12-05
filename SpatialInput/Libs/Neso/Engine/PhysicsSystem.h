@@ -1,8 +1,15 @@
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (C) Microsoft Corporation.  All Rights Reserved
+// Licensed under the MIT License. See License.txt in the project root for license information.
 #pragma once
 
 #include <Neso\Engine\Engine.h>
 
-namespace Neso {
+namespace Neso 
+{
+    ////////////////////////////////////////////////////////////////////////////////
+    // PhysicsSystem
+    // Simple physics system to move objects around with basic integration (acceleration, velocity)
     class PhysicsSystem : public System<PhysicsSystem>
     {
     public:

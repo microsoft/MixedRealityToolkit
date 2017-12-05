@@ -1,3 +1,6 @@
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (C) Microsoft Corporation.  All Rights Reserved
+// Licensed under the MIT License. See License.txt in the project root for license information.
 #pragma once
 
 #include <Neso\Engine\EngineCommon.h>
@@ -11,6 +14,10 @@ namespace Neso {
     class Entity;
     using SharedEntity = std::shared_ptr<Entity>;
 
+    ////////////////////////////////////////////////////////////////////////////////
+    // Entity
+    // An Entity is a collection of Components and represents a single object in the world
+    // It does not contain any logic, only helper functions to Get/Add/Remove Components from an Entity
     class Entity : public Destroyable, public Enableable, public std::enable_shared_from_this<Entity>
     {
     public:
@@ -55,6 +62,24 @@ namespace Neso {
         Engine& m_engine;
     };
 
+    ////////////////////////////////////////////////////////////////////////////////
+    // EntityPrefab
+    // Instead of deriving from Entity to define new objects we use Prefabs to specify 
+    // what components an entity should have, and what the initial values should be
+
+    // Example, an Entity 
+    // Declaration: 
+    // struct GiantBall : EntityPrefab<Transform, BallComponent> {
+    //     static ComponentMap Make(ComponentStore& store) {
+    //         auto components = EntityPrefab::Make(store);
+    //         components.Get<Transform>()->scale = { 500.0f, 500.0f, 500.0f };
+    //         return components;
+    //     }
+    // };
+    
+    // Usage: 
+    // auto giantBall = m_engine.Get<EntityStore>()->Create<GiantBall>();
+    // Now "giantBall->Get<Transform>()->scale" will be set to "{ 500.0f, 500.0f, 500.0f }"
     template<typename... ComponentTs>
     struct EntityPrefab
     {

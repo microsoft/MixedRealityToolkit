@@ -1,3 +1,6 @@
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (C) Microsoft Corporation.  All Rights Reserved
+// Licensed under the MIT License. See License.txt in the project root for license information.
 #pragma once
 
 #include <Neso\Engine\Engine.h>
@@ -5,6 +8,7 @@
 
 namespace Neso
 {
+    // PredictionUpdated event listener
     class IPredictionUpdateListener abstract
     {
     public:
@@ -20,6 +24,10 @@ namespace Neso
             const winrt::Windows::Graphics::Holographic::HolographicFramePrediction& prediction) = 0;
     };
 
+    ////////////////////////////////////////////////////////////////////////////////
+    // HolographicScene
+    // Maintains a list of our current state of Windows::Perception objects, ensuring the rest of the systems
+    // use the same coordinate system, timestamp, etc. 
     class HolographicScene : public System<HolographicScene>
     {
     public:

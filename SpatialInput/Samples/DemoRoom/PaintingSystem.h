@@ -1,3 +1,6 @@
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (C) Microsoft Corporation.  All Rights Reserved
+// Licensed under the MIT License. See License.txt in the project root for license information.
 #pragma once
 
 #include "ToolSystem.h"
@@ -43,6 +46,10 @@ namespace DemoRoom
         std::optional<DirectX::XMMATRIX> brushTipOffsetFromHoldingPose;
     };
 
+    ////////////////////////////////////////////////////////////////////////////////
+    // PaintingInteractionSystem
+    // This ToolSystem manages the PaintBrush tool which allows you to draw 3D strokes in the scene
+    
     class PaintingInteractionSystem : public ToolSystem<PaintingInteractionSystem, PaintComponent>
     {
     public:
@@ -94,3 +101,4 @@ namespace DemoRoom
     };
 
 }
+

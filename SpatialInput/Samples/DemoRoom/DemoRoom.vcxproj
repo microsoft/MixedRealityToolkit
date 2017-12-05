@@ -256,6 +256,7 @@
     <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
     <PackageCertificateThumbprint>A52185E6CA18F7348613DDF337D13088C26C66BD</PackageCertificateThumbprint>
     <PackageCertificateKeyFile>DemoRoom_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Libs\Gltf\Gltf.vcxproj">

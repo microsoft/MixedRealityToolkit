@@ -1,3 +1,6 @@
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (C) Microsoft Corporation.  All Rights Reserved
+// Licensed under the MIT License. See License.txt in the project root for license information.
 #pragma once
 
 // SDL
@@ -63,3 +66,4 @@
 #include <Neso\Engine\HolographicRenderer.h>
 #include <Neso\Engine\PbrModelCache.h>
 #include <Neso\Engine\HolographicScene.h>
+

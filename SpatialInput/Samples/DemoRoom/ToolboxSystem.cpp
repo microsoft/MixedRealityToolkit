@@ -1,3 +1,6 @@
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (C) Microsoft Corporation.  All Rights Reserved
+// Licensed under the MIT License. See License.txt in the project root for license information.
 #include "pch.h"
 #include "ToolboxSystem.h"
 #include "MotionControllerSystem.h"
@@ -274,3 +277,4 @@ SharedEntity ToolboxSystem::FindController(const SpatialInteractionSource& sourc
 
     return nullptr;
 }
+

@@ -1,3 +1,6 @@
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (C) Microsoft Corporation.  All Rights Reserved
+// Licensed under the MIT License. See License.txt in the project root for license information.
 #include "pch.h"
 #include "HolographicScene.h"
 #include "CommonComponents.h"
@@ -105,3 +108,4 @@ HolographicSpace HolographicScene::HolographicSpace() const
     fail_fast_if(m_holographicSpace == nullptr);
     return m_holographicSpace;
 }
+

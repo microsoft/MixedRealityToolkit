@@ -1,3 +1,6 @@
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (C) Microsoft Corporation.  All Rights Reserved
+// Licensed under the MIT License. See License.txt in the project root for license information.
 #pragma once
 
 #include <Neso\Engine\EngineCommon.h>
@@ -9,6 +12,10 @@ namespace Neso
 {
     class Engine;
 
+    ////////////////////////////////////////////////////////////////////////////////
+    // SystemBase
+    // Base abstract class for all Systems
+    // A system operates on 1 or more components and performs function based on the data/state in each component
     class SystemBase abstract
     {
     public:
@@ -29,6 +36,9 @@ namespace Neso
         Engine& m_engine;
     };
 
+
+    // CRTP implementation helper 
+    // Usage: class MySystem : System<MySystem> { /* functions + data members */ };
     template<typename T>
     class System : public SystemBase, public std::enable_shared_from_this<T>
     {
@@ -40,6 +50,10 @@ namespace Neso
         }
     };
 
+    ////////////////////////////////////////////////////////////////////////////////
+    // Engine
+    // The Engine manages all Systems and is reponsible for starting up, updating, and tearing down all systems
+    // It is also the central location to query for other Systems or Add/Remove them from the Engine
     class Engine
     {
     public:
@@ -107,3 +121,4 @@ namespace Neso
     };
 
 } // Neso
+

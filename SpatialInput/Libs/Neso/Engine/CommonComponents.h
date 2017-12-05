@@ -1,3 +1,6 @@
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (C) Microsoft Corporation.  All Rights Reserved
+// Licensed under the MIT License. See License.txt in the project root for license information.
 #pragma once
 
 #include <winrt/Windows.Foundation.h>
@@ -11,6 +14,7 @@ namespace Pbr {
 
 namespace Neso 
 {
+    // These are a few commonly used components
     struct Transform : Component<Transform>
     {
         winrt::Windows::Foundation::Numerics::float3 position = winrt::Windows::Foundation::Numerics::float3::zero();

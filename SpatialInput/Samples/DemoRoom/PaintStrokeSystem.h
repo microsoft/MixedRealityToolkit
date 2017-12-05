@@ -1,3 +1,6 @@
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (C) Microsoft Corporation.  All Rights Reserved
+// Licensed under the MIT License. See License.txt in the project root for license information.
 #pragma once
 
 #include <Neso\Engine\Engine.h>
@@ -19,6 +22,9 @@ namespace DemoRoom
         Pbr::PrimitiveBuilder GetPrimitiveData();
     };
 
+    ////////////////////////////////////////////////////////////////////////////////
+    // PaintStrokeSystem
+    // This System manages the PaintStrokeComponents and automatically generates the 3D mesh for each stroke
     class PaintStrokeSystem : public Neso::System<PaintStrokeSystem>
     {
     public:

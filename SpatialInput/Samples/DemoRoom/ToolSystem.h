@@ -1,3 +1,6 @@
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (C) Microsoft Corporation.  All Rights Reserved
+// Licensed under the MIT License. See License.txt in the project root for license information.
 #pragma once
 #include <Neso\Engine\Engine.h>
 #include <Neso\Engine\EntityStore.h>
@@ -7,6 +10,9 @@
 
 namespace DemoRoom
 {
+    ////////////////////////////////////////////////////////////////////////////////
+    // ToolSystemBase
+    // Base abstract class for all ToolSystems
     class ToolSystemBase abstract : public Neso::SystemBase
     {
     public:
@@ -33,6 +39,10 @@ namespace DemoRoom
         static Neso::ComponentMap Make(Neso::ComponentStore& store);
     };
 
+    // CRTP implementation helper
+    // Usage: class MyToolSystem : ToolSystem<MyToolSystem> { /* functions + data members */ };
+    // Adds functionality to automatically register to listeners and helpers to access entities 
+    // that actually have the associated ToolComponent attached and enabled
     template<typename T, typename ToolComponent>
     class ToolSystem abstract : 
         public ToolSystemBase, 

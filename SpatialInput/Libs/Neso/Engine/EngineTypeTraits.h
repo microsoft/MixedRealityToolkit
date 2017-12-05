@@ -1,5 +1,10 @@
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (C) Microsoft Corporation.  All Rights Reserved
+// Licensed under the MIT License. See License.txt in the project root for license information.
 #pragma once
 
+////////////////////////////////////////////////////////////////////////////////
+// TypeTraits used throughout Neso for compile-time validation
 namespace Neso {
 
     class Engine;
@@ -67,3 +72,4 @@ namespace Neso {
         struct tuple_all_components<std::tuple<Ts...>> : all_base_of<ComponentBase, Ts...> {};
     }
 }
+

@@ -1,3 +1,6 @@
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (C) Microsoft Corporation.  All Rights Reserved
+// Licensed under the MIT License. See License.txt in the project root for license information.
 #pragma once
 
 #include <Neso\Engine\Engine.h>
@@ -16,6 +19,10 @@ namespace DemoRoom
         winrt::Windows::Foundation::Numerics::float4x4 barrelToController;
     };
 
+    ////////////////////////////////////////////////////////////////////////////////
+    // ShootingInteractionSystem
+    // This ToolSystem manages the Gun tool which allows you to shoot balls in the 3D scene
+    
     class ShootingInteractionSystem : public ToolSystem<ShootingInteractionSystem, ShootingComponent>
     {
     public:

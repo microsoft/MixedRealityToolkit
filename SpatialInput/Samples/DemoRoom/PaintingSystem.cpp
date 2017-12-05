@@ -1,4 +1,7 @@
-﻿#include "pch.h"
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (C) Microsoft Corporation.  All Rights Reserved
+// Licensed under the MIT License. See License.txt in the project root for license information.
+#include "pch.h"
 #include "PaintingSystem.h"
 #include "PaintStrokeSystem.h"
 #include "ToolboxSystem.h"
@@ -453,3 +456,4 @@ void PaintComponent::Destroy()
         beam->Destroy();
     }
 }
+

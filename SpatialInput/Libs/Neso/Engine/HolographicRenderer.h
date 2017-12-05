@@ -1,3 +1,6 @@
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (C) Microsoft Corporation.  All Rights Reserved
+// Licensed under the MIT License. See License.txt in the project root for license information.
 #pragma once
 
 #include <Neso\Engine\Engine.h>
@@ -14,6 +17,10 @@ namespace Neso
     class QuadRenderer;
     class SkyboxRenderer;
 
+    ////////////////////////////////////////////////////////////////////////////////
+    // HolographicRenderer
+    // A stereoscopic 3D rendering system, manages rendering everything in the scene
+    // through DirectX 11 and Windows::Perception APIs
     class HolographicRenderer : public System<HolographicRenderer>, public DX::IDeviceNotify
     {
     public:

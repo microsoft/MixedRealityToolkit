@@ -1,3 +1,6 @@
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (C) Microsoft Corporation.  All Rights Reserved
+// Licensed under the MIT License. See License.txt in the project root for license information.
 #pragma once
 
 namespace DX
@@ -62,3 +65,4 @@ namespace DX
         winrt::Windows::Graphics::Holographic::HolographicCamera    m_holographicCamera = nullptr;
     };
 }
+

@@ -1,3 +1,6 @@
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (C) Microsoft Corporation.  All Rights Reserved
+// Licensed under the MIT License. See License.txt in the project root for license information.
 cbuffer SceneBuffer : register(b0)
 {
     float4x4 InverseViewProjection[2]  : packoffset(c0);

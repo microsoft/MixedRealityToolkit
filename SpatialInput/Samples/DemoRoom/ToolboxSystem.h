@@ -1,3 +1,6 @@
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (C) Microsoft Corporation.  All Rights Reserved
+// Licensed under the MIT License. See License.txt in the project root for license information.
 #pragma once
 
 #include "ToolSystem.h"
@@ -13,6 +16,9 @@ namespace DemoRoom
         Neso::detail::type_id toolType{ typeid(nullptr_t) };
     };
 
+    ////////////////////////////////////////////////////////////////////////////////
+    // ToolboxSystem
+    // This system manages the ToolSystems and manages the two Entities that represent the left and right Motion Controllers
     class ToolboxSystem : 
         public Neso::System<ToolboxSystem>,
         public Neso::ISpatialInteractionListener

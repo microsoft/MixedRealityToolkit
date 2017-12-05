@@ -1,10 +1,15 @@
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (C) Microsoft Corporation.  All Rights Reserved
+// Licensed under the MIT License. See License.txt in the project root for license information.
 #pragma once
 
 #include <Neso\Common\DeviceResources.h>
 
 namespace Neso
 {
-    // This sample renderer instantiates a basic rendering pipeline.
+    ////////////////////////////////////////////////////////////////////////////////
+    // QuadRenderer
+    // Responsible for rendering quads in a 3D scene provided a transform matrix and texture
     class QuadRenderer
     {
     public:

@@ -1,3 +1,6 @@
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (C) Microsoft Corporation.  All Rights Reserved
+// Licensed under the MIT License. See License.txt in the project root for license information.
 #pragma once
 
 #include "EngineTypeTraits.h"
@@ -9,6 +12,9 @@
 
 namespace Neso
 {
+    ////////////////////////////////////////////////////////////////////////////////
+    // ComponentStore
+    // Manages all the instances of components in the engine. See Component.h
     class ComponentStore : public System<ComponentStore>, public Factory<SharedComponent, std::function<SharedComponent()>>
     {
     public:

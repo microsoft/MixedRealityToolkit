@@ -1,3 +1,6 @@
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (C) Microsoft Corporation.  All Rights Reserved
+// Licensed under the MIT License. See License.txt in the project root for license information.
 #pragma once
 
 #include <Neso\Engine\Engine.h>
@@ -5,6 +8,9 @@
 
 namespace DemoRoom 
 {
+    ////////////////////////////////////////////////////////////////////////////////
+    // AppLogicSystem
+    // Simple system to destroy objects that get too far away from the user
     class AppLogicSystem : public Neso::System<AppLogicSystem>
     {
     public:
@@ -13,7 +19,7 @@ namespace DemoRoom
     protected:
         void Update(float /*dt*/) override
         {
-            for (auto& componentSet : m_engine.Get<Neso::EntityStore>()->GetComponentsWithEntity<Neso::Transform>())
+            for (auto &componentSet : m_engine.Get<Neso::EntityStore>()->GetComponentsWithEntity<Neso::Transform>())
             {
                 auto[entity, transform] = componentSet;
 

@@ -1,3 +1,6 @@
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (C) Microsoft Corporation.  All Rights Reserved
+// Licensed under the MIT License. See License.txt in the project root for license information.
 #include "pch.h"
 #include "SkyboxRenderer.h"
 #include "EngineCommon.h"
@@ -176,3 +179,4 @@ void SkyboxRenderer::Unbind()
     m_depthStencilState_Backup = nullptr;
     m_stencilRef_Backup = 0;
 }
+

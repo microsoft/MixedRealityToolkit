@@ -1,3 +1,6 @@
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (C) Microsoft Corporation.  All Rights Reserved
+// Licensed under the MIT License. See License.txt in the project root for license information.
 #include "pch.h"
 #include "PhysicsSystem.h"
 #include "EntityStore.h"
@@ -28,3 +31,4 @@ void PhysicsSystem::Update(float dt)
         rigidBody->angularVelocity *= rigidBody->dampingFactor;
     }
 }
+

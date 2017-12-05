@@ -1,3 +1,6 @@
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (C) Microsoft Corporation.  All Rights Reserved
+// Licensed under the MIT License. See License.txt in the project root for license information.
 #include "PbrShared.hlsl"
 
 #define GSInputPbr VSOutputNoVprtPbr
@@ -16,3 +19,4 @@ void main(triangle GSInputPbr input[3], inout TriangleStream<GSOutputPbr> outStr
         outStream.Append(output);
     }
 }
+

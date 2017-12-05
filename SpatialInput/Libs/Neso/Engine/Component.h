@@ -1,3 +1,6 @@
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (C) Microsoft Corporation.  All Rights Reserved
+// Licensed under the MIT License. See License.txt in the project root for license information.
 #pragma once
 
 #include "EngineTypeTraits.h"
@@ -10,6 +13,12 @@ namespace Neso
     class ComponentMap;
     using SharedComponent = std::shared_ptr<ComponentBase>;
 
+    ////////////////////////////////////////////////////////////////////////////////
+    // ComponentBase
+    // Base abstract class for all Components
+    // A component is a piece of data/state that can be attached to any Entity
+    // Components do not contain any significant logic, but helpers/convenience functions are okay
+    //   e.g. Transform::GetMatrix
     struct ComponentBase abstract : Destroyable, Enableable
     {
         virtual ~ComponentBase() = default;
@@ -18,6 +27,8 @@ namespace Neso
         virtual void CopyTo(ComponentBase* component) const = 0;
     };
 
+    // CRTP implementation helper 
+    // Usage: struct MyComponent : Component<MyComponent> { /* data members */ };
     template<typename T>
     struct Component : ComponentBase
     {
@@ -32,6 +43,10 @@ namespace Neso
         }
     };
 
+    ////////////////////////////////////////////////////////////////////////////////
+    // ComponentMap
+    // An unordered_map of type_id -> SharedComponent
+    // As well as convenience functions for Adding, Removing, and Getting components
     class ComponentMap : public detail::unordered_type_map<SharedComponent>
     {
     public:

@@ -1,3 +1,6 @@
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (C) Microsoft Corporation.  All Rights Reserved
+// Licensed under the MIT License. See License.txt in the project root for license information.
 #pragma once
 
 #include <Neso\Engine\Engine.h>
@@ -16,6 +19,15 @@ namespace DemoRoom
         winrt::Windows::UI::Input::Spatial::SpatialInteractionSourceLocation location{ nullptr };
     };
 
+    ////////////////////////////////////////////////////////////////////////////////
+    // MotionControllerSystem
+    // This system manages events and behaviors specific to Motion Controllers 
+    //
+    // You can use the MotionControllerComponent::requestedHandedness to automatically update an Entity's Transform based on handedness 
+    // i.e. Attach this entity to the Left or Right controller, and the MotionControllerSystem will automatically update the Transform
+    //
+    // You can also use the MotionControllerComponent::attachControllerModel to automatically attach the correct 3D model to the object
+    // so that the virtual controller will be rendered in the same position as the physical controller
     class MotionControllerSystem : 
         public Neso::System<MotionControllerSystem>, 
         public Neso::IPredictionUpdateListener,
@@ -50,3 +62,4 @@ namespace DemoRoom
             const winrt::Windows::UI::Input::Spatial::SpatialInteractionSource& source);
     };
 }
+
