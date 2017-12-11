@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Assets">
+      <UniqueIdentifier>f52582db-1a09-41fd-8660-d563f9c6cbee</UniqueIdentifier>
+      <Extensions>bmp;fbx;gif;jpg;jpeg;tga;tiff;tif;png</Extensions>
+    </Filter>
+    <Image Include="Assets\LockScreenLogo.scale-200.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\SplashScreen.scale-200.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Square150x150Logo.scale-200.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Square44x44Logo.scale-200.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\StoreLogo.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Wide310x150Logo.scale-200.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Filter Include="Media">
+      <UniqueIdentifier>{50f43d33-b1e3-44b4-96db-d1700344faa2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Media\Environment">
+      <UniqueIdentifier>{4ad1e638-4048-4d24-8c88-a1b974a171a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DirectXTK">
+      <UniqueIdentifier>{c16f724a-a3d5-4411-b28f-3137d629d5bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Media\Models">
+      <UniqueIdentifier>{a1b3e5ab-6da3-4c90-a944-04f9b0f00b8d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="AppView.cpp" />
+    <ClCompile Include="MotionControllerSystem.cpp" />
+    <ClCompile Include="PaintStrokeSystem.cpp" />
+    <ClCompile Include="ShootingSystem.cpp" />
+    <ClCompile Include="ToolboxSystem.cpp" />
+    <ClCompile Include="PaintingSystem.cpp" />
+    <ClCompile Include="ThrowingSystem.cpp" />
+    <ClCompile Include="..\..\External\DirectXTK\DDSTextureLoader.cpp">
+      <Filter>DirectXTK</Filter>
+    </ClCompile>
+    <ClCompile Include="ToolSystem.cpp" />
+    <ClCompile Include="DemoRoomMain.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="AppView.h" />
+    <ClInclude Include="..\External\DirectXTK\dds.h">
+      <Filter>DirectXTK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\External\DirectXTK\DDSTextureLoader.h">
+      <Filter>DirectXTK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\External\DirectXTK\DirectXHelpers.h">
+      <Filter>DirectXTK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\External\DirectXTK\LoaderHelpers.h">
+      <Filter>DirectXTK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\External\DirectXTK\PlatformHelpers.h">
+      <Filter>DirectXTK</Filter>
+    </ClInclude>
+    <ClInclude Include="MotionControllerSystem.h" />
+    <ClInclude Include="PaintStrokeSystem.h" />
+    <ClInclude Include="ShootingSystem.h" />
+    <ClInclude Include="ToolboxSystem.h" />
+    <ClInclude Include="PaintingSystem.h" />
+    <ClInclude Include="ThrowingSystem.h" />
+    <ClInclude Include="EntityPrefabs.h" />
+    <ClInclude Include="AppLogicSystem.h" />
+    <ClInclude Include="ToolSystem.h" />
+    <ClInclude Include="DemoRoomMain.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Models\Baseball.glb">
+      <Filter>Media\Models</Filter>
+    </None>
+    <None Include="Media\Models\Gun.glb">
+      <Filter>Media\Models</Filter>
+    </None>
+    <None Include="Media\Models\PaintBrush.glb">
+      <Filter>Media\Models</Filter>
+    </None>
+    <None Include="packages.config" />
+    <None Include="DemoRoom_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Media\Environment\DiffuseHDR.dds">
+      <Filter>Media\Environment</Filter>
+    </Image>
+    <Image Include="Media\Environment\EnvHDR.dds">
+      <Filter>Media\Environment</Filter>
+    </Image>
+    <Image Include="Media\Environment\SpecularHDR.dds">
+      <Filter>Media\Environment</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

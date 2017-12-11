@@ -1,3 +1,6 @@
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (C) Microsoft Corporation.  All Rights Reserved
+// Licensed under the MIT License. See License.txt in the project root for license information.
 // GltfHelper provides additional glTF parsing functionality, built on top of tinygltf.
 // This library has no rendering dependencies and can be used for any purpose, such as
 // format transcoding or by a rendering engine.

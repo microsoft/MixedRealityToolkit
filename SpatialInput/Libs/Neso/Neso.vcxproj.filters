@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <FxCompile Include="Engine\Shaders\QuadGeometryShader.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Engine\Shaders\QuadPixelShaderRGB.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Engine\Shaders\QuadVertexShader.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Engine\Shaders\QuadVPRTVertexShader.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Engine\Shaders\SkyBoxGeometryShaderNoVprt.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Engine\Shaders\SkyBoxPixelShader.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Engine\Shaders\SkyBoxVertexShaderNoVprt.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Engine\Shaders\SkyBoxVertexShaderVprt.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Engine\EasingSystem.cpp" />
+    <ClCompile Include="Engine\HolographicRenderer.cpp" />
+    <ClCompile Include="Engine\HolographicScene.cpp" />
+    <ClCompile Include="Engine\PbrModelCache.cpp" />
+    <ClCompile Include="Engine\pch.cpp" />
+    <ClCompile Include="Engine\PhysicsSystem.cpp" />
+    <ClCompile Include="Engine\QuadRenderer.cpp" />
+    <ClCompile Include="Engine\SpatialInteractionSystem.cpp" />
+    <ClCompile Include="Engine\TextRenderer.cpp" />
+    <ClCompile Include="Common\CameraResources.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\DeviceResources.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\ComponentStore.cpp" />
+    <ClCompile Include="Engine\Engine.cpp" />
+    <ClCompile Include="Engine\Entity.cpp" />
+    <ClCompile Include="Engine\EntityStore.cpp" />
+    <ClCompile Include="Engine\SkyboxRenderer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Engine\Component.h" />
+    <ClInclude Include="Engine\EasingSystem.h" />
+    <ClInclude Include="Engine\HolographicRenderer.h" />
+    <ClInclude Include="Engine\HolographicScene.h" />
+    <ClInclude Include="Engine\PbrModelCache.h" />
+    <ClInclude Include="Engine\pch.h" />
+    <ClInclude Include="Engine\PhysicsSystem.h" />
+    <ClInclude Include="Engine\QuadRenderer.h" />
+    <ClInclude Include="Engine\SpatialInteractionSystem.h" />
+    <ClInclude Include="Engine\TextRenderer.h" />
+    <ClInclude Include="Common\CameraResources.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\DirectXHelper.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\DeviceResources.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\StepTimer.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\ListenerCollection.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\ComponentStore.h" />
+    <ClInclude Include="Engine\Engine.h" />
+    <ClInclude Include="Engine\EngineCommon.h" />
+    <ClInclude Include="Engine\EngineTypeTraits.h" />
+    <ClInclude Include="Engine\Entity.h" />
+    <ClInclude Include="Engine\EntityStore.h" />
+    <ClInclude Include="Engine\CommonComponents.h" />
+    <ClInclude Include="Engine\SkyboxRenderer.h" />
+    <ClInclude Include="Engine\TransformUtil.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Engine\Shaders\SkyBoxShared.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Engine\Shaders\SkyBoxVertexShaderShared.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{69472c05-c0de-476d-b615-c59800cb7c87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common">
+      <UniqueIdentifier>{04220912-aba0-43e5-b47f-d576e7cd3a42}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

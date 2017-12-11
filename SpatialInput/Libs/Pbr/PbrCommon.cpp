@@ -1,3 +1,6 @@
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (C) Microsoft Corporation.  All Rights Reserved
+// Licensed under the MIT License. See License.txt in the project root for license information.
 #include "pch.h"
 #include <sstream>
 // Implementation is in the Gltf library so this isn't needed: #define STB_IMAGE_IMPLEMENTATION

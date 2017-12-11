@@ -1,3 +1,6 @@
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (C) Microsoft Corporation.  All Rights Reserved
+// Licensed under the MIT License. See License.txt in the project root for license information.
 //
 // This shader is based on the vertex shader at https://github.com/KhronosGroup/glTF-WebGL-PBR
 // with modifications for HLSL and stereoscopic rendering.
