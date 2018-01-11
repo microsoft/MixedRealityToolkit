@@ -1,4 +1,7 @@
-﻿#include "pch.h"
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (C) Microsoft Corporation.  All Rights Reserved
+// Licensed under the MIT License. See License.txt in the project root for license information.
+#include "pch.h"
 #include "AppView.h"
 
 using namespace ControllerRenderSample;
@@ -14,9 +17,9 @@ using namespace winrt::Windows::Graphics::Holographic;
 using namespace winrt::Windows::UI::Core;
 
 // The main function bootstraps into the IFrameworkView.
-[Platform::MTAThread]
 int __stdcall wWinMain(HINSTANCE, HINSTANCE, PWSTR, int)
 {
+    winrt::init_apartment();
     CoreApplication::Run(AppViewSource());
     return 0;
 }
@@ -200,3 +203,4 @@ void AppView::OnKeyPressed(CoreWindow const& sender, KeyEventArgs const& args)
     // You can use this method for keyboard input if you want to support
     // it as an optional input method for your holographic app.
 }
+

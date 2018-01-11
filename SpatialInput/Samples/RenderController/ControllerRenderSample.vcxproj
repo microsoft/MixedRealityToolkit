@@ -101,6 +101,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <PackageCertificateKeyFile>ControllerRenderSample_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <AppxBundle>Always</AppxBundle>
+    <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -108,6 +110,7 @@
       <AdditionalDependencies>d2d1.lib; d3d11.lib; dxgi.lib; dwrite.lib; windowscodecs.lib; %(AdditionalDependencies); </AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories); $(VCInstallDir)\lib\store; $(VCInstallDir)\lib</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>mincore.lib;kernel32.lib;ole32.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
     </Link>
     <ClCompile>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
@@ -116,6 +119,8 @@
       <AdditionalOptions>/bigobj /await /std:c++latest  %(AdditionalOptions)</AdditionalOptions>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <DisableSpecificWarnings>4996</DisableSpecificWarnings>
+      <CompileAsWinRT>false</CompileAsWinRT>
+      <CompileAsManaged>false</CompileAsManaged>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
@@ -123,6 +128,7 @@
       <AdditionalDependencies>d2d1.lib; d3d11.lib; dxgi.lib; dwrite.lib; windowscodecs.lib; %(AdditionalDependencies); </AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories); $(VCInstallDir)\lib\store; $(VCInstallDir)\lib</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>mincore.lib;kernel32.lib;ole32.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
     </Link>
     <ClCompile>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
@@ -131,6 +137,8 @@
       <AdditionalOptions>/bigobj /await /std:c++latest  %(AdditionalOptions)</AdditionalOptions>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <DisableSpecificWarnings>4996</DisableSpecificWarnings>
+      <CompileAsWinRT>false</CompileAsWinRT>
+      <CompileAsManaged>false</CompileAsManaged>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -138,6 +146,7 @@
       <AdditionalDependencies>d2d1.lib; d3d11.lib; dxgi.lib; dwrite.lib; windowscodecs.lib; %(AdditionalDependencies); </AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories); $(VCInstallDir)\lib\store; $(VCInstallDir)\lib</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>mincore.lib;kernel32.lib;ole32.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
     </Link>
     <ClCompile>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
@@ -146,6 +155,8 @@
       <AdditionalOptions>/bigobj /await /std:c++latest  %(AdditionalOptions)</AdditionalOptions>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <DisableSpecificWarnings>4996</DisableSpecificWarnings>
+      <CompileAsWinRT>false</CompileAsWinRT>
+      <CompileAsManaged>false</CompileAsManaged>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
@@ -153,6 +164,7 @@
       <AdditionalDependencies>d2d1.lib; d3d11.lib; dxgi.lib; dwrite.lib; windowscodecs.lib; %(AdditionalDependencies); </AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories); $(VCInstallDir)\lib\store; $(VCInstallDir)\lib</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>mincore.lib;kernel32.lib;ole32.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
     </Link>
     <ClCompile>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
@@ -161,6 +173,8 @@
       <AdditionalOptions>/bigobj /await /std:c++latest  %(AdditionalOptions)</AdditionalOptions>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <DisableSpecificWarnings>4996</DisableSpecificWarnings>
+      <CompileAsWinRT>false</CompileAsWinRT>
+      <CompileAsManaged>false</CompileAsManaged>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -168,6 +182,7 @@
       <AdditionalDependencies>d2d1.lib; d3d11.lib; dxgi.lib; dwrite.lib; windowscodecs.lib; %(AdditionalDependencies); </AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories); $(VCInstallDir)\lib\store\amd64; $(VCInstallDir)\lib\amd64</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>mincore.lib;kernel32.lib;ole32.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
     </Link>
     <ClCompile>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
@@ -176,6 +191,8 @@
       <AdditionalOptions>/bigobj /await /std:c++latest  %(AdditionalOptions)</AdditionalOptions>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <DisableSpecificWarnings>4996</DisableSpecificWarnings>
+      <CompileAsWinRT>false</CompileAsWinRT>
+      <CompileAsManaged>false</CompileAsManaged>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -183,6 +200,7 @@
       <AdditionalDependencies>d2d1.lib; d3d11.lib; dxgi.lib; dwrite.lib; windowscodecs.lib; %(AdditionalDependencies); </AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories); $(VCInstallDir)\lib\store\amd64; $(VCInstallDir)\lib\amd64</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>mincore.lib;kernel32.lib;ole32.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
     </Link>
     <ClCompile>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
@@ -191,6 +209,8 @@
       <AdditionalOptions>/bigobj /await /std:c++latest  %(AdditionalOptions)</AdditionalOptions>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <DisableSpecificWarnings>4996</DisableSpecificWarnings>
+      <CompileAsWinRT>false</CompileAsWinRT>
+      <CompileAsManaged>false</CompileAsManaged>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>

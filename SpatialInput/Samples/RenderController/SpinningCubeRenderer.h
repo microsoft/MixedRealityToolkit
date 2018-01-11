@@ -1,3 +1,6 @@
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (C) Microsoft Corporation.  All Rights Reserved
+// Licensed under the MIT License. See License.txt in the project root for license information.
 #pragma once
 
 #include "..\Common\DeviceResources.h"
@@ -38,3 +41,4 @@ namespace ControllerRenderSample
         winrt::Windows::Foundation::Numerics::quaternion m_orientation { winrt::Windows::Foundation::Numerics::quaternion::identity() };
     };
 }
+

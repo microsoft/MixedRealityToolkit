@@ -1,3 +1,6 @@
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (C) Microsoft Corporation.  All Rights Reserved
+// Licensed under the MIT License. See License.txt in the project root for license information.
 #pragma once
 
 #include <SpatialInputUtilities\ControllerRendering.h>
@@ -44,3 +47,4 @@ namespace ControllerRenderSample
         ControllerRendering::ControllerModelCache m_controllerModelCache;
     };
 }
+

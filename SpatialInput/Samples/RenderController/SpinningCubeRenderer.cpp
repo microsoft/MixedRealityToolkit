@@ -1,3 +1,6 @@
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (C) Microsoft Corporation.  All Rights Reserved
+// Licensed under the MIT License. See License.txt in the project root for license information.
 #include "pch.h"
 #include "SpinningCubeRenderer.h"
 #include "Common\DirectXHelper.h"
@@ -80,3 +83,4 @@ void SpinningCubeRenderer::ReleaseDeviceDependentResources()
     m_loadingComplete  = false;
     m_cubeModel.reset();
 }
+
