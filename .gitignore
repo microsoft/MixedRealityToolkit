@@ -134,6 +134,7 @@ UpgradeLog*.htm
 /Sharing/Src/External/curl-7.39.0/lib
 /Sharing/Src/External/curl-7.39.0/Source/builds
 /Sharing/Src/External/RakNet-4.081/lib
+/Sharing/Src/External/RakNet-4.081/src/lib
 /Sharing/Src/External/zint-2.4.3/lib
 /Sharing/Src/External/zint-2.4.3/src/build
 /Sharing/Src/External/zint-2.4.3/src/tmp
@@ -141,18 +142,9 @@ UpgradeLog*.htm
 /Sharing/Src/External/zxing-cpp/src/tmp
 /Sharing/Src/External/speex-1.2rc1/lib
 /Sharing/Src/GeneratedInterface
-/Sharing/Src/Projects/ProfilerX/obj
-/Sharing/Src/Projects/ProfilerX/bin
 /Sharing/Src/Docs/C++/html
-Sharing/Src/Solutions/Xcode/XToolsClient/build
+/Sharing/Src/Solutions/Xcode/XToolsClient/build
 /SpatialMapping/PlaneFinding/Debug
 /SpatialMapping/PlaneFinding/Release
 /SpatialMapping/PlaneFinding/PlaneFinding/PlaneFinding.UAP/Debug
 /SpatialMapping/PlaneFinding/PlaneFinding/PlaneFinding.UAP/Release
-/SpatialMapping/PlaneFinding/Tests/TestApp/bin
-/SpatialMapping/PlaneFinding/Tests/TestApp/obj
-/SpatialMapping/PlaneFinding/Tests/TestHelpers/bin
-/SpatialMapping/PlaneFinding/Tests/TestHelpers/obj
-/SpatialMapping/PlaneFinding/Tests/UnitTests/bin
-/SpatialMapping/PlaneFinding/Tests/UnitTests/obj
-/Input/MicStreamSelector/Projects/MicDemoApp/obj
