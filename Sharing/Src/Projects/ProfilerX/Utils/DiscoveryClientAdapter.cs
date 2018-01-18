@@ -22,7 +22,7 @@ namespace MixedRealityToolkit.Sharing
             }
         }
 
-	    public override void OnRemoteSystemLost(DiscoveredSystem remoteSystem)
+        public override void OnRemoteSystemLost(DiscoveredSystem remoteSystem)
         {
             if (this.LostEvent != null)
             {
