@@ -71,7 +71,7 @@ namespace SessionManager.UI
             }), new object[] { this });
         }
 
-        private void SessionManagerListener_SessionAdded(HoloToolkit.Sharing.Session session)
+        private void SessionManagerListener_SessionAdded(MixedRealityToolkit.Sharing.Session session)
         {
             UpdateCurrentSession();
         }
