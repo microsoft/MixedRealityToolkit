@@ -18,7 +18,7 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <PackageCertificateKeyFile>SessionManagerUniversal.UI_TemporaryKey.pfx</PackageCertificateKeyFile>
-    <PackageCertificateThumbprint>9446A983D425A3A2580CA5170022D15C82065A30</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>85EDFF131430B6631FC718E9AA35A3233AEDAC0A</PackageCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -125,15 +125,15 @@
     <Compile Include="..\..\generatedinterface\csharpapi\DirectPairReceiver.cs">
       <Link>Generated Files\DirectPairReceiver.cs</Link>
     </Compile>
-    <Compile Include="..\..\GeneratedInterface\CSharpAPI\DiscoveredSystem.cs"> 
-        <Link>Generated Files\DiscoveredSystem.cs</Link> 
-    </Compile> 
-    <Compile Include="..\..\GeneratedInterface\CSharpAPI\DiscoveryClient.cs"> 
-        <Link>Generated Files\DiscoveryClient.cs</Link> 
-    </Compile> 
-    <Compile Include="..\..\GeneratedInterface\CSharpAPI\DiscoveryClientListener.cs"> 
-        <Link>Generated Files\DiscoveryClientListener.cs</Link> 
-    </Compile> 
+    <Compile Include="..\..\GeneratedInterface\CSharpAPI\DiscoveredSystem.cs">
+      <Link>Generated Files\DiscoveredSystem.cs</Link>
+    </Compile>
+    <Compile Include="..\..\GeneratedInterface\CSharpAPI\DiscoveryClient.cs">
+      <Link>Generated Files\DiscoveryClient.cs</Link>
+    </Compile>
+    <Compile Include="..\..\GeneratedInterface\CSharpAPI\DiscoveryClientListener.cs">
+      <Link>Generated Files\DiscoveryClientListener.cs</Link>
+    </Compile>
     <Compile Include="..\..\generatedinterface\csharpapi\DoubleElement.cs">
       <Link>Generated Files\DoubleElement.cs</Link>
     </Compile>
@@ -278,9 +278,9 @@
     <Compile Include="..\..\generatedinterface\csharpapi\SyncListener.cs">
       <Link>Generated Files\SyncListener.cs</Link>
     </Compile>
-    <Compile Include="..\..\GeneratedInterface\CSharpAPI\SystemRole.cs"> 
-      <Link>Generated Files\SystemRole.cs</Link> 
-    </Compile> 
+    <Compile Include="..\..\GeneratedInterface\CSharpAPI\SystemRole.cs">
+      <Link>Generated Files\SystemRole.cs</Link>
+    </Compile>
     <Compile Include="..\..\generatedinterface\csharpapi\TagImage.cs">
       <Link>Generated Files\TagImage.cs</Link>
     </Compile>
