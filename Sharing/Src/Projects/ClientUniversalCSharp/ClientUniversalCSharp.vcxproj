@@ -35,12 +35,12 @@
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="ClientUniversalCSharp.rc" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\ClientUniversal\ClientUniversal.vcxproj">
       <Project>{6a8cfb61-ade5-4640-b0d6-1c65f1567d00}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\Source\Client\Resources\ClientUniversalCSharp.rc" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{025d2eb8-5035-498e-94a1-deb8ea752868}</ProjectGuid>
