@@ -1,8 +1,7 @@
 @echo off
 
-REM vsvars32.bat appears to have issues if you call it too many times from one command prompt.
-REM We'll use "DevEnvDir" to determine if we already ran it or if we need to run it again.
-@if "%DevEnvDir%"=="" call "%VS140COMNTOOLS%vsvars32.bat"
+REM IMPORTANT: You will likely need to set this environment variable manually. Visual Studio no longer provides environment variables by default. Path should be similar to C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Common7\Tools
+@if "%DevEnvDir%"=="" call "%VS150COMNTOOLS%VsDevCmd.bat"
 
 call Src\External\nuget restore "Src\Projects\ClientWrapper.UAP\project.json"
 IF NOT %ERRORLEVEL% == 0 goto BuildError

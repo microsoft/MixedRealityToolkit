@@ -1,8 +1,9 @@
 @echo off
 
-call "%VS140COMNTOOLS%vsvars32.bat"
+REM IMPORTANT: You will likely need to set this environment variable manually. Visual Studio no longer provides environment variables by default. Path should be similar to C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Common7\Tools
+@if "%DevEnvDir%"=="" call "%VS150COMNTOOLS%VsDevCmd.bat"
 
-pushd win32\VS2015
+pushd win32\VS2017
 
 call MSBuild libspeex.sln /p:Configuration=Debug;Platform=Win32 /m %*
 IF NOT %ERRORLEVEL% == 0 goto BuildError
