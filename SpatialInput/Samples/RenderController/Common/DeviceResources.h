@@ -1,4 +1,7 @@
-﻿
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (C) Microsoft Corporation.  All Rights Reserved
+// Licensed under the MIT License. See License.txt in the project root for license information.
+
 #pragma once
 
 #include "CameraResources.h"
@@ -104,4 +107,5 @@ RetType DX::DeviceResources::UseHolographicCameraResources(LCallback const& call
     std::lock_guard<std::mutex> guard(m_cameraResourcesLock);
     return callback(m_cameraResources);
 }
+
 

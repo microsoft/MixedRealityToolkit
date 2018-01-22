@@ -38,8 +38,11 @@ void PaintStrokeSystem::Update(float)
             Pbr::Primitive strokePrimitive(*m_pbrResources, paintStroke->GetPrimitiveData(), std::move(strokeMaterial));
 
             // Add the primitive into the model.
-            pbr->Model->Clear();
-            pbr->Model->AddPrimitive(std::move(strokePrimitive));
+            if (auto& model = pbr->Model)
+            {
+                model->Clear();
+                model->AddPrimitive(std::move(strokePrimitive));
+            }
 
             paintStroke->strokeChanged = false;
         }

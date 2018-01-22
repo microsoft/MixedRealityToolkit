@@ -1,4 +1,7 @@
-﻿
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (C) Microsoft Corporation.  All Rights Reserved
+// Licensed under the MIT License. See License.txt in the project root for license information.
+
 #include "pch.h"
 #include "DeviceResources.h"
 #include "DirectXHelper.h"
@@ -315,3 +318,4 @@ void DX::DeviceResources::Present(HolographicFrame frame)
         HandleDeviceLost();
     }
 }
+

@@ -1,3 +1,6 @@
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (C) Microsoft Corporation.  All Rights Reserved
+// Licensed under the MIT License. See License.txt in the project root for license information.
 #include "pch.h"
 #include <DirectXTK\DDSTextureLoader.h>
 #include "Common\DirectXHelper.h"
@@ -7,7 +10,6 @@ using namespace ControllerRenderSample;
 
 using namespace concurrency;
 using namespace DirectX;
-using namespace Platform;
 using namespace std::placeholders;
 using namespace winrt::Windows::Foundation::Numerics;
 using namespace winrt::Windows::Gaming::Input;
@@ -431,3 +433,4 @@ void ControllerRenderSampleMain::OnCameraRemoved(
     // not take long.
     m_deviceResources->RemoveHolographicCamera(args.Camera());
 }
+
