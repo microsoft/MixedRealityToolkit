@@ -271,7 +271,11 @@ extern "C"
                 return err;
             }
         }
-        MakeSaveFile(c_filename);
+        int retValue = MakeSaveFile(c_filename);
+        if (retValue != 0)
+        {
+            return retValue;
+        }
         deviceInputNode->AddOutgoingConnection(fileOutputNode);
         if (previewOnDevice)
         {
