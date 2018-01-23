@@ -31,7 +31,7 @@ using namespace Windows::Media::Transcoding;
 
 //#define DEBUG  // allows more thorough debugging information regardless of other settings
 #ifdef DEBUG
-    #pragma optimize( "", off)
+#pragma optimize( "", off)
 #endif
 
 void    OnQuantumProcessed(Windows::Media::Audio::AudioGraph ^sender, Platform::Object ^args);
@@ -43,20 +43,20 @@ static  AudioDeviceOutputNode^  deviceOutputNode;               // so we can pre
 static  MediaEncodingProfile^   mediaEncodingProfile;           // we can set the type of file we want to record
 static  StorageFolder^          localFolder;                    // current folder we're using to record files
 static  StorageFile^            wavFile;                        // the file we'll be recording to. we drop the handle after we save it, and this will recycle and point to the next file.
-static  char                    filepath_char[MAX_PATH];                // stores the full file path to return to the app for easy wav loading. 260 is maximum path length
+static  char                    filepath_char[MAX_PATH];        // stores the full file path to return to the app for easy wav loading. 260 is maximum path length
 static  std::queue<Windows::Media::AudioFrame^> audioqueue;     // stores our microphone data to hand back to the app
 
 // error codes to hand back to engine with nice printed output
-private enum ErrorCodes { ALREADY_RUNNING = -10, NO_AUDIO_DEVICE, NO_INPUT_DEVICE, ALREADY_RECORDING, GRAPH_NOT_EXIST, CHANNEL_COUNT_MISMATCH, FILE_CREATION_PERMISSION_ERROR, NOT_ENOUGH_DATA, NEED_ENABLED_MIC_CAPABILITY};
+private enum ErrorCodes { ALREADY_RUNNING = -10, NO_AUDIO_DEVICE, NO_INPUT_DEVICE, ALREADY_RECORDING, GRAPH_NOT_EXIST, CHANNEL_COUNT_MISMATCH, FILE_CREATION_PERMISSION_ERROR, NOT_ENOUGH_DATA, NEED_ENABLED_MIC_CAPABILITY };
 
 bool    recording;
 int     appExpectedBufferLength;
 int     dataInBuffer;
 int     samplesPerQuantum;  // preferred sample size per chunk of data from the audio driver. usually you want system default.
 int     numChannels;
-int     indexInFrame;       // keeps track of copying data out of the plugin and into the application
+int     indexInFrame;       // keeps track of copying data out of the plug-in and into the application
 
-void resetToDefaults() {    // used on init to reset state of the plugin
+void resetToDefaults() {    // used on init to reset state of the plug-in
     recording = false;
     appExpectedBufferLength = -1; // By making negative, we won't output data until we get at least one app call.
     dataInBuffer = 0;
@@ -67,16 +67,16 @@ void resetToDefaults() {    // used on init to reset state of the plugin
 
 bool    keepAllData = false;    // Keeping all data can cause voice the microphone to accumulate large lag and memory if the program ever blocks or breaks, but is sometimes needed
 float   micGain = 1;            // recording volume of device
-std::mutex  mtx, creationmtx, readmtx;  // these attempt to safegaurd bad memory states regardless of how applications attempt to access the mic data
+std::mutex  mtx, creationmtx, readmtx;  // these attempt to safeguard bad memory states regardless of how applications attempt to access the mic data
 
-typedef void(__stdcall * CallbackIntoHost)();   // a potential callback into non-polled apps where the audio engine drives behaviour in the app, like VOIP
+typedef void(__stdcall * CallbackIntoHost)();   // a potential callback into non-polled apps where the audio engine drives behavior in the app, like VOIP
 static CallbackIntoHost hostCallback = nullptr;
 
 // This is the callback after every frame the audio device captures.
 void OnQuantumProcessed(Windows::Media::Audio::AudioGraph ^sender, Platform::Object ^args)
 {
     // If we're under our desired queue size or are keeping everything, take a frame and account for it.
-    if (dataInBuffer < appExpectedBufferLength*2 && !keepAllData || keepAllData)
+    if (dataInBuffer < appExpectedBufferLength * 2 && !keepAllData || keepAllData)
     {
         mtx.lock(); // Ensure thread safety on this hand-off point.
         audioqueue.push(frameoutputnode->GetFrame());
@@ -95,7 +95,7 @@ void OnQuantumProcessed(Windows::Media::Audio::AudioGraph ^sender, Platform::Obj
 }
 
 // TODO allow saving to designated folder?
-int MakeSaveFile(char* c_filename) 
+int MakeSaveFile(char* c_filename)
 {
     std::string str = std::string(c_filename);
     std::wstring widestr = std::wstring(str.begin(), str.end());
@@ -122,10 +122,10 @@ int MakeSaveFile(char* c_filename)
     return 0;
 }
 
-extern "C" 
+extern "C"
 {
     API int MicInitializeCustomRateWithGraph(int category, int samplerate, AudioGraph^ appGraph) // If category is 1 or 2, we'll do speech things, otherwise we'll do environment.
-    {  
+    {
         std::lock_guard<std::mutex> lock(creationmtx); // allows only one process to access this function at a time
 #ifdef MEMORYLEAKDETECT
         _CrtSetReportMode(_CRT_ERROR, _CRTDBG_MODE_DEBUG);
@@ -193,7 +193,7 @@ extern "C"
         CreateAudioDeviceOutputNodeResult^ deviceOutputNodeResult;
         deviceOutputNodeResult = concurrency::create_task(graph->CreateDeviceOutputNodeAsync()).get();
         deviceOutputNode = deviceOutputNodeResult->DeviceOutputNode;
-        
+
         AudioEncodingProperties^ props = ref new AudioEncodingProperties();
         props = deviceInputNode->EncodingProperties;
         frameoutputnode = graph->CreateFrameOutputNode(props);
@@ -207,24 +207,24 @@ extern "C"
         return 0;
     }
 
-    API int MicInitializeCustomRate(int category, int samplerate) // same as before, but uses custom samplerate 
+    API int MicInitializeCustomRate(int category, int samplerate) // same as before, but uses custom sample rate 
     {
         return MicInitializeCustomRateWithGraph(category, samplerate, nullptr);
     }
 
-    API int MicInitializeDefault(int category) // same as before, but uses default samplerate
-    {  
+    API int MicInitializeDefault(int category) // same as before, but uses default sample rate
+    {
         return MicInitializeCustomRateWithGraph(category, 0, nullptr);
     }
 
-    API int MicInitializeDefaultWithGraph(int category, AudioGraph^ appGraph) // same as before, but uses default samplerate and graph from app
+    API int MicInitializeDefaultWithGraph(int category, AudioGraph^ appGraph) // same as before, but uses default sample rate and graph from app
     {
         return MicInitializeCustomRateWithGraph(category, 0, appGraph);
     }
 
     API int MicStartStream(bool keepData, bool previewOnDevice, CallbackIntoHost cb)
     {
-        if (!graph) 
+        if (!graph)
         {
             int err = MicInitializeDefault(0);
             if (err != 0)
@@ -257,7 +257,7 @@ extern "C"
         return 0;
     }
 
-    API int MicStartRecording(char* c_filename, bool previewOnDevice) 
+    API int MicStartRecording(char* c_filename, bool previewOnDevice)
     {
         if (recording)
         {
@@ -271,7 +271,11 @@ extern "C"
                 return err;
             }
         }
-        MakeSaveFile(c_filename);
+        int retValue = MakeSaveFile(c_filename);
+        if (retValue != 0)
+        {
+            return retValue;
+        }
         deviceInputNode->AddOutgoingConnection(fileOutputNode);
         if (previewOnDevice)
         {
@@ -303,7 +307,7 @@ extern "C"
         {
             wcstombs_s(&nConverted, filepath_char, MAX_PATH, finalizeResult.ToString()->Data(), MAX_PATH);
         }
-        else 
+        else
         {
             wcstombs_s(&nConverted, filepath_char, MAX_PATH, wavFile->Path->Data(), MAX_PATH);
         }
@@ -325,16 +329,16 @@ extern "C"
         }
         else
         {
-            appExpectedBufferLength = samplesPerQuantum;    // use defualt size if not custom set by application
+            appExpectedBufferLength = samplesPerQuantum;    // use default size if not custom set by application
         }
 
         if (dataInBuffer < length)  // Make sure we have enough data to hand back to the app.
         {
             return ErrorCodes::NOT_ENOUGH_DATA;                 // This should only hit when we first start the application.
         }
-        
+
         int framesize = samplesPerQuantum * numChannels;
-        
+
         if (numchannels != numChannels) // This is a gross assumption of this entire plug-in.
         {
             return ErrorCodes::CHANNEL_COUNT_MISMATCH;
@@ -342,7 +346,7 @@ extern "C"
 
         size_t sizer = audioqueue.size();
         mtx.lock();
-            Windows::Media::AudioFrame^ frame = audioqueue.front();
+        Windows::Media::AudioFrame^ frame = audioqueue.front();
         mtx.unlock();
         Windows::Media::AudioBuffer^ framebuffer = frame->LockBuffer(Windows::Media::AudioBufferAccessMode::Read);
         Windows::Foundation::IMemoryBufferReference^ memoryBufferReference = framebuffer->CreateReference();
@@ -355,7 +359,7 @@ extern "C"
         for (int i = 0; i < length; i++)
         {
             if (indexInFrame == framesize)  // If we've reached the end of our audio frame, get the next frame.
-            {   
+            {
                 mtx.lock();
                 frame = nullptr;            // release last frame (probably unnecessary)
                 audioqueue.pop();           // remove old front frame in queue (the one we just released)
@@ -412,12 +416,12 @@ extern "C"
             return ErrorCodes::GRAPH_NOT_EXIST;
         }
 
-        std::lock_guard<std::mutex> lock(readmtx); // dont destroy graph if in the middle of reading data
-        
+        std::lock_guard<std::mutex> lock(readmtx); // don't destroy graph if in the middle of reading data
+
         graph->Stop();
 
         // since we're "destroying" the object, let's reset everything to default values
-        
+
         graph = nullptr;    // ref objects destruct properly when no longer in use, so set our graph to null here to kill it
 
         mtx.lock(); // Ensure we aren't writing to the graph, which should be stopped and dying anyway
@@ -449,5 +453,5 @@ extern "C"
 }
 
 #ifdef DEBUG
-    #pragma optimize( "", on)
+#pragma optimize( "", on)
 #endif
