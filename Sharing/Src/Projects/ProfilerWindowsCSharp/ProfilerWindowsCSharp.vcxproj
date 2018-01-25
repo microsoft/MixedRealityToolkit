@@ -169,6 +169,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\Profiler\ProfilerWrapperAPI_CSharp.h" />
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ProfilerWindowsCSharp.rc" />
   </ItemGroup>
   <Import Project="..\XTools.targets" />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
