@@ -1,4 +1,4 @@
-NetworkConnection                       {#networkconnectionoverview}
+NetworkConnection
 ============
 # NetworkConnection
 
@@ -27,7 +27,7 @@ When receiving a message, the object will receive a NetworkInMessage, which has 
 
 ## Send Options
 The NetworkConnection.Send() function has several additional parameters that allow you to have better control over how your packets are 
-delivered. The parameters have default values if you aren’t sure which to use.
+delivered. The parameters have default values if you aren't sure which to use.
 If the packet has to pass through multiple machines to get to its destination (eg: for tunneling), then these same settings are used for all
  hops.
  
@@ -41,18 +41,18 @@ Defines the priority of the message relative to others.  Messages with higher pr
 
 ### MessageReliability
 Used to specify how hard the system should try to ensure that the messages arrive and arrive in order
-* *Unreliable:* Same as regular UDP, except that it will also discard duplicate datagrams.  
-* *UnreliableSequenced:* Messages in the same channel will arrive in the sequence you sent it, but are not guaranteed to arrive.  Out or order messages will be dropped. 
-* *Reliable:* The message is sent reliably, but not necessarily in any order.  
-* *ReliableOrdered:* Message is reliable and will arrive in the order you sent it with other messages in the channel.  Messages will be delayed while waiting for out of order messages. 
-* *ReliableSequenced:* Message is reliable and will arrive in the sequence you sent it with other messages in the channel.  Out or order messages will be dropped
+* *Unreliable:* Same as regular UDP, except that it will also discard duplicate datagrams.
+* *UnreliableSequenced:* Messages in the same channel will arrive in the sequence you sent it, but are not guaranteed to arrive. Out or order messages will be dropped.
+* *Reliable:* The message is sent reliably, but not necessarily in any order.
+* *ReliableOrdered:* Message is reliable and will arrive in the order you sent it with other messages in the channel. Messages will be delayed while waiting for out of order messages.
+* *ReliableSequenced:* Message is reliable and will arrive in the sequence you sent it with other messages in the channel. Out or order messages will be dropped.
 
 
 ### MessageChannel
-Messages in the same channel sent with an ordered or sequenced level of reliability will arrive in the order sent.  HoloToolkit.Sharing internal 
-ones are defined here; user-defined channels should start at UserMessageChannelStart.  Note that ordered messages in different channels can arrive 
-in a different order from each other.  This can create hard to find bugs, so only used channels other than Default for messages that really 
-require it.  
+Messages in the same channel sent with an ordered or sequenced level of reliability will arrive in the order sent. MixedRealityToolkit.Sharing internal 
+ones are defined here; user-defined channels should start at UserMessageChannelStart. Note that ordered messages in different channels can arrive 
+in a different order from each other. This can create hard to find bugs, so only used channels other than Default for messages that really 
+require it.
 * *Default:* The main channel for data
 * *Mouse:* Mouse position updates
 * *Avatar:* Traffic related to avatar position and movement

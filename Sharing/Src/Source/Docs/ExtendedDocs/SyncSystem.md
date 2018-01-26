@@ -1,4 +1,4 @@
-Sync System                       {#syncsystem}
+Sync System
 ============
 # Sync System
 
