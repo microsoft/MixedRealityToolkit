@@ -1,7 +1,7 @@
 @echo off
 
 echo ****************************************************
-echo ********* Building All HoloToolkit.Sharing *********
+echo ***** Building All MixedRealityToolkit.Sharing *****
 echo ****************************************************
 
 call BuildDependencies.bat %*

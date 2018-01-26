@@ -5,7 +5,7 @@ echo JAVA_INCLUDE: %JAVA_INCLUDE%
 echo JAVA_BIN: %JAVA_BIN% 
 echo on 
 
-set DEST=..\..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing
+set DEST=..\..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing
 
 if exist %DEST% del /F %DEST%\*.java
 if not exist %DEST% mkdir %DEST%
