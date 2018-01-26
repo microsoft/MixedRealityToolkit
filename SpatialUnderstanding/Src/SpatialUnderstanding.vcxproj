@@ -55,8 +55,8 @@
     <RootNamespace>WorldUnderstanding</RootNamespace>
     <IntDir>$(SolutionDir)\BuildOutput\obj\$(Configuration)\$(Platform)\$(MSBuildProjectName)\</IntDir>
     <OutDir>$(SolutionDir)\BuildOutput\bin\$(Configuration)\$(Platform)\$(MSBuildProjectName)\</OutDir>
-    <HoloToolkitDeploymentProjectPlatformSubPath Condition=" '$(Platform)' == 'Win32' ">x86</HoloToolkitDeploymentProjectPlatformSubPath>
-    <HoloToolkitDeploymentProjectPlatformSubPath Condition=" '$(Platform)' != 'Win32' ">$(Platform)</HoloToolkitDeploymentProjectPlatformSubPath>
+    <MixedRealityToolkitDeploymentProjectPlatformSubPath Condition=" '$(Platform)' == 'Win32' ">x86</MixedRealityToolkitDeploymentProjectPlatformSubPath>
+    <MixedRealityToolkitDeploymentProjectPlatformSubPath Condition=" '$(Platform)' != 'Win32' ">$(Platform)</MixedRealityToolkitDeploymentProjectPlatformSubPath>
   </PropertyGroup>
   <PropertyGroup Condition="$(Configuration.StartsWith('Universal'))" Label="Universal Globals">
     <Keyword>DynamicLibrary</Keyword>
@@ -67,12 +67,12 @@
     <WindowsTargetPlatformVersion>10.0.10586.0</WindowsTargetPlatformVersion>
     <WindowsTargetPlatformMinVersion>10.0.10240.0</WindowsTargetPlatformMinVersion>
     <ApplicationTypeRevision>10.0</ApplicationTypeRevision>
-    <HoloToolkitDeploymentProjectConfigurationSubPath>Assets\HoloToolkit\SpatialUnderstanding\Plugins\WSA</HoloToolkitDeploymentProjectConfigurationSubPath>
+    <MixedRealityToolkitDeploymentProjectConfigurationSubPath>Assets\MixedRealityToolkit\SpatialUnderstanding\Plugins\WSA</MixedRealityToolkitDeploymentProjectConfigurationSubPath>
   </PropertyGroup>
   <PropertyGroup Condition="$(Configuration.StartsWith('Standalone'))" Label="Standalone Globals">
     <Keyword>Win32Proj</Keyword>
     <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
-    <HoloToolkitDeploymentProjectConfigurationSubPath>Assets\HoloToolkit\SpatialUnderstanding\Plugins</HoloToolkitDeploymentProjectConfigurationSubPath>
+    <MixedRealityToolkitDeploymentProjectConfigurationSubPath>Assets\MixedRealityToolkit\SpatialUnderstanding\Plugins</MixedRealityToolkitDeploymentProjectConfigurationSubPath>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Label="Common Configuration">
@@ -421,10 +421,10 @@
     <ResourceCompile Include="SpatialUnderstanding.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
-  <Import Condition=" Exists('HoloToolkitDeployment.props') " Project="HoloToolkitDeployment.props" />
-  <Target Condition=" '$(HoloToolkitDeploymentProjectPath)' != '' " Name="DeployToHoloToolkit" AfterTargets="Build">
-    <Error Condition=" !Exists('$(HoloToolkitDeploymentProjectPath)') " Text="HoloToolkitDeploymentProjectPath directory '$(HoloToolkitDeploymentProjectPath)' does not exist. Make sure HoloToolkitDeploymentProjectPath is set correctly or unset it to skip deployment." />
-    <Copy SourceFiles="$(TargetPath);$(TargetDir)\$(TargetName).pdb" DestinationFolder="$(HoloToolkitDeploymentProjectPath)\$(HoloToolkitDeploymentProjectConfigurationSubPath)\$(HoloToolkitDeploymentProjectPlatformSubPath)" SkipUnchangedFiles="true" />
+  <Import Condition=" Exists('MixedRealityToolkitDeployment.props') " Project="MixedRealityToolkitDeployment.props" />
+  <Target Condition=" '$(MixedRealityToolkitDeploymentProjectPath)' != '' " Name="DeployToMixedRealityToolkit" AfterTargets="Build">
+    <Error Condition=" !Exists('$(MixedRealityToolkitDeploymentProjectPath)') " Text="MixedRealityToolkitDeploymentProjectPath directory '$(MixedRealityToolkitDeploymentProjectPath)' does not exist. Make sure MixedRealityToolkitDeploymentProjectPath is set correctly or unset it to skip deployment." />
+    <Copy SourceFiles="$(TargetPath);$(TargetDir)\$(TargetName).pdb" DestinationFolder="$(MixedRealityToolkitDeploymentProjectPath)\$(MixedRealityToolkitDeploymentProjectConfigurationSubPath)\$(MixedRealityToolkitDeploymentProjectPlatformSubPath)" SkipUnchangedFiles="true" />
   </Target>
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
