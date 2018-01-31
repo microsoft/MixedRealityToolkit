@@ -71,12 +71,12 @@ void ThrowingInteractionSystem::Update(float dt)
 
 void ThrowingInteractionSystem::OnSourcePressed(const SpatialInteractionSourceEventArgs& args)
 {
-    if (auto enabledEntity = TryGetEntityFromSource(args.State().Source()))
+    if (args.PressKind() == SpatialInteractionPressKind::Select)
     {
-        auto throwing = std::get<ThrowingComponent*>(*enabledEntity);
-
-        if (args.PressKind() == SpatialInteractionPressKind::Select)
+        if (auto enabledEntity = TryGetEntityFromSource(args.State().Source()))
         {
+            auto throwing = std::get<ThrowingComponent*>(*enabledEntity);
+
             auto ball = m_engine.Get<EntityStore>()->Create<Baseball>();
             ball->Get<Transform>()->scale = float3{ throwing->scale };
             ball->Get<RigidBody>()->SetEnabled(false);
@@ -87,35 +87,40 @@ void ThrowingInteractionSystem::OnSourcePressed(const SpatialInteractionSourceEv
 
 void ThrowingInteractionSystem::OnSourceReleased(const SpatialInteractionSourceEventArgs& args)
 {
-    if (auto enabledEntity = TryGetEntityFromSource(args.State().Source()))
+    if (args.PressKind() == SpatialInteractionPressKind::Select)
     {
-        auto throwing = std::get<ThrowingComponent*>(*enabledEntity);
-
-        if (args.PressKind() == SpatialInteractionPressKind::Select)
+        if (auto enabledEntity = TryGetEntityFromSource(args.State().Source()))
         {
+            auto throwing = std::get<ThrowingComponent*>(*enabledEntity);
+            fail_fast_if(!throwing);
+
             if (throwing->ballObject)
             {
+                // We no longer need to keep a reference to the thrown ball.
+                auto ball = throwing->ballObject;
+                throwing->ballObject.reset();
+
+                // If the controller has no motion, release the ball with no initial velocity.
+                ball->Get<RigidBody>()->SetEnabled(true);
+                ball->Get<RigidBody>()->velocity = {};
+                ball->Get<RigidBody>()->angularVelocity = {};
+
+                // If controller has motion, use velocity and angular velocity at ball's holding distances.
                 const SpatialCoordinateSystem coordinateSystem = m_engine.Get<HolographicScene>()->WorldCoordinateSystem();
                 if (const SpatialInteractionSourceLocation graspLocation = args.State().Properties().TryGetLocation(coordinateSystem))
                 {
                     if (const SpatialPointerInteractionSourcePose pointerPose = graspLocation.SourcePointerPose())
                     {
-                        if (const IReference<float3> graspAngularVelocity = graspLocation.AngularVelocity())
+                        if (const IReference<float3> graspAngularVelocity = graspLocation.AngularVelocity()) 
                         {
                             const float3 ballPosition = pointerPose.Position() + (pointerPose.ForwardDirection() * BallHoldingDistance);
 
                             if (const std::optional<float3> ballVelocity = SpatialInputUtilities::Physics::GetVelocityNearSourceLocation(graspLocation, ballPosition))
                             {
-                                throwing->ballObject->Get<Transform>()->position = ballPosition;
-                                throwing->ballObject->Get<Transform>()->orientation = pointerPose.Orientation();
-
-                                throwing->ballObject->Get<RigidBody>()->SetEnabled(true);
-                                throwing->ballObject->Get<RigidBody>()->velocity = ballVelocity.value();
-
-                                throwing->ballObject->Get<RigidBody>()->angularVelocity = graspAngularVelocity.Value();
-
-                                // We no longer need to keep a reference to the thrown ball.
-                                throwing->ballObject.reset();
+                                ball->Get<Transform>()->position = ballPosition;
+                                ball->Get<Transform>()->orientation = pointerPose.Orientation();
+                                ball->Get<RigidBody>()->velocity = ballVelocity.value();
+                                ball->Get<RigidBody>()->angularVelocity = graspAngularVelocity.Value();
                             }
                         }
                     }
