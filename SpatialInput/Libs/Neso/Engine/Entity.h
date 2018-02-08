@@ -29,11 +29,6 @@ namespace Neso {
         }
 
         template<typename T>
-        T* TryGet() {
-            return m_components.TryGet<T>();
-        }
-
-        template<typename T>
         void Remove() {
             m_components.Remove<T>();
         }
@@ -43,6 +38,11 @@ namespace Neso {
             return m_components.Add<T>(m_engine.Get<ComponentStore>()->CreateComponent<T>());
         }
 
+        template<typename... ComponentTs>
+        std::tuple<ComponentTs*...> TryGetComponents() {
+            return std::make_tuple(m_components.TryGet<ComponentTs>()...);
+        }
+
         Entity(ComponentMap components, EntityId id, Engine& core);
         virtual ~Entity();
 
@@ -50,13 +50,10 @@ namespace Neso {
 
         EntityId Id() const { return m_id; }
 
-        Engine& GetEngine();
-        const ComponentMap& GetComponents() const;
         void Destroy() override;
         void SetEnabled(bool) override;
-        EntityId GetId() const;
 
-    protected:
+    private:
         ComponentMap m_components;
         EntityId m_id;
         Engine& m_engine;

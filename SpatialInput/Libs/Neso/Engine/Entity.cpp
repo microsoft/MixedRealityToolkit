@@ -23,16 +23,6 @@ SharedEntity Entity::Clone() const
     return m_engine.Get<EntityStore>()->CreateFromComponentMap(m_engine.Get<ComponentStore>()->Clone(m_components));
 }
 
-Engine& Entity::GetEngine()
-{
-    return m_engine;
-}
-
-const ComponentMap& Entity::GetComponents() const
-{
-    return m_components;
-}
-
 void Entity::Destroy()
 {
     Destroyable::Destroy();
@@ -52,9 +42,3 @@ void Entity::SetEnabled(bool enable)
         components.second->SetEnabled(enable);
     }
 }
-
-Entity::EntityId Entity::GetId() const
-{
-    return m_id;
-}
-

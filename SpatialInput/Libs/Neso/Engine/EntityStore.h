@@ -37,7 +37,7 @@ namespace Neso
 
             for (auto& object : m_objects)
             {
-                auto requested_components = std::make_tuple(object->TryGet<ComponentTs>()...);
+                auto requested_components = object->TryGetComponents<ComponentTs...>();
 
                 if (AllValidComponents(requested_components))
                 {
@@ -58,7 +58,7 @@ namespace Neso
 
             for (auto& object : m_objects)
             {
-                auto requested_components = std::make_tuple(object->TryGet<ComponentTs>()...);
+                auto requested_components = object->TryGetComponents<ComponentTs...>();
 
                 if (AllValidComponents(requested_components))
                 {
