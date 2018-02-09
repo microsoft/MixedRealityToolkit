@@ -20,7 +20,7 @@ EXTERN_C __declspec(dllexport) BOOL TryGetMotionControllerModel(_In_ UINT32 cont
 
     // Use WRL to get the SpatialInteractionManager from the active window.
     if (SUCCEEDED(RoGetActivationFactory(HStringReference(L"Windows.UI.Input.Spatial.SpatialInteractionManager").Get(), IID_PPV_ARGS(spInteractionInterop.ReleaseAndGetAddressOf()))) &&
-        SUCCEEDED(spInteractionInterop->GetForWindow(GetActiveWindow(), IID_PPV_ARGS(spInteractionInteropInspectable.ReleaseAndGetAddressOf()))))
+        SUCCEEDED(spInteractionInterop->GetForWindow(FindWindow(L"UnityHoloInEditorWndClass", NULL), IID_PPV_ARGS(spInteractionInteropInspectable.ReleaseAndGetAddressOf()))))
     {
         // Cast the interop SpatialInteractionManager into an actual SpatialInteractionManager.
         auto spatialInteractionManager = safe_cast<SpatialInteractionManager^>(reinterpret_cast<Platform::Object^>(spInteractionInteropInspectable.Get()));
