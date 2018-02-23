@@ -86,14 +86,14 @@ Sphere_Z operator *(const Mat4x4 &Mat,const Sphere_Z &Sphere)
 	Sphere_Z	S;
 	register VecFloat4 result;
 	register VecFloat4 radius;
-    register const VecFloat4x4& vMat( Mat.m128 );
+	register const VecFloat4x4& vMat( Mat.m128 );
 	register const VecFloat4 length = VecFloatLength3( VecFloat4x4GetRow0(vMat) );
-    register const VecFloat4 vSphere = VecFloatLoadAligned( &Sphere.Center.x );
+	register const VecFloat4 vSphere = VecFloatLoadAligned( &Sphere.Center.x );
 
-    result = VecFloat4x4Transform3( vMat, vSphere );
+	result = VecFloat4x4Transform3( vMat, vSphere );
 	radius = VecFloatScaleW( length, vSphere );
-    result = VecFloatPermuteX0Y0Z0X1( result, radius );
-    VecFloatStoreAligned( &S.Center.x, result );
+	result = VecFloatPermuteX0Y0Z0X1( result, radius );
+	VecFloatStoreAligned( &S.Center.x, result );
 	return S;
 }
 
@@ -187,7 +187,7 @@ Box_Z Box_Z::operator *(const Mat4x4 &_Transform) const
 	VecFloat4x4 transposedTransform;
 	VecFloat4 matTransposedColumn3, dotSoA[4];
 		
-    dotSoA[0] = VecFloatPermuteZ0Z1W0W1( Mat.m.m128[0], Mat.m.m128[1] );
+	dotSoA[0] = VecFloatPermuteZ0Z1W0W1( Mat.m.m128[0], Mat.m.m128[1] );
 	dotSoA[1] = VecFloatPermuteZ0Z1W0W1( Mat.m.m128[2], one );
 	matTransposedColumn3 = VecFloatPermuteZ0W0Z1W1( dotSoA[0], dotSoA[1] ); // = { Mat.m[0][3], Mat.m[1][3], Mat.m[2][3], 1 }
 
@@ -630,7 +630,7 @@ Float	Segment_Z::DistToPoint(const Vec3f &ToPt,Vec3f *pPt0) const
 
 	if (pPt0)
 		*pPt0=point;
-    return (point-ToPt).GetNorm();   // return the closest distance
+	return (point-ToPt).GetNorm();   // return the closest distance
 }
 
 

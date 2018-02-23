@@ -31,12 +31,12 @@ POSTALIGNED128_Z struct  Quat
 	Quat() {}
 #endif
 	Quat( const Float _w, const Float _x, const Float _y, const Float _z );
-    Quat( const Float Angle, const Vec3f &Axis );
-    explicit Quat(const Vec3f &RV);
-    Quat(const Vec3f &V1,const Vec3f &V2);
-    Quat(const Vec3f &V1,const Vec3f &V2,const Vec3f &V3);
-    explicit Quat(const Mat3x3 &Matrix);
-    explicit Quat(const Mat4x4 &Matrix);
+	Quat( const Float Angle, const Vec3f &Axis );
+	explicit Quat(const Vec3f &RV);
+	Quat(const Vec3f &V1,const Vec3f &V2);
+	Quat(const Vec3f &V1,const Vec3f &V2,const Vec3f &V3);
+	explicit Quat(const Mat3x3 &Matrix);
+	explicit Quat(const Mat4x4 &Matrix);
 
 	const Vec4f& xyzw() const;
 	Vec4f& xyzw();

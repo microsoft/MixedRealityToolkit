@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- In order to turn on automatic deployment after build, make a copy of this "MixedRealityToolkitDeployment.props.example"
+       file and name it "MixedRealityToolkitDeployment.props". Then, change the value of MixedRealityToolkitDeploymentProjectPath to
+       match the deployment location you want.
+
+       Alternatively, you can set MixedRealityToolkitDeploymentProjectPath as an environment variable before you open Visual
+       Studio (or run msbuild) and avoid using this props file entirely.
+  -->
+  <PropertyGroup>
+    <MixedRealityToolkitDeploymentProjectPath Condition=" ('$(MixedRealityToolkitDeploymentProjectPath)' == '') AND Exists('..\..\..\MixedRealityToolkit-Unity') ">..\..\..\MixedRealityToolkit-Unity</MixedRealityToolkitDeploymentProjectPath>
+  </PropertyGroup>
+</Project>

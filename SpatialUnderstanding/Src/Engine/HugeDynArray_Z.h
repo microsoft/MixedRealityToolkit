@@ -70,7 +70,7 @@ public:
 	}
 	void	Remove(int Ele)
 	{
-        HUGEDYNARRAY_Z_EXP( (((U32)Ele)<Size) );
+		HUGEDYNARRAY_Z_EXP( (((U32)Ele)<Size) );
 		if (DeleteObject)
 		{
 			ArrayPtr[Ele].~T();
@@ -262,22 +262,22 @@ public:
 	}
 	T		&Get(int Id)
 	{
-        HUGEDYNARRAY_Z_EXP( (((U32)Id)<Size) );
+		HUGEDYNARRAY_Z_EXP( (((U32)Id)<Size) );
 		return 	ArrayPtr[Id];
 	}
 	const T	&Get(int Id) const 
 	{
-        HUGEDYNARRAY_Z_EXP( (((U32)Id)<Size) );
+		HUGEDYNARRAY_Z_EXP( (((U32)Id)<Size) );
 		return 	ArrayPtr[Id];
 	}
 	T		&operator[](int Id)
 	{
-        HUGEDYNARRAY_Z_EXP( (((U32)Id)<Size) );
+		HUGEDYNARRAY_Z_EXP( (((U32)Id)<Size) );
 		return 	ArrayPtr[Id];
 	}
 	const T	&operator[](int Id) const
 	{
-        HUGEDYNARRAY_Z_EXP( (((U32)Id)<Size) );
+		HUGEDYNARRAY_Z_EXP( (((U32)Id)<Size) );
 		return 	ArrayPtr[Id];
 	}
 

@@ -3,8 +3,8 @@
 
 #include <DirectXMath.h>
 
-#ifndef _M_X64
-	// Not compatible X64 :(
+#ifdef _M_IX86
+	// Not compatible with X64 or ARM :(
 	#define _USE_SQRT_DIRECT_CALL	1		// pb du _exit_math => 5x à 6x plus rapide comme ça.
 #endif
 
@@ -30,7 +30,7 @@ FINLINE_Z	Float Atan2(Float a,Float b)	{return atan2f(a,b);}
 FINLINE_Z	Float Cos(Float x)
 {
 #if ( _MSC_VER >= 1700 ) // __libm_sse2_cosf is buggy!
-    return DirectX::XMScalarCos( x );
+	return DirectX::XMScalarCos( x );
 #else
 	return cosf(x);
 #endif
@@ -39,7 +39,7 @@ FINLINE_Z	Float Cos(Float x)
 FINLINE_Z	Float Sin(Float x)
 {
 #if ( _MSC_VER >= 1700 ) // __libm_sse2_sinf is buggy!
-    return DirectX::XMScalarSin( x );
+	return DirectX::XMScalarSin( x );
 #else
 	return sinf(x);
 #endif
@@ -47,7 +47,7 @@ FINLINE_Z	Float Sin(Float x)
 
 FINLINE_Z	void  SinCos(Vec2f& r,Float x)	
 {
-    return DirectX::XMScalarSinCos( &r.x, &r.y, x );
+	return DirectX::XMScalarSinCos( &r.x, &r.y, x );
 }
 
 FINLINE_Z	Float Tan(Float a)				{return Sin(a)/Cos(a);}
@@ -80,11 +80,13 @@ FINLINE_Z	Float Powf(Float x,Float e)		{return powf(x,e);}
 FINLINE_Z	int	FTOL(float a)
 {
 	int	b;
-#ifndef _M_X64
+#ifdef _M_IX86
 	__asm fld a;
 	__asm fistp b;
-#else
+#elif defined _M_X64
 	b = _mm_cvtss_si32( _mm_load_ss( &a ) );
+#else
+	b = (int)lrintf(a);
 #endif
 	return b;
 }

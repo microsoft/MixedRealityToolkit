@@ -16,11 +16,13 @@ FINLINE_Z	U32	UFTOL(float a)
 {
 #ifdef	_PC
 	U32	b;
-#ifndef _M_X64
+#ifdef _M_IX86
 	__asm fld a;
 	__asm fistp b;
-#else
+#elif defined _M_X64
 	b = _mm_cvtss_si32( _mm_load_ss( &a ) );
+#else
+	b = (int)lrintf(a);
 #endif
 	return b;
 #endif
@@ -79,9 +81,9 @@ FINLINE_Z void Vec3_Div( Vec3f& _result, const Vec3f& _v0, const Vec3f& _v1 )
 // _result = _v0^_v1;
 FINLINE_Z void Vec3_Cross( Vec3f& _result, const Vec3f& _v0, const Vec3f& _v1 )
 {
-    _result.x = _v0.y * _v1.z - _v0.z * _v1.y;
-    _result.y = _v0.z * _v1.x - _v0.x * _v1.z;
-    _result.z = _v0.x * _v1.y - _v0.y * _v1.x;
+	_result.x = _v0.y * _v1.z - _v0.z * _v1.y;
+	_result.y = _v0.z * _v1.x - _v0.x * _v1.z;
+	_result.z = _v0.x * _v1.y - _v0.y * _v1.x;
 }
 
 // _result = _v0._v1;

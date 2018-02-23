@@ -1349,12 +1349,12 @@ FINLINE_Z void VecFloat3x3SetIdentity ( register VecFloat3x3& result ) ///< resu
 #if defined( _PC_SSE )
 	const __m128 zero = _mm_xor_ps( result[0], result[0] );
 	result[0] = _mm_cvtsi32_ss( zero, 1 );
-    result[1] = _mm_shuffle_ps( result[0], result[0], _MM_SHUFFLE(1,1,0,1) );
-    result[2] = _mm_shuffle_ps( result[0], result[0], _MM_SHUFFLE(1,0,1,1) );
+	result[1] = _mm_shuffle_ps( result[0], result[0], _MM_SHUFFLE(1,1,0,1) );
+	result[2] = _mm_shuffle_ps( result[0], result[0], _MM_SHUFFLE(1,0,1,1) );
 #else
 	result[0] = VecFloatLoad4( 1.f, 0.f, 0.f, 0.f );
-    result[1] = VecFloatLoad4( 0.f, 1.f, 0.f, 0.f );
-    result[2] = VecFloatLoad4( 0.f, 0.f, 1.f, 0.f );
+	result[1] = VecFloatLoad4( 0.f, 1.f, 0.f, 0.f );
+	result[2] = VecFloatLoad4( 0.f, 0.f, 1.f, 0.f );
 #endif
 }
 
@@ -1362,18 +1362,18 @@ FINLINE_Z void VecFloat3x3SetIdentityScale ( register VecFloat3x3& result, regis
 {
 #if defined( _PC_SSE4 )
 	result[0] = _mm_insert_ps( result[0], scale, 0x0E ); ///< scale.x(00) -> r.x(00), x pass (1110)
-    result[1] = _mm_insert_ps( result[1], scale, 0x5D ); ///< scale.y(01) -> r.y(01), y pass (1101)
-    result[2] = _mm_insert_ps( result[2], scale, 0xAB ); ///< scale.z(10) -> r.z(10), z pass (1011)
+	result[1] = _mm_insert_ps( result[1], scale, 0x5D ); ///< scale.y(01) -> r.y(01), y pass (1101)
+	result[2] = _mm_insert_ps( result[2], scale, 0xAB ); ///< scale.z(10) -> r.z(10), z pass (1011)
 #elif defined( _PC_SSE )
 	const __m128 zero = _mm_xor_ps( scale, scale );
 	const __m128 scaleZero = VecFloatPermuteX0Y0Z0W1( scale, zero );
 	result[0] = _mm_shuffle_ps( scaleZero, scaleZero, _MM_SHUFFLE(3,3,3,0) );
-    result[1] = _mm_shuffle_ps( scaleZero, scaleZero, _MM_SHUFFLE(3,3,1,3) );
-    result[2] = _mm_shuffle_ps( scaleZero, scaleZero, _MM_SHUFFLE(3,2,3,3) );
+	result[1] = _mm_shuffle_ps( scaleZero, scaleZero, _MM_SHUFFLE(3,3,1,3) );
+	result[2] = _mm_shuffle_ps( scaleZero, scaleZero, _MM_SHUFFLE(3,2,3,3) );
 #else
 	result[0] = VecFloatLoad4( scale.x, 0.f, 0.f, 0.f );
-    result[1] = VecFloatLoad4( 0.f, scale.y, 0.f, 0.f );
-    result[2] = VecFloatLoad4( 0.f, 0.f, scale.z, 0.f );
+	result[1] = VecFloatLoad4( 0.f, scale.y, 0.f, 0.f );
+	result[2] = VecFloatLoad4( 0.f, 0.f, scale.z, 0.f );
 #endif
 }
 
@@ -1423,14 +1423,14 @@ FINLINE_Z void VecFloat4x4SetIdentity( register VecFloat4x4& result ) ///< resul
 #if defined( _PC_SSE )
 	const __m128 zero = _mm_xor_ps( result[0], result[0] );
 	result[0] = _mm_cvtsi32_ss( zero, 1 );
-    result[1] = _mm_shuffle_ps( result[0], result[0], _MM_SHUFFLE(1,1,0,1) );
-    result[2] = _mm_shuffle_ps( result[0], result[0], _MM_SHUFFLE(1,0,1,1) );
-    result[3] = _mm_shuffle_ps( result[0], result[0], _MM_SHUFFLE(0,1,1,1) );
+	result[1] = _mm_shuffle_ps( result[0], result[0], _MM_SHUFFLE(1,1,0,1) );
+	result[2] = _mm_shuffle_ps( result[0], result[0], _MM_SHUFFLE(1,0,1,1) );
+	result[3] = _mm_shuffle_ps( result[0], result[0], _MM_SHUFFLE(0,1,1,1) );
 #else
 	result[0] = VecFloatLoad4( 1.f, 0.f, 0.f, 0.f );
-    result[1] = VecFloatLoad4( 0.f, 1.f, 0.f, 0.f );
-    result[2] = VecFloatLoad4( 0.f, 0.f, 1.f, 0.f );
-    result[3] = VecFloatLoad4( 0.f, 0.f, 0.f, 1.f );
+	result[1] = VecFloatLoad4( 0.f, 1.f, 0.f, 0.f );
+	result[2] = VecFloatLoad4( 0.f, 0.f, 1.f, 0.f );
+	result[3] = VecFloatLoad4( 0.f, 0.f, 0.f, 1.f );
 #endif
 }
 
@@ -1439,14 +1439,14 @@ FINLINE_Z void VecFloat4x4SetIdentityTrans ( register VecFloat4x4& result, regis
 #if defined( _PC_SSE )
 	const __m128 zero = _mm_xor_ps( result[0], result[0] );
 	result[0] = _mm_cvtsi32_ss( zero, 1 );
-    result[1] = _mm_shuffle_ps( result[0], result[0], _MM_SHUFFLE(1,1,0,1) );
-    result[2] = _mm_shuffle_ps( result[0], result[0], _MM_SHUFFLE(1,0,1,1) );
-    result[3] = translation;
+	result[1] = _mm_shuffle_ps( result[0], result[0], _MM_SHUFFLE(1,1,0,1) );
+	result[2] = _mm_shuffle_ps( result[0], result[0], _MM_SHUFFLE(1,0,1,1) );
+	result[3] = translation;
 #else
 	result[0] = VecFloatLoad4( 1.f, 0.f, 0.f, 0.f );
-    result[1] = VecFloatLoad4( 0.f, 1.f, 0.f, 0.f );
-    result[2] = VecFloatLoad4( 0.f, 0.f, 1.f, 0.f );
-    result[3] = translation;
+	result[1] = VecFloatLoad4( 0.f, 1.f, 0.f, 0.f );
+	result[2] = VecFloatLoad4( 0.f, 0.f, 1.f, 0.f );
+	result[3] = translation;
 #endif
 }
 
@@ -1455,30 +1455,30 @@ FINLINE_Z void VecFloat4x4SetIdentityScale ( register VecFloat4x4& result, regis
 #if defined( _PC_SSE4 )
 	const __m128 v1scale = _mm_cvtsi32_ss( scale, 1 );
 	result[0] = _mm_insert_ps( scale, scale, 0x0E ); // scale.x(00) -> r.x(00), x pass (1110)
-    result[1] = _mm_insert_ps( scale, scale, 0x5D ); // scale.y(01) -> r.y(01), y pass (1101)
-    result[2] = _mm_insert_ps( scale, scale, 0xAB ); // scale.z(10) -> r.z(10), z pass (1011)
+	result[1] = _mm_insert_ps( scale, scale, 0x5D ); // scale.y(01) -> r.y(01), y pass (1101)
+	result[2] = _mm_insert_ps( scale, scale, 0xAB ); // scale.z(10) -> r.z(10), z pass (1011)
 	result[3] = _mm_insert_ps( v1scale, v1scale, 0x37 ); // v1scale.x(00) -> r.w(11), w pass (0111)
 #elif defined( _PC_SSE )
 	const __m128 zero = _mm_xor_ps( scale, scale );
 	const __m128 v1000 = _mm_cvtsi32_ss( zero, 1 );
 	const __m128 scaleZero = VecFloatPermuteX0Y0Z0W1( scale, zero );
 	result[0] = _mm_shuffle_ps( scaleZero, scaleZero, _MM_SHUFFLE(3,3,3,0) );
-    result[1] = _mm_shuffle_ps( scaleZero, scaleZero, _MM_SHUFFLE(3,3,1,3) );
-    result[2] = _mm_shuffle_ps( scaleZero, scaleZero, _MM_SHUFFLE(3,2,3,3) );
-    result[3] = _mm_shuffle_ps( v1000, v1000, _MM_SHUFFLE(0,1,1,1) );
+	result[1] = _mm_shuffle_ps( scaleZero, scaleZero, _MM_SHUFFLE(3,3,1,3) );
+	result[2] = _mm_shuffle_ps( scaleZero, scaleZero, _MM_SHUFFLE(3,2,3,3) );
+	result[3] = _mm_shuffle_ps( v1000, v1000, _MM_SHUFFLE(0,1,1,1) );
 #else
 	result[0] = VecFloatLoad4( scale.x, 0.f, 0.f, 0.f );
-    result[1] = VecFloatLoad4( 0.f, scale.y, 0.f, 0.f );
-    result[2] = VecFloatLoad4( 0.f, 0.f, scale.z, 0.f );
-    result[3] = VecFloatLoad4( 0.f, 0.f, 0.f, 1.f );
+	result[1] = VecFloatLoad4( 0.f, scale.y, 0.f, 0.f );
+	result[2] = VecFloatLoad4( 0.f, 0.f, scale.z, 0.f );
+	result[3] = VecFloatLoad4( 0.f, 0.f, 0.f, 1.f );
 #endif
 }
 
 FINLINE_Z void VecFloat4x4SetScale ( register VecFloat4x4& result, register const VecFloat4& scale ) ///< set scale values (xyz) in result
 {
 	result[0] = VecFloatPermuteX1Y0Z0W0( result[0], scale );
-    result[1] = VecFloatPermuteX0Y1Z0W0( result[1], scale );
-    result[2] = VecFloatPermuteX0Y0Z1W0( result[2], scale );
+	result[1] = VecFloatPermuteX0Y1Z0W0( result[1], scale );
+	result[2] = VecFloatPermuteX0Y0Z1W0( result[2], scale );
 }
 
 FINLINE_Z void VecFloat4x4SetRow0 ( register VecFloat4x4& result, const register VecFloat4& row0 ) ///< result[0] = row0
@@ -1675,7 +1675,7 @@ FINLINE_Z VecSelMask VecFloatCompareBounds ( register const VecFloat4& a, regist
 {
 #if defined (_PC_SSE )
 	register const __m128 negB = VecFloatNegate( b );
-    return _mm_and_ps( _mm_cmple_ps(a,b), _mm_cmpge_ps(a,negB) );
+	return _mm_and_ps( _mm_cmple_ps(a,b), _mm_cmpge_ps(a,negB) );
 #else
 	VecSelMask result;
 	for( U32 i = 0; i < 4; ++i )
@@ -1957,10 +1957,10 @@ FINLINE_Z VecFloat4 VecFloatReciprocalAccurate ( register const VecFloat4& a, U3
 #endif
 	// Perform n refinements using Newton's method.
 	register const VecFloat4 vOne = VecFloatSplatOne();
-    register VecFloat4 Y0 = VecFloatReciprocal( aa );
+	register VecFloat4 Y0 = VecFloatReciprocal( aa );
 
 	do {
-	    // y0 = y0 + y0 * (1.0 - x * y0)   
+		// y0 = y0 + y0 * (1.0 - x * y0)   
 		Y0 = VecFloatMadd( Y0, VecFloatNegMsub(a,Y0,vOne), Y0 );
 		refinements--;
 	} while( refinements > 0 );
@@ -2019,7 +2019,7 @@ FINLINE_Z VecFloat4 VecFloatSign ( register const VecFloat4& a, register const V
 #else
 	register const VecFloat4 zero = VecFloatSplatZero();
 	register const VecFloat4 signNotNull = VecFloatSelectGreater( a, zero, b, VecFloatNegate(b) );
-    return VecFloatSelectEqual( a, zero, zero, signNotNull );
+	return VecFloatSelectEqual( a, zero, zero, signNotNull );
 #endif
 }
 
@@ -2060,7 +2060,7 @@ FINLINE_Z VecFloat4 VecFloatScaleW ( register const VecFloat4& a, register const
 FINLINE_Z VecFloat4 VecFloatAbs ( register const VecFloat4& a )  ///< xyzw = abs ( a.xyzw )
 {
 #if defined (_PC_SSE )
-    return _mm_and_ps( a, VecFloatLoadAligned(&VectorConstantsPrivate::vAbsMask) );
+	return _mm_and_ps( a, VecFloatLoadAligned(&VectorConstantsPrivate::vAbsMask) );
 #else
 	VecFloat4 result;
 	for( U32 i = 0; i < 4; ++i ) 
@@ -2227,104 +2227,104 @@ FINLINE_Z VecFloat4 VecFloatRSqrtAccurate ( register const VecFloat4& a, U32 ref
 FINLINE_Z VecFloat4 VecFloatCos ( register const VecFloat4& a ) ///< result.xyzw = cos( a.xyzw )
 {
 	VecFloat4 V1, V2, V4, V6, V8, V10, V12, V14, V16, V18, V20, V22;
-    VecFloat4 C1, C2, C3, C4, C5, C6, C7, C8, C9, C10, C11;
-    VecFloat4 Result;
+	VecFloat4 C1, C2, C3, C4, C5, C6, C7, C8, C9, C10, C11;
+	VecFloat4 Result;
 
 	register const VecFloat4 cosCoefficients0 = VectorConstantsPrivate::vCosCoefficients0;
 	register const VecFloat4 cosCoefficients1 = VectorConstantsPrivate::vCosCoefficients1;
 	register const VecFloat4 cosCoefficients2 = VectorConstantsPrivate::vCosCoefficients2;
 
-    V1 = VecFloatModAngles( a );
+	V1 = VecFloatModAngles( a );
 
-    // cos(V) ~= 1 - V^2 / 2! + V^4 / 4! - V^6 / 6! + V^8 / 8! - V^10 / 10! + V^12 / 12! - 
-    //           V^14 / 14! + V^16 / 16! - V^18 / 18! + V^20 / 20! - V^22 / 22! (for -π <= a < π)
-    V2 = VecFloatMul( V1, V1 );
-    V4 = VecFloatMul( V2, V2 );
-    V6 = VecFloatMul( V4, V2 );
-    V8 = VecFloatMul( V4, V4 );
-    V10 = VecFloatMul( V6, V4 );
-    V12 = VecFloatMul( V6, V6 );
-    V14 = VecFloatMul( V8, V6 );
-    V16 = VecFloatMul( V8, V8 );
-    V18 = VecFloatMul( V10, V8 );
-    V20 = VecFloatMul( V10, V10 );
-    V22 = VecFloatMul( V12, V10 );
+	// cos(V) ~= 1 - V^2 / 2! + V^4 / 4! - V^6 / 6! + V^8 / 8! - V^10 / 10! + V^12 / 12! - 
+	//           V^14 / 14! + V^16 / 16! - V^18 / 18! + V^20 / 20! - V^22 / 22! (for -π <= a < π)
+	V2 = VecFloatMul( V1, V1 );
+	V4 = VecFloatMul( V2, V2 );
+	V6 = VecFloatMul( V4, V2 );
+	V8 = VecFloatMul( V4, V4 );
+	V10 = VecFloatMul( V6, V4 );
+	V12 = VecFloatMul( V6, V6 );
+	V14 = VecFloatMul( V8, V6 );
+	V16 = VecFloatMul( V8, V8 );
+	V18 = VecFloatMul( V10, V8 );
+	V20 = VecFloatMul( V10, V10 );
+	V22 = VecFloatMul( V12, V10 );
 
-    C1 = VecFloatSplatY( cosCoefficients0 );
-    C2 = VecFloatSplatZ( cosCoefficients0 );
-    C3 = VecFloatSplatW( cosCoefficients0 );
-    C4 = VecFloatSplatX( cosCoefficients1 );
-    C5 = VecFloatSplatY( cosCoefficients1 );
-    C6 = VecFloatSplatZ( cosCoefficients1 );
-    C7 = VecFloatSplatW( cosCoefficients1 );
-    C8 = VecFloatSplatX( cosCoefficients2 );
-    C9 = VecFloatSplatY( cosCoefficients2 );
-    C10 = VecFloatSplatZ( cosCoefficients2 );
-    C11 = VecFloatSplatW( cosCoefficients2 );
+	C1 = VecFloatSplatY( cosCoefficients0 );
+	C2 = VecFloatSplatZ( cosCoefficients0 );
+	C3 = VecFloatSplatW( cosCoefficients0 );
+	C4 = VecFloatSplatX( cosCoefficients1 );
+	C5 = VecFloatSplatY( cosCoefficients1 );
+	C6 = VecFloatSplatZ( cosCoefficients1 );
+	C7 = VecFloatSplatW( cosCoefficients1 );
+	C8 = VecFloatSplatX( cosCoefficients2 );
+	C9 = VecFloatSplatY( cosCoefficients2 );
+	C10 = VecFloatSplatZ( cosCoefficients2 );
+	C11 = VecFloatSplatW( cosCoefficients2 );
 
-    Result = VecFloatMadd( C1, V2, VectorConstantsPrivate::vOneF );
-    Result = VecFloatMadd( C2, V4, Result );
-    Result = VecFloatMadd( C3, V6, Result );
-    Result = VecFloatMadd( C4, V8, Result );
-    Result = VecFloatMadd( C5, V10, Result );
-    Result = VecFloatMadd( C6, V12, Result );
-    Result = VecFloatMadd( C7, V14, Result );
-    Result = VecFloatMadd( C8, V16, Result );
-    Result = VecFloatMadd( C9, V18, Result );
-    Result = VecFloatMadd( C10, V20, Result );
-    return VecFloatMadd( C11, V22, Result );
+	Result = VecFloatMadd( C1, V2, VectorConstantsPrivate::vOneF );
+	Result = VecFloatMadd( C2, V4, Result );
+	Result = VecFloatMadd( C3, V6, Result );
+	Result = VecFloatMadd( C4, V8, Result );
+	Result = VecFloatMadd( C5, V10, Result );
+	Result = VecFloatMadd( C6, V12, Result );
+	Result = VecFloatMadd( C7, V14, Result );
+	Result = VecFloatMadd( C8, V16, Result );
+	Result = VecFloatMadd( C9, V18, Result );
+	Result = VecFloatMadd( C10, V20, Result );
+	return VecFloatMadd( C11, V22, Result );
 }
 
 FINLINE_Z VecFloat4 VecFloatSin ( register const VecFloat4& a ) ///< result.xyzw = sin( a.xyzw )
 {
 	VecFloat4 V1, V2, V3, V5, V7, V9, V11, V13, V15, V17, V19, V21, V23;
-    VecFloat4 S1, S2, S3, S4, S5, S6, S7, S8, S9, S10, S11;
-    VecFloat4 Result;
+	VecFloat4 S1, S2, S3, S4, S5, S6, S7, S8, S9, S10, S11;
+	VecFloat4 Result;
 
 	register const VecFloat4 sinCoefficients0 = VectorConstantsPrivate::vSinCoefficients0;
 	register const VecFloat4 sinCoefficients1 = VectorConstantsPrivate::vSinCoefficients1;
 	register const VecFloat4 sinCoefficients2 = VectorConstantsPrivate::vSinCoefficients2;
 
-    V1 = VecFloatModAngles( a );
+	V1 = VecFloatModAngles( a );
 
-    /* sin(a) ~= a - a^3 / 3! + a^5 / 5! - a^7 / 7! + a^9 / 9! - a^11 / 11! + a^13 / 13! - 
-               a^15 / 15! + a^17 / 17! - a^19 / 19! + a^21 / 21! - a^23 / 23! (for -π <= a < π) */
-    V2  = VecFloatMul( V1, V1 );
-    V3  = VecFloatMul( V2, V1 );
-    V5  = VecFloatMul( V3, V2 );
-    V7  = VecFloatMul( V5, V2 );
-    V9  = VecFloatMul( V7, V2 );
-    V11 = VecFloatMul( V9, V2 );
-    V13 = VecFloatMul( V11, V2 );
-    V15 = VecFloatMul( V13, V2 );
-    V17 = VecFloatMul( V15, V2 );
-    V19 = VecFloatMul( V17, V2 );
-    V21 = VecFloatMul( V19, V2 );
-    V23 = VecFloatMul( V21, V2 );
+	/* sin(a) ~= a - a^3 / 3! + a^5 / 5! - a^7 / 7! + a^9 / 9! - a^11 / 11! + a^13 / 13! - 
+			   a^15 / 15! + a^17 / 17! - a^19 / 19! + a^21 / 21! - a^23 / 23! (for -π <= a < π) */
+	V2  = VecFloatMul( V1, V1 );
+	V3  = VecFloatMul( V2, V1 );
+	V5  = VecFloatMul( V3, V2 );
+	V7  = VecFloatMul( V5, V2 );
+	V9  = VecFloatMul( V7, V2 );
+	V11 = VecFloatMul( V9, V2 );
+	V13 = VecFloatMul( V11, V2 );
+	V15 = VecFloatMul( V13, V2 );
+	V17 = VecFloatMul( V15, V2 );
+	V19 = VecFloatMul( V17, V2 );
+	V21 = VecFloatMul( V19, V2 );
+	V23 = VecFloatMul( V21, V2 );
 
-    S1  = VecFloatSplatY( sinCoefficients0 );
-    S2  = VecFloatSplatZ( sinCoefficients0 );
-    S3  = VecFloatSplatW( sinCoefficients0 );
-    S4  = VecFloatSplatX( sinCoefficients1 );
-    S5  = VecFloatSplatY( sinCoefficients1 );
-    S6  = VecFloatSplatZ( sinCoefficients1 );
-    S7  = VecFloatSplatW( sinCoefficients1 );
-    S8  = VecFloatSplatX( sinCoefficients2 );
-    S9  = VecFloatSplatY( sinCoefficients2 );
-    S10 = VecFloatSplatZ( sinCoefficients2 );
-    S11 = VecFloatSplatW( sinCoefficients2 );
+	S1  = VecFloatSplatY( sinCoefficients0 );
+	S2  = VecFloatSplatZ( sinCoefficients0 );
+	S3  = VecFloatSplatW( sinCoefficients0 );
+	S4  = VecFloatSplatX( sinCoefficients1 );
+	S5  = VecFloatSplatY( sinCoefficients1 );
+	S6  = VecFloatSplatZ( sinCoefficients1 );
+	S7  = VecFloatSplatW( sinCoefficients1 );
+	S8  = VecFloatSplatX( sinCoefficients2 );
+	S9  = VecFloatSplatY( sinCoefficients2 );
+	S10 = VecFloatSplatZ( sinCoefficients2 );
+	S11 = VecFloatSplatW( sinCoefficients2 );
 
-    Result = VecFloatMadd( S1, V3, V1 );
-    Result = VecFloatMadd( S2, V5, Result );
-    Result = VecFloatMadd( S3, V7, Result );
-    Result = VecFloatMadd( S4, V9, Result );
-    Result = VecFloatMadd( S5, V11, Result );
-    Result = VecFloatMadd( S6, V13, Result );
-    Result = VecFloatMadd( S7, V15, Result );
-    Result = VecFloatMadd( S8, V17, Result );
-    Result = VecFloatMadd( S9, V19, Result );
-    Result = VecFloatMadd( S10, V21, Result );
-    return VecFloatMadd( S11, V23, Result );
+	Result = VecFloatMadd( S1, V3, V1 );
+	Result = VecFloatMadd( S2, V5, Result );
+	Result = VecFloatMadd( S3, V7, Result );
+	Result = VecFloatMadd( S4, V9, Result );
+	Result = VecFloatMadd( S5, V11, Result );
+	Result = VecFloatMadd( S6, V13, Result );
+	Result = VecFloatMadd( S7, V15, Result );
+	Result = VecFloatMadd( S8, V17, Result );
+	Result = VecFloatMadd( S9, V19, Result );
+	Result = VecFloatMadd( S10, V21, Result );
+	return VecFloatMadd( S11, V23, Result );
 }
 
 FINLINE_Z VecFloat4 VecFloatTan ( register const VecFloat4& a ) ///< result.xyzw = tan( a.xyzw )
@@ -2338,23 +2338,23 @@ FINLINE_Z VecFloat4 VecFloatACos ( register const VecFloat4& a ) ///< result.xyz
 	const VecFloat4 zero = VecFloatSplatZero();
 
 	// Clamp input to [-1,1].
-    VecFloat4 x = VecFloatAbs( a );
-    VecFloat4 omx = VecFloatSub( VecFloatSplatOne(), x );
-    omx = VecFloatSelectLess( omx, zero, zero, omx );
-    VecFloat4 root = VecFloatSqrt( omx );
+	VecFloat4 x = VecFloatAbs( a );
+	VecFloat4 omx = VecFloatSub( VecFloatSplatOne(), x );
+	omx = VecFloatSelectLess( omx, zero, zero, omx );
+	VecFloat4 root = VecFloatSqrt( omx );
 
-    // 7-degree minimax approximation
+	// 7-degree minimax approximation
 	VecFloat4 result = VecFloatMadd( VecFloatSplatX(VectorConstantsPrivate::vAcosCoefficients0), x, VecFloatSplatY(VectorConstantsPrivate::vAcosCoefficients0) );
 	result = VecFloatMadd( result, x, VecFloatSplatZ(VectorConstantsPrivate::vAcosCoefficients0) );
 	result = VecFloatMadd( result, x, VecFloatSplatW(VectorConstantsPrivate::vAcosCoefficients0) );
 	result = VecFloatMadd( result, x, VecFloatSplatX(VectorConstantsPrivate::vAcosCoefficients1) );
 	result = VecFloatMadd( result, x, VecFloatSplatY(VectorConstantsPrivate::vAcosCoefficients1) );
 	result = VecFloatMadd( result, x, VecFloatSplatZ(VectorConstantsPrivate::vAcosCoefficients1) );
-    result = VecFloatMadd( result, x, VecFloatSplatW(VectorConstantsPrivate::vAcosCoefficients1) );
-    result = VecFloatMul( result, root );
+	result = VecFloatMadd( result, x, VecFloatSplatW(VectorConstantsPrivate::vAcosCoefficients1) );
+	result = VecFloatMul( result, root );
 
-    // acos(x) = pi - acos(-x) when x < 0
-    return VecFloatSelectGreaterOrEqual( a, zero, result, VecFloatSub(VectorConstantsPrivate::vPi,result) );
+	// acos(x) = pi - acos(-x) when x < 0
+	return VecFloatSelectGreaterOrEqual( a, zero, result, VecFloatSub(VectorConstantsPrivate::vPi,result) );
 }
 
 FINLINE_Z VecFloat4 VecFloatASin ( register const VecFloat4& a ) ///< result.xyzw = asin( a.xyzw ) with -1 <= a.xyzw <= 1
@@ -2363,23 +2363,23 @@ FINLINE_Z VecFloat4 VecFloatASin ( register const VecFloat4& a ) ///< result.xyz
 	const VecFloat4 zero = VecFloatSplatZero();
 
 	// Clamp input to [-1,1].
-    VecFloat4 x = VecFloatAbs( a );
-    VecFloat4 omx = VecFloatSub( VecFloatSplatOne(), x );
-    omx = VecFloatSelectLess( omx, zero, zero, omx );
-    VecFloat4 root = VecFloatSqrt( omx );
+	VecFloat4 x = VecFloatAbs( a );
+	VecFloat4 omx = VecFloatSub( VecFloatSplatOne(), x );
+	omx = VecFloatSelectLess( omx, zero, zero, omx );
+	VecFloat4 root = VecFloatSqrt( omx );
 
-    // 7-degree minimax approximation
-    VecFloat4 result = VecFloatMadd( VecFloatSplatX(VectorConstantsPrivate::vAcosCoefficients0), x, VecFloatSplatY(VectorConstantsPrivate::vAcosCoefficients0) );
+	// 7-degree minimax approximation
+	VecFloat4 result = VecFloatMadd( VecFloatSplatX(VectorConstantsPrivate::vAcosCoefficients0), x, VecFloatSplatY(VectorConstantsPrivate::vAcosCoefficients0) );
 	result = VecFloatMadd( result, x, VecFloatSplatZ(VectorConstantsPrivate::vAcosCoefficients0) );
 	result = VecFloatMadd( result, x, VecFloatSplatW(VectorConstantsPrivate::vAcosCoefficients0) );
 	result = VecFloatMadd( result, x, VecFloatSplatX(VectorConstantsPrivate::vAcosCoefficients1) );
 	result = VecFloatMadd( result, x, VecFloatSplatY(VectorConstantsPrivate::vAcosCoefficients1) );
 	result = VecFloatMadd( result, x, VecFloatSplatZ(VectorConstantsPrivate::vAcosCoefficients1) );
-    result = VecFloatMadd( result, x, VecFloatSplatW(VectorConstantsPrivate::vAcosCoefficients1) );
+	result = VecFloatMadd( result, x, VecFloatSplatW(VectorConstantsPrivate::vAcosCoefficients1) );
 	result = VecFloatMul( result, root );  // acos(|x|)
 
-    // acos(x) = pi - acos(-x) when x < 0, asin(x) = pi/2 - acos(x)
-    return VecFloatSelectGreaterOrEqual( a, zero, VecFloatSub(VectorConstantsPrivate::vPiDiv2,result), VecFloatSub(result,VectorConstantsPrivate::vPiDiv2) );
+	// acos(x) = pi - acos(-x) when x < 0, asin(x) = pi/2 - acos(x)
+	return VecFloatSelectGreaterOrEqual( a, zero, VecFloatSub(VectorConstantsPrivate::vPiDiv2,result), VecFloatSub(result,VectorConstantsPrivate::vPiDiv2) );
 }
 
 FINLINE_Z VecFloat4 VecFloatSinCos1 ( const Float a ) ///< xyzw = { sin(a), cos(a), undefined, undefined }
@@ -2439,7 +2439,7 @@ FINLINE_Z VecFloat4 VecFloatExp2Est ( register const VecFloat4& a ) ///< result.
 FINLINE_Z VecFloat4 VecFloatExp2 ( register const VecFloat4& a ) ///< result.xyzw = exp2( a.xyzw ) (accurate)
 {
 #if defined (_PC_SSE2 )
-    // Code adapted from http://jrfonseca.blogspot.fr/2008/09/fast-sse2-pow-tables-or-polynomials.html
+	// Code adapted from http://jrfonseca.blogspot.fr/2008/09/fast-sse2-pow-tables-or-polynomials.html
 	const U32 ExpPolyDegree = 5;
 
 	VecInt4 ipart;
@@ -2663,16 +2663,16 @@ FINLINE_Z VecFloat4 VecFloatRotateLeft ( register const VecFloat4& a ) ///< xyzw
 {
 #if defined( _PC_SSE )
 	const S32 x = ElementCount & 3;
-    const S32 y = (ElementCount+1) & 3;
-    const S32 z = (ElementCount+2) & 3;
+	const S32 y = (ElementCount+1) & 3;
+	const S32 z = (ElementCount+2) & 3;
 	const S32 w = (ElementCount+3) & 3;
 	return _mm_shuffle_ps( a, a, _MM_SHUFFLE(w,z,y,x) );
 #else
 	const S32 x = ElementCount & 3;
-    const S32 y = (ElementCount+1) & 3;
-    const S32 z = (ElementCount+2) & 3;
+	const S32 y = (ElementCount+1) & 3;
+	const S32 z = (ElementCount+2) & 3;
 	const S32 w = (ElementCount+3) & 3;
-    return VecFloatLoad4( a.xyzw[x], a.xyzw[y], a.xyzw[z], a.xyzw[w] );
+	return VecFloatLoad4( a.xyzw[x], a.xyzw[y], a.xyzw[z], a.xyzw[w] );
 #endif
 }
 
@@ -2717,7 +2717,7 @@ template <VectorSwizzle SrcPos, VectorSwizzle DestPos> FINLINE_Z VecFloat4 VecFl
 
 FINLINE_Z VecFloat4 VecFloatSwizzleXXXY ( register const VecFloat4& a )   ///< xyzw = a.xxxy
 {
-    return _VecFloatSwizzle_ <VSWIZZLE_X, VSWIZZLE_X, VSWIZZLE_X, VSWIZZLE_Y> ( a );
+	return _VecFloatSwizzle_ <VSWIZZLE_X, VSWIZZLE_X, VSWIZZLE_X, VSWIZZLE_Y> ( a );
 }
 
 FINLINE_Z VecFloat4 VecFloatSwizzleXXYY ( register const VecFloat4& a )   ///< xyzw = a.xxyy
@@ -2725,7 +2725,7 @@ FINLINE_Z VecFloat4 VecFloatSwizzleXXYY ( register const VecFloat4& a )   ///< x
 #if defined (_PC_SSE )
 	return _mm_unpacklo_ps( a, a );
 #else
-    return _VecFloatSwizzle_ <VSWIZZLE_X, VSWIZZLE_X, VSWIZZLE_Y, VSWIZZLE_Y> ( a );
+	return _VecFloatSwizzle_ <VSWIZZLE_X, VSWIZZLE_X, VSWIZZLE_Y, VSWIZZLE_Y> ( a );
 #endif
 }
 
@@ -2734,33 +2734,33 @@ FINLINE_Z VecFloat4 VecFloatSwizzleXXZZ ( register const VecFloat4& a )   ///< x
 #if defined( _PC_SSE3 )
 	return _mm_moveldup_ps( a );
 #else
-    return _VecFloatSwizzle_ <VSWIZZLE_X, VSWIZZLE_X, VSWIZZLE_Z, VSWIZZLE_Z> ( a );
+	return _VecFloatSwizzle_ <VSWIZZLE_X, VSWIZZLE_X, VSWIZZLE_Z, VSWIZZLE_Z> ( a );
 #endif
 }
 
 FINLINE_Z VecFloat4 VecFloatSwizzleXYZX ( register const VecFloat4& a )   ///< xyzw = a.xyzx
 {
-    return _VecFloatSwizzle_ <VSWIZZLE_X, VSWIZZLE_Y, VSWIZZLE_Z, VSWIZZLE_X> ( a );
+	return _VecFloatSwizzle_ <VSWIZZLE_X, VSWIZZLE_Y, VSWIZZLE_Z, VSWIZZLE_X> ( a );
 }
 
 FINLINE_Z VecFloat4 VecFloatSwizzleXZXZ ( register const VecFloat4& a )   ///< xyzw = a.xzxz
 {
-    return _VecFloatSwizzle_ <VSWIZZLE_X, VSWIZZLE_Z, VSWIZZLE_X, VSWIZZLE_Z> ( a );
+	return _VecFloatSwizzle_ <VSWIZZLE_X, VSWIZZLE_Z, VSWIZZLE_X, VSWIZZLE_Z> ( a );
 }
 
 FINLINE_Z VecFloat4 VecFloatSwizzleXWXX ( register const VecFloat4& a )   ///< xyzw = a.xwxx
 {
-    return _VecFloatSwizzle_ <VSWIZZLE_X, VSWIZZLE_W, VSWIZZLE_X, VSWIZZLE_X> ( a );
+	return _VecFloatSwizzle_ <VSWIZZLE_X, VSWIZZLE_W, VSWIZZLE_X, VSWIZZLE_X> ( a );
 }
 
 FINLINE_Z VecFloat4 VecFloatSwizzleYXXX ( register const VecFloat4& a )   ///< xyzw = a.yxxx
 {
-    return _VecFloatSwizzle_ <VSWIZZLE_Y, VSWIZZLE_X, VSWIZZLE_X, VSWIZZLE_X> ( a );
+	return _VecFloatSwizzle_ <VSWIZZLE_Y, VSWIZZLE_X, VSWIZZLE_X, VSWIZZLE_X> ( a );
 }
 
 FINLINE_Z VecFloat4 VecFloatSwizzleYXWZ ( register const VecFloat4& a )   ///< xyzw = a.yxwz
 {
-    return _VecFloatSwizzle_ <VSWIZZLE_Y, VSWIZZLE_X, VSWIZZLE_W, VSWIZZLE_Z> ( a );
+	return _VecFloatSwizzle_ <VSWIZZLE_Y, VSWIZZLE_X, VSWIZZLE_W, VSWIZZLE_Z> ( a );
 }
 
 FINLINE_Z VecFloat4 VecFloatSwizzleYYWW ( register const VecFloat4& a )   ///< xyzw = a.yyww
@@ -2768,63 +2768,63 @@ FINLINE_Z VecFloat4 VecFloatSwizzleYYWW ( register const VecFloat4& a )   ///< x
 #if defined( _PC_SSE3 )
 	return _mm_movehdup_ps( a );
 #else
-    return _VecFloatSwizzle_ <VSWIZZLE_Y, VSWIZZLE_Y, VSWIZZLE_W, VSWIZZLE_W> ( a );
+	return _VecFloatSwizzle_ <VSWIZZLE_Y, VSWIZZLE_Y, VSWIZZLE_W, VSWIZZLE_W> ( a );
 #endif
 }
 
 FINLINE_Z VecFloat4 VecFloatSwizzleYZXY ( register const VecFloat4& a )   ///< xyzw = a.yzxy
 {
-    return _VecFloatSwizzle_ <VSWIZZLE_Y, VSWIZZLE_Z, VSWIZZLE_X, VSWIZZLE_Y> ( a );
+	return _VecFloatSwizzle_ <VSWIZZLE_Y, VSWIZZLE_Z, VSWIZZLE_X, VSWIZZLE_Y> ( a );
 }
 
 FINLINE_Z VecFloat4 VecFloatSwizzleYZXW ( register const VecFloat4& a )   ///< xyzw = a.yzxw
 {
-    return _VecFloatSwizzle_ <VSWIZZLE_Y, VSWIZZLE_Z, VSWIZZLE_X, VSWIZZLE_W> ( a );
+	return _VecFloatSwizzle_ <VSWIZZLE_Y, VSWIZZLE_Z, VSWIZZLE_X, VSWIZZLE_W> ( a );
 }
 
 FINLINE_Z VecFloat4 VecFloatSwizzleYZWX ( register const VecFloat4& a )   ///< xyzw = a.yzwx
 {
-    return _VecFloatSwizzle_ <VSWIZZLE_Y, VSWIZZLE_Z, VSWIZZLE_W, VSWIZZLE_X> ( a );
+	return _VecFloatSwizzle_ <VSWIZZLE_Y, VSWIZZLE_Z, VSWIZZLE_W, VSWIZZLE_X> ( a );
 }
 
 FINLINE_Z VecFloat4 VecFloatSwizzleYWXZ ( register const VecFloat4& a )   ///< xyzw = a.ywxz
 {
-    return _VecFloatSwizzle_ <VSWIZZLE_Y, VSWIZZLE_W, VSWIZZLE_X, VSWIZZLE_Z> ( a );
+	return _VecFloatSwizzle_ <VSWIZZLE_Y, VSWIZZLE_W, VSWIZZLE_X, VSWIZZLE_Z> ( a );
 }
 
 FINLINE_Z VecFloat4 VecFloatSwizzleYWYW ( register const VecFloat4& a )   ///< xyzw = a.ywyw
 {
-    return _VecFloatSwizzle_ <VSWIZZLE_Y, VSWIZZLE_W, VSWIZZLE_Y, VSWIZZLE_W> ( a );
+	return _VecFloatSwizzle_ <VSWIZZLE_Y, VSWIZZLE_W, VSWIZZLE_Y, VSWIZZLE_W> ( a );
 }
 
 FINLINE_Z VecFloat4 VecFloatSwizzleZXYX ( register const VecFloat4& a )   ///< xyzw = a.zxyx
 {
-    return _VecFloatSwizzle_ <VSWIZZLE_Z, VSWIZZLE_X, VSWIZZLE_Y, VSWIZZLE_X> ( a );
+	return _VecFloatSwizzle_ <VSWIZZLE_Z, VSWIZZLE_X, VSWIZZLE_Y, VSWIZZLE_X> ( a );
 }
 
 FINLINE_Z VecFloat4 VecFloatSwizzleZXYW ( register const VecFloat4& a )   ///< xyzw = a.zxyw
 {
-    return _VecFloatSwizzle_ <VSWIZZLE_Z, VSWIZZLE_X, VSWIZZLE_Y, VSWIZZLE_W> ( a );
+	return _VecFloatSwizzle_ <VSWIZZLE_Z, VSWIZZLE_X, VSWIZZLE_Y, VSWIZZLE_W> ( a );
 }
 
 FINLINE_Z VecFloat4 VecFloatSwizzleZYXX ( register const VecFloat4& a )   ///< xyzw = a.zyxx
 {
-    return _VecFloatSwizzle_ <VSWIZZLE_Z, VSWIZZLE_Y, VSWIZZLE_X, VSWIZZLE_X> ( a );
+	return _VecFloatSwizzle_ <VSWIZZLE_Z, VSWIZZLE_Y, VSWIZZLE_X, VSWIZZLE_X> ( a );
 }
 
 FINLINE_Z VecFloat4 VecFloatSwizzleZZYY ( register const VecFloat4& a )   ///< xyzw = a.zzyy
 {
-    return _VecFloatSwizzle_ <VSWIZZLE_Z, VSWIZZLE_Z, VSWIZZLE_Y, VSWIZZLE_Y> ( a );
+	return _VecFloatSwizzle_ <VSWIZZLE_Z, VSWIZZLE_Z, VSWIZZLE_Y, VSWIZZLE_Y> ( a );
 }
 
 FINLINE_Z VecFloat4 VecFloatSwizzleZWXX ( register const VecFloat4& a )   ///< xyzw = a.zwxx
 {
-    return _VecFloatSwizzle_ <VSWIZZLE_Z, VSWIZZLE_W, VSWIZZLE_X, VSWIZZLE_X> ( a );
+	return _VecFloatSwizzle_ <VSWIZZLE_Z, VSWIZZLE_W, VSWIZZLE_X, VSWIZZLE_X> ( a );
 }
 
 FINLINE_Z VecFloat4 VecFloatSwizzleZWYZ ( register const VecFloat4& a )   ///< xyzw = a.zwyz
 {
-    return _VecFloatSwizzle_ <VSWIZZLE_Z, VSWIZZLE_W, VSWIZZLE_Y, VSWIZZLE_Z> ( a );
+	return _VecFloatSwizzle_ <VSWIZZLE_Z, VSWIZZLE_W, VSWIZZLE_Y, VSWIZZLE_Z> ( a );
 }
 
 FINLINE_Z VecFloat4 VecFloatSwizzleZWZW ( register const VecFloat4& a )   ///< xyzw = a.zwzw
@@ -2832,33 +2832,33 @@ FINLINE_Z VecFloat4 VecFloatSwizzleZWZW ( register const VecFloat4& a )   ///< x
 #if defined (_PC_SSE )
 	return _mm_movehl_ps( a, a );
 #else
-    return _VecFloatSwizzle_ <VSWIZZLE_Z, VSWIZZLE_W, VSWIZZLE_Z, VSWIZZLE_W> ( a );
+	return _VecFloatSwizzle_ <VSWIZZLE_Z, VSWIZZLE_W, VSWIZZLE_Z, VSWIZZLE_W> ( a );
 #endif
 }
 
 FINLINE_Z VecFloat4 VecFloatSwizzleZWWW ( register const VecFloat4& a )   ///< xyzw = a.zwww
 {
-    return _VecFloatSwizzle_ <VSWIZZLE_Z, VSWIZZLE_W, VSWIZZLE_W, VSWIZZLE_W> ( a );
+	return _VecFloatSwizzle_ <VSWIZZLE_Z, VSWIZZLE_W, VSWIZZLE_W, VSWIZZLE_W> ( a );
 }
 
 FINLINE_Z VecFloat4 VecFloatSwizzleWZYX ( register const VecFloat4& a )   ///< xyzw = a.wzyx
 {
-    return _VecFloatSwizzle_ <VSWIZZLE_W, VSWIZZLE_Z, VSWIZZLE_Y, VSWIZZLE_X> ( a );
+	return _VecFloatSwizzle_ <VSWIZZLE_W, VSWIZZLE_Z, VSWIZZLE_Y, VSWIZZLE_X> ( a );
 }
 
 FINLINE_Z VecFloat4 VecFloatSwizzleWZWY ( register const VecFloat4& a )   ///< xyzw = a.wzwy
 {
-    return _VecFloatSwizzle_ <VSWIZZLE_W, VSWIZZLE_Z, VSWIZZLE_W, VSWIZZLE_Y> ( a );
+	return _VecFloatSwizzle_ <VSWIZZLE_W, VSWIZZLE_Z, VSWIZZLE_W, VSWIZZLE_Y> ( a );
 }
 
 FINLINE_Z VecFloat4 VecFloatSwizzleWXWX ( register const VecFloat4& a )   ///< xyzw = a.wxwx
 {
-    return _VecFloatSwizzle_ <VSWIZZLE_W, VSWIZZLE_X, VSWIZZLE_W, VSWIZZLE_X> ( a );
+	return _VecFloatSwizzle_ <VSWIZZLE_W, VSWIZZLE_X, VSWIZZLE_W, VSWIZZLE_X> ( a );
 }
 
 FINLINE_Z VecFloat4 VecFloatSwizzleWWWZ ( register const VecFloat4& a )   ///< xyzw = a.wwwz
 {
-    return _VecFloatSwizzle_ <VSWIZZLE_W, VSWIZZLE_W, VSWIZZLE_W, VSWIZZLE_Z> ( a );
+	return _VecFloatSwizzle_ <VSWIZZLE_W, VSWIZZLE_W, VSWIZZLE_W, VSWIZZLE_Z> ( a );
 }
 
 FINLINE_Z VecFloat4 VecFloatPermuteX0X0X1X1 ( register const VecFloat4& a, register const VecFloat4& b ) ///< xyzw = { a.x, a.x, b.x, b.x }
@@ -3739,8 +3739,8 @@ FINLINE_Z U32 VecFloatAllInBounds( register const VecFloat4& a, register const V
 {
 #if defined (_PC_SSE )
 	register const __m128 negB = VecFloatNegate( b );
-    register const __m128 t = _mm_and_ps( _mm_cmple_ps(a,b), _mm_cmpge_ps(a,negB) );
-    return _mm_movemask_ps(t) == 0x0f;
+	register const __m128 t = _mm_and_ps( _mm_cmple_ps(a,b), _mm_cmpge_ps(a,negB) );
+	return _mm_movemask_ps(t) == 0x0f;
 #else
 	return VecFloatAllLessOrEqual( a, b )
 		&& VecFloatAllLessOrEqual( VecFloatNegate(b), a );
@@ -3791,8 +3791,8 @@ FINLINE_Z U32 VecFloatAll3InBounds( register const VecFloat4& a, register const 
 {
 #if defined (_PC_SSE )
 	register const __m128 negB = VecFloatNegate( b );
-    register const __m128 t = _mm_and_ps( _mm_cmple_ps(a,b), _mm_cmpge_ps(a,negB) );
-    return ( _mm_movemask_ps(t) & 0x7 ) == 0x7;
+	register const __m128 t = _mm_and_ps( _mm_cmple_ps(a,b), _mm_cmpge_ps(a,negB) );
+	return ( _mm_movemask_ps(t) & 0x7 ) == 0x7;
 #else
 	return VecFloatAll3LessOrEqual( a, b )
 		&& VecFloatAll3LessOrEqual( VecFloatNegate(b), a );
@@ -3908,7 +3908,7 @@ FINLINE_Z VecFloat4 VecFloatCeil ( register const VecFloat4& a ) ///< xyzw = cei
 	_MM_SET_ROUNDING_MODE( previousRounding );
 	return result;
 #else
-    return VecFloatLoad4( CEILFF(VecFloatGetX(a)), CEILFF(VecFloatGetY(a)), CEILFF(VecFloatGetZ(a)), CEILFF(VecFloatGetW(a)) );
+	return VecFloatLoad4( CEILFF(VecFloatGetX(a)), CEILFF(VecFloatGetY(a)), CEILFF(VecFloatGetZ(a)), CEILFF(VecFloatGetW(a)) );
 #endif
 }
 
@@ -3923,7 +3923,7 @@ FINLINE_Z VecFloat4 VecFloatNearest ( register const VecFloat4& a ) ///< xyzw = 
 	_MM_SET_ROUNDING_MODE( previousRounding );
 	return result;
 #else
-    return VecFloatLoad4( ROUNDF(VecFloatGetX(a)), ROUNDF(VecFloatGetY(a)), ROUNDF(VecFloatGetZ(a)), ROUNDF(VecFloatGetW(a)) );
+	return VecFloatLoad4( ROUNDF(VecFloatGetX(a)), ROUNDF(VecFloatGetY(a)), ROUNDF(VecFloatGetZ(a)), ROUNDF(VecFloatGetW(a)) );
 #endif
 }
 
@@ -3935,7 +3935,7 @@ FINLINE_Z VecFloat4 VecFloatTruncate ( register const VecFloat4& a ) ///< xyzw =
 	return _mm_cvtepi32_ps( _mm_cvttps_epi32(a) );
 #else
 	const VecInt4 v = VecIntLoad4( TRUNCINT(VecFloatGetX(a)), TRUNCINT(VecFloatGetY(a)), TRUNCINT(VecFloatGetZ(a)), TRUNCINT(VecFloatGetW(a)) );
-    return VecIntToFloat( v );
+	return VecIntToFloat( v );
 #endif
 }
 
@@ -3945,8 +3945,8 @@ FINLINE_Z VecFloat4 VecFloatTruncate ( register const VecFloat4& a ) ///< xyzw =
 FINLINE_Z VecFloat4 VecFloatModAngles ( register const VecFloat4& angles ) ///< result.xyzw = modulo2pi( angles.xyzw )
 {
 	// result.xyzw = angles.xyzw - 2π * round( angles.xyzw / 2π );
-    VecFloat4 v = VecFloatNearest( VecFloatMul(angles,VectorConstantsPrivate::vReciprocalTwoPi) );
-    return VecFloatNegMsub( VectorConstantsPrivate::vTwoPi, v, angles );
+	VecFloat4 v = VecFloatNearest( VecFloatMul(angles,VectorConstantsPrivate::vReciprocalTwoPi) );
+	return VecFloatNegMsub( VectorConstantsPrivate::vTwoPi, v, angles );
 }
 
 FINLINE_Z VecFloat4 VecFloatAngleBetweenNormals3 ( register const VecFloat4& a, register const VecFloat4& b ) ///< xyzw = radianAngle( a.xyz, b.xyz ) with a and b already normalized
@@ -3961,16 +3961,16 @@ FINLINE_Z VecFloat4 VecFloatAngleBetweenNormals4 ( register const VecFloat4& a, 
 
 FINLINE_Z VecFloat4 VecFloatAngleBetweenVectors3 ( register const VecFloat4& a, register const VecFloat4& b ) ///< xyzw = radianAngle( a.xyz, b.xyz ) with a and b potentially denormalized
 {
-    VecFloat4 a1 = VecFloatMul( VecFloatDot3(a,a), VecFloatDot3(b,b) );
-    VecFloat4 cosAngle = VecFloatMul( VecFloatDot3(a,b), VecFloatRSqrt(a1) );
-    return VecFloatACos( VecFloatSaturateExtended(cosAngle) );
+	VecFloat4 a1 = VecFloatMul( VecFloatDot3(a,a), VecFloatDot3(b,b) );
+	VecFloat4 cosAngle = VecFloatMul( VecFloatDot3(a,b), VecFloatRSqrt(a1) );
+	return VecFloatACos( VecFloatSaturateExtended(cosAngle) );
 }
 
 FINLINE_Z VecFloat4 VecFloatAngleBetweenVectors4 ( register const VecFloat4& a, register const VecFloat4& b ) ///< xyzw = radianAngle( a.xyzw, b.xyzw )
 {
 	VecFloat4 a1 = VecFloatMul( VecFloatDot4(a,a), VecFloatDot4(b,b) );
-    VecFloat4 cosAngle = VecFloatMul( VecFloatDot4(a,b), VecFloatRSqrt(a1) );
-    return VecFloatACos( VecFloatSaturateExtended(cosAngle) );
+	VecFloat4 cosAngle = VecFloatMul( VecFloatDot4(a,b), VecFloatRSqrt(a1) );
+	return VecFloatACos( VecFloatSaturateExtended(cosAngle) );
 }
 
 FINLINE_Z VecFloat4 VecFloatLerp ( register const VecFloat4& a, register const VecFloat4& b, const Float scalar )  ///< xyzw = lerp ( a.xyzw, b.xyzw, scalar )
@@ -4030,9 +4030,9 @@ FINLINE_Z VecFloat4 VecFloatAddComponents( register const VecFloat4& a ) ///< xy
 	return _mm_hadd_ps( result, result );
 #elif defined (_PC_SSE )
 	VecFloat4 result;
-    result = VecFloatAdd( VecFloatSplatX(a), VecFloatSplatY(a) );
-    result = VecFloatAdd( VecFloatSplatZ(a), result );
-    return VecFloatAdd( VecFloatSplatW(a), result );
+	result = VecFloatAdd( VecFloatSplatX(a), VecFloatSplatY(a) );
+	result = VecFloatAdd( VecFloatSplatZ(a), result );
+	return VecFloatAdd( VecFloatSplatW(a), result );
 #else
 	return VecFloatLoad1( a.x + a.y + a.z + a.w );
 #endif
@@ -4107,15 +4107,15 @@ FINLINE_Z VecFloat4 VecFloatDot4 ( register const VecFloat4& a, register const V
 #if defined (_PC_SSE4 )
 	return _mm_dp_ps( a, b, 0xFF ); // mask = 1111 1111
 #elif defined (_PC_SSE3 )
-    __m128 dot = _mm_mul_ps( a, b );
-    dot = _mm_hadd_ps( dot, dot );
-    return _mm_hadd_ps( dot, dot );
+	__m128 dot = _mm_mul_ps( a, b );
+	dot = _mm_hadd_ps( dot, dot );
+	return _mm_hadd_ps( dot, dot );
 #elif defined (_PC_SSE )
-    VecFloat4 dot = _mm_mul_ps( a, b );
-    dot = _mm_add_ps( dot, _mm_shuffle_ps( dot, dot, _MM_SHUFFLE(1,0,3,2) ) );
-    return _mm_add_ps( dot, _mm_shuffle_ps( dot, dot, _MM_SHUFFLE(0,1,2,3) ) );
+	VecFloat4 dot = _mm_mul_ps( a, b );
+	dot = _mm_add_ps( dot, _mm_shuffle_ps( dot, dot, _MM_SHUFFLE(1,0,3,2) ) );
+	return _mm_add_ps( dot, _mm_shuffle_ps( dot, dot, _MM_SHUFFLE(0,1,2,3) ) );
 #else
-    return VecFloatLoad1( a.x*b.x + a.y*b.y + a.z*b.z + a.w*b.w );
+	return VecFloatLoad1( a.x*b.x + a.y*b.y + a.z*b.z + a.w*b.w );
 #endif
 }
 
@@ -4273,7 +4273,7 @@ FINLINE_Z VecFloat4 VecFloatNormalize3 ( register const VecFloat4& a, U32 refine
 
 FINLINE_Z VecFloat4 VecFloatNormalize4 ( register const VecFloat4& a, U32 refinements )  ///< xyzw = 1 / length(a.xyzw). Does not prevent from a division by 0
 {
-    return VecFloatMul( a, VecFloatRLength4(a,refinements) );
+	return VecFloatMul( a, VecFloatRLength4(a,refinements) );
 }
 
 FINLINE_Z VecFloat4 VecFloatCNormalize3 ( register const VecFloat4& a, U32 refinements )  ///< xyzw = 1 / length(a.xyz) with check: when the vector length is almost null, xyzw is set to 0
@@ -4360,63 +4360,63 @@ FINLINE_Z VecFloat4 VecFloatQuaternionDistance ( register const VecFloat4& a, re
 
 FINLINE_Z VecFloat4 VecFloatDeterminantM3x3 ( register const VecFloat3x3& mat3x3 ) ///< xyzw = determinant( mat3x3 )
 {
-    return VecFloatDot3( mat3x3[2], VecFloatCross3(mat3x3[0],mat3x3[1]) );
+	return VecFloatDot3( mat3x3[2], VecFloatCross3(mat3x3[0],mat3x3[1]) );
 }
 
 FINLINE_Z VecFloat4 VecFloatDeterminantM4x4 ( register const VecFloat4x4& mat4x4 ) ///< xyzw = determinant( mat4x4 )
 {
 	register VecFloat4 V0, V1, V2, V3, V4, V5;
-    register VecFloat4 P0, P1, P2, R, S;
-    static const VecFloat4 sign = VecFloatLoad4( 1.0f, -1.0f, 1.0f, -1.0f );
+	register VecFloat4 P0, P1, P2, R, S;
+	static const VecFloat4 sign = VecFloatLoad4( 1.0f, -1.0f, 1.0f, -1.0f );
 	register const VecFloat4 m0 = VecFloat4x4GetRow0( mat4x4 );
 	register const VecFloat4 m1 = VecFloat4x4GetRow1( mat4x4 );
 	register const VecFloat4 m2 = VecFloat4x4GetRow2( mat4x4 );
 	register const VecFloat4 m3 = VecFloat4x4GetRow3( mat4x4 );
 
-    V0 = VecFloatSwizzleYXXX( m2 );
-    V1 = VecFloatSwizzleZZYY( m3 );
-    V2 = VecFloatSwizzleYXXX( m2 );
-    V3 = VecFloatSwizzleWWWZ( m3 );
-    V4 = VecFloatSwizzleZZYY( m2 );
-    V5 = VecFloatSwizzleWWWZ( m3 );
+	V0 = VecFloatSwizzleYXXX( m2 );
+	V1 = VecFloatSwizzleZZYY( m3 );
+	V2 = VecFloatSwizzleYXXX( m2 );
+	V3 = VecFloatSwizzleWWWZ( m3 );
+	V4 = VecFloatSwizzleZZYY( m2 );
+	V5 = VecFloatSwizzleWWWZ( m3 );
 
-    P0 = VecFloatMul( V0, V1 );
-    P1 = VecFloatMul( V2, V3 );
-    P2 = VecFloatMul( V4, V5 );
+	P0 = VecFloatMul( V0, V1 );
+	P1 = VecFloatMul( V2, V3 );
+	P2 = VecFloatMul( V4, V5 );
 
-    V0 = VecFloatSwizzleZZYY( m2 );
-    V1 = VecFloatSwizzleYXXX( m3 );
-    V2 = VecFloatSwizzleWWWZ( m2 );
-    V3 = VecFloatSwizzleYXXX( m3 );
-    V4 = VecFloatSwizzleWWWZ( m2 );
-    V5 = VecFloatSwizzleZZYY( m3 );
+	V0 = VecFloatSwizzleZZYY( m2 );
+	V1 = VecFloatSwizzleYXXX( m3 );
+	V2 = VecFloatSwizzleWWWZ( m2 );
+	V3 = VecFloatSwizzleYXXX( m3 );
+	V4 = VecFloatSwizzleWWWZ( m2 );
+	V5 = VecFloatSwizzleZZYY( m3 );
 
-    P0 = VecFloatNegMsub( V0, V1, P0 );
-    P1 = VecFloatNegMsub( V2, V3, P1 );
-    P2 = VecFloatNegMsub( V4, V5, P2 );
+	P0 = VecFloatNegMsub( V0, V1, P0 );
+	P1 = VecFloatNegMsub( V2, V3, P1 );
+	P2 = VecFloatNegMsub( V4, V5, P2 );
 
-    V0 = VecFloatSwizzleWWWZ( m1 );
-    V1 = VecFloatSwizzleZZYY( m1 );
-    V2 = VecFloatSwizzleYXXX( m1 );
+	V0 = VecFloatSwizzleWWWZ( m1 );
+	V1 = VecFloatSwizzleZZYY( m1 );
+	V2 = VecFloatSwizzleYXXX( m1 );
 
-    S = VecFloatMul( m0, sign );
-    R = VecFloatMul( V0, P0 );
-    R = VecFloatNegMsub( V1, P1, R );
-    R = VecFloatMadd( V2, P2, R );
+	S = VecFloatMul( m0, sign );
+	R = VecFloatMul( V0, P0 );
+	R = VecFloatNegMsub( V1, P1, R );
+	R = VecFloatMadd( V2, P2, R );
 
-    return VecFloatDot4( S, R );
+	return VecFloatDot4( S, R );
 }
 
 FINLINE_Z VecFloat4 VecFloatReflect3 ( register const VecFloat4& incident, register const VecFloat4& normal ) ///< xyzw = incident.xyzw - 2 * dot(incident.xyz,normal.xyz) * normal.xyzw
 {
 	VecFloat4 dot = VecFloatDot3( incident, normal );
-    return VecFloatNegMsub( VecFloatAdd(dot,dot), normal, incident );
+	return VecFloatNegMsub( VecFloatAdd(dot,dot), normal, incident );
 }
 
 FINLINE_Z VecFloat4 VecFloatReflect4 ( register const VecFloat4& incident, register const VecFloat4& normal ) ///< xyzw = incident.xyzw - 2 * dot(incident.xyzw,normal.xyzw) * normal.xyzw
 {
 	VecFloat4 dot = VecFloatDot4( incident, normal );
-    return VecFloatNegMsub( VecFloatAdd(dot,dot), normal, incident );
+	return VecFloatNegMsub( VecFloatAdd(dot,dot), normal, incident );
 }
 
 FINLINE_Z VecFloat4 VecFloat3x3Transform ( register const VecFloat3x3& mat3x3, register const VecFloat4& v ) ///< xyz = mul( mat3x3, v.xyz ), w = undefined
@@ -4431,14 +4431,14 @@ FINLINE_Z void VecFloat3x3Scale( register VecFloat3x3& result, register const Ve
 {
 	register const VecFloat4 vScalar = VecFloatLoad1( scalar );
 	result[0] = VecFloatMul( m0[0], vScalar );
-    result[1] = VecFloatMul( m0[1], vScalar );
-    result[2] = VecFloatMul( m0[2], vScalar );
+	result[1] = VecFloatMul( m0[1], vScalar );
+	result[2] = VecFloatMul( m0[2], vScalar );
 }
 
 FINLINE_Z void VecFloat3x3Multiply ( register VecFloat3x3& result, register const VecFloat3x3& m1, register const VecFloat3x3& m2 ) ///< result = mul( m1, m2 ). w is also altered
 {
 	VecFloat3x3 temp;
-    VecFloat3x3MultiplyN( &temp, &m1, m2, 1 );
+	VecFloat3x3MultiplyN( &temp, &m1, m2, 1 );
 	VecFloat3x3Copy( result, temp );
 }
 
@@ -4475,12 +4475,12 @@ FINLINE_Z void VecFloat3x3MultiplyN ( register VecFloat3x3* RESTRICT_Z results, 
 
 FINLINE_Z void VecFloat3x3Transpose ( register VecFloat3x3& transposed, register const VecFloat3x3& mat3x3 ) ///< result = transpose( mat3x3 ). w is also altered
 {
-    VecFloat4 temp0, temp1;
-    temp0 = VecFloatPermuteX0X1Y0Y1 ( mat3x3[0], mat3x3[1] );     // { x0, y0, x1, y1 }
-    temp1 = VecFloatPermuteZ0Z1W0W1 ( mat3x3[0], mat3x3[1] );     // { x2, y2, x3, y3 }
-    transposed[0] = VecFloatPermuteX0Y0X1Y1( temp0, mat3x3[2] );  // { x0, y0, z0, # }
-    transposed[1] = VecFloatPermuteZ0W0Y1Y1( temp0, mat3x3[2] );  // { x1, y1, z1, # }
-    transposed[2] = VecFloatPermuteX0Y0Z1W1( temp1, mat3x3[2] );  // { x2, y2, z2, # }
+	VecFloat4 temp0, temp1;
+	temp0 = VecFloatPermuteX0X1Y0Y1 ( mat3x3[0], mat3x3[1] );     // { x0, y0, x1, y1 }
+	temp1 = VecFloatPermuteZ0Z1W0W1 ( mat3x3[0], mat3x3[1] );     // { x2, y2, x3, y3 }
+	transposed[0] = VecFloatPermuteX0Y0X1Y1( temp0, mat3x3[2] );  // { x0, y0, z0, # }
+	transposed[1] = VecFloatPermuteZ0W0Y1Y1( temp0, mat3x3[2] );  // { x1, y1, z1, # }
+	transposed[2] = VecFloatPermuteX0Y0Z1W1( temp1, mat3x3[2] );  // { x2, y2, z2, # }
 }
 
 FINLINE_Z void VecFloat3x3MultiplyTransposeN ( register VecFloat3x3* RESTRICT_Z results, register const VecFloat3x3* RESTRICT_Z m, register const VecFloat3x3& n, const U32 count ) ///< results[i] = mul( transpose(m[i]), transpose(n) ). w is also altered. Source and destination matrices must be different.
@@ -4517,9 +4517,9 @@ FINLINE_Z void VecFloat3x3MultiplyTranspose ( register VecFloat3x3& result, regi
 
 FINLINE_Z void VecFloat3x3Inverse ( register VecFloat3x3& inverse, register const VecFloat3x3& mat3x3 ) ///< result = inverse( mat3x3 ). Check for null determinants.
 {
-    VecFloat4 det, z1z0z0z1, y2y2y1y1, y1y0y0y1, z2z2z1z1, x2x2x1x1, x1x0x0x1;
-    det = VecFloatDot3( mat3x3[2], VecFloatCross3(mat3x3[0],mat3x3[1]) );
-    if( VecFloatAllNotEqual( VecFloatSplatZero(), det ) )
+	VecFloat4 det, z1z0z0z1, y2y2y1y1, y1y0y0y1, z2z2z1z1, x2x2x1x1, x1x0x0x1;
+	det = VecFloatDot3( mat3x3[2], VecFloatCross3(mat3x3[0],mat3x3[1]) );
+	if( VecFloatAllNotEqual( VecFloatSplatZero(), det ) )
 	{
 		/*	inverse[0].x =  (mat3x3[1].y * mat3x3[2].z - mat3x3[2].y * mat3x3[1].z);
 			inverse[0].y = -(mat3x3[0].y * mat3x3[2].z - mat3x3[2].y * mat3x3[0].z);
@@ -4553,7 +4553,7 @@ FINLINE_Z void VecFloat3x3Inverse ( register VecFloat3x3& inverse, register cons
 		inverse[2] = VecFloatMul( x2x2x1x1, y1y0y0y1 );
 		inverse[2] = VecFloatMsub( x1x0x0x1, y2y2y1y1, inverse[2] );
 		inverse[2] = VecFloatMul( inverse[2], signMask );
-    
+	
 		det = VecFloatReciprocalAccurate( det, 1 );
 		inverse[0] = VecFloatMul( inverse[0], det );
 		inverse[1] = VecFloatMul( inverse[1], det );
@@ -4573,8 +4573,8 @@ FINLINE_Z VecFloat4 VecFloat4x4Transform3 ( register const VecFloat4x4& mat4x4, 
 {
 	register VecFloat4 tmp0;
 	tmp0 = VecFloatMadd( mat4x4[2], VecFloatSplatZ(v), mat4x4[3] );
-    tmp0 = VecFloatMadd( mat4x4[1], VecFloatSplatY(v), tmp0 );
-    return VecFloatMadd( mat4x4[0], VecFloatSplatX(v), tmp0 );
+	tmp0 = VecFloatMadd( mat4x4[1], VecFloatSplatY(v), tmp0 );
+	return VecFloatMadd( mat4x4[0], VecFloatSplatX(v), tmp0 );
 }
 
 FINLINE_Z VecFloat4 VecFloat4x4Transform4 ( register const VecFloat4x4& mat4x4, register const VecFloat4& v ) ///< xyzw = mul( mat4x4, v.xyzw )
@@ -4584,10 +4584,10 @@ FINLINE_Z VecFloat4 VecFloat4x4Transform4 ( register const VecFloat4x4& mat4x4, 
 	const VecFloat4 yyyy = VecFloatSplatY ( v );
 	const VecFloat4 zzzz = VecFloatSplatZ ( v );
 	const VecFloat4 wwww = VecFloatSplatW ( v );
-    tmp0 = VecFloatMul(  mat4x4[0], xxxx );
-    tmp0 = VecFloatMadd( mat4x4[1], yyyy, tmp0 );
-    tmp0 = VecFloatMadd( mat4x4[2], zzzz, tmp0 );
-    return VecFloatMadd( mat4x4[3], wwww, tmp0 );
+	tmp0 = VecFloatMul(  mat4x4[0], xxxx );
+	tmp0 = VecFloatMadd( mat4x4[1], yyyy, tmp0 );
+	tmp0 = VecFloatMadd( mat4x4[2], zzzz, tmp0 );
+	return VecFloatMadd( mat4x4[3], wwww, tmp0 );
 }
 
 FINLINE_Z void VecFloat4x4TransformH3_SoA ( register VecFloat4* RESTRICT_Z results, register const VecFloat4x4& mat4x4, register const VecFloat4* RESTRICT_Z v, const U32 groups ) ///< Same behavior as VecFloat4x4TransformH3 but vectors have an SoA layout. Source vectors must be in groups of 3 : { x0x1x2x3, y0y1y2y3, z0z1z2z3 }, destination vectors in groups of 4 : { x0x1x2x3, y0y1y2y3, z0z1z2z3, w0w1w2w3 }.
@@ -4695,9 +4695,9 @@ FINLINE_Z void VecFloat4x4Scale( register VecFloat4x4& result, register const Ve
 {
 	register const VecFloat4 vScalar = VecFloatLoad1( scalar );
 	result[0] = VecFloatMul( m0[0], vScalar );
-    result[1] = VecFloatMul( m0[1], vScalar );
-    result[2] = VecFloatMul( m0[2], vScalar );
-    result[3] = VecFloatMul( m0[3], vScalar );
+	result[1] = VecFloatMul( m0[1], vScalar );
+	result[2] = VecFloatMul( m0[2], vScalar );
+	result[3] = VecFloatMul( m0[3], vScalar );
 }
 
 FINLINE_Z void VecFloat4x4Add ( register VecFloat4x4& result, register const VecFloat4x4& m1, register const VecFloat4x4& m2 ) ///< result = m2 * m1 -> ex: VecFloat4x4Multiply(proj, worldToView)
@@ -4764,30 +4764,30 @@ FINLINE_Z void VecFloat4x4Transpose ( register VecFloat4x4& transposed, register
 #if defined (_PC_SSE )
 	VecFloat4 tmp0, tmp1, tmp2, tmp3;
 	tmp0 = _mm_shuffle_ps( mat4x4[0], mat4x4[1], 0x44 );
-    tmp2 = _mm_shuffle_ps( mat4x4[0], mat4x4[1], 0xEE );
-    tmp1 = _mm_shuffle_ps( mat4x4[2], mat4x4[3], 0x44 );
-    tmp3 = _mm_shuffle_ps( mat4x4[2], mat4x4[3], 0xEE );
-    transposed[0] = _mm_shuffle_ps( tmp0, tmp1, 0x88 );
-    transposed[1] = _mm_shuffle_ps( tmp0, tmp1, 0xDD );
-    transposed[2] = _mm_shuffle_ps( tmp2, tmp3, 0x88 );
-    transposed[3] = _mm_shuffle_ps( tmp2, tmp3, 0xDD );
+	tmp2 = _mm_shuffle_ps( mat4x4[0], mat4x4[1], 0xEE );
+	tmp1 = _mm_shuffle_ps( mat4x4[2], mat4x4[3], 0x44 );
+	tmp3 = _mm_shuffle_ps( mat4x4[2], mat4x4[3], 0xEE );
+	transposed[0] = _mm_shuffle_ps( tmp0, tmp1, 0x88 );
+	transposed[1] = _mm_shuffle_ps( tmp0, tmp1, 0xDD );
+	transposed[2] = _mm_shuffle_ps( tmp2, tmp3, 0x88 );
+	transposed[3] = _mm_shuffle_ps( tmp2, tmp3, 0xDD );
 #else
 	VecFloat4x4 P;
-    P[0] = VecFloatPermuteX0X1Y0Y1( mat4x4[0], mat4x4[2] );
-    P[1] = VecFloatPermuteX0X1Y0Y1( mat4x4[1], mat4x4[3] );
-    P[2] = VecFloatPermuteZ0Z1W0W1( mat4x4[0], mat4x4[2] );
-    P[3] = VecFloatPermuteZ0Z1W0W1( mat4x4[1], mat4x4[3] );
-    transposed[0] = VecFloatPermuteX0X1Y0Y1( P[0], P[1] );
-    transposed[1] = VecFloatPermuteZ0Z1W0W1( P[0], P[1] );
-    transposed[2] = VecFloatPermuteX0X1Y0Y1( P[2], P[3] );
-    transposed[3] = VecFloatPermuteZ0Z1W0W1( P[2], P[3] );
+	P[0] = VecFloatPermuteX0X1Y0Y1( mat4x4[0], mat4x4[2] );
+	P[1] = VecFloatPermuteX0X1Y0Y1( mat4x4[1], mat4x4[3] );
+	P[2] = VecFloatPermuteZ0Z1W0W1( mat4x4[0], mat4x4[2] );
+	P[3] = VecFloatPermuteZ0Z1W0W1( mat4x4[1], mat4x4[3] );
+	transposed[0] = VecFloatPermuteX0X1Y0Y1( P[0], P[1] );
+	transposed[1] = VecFloatPermuteZ0Z1W0W1( P[0], P[1] );
+	transposed[2] = VecFloatPermuteX0X1Y0Y1( P[2], P[3] );
+	transposed[3] = VecFloatPermuteZ0Z1W0W1( P[2], P[3] );
 #endif
 }
 
 FINLINE_Z void VecFloat4x4MultiplyTranspose ( register VecFloat4x4& result, register const VecFloat4x4& m1, register const VecFloat4x4& m2 ) ///< result = transpose( mul(m1,m2) )
 {
 	VecFloat4x4Multiply( result, m1, m2 );
-    VecFloat4x4Transpose( result, result );
+	VecFloat4x4Transpose( result, result );
 }
 
 FINLINE_Z void VecFloat4x4Inverse ( register VecFloat4x4& result, register const VecFloat4x4& m0 ) ///< result = inverse( m0 ), source and destination must be different
@@ -4906,7 +4906,7 @@ FINLINE_Z void VecFloatBuildOrthoBase3 ( const register VecFloat4& v, register V
 {
 	register const VecFloat4 posY = VecFloatAbs( VecFloatSplatY(v) );
 	register const VecFloat4 negativeV = VecFloatNegate( v );
-    register const VecFloat4 zero = VecFloatSplatZero();
+	register const VecFloat4 zero = VecFloatSplatZero();
 	register const VecFloat4 z0w0 = VecFloatPermuteZ0Z1W0W1( v, zero );
 	register const VecFloat4 fail = VecFloatPermuteX0Y0X1Y1( z0w0, negativeV );    // { z, 0, -x, -y }
 	register const VecFloat4 success = VecFloatPermuteY0X0Y1X1( z0w0, negativeV ); // { 0, z, -y, -x }
@@ -4918,18 +4918,18 @@ FINLINE_Z void VecFloatBuildOrthoBase3 ( const register VecFloat4& v, register V
 FINLINE_Z void VecFloatOrthonormalize3 ( register const VecFloat4& n, register VecFloat4& t, register VecFloat4& b )  ///< Gram-Schmidt orthonormalization. n must be normalized, t and b are inout parameters
 {
 	register VecFloat4 NdotT, BdotN, BdotT;
-    register VecFloat4 tmp0; 
+	register VecFloat4 tmp0; 
 
-    NdotT = VecFloatDot3( t, n );
-    t = VecFloatNegMsub( n, NdotT, t );
+	NdotT = VecFloatDot3( t, n );
+	t = VecFloatNegMsub( n, NdotT, t );
 
-    BdotN = VecFloatDot3( b, n );
-    BdotT = VecFloatDot3( b, t );
-    tmp0 = VecFloatAdd ( VecFloatMul(n,BdotN), VecFloatMul(t,BdotT) );
-    b = VecFloatSub( b, tmp0 );
+	BdotN = VecFloatDot3( b, n );
+	BdotT = VecFloatDot3( b, t );
+	tmp0 = VecFloatAdd ( VecFloatMul(n,BdotN), VecFloatMul(t,BdotT) );
+	b = VecFloatSub( b, tmp0 );
 
 	t = VecFloatCNormalize3( t );
-    b = VecFloatCNormalize3( b );
+	b = VecFloatCNormalize3( b );
 }
 
 FINLINE_Z VecFloat4 VecFloatQuaternionGetAxisAngle ( register const VecFloat4& q ) ///< xyzw = float4( normalize(q.xyz), angle(q) ), with angle expressed in radians
@@ -4998,7 +4998,7 @@ FINLINE_Z void VecFloatQuaternionBuildAnglesAxes4 ( register VecFloat4x4& quater
 	register VecFloat4 axis2 = VecFloat4x4GetRow2( normalizedAxes );
 	register VecFloat4 axis3 = VecFloat4x4GetRow3( normalizedAxes );
 
-    VecFloatSinCos( sinAngles, cosAngles, VecFloatMul(angles,VectorConstantsPrivate::vHalfF) );
+	VecFloatSinCos( sinAngles, cosAngles, VecFloatMul(angles,VectorConstantsPrivate::vHalfF) );
 	axis0 = VecFloatScaleX( axis0, sinAngles );
 	axis1 = VecFloatScaleY( axis1, sinAngles );
 	axis2 = VecFloatScaleZ( axis2, sinAngles );
@@ -5013,7 +5013,7 @@ FINLINE_Z void VecFloatQuaternionBuildAnglesAxes4 ( register VecFloat4x4& quater
 FINLINE_Z void VecFloatQuaternionBuildAnglesAxes_SoA ( register VecFloat4* quaternions, register const VecFloat4& angles, register const VecFloat4* normalizedAxes ) ///< Same behavior as VecFloatQuaternionBuildAnglesAxes for 4 quaternions, but source and destination vectors have an SoA layout : { x0x1x2x3, y0y1y2y3, z0z1z2z3, w0w1w2w3 }.
 {
 	register VecFloat4 sinAngles;
-    VecFloatSinCos( sinAngles, quaternions[3], VecFloatMul(angles,VectorConstantsPrivate::vHalfF) );
+	VecFloatSinCos( sinAngles, quaternions[3], VecFloatMul(angles,VectorConstantsPrivate::vHalfF) );
 	quaternions[0] = VecFloatMul( normalizedAxes[0], sinAngles );
 	quaternions[1] = VecFloatMul( normalizedAxes[1], sinAngles );
 	quaternions[2] = VecFloatMul( normalizedAxes[2], sinAngles );
@@ -5029,36 +5029,36 @@ FINLINE_Z VecFloat4 VecFloatQuaternionCNormalize ( register const VecFloat4& q, 
 
 FINLINE_Z VecFloat4 VecFloatQuaternionConjugate ( register const VecFloat4& q )
 {
-    return VecFloatMul( q, VectorConstantsPrivate::vConjugateMask );
+	return VecFloatMul( q, VectorConstantsPrivate::vConjugateMask );
 }
 
 FINLINE_Z VecFloat4 VecFloatQuaternionMul ( register const VecFloat4& a, register const VecFloat4& b ) ///< xyzw = a * b, with a and b two quaternions
 {
 	VecFloat4 negativeB, aX, aY, aZ, aW, bWZYX, bZWXY, bYXWZ, res;
-    negativeB = VecFloatNegate( b );
-    aW = VecFloatSplatW( a );
-    aX = VecFloatSplatX( a );
-    aY = VecFloatSplatY( a );
-    aZ = VecFloatSplatZ( a );
-    bWZYX = VecFloatPermuteW0Z1Y0X1( b, negativeB );
-    bZWXY = VecFloatPermuteZ0W0X1Y1( b, negativeB );
-    bYXWZ = VecFloatPermuteY1X0W0Z1( b, negativeB );
-    res = VecFloatMul( aW, b );
-    res = VecFloatMadd( aX, bWZYX, res );
-    res = VecFloatMadd( aY, bZWXY, res );
-    res = VecFloatMadd( aZ, bYXWZ, res );
-    return res;
+	negativeB = VecFloatNegate( b );
+	aW = VecFloatSplatW( a );
+	aX = VecFloatSplatX( a );
+	aY = VecFloatSplatY( a );
+	aZ = VecFloatSplatZ( a );
+	bWZYX = VecFloatPermuteW0Z1Y0X1( b, negativeB );
+	bZWXY = VecFloatPermuteZ0W0X1Y1( b, negativeB );
+	bYXWZ = VecFloatPermuteY1X0W0Z1( b, negativeB );
+	res = VecFloatMul( aW, b );
+	res = VecFloatMadd( aX, bWZYX, res );
+	res = VecFloatMadd( aY, bZWXY, res );
+	res = VecFloatMadd( aZ, bYXWZ, res );
+	return res;
 }
 
 FINLINE_Z void VecFloatQuaternionMul_SoA ( VecFloat4* RESTRICT_Z results, register const VecFloat4* RESTRICT_Z a, register const VecFloat4* RESTRICT_Z b ) ///< Same behavior as VecFloatQuaternionMul for 4 quaternions, but source and destination vectors have an SoA layout : { x0x1x2x3, y0y1y2y3, z0z1z2z3, w0w1w2w3 } and must be different.
 {
-    results[3] = VecFloatSub( VecFloatMul(a[3],b[3]), VecFloatDot3_SoA(a,b) );
-    VecFloatCross3_SoA( results, a, b );
-    for( U32 i = 0; i < 3; ++i )
-    {
-        results[i] = VecFloatMadd( b[3], a[i], results[i] );
-        results[i] = VecFloatMadd( a[3], b[i], results[i] );
-    }
+	results[3] = VecFloatSub( VecFloatMul(a[3],b[3]), VecFloatDot3_SoA(a,b) );
+	VecFloatCross3_SoA( results, a, b );
+	for( U32 i = 0; i < 3; ++i )
+	{
+		results[i] = VecFloatMadd( b[3], a[i], results[i] );
+		results[i] = VecFloatMadd( a[3], b[i], results[i] );
+	}
 }
 
 FINLINE_Z VecFloat4 VecFloatQuaternionToPitchYawRoll( register const VecFloat4& q)
@@ -5476,11 +5476,11 @@ FINLINE_Z VecInt4 VecIntSign ( register const VecInt4& a )   ///< res.xyzw = a.x
 FINLINE_Z VecInt4 VecIntSign ( register const VecInt4& a, register const VecInt4& b )   ///< res.xyzw = a.xyzw == 0 ? 0 : ( a.xyzw > 0 ? b.xyzw : -b.xyzw )
 {
 #if defined( _PC_SSE3 )
-    return _mm_sign_epi32( b, a );
+	return _mm_sign_epi32( b, a );
 #else
 	register const VecInt4 zero = VecIntSplatZero();
 	register const VecInt4 signNotNull = VecIntSelectGreater( a, zero, b, VecIntNegate(b) );
-    return VecIntSelectEqual( a, zero, zero, signNotNull );
+	return VecIntSelectEqual( a, zero, zero, signNotNull );
 #endif
 }
 
@@ -5705,16 +5705,16 @@ template <U32 ElementCount> FINLINE_Z VecInt4 VecIntRotateLeft ( register const 
 {
 #if defined( _PC_SSE )
 	const S32 x = ElementCount & 3;
-    const S32 y = (ElementCount+1) & 3;
-    const S32 z = (ElementCount+2) & 3;
+	const S32 y = (ElementCount+1) & 3;
+	const S32 z = (ElementCount+2) & 3;
 	const S32 w = (ElementCount+3) & 3;
 	return _mm_shuffle_epi32( a, _MM_SHUFFLE(w,z,y,x) );
 #else
 	const S32 x = ElementCount & 3;
-    const S32 y = (ElementCount+1) & 3;
-    const S32 z = (ElementCount+2) & 3;
+	const S32 y = (ElementCount+1) & 3;
+	const S32 z = (ElementCount+2) & 3;
 	const S32 w = (ElementCount+3) & 3;
-    return VecIntLoad4( a.xyzw[x], a.xyzw[y], a.xyzw[z], a.xyzw[w] );
+	return VecIntLoad4( a.xyzw[x], a.xyzw[y], a.xyzw[z], a.xyzw[w] );
 #endif
 }
 
@@ -5738,7 +5738,7 @@ FINLINE_Z VecInt4 VecIntSwizzleXXZZ ( register const VecInt4& a )   ///< xyzw = 
 #if defined( _PC_SSE3 )
 	return _mm_castps_si128( _mm_moveldup_ps( _mm_castsi128_ps(a) ) );
 #else
-    return VecIntSwizzle <VSWIZZLE_X, VSWIZZLE_X, VSWIZZLE_Z, VSWIZZLE_Z> ( a );
+	return VecIntSwizzle <VSWIZZLE_X, VSWIZZLE_X, VSWIZZLE_Z, VSWIZZLE_Z> ( a );
 #endif
 }
 
@@ -5747,7 +5747,7 @@ FINLINE_Z VecInt4 VecIntSwizzleYYWW ( register const VecInt4& a )   ///< xyzw = 
 #if defined( _PC_SSE3 )
 	return _mm_castps_si128( _mm_movehdup_ps( _mm_castsi128_ps(a) ) );
 #else
-    return VecIntSwizzle <VSWIZZLE_Y, VSWIZZLE_Y, VSWIZZLE_W, VSWIZZLE_W> ( a );
+	return VecIntSwizzle <VSWIZZLE_Y, VSWIZZLE_Y, VSWIZZLE_W, VSWIZZLE_W> ( a );
 #endif
 }
 
@@ -5934,9 +5934,9 @@ FINLINE_Z VecInt4 VecIntAddComponents( register const VecInt4& a ) ///< xyzw = a
 	return _mm_hadd_epi32( result, result );
 #elif defined (_PC_SSE2 )
 	VecInt4 result;
-    result = VecIntAdd( VecIntSplatX(a), VecIntSplatY(a) );
-    result = VecIntAdd( VecIntSplatZ(a), result );
-    return VecIntAdd( VecIntSplatW(a), result );
+	result = VecIntAdd( VecIntSplatX(a), VecIntSplatY(a) );
+	result = VecIntAdd( VecIntSplatZ(a), result );
+	return VecIntAdd( VecIntSplatW(a), result );
 #else
 	return VecIntLoad1( a.x + a.y + a.z + a.w );
 #endif
@@ -6714,14 +6714,14 @@ FINLINE_Z VecUShort8 VecUShortMax ( register const VecUShort8& a, register const
 template <U16 ElementCount> FINLINE_Z VecUShort8 VecUShortRotateLeft ( register const VecUShort8& a ) ///< abcdefgh = a.abcdefgh <<< ElementCount
 {
 #if defined( _PC_SSE )
-    __m128i left = _mm_slli_si128 ( a, ElementCount<<1 );
+	__m128i left = _mm_slli_si128 ( a, ElementCount<<1 );
 	__m128i right = _mm_srli_si128( a, (8-ElementCount)<<1 );
-    return _mm_or_si128( left, right );
+	return _mm_or_si128( left, right );
 #else
 	UShort8 result;
 	for( U32 i = 0; i < 8; ++i )
 		result.u0_7[i] = a.u0_7 [ (ElementCount+i) & 7 ];
-    return VecUShortLoadAligned( result.u0_7 );
+	return VecUShortLoadAligned( result.u0_7 );
 #endif
 }
 
@@ -6760,7 +6760,7 @@ FINLINE_Z VecUShort8 VecUShortSwizzleBDFHBDFH ( register const VecUShort8& a ) /
 FINLINE_Z VecUShort8 VecUShortPermuteA0A1B0B1C0C1D0D1 ( const VecUShort8& a, const VecUShort8& b )  ///< Interleave the lower U16 in a with the lower U16 in b.
 {
 #if defined( _PC_SSE2 )   
-    return _mm_unpacklo_epi16( a, b );
+	return _mm_unpacklo_epi16( a, b );
 #else
 	VecUShort8 result;
 	for( U32 i = 0; i < 4; ++i )
@@ -6775,7 +6775,7 @@ FINLINE_Z VecUShort8 VecUShortPermuteA0A1B0B1C0C1D0D1 ( const VecUShort8& a, con
 FINLINE_Z VecUShort8 VecUShortPermuteE0E1F0F1G0G1H0H1 ( const VecUShort8& a, const VecUShort8& b )  ///< Interleave the higher U16 in a with the higher U16 in b.
 {
 #if defined( _PC_SSE2 )   
-    return _mm_unpackhi_epi16( a, b );
+	return _mm_unpackhi_epi16( a, b );
 #else
 	VecUShort8 result;
 	for( U32 i = 0; i < 4; ++i )
@@ -7147,7 +7147,7 @@ FINLINE_Z VecUShort8 VecUCharSad ( register const VecUChar16& a, register const 
 FINLINE_Z VecUChar16 VecUCharSwizzleABCMDEFNGHIOJKLP ( register const VecUChar16& a )  ///< res = { a.abc, a.m, a.def, a.n, a.ghi, a.o, a.jkl, a.p }
 {
 #if defined( _PC_SSE3 )   
-    return _mm_shuffle_epi8( a, VecUCharLoadAligned(&VectorConstantsPrivate::vSwizzleMaskABCMDEFNGHIOJKLP) );
+	return _mm_shuffle_epi8( a, VecUCharLoadAligned(&VectorConstantsPrivate::vSwizzleMaskABCMDEFNGHIOJKLP) );
 #else
 	VecUChar16 result;
 	for( U32 i = 0; i < 4; ++i )
@@ -7179,7 +7179,7 @@ FINLINE_Z VecUChar16 VecUCharSwizzleACEGIKMOBDFHJLNP ( register const VecUChar16
 FINLINE_Z VecUChar16 VecUCharSwizzleCBAMFEDNIHGOLKJP ( register const VecUChar16& a )  ///< res = { a.cba, a.m, a.fed, a.n, a.ihg, a.o, a.lkj, a.p }
 {
 #if defined( _PC_SSE3 )   
-    return _mm_shuffle_epi8( a, VecUCharLoadAligned(&VectorConstantsPrivate::vSwizzleMaskCBAMFEDNIHGOLKJP) );
+	return _mm_shuffle_epi8( a, VecUCharLoadAligned(&VectorConstantsPrivate::vSwizzleMaskCBAMFEDNIHGOLKJP) );
 #else
 	VecUChar16 result;
 	for( U32 i = 0; i < 4; ++i )
@@ -7198,7 +7198,7 @@ FINLINE_Z VecUChar16 VecUCharSwizzleCBAMFEDNIHGOLKJP ( register const VecUChar16
 FINLINE_Z VecUChar16 VecUCharPermuteLow ( const VecUChar16& a, const VecUChar16& b )  ///< Interleave the lower U8 in a with the lower U8 in b.
 {
 #if defined( _PC_SSE2 )   
-    return _mm_unpacklo_epi8( a, b );
+	return _mm_unpacklo_epi8( a, b );
 #else
 	VecUChar16 result;
 	for( U32 i = 0; i < 8; ++i )
@@ -7213,7 +7213,7 @@ FINLINE_Z VecUChar16 VecUCharPermuteLow ( const VecUChar16& a, const VecUChar16&
 FINLINE_Z VecUChar16 VecUCharPermuteHigh ( const VecUChar16& a, const VecUChar16& b )  ///< Interleave the higher U8 in a with the higher U8 in b.
 {
 #if defined( _PC_SSE2 )   
-    return _mm_unpackhi_epi8( a, b );
+	return _mm_unpackhi_epi8( a, b );
 #else
 	VecUChar16 result;
 	for( U32 i = 0; i < 8; ++i )
@@ -7551,9 +7551,9 @@ template <U16 RightShift> FINLINE_Z VecFloat4 VecFloatFromUShort4 ( const U16* u
 FINLINE_Z VecUShort8 VecFloatToUShortSat ( register const VecFloat4* v )   ///< for( i ranging from 0 to 7 ) res[i] = (U16)(v[i])
 {
 #if defined( _PC_SSE4 )
-    return _mm_packus_epi32( _mm_cvttps_epi32(v[0]), _mm_cvttps_epi32(v[1]) );
+	return _mm_packus_epi32( _mm_cvttps_epi32(v[0]), _mm_cvttps_epi32(v[1]) );
 #elif defined( _PC_SSE2 )
-    __m128i vResults[2];
+	__m128i vResults[2];
 	// Convert from S32 to S16
 	vResults[0] = _mm_cvttps_epi32( v[0] );
 	vResults[1] = _mm_cvttps_epi32( v[1] );
@@ -7741,7 +7741,7 @@ template <U16 RightShift> FINLINE_Z void VecUShortToFloat ( VecFloat4* results, 
 	results[1] = _mm_cvtepi32_ps( vHigh );
 #elif defined( _PC_SSE2 )
 	register const __m128i zero = _mm_setzero_si128();
-    register const __m128i vShifted = _mm_srli_epi16( v, RightShift );
+	register const __m128i vShifted = _mm_srli_epi16( v, RightShift );
 	__m128i vHigh = _mm_unpackhi_epi16( vShifted, zero );
 	__m128i vLow = _mm_unpacklo_epi16( vShifted, zero );
 	results[0] = _mm_cvtepi32_ps( vLow );
@@ -7764,7 +7764,7 @@ FINLINE_Z void VecUShortToInt ( VecInt4* results, const VecUShort8& a )  ///< Un
 #elif defined( _PC_SSE2 ) // Little endian platforms
 	VecUShort8 zero = VecUShortSplatZero();
 	results[0] = VecUShortPermuteA0A1B0B1C0C1D0D1( a, zero );
-    results[1] = VecUShortPermuteE0E1F0F1G0G1H0H1( a, zero );
+	results[1] = VecUShortPermuteE0E1F0F1G0G1H0H1( a, zero );
 #else
 	for( U32 i = 0; i < 4; ++i )
 	{
@@ -7777,7 +7777,7 @@ FINLINE_Z void VecUShortToInt ( VecInt4* results, const VecUShort8& a )  ///< Un
 VecUChar16 VecUShortToUCharSat ( register const VecUShort8* v )   ///< Pack the elements from v into 16 U8 and saturate <=> for( i ranging from 0 to 15 ) { res[i] = (U8)Min(v[i],255) }  
 {
 #if defined( _PC_SSE2 )   
-    return _mm_packus_epi16( v[0], v[1] );
+	return _mm_packus_epi16( v[0], v[1] );
 #else
 	UChar16 res;
 	const U16 maxU8 = 255;
@@ -7808,7 +7808,7 @@ FINLINE_Z void VecUCharToInt ( VecInt4* results, const VecUChar16& a )  ///< Unp
 #else
 	VecUShort8 resU16[2];
 	VecUCharToUShort( resU16, a );
-    VecUShortToInt( results, resU16[0] );
+	VecUShortToInt( results, resU16[0] );
 	VecUShortToInt( results+2, resU16[1] );
 #endif
 }
@@ -7821,7 +7821,7 @@ FINLINE_Z void VecUCharToUShort ( VecUShort8* results, const VecUChar16& a )  //
 #elif defined( _PC_SSE2 ) // Little endian platforms
 	VecUChar16 zero = VecUCharSplatZero();
 	results[0] = VecUCharPermuteLow( a, zero );
-    results[1] = VecUCharPermuteHigh( a, zero );
+	results[1] = VecUCharPermuteHigh( a, zero );
 #else
 	for( U32 i = 0; i < 8; ++i )
 	{
@@ -7889,15 +7889,15 @@ FINLINE_Z U32 VecFloatPackSnorm8888( register const VecFloat4& normal ) ///< pac
 	result = _mm_cvtsi128_si32( iRes );
 #else
 	const VecFloat4 vRes = VecFloatMul( normal, VectorConstantsPrivate::v127F );
-    const VecInt4 iRes = VecFloatToIntNearest( vRes );
+	const VecInt4 iRes = VecFloatToIntNearest( vRes );
 	const S8 x = static_cast<S8> ( VecIntGetX(iRes) );
 	const S8 y = static_cast<S8> ( VecIntGetY(iRes) );
 	const S8 z = static_cast<S8> ( VecIntGetZ(iRes) );
 	const S8 w = static_cast<S8> ( VecIntGetW(iRes) );
 	#if defined(_PC) || defined(_FAKE_XONE)// Little endian RGBA 
-    result = (x&0xFF) | ( (y&0xFF) << 8 ) | ( (z&0xFF) << 16 ) | ( (w&0xFF) << 24 );
+	result = (x&0xFF) | ( (y&0xFF) << 8 ) | ( (z&0xFF) << 16 ) | ( (w&0xFF) << 24 );
 	#else // Default : little endian BGRA
-    result = (z&0xFF) | ( (y&0xFF) << 8 ) | ( (x&0xFF) << 16 ) | ( (w&0xFF) << 24 );
+	result = (z&0xFF) | ( (y&0xFF) << 8 ) | ( (x&0xFF) << 16 ) | ( (w&0xFF) << 24 );
 	#endif
 #endif
 	return result;
@@ -7920,14 +7920,14 @@ FINLINE_Z VecFloat4 VecFloatUnpackSnorm8888( const U32 packedNormal ) ///< unpac
 
 	#if defined(_PC) || defined(_FAKE_XONE) ///< Little endian RGBA
 	sX = *reinterpret_cast<S8*>(&R);
-    sY = *reinterpret_cast<S8*>(&G);
-    sZ = *reinterpret_cast<S8*>(&B);
-    sW = *reinterpret_cast<S8*>(&A);
+	sY = *reinterpret_cast<S8*>(&G);
+	sZ = *reinterpret_cast<S8*>(&B);
+	sW = *reinterpret_cast<S8*>(&A);
 	#else // Default : little endian BGRA
-    sX = *reinterpret_cast<S8*>(&B);
-    sY = *reinterpret_cast<S8*>(&G);
-    sZ = *reinterpret_cast<S8*>(&R);
-    sW = *reinterpret_cast<S8*>(&A);
+	sX = *reinterpret_cast<S8*>(&B);
+	sY = *reinterpret_cast<S8*>(&G);
+	sZ = *reinterpret_cast<S8*>(&R);
+	sW = *reinterpret_cast<S8*>(&A);
 	#endif
 
 	VecInt4 vColor = VecIntLoad4(sX, sY, sZ, sW);
@@ -7946,11 +7946,11 @@ FINLINE_Z U32 VecFloatPackColor8888 ( register const VecFloat4& color ) ///< pac
 	result = _mm_cvtsi128_si32( iRes );
 #else
 	const VecFloat4 vRes = VecFloatScale( VecFloatSaturate(color), 255.0f );
-    const VecInt4 iRes = VecFloatToIntNearest( vRes );
+	const VecInt4 iRes = VecFloatToIntNearest( vRes );
 	#if defined(_PC) || defined(_FAKE_XONE)// Little endian RGBA 
-    result = VecIntGetX(iRes) | ( VecIntGetY(iRes) << 8 ) | ( VecIntGetZ(iRes) << 16 ) | ( VecIntGetW(iRes) << 24 );
+	result = VecIntGetX(iRes) | ( VecIntGetY(iRes) << 8 ) | ( VecIntGetZ(iRes) << 16 ) | ( VecIntGetW(iRes) << 24 );
 	#else // Default : little endian BGRA
-    result = VecIntGetZ(iRes) | ( VecIntGetY(iRes) << 8 ) | ( VecIntGetX(iRes) << 16 ) | ( VecIntGetW(iRes) << 24 );
+	result = VecIntGetZ(iRes) | ( VecIntGetY(iRes) << 8 ) | ( VecIntGetX(iRes) << 16 ) | ( VecIntGetW(iRes) << 24 );
 	#endif
 #endif
 	return result;
@@ -7969,14 +7969,14 @@ FINLINE_Z VecFloat4 VecFloatUnpackColor8888 ( const U32 color ) ///< unpack a na
 	VecInt4 vColor; 
 	#if defined(_PC) || defined(_FAKE_XONE) ///< Little endian RGBA
 	vColor.x = color & 0xff;
-    vColor.y = ( color >> 8 ) & 0xff;
-    vColor.z = ( color >> 16 ) & 0xff;
-    vColor.w = ( color >> 24 ) & 0xff;
+	vColor.y = ( color >> 8 ) & 0xff;
+	vColor.z = ( color >> 16 ) & 0xff;
+	vColor.w = ( color >> 24 ) & 0xff;
 	#else // Default : little endian BGRA
-    vColor.x = ( color >> 16 ) & 0xff;
-    vColor.y = ( color >> 8 ) & 0xff;
-    vColor.z = color & 0xff;
-    vColor.w = ( color >> 24 ) & 0xff;
+	vColor.x = ( color >> 16 ) & 0xff;
+	vColor.y = ( color >> 8 ) & 0xff;
+	vColor.z = color & 0xff;
+	vColor.w = ( color >> 24 ) & 0xff;
 	#endif
 	return VecFloatScale( VecIntToFloat(vColor), 1.0f / 255.f );
 #endif
@@ -8193,24 +8193,24 @@ FINLINE_Z void VecFloatQuaternionTo3x3 ( register VecFloat3x3& matrix, register 
 {
 	register VecFloat4 tmp0, tmp1, tmp2, tmp3, tmp4, tmp5;
 
-    register const VecFloat4 xyzw2 = VecFloatAdd( quat, quat );
-    register const VecFloat4 wwww = VecFloatSplatW( quat );
-    register const VecFloat4 yzxw = VecFloatSwizzleYZXW( quat );
-    register const VecFloat4 zxyw = VecFloatSwizzleZXYW( quat );
-    register const VecFloat4 yzxw2 = VecFloatSwizzleYZXW( xyzw2 );
-    register const VecFloat4 zxyw2 = VecFloatSwizzleZXYW( xyzw2 );
-    tmp0 = VecFloatMul( yzxw2, wwww );
-    tmp1 = VecFloatNegMsub( yzxw, yzxw2, VecFloatSplatOne() );
-    tmp2 = VecFloatMul( yzxw, xyzw2 );
-    tmp0 = VecFloatMadd( zxyw, xyzw2, tmp0 );
-    tmp1 = VecFloatNegMsub( zxyw, zxyw2, tmp1 );
-    tmp2 = VecFloatNegMsub( zxyw2, wwww, tmp2 );
-    tmp3 = VecFloatPermuteX1Y0Z0W0( tmp0, tmp1 );
-    tmp4 = VecFloatPermuteX1Y0Z0W0( tmp1, tmp2 );
-    tmp5 = VecFloatPermuteX1Y0Z0W0( tmp2, tmp0 );
-    matrix[0] = VecFloatPermuteX0Y0Z1W0( tmp3, tmp2 );
-    matrix[1] = VecFloatPermuteX0Y0Z1W0( tmp4, tmp0 );
-    matrix[2] = VecFloatPermuteX0Y0Z1W0( tmp5, tmp1 );
+	register const VecFloat4 xyzw2 = VecFloatAdd( quat, quat );
+	register const VecFloat4 wwww = VecFloatSplatW( quat );
+	register const VecFloat4 yzxw = VecFloatSwizzleYZXW( quat );
+	register const VecFloat4 zxyw = VecFloatSwizzleZXYW( quat );
+	register const VecFloat4 yzxw2 = VecFloatSwizzleYZXW( xyzw2 );
+	register const VecFloat4 zxyw2 = VecFloatSwizzleZXYW( xyzw2 );
+	tmp0 = VecFloatMul( yzxw2, wwww );
+	tmp1 = VecFloatNegMsub( yzxw, yzxw2, VecFloatSplatOne() );
+	tmp2 = VecFloatMul( yzxw, xyzw2 );
+	tmp0 = VecFloatMadd( zxyw, xyzw2, tmp0 );
+	tmp1 = VecFloatNegMsub( zxyw, zxyw2, tmp1 );
+	tmp2 = VecFloatNegMsub( zxyw2, wwww, tmp2 );
+	tmp3 = VecFloatPermuteX1Y0Z0W0( tmp0, tmp1 );
+	tmp4 = VecFloatPermuteX1Y0Z0W0( tmp1, tmp2 );
+	tmp5 = VecFloatPermuteX1Y0Z0W0( tmp2, tmp0 );
+	matrix[0] = VecFloatPermuteX0Y0Z1W0( tmp3, tmp2 );
+	matrix[1] = VecFloatPermuteX0Y0Z1W0( tmp4, tmp0 );
+	matrix[2] = VecFloatPermuteX0Y0Z1W0( tmp5, tmp1 );
 }
 
 FINLINE_Z void VecFloatQuaternionTo4x4 ( Float* matrix, register const VecFloat4& quat ) ///< Convert a quaternion to a 4x4 storage matrix which address is 16-byte aligned
@@ -8298,7 +8298,7 @@ FINLINE_Z VecFloat4 VecFloat3x3ToQuaternion( register const VecFloat3x3& m )
 
 	if ( trace > 0.0f )
 	{
-        // |w| > 1/2, may as well choose w > 1/2
+		// |w| > 1/2, may as well choose w > 1/2
 		root = Sqrt( trace + 1.f );	// 2w
 		v.w  = 0.5f * root;
 		root = 0.5f/root;		// 1/(4w)

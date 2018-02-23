@@ -38,13 +38,13 @@ inline Color& Color::Set( const Color &_v )
 
 inline Color Color::operator * ( const Float _f) const
 {
-    return VecFloatScale( vec128, _f );
+	return VecFloatScale( vec128, _f );
 }
 
 inline Color& Color::operator *= ( const Float _f )
 {
-    vec128 = VecFloatScale( vec128, _f );
-    return *this;
+	vec128 = VecFloatScale( vec128, _f );
+	return *this;
 }
 
 inline Color& Color::operator = ( const Color& _c )

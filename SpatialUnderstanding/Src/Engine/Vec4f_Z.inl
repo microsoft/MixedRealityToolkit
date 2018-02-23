@@ -316,7 +316,7 @@ FINLINE_Z void Vec4_Add_Scale(Vec4f& _result, const Vec4f& _v0, const Float _s, 
 //_result = _v1 * _s + _v0
 FINLINE_Z void Vec4_Add_Scale4(Vec4f& _result, const Vec4f& _v0, const Float _s, const Vec4f& _v1 )
 {
-    _result = VecFloatMadd( _v1, VecFloatLoad1(_s), _v0 );
+	_result = VecFloatMadd( _v1, VecFloatLoad1(_s), _v0 );
 }
 
 FINLINE_Z void Vec4_Sub_Scale(Vec4f& _result, const Vec4f& _v0, const Float _s, const Vec4f& _v1 )
@@ -355,7 +355,7 @@ FINLINE_Z Float Vec4_Dot4(const Vec4f& _v0, const Vec4f& _v1 )
 
 FINLINE_Z Float Vec4_Dot(const Vec4f& _v0, const Vec4f& _v1 )
 {
-    return VecFloatGetX( VecFloatScalarDot3(_v0,_v1) );
+	return VecFloatGetX( VecFloatScalarDot3(_v0,_v1) );
 }
 
 FINLINE_Z void Vec4_Cross(Vec4f& _result, const Vec4f& _v0, const Vec4f& _v1 )
