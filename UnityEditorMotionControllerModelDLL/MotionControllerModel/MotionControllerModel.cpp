@@ -64,8 +64,9 @@ EXTERN_C __declspec(dllexport) BOOL TryGetMotionControllerModel(_In_ UINT32 cont
                 }
 
                 // Create a buffer from the stream, to read the contents into a byte array for passback to the app.
-                IBuffer^ buffer = ref new Buffer(static_cast<unsigned int>(stream->Size));
-                auto readOperation = create_task(stream->ReadAsync(buffer, static_cast<unsigned int>(stream->Size), InputStreamOptions::None));
+                unsigned int streamSize = safe_cast<unsigned int>(stream->Size);
+                IBuffer^ buffer = ref new Buffer(streamSize);
+                auto readOperation = create_task(stream->ReadAsync(buffer, streamSize, InputStreamOptions::None));
 
                 status = readOperation.wait();
 
