@@ -33,7 +33,7 @@ namespace PlaneFinding
             return v1.first.x < v2.first.x || (v1.first.x == v2.first.x && v1.first.y < v2.first.y);
         });
 
-        // now that we have the sorted list of verts, look at them in order, and generate a convex hull
+        // now that we have the sorted list of vertices, look at them in order, and generate a convex hull
         vector<pair<XMFLOAT2, UINT32>> top;
         vector<pair<XMFLOAT2, UINT32>> bottom;
 
@@ -97,7 +97,7 @@ namespace PlaneFinding
         float zmin = FLT_MAX, zmax = -FLT_MAX;
         auto convexHull = FindConvexHull([&](XMFLOAT2 *planarVert, UINT32 *index) -> bool
         {
-            *index = 0; // we dont' care about the index here - only useful when exposing the convex hull directly
+            *index = 0; // we don't care about the index here - only useful when exposing the convex hull directly
 
             XMFLOAT3 vert;
             bool ret = vertGenerator(&vert);
@@ -122,7 +122,7 @@ namespace PlaneFinding
         XMFLOAT2 minv = convexHull[0].first;
         struct RotatedBoundingBox
         {
-            UINT32 maxx, maxy, minx, miny; // these represent the indices of the max/min x and y coordinates in a rotated coordated frame.
+            UINT32 maxx, maxy, minx, miny; // these represent the indices of the max/min x and y coordinates in a rotated coordinate frame.
             float area;
             float minwidth;
             float angle;

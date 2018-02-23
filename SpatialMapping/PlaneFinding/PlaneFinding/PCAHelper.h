@@ -10,7 +10,7 @@ namespace PlaneFinding
         // E((x - avg(x))*(y - avg(y)))     E((y - avg(y))*(y - avg(y)))     E((z - avg(z))*(y - avg(y)))
         // E((x - avg(x))*(z - avg(z)))     E((y - avg(y))*(z - avg(z)))     E((z - avg(z))*(z - avg(z)))
         // The eigenvectors of this are the principal components.
-        // Since This matrix is symmetrix, we only need the upper left corner.
+        // Since this matrix is symmetric, we only need the upper left corner.
         float m_xx = 0;
         float m_xy = 0;
         float m_xz = 0;

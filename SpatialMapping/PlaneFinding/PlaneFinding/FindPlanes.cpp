@@ -13,7 +13,7 @@ namespace PlaneFinding
     //  * First we calculate the curvature for every vertex
     //  * Next, we flood-fill planar regions, and select the best regions as potential planes
     //  * We then generate plane equations for these regions using Principal Component Analysis (PCAHelper)
-    //  * Once we have plane equations, re-floodfill to generate our final set of vertices for each plane
+    //  * Once we have plane equations, re-flood fill to generate our final set of vertices for each plane
     //  * The output of this is a collection of planes, each is a connected set of vertices.
 
     // TODO: allow these constants to be modified at runtime, or configured by regkey to determine ideal values
@@ -27,7 +27,7 @@ namespace PlaneFinding
     const float cMinimumPlaneSize = 0.125f; // threshold for how large a plane must be when projected onto the tangent/cotangent vectors.  Measured as standard deviation of vertices, in meters.
 
                                             // constants used for bucketing vertices to planes
-    const float cMaxDistanceFromPlane = 0.125f; // max distance from a plane equation for a vetex to be considered part of the plane, in meters
+    const float cMaxDistanceFromPlane = 0.125f; // max distance from a plane equation for a vertex to be considered part of the plane, in meters
     const float cMinCosAngleBetweenNormalAndPlane = 0.5f * sqrtf(3.0f); // min angle between plane and vertex normal to consider vertex part of the plane (30 degrees)
 
     const UINT32 INVALID_PLANE = static_cast<UINT32>(-1); // used to identify invalid planes
@@ -243,7 +243,7 @@ namespace PlaneFinding
 
     struct PerVertexData
     {
-        float Curvature; // how flat is this vertex (how far is this verticies normal from its neighbors)
+        float Curvature; // how flat is this vertex (how far is this vertices normal from its neighbors)
         UINT32 plane;
     };
 
@@ -302,7 +302,7 @@ namespace PlaneFinding
     {
         if (halfEdge->m_spVertices[startVert] != nullptr)
         {
-            // we flood-fill from coallesced vertex
+            // we flood-fill from coalesced vertex
             startVert = halfEdge->m_spVertices[startVert]->vertex;
         }
 
@@ -331,11 +331,11 @@ namespace PlaneFinding
         UINT32 nextPlane = 1; // assign an id to planar regions
         for (UINT32 i = 0; i < vertCount; ++i)
         {
-            if (!halfEdge->IsCoallesced(i)) // don't process coallesced vertices
+            if (!halfEdge->IsCoallesced(i)) // don't process coalesced vertices
             {
                 if (vertexData[i].plane == INVALID_PLANE && vertexData[i].Curvature < cLowCurvatureThreshold)
                 {
-                    // this vertex is not already labelled - start a new region
+                    // this vertex is not already labeled - start a new region
                     vertexData[i].plane = nextPlane;
                     const XMFLOAT3 normal = normals[i];
                     const XMFLOAT3 vertex = verts[i];
@@ -357,7 +357,7 @@ namespace PlaneFinding
                         return ret; // add continue filling this node
                     });
 
-                    // we could get a plane with low number of verts - we require at least 3
+                    // we could get a plane with low number of vertices - we require at least 3
                     if (planeData.GetNumVertices() > cMinVertsPerPlane)
                     {
                         bestPlanes->Add(planeData);
@@ -383,7 +383,7 @@ namespace PlaneFinding
 
         for (unsigned int i = 0; i < vertCount; ++i)
         {
-            if (!halfEdge->IsCoallesced(i)) // don't process coallesced vertices
+            if (!halfEdge->IsCoallesced(i)) // don't process coalesced vertices
             {
                 auto pca = pcaMap.find((*pVertexData)[i].plane);
                 if (pca != pcaMap.end())
@@ -473,7 +473,7 @@ namespace PlaneFinding
                 {
                     bestPlanes->best[i].IgnorePlane();
 
-                    // Reset the planeId for the verts that were part of this plane
+                    // Reset the planeId for the vertices that were part of this plane
                     for (UINT32 vertIndex = 0; vertIndex < vertCount; ++vertIndex)
                     {
                         if ((*pVertexData)[vertIndex].plane == planeId)
@@ -543,14 +543,14 @@ namespace PlaneFinding
             XMVECTOR vUpInSurfaceSpace = XMVector3Normalize(XMVector3TransformNormal(cUpDirection, observerToSurface));
             GeneratePlaneEquations(&vertexData, &halfEdge, vertCount, verts, &bestPlanes, meshToMetersScale, snapToGravityThreshold, vUpInSurfaceSpace);
 
-            // once we have plane equations, re-floodfill to generate our final set of vertices, and bounds
+            // once we have plane equations, re-flood fill to generate our final set of vertices, and bounds
             // this can occur in a member when the data is being consumed
             FloodFillPlaneEquation(&vertexData, vertCount, &halfEdge, normals, verts, &bestPlanes, meshToMetersScale);
 
             vector<UINT32> vertexPlaneMapping = vector<UINT32>(vertCount);
             for (UINT32 i = 0; i < vertCount; ++i)
             {
-                // we color vertices according to their coallesced vertex's color
+                // we color vertices according to their coalesced vertex's color
                 vertexPlaneMapping[i] = vertexData[halfEdge.m_spVertices[i] != nullptr ? halfEdge.m_spVertices[i]->vertex : i].plane;
             }
 

@@ -4,7 +4,7 @@
 using System;
 
 // Define a few types that normally exist in the UnityEngine namespace so our test code can leverage
-// the PlaneFinding.cs script file from the Unity addon.  This ensures that our tests are calling into
+// the PlaneFinding.cs script file from the Unity add-on.  This ensures that our tests are calling into
 // the PlaneFinding.dll in the same way that Unity apps will be.
 namespace UnityEngine
 {
@@ -21,7 +21,7 @@ namespace UnityEngine
             this.z = z;
         }
 
-        public static Vector3 operator+(Vector3 a, Vector3 b)
+        public static Vector3 operator +(Vector3 a, Vector3 b)
         {
             return new Vector3(a.x + b.x, a.y + b.y, a.z + b.z);
         }

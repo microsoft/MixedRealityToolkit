@@ -1,5 +1,6 @@
 *.cs text diff=csharp
 *.cpp crlf diff
+*.rc diff
 
 *.txt text
 *.md text
