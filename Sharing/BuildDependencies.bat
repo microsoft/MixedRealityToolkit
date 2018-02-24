@@ -1,7 +1,7 @@
 @echo off
 
 echo *************************************************************
-echo ********* Building HoloToolkit.Sharing Dependencies *********
+echo ***** Building MixedRealityToolkit.Sharing Dependencies *****
 echo *************************************************************
 echo
 echo

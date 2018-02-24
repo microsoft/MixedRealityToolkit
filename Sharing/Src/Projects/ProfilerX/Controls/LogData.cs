@@ -13,12 +13,12 @@ namespace ProfilerX
 {
     public class LogData : INotifyPropertyChanged
     {
-        private HoloToolkit.Sharing.LogMessage logMsg;
+        private MixedRealityToolkit.Sharing.LogMessage logMsg;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
 
-        public HoloToolkit.Sharing.LogSeverity Severity
+        public MixedRealityToolkit.Sharing.LogSeverity Severity
         {
             get { return this.logMsg.GetSeverity(); }
         }
@@ -33,7 +33,7 @@ namespace ProfilerX
             get { return this.logMsg.GetSeverity().ToString() + ": " + this.logMsg.GetLogMessage(); }
         }
 
-        public LogData(HoloToolkit.Sharing.LogMessage msg)
+        public LogData(MixedRealityToolkit.Sharing.LogMessage msg)
         {
             this.logMsg = msg;
         }

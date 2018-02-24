@@ -5,7 +5,7 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
-using HoloToolkit.Sharing;
+using MixedRealityToolkit.Sharing;
 
 namespace ProfilerX
 {

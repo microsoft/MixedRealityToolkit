@@ -12,7 +12,7 @@ namespace ProfilerX
 {
     public class FrameData
     {
-        private HoloToolkit.Sharing.ProfileFrame profileFrame;
+        private MixedRealityToolkit.Sharing.ProfileFrame profileFrame;
 
         private ObservableCollection<ThreadData> threads = new ObservableCollection<ThreadData>();
         public ObservableCollection<ThreadData> Threads
@@ -29,7 +29,7 @@ namespace ProfilerX
                 int threadCount = this.profileFrame.GetThreadCount();
                 for (int i = 0; i < threadCount; ++i)
                 {
-                    HoloToolkit.Sharing.ProfileThread thread = this.profileFrame.GetThread(i);
+                    MixedRealityToolkit.Sharing.ProfileThread thread = this.profileFrame.GetThread(i);
                     if(thread.GetSampleCount() > 0)
                     {
                         float threadDuration = (float)thread.GetSample(0).GetDuration() / 1000000f;
@@ -41,7 +41,7 @@ namespace ProfilerX
             }
         }
 
-        public FrameData(HoloToolkit.Sharing.ProfileFrame xFrame)
+        public FrameData(MixedRealityToolkit.Sharing.ProfileFrame xFrame)
         {
             this.profileFrame = xFrame;
 

@@ -35,181 +35,181 @@
     <None Include="..\..\Source\JavaTestApp\VersionInfo.java">
       <Filter>Source Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\AnchorDownloadRequest.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\AnchorDownloadRequest.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\AudioManager.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\AudioManager.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\ClientConfig.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\ClientConfig.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\ClientRole.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\ClientRole.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\DirectPairConnector.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\DirectPairConnector.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\DirectPairReceiver.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\DirectPairReceiver.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\DoubleElement.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\DoubleElement.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\Element.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\Element.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\ElementType.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\ElementType.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\FloatElement.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\FloatElement.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\IntArrayElement.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\IntArrayElement.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\IntArrayListener.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\IntArrayListener.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\IntElement.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\IntElement.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\Listener.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\Listener.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\Log.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\Log.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\LogManager.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\LogManager.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\LogSeverity.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\LogSeverity.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\LogWriter.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\LogWriter.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\LongElement.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\LongElement.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\MachineSessionState.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\MachineSessionState.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\MessageChannel.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\MessageChannel.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\MessageID.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\MessageID.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\MessagePriority.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\MessagePriority.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\MessageReliability.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\MessageReliability.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\NetworkConnection.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\NetworkConnection.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\NetworkConnectionListener.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\NetworkConnectionListener.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\NetworkInMessage.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\NetworkInMessage.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\NetworkOutMessage.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\NetworkOutMessage.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\ObjectElement.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\ObjectElement.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\ObjectElementListener.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\ObjectElementListener.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\PairingListener.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\PairingListener.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\PairingManager.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\PairingManager.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\PairingResult.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\PairingResult.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\PairMaker.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\PairMaker.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\Profile.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\Profile.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\ProfileManager.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\ProfileManager.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\Receipt.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\Receipt.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\Room.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\Room.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\RoomManager.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\RoomManager.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\RoomManagerListener.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\RoomManagerListener.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\Session.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\Session.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\SessionListener.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\SessionListener.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\SessionManager.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\SessionManager.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\SessionManagerListener.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\SessionManagerListener.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\SessionType.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\SessionType.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\Settings.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\Settings.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\SharingClient.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\SharingClient.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\SharingClientJNI.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\SharingClientJNI.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\StringElement.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\StringElement.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\SyncListener.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\SyncListener.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\TagImage.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\TagImage.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\User.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\User.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\UserPresenceManager.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\UserPresenceManager.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\UserPresenceManagerListener.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\UserPresenceManagerListener.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\VisualPairConnector.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\VisualPairConnector.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\VisualPairReceiver.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\VisualPairReceiver.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\XString.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\XString.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\BoolElement.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\BoolElement.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\SharingManager.java">
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\SharingManager.java">
       <Filter>Source Files\Generated Files</Filter>
     </None>
   </ItemGroup>

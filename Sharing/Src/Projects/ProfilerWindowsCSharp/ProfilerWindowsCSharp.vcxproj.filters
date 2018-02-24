@@ -5,5 +5,16 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\Profiler\ProfilerWrapperAPI_CSharp.h" />
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{3379da65-eda6-48ae-9051-fc57cb2577b8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ProfilerWindowsCSharp.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

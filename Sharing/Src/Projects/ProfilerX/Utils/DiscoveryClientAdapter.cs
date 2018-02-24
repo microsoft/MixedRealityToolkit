@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HoloToolkit.Sharing
+namespace MixedRealityToolkit.Sharing
 {
     class DiscoveryClientAdapter : DiscoveryClientListener
     {
@@ -22,7 +22,7 @@ namespace HoloToolkit.Sharing
             }
         }
 
-	    public override void OnRemoteSystemLost(DiscoveredSystem remoteSystem)
+        public override void OnRemoteSystemLost(DiscoveredSystem remoteSystem)
         {
             if (this.LostEvent != null)
             {

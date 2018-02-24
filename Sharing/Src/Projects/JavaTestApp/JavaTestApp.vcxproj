@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\XTools.props" />
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -28,65 +28,65 @@
     <Text Include="..\..\Source\JavaTestApp\Manifest.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\AnchorDownloadRequest.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\AudioManager.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\BoolElement.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\ClientConfig.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\ClientRole.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\DirectPairConnector.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\DirectPairReceiver.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\DoubleElement.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\Element.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\ElementType.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\FloatElement.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\IntArrayElement.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\IntArrayListener.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\IntElement.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\Listener.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\Log.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\LogManager.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\LogSeverity.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\LogWriter.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\LongElement.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\MachineSessionState.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\MessageChannel.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\MessageID.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\MessagePriority.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\MessageReliability.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\NetworkConnection.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\NetworkConnectionListener.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\NetworkInMessage.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\NetworkOutMessage.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\ObjectElement.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\ObjectElementListener.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\PairingListener.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\PairingManager.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\PairingResult.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\PairMaker.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\Profile.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\ProfileManager.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\Receipt.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\Room.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\RoomManager.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\RoomManagerListener.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\Session.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\SessionListener.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\SessionManager.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\SessionManagerListener.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\SessionType.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\Settings.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\SharingClient.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\SharingClientJNI.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\SharingManager.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\StringElement.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\SyncListener.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\TagImage.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\User.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\UserPresenceManager.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\UserPresenceManagerListener.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\VisualPairConnector.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\VisualPairReceiver.java" />
-    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\XString.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\AnchorDownloadRequest.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\AudioManager.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\BoolElement.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\ClientConfig.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\ClientRole.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\DirectPairConnector.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\DirectPairReceiver.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\DoubleElement.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\Element.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\ElementType.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\FloatElement.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\IntArrayElement.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\IntArrayListener.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\IntElement.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\Listener.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\Log.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\LogManager.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\LogSeverity.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\LogWriter.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\LongElement.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\MachineSessionState.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\MessageChannel.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\MessageID.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\MessagePriority.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\MessageReliability.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\NetworkConnection.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\NetworkConnectionListener.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\NetworkInMessage.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\NetworkOutMessage.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\ObjectElement.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\ObjectElementListener.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\PairingListener.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\PairingManager.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\PairingResult.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\PairMaker.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\Profile.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\ProfileManager.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\Receipt.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\Room.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\RoomManager.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\RoomManagerListener.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\Session.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\SessionListener.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\SessionManager.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\SessionManagerListener.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\SessionType.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\Settings.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\SharingClient.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\SharingClientJNI.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\SharingManager.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\StringElement.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\SyncListener.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\TagImage.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\User.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\UserPresenceManager.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\UserPresenceManagerListener.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\VisualPairConnector.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\VisualPairReceiver.java" />
+    <None Include="..\..\GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\XString.java" />
     <None Include="..\..\Source\JavaTestApp\CopyDependencies.bat" />
     <None Include="..\..\Source\JavaTestApp\SyncRoot.java" />
     <None Include="..\..\Source\JavaTestApp\SyncSphere.java" />
@@ -104,32 +104,32 @@
     <SccAuxPath>SAK</SccAuxPath>
     <SccLocalPath>SAK</SccLocalPath>
     <SccProvider>SAK</SccProvider>
-    <WindowsTargetPlatformVersion>10.0.10586.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Utility</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Utility</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Utility</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Utility</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -185,7 +185,7 @@
     <PreBuildEvent>
       <Command>mkdir "$(IntDir)Classes"
 cd ..\..\
-"$(JAVA_BIN)\javac" -d "$(IntDir)Classes" Source\JavaTestApp\*.java GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\*.java</Command>
+"$(JAVA_BIN)\javac" -d "$(IntDir)Classes" Source\JavaTestApp\*.java GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\*.java</Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>mkdir "$(OutDir)"
@@ -211,7 +211,7 @@ call Source\JavaTestApp\CopyDependencies.bat "$(BaseOutputPath)" "$(OutDir)"</Co
     <PreBuildEvent>
       <Command>mkdir "$(IntDir)Classes"
 cd ..\..\
-"$(JAVA_BIN)\javac" -d "$(IntDir)Classes" Source\JavaTestApp\*.java GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\*.java</Command>
+"$(JAVA_BIN)\javac" -d "$(IntDir)Classes" Source\JavaTestApp\*.java GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\*.java</Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>mkdir "$(OutDir)"
@@ -243,7 +243,7 @@ call Source\JavaTestApp\CopyDependencies.bat "$(BaseOutputPath)" "$(OutDir)"
     <PreBuildEvent>
       <Command>mkdir "$(IntDir)Classes"
 cd ..\..\
-"$(JAVA_BIN)\javac" -d "$(IntDir)Classes" Source\JavaTestApp\*.java GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\*.java</Command>
+"$(JAVA_BIN)\javac" -d "$(IntDir)Classes" Source\JavaTestApp\*.java GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\*.java</Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>mkdir "$(OutDir)"
@@ -269,7 +269,7 @@ call Source\JavaTestApp\CopyDependencies.bat "$(BaseOutputPath)" "$(OutDir)"</Co
     <PreBuildEvent>
       <Command>mkdir "$(IntDir)Classes"
 cd ..\..\
-"$(JAVA_BIN)\javac" -d "$(IntDir)Classes" Source\JavaTestApp\*.java GeneratedInterface\JavaAPI\com\microsoft\holotoolkit\sharing\*.java</Command>
+"$(JAVA_BIN)\javac" -d "$(IntDir)Classes" Source\JavaTestApp\*.java GeneratedInterface\JavaAPI\com\microsoft\mixedrealitytoolkit\sharing\*.java</Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>mkdir "$(OutDir)"

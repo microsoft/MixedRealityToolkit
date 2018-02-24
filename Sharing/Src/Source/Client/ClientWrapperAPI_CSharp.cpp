@@ -1659,7 +1659,7 @@ void SwigDirector_DiscoveryClientListener::swig_init_callbacks() {
 extern "C" {
 #endif
 
-SWIGEXPORT unsigned long long SWIGSTDCALL CSharp_HoloToolkitfSharing_kInvalidSocketID_get___() {
+SWIGEXPORT unsigned long long SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_kInvalidSocketID_get___() {
   unsigned long long jresult ;
   XTools::SocketID result;
   
@@ -1669,7 +1669,7 @@ SWIGEXPORT unsigned long long SWIGSTDCALL CSharp_HoloToolkitfSharing_kInvalidSoc
 }
 
 
-SWIGEXPORT unsigned long long SWIGSTDCALL CSharp_HoloToolkitfSharing_kInvalidConnectionGUID_get___() {
+SWIGEXPORT unsigned long long SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_kInvalidConnectionGUID_get___() {
   unsigned long long jresult ;
   XTools::ConnectionGUID result;
   
@@ -1679,7 +1679,7 @@ SWIGEXPORT unsigned long long SWIGSTDCALL CSharp_HoloToolkitfSharing_kInvalidCon
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_Receipt___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_Receipt___(void * jarg1) {
   XTools::Receipt *arg1 = (XTools::Receipt *) 0 ;
   
   arg1 = (XTools::Receipt *)jarg1; 
@@ -1687,7 +1687,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_Receipt___(void * 
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_Receipt_Clear___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_Receipt_Clear___(void * jarg1) {
   XTools::Receipt *arg1 = (XTools::Receipt *) 0 ;
   
   arg1 = (XTools::Receipt *)jarg1; 
@@ -1695,7 +1695,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_Receipt_Clear___(void * j
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_Receipt___() {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_new_Receipt___() {
   void * jresult ;
   XTools::Receipt *result = 0 ;
   
@@ -1706,7 +1706,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_Receipt___() {
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_LogManager___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_LogManager___(void * jarg1) {
   XTools::LogManager *arg1 = (XTools::LogManager *) 0 ;
   
   arg1 = (XTools::LogManager *)jarg1; 
@@ -1714,7 +1714,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_LogManager___(void
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_LogManager_Log___(void * jarg1, int jarg2, char * jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_LogManager_Log___(void * jarg1, int jarg2, char * jarg3) {
   XTools::LogManager *arg1 = (XTools::LogManager *) 0 ;
   XTools::LogSeverity arg2 ;
   char *arg3 = (char *) 0 ;
@@ -1726,7 +1726,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_LogManager_Log___(void * 
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_LogWriter___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_LogWriter___(void * jarg1) {
   XTools::LogWriter *arg1 = (XTools::LogWriter *) 0 ;
   
   arg1 = (XTools::LogWriter *)jarg1; 
@@ -1734,7 +1734,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_LogWriter___(void 
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_LogWriter_WriteLogEntry___(void * jarg1, int jarg2, char * jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_LogWriter_WriteLogEntry___(void * jarg1, int jarg2, char * jarg3) {
   XTools::LogWriter *arg1 = (XTools::LogWriter *) 0 ;
   XTools::LogSeverity arg2 ;
   std::string *arg3 = 0 ;
@@ -1751,7 +1751,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_LogWriter_WriteLogEntry__
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_LogWriter_WriteLogEntrySwigExplicitLogWriter___(void * jarg1, int jarg2, char * jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_LogWriter_WriteLogEntrySwigExplicitLogWriter___(void * jarg1, int jarg2, char * jarg3) {
   XTools::LogWriter *arg1 = (XTools::LogWriter *) 0 ;
   XTools::LogSeverity arg2 ;
   std::string *arg3 = 0 ;
@@ -1768,7 +1768,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_LogWriter_WriteLogEntrySw
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_LogWriter___() {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_new_LogWriter___() {
   void * jresult ;
   XTools::LogWriter *result = 0 ;
   
@@ -1778,7 +1778,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_LogWriter___() {
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_LogWriter_director_connect___(void *objarg, SwigDirector_LogWriter::SWIG_Callback0_t callback0) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_LogWriter_director_connect___(void *objarg, SwigDirector_LogWriter::SWIG_Callback0_t callback0) {
   XTools::LogWriter *obj = (XTools::LogWriter *)objarg;
   SwigDirector_LogWriter *director = dynamic_cast<SwigDirector_LogWriter *>(obj);
   if (director) {
@@ -1787,7 +1787,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_LogWriter_director_connec
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_Log_Info___(char * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_Log_Info___(char * jarg1) {
   char *arg1 = (char *) 0 ;
   
   arg1 = (char *)jarg1; 
@@ -1795,7 +1795,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_Log_Info___(char * jarg1)
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_Log_Warning___(char * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_Log_Warning___(char * jarg1) {
   char *arg1 = (char *) 0 ;
   
   arg1 = (char *)jarg1; 
@@ -1803,7 +1803,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_Log_Warning___(char * jar
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_Log_Error___(char * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_Log_Error___(char * jarg1) {
   char *arg1 = (char *) 0 ;
   
   arg1 = (char *)jarg1; 
@@ -1811,7 +1811,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_Log_Error___(char * jarg1
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_Log___() {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_new_Log___() {
   void * jresult ;
   XTools::Log *result = 0 ;
   
@@ -1821,7 +1821,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_Log___() {
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_Log___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_Log___(void * jarg1) {
   XTools::Log *arg1 = (XTools::Log *) 0 ;
   
   arg1 = (XTools::Log *)jarg1; 
@@ -1829,7 +1829,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_Log___(void * jarg
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_Listener___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_Listener___(void * jarg1) {
   XTools::Listener *arg1 = (XTools::Listener *) 0 ;
   
   arg1 = (XTools::Listener *)jarg1; 
@@ -1837,7 +1837,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_Listener___(void *
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_Listener_UnregisterAll___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_Listener_UnregisterAll___(void * jarg1) {
   XTools::Listener *arg1 = (XTools::Listener *) 0 ;
   
   arg1 = (XTools::Listener *)jarg1; 
@@ -1845,7 +1845,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_Listener_UnregisterAll___
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_Listener_IsRegistered___(void * jarg1) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_Listener_IsRegistered___(void * jarg1) {
   unsigned int jresult ;
   XTools::Listener *arg1 = (XTools::Listener *) 0 ;
   bool result;
@@ -1857,7 +1857,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_Listener_IsRegist
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_Listener___() {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_new_Listener___() {
   void * jresult ;
   XTools::Listener *result = 0 ;
   
@@ -1867,7 +1867,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_Listener___() {
 }
 
 
-SWIGEXPORT long long SWIGSTDCALL CSharp_HoloToolkitfSharing_kInvalidXGuid_get___() {
+SWIGEXPORT long long SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_kInvalidXGuid_get___() {
   long long jresult ;
   XTools::XGuid result;
   
@@ -1877,7 +1877,7 @@ SWIGEXPORT long long SWIGSTDCALL CSharp_HoloToolkitfSharing_kInvalidXGuid_get___
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_XString__SWIG_0___() {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_new_XString__SWIG_0___() {
   void * jresult ;
   XTools::XString *result = 0 ;
   
@@ -1888,7 +1888,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_XString__SWIG_0___(
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_XString__SWIG_1___(char * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_new_XString__SWIG_1___(char * jarg1) {
   void * jresult ;
   std::string *arg1 = 0 ;
   XTools::XString *result = 0 ;
@@ -1906,7 +1906,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_XString__SWIG_1___(
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_XString___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_XString___(void * jarg1) {
   XTools::XString *arg1 = (XTools::XString *) 0 ;
   
   arg1 = (XTools::XString *)jarg1; 
@@ -1914,7 +1914,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_XString___(void * 
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_XString_GetLength___(void * jarg1) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_XString_GetLength___(void * jarg1) {
   unsigned int jresult ;
   XTools::XString *arg1 = (XTools::XString *) 0 ;
   XTools::uint32 result;
@@ -1926,7 +1926,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_XString_GetLength
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_XString_IsEqual___(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_XString_IsEqual___(void * jarg1, void * jarg2) {
   unsigned int jresult ;
   XTools::XString *arg1 = (XTools::XString *) 0 ;
   XTools::ref_ptr< XTools::XString > *arg2 = 0 ;
@@ -1952,7 +1952,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_XString_IsEqual__
 }
 
 
-SWIGEXPORT char * SWIGSTDCALL CSharp_HoloToolkitfSharing_XString_GetString___(void * jarg1) {
+SWIGEXPORT char * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_XString_GetString___(void * jarg1) {
   char * jresult ;
   XTools::XString *arg1 = (XTools::XString *) 0 ;
   std::string *result = 0 ;
@@ -1964,7 +1964,7 @@ SWIGEXPORT char * SWIGSTDCALL CSharp_HoloToolkitfSharing_XString_GetString___(vo
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkOutMessage_Write__SWIG_0___(void * jarg1, unsigned char jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkOutMessage_Write__SWIG_0___(void * jarg1, unsigned char jarg2) {
   XTools::NetworkOutMessage *arg1 = (XTools::NetworkOutMessage *) 0 ;
   XTools::byte arg2 ;
   
@@ -1974,7 +1974,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkOutMessage_Write__
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkOutMessage_Write__SWIG_1___(void * jarg1, short jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkOutMessage_Write__SWIG_1___(void * jarg1, short jarg2) {
   XTools::NetworkOutMessage *arg1 = (XTools::NetworkOutMessage *) 0 ;
   XTools::int16 arg2 ;
   
@@ -1984,7 +1984,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkOutMessage_Write__
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkOutMessage_Write__SWIG_2___(void * jarg1, int jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkOutMessage_Write__SWIG_2___(void * jarg1, int jarg2) {
   XTools::NetworkOutMessage *arg1 = (XTools::NetworkOutMessage *) 0 ;
   XTools::int32 arg2 ;
   
@@ -1994,7 +1994,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkOutMessage_Write__
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkOutMessage_Write__SWIG_3___(void * jarg1, long long jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkOutMessage_Write__SWIG_3___(void * jarg1, long long jarg2) {
   XTools::NetworkOutMessage *arg1 = (XTools::NetworkOutMessage *) 0 ;
   XTools::int64 arg2 ;
   
@@ -2004,7 +2004,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkOutMessage_Write__
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkOutMessage_Write__SWIG_4___(void * jarg1, float jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkOutMessage_Write__SWIG_4___(void * jarg1, float jarg2) {
   XTools::NetworkOutMessage *arg1 = (XTools::NetworkOutMessage *) 0 ;
   float arg2 ;
   
@@ -2014,7 +2014,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkOutMessage_Write__
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkOutMessage_Write__SWIG_5___(void * jarg1, double jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkOutMessage_Write__SWIG_5___(void * jarg1, double jarg2) {
   XTools::NetworkOutMessage *arg1 = (XTools::NetworkOutMessage *) 0 ;
   double arg2 ;
   
@@ -2024,7 +2024,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkOutMessage_Write__
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkOutMessage_Write__SWIG_6___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkOutMessage_Write__SWIG_6___(void * jarg1, void * jarg2) {
   XTools::NetworkOutMessage *arg1 = (XTools::NetworkOutMessage *) 0 ;
   XTools::XStringPtr *arg2 = 0 ;
   XTools::XStringPtr tempnull2 ;
@@ -2046,7 +2046,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkOutMessage_Write__
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkOutMessage_WriteArray___(void * jarg1, unsigned char* jarg2, unsigned int jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkOutMessage_WriteArray___(void * jarg1, unsigned char* jarg2, unsigned int jarg3) {
   XTools::NetworkOutMessage *arg1 = (XTools::NetworkOutMessage *) 0 ;
   XTools::byte *arg2 = (XTools::byte *) 0 ;
   XTools::uint32 arg3 ;
@@ -2060,7 +2060,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkOutMessage_WriteAr
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkOutMessage_Reset___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkOutMessage_Reset___(void * jarg1) {
   XTools::NetworkOutMessage *arg1 = (XTools::NetworkOutMessage *) 0 ;
   
   arg1 = (XTools::NetworkOutMessage *)jarg1; 
@@ -2068,7 +2068,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkOutMessage_Reset__
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_NetworkOutMessage___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_NetworkOutMessage___(void * jarg1) {
   XTools::NetworkOutMessage *arg1 = (XTools::NetworkOutMessage *) 0 ;
   
   arg1 = (XTools::NetworkOutMessage *)jarg1; 
@@ -2076,7 +2076,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_NetworkOutMessage_
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_NetworkInMessage___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_NetworkInMessage___(void * jarg1) {
   XTools::NetworkInMessage *arg1 = (XTools::NetworkInMessage *) 0 ;
   
   arg1 = (XTools::NetworkInMessage *)jarg1; 
@@ -2084,7 +2084,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_NetworkInMessage__
 }
 
 
-SWIGEXPORT unsigned char SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkInMessage_ReadByte___(void * jarg1) {
+SWIGEXPORT unsigned char SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkInMessage_ReadByte___(void * jarg1) {
   unsigned char jresult ;
   XTools::NetworkInMessage *arg1 = (XTools::NetworkInMessage *) 0 ;
   XTools::byte result;
@@ -2096,7 +2096,7 @@ SWIGEXPORT unsigned char SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkInMessage
 }
 
 
-SWIGEXPORT short SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkInMessage_ReadInt16___(void * jarg1) {
+SWIGEXPORT short SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkInMessage_ReadInt16___(void * jarg1) {
   short jresult ;
   XTools::NetworkInMessage *arg1 = (XTools::NetworkInMessage *) 0 ;
   XTools::int16 result;
@@ -2108,7 +2108,7 @@ SWIGEXPORT short SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkInMessage_ReadInt
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkInMessage_ReadInt32___(void * jarg1) {
+SWIGEXPORT int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkInMessage_ReadInt32___(void * jarg1) {
   int jresult ;
   XTools::NetworkInMessage *arg1 = (XTools::NetworkInMessage *) 0 ;
   XTools::int32 result;
@@ -2120,7 +2120,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkInMessage_ReadInt32
 }
 
 
-SWIGEXPORT long long SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkInMessage_ReadInt64___(void * jarg1) {
+SWIGEXPORT long long SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkInMessage_ReadInt64___(void * jarg1) {
   long long jresult ;
   XTools::NetworkInMessage *arg1 = (XTools::NetworkInMessage *) 0 ;
   XTools::int64 result;
@@ -2132,7 +2132,7 @@ SWIGEXPORT long long SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkInMessage_Rea
 }
 
 
-SWIGEXPORT float SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkInMessage_ReadFloat___(void * jarg1) {
+SWIGEXPORT float SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkInMessage_ReadFloat___(void * jarg1) {
   float jresult ;
   XTools::NetworkInMessage *arg1 = (XTools::NetworkInMessage *) 0 ;
   float result;
@@ -2144,7 +2144,7 @@ SWIGEXPORT float SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkInMessage_ReadFlo
 }
 
 
-SWIGEXPORT double SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkInMessage_ReadDouble___(void * jarg1) {
+SWIGEXPORT double SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkInMessage_ReadDouble___(void * jarg1) {
   double jresult ;
   XTools::NetworkInMessage *arg1 = (XTools::NetworkInMessage *) 0 ;
   double result;
@@ -2156,7 +2156,7 @@ SWIGEXPORT double SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkInMessage_ReadDo
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkInMessage_ReadString___(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkInMessage_ReadString___(void * jarg1) {
   void * jresult ;
   XTools::NetworkInMessage *arg1 = (XTools::NetworkInMessage *) 0 ;
   XTools::XStringPtr result;
@@ -2176,7 +2176,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkInMessage_ReadSt
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkInMessage_ReadArray___(void * jarg1, unsigned char* jarg2, unsigned int jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkInMessage_ReadArray___(void * jarg1, unsigned char* jarg2, unsigned int jarg3) {
   XTools::NetworkInMessage *arg1 = (XTools::NetworkInMessage *) 0 ;
   XTools::byte *arg2 = (XTools::byte *) 0 ;
   XTools::uint32 arg3 ;
@@ -2190,7 +2190,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkInMessage_ReadArra
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkInMessage_GetUnreadBitsCount___(void * jarg1) {
+SWIGEXPORT int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkInMessage_GetUnreadBitsCount___(void * jarg1) {
   int jresult ;
   XTools::NetworkInMessage *arg1 = (XTools::NetworkInMessage *) 0 ;
   XTools::int32 result;
@@ -2202,7 +2202,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkInMessage_GetUnread
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkInMessage_GetSize___(void * jarg1) {
+SWIGEXPORT int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkInMessage_GetSize___(void * jarg1) {
   int jresult ;
   XTools::NetworkInMessage *arg1 = (XTools::NetworkInMessage *) 0 ;
   XTools::int32 result;
@@ -2214,7 +2214,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkInMessage_GetSize__
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_NetworkConnectionListener___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_NetworkConnectionListener___(void * jarg1) {
   XTools::NetworkConnectionListener *arg1 = (XTools::NetworkConnectionListener *) 0 ;
   
   arg1 = (XTools::NetworkConnectionListener *)jarg1; 
@@ -2222,7 +2222,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_NetworkConnectionL
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnectionListener_OnConnected___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkConnectionListener_OnConnected___(void * jarg1, void * jarg2) {
   XTools::NetworkConnectionListener *arg1 = (XTools::NetworkConnectionListener *) 0 ;
   XTools::NetworkConnectionPtr *arg2 = 0 ;
   XTools::NetworkConnectionPtr tempnull2 ;
@@ -2244,7 +2244,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnectionListener
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnectionListener_OnConnectedSwigExplicitNetworkConnectionListener___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkConnectionListener_OnConnectedSwigExplicitNetworkConnectionListener___(void * jarg1, void * jarg2) {
   XTools::NetworkConnectionListener *arg1 = (XTools::NetworkConnectionListener *) 0 ;
   XTools::NetworkConnectionPtr *arg2 = 0 ;
   XTools::NetworkConnectionPtr tempnull2 ;
@@ -2266,7 +2266,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnectionListener
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnectionListener_OnConnectFailed___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkConnectionListener_OnConnectFailed___(void * jarg1, void * jarg2) {
   XTools::NetworkConnectionListener *arg1 = (XTools::NetworkConnectionListener *) 0 ;
   XTools::NetworkConnectionPtr *arg2 = 0 ;
   XTools::NetworkConnectionPtr tempnull2 ;
@@ -2288,7 +2288,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnectionListener
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnectionListener_OnConnectFailedSwigExplicitNetworkConnectionListener___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkConnectionListener_OnConnectFailedSwigExplicitNetworkConnectionListener___(void * jarg1, void * jarg2) {
   XTools::NetworkConnectionListener *arg1 = (XTools::NetworkConnectionListener *) 0 ;
   XTools::NetworkConnectionPtr *arg2 = 0 ;
   XTools::NetworkConnectionPtr tempnull2 ;
@@ -2310,7 +2310,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnectionListener
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnectionListener_OnDisconnected___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkConnectionListener_OnDisconnected___(void * jarg1, void * jarg2) {
   XTools::NetworkConnectionListener *arg1 = (XTools::NetworkConnectionListener *) 0 ;
   XTools::NetworkConnectionPtr *arg2 = 0 ;
   XTools::NetworkConnectionPtr tempnull2 ;
@@ -2332,7 +2332,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnectionListener
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnectionListener_OnDisconnectedSwigExplicitNetworkConnectionListener___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkConnectionListener_OnDisconnectedSwigExplicitNetworkConnectionListener___(void * jarg1, void * jarg2) {
   XTools::NetworkConnectionListener *arg1 = (XTools::NetworkConnectionListener *) 0 ;
   XTools::NetworkConnectionPtr *arg2 = 0 ;
   XTools::NetworkConnectionPtr tempnull2 ;
@@ -2354,7 +2354,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnectionListener
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnectionListener_OnMessageReceived___(void * jarg1, void * jarg2, void * jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkConnectionListener_OnMessageReceived___(void * jarg1, void * jarg2, void * jarg3) {
   XTools::NetworkConnectionListener *arg1 = (XTools::NetworkConnectionListener *) 0 ;
   XTools::NetworkConnectionPtr *arg2 = 0 ;
   XTools::NetworkInMessage *arg3 = 0 ;
@@ -2382,7 +2382,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnectionListener
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnectionListener_OnMessageReceivedSwigExplicitNetworkConnectionListener___(void * jarg1, void * jarg2, void * jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkConnectionListener_OnMessageReceivedSwigExplicitNetworkConnectionListener___(void * jarg1, void * jarg2, void * jarg3) {
   XTools::NetworkConnectionListener *arg1 = (XTools::NetworkConnectionListener *) 0 ;
   XTools::NetworkConnectionPtr *arg2 = 0 ;
   XTools::NetworkInMessage *arg3 = 0 ;
@@ -2410,7 +2410,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnectionListener
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_NetworkConnectionListener___() {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_new_NetworkConnectionListener___() {
   void * jresult ;
   XTools::NetworkConnectionListener *result = 0 ;
   
@@ -2420,7 +2420,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_NetworkConnectionLi
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnectionListener_director_connect___(void *objarg, SwigDirector_NetworkConnectionListener::SWIG_Callback0_t callback0, SwigDirector_NetworkConnectionListener::SWIG_Callback1_t callback1, SwigDirector_NetworkConnectionListener::SWIG_Callback2_t callback2, SwigDirector_NetworkConnectionListener::SWIG_Callback3_t callback3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkConnectionListener_director_connect___(void *objarg, SwigDirector_NetworkConnectionListener::SWIG_Callback0_t callback0, SwigDirector_NetworkConnectionListener::SWIG_Callback1_t callback1, SwigDirector_NetworkConnectionListener::SWIG_Callback2_t callback2, SwigDirector_NetworkConnectionListener::SWIG_Callback3_t callback3) {
   XTools::NetworkConnectionListener *obj = (XTools::NetworkConnectionListener *)objarg;
   SwigDirector_NetworkConnectionListener *director = dynamic_cast<SwigDirector_NetworkConnectionListener *>(obj);
   if (director) {
@@ -2429,7 +2429,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnectionListener
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_User_GetName___(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_User_GetName___(void * jarg1) {
   void * jresult ;
   XTools::User *arg1 = (XTools::User *) 0 ;
   XTools::XStringPtr *result = 0 ;
@@ -2449,7 +2449,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_User_GetName___(void * 
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_User_GetID___(void * jarg1) {
+SWIGEXPORT int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_User_GetID___(void * jarg1) {
   int jresult ;
   XTools::User *arg1 = (XTools::User *) 0 ;
   XTools::UserID result;
@@ -2461,7 +2461,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_User_GetID___(void * jarg1
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_User_IsValid___(void * jarg1) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_User_IsValid___(void * jarg1) {
   unsigned int jresult ;
   XTools::User *arg1 = (XTools::User *) 0 ;
   bool result;
@@ -2473,7 +2473,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_User_IsValid___(v
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_User_GetMuteState___(void * jarg1) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_User_GetMuteState___(void * jarg1) {
   unsigned int jresult ;
   XTools::User *arg1 = (XTools::User *) 0 ;
   bool result;
@@ -2485,7 +2485,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_User_GetMuteState
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_User___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_User___(void * jarg1) {
   XTools::User *arg1 = (XTools::User *) 0 ;
   
   arg1 = (XTools::User *)jarg1; 
@@ -2493,7 +2493,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_User___(void * jar
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnection_IsConnected___(void * jarg1) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkConnection_IsConnected___(void * jarg1) {
   unsigned int jresult ;
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   bool result;
@@ -2505,7 +2505,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnection
 }
 
 
-SWIGEXPORT unsigned long long SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnection_GetConnectionGUID___(void * jarg1) {
+SWIGEXPORT unsigned long long SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkConnection_GetConnectionGUID___(void * jarg1) {
   unsigned long long jresult ;
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   XTools::ConnectionGUID result;
@@ -2517,7 +2517,7 @@ SWIGEXPORT unsigned long long SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConn
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnection_Send__SWIG_0___(void * jarg1, void * jarg2, int jarg3, int jarg4, int jarg5, unsigned int jarg6) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkConnection_Send__SWIG_0___(void * jarg1, void * jarg2, int jarg3, int jarg4, int jarg5, unsigned int jarg6) {
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   XTools::NetworkOutMessagePtr *arg2 = 0 ;
   XTools::MessagePriority arg3 ;
@@ -2547,7 +2547,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnection_Send__S
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnection_Send__SWIG_1___(void * jarg1, void * jarg2, int jarg3, int jarg4, int jarg5) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkConnection_Send__SWIG_1___(void * jarg1, void * jarg2, int jarg3, int jarg4, int jarg5) {
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   XTools::NetworkOutMessagePtr *arg2 = 0 ;
   XTools::MessagePriority arg3 ;
@@ -2575,7 +2575,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnection_Send__S
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnection_Send__SWIG_2___(void * jarg1, void * jarg2, int jarg3, int jarg4) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkConnection_Send__SWIG_2___(void * jarg1, void * jarg2, int jarg3, int jarg4) {
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   XTools::NetworkOutMessagePtr *arg2 = 0 ;
   XTools::MessagePriority arg3 ;
@@ -2601,7 +2601,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnection_Send__S
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnection_Send__SWIG_3___(void * jarg1, void * jarg2, int jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkConnection_Send__SWIG_3___(void * jarg1, void * jarg2, int jarg3) {
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   XTools::NetworkOutMessagePtr *arg2 = 0 ;
   XTools::MessagePriority arg3 ;
@@ -2625,7 +2625,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnection_Send__S
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnection_Send__SWIG_4___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkConnection_Send__SWIG_4___(void * jarg1, void * jarg2) {
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   XTools::NetworkOutMessagePtr *arg2 = 0 ;
   XTools::NetworkOutMessagePtr tempnull2 ;
@@ -2647,7 +2647,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnection_Send__S
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnection_SendTo__SWIG_0___(void * jarg1, void * jarg2, int jarg3, void * jarg4, int jarg5, int jarg6, int jarg7, unsigned int jarg8) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkConnection_SendTo__SWIG_0___(void * jarg1, void * jarg2, int jarg3, void * jarg4, int jarg5, int jarg6, int jarg7, unsigned int jarg8) {
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   XTools::UserPtr *arg2 = 0 ;
   XTools::ClientRole arg3 ;
@@ -2693,7 +2693,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnection_SendTo_
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnection_SendTo__SWIG_1___(void * jarg1, void * jarg2, int jarg3, void * jarg4, int jarg5, int jarg6, int jarg7) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkConnection_SendTo__SWIG_1___(void * jarg1, void * jarg2, int jarg3, void * jarg4, int jarg5, int jarg6, int jarg7) {
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   XTools::UserPtr *arg2 = 0 ;
   XTools::ClientRole arg3 ;
@@ -2737,7 +2737,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnection_SendTo_
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnection_SendTo__SWIG_2___(void * jarg1, void * jarg2, int jarg3, void * jarg4, int jarg5, int jarg6) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkConnection_SendTo__SWIG_2___(void * jarg1, void * jarg2, int jarg3, void * jarg4, int jarg5, int jarg6) {
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   XTools::UserPtr *arg2 = 0 ;
   XTools::ClientRole arg3 ;
@@ -2779,7 +2779,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnection_SendTo_
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnection_SendTo__SWIG_3___(void * jarg1, void * jarg2, int jarg3, void * jarg4, int jarg5) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkConnection_SendTo__SWIG_3___(void * jarg1, void * jarg2, int jarg3, void * jarg4, int jarg5) {
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   XTools::UserPtr *arg2 = 0 ;
   XTools::ClientRole arg3 ;
@@ -2819,7 +2819,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnection_SendTo_
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnection_SendTo__SWIG_4___(void * jarg1, void * jarg2, int jarg3, void * jarg4) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkConnection_SendTo__SWIG_4___(void * jarg1, void * jarg2, int jarg3, void * jarg4) {
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   XTools::UserPtr *arg2 = 0 ;
   XTools::ClientRole arg3 ;
@@ -2857,7 +2857,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnection_SendTo_
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnection_Broadcast__SWIG_0___(void * jarg1, void * jarg2, int jarg3, int jarg4, int jarg5, unsigned int jarg6) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkConnection_Broadcast__SWIG_0___(void * jarg1, void * jarg2, int jarg3, int jarg4, int jarg5, unsigned int jarg6) {
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   XTools::NetworkOutMessagePtr *arg2 = 0 ;
   XTools::MessagePriority arg3 ;
@@ -2887,7 +2887,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnection_Broadca
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnection_Broadcast__SWIG_1___(void * jarg1, void * jarg2, int jarg3, int jarg4, int jarg5) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkConnection_Broadcast__SWIG_1___(void * jarg1, void * jarg2, int jarg3, int jarg4, int jarg5) {
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   XTools::NetworkOutMessagePtr *arg2 = 0 ;
   XTools::MessagePriority arg3 ;
@@ -2915,7 +2915,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnection_Broadca
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnection_Broadcast__SWIG_2___(void * jarg1, void * jarg2, int jarg3, int jarg4) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkConnection_Broadcast__SWIG_2___(void * jarg1, void * jarg2, int jarg3, int jarg4) {
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   XTools::NetworkOutMessagePtr *arg2 = 0 ;
   XTools::MessagePriority arg3 ;
@@ -2941,7 +2941,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnection_Broadca
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnection_Broadcast__SWIG_3___(void * jarg1, void * jarg2, int jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkConnection_Broadcast__SWIG_3___(void * jarg1, void * jarg2, int jarg3) {
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   XTools::NetworkOutMessagePtr *arg2 = 0 ;
   XTools::MessagePriority arg3 ;
@@ -2965,7 +2965,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnection_Broadca
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnection_Broadcast__SWIG_4___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkConnection_Broadcast__SWIG_4___(void * jarg1, void * jarg2) {
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   XTools::NetworkOutMessagePtr *arg2 = 0 ;
   XTools::NetworkOutMessagePtr tempnull2 ;
@@ -2987,7 +2987,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnection_Broadca
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnection_AddListener___(void * jarg1, unsigned char jarg2, void * jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkConnection_AddListener___(void * jarg1, unsigned char jarg2, void * jarg3) {
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   XTools::byte arg2 ;
   XTools::NetworkConnectionListener *arg3 = (XTools::NetworkConnectionListener *) 0 ;
@@ -2999,7 +2999,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnection_AddList
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnection_RemoveListener___(void * jarg1, unsigned char jarg2, void * jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkConnection_RemoveListener___(void * jarg1, unsigned char jarg2, void * jarg3) {
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   XTools::byte arg2 ;
   XTools::NetworkConnectionListener *arg3 = (XTools::NetworkConnectionListener *) 0 ;
@@ -3011,7 +3011,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnection_RemoveL
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnection_AddListenerAsync___(void * jarg1, unsigned char jarg2, void * jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkConnection_AddListenerAsync___(void * jarg1, unsigned char jarg2, void * jarg3) {
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   XTools::byte arg2 ;
   XTools::NetworkConnectionListener *arg3 = (XTools::NetworkConnectionListener *) 0 ;
@@ -3023,7 +3023,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnection_AddList
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnection_RemoveListenerAsync___(void * jarg1, unsigned char jarg2, void * jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkConnection_RemoveListenerAsync___(void * jarg1, unsigned char jarg2, void * jarg3) {
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   XTools::byte arg2 ;
   XTools::NetworkConnectionListener *arg3 = (XTools::NetworkConnectionListener *) 0 ;
@@ -3035,7 +3035,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnection_RemoveL
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnection_CreateMessage___(void * jarg1, unsigned char jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkConnection_CreateMessage___(void * jarg1, unsigned char jarg2) {
   void * jresult ;
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   XTools::byte arg2 ;
@@ -3057,7 +3057,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnection_Creat
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnection_ReturnMessage___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkConnection_ReturnMessage___(void * jarg1, void * jarg2) {
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   XTools::NetworkOutMessagePtr *arg2 = 0 ;
   XTools::NetworkOutMessagePtr tempnull2 ;
@@ -3079,7 +3079,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnection_ReturnM
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnection_Disconnect___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkConnection_Disconnect___(void * jarg1) {
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   
   arg1 = (XTools::NetworkConnection *)jarg1; 
@@ -3087,7 +3087,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnection_Disconn
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnection_GetRemoteAddress___(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkConnection_GetRemoteAddress___(void * jarg1) {
   void * jresult ;
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   XTools::XStringPtr result;
@@ -3107,7 +3107,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnection_GetRe
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_NetworkConnection___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_NetworkConnection___(void * jarg1) {
   XTools::NetworkConnection *arg1 = (XTools::NetworkConnection *) 0 ;
   
   arg1 = (XTools::NetworkConnection *)jarg1; 
@@ -3115,7 +3115,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_NetworkConnection_
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_Element_GetElementType___(void * jarg1) {
+SWIGEXPORT int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_Element_GetElementType___(void * jarg1) {
   int jresult ;
   XTools::Element *arg1 = (XTools::Element *) 0 ;
   XTools::ElementType result;
@@ -3127,7 +3127,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_Element_GetElementType___(
 }
 
 
-SWIGEXPORT long long SWIGSTDCALL CSharp_HoloToolkitfSharing_Element_GetGUID___(void * jarg1) {
+SWIGEXPORT long long SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_Element_GetGUID___(void * jarg1) {
   long long jresult ;
   XTools::Element *arg1 = (XTools::Element *) 0 ;
   XTools::XGuid result;
@@ -3139,7 +3139,7 @@ SWIGEXPORT long long SWIGSTDCALL CSharp_HoloToolkitfSharing_Element_GetGUID___(v
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_Element_GetName___(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_Element_GetName___(void * jarg1) {
   void * jresult ;
   XTools::Element *arg1 = (XTools::Element *) 0 ;
   XTools::XStringPtr *result = 0 ;
@@ -3159,7 +3159,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_Element_GetName___(void
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_Element_GetParent___(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_Element_GetParent___(void * jarg1) {
   void * jresult ;
   XTools::Element *arg1 = (XTools::Element *) 0 ;
   XTools::ref_ptr< XTools::Element > result;
@@ -3179,7 +3179,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_Element_GetParent___(vo
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_Element_IsValid___(void * jarg1) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_Element_IsValid___(void * jarg1) {
   unsigned int jresult ;
   XTools::Element *arg1 = (XTools::Element *) 0 ;
   bool result;
@@ -3191,7 +3191,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_Element_IsValid__
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_Element___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_Element___(void * jarg1) {
   XTools::Element *arg1 = (XTools::Element *) 0 ;
   
   arg1 = (XTools::Element *)jarg1; 
@@ -3199,7 +3199,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_Element___(void * 
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_BoolElement_Cast___(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_BoolElement_Cast___(void * jarg1) {
   void * jresult ;
   XTools::ElementPtr *arg1 = 0 ;
   XTools::ElementPtr tempnull1 ;
@@ -3231,7 +3231,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_BoolElement_Cast___(voi
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_BoolElement_GetValue___(void * jarg1) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_BoolElement_GetValue___(void * jarg1) {
   unsigned int jresult ;
   XTools::BoolElement *arg1 = (XTools::BoolElement *) 0 ;
   bool result;
@@ -3243,7 +3243,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_BoolElement_GetVa
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_BoolElement_SetValue___(void * jarg1, unsigned int jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_BoolElement_SetValue___(void * jarg1, unsigned int jarg2) {
   XTools::BoolElement *arg1 = (XTools::BoolElement *) 0 ;
   bool arg2 ;
   
@@ -3253,7 +3253,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_BoolElement_SetValue___(v
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_BoolElement___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_BoolElement___(void * jarg1) {
   XTools::BoolElement *arg1 = (XTools::BoolElement *) 0 ;
   
   arg1 = (XTools::BoolElement *)jarg1; 
@@ -3261,7 +3261,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_BoolElement___(voi
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_IntElement_Cast___(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_IntElement_Cast___(void * jarg1) {
   void * jresult ;
   XTools::ElementPtr *arg1 = 0 ;
   XTools::ElementPtr tempnull1 ;
@@ -3293,7 +3293,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_IntElement_Cast___(void
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_IntElement_GetValue___(void * jarg1) {
+SWIGEXPORT int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_IntElement_GetValue___(void * jarg1) {
   int jresult ;
   XTools::IntElement *arg1 = (XTools::IntElement *) 0 ;
   XTools::int32 result;
@@ -3305,7 +3305,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_IntElement_GetValue___(voi
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_IntElement_SetValue___(void * jarg1, int jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_IntElement_SetValue___(void * jarg1, int jarg2) {
   XTools::IntElement *arg1 = (XTools::IntElement *) 0 ;
   XTools::int32 arg2 ;
   
@@ -3315,7 +3315,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_IntElement_SetValue___(vo
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_IntElement___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_IntElement___(void * jarg1) {
   XTools::IntElement *arg1 = (XTools::IntElement *) 0 ;
   
   arg1 = (XTools::IntElement *)jarg1; 
@@ -3323,7 +3323,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_IntElement___(void
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_LongElement_Cast___(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_LongElement_Cast___(void * jarg1) {
   void * jresult ;
   XTools::ElementPtr *arg1 = 0 ;
   XTools::ElementPtr tempnull1 ;
@@ -3355,7 +3355,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_LongElement_Cast___(voi
 }
 
 
-SWIGEXPORT long long SWIGSTDCALL CSharp_HoloToolkitfSharing_LongElement_GetValue___(void * jarg1) {
+SWIGEXPORT long long SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_LongElement_GetValue___(void * jarg1) {
   long long jresult ;
   XTools::LongElement *arg1 = (XTools::LongElement *) 0 ;
   XTools::int64 result;
@@ -3367,7 +3367,7 @@ SWIGEXPORT long long SWIGSTDCALL CSharp_HoloToolkitfSharing_LongElement_GetValue
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_LongElement_SetValue___(void * jarg1, long long jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_LongElement_SetValue___(void * jarg1, long long jarg2) {
   XTools::LongElement *arg1 = (XTools::LongElement *) 0 ;
   XTools::int64 arg2 ;
   
@@ -3377,7 +3377,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_LongElement_SetValue___(v
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_LongElement___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_LongElement___(void * jarg1) {
   XTools::LongElement *arg1 = (XTools::LongElement *) 0 ;
   
   arg1 = (XTools::LongElement *)jarg1; 
@@ -3385,7 +3385,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_LongElement___(voi
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_FloatElement_Cast___(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_FloatElement_Cast___(void * jarg1) {
   void * jresult ;
   XTools::ElementPtr *arg1 = 0 ;
   XTools::ElementPtr tempnull1 ;
@@ -3417,7 +3417,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_FloatElement_Cast___(vo
 }
 
 
-SWIGEXPORT float SWIGSTDCALL CSharp_HoloToolkitfSharing_FloatElement_GetValue___(void * jarg1) {
+SWIGEXPORT float SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_FloatElement_GetValue___(void * jarg1) {
   float jresult ;
   XTools::FloatElement *arg1 = (XTools::FloatElement *) 0 ;
   float result;
@@ -3429,7 +3429,7 @@ SWIGEXPORT float SWIGSTDCALL CSharp_HoloToolkitfSharing_FloatElement_GetValue___
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_FloatElement_SetValue___(void * jarg1, float jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_FloatElement_SetValue___(void * jarg1, float jarg2) {
   XTools::FloatElement *arg1 = (XTools::FloatElement *) 0 ;
   float arg2 ;
   
@@ -3439,7 +3439,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_FloatElement_SetValue___(
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_FloatElement___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_FloatElement___(void * jarg1) {
   XTools::FloatElement *arg1 = (XTools::FloatElement *) 0 ;
   
   arg1 = (XTools::FloatElement *)jarg1; 
@@ -3447,7 +3447,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_FloatElement___(vo
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_DoubleElement_Cast___(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_DoubleElement_Cast___(void * jarg1) {
   void * jresult ;
   XTools::ElementPtr *arg1 = 0 ;
   XTools::ElementPtr tempnull1 ;
@@ -3479,7 +3479,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_DoubleElement_Cast___(v
 }
 
 
-SWIGEXPORT double SWIGSTDCALL CSharp_HoloToolkitfSharing_DoubleElement_GetValue___(void * jarg1) {
+SWIGEXPORT double SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_DoubleElement_GetValue___(void * jarg1) {
   double jresult ;
   XTools::DoubleElement *arg1 = (XTools::DoubleElement *) 0 ;
   double result;
@@ -3491,7 +3491,7 @@ SWIGEXPORT double SWIGSTDCALL CSharp_HoloToolkitfSharing_DoubleElement_GetValue_
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_DoubleElement_SetValue___(void * jarg1, double jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_DoubleElement_SetValue___(void * jarg1, double jarg2) {
   XTools::DoubleElement *arg1 = (XTools::DoubleElement *) 0 ;
   double arg2 ;
   
@@ -3501,7 +3501,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_DoubleElement_SetValue___
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_DoubleElement___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_DoubleElement___(void * jarg1) {
   XTools::DoubleElement *arg1 = (XTools::DoubleElement *) 0 ;
   
   arg1 = (XTools::DoubleElement *)jarg1; 
@@ -3509,7 +3509,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_DoubleElement___(v
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_StringElement_Cast___(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_StringElement_Cast___(void * jarg1) {
   void * jresult ;
   XTools::ElementPtr *arg1 = 0 ;
   XTools::ElementPtr tempnull1 ;
@@ -3541,7 +3541,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_StringElement_Cast___(v
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_StringElement_GetValue___(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_StringElement_GetValue___(void * jarg1) {
   void * jresult ;
   XTools::StringElement *arg1 = (XTools::StringElement *) 0 ;
   XTools::XStringPtr *result = 0 ;
@@ -3561,7 +3561,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_StringElement_GetValue_
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_StringElement_SetValue___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_StringElement_SetValue___(void * jarg1, void * jarg2) {
   XTools::StringElement *arg1 = (XTools::StringElement *) 0 ;
   XTools::XStringPtr *arg2 = 0 ;
   XTools::XStringPtr tempnull2 ;
@@ -3583,7 +3583,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_StringElement_SetValue___
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_StringElement___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_StringElement___(void * jarg1) {
   XTools::StringElement *arg1 = (XTools::StringElement *) 0 ;
   
   arg1 = (XTools::StringElement *)jarg1; 
@@ -3591,7 +3591,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_StringElement___(v
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_IntArrayListener___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_IntArrayListener___(void * jarg1) {
   XTools::IntArrayListener *arg1 = (XTools::IntArrayListener *) 0 ;
   
   arg1 = (XTools::IntArrayListener *)jarg1; 
@@ -3599,7 +3599,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_IntArrayListener__
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_IntArrayListener_OnValueChanged___(void * jarg1, int jarg2, int jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_IntArrayListener_OnValueChanged___(void * jarg1, int jarg2, int jarg3) {
   XTools::IntArrayListener *arg1 = (XTools::IntArrayListener *) 0 ;
   XTools::int32 arg2 ;
   XTools::int32 arg3 ;
@@ -3611,7 +3611,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_IntArrayListener_OnValueC
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_IntArrayListener_OnValueChangedSwigExplicitIntArrayListener___(void * jarg1, int jarg2, int jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_IntArrayListener_OnValueChangedSwigExplicitIntArrayListener___(void * jarg1, int jarg2, int jarg3) {
   XTools::IntArrayListener *arg1 = (XTools::IntArrayListener *) 0 ;
   XTools::int32 arg2 ;
   XTools::int32 arg3 ;
@@ -3623,7 +3623,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_IntArrayListener_OnValueC
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_IntArrayListener_OnValueInserted___(void * jarg1, int jarg2, int jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_IntArrayListener_OnValueInserted___(void * jarg1, int jarg2, int jarg3) {
   XTools::IntArrayListener *arg1 = (XTools::IntArrayListener *) 0 ;
   XTools::int32 arg2 ;
   XTools::int32 arg3 ;
@@ -3635,7 +3635,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_IntArrayListener_OnValueI
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_IntArrayListener_OnValueInsertedSwigExplicitIntArrayListener___(void * jarg1, int jarg2, int jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_IntArrayListener_OnValueInsertedSwigExplicitIntArrayListener___(void * jarg1, int jarg2, int jarg3) {
   XTools::IntArrayListener *arg1 = (XTools::IntArrayListener *) 0 ;
   XTools::int32 arg2 ;
   XTools::int32 arg3 ;
@@ -3647,7 +3647,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_IntArrayListener_OnValueI
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_IntArrayListener_OnValueRemoved___(void * jarg1, int jarg2, int jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_IntArrayListener_OnValueRemoved___(void * jarg1, int jarg2, int jarg3) {
   XTools::IntArrayListener *arg1 = (XTools::IntArrayListener *) 0 ;
   XTools::int32 arg2 ;
   XTools::int32 arg3 ;
@@ -3659,7 +3659,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_IntArrayListener_OnValueR
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_IntArrayListener_OnValueRemovedSwigExplicitIntArrayListener___(void * jarg1, int jarg2, int jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_IntArrayListener_OnValueRemovedSwigExplicitIntArrayListener___(void * jarg1, int jarg2, int jarg3) {
   XTools::IntArrayListener *arg1 = (XTools::IntArrayListener *) 0 ;
   XTools::int32 arg2 ;
   XTools::int32 arg3 ;
@@ -3671,7 +3671,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_IntArrayListener_OnValueR
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_IntArrayListener___() {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_new_IntArrayListener___() {
   void * jresult ;
   XTools::IntArrayListener *result = 0 ;
   
@@ -3681,7 +3681,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_IntArrayListener___
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_IntArrayListener_director_connect___(void *objarg, SwigDirector_IntArrayListener::SWIG_Callback0_t callback0, SwigDirector_IntArrayListener::SWIG_Callback1_t callback1, SwigDirector_IntArrayListener::SWIG_Callback2_t callback2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_IntArrayListener_director_connect___(void *objarg, SwigDirector_IntArrayListener::SWIG_Callback0_t callback0, SwigDirector_IntArrayListener::SWIG_Callback1_t callback1, SwigDirector_IntArrayListener::SWIG_Callback2_t callback2) {
   XTools::IntArrayListener *obj = (XTools::IntArrayListener *)objarg;
   SwigDirector_IntArrayListener *director = dynamic_cast<SwigDirector_IntArrayListener *>(obj);
   if (director) {
@@ -3690,7 +3690,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_IntArrayListener_director
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_IntArrayElement_Cast___(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_IntArrayElement_Cast___(void * jarg1) {
   void * jresult ;
   XTools::ElementPtr *arg1 = 0 ;
   XTools::ElementPtr tempnull1 ;
@@ -3722,7 +3722,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_IntArrayElement_Cast___
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_IntArrayElement_GetCount___(void * jarg1) {
+SWIGEXPORT int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_IntArrayElement_GetCount___(void * jarg1) {
   int jresult ;
   XTools::IntArrayElement *arg1 = (XTools::IntArrayElement *) 0 ;
   XTools::int32 result;
@@ -3734,7 +3734,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_IntArrayElement_GetCount__
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_IntArrayElement_GetValue___(void * jarg1, int jarg2) {
+SWIGEXPORT int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_IntArrayElement_GetValue___(void * jarg1, int jarg2) {
   int jresult ;
   XTools::IntArrayElement *arg1 = (XTools::IntArrayElement *) 0 ;
   XTools::int32 arg2 ;
@@ -3748,7 +3748,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_IntArrayElement_GetValue__
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_IntArrayElement_SetValue___(void * jarg1, int jarg2, int jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_IntArrayElement_SetValue___(void * jarg1, int jarg2, int jarg3) {
   XTools::IntArrayElement *arg1 = (XTools::IntArrayElement *) 0 ;
   XTools::int32 arg2 ;
   XTools::int32 arg3 ;
@@ -3760,7 +3760,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_IntArrayElement_SetValue_
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_IntArrayElement_InsertValue___(void * jarg1, int jarg2, int jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_IntArrayElement_InsertValue___(void * jarg1, int jarg2, int jarg3) {
   XTools::IntArrayElement *arg1 = (XTools::IntArrayElement *) 0 ;
   XTools::int32 arg2 ;
   XTools::int32 arg3 ;
@@ -3772,7 +3772,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_IntArrayElement_InsertVal
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_IntArrayElement_RemoveValue___(void * jarg1, int jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_IntArrayElement_RemoveValue___(void * jarg1, int jarg2) {
   XTools::IntArrayElement *arg1 = (XTools::IntArrayElement *) 0 ;
   XTools::int32 arg2 ;
   
@@ -3782,7 +3782,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_IntArrayElement_RemoveVal
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_IntArrayElement_AddListener___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_IntArrayElement_AddListener___(void * jarg1, void * jarg2) {
   XTools::IntArrayElement *arg1 = (XTools::IntArrayElement *) 0 ;
   XTools::IntArrayListener *arg2 = (XTools::IntArrayListener *) 0 ;
   
@@ -3792,7 +3792,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_IntArrayElement_AddListen
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_IntArrayElement_RemoveListener___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_IntArrayElement_RemoveListener___(void * jarg1, void * jarg2) {
   XTools::IntArrayElement *arg1 = (XTools::IntArrayElement *) 0 ;
   XTools::IntArrayListener *arg2 = (XTools::IntArrayListener *) 0 ;
   
@@ -3802,7 +3802,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_IntArrayElement_RemoveLis
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_IntArrayElement___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_IntArrayElement___(void * jarg1) {
   XTools::IntArrayElement *arg1 = (XTools::IntArrayElement *) 0 ;
   
   arg1 = (XTools::IntArrayElement *)jarg1; 
@@ -3810,7 +3810,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_IntArrayElement___
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_FloatArrayListener___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_FloatArrayListener___(void * jarg1) {
   XTools::FloatArrayListener *arg1 = (XTools::FloatArrayListener *) 0 ;
   
   arg1 = (XTools::FloatArrayListener *)jarg1; 
@@ -3818,7 +3818,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_FloatArrayListener
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_FloatArrayListener_OnValueChanged___(void * jarg1, int jarg2, float jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_FloatArrayListener_OnValueChanged___(void * jarg1, int jarg2, float jarg3) {
   XTools::FloatArrayListener *arg1 = (XTools::FloatArrayListener *) 0 ;
   XTools::int32 arg2 ;
   float arg3 ;
@@ -3830,7 +3830,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_FloatArrayListener_OnValu
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_FloatArrayListener_OnValueChangedSwigExplicitFloatArrayListener___(void * jarg1, int jarg2, float jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_FloatArrayListener_OnValueChangedSwigExplicitFloatArrayListener___(void * jarg1, int jarg2, float jarg3) {
   XTools::FloatArrayListener *arg1 = (XTools::FloatArrayListener *) 0 ;
   XTools::int32 arg2 ;
   float arg3 ;
@@ -3842,7 +3842,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_FloatArrayListener_OnValu
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_FloatArrayListener_OnValueInserted___(void * jarg1, int jarg2, float jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_FloatArrayListener_OnValueInserted___(void * jarg1, int jarg2, float jarg3) {
   XTools::FloatArrayListener *arg1 = (XTools::FloatArrayListener *) 0 ;
   XTools::int32 arg2 ;
   float arg3 ;
@@ -3854,7 +3854,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_FloatArrayListener_OnValu
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_FloatArrayListener_OnValueInsertedSwigExplicitFloatArrayListener___(void * jarg1, int jarg2, float jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_FloatArrayListener_OnValueInsertedSwigExplicitFloatArrayListener___(void * jarg1, int jarg2, float jarg3) {
   XTools::FloatArrayListener *arg1 = (XTools::FloatArrayListener *) 0 ;
   XTools::int32 arg2 ;
   float arg3 ;
@@ -3866,7 +3866,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_FloatArrayListener_OnValu
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_FloatArrayListener_OnValueRemoved___(void * jarg1, int jarg2, float jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_FloatArrayListener_OnValueRemoved___(void * jarg1, int jarg2, float jarg3) {
   XTools::FloatArrayListener *arg1 = (XTools::FloatArrayListener *) 0 ;
   XTools::int32 arg2 ;
   float arg3 ;
@@ -3878,7 +3878,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_FloatArrayListener_OnValu
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_FloatArrayListener_OnValueRemovedSwigExplicitFloatArrayListener___(void * jarg1, int jarg2, float jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_FloatArrayListener_OnValueRemovedSwigExplicitFloatArrayListener___(void * jarg1, int jarg2, float jarg3) {
   XTools::FloatArrayListener *arg1 = (XTools::FloatArrayListener *) 0 ;
   XTools::int32 arg2 ;
   float arg3 ;
@@ -3890,7 +3890,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_FloatArrayListener_OnValu
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_FloatArrayListener___() {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_new_FloatArrayListener___() {
   void * jresult ;
   XTools::FloatArrayListener *result = 0 ;
   
@@ -3900,7 +3900,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_FloatArrayListener_
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_FloatArrayListener_director_connect___(void *objarg, SwigDirector_FloatArrayListener::SWIG_Callback0_t callback0, SwigDirector_FloatArrayListener::SWIG_Callback1_t callback1, SwigDirector_FloatArrayListener::SWIG_Callback2_t callback2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_FloatArrayListener_director_connect___(void *objarg, SwigDirector_FloatArrayListener::SWIG_Callback0_t callback0, SwigDirector_FloatArrayListener::SWIG_Callback1_t callback1, SwigDirector_FloatArrayListener::SWIG_Callback2_t callback2) {
   XTools::FloatArrayListener *obj = (XTools::FloatArrayListener *)objarg;
   SwigDirector_FloatArrayListener *director = dynamic_cast<SwigDirector_FloatArrayListener *>(obj);
   if (director) {
@@ -3909,7 +3909,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_FloatArrayListener_direct
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_FloatArrayElement_Cast___(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_FloatArrayElement_Cast___(void * jarg1) {
   void * jresult ;
   XTools::ElementPtr *arg1 = 0 ;
   XTools::ElementPtr tempnull1 ;
@@ -3941,7 +3941,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_FloatArrayElement_Cast_
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_FloatArrayElement_GetCount___(void * jarg1) {
+SWIGEXPORT int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_FloatArrayElement_GetCount___(void * jarg1) {
   int jresult ;
   XTools::FloatArrayElement *arg1 = (XTools::FloatArrayElement *) 0 ;
   XTools::int32 result;
@@ -3953,7 +3953,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_FloatArrayElement_GetCount
 }
 
 
-SWIGEXPORT float SWIGSTDCALL CSharp_HoloToolkitfSharing_FloatArrayElement_GetValue___(void * jarg1, int jarg2) {
+SWIGEXPORT float SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_FloatArrayElement_GetValue___(void * jarg1, int jarg2) {
   float jresult ;
   XTools::FloatArrayElement *arg1 = (XTools::FloatArrayElement *) 0 ;
   XTools::int32 arg2 ;
@@ -3967,7 +3967,7 @@ SWIGEXPORT float SWIGSTDCALL CSharp_HoloToolkitfSharing_FloatArrayElement_GetVal
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_FloatArrayElement_SetValue___(void * jarg1, int jarg2, float jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_FloatArrayElement_SetValue___(void * jarg1, int jarg2, float jarg3) {
   XTools::FloatArrayElement *arg1 = (XTools::FloatArrayElement *) 0 ;
   XTools::int32 arg2 ;
   float arg3 ;
@@ -3979,7 +3979,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_FloatArrayElement_SetValu
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_FloatArrayElement_InsertValue___(void * jarg1, int jarg2, float jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_FloatArrayElement_InsertValue___(void * jarg1, int jarg2, float jarg3) {
   XTools::FloatArrayElement *arg1 = (XTools::FloatArrayElement *) 0 ;
   XTools::int32 arg2 ;
   float arg3 ;
@@ -3991,7 +3991,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_FloatArrayElement_InsertV
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_FloatArrayElement_RemoveValue___(void * jarg1, int jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_FloatArrayElement_RemoveValue___(void * jarg1, int jarg2) {
   XTools::FloatArrayElement *arg1 = (XTools::FloatArrayElement *) 0 ;
   XTools::int32 arg2 ;
   
@@ -4001,7 +4001,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_FloatArrayElement_RemoveV
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_FloatArrayElement_AddListener___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_FloatArrayElement_AddListener___(void * jarg1, void * jarg2) {
   XTools::FloatArrayElement *arg1 = (XTools::FloatArrayElement *) 0 ;
   XTools::FloatArrayListener *arg2 = (XTools::FloatArrayListener *) 0 ;
   
@@ -4011,7 +4011,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_FloatArrayElement_AddList
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_FloatArrayElement_RemoveListener___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_FloatArrayElement_RemoveListener___(void * jarg1, void * jarg2) {
   XTools::FloatArrayElement *arg1 = (XTools::FloatArrayElement *) 0 ;
   XTools::FloatArrayListener *arg2 = (XTools::FloatArrayListener *) 0 ;
   
@@ -4021,7 +4021,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_FloatArrayElement_RemoveL
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_FloatArrayElement___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_FloatArrayElement___(void * jarg1) {
   XTools::FloatArrayElement *arg1 = (XTools::FloatArrayElement *) 0 ;
   
   arg1 = (XTools::FloatArrayElement *)jarg1; 
@@ -4029,7 +4029,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_FloatArrayElement_
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_StringArrayListener___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_StringArrayListener___(void * jarg1) {
   XTools::StringArrayListener *arg1 = (XTools::StringArrayListener *) 0 ;
   
   arg1 = (XTools::StringArrayListener *)jarg1; 
@@ -4037,7 +4037,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_StringArrayListene
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_StringArrayListener_OnValueChanged___(void * jarg1, int jarg2, void * jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_StringArrayListener_OnValueChanged___(void * jarg1, int jarg2, void * jarg3) {
   XTools::StringArrayListener *arg1 = (XTools::StringArrayListener *) 0 ;
   XTools::int32 arg2 ;
   XTools::XStringPtr *arg3 = 0 ;
@@ -4061,7 +4061,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_StringArrayListener_OnVal
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_StringArrayListener_OnValueChangedSwigExplicitStringArrayListener___(void * jarg1, int jarg2, void * jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_StringArrayListener_OnValueChangedSwigExplicitStringArrayListener___(void * jarg1, int jarg2, void * jarg3) {
   XTools::StringArrayListener *arg1 = (XTools::StringArrayListener *) 0 ;
   XTools::int32 arg2 ;
   XTools::XStringPtr *arg3 = 0 ;
@@ -4085,7 +4085,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_StringArrayListener_OnVal
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_StringArrayListener_OnValueInserted___(void * jarg1, int jarg2, void * jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_StringArrayListener_OnValueInserted___(void * jarg1, int jarg2, void * jarg3) {
   XTools::StringArrayListener *arg1 = (XTools::StringArrayListener *) 0 ;
   XTools::int32 arg2 ;
   XTools::XStringPtr *arg3 = 0 ;
@@ -4109,7 +4109,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_StringArrayListener_OnVal
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_StringArrayListener_OnValueInsertedSwigExplicitStringArrayListener___(void * jarg1, int jarg2, void * jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_StringArrayListener_OnValueInsertedSwigExplicitStringArrayListener___(void * jarg1, int jarg2, void * jarg3) {
   XTools::StringArrayListener *arg1 = (XTools::StringArrayListener *) 0 ;
   XTools::int32 arg2 ;
   XTools::XStringPtr *arg3 = 0 ;
@@ -4133,7 +4133,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_StringArrayListener_OnVal
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_StringArrayListener_OnValueRemoved___(void * jarg1, int jarg2, void * jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_StringArrayListener_OnValueRemoved___(void * jarg1, int jarg2, void * jarg3) {
   XTools::StringArrayListener *arg1 = (XTools::StringArrayListener *) 0 ;
   XTools::int32 arg2 ;
   XTools::XStringPtr *arg3 = 0 ;
@@ -4157,7 +4157,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_StringArrayListener_OnVal
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_StringArrayListener_OnValueRemovedSwigExplicitStringArrayListener___(void * jarg1, int jarg2, void * jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_StringArrayListener_OnValueRemovedSwigExplicitStringArrayListener___(void * jarg1, int jarg2, void * jarg3) {
   XTools::StringArrayListener *arg1 = (XTools::StringArrayListener *) 0 ;
   XTools::int32 arg2 ;
   XTools::XStringPtr *arg3 = 0 ;
@@ -4181,7 +4181,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_StringArrayListener_OnVal
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_StringArrayListener___() {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_new_StringArrayListener___() {
   void * jresult ;
   XTools::StringArrayListener *result = 0 ;
   
@@ -4191,7 +4191,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_StringArrayListener
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_StringArrayListener_director_connect___(void *objarg, SwigDirector_StringArrayListener::SWIG_Callback0_t callback0, SwigDirector_StringArrayListener::SWIG_Callback1_t callback1, SwigDirector_StringArrayListener::SWIG_Callback2_t callback2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_StringArrayListener_director_connect___(void *objarg, SwigDirector_StringArrayListener::SWIG_Callback0_t callback0, SwigDirector_StringArrayListener::SWIG_Callback1_t callback1, SwigDirector_StringArrayListener::SWIG_Callback2_t callback2) {
   XTools::StringArrayListener *obj = (XTools::StringArrayListener *)objarg;
   SwigDirector_StringArrayListener *director = dynamic_cast<SwigDirector_StringArrayListener *>(obj);
   if (director) {
@@ -4200,7 +4200,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_StringArrayListener_direc
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_StringArrayElement_Cast___(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_StringArrayElement_Cast___(void * jarg1) {
   void * jresult ;
   XTools::ElementPtr *arg1 = 0 ;
   XTools::ElementPtr tempnull1 ;
@@ -4232,7 +4232,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_StringArrayElement_Cast
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_StringArrayElement_GetCount___(void * jarg1) {
+SWIGEXPORT int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_StringArrayElement_GetCount___(void * jarg1) {
   int jresult ;
   XTools::StringArrayElement *arg1 = (XTools::StringArrayElement *) 0 ;
   XTools::int32 result;
@@ -4244,7 +4244,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_StringArrayElement_GetCoun
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_StringArrayElement_GetValue___(void * jarg1, int jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_StringArrayElement_GetValue___(void * jarg1, int jarg2) {
   void * jresult ;
   XTools::StringArrayElement *arg1 = (XTools::StringArrayElement *) 0 ;
   XTools::int32 arg2 ;
@@ -4266,7 +4266,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_StringArrayElement_GetV
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_StringArrayElement_SetValue___(void * jarg1, int jarg2, void * jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_StringArrayElement_SetValue___(void * jarg1, int jarg2, void * jarg3) {
   XTools::StringArrayElement *arg1 = (XTools::StringArrayElement *) 0 ;
   XTools::int32 arg2 ;
   XTools::XStringPtr *arg3 = 0 ;
@@ -4290,7 +4290,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_StringArrayElement_SetVal
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_StringArrayElement_InsertValue___(void * jarg1, int jarg2, void * jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_StringArrayElement_InsertValue___(void * jarg1, int jarg2, void * jarg3) {
   XTools::StringArrayElement *arg1 = (XTools::StringArrayElement *) 0 ;
   XTools::int32 arg2 ;
   XTools::XStringPtr *arg3 = 0 ;
@@ -4314,7 +4314,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_StringArrayElement_Insert
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_StringArrayElement_RemoveValue___(void * jarg1, int jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_StringArrayElement_RemoveValue___(void * jarg1, int jarg2) {
   XTools::StringArrayElement *arg1 = (XTools::StringArrayElement *) 0 ;
   XTools::int32 arg2 ;
   
@@ -4324,7 +4324,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_StringArrayElement_Remove
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_StringArrayElement_AddListener___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_StringArrayElement_AddListener___(void * jarg1, void * jarg2) {
   XTools::StringArrayElement *arg1 = (XTools::StringArrayElement *) 0 ;
   XTools::StringArrayListener *arg2 = (XTools::StringArrayListener *) 0 ;
   
@@ -4334,7 +4334,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_StringArrayElement_AddLis
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_StringArrayElement_RemoveListener___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_StringArrayElement_RemoveListener___(void * jarg1, void * jarg2) {
   XTools::StringArrayElement *arg1 = (XTools::StringArrayElement *) 0 ;
   XTools::StringArrayListener *arg2 = (XTools::StringArrayListener *) 0 ;
   
@@ -4344,7 +4344,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_StringArrayElement_Remove
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_StringArrayElement___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_StringArrayElement___(void * jarg1) {
   XTools::StringArrayElement *arg1 = (XTools::StringArrayElement *) 0 ;
   
   arg1 = (XTools::StringArrayElement *)jarg1; 
@@ -4352,7 +4352,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_StringArrayElement
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_ObjectElementListener___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_ObjectElementListener___(void * jarg1) {
   XTools::ObjectElementListener *arg1 = (XTools::ObjectElementListener *) 0 ;
   
   arg1 = (XTools::ObjectElementListener *)jarg1; 
@@ -4360,7 +4360,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_ObjectElementListe
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElementListener_OnBoolElementChanged___(void * jarg1, long long jarg2, unsigned int jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ObjectElementListener_OnBoolElementChanged___(void * jarg1, long long jarg2, unsigned int jarg3) {
   XTools::ObjectElementListener *arg1 = (XTools::ObjectElementListener *) 0 ;
   XTools::XGuid arg2 ;
   bool arg3 ;
@@ -4372,7 +4372,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElementListener_OnB
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElementListener_OnBoolElementChangedSwigExplicitObjectElementListener___(void * jarg1, long long jarg2, unsigned int jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ObjectElementListener_OnBoolElementChangedSwigExplicitObjectElementListener___(void * jarg1, long long jarg2, unsigned int jarg3) {
   XTools::ObjectElementListener *arg1 = (XTools::ObjectElementListener *) 0 ;
   XTools::XGuid arg2 ;
   bool arg3 ;
@@ -4384,7 +4384,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElementListener_OnB
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElementListener_OnIntElementChanged___(void * jarg1, long long jarg2, int jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ObjectElementListener_OnIntElementChanged___(void * jarg1, long long jarg2, int jarg3) {
   XTools::ObjectElementListener *arg1 = (XTools::ObjectElementListener *) 0 ;
   XTools::XGuid arg2 ;
   XTools::int32 arg3 ;
@@ -4396,7 +4396,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElementListener_OnI
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElementListener_OnIntElementChangedSwigExplicitObjectElementListener___(void * jarg1, long long jarg2, int jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ObjectElementListener_OnIntElementChangedSwigExplicitObjectElementListener___(void * jarg1, long long jarg2, int jarg3) {
   XTools::ObjectElementListener *arg1 = (XTools::ObjectElementListener *) 0 ;
   XTools::XGuid arg2 ;
   XTools::int32 arg3 ;
@@ -4408,7 +4408,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElementListener_OnI
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElementListener_OnLongElementChanged___(void * jarg1, long long jarg2, long long jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ObjectElementListener_OnLongElementChanged___(void * jarg1, long long jarg2, long long jarg3) {
   XTools::ObjectElementListener *arg1 = (XTools::ObjectElementListener *) 0 ;
   XTools::XGuid arg2 ;
   XTools::int64 arg3 ;
@@ -4420,7 +4420,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElementListener_OnL
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElementListener_OnLongElementChangedSwigExplicitObjectElementListener___(void * jarg1, long long jarg2, long long jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ObjectElementListener_OnLongElementChangedSwigExplicitObjectElementListener___(void * jarg1, long long jarg2, long long jarg3) {
   XTools::ObjectElementListener *arg1 = (XTools::ObjectElementListener *) 0 ;
   XTools::XGuid arg2 ;
   XTools::int64 arg3 ;
@@ -4432,7 +4432,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElementListener_OnL
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElementListener_OnFloatElementChanged___(void * jarg1, long long jarg2, float jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ObjectElementListener_OnFloatElementChanged___(void * jarg1, long long jarg2, float jarg3) {
   XTools::ObjectElementListener *arg1 = (XTools::ObjectElementListener *) 0 ;
   XTools::XGuid arg2 ;
   float arg3 ;
@@ -4444,7 +4444,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElementListener_OnF
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElementListener_OnFloatElementChangedSwigExplicitObjectElementListener___(void * jarg1, long long jarg2, float jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ObjectElementListener_OnFloatElementChangedSwigExplicitObjectElementListener___(void * jarg1, long long jarg2, float jarg3) {
   XTools::ObjectElementListener *arg1 = (XTools::ObjectElementListener *) 0 ;
   XTools::XGuid arg2 ;
   float arg3 ;
@@ -4456,7 +4456,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElementListener_OnF
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElementListener_OnDoubleElementChanged___(void * jarg1, long long jarg2, double jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ObjectElementListener_OnDoubleElementChanged___(void * jarg1, long long jarg2, double jarg3) {
   XTools::ObjectElementListener *arg1 = (XTools::ObjectElementListener *) 0 ;
   XTools::XGuid arg2 ;
   double arg3 ;
@@ -4468,7 +4468,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElementListener_OnD
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElementListener_OnDoubleElementChangedSwigExplicitObjectElementListener___(void * jarg1, long long jarg2, double jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ObjectElementListener_OnDoubleElementChangedSwigExplicitObjectElementListener___(void * jarg1, long long jarg2, double jarg3) {
   XTools::ObjectElementListener *arg1 = (XTools::ObjectElementListener *) 0 ;
   XTools::XGuid arg2 ;
   double arg3 ;
@@ -4480,7 +4480,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElementListener_OnD
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElementListener_OnStringElementChanged___(void * jarg1, long long jarg2, void * jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ObjectElementListener_OnStringElementChanged___(void * jarg1, long long jarg2, void * jarg3) {
   XTools::ObjectElementListener *arg1 = (XTools::ObjectElementListener *) 0 ;
   XTools::XGuid arg2 ;
   XTools::XStringPtr *arg3 = 0 ;
@@ -4504,7 +4504,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElementListener_OnS
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElementListener_OnStringElementChangedSwigExplicitObjectElementListener___(void * jarg1, long long jarg2, void * jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ObjectElementListener_OnStringElementChangedSwigExplicitObjectElementListener___(void * jarg1, long long jarg2, void * jarg3) {
   XTools::ObjectElementListener *arg1 = (XTools::ObjectElementListener *) 0 ;
   XTools::XGuid arg2 ;
   XTools::XStringPtr *arg3 = 0 ;
@@ -4528,7 +4528,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElementListener_OnS
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElementListener_OnElementAdded___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ObjectElementListener_OnElementAdded___(void * jarg1, void * jarg2) {
   XTools::ObjectElementListener *arg1 = (XTools::ObjectElementListener *) 0 ;
   XTools::ElementPtr *arg2 = 0 ;
   XTools::ElementPtr tempnull2 ;
@@ -4550,7 +4550,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElementListener_OnE
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElementListener_OnElementAddedSwigExplicitObjectElementListener___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ObjectElementListener_OnElementAddedSwigExplicitObjectElementListener___(void * jarg1, void * jarg2) {
   XTools::ObjectElementListener *arg1 = (XTools::ObjectElementListener *) 0 ;
   XTools::ElementPtr *arg2 = 0 ;
   XTools::ElementPtr tempnull2 ;
@@ -4572,7 +4572,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElementListener_OnE
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElementListener_OnElementDeleted___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ObjectElementListener_OnElementDeleted___(void * jarg1, void * jarg2) {
   XTools::ObjectElementListener *arg1 = (XTools::ObjectElementListener *) 0 ;
   XTools::ElementPtr *arg2 = 0 ;
   XTools::ElementPtr tempnull2 ;
@@ -4594,7 +4594,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElementListener_OnE
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElementListener_OnElementDeletedSwigExplicitObjectElementListener___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ObjectElementListener_OnElementDeletedSwigExplicitObjectElementListener___(void * jarg1, void * jarg2) {
   XTools::ObjectElementListener *arg1 = (XTools::ObjectElementListener *) 0 ;
   XTools::ElementPtr *arg2 = 0 ;
   XTools::ElementPtr tempnull2 ;
@@ -4616,7 +4616,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElementListener_OnE
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_ObjectElementListener___() {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_new_ObjectElementListener___() {
   void * jresult ;
   XTools::ObjectElementListener *result = 0 ;
   
@@ -4626,7 +4626,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_ObjectElementListen
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElementListener_director_connect___(void *objarg, SwigDirector_ObjectElementListener::SWIG_Callback0_t callback0, SwigDirector_ObjectElementListener::SWIG_Callback1_t callback1, SwigDirector_ObjectElementListener::SWIG_Callback2_t callback2, SwigDirector_ObjectElementListener::SWIG_Callback3_t callback3, SwigDirector_ObjectElementListener::SWIG_Callback4_t callback4, SwigDirector_ObjectElementListener::SWIG_Callback5_t callback5, SwigDirector_ObjectElementListener::SWIG_Callback6_t callback6, SwigDirector_ObjectElementListener::SWIG_Callback7_t callback7) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ObjectElementListener_director_connect___(void *objarg, SwigDirector_ObjectElementListener::SWIG_Callback0_t callback0, SwigDirector_ObjectElementListener::SWIG_Callback1_t callback1, SwigDirector_ObjectElementListener::SWIG_Callback2_t callback2, SwigDirector_ObjectElementListener::SWIG_Callback3_t callback3, SwigDirector_ObjectElementListener::SWIG_Callback4_t callback4, SwigDirector_ObjectElementListener::SWIG_Callback5_t callback5, SwigDirector_ObjectElementListener::SWIG_Callback6_t callback6, SwigDirector_ObjectElementListener::SWIG_Callback7_t callback7) {
   XTools::ObjectElementListener *obj = (XTools::ObjectElementListener *)objarg;
   SwigDirector_ObjectElementListener *director = dynamic_cast<SwigDirector_ObjectElementListener *>(obj);
   if (director) {
@@ -4635,7 +4635,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElementListener_dir
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElement_Cast___(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ObjectElement_Cast___(void * jarg1) {
   void * jresult ;
   XTools::ElementPtr *arg1 = 0 ;
   XTools::ElementPtr tempnull1 ;
@@ -4667,7 +4667,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElement_Cast___(v
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElement_CreateBoolElement___(void * jarg1, void * jarg2, unsigned int jarg3) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ObjectElement_CreateBoolElement___(void * jarg1, void * jarg2, unsigned int jarg3) {
   void * jresult ;
   XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
   XTools::XStringPtr *arg2 = 0 ;
@@ -4703,7 +4703,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElement_CreateBoo
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElement_CreateIntElement___(void * jarg1, void * jarg2, int jarg3) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ObjectElement_CreateIntElement___(void * jarg1, void * jarg2, int jarg3) {
   void * jresult ;
   XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
   XTools::XStringPtr *arg2 = 0 ;
@@ -4739,7 +4739,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElement_CreateInt
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElement_CreateLongElement___(void * jarg1, void * jarg2, long long jarg3) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ObjectElement_CreateLongElement___(void * jarg1, void * jarg2, long long jarg3) {
   void * jresult ;
   XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
   XTools::XStringPtr *arg2 = 0 ;
@@ -4775,7 +4775,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElement_CreateLon
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElement_CreateFloatElement___(void * jarg1, void * jarg2, float jarg3) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ObjectElement_CreateFloatElement___(void * jarg1, void * jarg2, float jarg3) {
   void * jresult ;
   XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
   XTools::XStringPtr *arg2 = 0 ;
@@ -4811,7 +4811,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElement_CreateFlo
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElement_CreateDoubleElement___(void * jarg1, void * jarg2, double jarg3) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ObjectElement_CreateDoubleElement___(void * jarg1, void * jarg2, double jarg3) {
   void * jresult ;
   XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
   XTools::XStringPtr *arg2 = 0 ;
@@ -4847,7 +4847,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElement_CreateDou
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElement_CreateStringElement___(void * jarg1, void * jarg2, void * jarg3) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ObjectElement_CreateStringElement___(void * jarg1, void * jarg2, void * jarg3) {
   void * jresult ;
   XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
   XTools::XStringPtr *arg2 = 0 ;
@@ -4895,7 +4895,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElement_CreateStr
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElement_CreateObjectElement__SWIG_0___(void * jarg1, void * jarg2, void * jarg3, void * jarg4) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ObjectElement_CreateObjectElement__SWIG_0___(void * jarg1, void * jarg2, void * jarg3, void * jarg4) {
   void * jresult ;
   XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
   XTools::XStringPtr *arg2 = 0 ;
@@ -4945,7 +4945,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElement_CreateObj
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElement_CreateObjectElement__SWIG_1___(void * jarg1, void * jarg2, void * jarg3) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ObjectElement_CreateObjectElement__SWIG_1___(void * jarg1, void * jarg2, void * jarg3) {
   void * jresult ;
   XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
   XTools::XStringPtr *arg2 = 0 ;
@@ -4993,7 +4993,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElement_CreateObj
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElement_CreateIntArrayElement___(void * jarg1, void * jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ObjectElement_CreateIntArrayElement___(void * jarg1, void * jarg2) {
   void * jresult ;
   XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
   XTools::XStringPtr *arg2 = 0 ;
@@ -5027,7 +5027,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElement_CreateInt
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElement_CreateFloatArrayElement___(void * jarg1, void * jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ObjectElement_CreateFloatArrayElement___(void * jarg1, void * jarg2) {
   void * jresult ;
   XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
   XTools::XStringPtr *arg2 = 0 ;
@@ -5061,7 +5061,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElement_CreateFlo
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElement_CreateStringArrayElement___(void * jarg1, void * jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ObjectElement_CreateStringArrayElement___(void * jarg1, void * jarg2) {
   void * jresult ;
   XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
   XTools::XStringPtr *arg2 = 0 ;
@@ -5095,7 +5095,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElement_CreateStr
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElement_GetElementCount___(void * jarg1) {
+SWIGEXPORT int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ObjectElement_GetElementCount___(void * jarg1) {
   int jresult ;
   XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
   XTools::int32 result;
@@ -5107,7 +5107,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElement_GetElementCo
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElement_GetElement__SWIG_0___(void * jarg1, long long jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ObjectElement_GetElement__SWIG_0___(void * jarg1, long long jarg2) {
   void * jresult ;
   XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
   XTools::XGuid arg2 ;
@@ -5129,7 +5129,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElement_GetElemen
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElement_GetElement__SWIG_1___(void * jarg1, void * jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ObjectElement_GetElement__SWIG_1___(void * jarg1, void * jarg2) {
   void * jresult ;
   XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
   XTools::XStringPtr *arg2 = 0 ;
@@ -5163,7 +5163,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElement_GetElemen
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElement_GetElementAt___(void * jarg1, int jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ObjectElement_GetElementAt___(void * jarg1, int jarg2) {
   void * jresult ;
   XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
   XTools::int32 arg2 ;
@@ -5185,7 +5185,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElement_GetElemen
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElement_RemoveElement__SWIG_0___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ObjectElement_RemoveElement__SWIG_0___(void * jarg1, void * jarg2) {
   XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
   XTools::ElementPtr *arg2 = 0 ;
   XTools::ElementPtr tempnull2 ;
@@ -5207,7 +5207,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElement_RemoveEleme
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElement_RemoveElement__SWIG_1___(void * jarg1, long long jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ObjectElement_RemoveElement__SWIG_1___(void * jarg1, long long jarg2) {
   XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
   XTools::XGuid arg2 ;
   
@@ -5217,7 +5217,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElement_RemoveEleme
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElement_RemoveElementAt___(void * jarg1, int jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ObjectElement_RemoveElementAt___(void * jarg1, int jarg2) {
   XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
   XTools::int32 arg2 ;
   
@@ -5227,7 +5227,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElement_RemoveEleme
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElement_AddListener___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ObjectElement_AddListener___(void * jarg1, void * jarg2) {
   XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
   XTools::ObjectElementListener *arg2 = (XTools::ObjectElementListener *) 0 ;
   
@@ -5237,7 +5237,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElement_AddListener
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElement_RemoveListener___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ObjectElement_RemoveListener___(void * jarg1, void * jarg2) {
   XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
   XTools::ObjectElementListener *arg2 = (XTools::ObjectElementListener *) 0 ;
   
@@ -5247,7 +5247,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElement_RemoveListe
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElement_GetOwnerID___(void * jarg1) {
+SWIGEXPORT int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ObjectElement_GetOwnerID___(void * jarg1) {
   int jresult ;
   XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
   XTools::UserID result;
@@ -5259,7 +5259,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElement_GetOwnerID__
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElement_GetObjectType___(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ObjectElement_GetObjectType___(void * jarg1) {
   void * jresult ;
   XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
   XTools::XStringPtr *result = 0 ;
@@ -5279,7 +5279,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElement_GetObject
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_ObjectElement___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_ObjectElement___(void * jarg1) {
   XTools::ObjectElement *arg1 = (XTools::ObjectElement *) 0 ;
   
   arg1 = (XTools::ObjectElement *)jarg1; 
@@ -5287,7 +5287,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_ObjectElement___(v
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SyncListener_OnSyncChangesBegin___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SyncListener_OnSyncChangesBegin___(void * jarg1) {
   XTools::SyncListener *arg1 = (XTools::SyncListener *) 0 ;
   
   arg1 = (XTools::SyncListener *)jarg1; 
@@ -5295,7 +5295,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SyncListener_OnSyncChange
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SyncListener_OnSyncChangesBeginSwigExplicitSyncListener___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SyncListener_OnSyncChangesBeginSwigExplicitSyncListener___(void * jarg1) {
   XTools::SyncListener *arg1 = (XTools::SyncListener *) 0 ;
   
   arg1 = (XTools::SyncListener *)jarg1; 
@@ -5303,7 +5303,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SyncListener_OnSyncChange
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SyncListener_OnSyncChangesEnd___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SyncListener_OnSyncChangesEnd___(void * jarg1) {
   XTools::SyncListener *arg1 = (XTools::SyncListener *) 0 ;
   
   arg1 = (XTools::SyncListener *)jarg1; 
@@ -5311,7 +5311,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SyncListener_OnSyncChange
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SyncListener_OnSyncChangesEndSwigExplicitSyncListener___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SyncListener_OnSyncChangesEndSwigExplicitSyncListener___(void * jarg1) {
   XTools::SyncListener *arg1 = (XTools::SyncListener *) 0 ;
   
   arg1 = (XTools::SyncListener *)jarg1; 
@@ -5319,7 +5319,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SyncListener_OnSyncChange
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_SyncListener___() {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_new_SyncListener___() {
   void * jresult ;
   XTools::SyncListener *result = 0 ;
   
@@ -5329,7 +5329,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_SyncListener___() {
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_SyncListener___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_SyncListener___(void * jarg1) {
   XTools::SyncListener *arg1 = (XTools::SyncListener *) 0 ;
   
   arg1 = (XTools::SyncListener *)jarg1; 
@@ -5337,7 +5337,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_SyncListener___(vo
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SyncListener_director_connect___(void *objarg, SwigDirector_SyncListener::SWIG_Callback0_t callback0, SwigDirector_SyncListener::SWIG_Callback1_t callback1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SyncListener_director_connect___(void *objarg, SwigDirector_SyncListener::SWIG_Callback0_t callback0, SwigDirector_SyncListener::SWIG_Callback1_t callback1) {
   XTools::SyncListener *obj = (XTools::SyncListener *)objarg;
   SwigDirector_SyncListener *director = dynamic_cast<SwigDirector_SyncListener *>(obj);
   if (director) {
@@ -5346,7 +5346,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SyncListener_director_con
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_SessionListener___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_SessionListener___(void * jarg1) {
   XTools::SessionListener *arg1 = (XTools::SessionListener *) 0 ;
   
   arg1 = (XTools::SessionListener *)jarg1; 
@@ -5354,7 +5354,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_SessionListener___
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionListener_OnJoiningSession___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SessionListener_OnJoiningSession___(void * jarg1) {
   XTools::SessionListener *arg1 = (XTools::SessionListener *) 0 ;
   
   arg1 = (XTools::SessionListener *)jarg1; 
@@ -5362,7 +5362,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionListener_OnJoining
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionListener_OnJoiningSessionSwigExplicitSessionListener___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SessionListener_OnJoiningSessionSwigExplicitSessionListener___(void * jarg1) {
   XTools::SessionListener *arg1 = (XTools::SessionListener *) 0 ;
   
   arg1 = (XTools::SessionListener *)jarg1; 
@@ -5370,7 +5370,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionListener_OnJoining
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionListener_OnJoinSucceeded___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SessionListener_OnJoinSucceeded___(void * jarg1) {
   XTools::SessionListener *arg1 = (XTools::SessionListener *) 0 ;
   
   arg1 = (XTools::SessionListener *)jarg1; 
@@ -5378,7 +5378,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionListener_OnJoinSuc
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionListener_OnJoinSucceededSwigExplicitSessionListener___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SessionListener_OnJoinSucceededSwigExplicitSessionListener___(void * jarg1) {
   XTools::SessionListener *arg1 = (XTools::SessionListener *) 0 ;
   
   arg1 = (XTools::SessionListener *)jarg1; 
@@ -5386,7 +5386,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionListener_OnJoinSuc
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionListener_OnJoinFailed___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SessionListener_OnJoinFailed___(void * jarg1) {
   XTools::SessionListener *arg1 = (XTools::SessionListener *) 0 ;
   
   arg1 = (XTools::SessionListener *)jarg1; 
@@ -5394,7 +5394,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionListener_OnJoinFai
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionListener_OnJoinFailedSwigExplicitSessionListener___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SessionListener_OnJoinFailedSwigExplicitSessionListener___(void * jarg1) {
   XTools::SessionListener *arg1 = (XTools::SessionListener *) 0 ;
   
   arg1 = (XTools::SessionListener *)jarg1; 
@@ -5402,7 +5402,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionListener_OnJoinFai
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionListener_OnSessionDisconnected___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SessionListener_OnSessionDisconnected___(void * jarg1) {
   XTools::SessionListener *arg1 = (XTools::SessionListener *) 0 ;
   
   arg1 = (XTools::SessionListener *)jarg1; 
@@ -5410,7 +5410,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionListener_OnSession
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionListener_OnSessionDisconnectedSwigExplicitSessionListener___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SessionListener_OnSessionDisconnectedSwigExplicitSessionListener___(void * jarg1) {
   XTools::SessionListener *arg1 = (XTools::SessionListener *) 0 ;
   
   arg1 = (XTools::SessionListener *)jarg1; 
@@ -5418,7 +5418,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionListener_OnSession
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_SessionListener___() {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_new_SessionListener___() {
   void * jresult ;
   XTools::SessionListener *result = 0 ;
   
@@ -5428,7 +5428,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_SessionListener___(
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionListener_director_connect___(void *objarg, SwigDirector_SessionListener::SWIG_Callback0_t callback0, SwigDirector_SessionListener::SWIG_Callback1_t callback1, SwigDirector_SessionListener::SWIG_Callback2_t callback2, SwigDirector_SessionListener::SWIG_Callback3_t callback3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SessionListener_director_connect___(void *objarg, SwigDirector_SessionListener::SWIG_Callback0_t callback0, SwigDirector_SessionListener::SWIG_Callback1_t callback1, SwigDirector_SessionListener::SWIG_Callback2_t callback2, SwigDirector_SessionListener::SWIG_Callback3_t callback3) {
   XTools::SessionListener *obj = (XTools::SessionListener *)objarg;
   SwigDirector_SessionListener *director = dynamic_cast<SwigDirector_SessionListener *>(obj);
   if (director) {
@@ -5437,7 +5437,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionListener_director_
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_Session_GetMachineSessionState___(void * jarg1) {
+SWIGEXPORT int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_Session_GetMachineSessionState___(void * jarg1) {
   int jresult ;
   XTools::Session *arg1 = (XTools::Session *) 0 ;
   XTools::MachineSessionState result;
@@ -5449,7 +5449,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_Session_GetMachineSessionS
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_Session_AddListener___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_Session_AddListener___(void * jarg1, void * jarg2) {
   XTools::Session *arg1 = (XTools::Session *) 0 ;
   XTools::SessionListener *arg2 = (XTools::SessionListener *) 0 ;
   
@@ -5459,7 +5459,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_Session_AddListener___(vo
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_Session_RemoveListener___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_Session_RemoveListener___(void * jarg1, void * jarg2) {
   XTools::Session *arg1 = (XTools::Session *) 0 ;
   XTools::SessionListener *arg2 = (XTools::SessionListener *) 0 ;
   
@@ -5469,7 +5469,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_Session_RemoveListener___
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_Session_IsJoined___(void * jarg1) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_Session_IsJoined___(void * jarg1) {
   unsigned int jresult ;
   XTools::Session *arg1 = (XTools::Session *) 0 ;
   bool result;
@@ -5481,7 +5481,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_Session_IsJoined_
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_Session_Join___(void * jarg1) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_Session_Join___(void * jarg1) {
   unsigned int jresult ;
   XTools::Session *arg1 = (XTools::Session *) 0 ;
   bool result;
@@ -5493,7 +5493,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_Session_Join___(v
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_Session_Leave___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_Session_Leave___(void * jarg1) {
   XTools::Session *arg1 = (XTools::Session *) 0 ;
   
   arg1 = (XTools::Session *)jarg1; 
@@ -5501,7 +5501,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_Session_Leave___(void * j
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_Session_GetUserCount___(void * jarg1) {
+SWIGEXPORT int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_Session_GetUserCount___(void * jarg1) {
   int jresult ;
   XTools::Session *arg1 = (XTools::Session *) 0 ;
   XTools::int32 result;
@@ -5513,7 +5513,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_Session_GetUserCount___(vo
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_Session_GetUser___(void * jarg1, int jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_Session_GetUser___(void * jarg1, int jarg2) {
   void * jresult ;
   XTools::Session *arg1 = (XTools::Session *) 0 ;
   XTools::int32 arg2 ;
@@ -5535,7 +5535,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_Session_GetUser___(void
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_Session_GetSessionType___(void * jarg1) {
+SWIGEXPORT int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_Session_GetSessionType___(void * jarg1) {
   int jresult ;
   XTools::Session *arg1 = (XTools::Session *) 0 ;
   XTools::SessionType result;
@@ -5547,7 +5547,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_Session_GetSessionType___(
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_Session_GetName___(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_Session_GetName___(void * jarg1) {
   void * jresult ;
   XTools::Session *arg1 = (XTools::Session *) 0 ;
   XTools::XStringPtr *result = 0 ;
@@ -5567,7 +5567,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_Session_GetName___(void
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_Session_GetSessionNetworkConnection___(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_Session_GetSessionNetworkConnection___(void * jarg1) {
   void * jresult ;
   XTools::Session *arg1 = (XTools::Session *) 0 ;
   XTools::NetworkConnectionPtr result;
@@ -5587,7 +5587,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_Session_GetSessionNetwo
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_Session___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_Session___(void * jarg1) {
   XTools::Session *arg1 = (XTools::Session *) 0 ;
   
   arg1 = (XTools::Session *)jarg1; 
@@ -5595,7 +5595,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_Session___(void * 
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_SessionManagerListener___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_SessionManagerListener___(void * jarg1) {
   XTools::SessionManagerListener *arg1 = (XTools::SessionManagerListener *) 0 ;
   
   arg1 = (XTools::SessionManagerListener *)jarg1; 
@@ -5603,7 +5603,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_SessionManagerList
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManagerListener_OnCreateSucceeded___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SessionManagerListener_OnCreateSucceeded___(void * jarg1, void * jarg2) {
   XTools::SessionManagerListener *arg1 = (XTools::SessionManagerListener *) 0 ;
   XTools::SessionPtr *arg2 = 0 ;
   XTools::SessionPtr tempnull2 ;
@@ -5625,7 +5625,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManagerListener_On
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManagerListener_OnCreateSucceededSwigExplicitSessionManagerListener___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SessionManagerListener_OnCreateSucceededSwigExplicitSessionManagerListener___(void * jarg1, void * jarg2) {
   XTools::SessionManagerListener *arg1 = (XTools::SessionManagerListener *) 0 ;
   XTools::SessionPtr *arg2 = 0 ;
   XTools::SessionPtr tempnull2 ;
@@ -5647,7 +5647,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManagerListener_On
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManagerListener_OnCreateFailed___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SessionManagerListener_OnCreateFailed___(void * jarg1, void * jarg2) {
   XTools::SessionManagerListener *arg1 = (XTools::SessionManagerListener *) 0 ;
   XTools::XStringPtr *arg2 = 0 ;
   XTools::XStringPtr tempnull2 ;
@@ -5669,7 +5669,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManagerListener_On
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManagerListener_OnCreateFailedSwigExplicitSessionManagerListener___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SessionManagerListener_OnCreateFailedSwigExplicitSessionManagerListener___(void * jarg1, void * jarg2) {
   XTools::SessionManagerListener *arg1 = (XTools::SessionManagerListener *) 0 ;
   XTools::XStringPtr *arg2 = 0 ;
   XTools::XStringPtr tempnull2 ;
@@ -5691,7 +5691,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManagerListener_On
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManagerListener_OnSessionAdded___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SessionManagerListener_OnSessionAdded___(void * jarg1, void * jarg2) {
   XTools::SessionManagerListener *arg1 = (XTools::SessionManagerListener *) 0 ;
   XTools::SessionPtr *arg2 = 0 ;
   XTools::SessionPtr tempnull2 ;
@@ -5713,7 +5713,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManagerListener_On
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManagerListener_OnSessionAddedSwigExplicitSessionManagerListener___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SessionManagerListener_OnSessionAddedSwigExplicitSessionManagerListener___(void * jarg1, void * jarg2) {
   XTools::SessionManagerListener *arg1 = (XTools::SessionManagerListener *) 0 ;
   XTools::SessionPtr *arg2 = 0 ;
   XTools::SessionPtr tempnull2 ;
@@ -5735,7 +5735,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManagerListener_On
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManagerListener_OnSessionClosed___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SessionManagerListener_OnSessionClosed___(void * jarg1, void * jarg2) {
   XTools::SessionManagerListener *arg1 = (XTools::SessionManagerListener *) 0 ;
   XTools::SessionPtr *arg2 = 0 ;
   XTools::SessionPtr tempnull2 ;
@@ -5757,7 +5757,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManagerListener_On
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManagerListener_OnSessionClosedSwigExplicitSessionManagerListener___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SessionManagerListener_OnSessionClosedSwigExplicitSessionManagerListener___(void * jarg1, void * jarg2) {
   XTools::SessionManagerListener *arg1 = (XTools::SessionManagerListener *) 0 ;
   XTools::SessionPtr *arg2 = 0 ;
   XTools::SessionPtr tempnull2 ;
@@ -5779,7 +5779,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManagerListener_On
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManagerListener_OnUserJoinedSession___(void * jarg1, void * jarg2, void * jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SessionManagerListener_OnUserJoinedSession___(void * jarg1, void * jarg2, void * jarg3) {
   XTools::SessionManagerListener *arg1 = (XTools::SessionManagerListener *) 0 ;
   XTools::SessionPtr *arg2 = 0 ;
   XTools::UserPtr *arg3 = 0 ;
@@ -5815,7 +5815,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManagerListener_On
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManagerListener_OnUserJoinedSessionSwigExplicitSessionManagerListener___(void * jarg1, void * jarg2, void * jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SessionManagerListener_OnUserJoinedSessionSwigExplicitSessionManagerListener___(void * jarg1, void * jarg2, void * jarg3) {
   XTools::SessionManagerListener *arg1 = (XTools::SessionManagerListener *) 0 ;
   XTools::SessionPtr *arg2 = 0 ;
   XTools::UserPtr *arg3 = 0 ;
@@ -5851,7 +5851,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManagerListener_On
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManagerListener_OnUserLeftSession___(void * jarg1, void * jarg2, void * jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SessionManagerListener_OnUserLeftSession___(void * jarg1, void * jarg2, void * jarg3) {
   XTools::SessionManagerListener *arg1 = (XTools::SessionManagerListener *) 0 ;
   XTools::SessionPtr *arg2 = 0 ;
   XTools::UserPtr *arg3 = 0 ;
@@ -5887,7 +5887,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManagerListener_On
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManagerListener_OnUserLeftSessionSwigExplicitSessionManagerListener___(void * jarg1, void * jarg2, void * jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SessionManagerListener_OnUserLeftSessionSwigExplicitSessionManagerListener___(void * jarg1, void * jarg2, void * jarg3) {
   XTools::SessionManagerListener *arg1 = (XTools::SessionManagerListener *) 0 ;
   XTools::SessionPtr *arg2 = 0 ;
   XTools::UserPtr *arg3 = 0 ;
@@ -5923,7 +5923,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManagerListener_On
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManagerListener_OnUserChanged___(void * jarg1, void * jarg2, void * jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SessionManagerListener_OnUserChanged___(void * jarg1, void * jarg2, void * jarg3) {
   XTools::SessionManagerListener *arg1 = (XTools::SessionManagerListener *) 0 ;
   XTools::SessionPtr *arg2 = 0 ;
   XTools::UserPtr *arg3 = 0 ;
@@ -5959,7 +5959,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManagerListener_On
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManagerListener_OnUserChangedSwigExplicitSessionManagerListener___(void * jarg1, void * jarg2, void * jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SessionManagerListener_OnUserChangedSwigExplicitSessionManagerListener___(void * jarg1, void * jarg2, void * jarg3) {
   XTools::SessionManagerListener *arg1 = (XTools::SessionManagerListener *) 0 ;
   XTools::SessionPtr *arg2 = 0 ;
   XTools::UserPtr *arg3 = 0 ;
@@ -5995,7 +5995,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManagerListener_On
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManagerListener_OnServerConnected___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SessionManagerListener_OnServerConnected___(void * jarg1) {
   XTools::SessionManagerListener *arg1 = (XTools::SessionManagerListener *) 0 ;
   
   arg1 = (XTools::SessionManagerListener *)jarg1; 
@@ -6003,7 +6003,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManagerListener_On
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManagerListener_OnServerConnectedSwigExplicitSessionManagerListener___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SessionManagerListener_OnServerConnectedSwigExplicitSessionManagerListener___(void * jarg1) {
   XTools::SessionManagerListener *arg1 = (XTools::SessionManagerListener *) 0 ;
   
   arg1 = (XTools::SessionManagerListener *)jarg1; 
@@ -6011,7 +6011,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManagerListener_On
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManagerListener_OnServerDisconnected___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SessionManagerListener_OnServerDisconnected___(void * jarg1) {
   XTools::SessionManagerListener *arg1 = (XTools::SessionManagerListener *) 0 ;
   
   arg1 = (XTools::SessionManagerListener *)jarg1; 
@@ -6019,7 +6019,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManagerListener_On
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManagerListener_OnServerDisconnectedSwigExplicitSessionManagerListener___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SessionManagerListener_OnServerDisconnectedSwigExplicitSessionManagerListener___(void * jarg1) {
   XTools::SessionManagerListener *arg1 = (XTools::SessionManagerListener *) 0 ;
   
   arg1 = (XTools::SessionManagerListener *)jarg1; 
@@ -6027,7 +6027,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManagerListener_On
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_SessionManagerListener___() {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_new_SessionManagerListener___() {
   void * jresult ;
   XTools::SessionManagerListener *result = 0 ;
   
@@ -6037,7 +6037,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_SessionManagerListe
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManagerListener_director_connect___(void *objarg, SwigDirector_SessionManagerListener::SWIG_Callback0_t callback0, SwigDirector_SessionManagerListener::SWIG_Callback1_t callback1, SwigDirector_SessionManagerListener::SWIG_Callback2_t callback2, SwigDirector_SessionManagerListener::SWIG_Callback3_t callback3, SwigDirector_SessionManagerListener::SWIG_Callback4_t callback4, SwigDirector_SessionManagerListener::SWIG_Callback5_t callback5, SwigDirector_SessionManagerListener::SWIG_Callback6_t callback6, SwigDirector_SessionManagerListener::SWIG_Callback7_t callback7, SwigDirector_SessionManagerListener::SWIG_Callback8_t callback8) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SessionManagerListener_director_connect___(void *objarg, SwigDirector_SessionManagerListener::SWIG_Callback0_t callback0, SwigDirector_SessionManagerListener::SWIG_Callback1_t callback1, SwigDirector_SessionManagerListener::SWIG_Callback2_t callback2, SwigDirector_SessionManagerListener::SWIG_Callback3_t callback3, SwigDirector_SessionManagerListener::SWIG_Callback4_t callback4, SwigDirector_SessionManagerListener::SWIG_Callback5_t callback5, SwigDirector_SessionManagerListener::SWIG_Callback6_t callback6, SwigDirector_SessionManagerListener::SWIG_Callback7_t callback7, SwigDirector_SessionManagerListener::SWIG_Callback8_t callback8) {
   XTools::SessionManagerListener *obj = (XTools::SessionManagerListener *)objarg;
   SwigDirector_SessionManagerListener *director = dynamic_cast<SwigDirector_SessionManagerListener *>(obj);
   if (director) {
@@ -6046,7 +6046,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManagerListener_di
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManager_AddListener___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SessionManager_AddListener___(void * jarg1, void * jarg2) {
   XTools::SessionManager *arg1 = (XTools::SessionManager *) 0 ;
   XTools::SessionManagerListener *arg2 = (XTools::SessionManagerListener *) 0 ;
   
@@ -6056,7 +6056,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManager_AddListene
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManager_RemoveListener___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SessionManager_RemoveListener___(void * jarg1, void * jarg2) {
   XTools::SessionManager *arg1 = (XTools::SessionManager *) 0 ;
   XTools::SessionManagerListener *arg2 = (XTools::SessionManagerListener *) 0 ;
   
@@ -6066,7 +6066,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManager_RemoveList
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManager_CreateSession__SWIG_0___(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SessionManager_CreateSession__SWIG_0___(void * jarg1, void * jarg2) {
   unsigned int jresult ;
   XTools::SessionManager *arg1 = (XTools::SessionManager *) 0 ;
   XTools::XStringPtr *arg2 = 0 ;
@@ -6092,7 +6092,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManager_Cr
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManager_CreateSession__SWIG_1___(void * jarg1, void * jarg2, int jarg3) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SessionManager_CreateSession__SWIG_1___(void * jarg1, void * jarg2, int jarg3) {
   unsigned int jresult ;
   XTools::SessionManager *arg1 = (XTools::SessionManager *) 0 ;
   XTools::XStringPtr *arg2 = 0 ;
@@ -6120,7 +6120,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManager_Cr
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManager_GetSessionCount___(void * jarg1) {
+SWIGEXPORT int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SessionManager_GetSessionCount___(void * jarg1) {
   int jresult ;
   XTools::SessionManager *arg1 = (XTools::SessionManager *) 0 ;
   XTools::int32 result;
@@ -6132,7 +6132,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManager_GetSessionC
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManager_GetSession___(void * jarg1, int jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SessionManager_GetSession___(void * jarg1, int jarg2) {
   void * jresult ;
   XTools::SessionManager *arg1 = (XTools::SessionManager *) 0 ;
   XTools::int32 arg2 ;
@@ -6154,7 +6154,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManager_GetSessi
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManager_GetCurrentSession___(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SessionManager_GetCurrentSession___(void * jarg1) {
   void * jresult ;
   XTools::SessionManager *arg1 = (XTools::SessionManager *) 0 ;
   XTools::SessionPtr result;
@@ -6174,7 +6174,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManager_GetCurre
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManager_GetCurrentUser___(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SessionManager_GetCurrentUser___(void * jarg1) {
   void * jresult ;
   XTools::SessionManager *arg1 = (XTools::SessionManager *) 0 ;
   XTools::UserPtr *result = 0 ;
@@ -6194,7 +6194,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManager_GetCurre
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManager_IsServerConnected___(void * jarg1) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SessionManager_IsServerConnected___(void * jarg1) {
   unsigned int jresult ;
   XTools::SessionManager *arg1 = (XTools::SessionManager *) 0 ;
   bool result;
@@ -6206,7 +6206,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManager_Is
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_SessionManager___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_SessionManager___(void * jarg1) {
   XTools::SessionManager *arg1 = (XTools::SessionManager *) 0 ;
   
   arg1 = (XTools::SessionManager *)jarg1; 
@@ -6214,7 +6214,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_SessionManager___(
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_UserPresenceManagerListener___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_UserPresenceManagerListener___(void * jarg1) {
   XTools::UserPresenceManagerListener *arg1 = (XTools::UserPresenceManagerListener *) 0 ;
   
   arg1 = (XTools::UserPresenceManagerListener *)jarg1; 
@@ -6222,7 +6222,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_UserPresenceManage
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_UserPresenceManagerListener_OnUserPresenceChanged___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_UserPresenceManagerListener_OnUserPresenceChanged___(void * jarg1, void * jarg2) {
   XTools::UserPresenceManagerListener *arg1 = (XTools::UserPresenceManagerListener *) 0 ;
   XTools::UserPtr *arg2 = 0 ;
   XTools::UserPtr tempnull2 ;
@@ -6244,7 +6244,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_UserPresenceManagerListen
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_UserPresenceManagerListener_OnUserPresenceChangedSwigExplicitUserPresenceManagerListener___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_UserPresenceManagerListener_OnUserPresenceChangedSwigExplicitUserPresenceManagerListener___(void * jarg1, void * jarg2) {
   XTools::UserPresenceManagerListener *arg1 = (XTools::UserPresenceManagerListener *) 0 ;
   XTools::UserPtr *arg2 = 0 ;
   XTools::UserPtr tempnull2 ;
@@ -6266,7 +6266,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_UserPresenceManagerListen
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_UserPresenceManagerListener___() {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_new_UserPresenceManagerListener___() {
   void * jresult ;
   XTools::UserPresenceManagerListener *result = 0 ;
   
@@ -6276,7 +6276,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_UserPresenceManager
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_UserPresenceManagerListener_director_connect___(void *objarg, SwigDirector_UserPresenceManagerListener::SWIG_Callback0_t callback0) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_UserPresenceManagerListener_director_connect___(void *objarg, SwigDirector_UserPresenceManagerListener::SWIG_Callback0_t callback0) {
   XTools::UserPresenceManagerListener *obj = (XTools::UserPresenceManagerListener *)objarg;
   SwigDirector_UserPresenceManagerListener *director = dynamic_cast<SwigDirector_UserPresenceManagerListener *>(obj);
   if (director) {
@@ -6285,7 +6285,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_UserPresenceManagerListen
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_UserPresenceManager_AddListener___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_UserPresenceManager_AddListener___(void * jarg1, void * jarg2) {
   XTools::UserPresenceManager *arg1 = (XTools::UserPresenceManager *) 0 ;
   XTools::UserPresenceManagerListener *arg2 = (XTools::UserPresenceManagerListener *) 0 ;
   
@@ -6295,7 +6295,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_UserPresenceManager_AddLi
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_UserPresenceManager_RemoveListener___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_UserPresenceManager_RemoveListener___(void * jarg1, void * jarg2) {
   XTools::UserPresenceManager *arg1 = (XTools::UserPresenceManager *) 0 ;
   XTools::UserPresenceManagerListener *arg2 = (XTools::UserPresenceManagerListener *) 0 ;
   
@@ -6305,7 +6305,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_UserPresenceManager_Remov
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_UserPresenceManager_GetMuteState___(void * jarg1) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_UserPresenceManager_GetMuteState___(void * jarg1) {
   unsigned int jresult ;
   XTools::UserPresenceManager *arg1 = (XTools::UserPresenceManager *) 0 ;
   bool result;
@@ -6317,7 +6317,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_UserPresenceManag
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_UserPresenceManager_SetMuteState___(void * jarg1, unsigned int jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_UserPresenceManager_SetMuteState___(void * jarg1, unsigned int jarg2) {
   XTools::UserPresenceManager *arg1 = (XTools::UserPresenceManager *) 0 ;
   bool arg2 ;
   
@@ -6327,7 +6327,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_UserPresenceManager_SetMu
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_UserPresenceManager_SetName___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_UserPresenceManager_SetName___(void * jarg1, void * jarg2) {
   XTools::UserPresenceManager *arg1 = (XTools::UserPresenceManager *) 0 ;
   XTools::XStringPtr *arg2 = 0 ;
   XTools::XStringPtr tempnull2 ;
@@ -6349,7 +6349,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_UserPresenceManager_SetNa
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_UserPresenceManager_GetName___(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_UserPresenceManager_GetName___(void * jarg1) {
   void * jresult ;
   XTools::UserPresenceManager *arg1 = (XTools::UserPresenceManager *) 0 ;
   XTools::XStringPtr result;
@@ -6369,7 +6369,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_UserPresenceManager_Get
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_UserPresenceManager_SetUser___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_UserPresenceManager_SetUser___(void * jarg1, void * jarg2) {
   XTools::UserPresenceManager *arg1 = (XTools::UserPresenceManager *) 0 ;
   XTools::UserPtr *arg2 = 0 ;
   XTools::UserPtr tempnull2 ;
@@ -6391,7 +6391,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_UserPresenceManager_SetUs
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_UserPresenceManager___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_UserPresenceManager___(void * jarg1) {
   XTools::UserPresenceManager *arg1 = (XTools::UserPresenceManager *) 0 ;
   
   arg1 = (XTools::UserPresenceManager *)jarg1; 
@@ -6399,7 +6399,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_UserPresenceManage
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_ClientConfig___(int jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_new_ClientConfig___(int jarg1) {
   void * jresult ;
   XTools::ClientRole arg1 ;
   XTools::ClientConfig *result = 0 ;
@@ -6412,7 +6412,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_ClientConfig___(int
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_ClientConfig_GetRole___(void * jarg1) {
+SWIGEXPORT int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ClientConfig_GetRole___(void * jarg1) {
   int jresult ;
   XTools::ClientConfig *arg1 = (XTools::ClientConfig *) 0 ;
   XTools::ClientRole result;
@@ -6424,7 +6424,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_ClientConfig_GetRole___(vo
 }
 
 
-SWIGEXPORT char * SWIGSTDCALL CSharp_HoloToolkitfSharing_ClientConfig_GetServerAddress___(void * jarg1) {
+SWIGEXPORT char * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ClientConfig_GetServerAddress___(void * jarg1) {
   char * jresult ;
   XTools::ClientConfig *arg1 = (XTools::ClientConfig *) 0 ;
   std::string result;
@@ -6436,7 +6436,7 @@ SWIGEXPORT char * SWIGSTDCALL CSharp_HoloToolkitfSharing_ClientConfig_GetServerA
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_ClientConfig_SetServerAddress___(void * jarg1, char * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ClientConfig_SetServerAddress___(void * jarg1, char * jarg2) {
   unsigned int jresult ;
   XTools::ClientConfig *arg1 = (XTools::ClientConfig *) 0 ;
   std::string *arg2 = 0 ;
@@ -6455,7 +6455,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_ClientConfig_SetS
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_ClientConfig_GetServerPort___(void * jarg1) {
+SWIGEXPORT int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ClientConfig_GetServerPort___(void * jarg1) {
   int jresult ;
   XTools::ClientConfig *arg1 = (XTools::ClientConfig *) 0 ;
   XTools::int32 result;
@@ -6467,7 +6467,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_ClientConfig_GetServerPort
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_ClientConfig_SetServerPort___(void * jarg1, int jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ClientConfig_SetServerPort___(void * jarg1, int jarg2) {
   unsigned int jresult ;
   XTools::ClientConfig *arg1 = (XTools::ClientConfig *) 0 ;
   XTools::int32 arg2 ;
@@ -6481,7 +6481,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_ClientConfig_SetS
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_ClientConfig_GetLogWriter___(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ClientConfig_GetLogWriter___(void * jarg1) {
   void * jresult ;
   XTools::ClientConfig *arg1 = (XTools::ClientConfig *) 0 ;
   XTools::LogWriter *result = 0 ;
@@ -6493,7 +6493,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_ClientConfig_GetLogWrit
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ClientConfig_SetLogWriter___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ClientConfig_SetLogWriter___(void * jarg1, void * jarg2) {
   XTools::ClientConfig *arg1 = (XTools::ClientConfig *) 0 ;
   XTools::LogWriter *arg2 = (XTools::LogWriter *) 0 ;
   
@@ -6503,7 +6503,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ClientConfig_SetLogWriter
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_ClientConfig_GetIsAudioEndpoint___(void * jarg1) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ClientConfig_GetIsAudioEndpoint___(void * jarg1) {
   unsigned int jresult ;
   XTools::ClientConfig *arg1 = (XTools::ClientConfig *) 0 ;
   bool result;
@@ -6515,7 +6515,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_ClientConfig_GetI
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ClientConfig_SetIsAudioEndpoint___(void * jarg1, unsigned int jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ClientConfig_SetIsAudioEndpoint___(void * jarg1, unsigned int jarg2) {
   XTools::ClientConfig *arg1 = (XTools::ClientConfig *) 0 ;
   bool arg2 ;
   
@@ -6525,7 +6525,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ClientConfig_SetIsAudioEn
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_ClientConfig_GetProfilerEnabled___(void * jarg1) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ClientConfig_GetProfilerEnabled___(void * jarg1) {
   unsigned int jresult ;
   XTools::ClientConfig *arg1 = (XTools::ClientConfig *) 0 ;
   bool result;
@@ -6537,7 +6537,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_ClientConfig_GetP
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ClientConfig_SetProfilerEnabled___(void * jarg1, unsigned int jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ClientConfig_SetProfilerEnabled___(void * jarg1, unsigned int jarg2) {
   XTools::ClientConfig *arg1 = (XTools::ClientConfig *) 0 ;
   bool arg2 ;
   
@@ -6547,7 +6547,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ClientConfig_SetProfilerE
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_ClientConfig___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_ClientConfig___(void * jarg1) {
   XTools::ClientConfig *arg1 = (XTools::ClientConfig *) 0 ;
   
   arg1 = (XTools::ClientConfig *)jarg1; 
@@ -6555,7 +6555,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_ClientConfig___(vo
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_AudioManager_SetMicrophoneEnabled___(void * jarg1, unsigned int jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_AudioManager_SetMicrophoneEnabled___(void * jarg1, unsigned int jarg2) {
   XTools::AudioManager *arg1 = (XTools::AudioManager *) 0 ;
   bool arg2 ;
   
@@ -6565,7 +6565,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_AudioManager_SetMicrophon
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_AudioManager___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_AudioManager___(void * jarg1) {
   XTools::AudioManager *arg1 = (XTools::AudioManager *) 0 ;
   
   arg1 = (XTools::AudioManager *)jarg1; 
@@ -6573,7 +6573,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_AudioManager___(vo
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_ProfileManager___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_ProfileManager___(void * jarg1) {
   XTools::ProfileManager *arg1 = (XTools::ProfileManager *) 0 ;
   
   arg1 = (XTools::ProfileManager *)jarg1; 
@@ -6581,7 +6581,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_ProfileManager___(
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ProfileManager_BeginRange___(void * jarg1, char * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ProfileManager_BeginRange___(void * jarg1, char * jarg2) {
   XTools::ProfileManager *arg1 = (XTools::ProfileManager *) 0 ;
   std::string *arg2 = 0 ;
   
@@ -6596,7 +6596,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ProfileManager_BeginRange
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ProfileManager_EndRange___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ProfileManager_EndRange___(void * jarg1) {
   XTools::ProfileManager *arg1 = (XTools::ProfileManager *) 0 ;
   
   arg1 = (XTools::ProfileManager *)jarg1; 
@@ -6604,7 +6604,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ProfileManager_EndRange__
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ProfileManager_Log___(void * jarg1, int jarg2, char * jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ProfileManager_Log___(void * jarg1, int jarg2, char * jarg3) {
   XTools::ProfileManager *arg1 = (XTools::ProfileManager *) 0 ;
   XTools::LogSeverity arg2 ;
   std::string *arg3 = 0 ;
@@ -6621,7 +6621,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_ProfileManager_Log___(voi
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_Profile_BeginRange___(char * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_Profile_BeginRange___(char * jarg1) {
   std::string *arg1 = 0 ;
   
   if (!jarg1) {
@@ -6634,12 +6634,12 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_Profile_BeginRange___(cha
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_Profile_EndRange___() {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_Profile_EndRange___() {
   XTools::Profile::EndRange();
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_Profile___() {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_new_Profile___() {
   void * jresult ;
   XTools::Profile *result = 0 ;
   
@@ -6649,7 +6649,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_Profile___() {
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_Profile___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_Profile___(void * jarg1) {
   XTools::Profile *arg1 = (XTools::Profile *) 0 ;
   
   arg1 = (XTools::Profile *)jarg1; 
@@ -6657,7 +6657,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_Profile___(void * 
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_Room_GetName___(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_Room_GetName___(void * jarg1) {
   void * jresult ;
   XTools::Room *arg1 = (XTools::Room *) 0 ;
   XTools::XStringPtr result;
@@ -6677,7 +6677,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_Room_GetName___(void * 
 }
 
 
-SWIGEXPORT long long SWIGSTDCALL CSharp_HoloToolkitfSharing_Room_GetID___(void * jarg1) {
+SWIGEXPORT long long SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_Room_GetID___(void * jarg1) {
   long long jresult ;
   XTools::Room *arg1 = (XTools::Room *) 0 ;
   XTools::RoomID result;
@@ -6689,7 +6689,7 @@ SWIGEXPORT long long SWIGSTDCALL CSharp_HoloToolkitfSharing_Room_GetID___(void *
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_Room_GetUserCount___(void * jarg1) {
+SWIGEXPORT int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_Room_GetUserCount___(void * jarg1) {
   int jresult ;
   XTools::Room *arg1 = (XTools::Room *) 0 ;
   XTools::int32 result;
@@ -6701,7 +6701,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_Room_GetUserCount___(void 
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_Room_GetUserID___(void * jarg1, int jarg2) {
+SWIGEXPORT int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_Room_GetUserID___(void * jarg1, int jarg2) {
   int jresult ;
   XTools::Room *arg1 = (XTools::Room *) 0 ;
   XTools::int32 arg2 ;
@@ -6715,7 +6715,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_Room_GetUserID___(void * j
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_Room_GetKeepOpen___(void * jarg1) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_Room_GetKeepOpen___(void * jarg1) {
   unsigned int jresult ;
   XTools::Room *arg1 = (XTools::Room *) 0 ;
   bool result;
@@ -6727,7 +6727,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_Room_GetKeepOpen_
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_Room_SetKeepOpen___(void * jarg1, unsigned int jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_Room_SetKeepOpen___(void * jarg1, unsigned int jarg2) {
   XTools::Room *arg1 = (XTools::Room *) 0 ;
   bool arg2 ;
   
@@ -6737,7 +6737,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_Room_SetKeepOpen___(void 
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_Room_GetAnchorCount___(void * jarg1) {
+SWIGEXPORT int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_Room_GetAnchorCount___(void * jarg1) {
   int jresult ;
   XTools::Room *arg1 = (XTools::Room *) 0 ;
   XTools::int32 result;
@@ -6749,7 +6749,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_Room_GetAnchorCount___(voi
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_Room_GetAnchorName___(void * jarg1, int jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_Room_GetAnchorName___(void * jarg1, int jarg2) {
   void * jresult ;
   XTools::Room *arg1 = (XTools::Room *) 0 ;
   XTools::int32 arg2 ;
@@ -6771,7 +6771,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_Room_GetAnchorName___(v
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_Room___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_Room___(void * jarg1) {
   XTools::Room *arg1 = (XTools::Room *) 0 ;
   
   arg1 = (XTools::Room *)jarg1; 
@@ -6779,7 +6779,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_Room___(void * jar
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_AnchorDownloadRequest_GetAnchorName___(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_AnchorDownloadRequest_GetAnchorName___(void * jarg1) {
   void * jresult ;
   XTools::AnchorDownloadRequest *arg1 = (XTools::AnchorDownloadRequest *) 0 ;
   XTools::XStringPtr result;
@@ -6799,7 +6799,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_AnchorDownloadRequest_G
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_AnchorDownloadRequest_GetRoom___(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_AnchorDownloadRequest_GetRoom___(void * jarg1) {
   void * jresult ;
   XTools::AnchorDownloadRequest *arg1 = (XTools::AnchorDownloadRequest *) 0 ;
   XTools::RoomPtr result;
@@ -6819,7 +6819,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_AnchorDownloadRequest_G
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_AnchorDownloadRequest_GetDataSize___(void * jarg1) {
+SWIGEXPORT int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_AnchorDownloadRequest_GetDataSize___(void * jarg1) {
   int jresult ;
   XTools::AnchorDownloadRequest *arg1 = (XTools::AnchorDownloadRequest *) 0 ;
   XTools::int32 result;
@@ -6831,7 +6831,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_AnchorDownloadRequest_GetD
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_AnchorDownloadRequest_GetData___(void * jarg1, unsigned char* jarg2, int jarg3) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_AnchorDownloadRequest_GetData___(void * jarg1, unsigned char* jarg2, int jarg3) {
   unsigned int jresult ;
   XTools::AnchorDownloadRequest *arg1 = (XTools::AnchorDownloadRequest *) 0 ;
   XTools::byte *arg2 = (XTools::byte *) 0 ;
@@ -6849,7 +6849,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_AnchorDownloadReq
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_AnchorDownloadRequest___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_AnchorDownloadRequest___(void * jarg1) {
   XTools::AnchorDownloadRequest *arg1 = (XTools::AnchorDownloadRequest *) 0 ;
   
   arg1 = (XTools::AnchorDownloadRequest *)jarg1; 
@@ -6857,7 +6857,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_AnchorDownloadRequ
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_RoomManagerListener___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_RoomManagerListener___(void * jarg1) {
   XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
   
   arg1 = (XTools::RoomManagerListener *)jarg1; 
@@ -6865,7 +6865,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_RoomManagerListene
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_RoomManagerListener_OnRoomAdded___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_RoomManagerListener_OnRoomAdded___(void * jarg1, void * jarg2) {
   XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
   XTools::RoomPtr *arg2 = 0 ;
   XTools::RoomPtr tempnull2 ;
@@ -6887,7 +6887,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_RoomManagerListener_OnRoo
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_RoomManagerListener_OnRoomAddedSwigExplicitRoomManagerListener___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_RoomManagerListener_OnRoomAddedSwigExplicitRoomManagerListener___(void * jarg1, void * jarg2) {
   XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
   XTools::RoomPtr *arg2 = 0 ;
   XTools::RoomPtr tempnull2 ;
@@ -6909,7 +6909,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_RoomManagerListener_OnRoo
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_RoomManagerListener_OnRoomClosed___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_RoomManagerListener_OnRoomClosed___(void * jarg1, void * jarg2) {
   XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
   XTools::RoomPtr *arg2 = 0 ;
   XTools::RoomPtr tempnull2 ;
@@ -6931,7 +6931,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_RoomManagerListener_OnRoo
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_RoomManagerListener_OnRoomClosedSwigExplicitRoomManagerListener___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_RoomManagerListener_OnRoomClosedSwigExplicitRoomManagerListener___(void * jarg1, void * jarg2) {
   XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
   XTools::RoomPtr *arg2 = 0 ;
   XTools::RoomPtr tempnull2 ;
@@ -6953,7 +6953,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_RoomManagerListener_OnRoo
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_RoomManagerListener_OnUserJoinedRoom___(void * jarg1, void * jarg2, int jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_RoomManagerListener_OnUserJoinedRoom___(void * jarg1, void * jarg2, int jarg3) {
   XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
   XTools::RoomPtr *arg2 = 0 ;
   XTools::UserID arg3 ;
@@ -6977,7 +6977,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_RoomManagerListener_OnUse
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_RoomManagerListener_OnUserJoinedRoomSwigExplicitRoomManagerListener___(void * jarg1, void * jarg2, int jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_RoomManagerListener_OnUserJoinedRoomSwigExplicitRoomManagerListener___(void * jarg1, void * jarg2, int jarg3) {
   XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
   XTools::RoomPtr *arg2 = 0 ;
   XTools::UserID arg3 ;
@@ -7001,7 +7001,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_RoomManagerListener_OnUse
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_RoomManagerListener_OnUserLeftRoom___(void * jarg1, void * jarg2, int jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_RoomManagerListener_OnUserLeftRoom___(void * jarg1, void * jarg2, int jarg3) {
   XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
   XTools::RoomPtr *arg2 = 0 ;
   XTools::UserID arg3 ;
@@ -7025,7 +7025,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_RoomManagerListener_OnUse
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_RoomManagerListener_OnUserLeftRoomSwigExplicitRoomManagerListener___(void * jarg1, void * jarg2, int jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_RoomManagerListener_OnUserLeftRoomSwigExplicitRoomManagerListener___(void * jarg1, void * jarg2, int jarg3) {
   XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
   XTools::RoomPtr *arg2 = 0 ;
   XTools::UserID arg3 ;
@@ -7049,7 +7049,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_RoomManagerListener_OnUse
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_RoomManagerListener_OnAnchorsChanged___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_RoomManagerListener_OnAnchorsChanged___(void * jarg1, void * jarg2) {
   XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
   XTools::RoomPtr *arg2 = 0 ;
   XTools::RoomPtr tempnull2 ;
@@ -7071,7 +7071,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_RoomManagerListener_OnAnc
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_RoomManagerListener_OnAnchorsChangedSwigExplicitRoomManagerListener___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_RoomManagerListener_OnAnchorsChangedSwigExplicitRoomManagerListener___(void * jarg1, void * jarg2) {
   XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
   XTools::RoomPtr *arg2 = 0 ;
   XTools::RoomPtr tempnull2 ;
@@ -7093,7 +7093,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_RoomManagerListener_OnAnc
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_RoomManagerListener_OnAnchorsDownloaded___(void * jarg1, unsigned int jarg2, void * jarg3, void * jarg4) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_RoomManagerListener_OnAnchorsDownloaded___(void * jarg1, unsigned int jarg2, void * jarg3, void * jarg4) {
   XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
   bool arg2 ;
   XTools::AnchorDownloadRequestPtr *arg3 = 0 ;
@@ -7131,7 +7131,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_RoomManagerListener_OnAnc
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_RoomManagerListener_OnAnchorsDownloadedSwigExplicitRoomManagerListener___(void * jarg1, unsigned int jarg2, void * jarg3, void * jarg4) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_RoomManagerListener_OnAnchorsDownloadedSwigExplicitRoomManagerListener___(void * jarg1, unsigned int jarg2, void * jarg3, void * jarg4) {
   XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
   bool arg2 ;
   XTools::AnchorDownloadRequestPtr *arg3 = 0 ;
@@ -7169,7 +7169,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_RoomManagerListener_OnAnc
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_RoomManagerListener_OnAnchorUploadComplete___(void * jarg1, unsigned int jarg2, void * jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_RoomManagerListener_OnAnchorUploadComplete___(void * jarg1, unsigned int jarg2, void * jarg3) {
   XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
   bool arg2 ;
   XTools::XStringPtr *arg3 = 0 ;
@@ -7193,7 +7193,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_RoomManagerListener_OnAnc
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_RoomManagerListener_OnAnchorUploadCompleteSwigExplicitRoomManagerListener___(void * jarg1, unsigned int jarg2, void * jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_RoomManagerListener_OnAnchorUploadCompleteSwigExplicitRoomManagerListener___(void * jarg1, unsigned int jarg2, void * jarg3) {
   XTools::RoomManagerListener *arg1 = (XTools::RoomManagerListener *) 0 ;
   bool arg2 ;
   XTools::XStringPtr *arg3 = 0 ;
@@ -7217,7 +7217,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_RoomManagerListener_OnAnc
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_RoomManagerListener___() {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_new_RoomManagerListener___() {
   void * jresult ;
   XTools::RoomManagerListener *result = 0 ;
   
@@ -7227,7 +7227,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_RoomManagerListener
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_RoomManagerListener_director_connect___(void *objarg, SwigDirector_RoomManagerListener::SWIG_Callback0_t callback0, SwigDirector_RoomManagerListener::SWIG_Callback1_t callback1, SwigDirector_RoomManagerListener::SWIG_Callback2_t callback2, SwigDirector_RoomManagerListener::SWIG_Callback3_t callback3, SwigDirector_RoomManagerListener::SWIG_Callback4_t callback4, SwigDirector_RoomManagerListener::SWIG_Callback5_t callback5, SwigDirector_RoomManagerListener::SWIG_Callback6_t callback6) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_RoomManagerListener_director_connect___(void *objarg, SwigDirector_RoomManagerListener::SWIG_Callback0_t callback0, SwigDirector_RoomManagerListener::SWIG_Callback1_t callback1, SwigDirector_RoomManagerListener::SWIG_Callback2_t callback2, SwigDirector_RoomManagerListener::SWIG_Callback3_t callback3, SwigDirector_RoomManagerListener::SWIG_Callback4_t callback4, SwigDirector_RoomManagerListener::SWIG_Callback5_t callback5, SwigDirector_RoomManagerListener::SWIG_Callback6_t callback6) {
   XTools::RoomManagerListener *obj = (XTools::RoomManagerListener *)objarg;
   SwigDirector_RoomManagerListener *director = dynamic_cast<SwigDirector_RoomManagerListener *>(obj);
   if (director) {
@@ -7236,7 +7236,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_RoomManagerListener_direc
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_RoomManager_AddListener___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_RoomManager_AddListener___(void * jarg1, void * jarg2) {
   XTools::RoomManager *arg1 = (XTools::RoomManager *) 0 ;
   XTools::RoomManagerListener *arg2 = (XTools::RoomManagerListener *) 0 ;
   
@@ -7246,7 +7246,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_RoomManager_AddListener__
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_RoomManager_RemoveListener___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_RoomManager_RemoveListener___(void * jarg1, void * jarg2) {
   XTools::RoomManager *arg1 = (XTools::RoomManager *) 0 ;
   XTools::RoomManagerListener *arg2 = (XTools::RoomManagerListener *) 0 ;
   
@@ -7256,7 +7256,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_RoomManager_RemoveListene
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_RoomManager_GetRoomCount___(void * jarg1) {
+SWIGEXPORT int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_RoomManager_GetRoomCount___(void * jarg1) {
   int jresult ;
   XTools::RoomManager *arg1 = (XTools::RoomManager *) 0 ;
   XTools::int32 result;
@@ -7268,7 +7268,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_RoomManager_GetRoomCount__
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_RoomManager_GetRoom___(void * jarg1, int jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_RoomManager_GetRoom___(void * jarg1, int jarg2) {
   void * jresult ;
   XTools::RoomManager *arg1 = (XTools::RoomManager *) 0 ;
   XTools::int32 arg2 ;
@@ -7290,7 +7290,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_RoomManager_GetRoom___(
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_RoomManager_GetCurrentRoom___(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_RoomManager_GetCurrentRoom___(void * jarg1) {
   void * jresult ;
   XTools::RoomManager *arg1 = (XTools::RoomManager *) 0 ;
   XTools::RoomPtr result;
@@ -7310,7 +7310,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_RoomManager_GetCurrentR
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_RoomManager_CreateRoom___(void * jarg1, void * jarg2, long long jarg3, unsigned int jarg4) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_RoomManager_CreateRoom___(void * jarg1, void * jarg2, long long jarg3, unsigned int jarg4) {
   void * jresult ;
   XTools::RoomManager *arg1 = (XTools::RoomManager *) 0 ;
   XTools::XStringPtr *arg2 = 0 ;
@@ -7348,7 +7348,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_RoomManager_CreateRoom_
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_RoomManager_JoinRoom___(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_RoomManager_JoinRoom___(void * jarg1, void * jarg2) {
   unsigned int jresult ;
   XTools::RoomManager *arg1 = (XTools::RoomManager *) 0 ;
   XTools::RoomPtr *arg2 = 0 ;
@@ -7374,7 +7374,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_RoomManager_JoinR
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_RoomManager_LeaveRoom___(void * jarg1) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_RoomManager_LeaveRoom___(void * jarg1) {
   unsigned int jresult ;
   XTools::RoomManager *arg1 = (XTools::RoomManager *) 0 ;
   bool result;
@@ -7386,7 +7386,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_RoomManager_Leave
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_RoomManager_DownloadAnchor___(void * jarg1, void * jarg2, void * jarg3) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_RoomManager_DownloadAnchor___(void * jarg1, void * jarg2, void * jarg3) {
   unsigned int jresult ;
   XTools::RoomManager *arg1 = (XTools::RoomManager *) 0 ;
   XTools::RoomPtr *arg2 = 0 ;
@@ -7426,7 +7426,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_RoomManager_Downl
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_RoomManager_UploadAnchor___(void * jarg1, void * jarg2, void * jarg3, unsigned char* jarg4, int jarg5) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_RoomManager_UploadAnchor___(void * jarg1, void * jarg2, void * jarg3, unsigned char* jarg4, int jarg5) {
   unsigned int jresult ;
   XTools::RoomManager *arg1 = (XTools::RoomManager *) 0 ;
   XTools::RoomPtr *arg2 = 0 ;
@@ -7472,7 +7472,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_RoomManager_Uploa
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_RoomManager___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_RoomManager___(void * jarg1) {
   XTools::RoomManager *arg1 = (XTools::RoomManager *) 0 ;
   
   arg1 = (XTools::RoomManager *)jarg1; 
@@ -7480,7 +7480,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_RoomManager___(voi
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_Settings___() {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_new_Settings___() {
   void * jresult ;
   XTools::Settings *result = 0 ;
   
@@ -7491,7 +7491,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_Settings___() {
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_Settings_GetServerAddress___(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_Settings_GetServerAddress___(void * jarg1) {
   void * jresult ;
   XTools::Settings *arg1 = (XTools::Settings *) 0 ;
   XTools::XStringPtr *result = 0 ;
@@ -7511,7 +7511,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_Settings_GetServerAddre
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_Settings_GetServerPort___(void * jarg1) {
+SWIGEXPORT int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_Settings_GetServerPort___(void * jarg1) {
   int jresult ;
   XTools::Settings *arg1 = (XTools::Settings *) 0 ;
   XTools::int32 result;
@@ -7523,7 +7523,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_Settings_GetServerPort___(
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_Settings_GetViewerAddress___(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_Settings_GetViewerAddress___(void * jarg1) {
   void * jresult ;
   XTools::Settings *arg1 = (XTools::Settings *) 0 ;
   XTools::XStringPtr *result = 0 ;
@@ -7543,7 +7543,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_Settings_GetViewerAddre
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_Settings_GetViewerPort___(void * jarg1) {
+SWIGEXPORT int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_Settings_GetViewerPort___(void * jarg1) {
   int jresult ;
   XTools::Settings *arg1 = (XTools::Settings *) 0 ;
   XTools::int32 result;
@@ -7555,7 +7555,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_Settings_GetViewerPort___(
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_Settings_GetLocalUserName___(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_Settings_GetLocalUserName___(void * jarg1) {
   void * jresult ;
   XTools::Settings *arg1 = (XTools::Settings *) 0 ;
   XTools::XStringPtr *result = 0 ;
@@ -7575,7 +7575,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_Settings_GetLocalUserNa
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_Settings___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_Settings___(void * jarg1) {
   XTools::Settings *arg1 = (XTools::Settings *) 0 ;
   
   arg1 = (XTools::Settings *)jarg1; 
@@ -7583,7 +7583,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_Settings___(void *
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_PairMaker_IsReceiver___(void * jarg1) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_PairMaker_IsReceiver___(void * jarg1) {
   unsigned int jresult ;
   XTools::PairMaker *arg1 = (XTools::PairMaker *) 0 ;
   bool result;
@@ -7595,7 +7595,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_PairMaker_IsRecei
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_PairMaker_IsReceiverSwigExplicitPairMaker___(void * jarg1) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_PairMaker_IsReceiverSwigExplicitPairMaker___(void * jarg1) {
   unsigned int jresult ;
   XTools::PairMaker *arg1 = (XTools::PairMaker *) 0 ;
   bool result;
@@ -7607,7 +7607,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_PairMaker_IsRecei
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_PairMaker_GetAddressCount___(void * jarg1) {
+SWIGEXPORT int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_PairMaker_GetAddressCount___(void * jarg1) {
   int jresult ;
   XTools::PairMaker *arg1 = (XTools::PairMaker *) 0 ;
   XTools::int32 result;
@@ -7619,7 +7619,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_PairMaker_GetAddressCount_
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_PairMaker_GetAddress___(void * jarg1, int jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_PairMaker_GetAddress___(void * jarg1, int jarg2) {
   void * jresult ;
   XTools::PairMaker *arg1 = (XTools::PairMaker *) 0 ;
   XTools::int32 arg2 ;
@@ -7641,7 +7641,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_PairMaker_GetAddress___
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_PairMaker_GetAddressSwigExplicitPairMaker___(void * jarg1, int jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_PairMaker_GetAddressSwigExplicitPairMaker___(void * jarg1, int jarg2) {
   void * jresult ;
   XTools::PairMaker *arg1 = (XTools::PairMaker *) 0 ;
   XTools::int32 arg2 ;
@@ -7663,7 +7663,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_PairMaker_GetAddressSwi
 }
 
 
-SWIGEXPORT unsigned short SWIGSTDCALL CSharp_HoloToolkitfSharing_PairMaker_GetPort___(void * jarg1) {
+SWIGEXPORT unsigned short SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_PairMaker_GetPort___(void * jarg1) {
   unsigned short jresult ;
   XTools::PairMaker *arg1 = (XTools::PairMaker *) 0 ;
   XTools::uint16 result;
@@ -7675,7 +7675,7 @@ SWIGEXPORT unsigned short SWIGSTDCALL CSharp_HoloToolkitfSharing_PairMaker_GetPo
 }
 
 
-SWIGEXPORT unsigned short SWIGSTDCALL CSharp_HoloToolkitfSharing_PairMaker_GetPortSwigExplicitPairMaker___(void * jarg1) {
+SWIGEXPORT unsigned short SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_PairMaker_GetPortSwigExplicitPairMaker___(void * jarg1) {
   unsigned short jresult ;
   XTools::PairMaker *arg1 = (XTools::PairMaker *) 0 ;
   XTools::uint16 result;
@@ -7687,7 +7687,7 @@ SWIGEXPORT unsigned short SWIGSTDCALL CSharp_HoloToolkitfSharing_PairMaker_GetPo
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_PairMaker_Update___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_PairMaker_Update___(void * jarg1) {
   XTools::PairMaker *arg1 = (XTools::PairMaker *) 0 ;
   
   arg1 = (XTools::PairMaker *)jarg1; 
@@ -7695,7 +7695,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_PairMaker_Update___(void 
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_PairMaker_UpdateSwigExplicitPairMaker___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_PairMaker_UpdateSwigExplicitPairMaker___(void * jarg1) {
   XTools::PairMaker *arg1 = (XTools::PairMaker *) 0 ;
   
   arg1 = (XTools::PairMaker *)jarg1; 
@@ -7703,7 +7703,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_PairMaker_UpdateSwigExpli
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_PairMaker_IsReadyToConnect___(void * jarg1) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_PairMaker_IsReadyToConnect___(void * jarg1) {
   unsigned int jresult ;
   XTools::PairMaker *arg1 = (XTools::PairMaker *) 0 ;
   bool result;
@@ -7715,7 +7715,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_PairMaker_IsReady
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_PairMaker_IsReadyToConnectSwigExplicitPairMaker___(void * jarg1) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_PairMaker_IsReadyToConnectSwigExplicitPairMaker___(void * jarg1) {
   unsigned int jresult ;
   XTools::PairMaker *arg1 = (XTools::PairMaker *) 0 ;
   bool result;
@@ -7727,7 +7727,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_PairMaker_IsReady
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_PairMaker_GetLocalKey___(void * jarg1) {
+SWIGEXPORT int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_PairMaker_GetLocalKey___(void * jarg1) {
   int jresult ;
   XTools::PairMaker *arg1 = (XTools::PairMaker *) 0 ;
   XTools::int32 result;
@@ -7739,7 +7739,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_PairMaker_GetLocalKey___(v
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_PairMaker_GetLocalKeySwigExplicitPairMaker___(void * jarg1) {
+SWIGEXPORT int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_PairMaker_GetLocalKeySwigExplicitPairMaker___(void * jarg1) {
   int jresult ;
   XTools::PairMaker *arg1 = (XTools::PairMaker *) 0 ;
   XTools::int32 result;
@@ -7751,7 +7751,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_PairMaker_GetLocalKeySwigE
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_PairMaker_GetRemoteKey___(void * jarg1) {
+SWIGEXPORT int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_PairMaker_GetRemoteKey___(void * jarg1) {
   int jresult ;
   XTools::PairMaker *arg1 = (XTools::PairMaker *) 0 ;
   XTools::int32 result;
@@ -7763,7 +7763,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_PairMaker_GetRemoteKey___(
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_PairMaker_GetRemoteKeySwigExplicitPairMaker___(void * jarg1) {
+SWIGEXPORT int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_PairMaker_GetRemoteKeySwigExplicitPairMaker___(void * jarg1) {
   int jresult ;
   XTools::PairMaker *arg1 = (XTools::PairMaker *) 0 ;
   XTools::int32 result;
@@ -7775,7 +7775,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_PairMaker_GetRemoteKeySwig
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_PairMaker___() {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_new_PairMaker___() {
   void * jresult ;
   XTools::PairMaker *result = 0 ;
   
@@ -7786,7 +7786,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_PairMaker___() {
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_PairMaker___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_PairMaker___(void * jarg1) {
   XTools::PairMaker *arg1 = (XTools::PairMaker *) 0 ;
   
   arg1 = (XTools::PairMaker *)jarg1; 
@@ -7794,7 +7794,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_PairMaker___(void 
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_PairMaker_director_connect___(void *objarg, SwigDirector_PairMaker::SWIG_Callback0_t callback0, SwigDirector_PairMaker::SWIG_Callback1_t callback1, SwigDirector_PairMaker::SWIG_Callback2_t callback2, SwigDirector_PairMaker::SWIG_Callback3_t callback3, SwigDirector_PairMaker::SWIG_Callback4_t callback4, SwigDirector_PairMaker::SWIG_Callback5_t callback5, SwigDirector_PairMaker::SWIG_Callback6_t callback6, SwigDirector_PairMaker::SWIG_Callback7_t callback7) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_PairMaker_director_connect___(void *objarg, SwigDirector_PairMaker::SWIG_Callback0_t callback0, SwigDirector_PairMaker::SWIG_Callback1_t callback1, SwigDirector_PairMaker::SWIG_Callback2_t callback2, SwigDirector_PairMaker::SWIG_Callback3_t callback3, SwigDirector_PairMaker::SWIG_Callback4_t callback4, SwigDirector_PairMaker::SWIG_Callback5_t callback5, SwigDirector_PairMaker::SWIG_Callback6_t callback6, SwigDirector_PairMaker::SWIG_Callback7_t callback7) {
   XTools::PairMaker *obj = (XTools::PairMaker *)objarg;
   SwigDirector_PairMaker *director = dynamic_cast<SwigDirector_PairMaker *>(obj);
   if (director) {
@@ -7803,7 +7803,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_PairMaker_director_connec
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_PairingListener_PairingConnectionSucceeded___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_PairingListener_PairingConnectionSucceeded___(void * jarg1) {
   XTools::PairingListener *arg1 = (XTools::PairingListener *) 0 ;
   
   arg1 = (XTools::PairingListener *)jarg1; 
@@ -7811,7 +7811,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_PairingListener_PairingCo
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_PairingListener_PairingConnectionSucceededSwigExplicitPairingListener___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_PairingListener_PairingConnectionSucceededSwigExplicitPairingListener___(void * jarg1) {
   XTools::PairingListener *arg1 = (XTools::PairingListener *) 0 ;
   
   arg1 = (XTools::PairingListener *)jarg1; 
@@ -7819,7 +7819,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_PairingListener_PairingCo
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_PairingListener_PairingConnectionFailed___(void * jarg1, int jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_PairingListener_PairingConnectionFailed___(void * jarg1, int jarg2) {
   XTools::PairingListener *arg1 = (XTools::PairingListener *) 0 ;
   XTools::PairingResult arg2 ;
   
@@ -7829,7 +7829,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_PairingListener_PairingCo
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_PairingListener_PairingConnectionFailedSwigExplicitPairingListener___(void * jarg1, int jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_PairingListener_PairingConnectionFailedSwigExplicitPairingListener___(void * jarg1, int jarg2) {
   XTools::PairingListener *arg1 = (XTools::PairingListener *) 0 ;
   XTools::PairingResult arg2 ;
   
@@ -7839,7 +7839,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_PairingListener_PairingCo
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_PairingListener___() {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_new_PairingListener___() {
   void * jresult ;
   XTools::PairingListener *result = 0 ;
   
@@ -7849,7 +7849,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_PairingListener___(
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_PairingListener___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_PairingListener___(void * jarg1) {
   XTools::PairingListener *arg1 = (XTools::PairingListener *) 0 ;
   
   arg1 = (XTools::PairingListener *)jarg1; 
@@ -7857,7 +7857,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_PairingListener___
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_PairingListener_director_connect___(void *objarg, SwigDirector_PairingListener::SWIG_Callback0_t callback0, SwigDirector_PairingListener::SWIG_Callback1_t callback1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_PairingListener_director_connect___(void *objarg, SwigDirector_PairingListener::SWIG_Callback0_t callback0, SwigDirector_PairingListener::SWIG_Callback1_t callback1) {
   XTools::PairingListener *obj = (XTools::PairingListener *)objarg;
   SwigDirector_PairingListener *director = dynamic_cast<SwigDirector_PairingListener *>(obj);
   if (director) {
@@ -7866,7 +7866,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_PairingListener_director_
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_PairingManager_HasPairingInfo___(void * jarg1) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_PairingManager_HasPairingInfo___(void * jarg1) {
   unsigned int jresult ;
   XTools::PairingManager *arg1 = (XTools::PairingManager *) 0 ;
   bool result;
@@ -7878,7 +7878,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_PairingManager_Ha
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_PairingManager_ClearPairingInfo___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_PairingManager_ClearPairingInfo___(void * jarg1) {
   XTools::PairingManager *arg1 = (XTools::PairingManager *) 0 ;
   
   arg1 = (XTools::PairingManager *)jarg1; 
@@ -7886,7 +7886,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_PairingManager_ClearPairi
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_PairingManager_BeginConnecting___(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_PairingManager_BeginConnecting___(void * jarg1, void * jarg2) {
   unsigned int jresult ;
   XTools::PairingManager *arg1 = (XTools::PairingManager *) 0 ;
   XTools::PairingListener *arg2 = (XTools::PairingListener *) 0 ;
@@ -7900,7 +7900,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_PairingManager_Be
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_PairingManager_CancelConnecting___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_PairingManager_CancelConnecting___(void * jarg1) {
   XTools::PairingManager *arg1 = (XTools::PairingManager *) 0 ;
   
   arg1 = (XTools::PairingManager *)jarg1; 
@@ -7908,7 +7908,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_PairingManager_CancelConn
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_PairingManager_BeginPairing___(void * jarg1, void * jarg2, void * jarg3) {
+SWIGEXPORT int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_PairingManager_BeginPairing___(void * jarg1, void * jarg2, void * jarg3) {
   int jresult ;
   XTools::PairingManager *arg1 = (XTools::PairingManager *) 0 ;
   XTools::PairMakerPtr *arg2 = 0 ;
@@ -7936,7 +7936,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_PairingManager_BeginPairin
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_PairingManager_CancelPairing___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_PairingManager_CancelPairing___(void * jarg1) {
   XTools::PairingManager *arg1 = (XTools::PairingManager *) 0 ;
   
   arg1 = (XTools::PairingManager *)jarg1; 
@@ -7944,7 +7944,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_PairingManager_CancelPair
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_PairingManager_IsPairing___(void * jarg1) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_PairingManager_IsPairing___(void * jarg1) {
   unsigned int jresult ;
   XTools::PairingManager *arg1 = (XTools::PairingManager *) 0 ;
   bool result;
@@ -7956,7 +7956,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_PairingManager_Is
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_PairingManager_IsConnected___(void * jarg1) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_PairingManager_IsConnected___(void * jarg1) {
   unsigned int jresult ;
   XTools::PairingManager *arg1 = (XTools::PairingManager *) 0 ;
   bool result;
@@ -7968,7 +7968,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_PairingManager_Is
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_PairingManager___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_PairingManager___(void * jarg1) {
   XTools::PairingManager *arg1 = (XTools::PairingManager *) 0 ;
   
   arg1 = (XTools::PairingManager *)jarg1; 
@@ -7976,7 +7976,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_PairingManager___(
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_SharingManager_Create___(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SharingManager_Create___(void * jarg1) {
   void * jresult ;
   XTools::ClientConfigPtr *arg1 = 0 ;
   XTools::ClientConfigPtr tempnull1 ;
@@ -8008,7 +8008,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_SharingManager_Create__
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_SharingManager_GetSessionManager___(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SharingManager_GetSessionManager___(void * jarg1) {
   void * jresult ;
   XTools::SharingManager *arg1 = (XTools::SharingManager *) 0 ;
   XTools::SessionManagerPtr *result = 0 ;
@@ -8028,7 +8028,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_SharingManager_GetSessi
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_SharingManager_GetUserPresenceManager___(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SharingManager_GetUserPresenceManager___(void * jarg1) {
   void * jresult ;
   XTools::SharingManager *arg1 = (XTools::SharingManager *) 0 ;
   XTools::UserPresenceManagerPtr *result = 0 ;
@@ -8048,7 +8048,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_SharingManager_GetUserP
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_SharingManager_GetAudioManager___(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SharingManager_GetAudioManager___(void * jarg1) {
   void * jresult ;
   XTools::SharingManager *arg1 = (XTools::SharingManager *) 0 ;
   XTools::AudioManagerPtr *result = 0 ;
@@ -8068,7 +8068,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_SharingManager_GetAudio
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_SharingManager_GetPairingManager___(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SharingManager_GetPairingManager___(void * jarg1) {
   void * jresult ;
   XTools::SharingManager *arg1 = (XTools::SharingManager *) 0 ;
   XTools::PairingManagerPtr *result = 0 ;
@@ -8088,7 +8088,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_SharingManager_GetPairi
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_SharingManager_GetRoomManager___(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SharingManager_GetRoomManager___(void * jarg1) {
   void * jresult ;
   XTools::SharingManager *arg1 = (XTools::SharingManager *) 0 ;
   XTools::RoomManagerPtr *result = 0 ;
@@ -8108,7 +8108,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_SharingManager_GetRoomM
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_SharingManager_GetRootSyncObject___(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SharingManager_GetRootSyncObject___(void * jarg1) {
   void * jresult ;
   XTools::SharingManager *arg1 = (XTools::SharingManager *) 0 ;
   XTools::ObjectElementPtr result;
@@ -8128,7 +8128,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_SharingManager_GetRootS
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_SharingManager_RegisterSyncListener___(void * jarg1, void * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SharingManager_RegisterSyncListener___(void * jarg1, void * jarg2) {
   unsigned int jresult ;
   XTools::SharingManager *arg1 = (XTools::SharingManager *) 0 ;
   XTools::SyncListener *arg2 = (XTools::SyncListener *) 0 ;
@@ -8142,7 +8142,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_SharingManager_Re
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SharingManager_Update___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SharingManager_Update___(void * jarg1) {
   XTools::SharingManager *arg1 = (XTools::SharingManager *) 0 ;
   
   arg1 = (XTools::SharingManager *)jarg1; 
@@ -8150,7 +8150,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SharingManager_Update___(
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_SharingManager_GetPairedConnection___(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SharingManager_GetPairedConnection___(void * jarg1) {
   void * jresult ;
   XTools::SharingManager *arg1 = (XTools::SharingManager *) 0 ;
   XTools::NetworkConnectionPtr result;
@@ -8170,7 +8170,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_SharingManager_GetPaire
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_SharingManager_GetServerConnection___(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SharingManager_GetServerConnection___(void * jarg1) {
   void * jresult ;
   XTools::SharingManager *arg1 = (XTools::SharingManager *) 0 ;
   XTools::NetworkConnectionPtr result;
@@ -8190,7 +8190,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_SharingManager_GetServe
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_SharingManager_GetSettings___(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SharingManager_GetSettings___(void * jarg1) {
   void * jresult ;
   XTools::SharingManager *arg1 = (XTools::SharingManager *) 0 ;
   XTools::SettingsPtr *result = 0 ;
@@ -8210,7 +8210,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_SharingManager_GetSetti
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SharingManager_SetServerConnectionInfo___(void * jarg1, void * jarg2, unsigned int jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SharingManager_SetServerConnectionInfo___(void * jarg1, void * jarg2, unsigned int jarg3) {
   XTools::SharingManager *arg1 = (XTools::SharingManager *) 0 ;
   XTools::XStringPtr *arg2 = 0 ;
   XTools::uint32 arg3 ;
@@ -8234,7 +8234,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SharingManager_SetServerC
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_SharingManager_GetLocalUser___(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SharingManager_GetLocalUser___(void * jarg1) {
   void * jresult ;
   XTools::SharingManager *arg1 = (XTools::SharingManager *) 0 ;
   XTools::UserPtr result;
@@ -8254,7 +8254,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_SharingManager_GetLocal
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SharingManager_SetUserName___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SharingManager_SetUserName___(void * jarg1, void * jarg2) {
   XTools::SharingManager *arg1 = (XTools::SharingManager *) 0 ;
   XTools::XStringPtr *arg2 = 0 ;
   XTools::XStringPtr tempnull2 ;
@@ -8276,7 +8276,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_SharingManager_SetUserNam
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_SharingManager___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_SharingManager___(void * jarg1) {
   XTools::SharingManager *arg1 = (XTools::SharingManager *) 0 ;
   
   arg1 = (XTools::SharingManager *)jarg1; 
@@ -8284,7 +8284,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_SharingManager___(
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_DirectPairConnector__SWIG_0___() {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_new_DirectPairConnector__SWIG_0___() {
   void * jresult ;
   XTools::DirectPairConnector *result = 0 ;
   
@@ -8295,7 +8295,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_DirectPairConnector
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_DirectPairConnector__SWIG_1___(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_new_DirectPairConnector__SWIG_1___(void * jarg1) {
   void * jresult ;
   XTools::XStringPtr *arg1 = 0 ;
   XTools::XStringPtr tempnull1 ;
@@ -8320,7 +8320,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_DirectPairConnector
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_DirectPairConnector__SWIG_2___(void * jarg1, unsigned short jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_new_DirectPairConnector__SWIG_2___(void * jarg1, unsigned short jarg2) {
   void * jresult ;
   XTools::XStringPtr *arg1 = 0 ;
   XTools::uint16 arg2 ;
@@ -8347,7 +8347,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_DirectPairConnector
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_DirectPairConnector_IsReceiver___(void * jarg1) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_DirectPairConnector_IsReceiver___(void * jarg1) {
   unsigned int jresult ;
   XTools::DirectPairConnector *arg1 = (XTools::DirectPairConnector *) 0 ;
   bool result;
@@ -8359,7 +8359,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_DirectPairConnect
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_DirectPairConnector_GetAddressCount___(void * jarg1) {
+SWIGEXPORT int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_DirectPairConnector_GetAddressCount___(void * jarg1) {
   int jresult ;
   XTools::DirectPairConnector *arg1 = (XTools::DirectPairConnector *) 0 ;
   XTools::int32 result;
@@ -8371,7 +8371,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_DirectPairConnector_GetAdd
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_DirectPairConnector_GetAddress___(void * jarg1, int jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_DirectPairConnector_GetAddress___(void * jarg1, int jarg2) {
   void * jresult ;
   XTools::DirectPairConnector *arg1 = (XTools::DirectPairConnector *) 0 ;
   XTools::int32 arg2 ;
@@ -8393,7 +8393,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_DirectPairConnector_Get
 }
 
 
-SWIGEXPORT unsigned short SWIGSTDCALL CSharp_HoloToolkitfSharing_DirectPairConnector_GetPort___(void * jarg1) {
+SWIGEXPORT unsigned short SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_DirectPairConnector_GetPort___(void * jarg1) {
   unsigned short jresult ;
   XTools::DirectPairConnector *arg1 = (XTools::DirectPairConnector *) 0 ;
   XTools::uint16 result;
@@ -8405,7 +8405,7 @@ SWIGEXPORT unsigned short SWIGSTDCALL CSharp_HoloToolkitfSharing_DirectPairConne
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_DirectPairConnector_Update___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_DirectPairConnector_Update___(void * jarg1) {
   XTools::DirectPairConnector *arg1 = (XTools::DirectPairConnector *) 0 ;
   
   arg1 = (XTools::DirectPairConnector *)jarg1; 
@@ -8413,7 +8413,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_DirectPairConnector_Updat
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_DirectPairConnector_IsReadyToConnect___(void * jarg1) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_DirectPairConnector_IsReadyToConnect___(void * jarg1) {
   unsigned int jresult ;
   XTools::DirectPairConnector *arg1 = (XTools::DirectPairConnector *) 0 ;
   bool result;
@@ -8425,7 +8425,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_DirectPairConnect
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_DirectPairConnector_SetRemoteAddress___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_DirectPairConnector_SetRemoteAddress___(void * jarg1, void * jarg2) {
   XTools::DirectPairConnector *arg1 = (XTools::DirectPairConnector *) 0 ;
   XTools::XStringPtr *arg2 = 0 ;
   XTools::XStringPtr tempnull2 ;
@@ -8447,7 +8447,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_DirectPairConnector_SetRe
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_DirectPairConnector_SetRemotePort___(void * jarg1, unsigned short jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_DirectPairConnector_SetRemotePort___(void * jarg1, unsigned short jarg2) {
   XTools::DirectPairConnector *arg1 = (XTools::DirectPairConnector *) 0 ;
   XTools::uint16 arg2 ;
   
@@ -8457,7 +8457,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_DirectPairConnector_SetRe
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_DirectPairConnector___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_DirectPairConnector___(void * jarg1) {
   XTools::DirectPairConnector *arg1 = (XTools::DirectPairConnector *) 0 ;
   
   arg1 = (XTools::DirectPairConnector *)jarg1; 
@@ -8465,7 +8465,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_DirectPairConnecto
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_DirectPairReceiver__SWIG_0___() {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_new_DirectPairReceiver__SWIG_0___() {
   void * jresult ;
   XTools::DirectPairReceiver *result = 0 ;
   
@@ -8476,7 +8476,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_DirectPairReceiver_
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_DirectPairReceiver__SWIG_1___(unsigned short jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_new_DirectPairReceiver__SWIG_1___(unsigned short jarg1) {
   void * jresult ;
   XTools::uint16 arg1 ;
   XTools::DirectPairReceiver *result = 0 ;
@@ -8489,7 +8489,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_DirectPairReceiver_
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_DirectPairReceiver_IsReceiver___(void * jarg1) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_DirectPairReceiver_IsReceiver___(void * jarg1) {
   unsigned int jresult ;
   XTools::DirectPairReceiver *arg1 = (XTools::DirectPairReceiver *) 0 ;
   bool result;
@@ -8501,7 +8501,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_DirectPairReceive
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_DirectPairReceiver_GetAddressCount___(void * jarg1) {
+SWIGEXPORT int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_DirectPairReceiver_GetAddressCount___(void * jarg1) {
   int jresult ;
   XTools::DirectPairReceiver *arg1 = (XTools::DirectPairReceiver *) 0 ;
   XTools::int32 result;
@@ -8513,7 +8513,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_DirectPairReceiver_GetAddr
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_DirectPairReceiver_GetAddress___(void * jarg1, int jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_DirectPairReceiver_GetAddress___(void * jarg1, int jarg2) {
   void * jresult ;
   XTools::DirectPairReceiver *arg1 = (XTools::DirectPairReceiver *) 0 ;
   XTools::int32 arg2 ;
@@ -8535,7 +8535,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_DirectPairReceiver_GetA
 }
 
 
-SWIGEXPORT unsigned short SWIGSTDCALL CSharp_HoloToolkitfSharing_DirectPairReceiver_GetPort___(void * jarg1) {
+SWIGEXPORT unsigned short SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_DirectPairReceiver_GetPort___(void * jarg1) {
   unsigned short jresult ;
   XTools::DirectPairReceiver *arg1 = (XTools::DirectPairReceiver *) 0 ;
   XTools::uint16 result;
@@ -8547,7 +8547,7 @@ SWIGEXPORT unsigned short SWIGSTDCALL CSharp_HoloToolkitfSharing_DirectPairRecei
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_DirectPairReceiver_Update___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_DirectPairReceiver_Update___(void * jarg1) {
   XTools::DirectPairReceiver *arg1 = (XTools::DirectPairReceiver *) 0 ;
   
   arg1 = (XTools::DirectPairReceiver *)jarg1; 
@@ -8555,7 +8555,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_DirectPairReceiver_Update
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_DirectPairReceiver_IsReadyToConnect___(void * jarg1) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_DirectPairReceiver_IsReadyToConnect___(void * jarg1) {
   unsigned int jresult ;
   XTools::DirectPairReceiver *arg1 = (XTools::DirectPairReceiver *) 0 ;
   bool result;
@@ -8567,7 +8567,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_DirectPairReceive
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_DirectPairReceiver_SetIncomingPort___(void * jarg1, unsigned short jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_DirectPairReceiver_SetIncomingPort___(void * jarg1, unsigned short jarg2) {
   XTools::DirectPairReceiver *arg1 = (XTools::DirectPairReceiver *) 0 ;
   XTools::uint16 arg2 ;
   
@@ -8577,7 +8577,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_DirectPairReceiver_SetInc
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_DirectPairReceiver___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_DirectPairReceiver___(void * jarg1) {
   XTools::DirectPairReceiver *arg1 = (XTools::DirectPairReceiver *) 0 ;
   
   arg1 = (XTools::DirectPairReceiver *)jarg1; 
@@ -8585,7 +8585,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_DirectPairReceiver
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_TagImage_GetWidth___(void * jarg1) {
+SWIGEXPORT int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_TagImage_GetWidth___(void * jarg1) {
   int jresult ;
   XTools::TagImage *arg1 = (XTools::TagImage *) 0 ;
   XTools::int32 result;
@@ -8597,7 +8597,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_TagImage_GetWidth___(void 
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_TagImage_GetHeight___(void * jarg1) {
+SWIGEXPORT int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_TagImage_GetHeight___(void * jarg1) {
   int jresult ;
   XTools::TagImage *arg1 = (XTools::TagImage *) 0 ;
   XTools::int32 result;
@@ -8609,7 +8609,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_TagImage_GetHeight___(void
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_TagImage_CopyImageData___(void * jarg1, unsigned char* jarg2, int jarg3, int jarg4) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_TagImage_CopyImageData___(void * jarg1, unsigned char* jarg2, int jarg3, int jarg4) {
   XTools::TagImage *arg1 = (XTools::TagImage *) 0 ;
   XTools::byte *arg2 = (XTools::byte *) 0 ;
   XTools::int32 arg3 ;
@@ -8625,7 +8625,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_TagImage_CopyImageData___
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_TagImage___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_TagImage___(void * jarg1) {
   XTools::TagImage *arg1 = (XTools::TagImage *) 0 ;
   
   arg1 = (XTools::TagImage *)jarg1; 
@@ -8633,7 +8633,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_TagImage___(void *
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_VisualPairReceiver_Create___() {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_VisualPairReceiver_Create___() {
   void * jresult ;
   XTools::ref_ptr< XTools::VisualPairReceiver > result;
   
@@ -8651,7 +8651,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_VisualPairReceiver_Crea
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_VisualPairReceiver_CreateTagImage___(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_VisualPairReceiver_CreateTagImage___(void * jarg1) {
   void * jresult ;
   XTools::VisualPairReceiver *arg1 = (XTools::VisualPairReceiver *) 0 ;
   XTools::TagImagePtr result;
@@ -8671,7 +8671,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_VisualPairReceiver_Crea
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_VisualPairReceiver___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_VisualPairReceiver___(void * jarg1) {
   XTools::VisualPairReceiver *arg1 = (XTools::VisualPairReceiver *) 0 ;
   
   arg1 = (XTools::VisualPairReceiver *)jarg1; 
@@ -8679,7 +8679,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_VisualPairReceiver
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_VisualPairConnector_Create___() {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_VisualPairConnector_Create___() {
   void * jresult ;
   XTools::ref_ptr< XTools::VisualPairConnector > result;
   
@@ -8697,7 +8697,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_VisualPairConnector_Cre
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_VisualPairConnector_ProcessImage___(void * jarg1, unsigned char* jarg2, int jarg3, int jarg4, int jarg5) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_VisualPairConnector_ProcessImage___(void * jarg1, unsigned char* jarg2, int jarg3, int jarg4, int jarg5) {
   unsigned int jresult ;
   XTools::VisualPairConnector *arg1 = (XTools::VisualPairConnector *) 0 ;
   XTools::byte *arg2 = (XTools::byte *) 0 ;
@@ -8719,7 +8719,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_VisualPairConnect
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_VisualPairConnector_IsProcessingImage___(void * jarg1) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_VisualPairConnector_IsProcessingImage___(void * jarg1) {
   unsigned int jresult ;
   XTools::VisualPairConnector *arg1 = (XTools::VisualPairConnector *) 0 ;
   bool result;
@@ -8731,7 +8731,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_VisualPairConnect
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_VisualPairConnector___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_VisualPairConnector___(void * jarg1) {
   XTools::VisualPairConnector *arg1 = (XTools::VisualPairConnector *) 0 ;
   
   arg1 = (XTools::VisualPairConnector *)jarg1; 
@@ -8739,7 +8739,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_VisualPairConnecto
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_DiscoveredSystem___(char * jarg1, char * jarg2, int jarg3) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_new_DiscoveredSystem___(char * jarg1, char * jarg2, int jarg3) {
   void * jresult ;
   std::string *arg1 = 0 ;
   std::string *arg2 = 0 ;
@@ -8766,7 +8766,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_DiscoveredSystem___
 }
 
 
-SWIGEXPORT char * SWIGSTDCALL CSharp_HoloToolkitfSharing_DiscoveredSystem_GetName___(void * jarg1) {
+SWIGEXPORT char * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_DiscoveredSystem_GetName___(void * jarg1) {
   char * jresult ;
   XTools::DiscoveredSystem *arg1 = (XTools::DiscoveredSystem *) 0 ;
   std::string result;
@@ -8778,7 +8778,7 @@ SWIGEXPORT char * SWIGSTDCALL CSharp_HoloToolkitfSharing_DiscoveredSystem_GetNam
 }
 
 
-SWIGEXPORT char * SWIGSTDCALL CSharp_HoloToolkitfSharing_DiscoveredSystem_GetAddress___(void * jarg1) {
+SWIGEXPORT char * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_DiscoveredSystem_GetAddress___(void * jarg1) {
   char * jresult ;
   XTools::DiscoveredSystem *arg1 = (XTools::DiscoveredSystem *) 0 ;
   std::string result;
@@ -8790,7 +8790,7 @@ SWIGEXPORT char * SWIGSTDCALL CSharp_HoloToolkitfSharing_DiscoveredSystem_GetAdd
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_DiscoveredSystem_GetRole___(void * jarg1) {
+SWIGEXPORT int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_DiscoveredSystem_GetRole___(void * jarg1) {
   int jresult ;
   XTools::DiscoveredSystem *arg1 = (XTools::DiscoveredSystem *) 0 ;
   XTools::SystemRole result;
@@ -8802,7 +8802,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_HoloToolkitfSharing_DiscoveredSystem_GetRole__
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_DiscoveredSystem___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_DiscoveredSystem___(void * jarg1) {
   XTools::DiscoveredSystem *arg1 = (XTools::DiscoveredSystem *) 0 ;
   
   arg1 = (XTools::DiscoveredSystem *)jarg1; 
@@ -8810,7 +8810,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_DiscoveredSystem__
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_DiscoveryClientListener___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_DiscoveryClientListener___(void * jarg1) {
   XTools::DiscoveryClientListener *arg1 = (XTools::DiscoveryClientListener *) 0 ;
   
   arg1 = (XTools::DiscoveryClientListener *)jarg1; 
@@ -8818,7 +8818,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_DiscoveryClientLis
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_DiscoveryClientListener_OnRemoteSystemDiscovered___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_DiscoveryClientListener_OnRemoteSystemDiscovered___(void * jarg1, void * jarg2) {
   XTools::DiscoveryClientListener *arg1 = (XTools::DiscoveryClientListener *) 0 ;
   XTools::DiscoveredSystemPtr *arg2 = 0 ;
   XTools::DiscoveredSystemPtr tempnull2 ;
@@ -8840,7 +8840,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_DiscoveryClientListener_O
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_DiscoveryClientListener_OnRemoteSystemDiscoveredSwigExplicitDiscoveryClientListener___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_DiscoveryClientListener_OnRemoteSystemDiscoveredSwigExplicitDiscoveryClientListener___(void * jarg1, void * jarg2) {
   XTools::DiscoveryClientListener *arg1 = (XTools::DiscoveryClientListener *) 0 ;
   XTools::DiscoveredSystemPtr *arg2 = 0 ;
   XTools::DiscoveredSystemPtr tempnull2 ;
@@ -8862,7 +8862,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_DiscoveryClientListener_O
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_DiscoveryClientListener_OnRemoteSystemLost___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_DiscoveryClientListener_OnRemoteSystemLost___(void * jarg1, void * jarg2) {
   XTools::DiscoveryClientListener *arg1 = (XTools::DiscoveryClientListener *) 0 ;
   XTools::DiscoveredSystemPtr *arg2 = 0 ;
   XTools::DiscoveredSystemPtr tempnull2 ;
@@ -8884,7 +8884,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_DiscoveryClientListener_O
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_DiscoveryClientListener_OnRemoteSystemLostSwigExplicitDiscoveryClientListener___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_DiscoveryClientListener_OnRemoteSystemLostSwigExplicitDiscoveryClientListener___(void * jarg1, void * jarg2) {
   XTools::DiscoveryClientListener *arg1 = (XTools::DiscoveryClientListener *) 0 ;
   XTools::DiscoveredSystemPtr *arg2 = 0 ;
   XTools::DiscoveredSystemPtr tempnull2 ;
@@ -8906,7 +8906,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_DiscoveryClientListener_O
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_DiscoveryClientListener___() {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_new_DiscoveryClientListener___() {
   void * jresult ;
   XTools::DiscoveryClientListener *result = 0 ;
   
@@ -8916,7 +8916,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_new_DiscoveryClientList
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_DiscoveryClientListener_director_connect___(void *objarg, SwigDirector_DiscoveryClientListener::SWIG_Callback0_t callback0, SwigDirector_DiscoveryClientListener::SWIG_Callback1_t callback1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_DiscoveryClientListener_director_connect___(void *objarg, SwigDirector_DiscoveryClientListener::SWIG_Callback0_t callback0, SwigDirector_DiscoveryClientListener::SWIG_Callback1_t callback1) {
   XTools::DiscoveryClientListener *obj = (XTools::DiscoveryClientListener *)objarg;
   SwigDirector_DiscoveryClientListener *director = dynamic_cast<SwigDirector_DiscoveryClientListener *>(obj);
   if (director) {
@@ -8925,7 +8925,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_DiscoveryClientListener_d
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_DiscoveryClient_Create___() {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_DiscoveryClient_Create___() {
   void * jresult ;
   XTools::ref_ptr< XTools::DiscoveryClient > result;
   
@@ -8943,7 +8943,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_DiscoveryClient_Create_
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_DiscoveryClient_Ping___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_DiscoveryClient_Ping___(void * jarg1) {
   XTools::DiscoveryClient *arg1 = (XTools::DiscoveryClient *) 0 ;
   
   arg1 = (XTools::DiscoveryClient *)jarg1; 
@@ -8951,7 +8951,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_DiscoveryClient_Ping___(v
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_DiscoveryClient_GetDiscoveredCount___(void * jarg1) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_DiscoveryClient_GetDiscoveredCount___(void * jarg1) {
   unsigned int jresult ;
   XTools::DiscoveryClient *arg1 = (XTools::DiscoveryClient *) 0 ;
   XTools::uint32 result;
@@ -8963,7 +8963,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_HoloToolkitfSharing_DiscoveryClient_G
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_DiscoveryClient_GetDiscoveredSystem___(void * jarg1, unsigned int jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_DiscoveryClient_GetDiscoveredSystem___(void * jarg1, unsigned int jarg2) {
   void * jresult ;
   XTools::DiscoveryClient *arg1 = (XTools::DiscoveryClient *) 0 ;
   XTools::uint32 arg2 ;
@@ -8985,7 +8985,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_HoloToolkitfSharing_DiscoveryClient_GetDisc
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_DiscoveryClient_Update___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_DiscoveryClient_Update___(void * jarg1) {
   XTools::DiscoveryClient *arg1 = (XTools::DiscoveryClient *) 0 ;
   
   arg1 = (XTools::DiscoveryClient *)jarg1; 
@@ -8993,7 +8993,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_DiscoveryClient_Update___
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_DiscoveryClient_AddListener___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_DiscoveryClient_AddListener___(void * jarg1, void * jarg2) {
   XTools::DiscoveryClient *arg1 = (XTools::DiscoveryClient *) 0 ;
   XTools::DiscoveryClientListener *arg2 = (XTools::DiscoveryClientListener *) 0 ;
   
@@ -9003,7 +9003,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_DiscoveryClient_AddListen
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_DiscoveryClient_RemoveListener___(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_DiscoveryClient_RemoveListener___(void * jarg1, void * jarg2) {
   XTools::DiscoveryClient *arg1 = (XTools::DiscoveryClient *) 0 ;
   XTools::DiscoveryClientListener *arg2 = (XTools::DiscoveryClientListener *) 0 ;
   
@@ -9013,7 +9013,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_DiscoveryClient_RemoveLis
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_DiscoveryClient___(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_delete_DiscoveryClient___(void * jarg1) {
   XTools::DiscoveryClient *arg1 = (XTools::DiscoveryClient *) 0 ;
   
   arg1 = (XTools::DiscoveryClient *)jarg1; 
@@ -9021,107 +9021,107 @@ SWIGEXPORT void SWIGSTDCALL CSharp_HoloToolkitfSharing_delete_DiscoveryClient___
 }
 
 
-SWIGEXPORT XTools::Listener * SWIGSTDCALL CSharp_HoloToolkitfSharing_NetworkConnectionListener_SWIGUpcast___(XTools::NetworkConnectionListener *jarg1) {
+SWIGEXPORT XTools::Listener * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_NetworkConnectionListener_SWIGUpcast___(XTools::NetworkConnectionListener *jarg1) {
     return (XTools::Listener *)jarg1;
 }
 
-SWIGEXPORT XTools::Element * SWIGSTDCALL CSharp_HoloToolkitfSharing_BoolElement_SWIGUpcast___(XTools::BoolElement *jarg1) {
+SWIGEXPORT XTools::Element * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_BoolElement_SWIGUpcast___(XTools::BoolElement *jarg1) {
     return (XTools::Element *)jarg1;
 }
 
-SWIGEXPORT XTools::Element * SWIGSTDCALL CSharp_HoloToolkitfSharing_IntElement_SWIGUpcast___(XTools::IntElement *jarg1) {
+SWIGEXPORT XTools::Element * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_IntElement_SWIGUpcast___(XTools::IntElement *jarg1) {
     return (XTools::Element *)jarg1;
 }
 
-SWIGEXPORT XTools::Element * SWIGSTDCALL CSharp_HoloToolkitfSharing_LongElement_SWIGUpcast___(XTools::LongElement *jarg1) {
+SWIGEXPORT XTools::Element * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_LongElement_SWIGUpcast___(XTools::LongElement *jarg1) {
     return (XTools::Element *)jarg1;
 }
 
-SWIGEXPORT XTools::Element * SWIGSTDCALL CSharp_HoloToolkitfSharing_FloatElement_SWIGUpcast___(XTools::FloatElement *jarg1) {
+SWIGEXPORT XTools::Element * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_FloatElement_SWIGUpcast___(XTools::FloatElement *jarg1) {
     return (XTools::Element *)jarg1;
 }
 
-SWIGEXPORT XTools::Element * SWIGSTDCALL CSharp_HoloToolkitfSharing_DoubleElement_SWIGUpcast___(XTools::DoubleElement *jarg1) {
+SWIGEXPORT XTools::Element * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_DoubleElement_SWIGUpcast___(XTools::DoubleElement *jarg1) {
     return (XTools::Element *)jarg1;
 }
 
-SWIGEXPORT XTools::Element * SWIGSTDCALL CSharp_HoloToolkitfSharing_StringElement_SWIGUpcast___(XTools::StringElement *jarg1) {
+SWIGEXPORT XTools::Element * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_StringElement_SWIGUpcast___(XTools::StringElement *jarg1) {
     return (XTools::Element *)jarg1;
 }
 
-SWIGEXPORT XTools::Listener * SWIGSTDCALL CSharp_HoloToolkitfSharing_IntArrayListener_SWIGUpcast___(XTools::IntArrayListener *jarg1) {
+SWIGEXPORT XTools::Listener * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_IntArrayListener_SWIGUpcast___(XTools::IntArrayListener *jarg1) {
     return (XTools::Listener *)jarg1;
 }
 
-SWIGEXPORT XTools::Element * SWIGSTDCALL CSharp_HoloToolkitfSharing_IntArrayElement_SWIGUpcast___(XTools::IntArrayElement *jarg1) {
+SWIGEXPORT XTools::Element * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_IntArrayElement_SWIGUpcast___(XTools::IntArrayElement *jarg1) {
     return (XTools::Element *)jarg1;
 }
 
-SWIGEXPORT XTools::Listener * SWIGSTDCALL CSharp_HoloToolkitfSharing_FloatArrayListener_SWIGUpcast___(XTools::FloatArrayListener *jarg1) {
+SWIGEXPORT XTools::Listener * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_FloatArrayListener_SWIGUpcast___(XTools::FloatArrayListener *jarg1) {
     return (XTools::Listener *)jarg1;
 }
 
-SWIGEXPORT XTools::Element * SWIGSTDCALL CSharp_HoloToolkitfSharing_FloatArrayElement_SWIGUpcast___(XTools::FloatArrayElement *jarg1) {
+SWIGEXPORT XTools::Element * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_FloatArrayElement_SWIGUpcast___(XTools::FloatArrayElement *jarg1) {
     return (XTools::Element *)jarg1;
 }
 
-SWIGEXPORT XTools::Listener * SWIGSTDCALL CSharp_HoloToolkitfSharing_StringArrayListener_SWIGUpcast___(XTools::StringArrayListener *jarg1) {
+SWIGEXPORT XTools::Listener * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_StringArrayListener_SWIGUpcast___(XTools::StringArrayListener *jarg1) {
     return (XTools::Listener *)jarg1;
 }
 
-SWIGEXPORT XTools::Element * SWIGSTDCALL CSharp_HoloToolkitfSharing_StringArrayElement_SWIGUpcast___(XTools::StringArrayElement *jarg1) {
+SWIGEXPORT XTools::Element * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_StringArrayElement_SWIGUpcast___(XTools::StringArrayElement *jarg1) {
     return (XTools::Element *)jarg1;
 }
 
-SWIGEXPORT XTools::Listener * SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElementListener_SWIGUpcast___(XTools::ObjectElementListener *jarg1) {
+SWIGEXPORT XTools::Listener * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ObjectElementListener_SWIGUpcast___(XTools::ObjectElementListener *jarg1) {
     return (XTools::Listener *)jarg1;
 }
 
-SWIGEXPORT XTools::Element * SWIGSTDCALL CSharp_HoloToolkitfSharing_ObjectElement_SWIGUpcast___(XTools::ObjectElement *jarg1) {
+SWIGEXPORT XTools::Element * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_ObjectElement_SWIGUpcast___(XTools::ObjectElement *jarg1) {
     return (XTools::Element *)jarg1;
 }
 
-SWIGEXPORT XTools::Listener * SWIGSTDCALL CSharp_HoloToolkitfSharing_SyncListener_SWIGUpcast___(XTools::SyncListener *jarg1) {
+SWIGEXPORT XTools::Listener * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SyncListener_SWIGUpcast___(XTools::SyncListener *jarg1) {
     return (XTools::Listener *)jarg1;
 }
 
-SWIGEXPORT XTools::Listener * SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionListener_SWIGUpcast___(XTools::SessionListener *jarg1) {
+SWIGEXPORT XTools::Listener * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SessionListener_SWIGUpcast___(XTools::SessionListener *jarg1) {
     return (XTools::Listener *)jarg1;
 }
 
-SWIGEXPORT XTools::Listener * SWIGSTDCALL CSharp_HoloToolkitfSharing_SessionManagerListener_SWIGUpcast___(XTools::SessionManagerListener *jarg1) {
+SWIGEXPORT XTools::Listener * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_SessionManagerListener_SWIGUpcast___(XTools::SessionManagerListener *jarg1) {
     return (XTools::Listener *)jarg1;
 }
 
-SWIGEXPORT XTools::Listener * SWIGSTDCALL CSharp_HoloToolkitfSharing_UserPresenceManagerListener_SWIGUpcast___(XTools::UserPresenceManagerListener *jarg1) {
+SWIGEXPORT XTools::Listener * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_UserPresenceManagerListener_SWIGUpcast___(XTools::UserPresenceManagerListener *jarg1) {
     return (XTools::Listener *)jarg1;
 }
 
-SWIGEXPORT XTools::Listener * SWIGSTDCALL CSharp_HoloToolkitfSharing_RoomManagerListener_SWIGUpcast___(XTools::RoomManagerListener *jarg1) {
+SWIGEXPORT XTools::Listener * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_RoomManagerListener_SWIGUpcast___(XTools::RoomManagerListener *jarg1) {
     return (XTools::Listener *)jarg1;
 }
 
-SWIGEXPORT XTools::Listener * SWIGSTDCALL CSharp_HoloToolkitfSharing_PairingListener_SWIGUpcast___(XTools::PairingListener *jarg1) {
+SWIGEXPORT XTools::Listener * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_PairingListener_SWIGUpcast___(XTools::PairingListener *jarg1) {
     return (XTools::Listener *)jarg1;
 }
 
-SWIGEXPORT XTools::PairMaker * SWIGSTDCALL CSharp_HoloToolkitfSharing_DirectPairConnector_SWIGUpcast___(XTools::DirectPairConnector *jarg1) {
+SWIGEXPORT XTools::PairMaker * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_DirectPairConnector_SWIGUpcast___(XTools::DirectPairConnector *jarg1) {
     return (XTools::PairMaker *)jarg1;
 }
 
-SWIGEXPORT XTools::PairMaker * SWIGSTDCALL CSharp_HoloToolkitfSharing_DirectPairReceiver_SWIGUpcast___(XTools::DirectPairReceiver *jarg1) {
+SWIGEXPORT XTools::PairMaker * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_DirectPairReceiver_SWIGUpcast___(XTools::DirectPairReceiver *jarg1) {
     return (XTools::PairMaker *)jarg1;
 }
 
-SWIGEXPORT XTools::PairMaker * SWIGSTDCALL CSharp_HoloToolkitfSharing_VisualPairReceiver_SWIGUpcast___(XTools::VisualPairReceiver *jarg1) {
+SWIGEXPORT XTools::PairMaker * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_VisualPairReceiver_SWIGUpcast___(XTools::VisualPairReceiver *jarg1) {
     return (XTools::PairMaker *)jarg1;
 }
 
-SWIGEXPORT XTools::PairMaker * SWIGSTDCALL CSharp_HoloToolkitfSharing_VisualPairConnector_SWIGUpcast___(XTools::VisualPairConnector *jarg1) {
+SWIGEXPORT XTools::PairMaker * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_VisualPairConnector_SWIGUpcast___(XTools::VisualPairConnector *jarg1) {
     return (XTools::PairMaker *)jarg1;
 }
 
-SWIGEXPORT XTools::Listener * SWIGSTDCALL CSharp_HoloToolkitfSharing_DiscoveryClientListener_SWIGUpcast___(XTools::DiscoveryClientListener *jarg1) {
+SWIGEXPORT XTools::Listener * SWIGSTDCALL CSharp_MixedRealityToolkitfSharing_DiscoveryClientListener_SWIGUpcast___(XTools::DiscoveryClientListener *jarg1) {
     return (XTools::Listener *)jarg1;
 }
 

@@ -4,11 +4,11 @@
  * Copyright (C) 2014 Microsoft Corp.  All Rights Reserved
  */
 
-package HoloToolkit.Sharing;
+package MixedRealityToolkit.Sharing;
 
 import java.io.*;
 import java.util.concurrent.*;
-import com.microsoft.holotoolkit.sharing.*;
+import com.microsoft.mixedrealitytoolkit.sharing.*;
 
  public class JavaTestApp {
 

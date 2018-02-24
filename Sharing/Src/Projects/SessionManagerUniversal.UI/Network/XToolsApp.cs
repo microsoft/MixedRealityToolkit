@@ -3,7 +3,7 @@
 
 using System;
 using System.Collections.Generic;
-using HoloToolkit.Sharing;
+using MixedRealityToolkit.Sharing;
 using SessionManagerUniversal.UI.Helpers;
 using System.Threading;
 
