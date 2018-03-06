@@ -1013,6 +1013,7 @@ static bool LoadExternalFile(std::vector<unsigned char> *out, std::string *err,
   }
   std::vector<unsigned char> buf(sz);
 
+  f.seekg(0, f.beg);
   f.read(reinterpret_cast<char *>(&buf.at(0)),
          static_cast<std::streamsize>(sz));
   f.close();
