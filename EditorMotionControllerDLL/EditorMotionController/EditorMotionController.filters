@@ -32,12 +32,12 @@
     <ClCompile Include="dllmain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MotionControllerMethods.cpp">
+    <ClCompile Include="EditorMotionController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="MotionControllerModel.rc">
+    <ResourceCompile Include="EditorMotionController.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
   </ItemGroup>
