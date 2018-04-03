@@ -16,7 +16,6 @@ private:
 	std::vector<std::vector<cv::Point2f>> m_markerCorners;
 	std::vector<cv::Vec3d> m_rotationVecs;
 	std::vector<cv::Vec3d> m_translationVecs;
-
 	std::vector<int> m_detectedMarkers;
 	int m_dictionaryId;
 };

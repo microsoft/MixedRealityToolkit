@@ -1,31 +1,29 @@
 ﻿#include "pch.h"
 #include "OpenCVWrapper.h"
-
 #include "opencv2\aruco.hpp"
-
 #include "pch.h"
 #include <opencv2\core.hpp>
 #include <opencv2\highgui.hpp>
 #include "opencv2\aruco\charuco.hpp"
 #include <ctime>
-
-
 #include "MarkerDetector.h"
 
-
 MarkerDetector* detector = NULL;
-
 
 extern "C" __declspec(dllexport) void __stdcall MarkerDetector_Initialize()
 {
 	if (detector == NULL)
+	{
 		detector = new MarkerDetector(10);
+	}
 }
 
 extern "C" __declspec(dllexport) void __stdcall MarkerDetector_Terminate()
 {
 	if (detector != NULL)
+	{
 		delete detector;
+	}
 }
 
 /// Looks for markers in an image
@@ -35,8 +33,10 @@ extern "C" __declspec(dllexport) void __stdcall MarkerDetector_Terminate()
 /// _markerSize : The physical size of the target marker in meters
 extern "C" __declspec(dllexport) bool __stdcall MarkerDetector_DetectMarkers(int _imageWidth, int _imageHeight, unsigned char* _imageData, float _markerSize)
 {
-	if(detector == NULL)
+	if (detector == NULL)
+	{
 		return false;
+	}
 
 	detector->Detect(_imageWidth, _imageHeight, _imageData, _markerSize);
 
@@ -48,7 +48,9 @@ extern "C" __declspec(dllexport) bool __stdcall MarkerDetector_DetectMarkers(int
 extern "C" __declspec(dllexport) bool __stdcall MarkerDetector_GetNumMarkersDetected(int& _numMarkersDetected)
 {
 	if (detector == NULL)
+	{
 		return false;
+	}
 
 	_numMarkersDetected = detector->GetNumDetectedMarkers();
 
@@ -60,7 +62,9 @@ extern "C" __declspec(dllexport) bool __stdcall MarkerDetector_GetNumMarkersDete
 extern "C" __declspec(dllexport) bool __stdcall MarkerDetector_GetDetectedMarkerIds(unsigned int* _detectedMarkers)
 {
 	if (detector == NULL)
+	{
 		return false;
+	}
 
 	detector->GetDetectedMarkerIds(_detectedMarkers);
 
@@ -78,7 +82,9 @@ extern "C" __declspec(dllexport) bool __stdcall MarkerDetector_GetDetectedMarker
 extern "C" __declspec(dllexport) bool __stdcall MarkerDetector_GetDetectedMarkerPose(int _markerId, float& _xPos, float& _yPos, float& _zPos, float& _xRot, float& _yRot, float& _zRot)
 {
 	if (detector == NULL)
+	{
 		return false;
+	}
 
 	detector->GetDetectedMarkerPose(_markerId, _xPos, _yPos, _zPos, _xRot, _yRot, _zRot);
 

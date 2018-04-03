@@ -26,7 +26,7 @@ void MarkerDetector::Detect(int _imageWidth, int _imageHeight, unsigned char* _i
 	}
 
 	cv::Mat inputImage(_imageHeight, _imageWidth, CV_8UC3, &flippedData[0]);
-	
+
 	std::vector<int> markerIds;
 	std::vector<std::vector<cv::Point2f>> rejectedCandidates;
 	cv::Ptr<cv::aruco::DetectorParameters> parameters = cv::aruco::DetectorParameters::create();
@@ -35,7 +35,9 @@ void MarkerDetector::Detect(int _imageWidth, int _imageHeight, unsigned char* _i
 	cv::aruco::detectMarkers(inputImage, dictionary, m_markerCorners, m_detectedMarkers, parameters, rejectedCandidates);
 
 	if (m_markerCorners.size() <= 0)
+	{
 		return;
+	}
 
 	cv::Mat cameraMatrix(3, 3, CV_64F);
 	cameraMatrix.at<double>(0, 0) = 1006.224;
@@ -61,7 +63,9 @@ void MarkerDetector::Detect(int _imageWidth, int _imageHeight, unsigned char* _i
 bool MarkerDetector::GetDetectedMarkerIds(unsigned int* _detectedMarkerIds)
 {
 	if (m_detectedMarkers.size() <= 0)
-		return false ;
+	{
+		return false;
+	}
 
 	memcpy(_detectedMarkerIds, &m_detectedMarkers[0], sizeof(m_detectedMarkers[0])*m_detectedMarkers.size());
 
@@ -71,7 +75,9 @@ bool MarkerDetector::GetDetectedMarkerIds(unsigned int* _detectedMarkerIds)
 bool MarkerDetector::GetDetectedMarkerPose(int _markerId, float& _xPos, float& _yPos, float& _zPos, float& _xRot, float& _yRot, float& _zRot)
 {
 	if (m_detectedMarkers.size() <= 0)
+	{
 		return false;
+	}
 
 	for (int i = 0; i < m_detectedMarkers.size(); i++)
 	{
