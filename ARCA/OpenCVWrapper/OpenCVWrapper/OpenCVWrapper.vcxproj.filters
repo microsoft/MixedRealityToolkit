@@ -10,9 +10,6 @@
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="OpenCVWrapper.cpp" />
     <ClCompile Include="pch.cpp" />
-    <ClCompile Include="aruco.cpp" />
-    <ClCompile Include="charuco.cpp" />
-    <ClCompile Include="dictionary.cpp" />
     <ClCompile Include="MarkerDetector.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -20,13 +17,5 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="MarkerDetector.h" />
-    <ClInclude Include="opencv2\aruco\charuco.hpp" />
-    <ClInclude Include="opencv2\aruco\dictionary.hpp" />
-    <ClInclude Include="opencv2\aruco.hpp" />
-    <ClInclude Include="precomp.hpp" />
-    <ClInclude Include="predefined_dictionaries.hpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
 </Project>

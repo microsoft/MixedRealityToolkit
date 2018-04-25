@@ -1,14 +1,19 @@
 ﻿#include "pch.h"
 #include "OpenCVWrapper.h"
-#include "opencv2\aruco.hpp"
-#include "pch.h"
+#include <opencv2\aruco.hpp>
 #include <opencv2\core.hpp>
 #include <opencv2\highgui.hpp>
-#include "opencv2\aruco\charuco.hpp"
+#include <opencv2\aruco\charuco.hpp>
 #include <ctime>
 #include "MarkerDetector.h"
 
 MarkerDetector* detector = NULL;
+
+/// Void function to test whether Unity has been able to successful load the dll 
+extern "C" __declspec(dllexport) void __stdcall CheckLibraryHasLoaded()
+{
+	return;
+}
 
 extern "C" __declspec(dllexport) void __stdcall MarkerDetector_Initialize()
 {

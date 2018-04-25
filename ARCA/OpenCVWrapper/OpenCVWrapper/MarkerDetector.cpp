@@ -18,7 +18,7 @@ MarkerDetector::~MarkerDetector()
 
 void MarkerDetector::Detect(int _imageWidth, int _imageHeight, unsigned char* _imageData, float _markerSize)
 {
-	// As unity definines textures bottom to top we need to flip our data here
+	// As unity defines textures bottom to top we need to flip our data here
 	std::vector<unsigned char> flippedData(_imageWidth * _imageHeight * 3);
 	for (int i = 0; i < _imageHeight; i++)
 	{
