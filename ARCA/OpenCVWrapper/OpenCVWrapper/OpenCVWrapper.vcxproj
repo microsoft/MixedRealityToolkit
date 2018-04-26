@@ -142,7 +142,7 @@
       <SubSystem>Console</SubSystem>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
-      <AdditionalLibraryDirectories>%OPENCV_DIR%\jhgkhbk;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>opencv_aruco341.lib;opencv_core341.lib;opencv_calib3d341.lib;opencv_features2d341.lib;opencv_flann341.lib;opencv_highgui341.lib;opencv_imgcodecs341.lib;opencv_ml341.lib;opencv_videoio341.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
