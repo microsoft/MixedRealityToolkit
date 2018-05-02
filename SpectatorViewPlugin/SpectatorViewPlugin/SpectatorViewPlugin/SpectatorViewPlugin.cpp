@@ -1,5 +1,5 @@
 ﻿#include "pch.h"
-#include "OpenCVWrapper.h"
+#include "SpectatorViewPlugin.h"
 #include <opencv2\aruco.hpp>
 #include <opencv2\core.hpp>
 #include <opencv2\highgui.hpp>

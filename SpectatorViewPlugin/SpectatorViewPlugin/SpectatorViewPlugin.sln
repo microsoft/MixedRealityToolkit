@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenCVWrapper", "OpenCVWrapper\OpenCVWrapper.vcxproj", "{40A65FA5-46F2-4E86-92B9-CD61A6BED4DB}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SpectatorViewPlugin", "SpectatorViewPlugin\SpectatorViewPlugin.vcxproj", "{40A65FA5-46F2-4E86-92B9-CD61A6BED4DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,5 +30,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A182515F-0FB1-4361-BBCE-BF0192EBFFD2}
 	EndGlobalSection
 EndGlobal

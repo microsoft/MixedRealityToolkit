@@ -8,14 +8,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="OpenCVWrapper.cpp" />
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="MarkerDetector.cpp" />
+    <ClCompile Include="SpectatorViewPlugin.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="OpenCVWrapper.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="MarkerDetector.h" />
+    <ClInclude Include="SpectatorViewPlugin.h" />
   </ItemGroup>
 </Project>
