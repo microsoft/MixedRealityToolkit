@@ -7,13 +7,13 @@
 - .\bootstrap-vcpkg.bat
 - .\vcpkg integrate install
 ```
-NOTE: The above line requires the Command Prompt to be running as an Administrator
+NOTE: The above line requires the Command Prompt to be running as an Administrator.
 ```
 
 ## Install OpenCV Contrib for UWP
 - .\vcpkg install opencv[contrib]:x86-uwp --recurse 
 ```
-NOTE: Copy the above line exactly, the []s do not indicate an optional value)
+NOTE: Copy the above line exactly (the []s do not indicate an optional value).
 ```
 
 ## Building the Plugin
