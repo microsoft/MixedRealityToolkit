@@ -2,7 +2,7 @@
 
 ## Install Vcpkg
 - Open a Command Prompt
-- Navigate to a folder in which you would like to store your repositiories (ex: c:\git)
+- Navigate to a folder in which you would like to store your repositories (ex: c:\git)
 - git clone https://github.com/Microsoft/vcpkg
 - cd vcpkg
 - .\bootstrap-vcpkg.bat
