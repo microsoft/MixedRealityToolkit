@@ -21,7 +21,7 @@ NOTE: Copy the above line exactly (the []s do not indicate an optional value).
 - Navigate to your Git repository folder (ex: c:\git)
 - git clone https://github.com/Microsoft/MixedRealityToolkit.git
 - Open the .sln file located in MixedRealityToolkit\SpectatorViewPlugin\SpectatorViewPlugin\SpectatorViewPlugin.sln
-- Set the build options to Release and build the solution.
+- Set the build options to Release and x86, then build the solution.
 
 ## Add the DLLs to your Project
 Copy the following dlls from the directory MixedRealityToolkit\SpectatorViewPlugin\SpectatorViewPlugin\Release\SpectatorViewPlugin to the directory HoloToolkit\SpectatorView\Plugins\WSA\x86\
