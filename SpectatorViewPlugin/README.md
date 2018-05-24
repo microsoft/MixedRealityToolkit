@@ -2,6 +2,7 @@
 
 ## Install Vcpkg
 - Open a Command Prompt
+- Navigate to a folder in which you would like to store your repositiories (ex: c:\git)
 - git clone https://github.com/Microsoft/vcpkg
 - cd vcpkg
 - .\bootstrap-vcpkg.bat
@@ -17,6 +18,7 @@ NOTE: Copy the above line exactly (the []s do not indicate an optional value).
 ```
 
 ## Building the Plugin
+- Navigate to your Git repository folder (ex: c:\git)
 - git clone https://github.com/Microsoft/MixedRealityToolkit.git
 - Open the .sln file located in MixedRealityToolkit\SpectatorViewPlugin\SpectatorViewPlugin\SpectatorViewPlugin.sln
 - Set the build options to Release and build the solution.
