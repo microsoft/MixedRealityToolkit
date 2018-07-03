@@ -32,7 +32,7 @@
 #define SERVICE_DEPENDENCIES     L""
 
 // The user account to run this service as
-#define SERVICE_ACCOUNT     L"NT AUTHORITY\\Network Service"
+#define SERVICE_ACCOUNT     L"NT AUTHORITY\\NetworkService"
 
 // The password of the user account to run this service as
 #define SERVICE_PASSWORD     L""
