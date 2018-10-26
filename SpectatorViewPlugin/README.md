@@ -26,7 +26,7 @@
 
 ## Add the DLLs to your Project
 
-Copy the following dlls from the directory MixedRealityToolkit\SpectatorViewPlugin\SpectatorViewPlugin\Release\SpectatorViewPlugin to the directory HoloToolkit\SpectatorView\Plugins\WSA\x86\
+Copy the following dlls from the directory MixedRealityToolkit\SpectatorViewPlugin\SpectatorViewPlugin\Release\SpectatorViewPlugin to the directory HoloToolkit-Preview\SpectatorView\Plugins\WSA\x86. If that directory doesn't exist please create it.
 
 - opencv_aruco341.dll
 - opencv_calib3d341.dll
