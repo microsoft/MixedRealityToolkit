@@ -19,18 +19,26 @@ const unsigned short CONTINUOUS_BUZZ_WAVEFORM = 0x1004;
 // One second, in 100-nanoseconds.
 const long ONE_SECOND = 10000000;
 
+SpatialInteractionManager^ spatialInteractionManager = nullptr;
+
 EXTERN_C SpatialInteractionSource^ GetSpatialInteractionSource(UINT32 controllerId)
 {
-    ComPtr<ISpatialInteractionManagerInterop> spInteractionInterop;
-    ComPtr<IInspectable> spInteractionInteropInspectable;
-
-    // Use WRL to get the SpatialInteractionManager from the active window.
-    if (SUCCEEDED(RoGetActivationFactory(HStringReference(L"Windows.UI.Input.Spatial.SpatialInteractionManager").Get(), IID_PPV_ARGS(spInteractionInterop.ReleaseAndGetAddressOf()))) &&
-        SUCCEEDED(spInteractionInterop->GetForWindow(FindWindow(L"UnityHoloInEditorWndClass", NULL), IID_PPV_ARGS(spInteractionInteropInspectable.ReleaseAndGetAddressOf()))))
+    if (spatialInteractionManager == nullptr)
     {
-        // Cast the interop SpatialInteractionManager into an actual SpatialInteractionManager.
-        auto spatialInteractionManager = safe_cast<SpatialInteractionManager^>(reinterpret_cast<Platform::Object^>(spInteractionInteropInspectable.Get()));
+        ComPtr<ISpatialInteractionManagerInterop> spInteractionInterop;
+        ComPtr<IInspectable> spInteractionInteropInspectable;
 
+        // Use WRL to get the SpatialInteractionManager from the active window.
+        if (SUCCEEDED(RoGetActivationFactory(HStringReference(L"Windows.UI.Input.Spatial.SpatialInteractionManager").Get(), IID_PPV_ARGS(spInteractionInterop.ReleaseAndGetAddressOf()))) &&
+            SUCCEEDED(spInteractionInterop->GetForWindow(FindWindow(L"UnityHoloInEditorWndClass", NULL), IID_PPV_ARGS(spInteractionInteropInspectable.ReleaseAndGetAddressOf()))))
+        {
+            // Cast the interop SpatialInteractionManager into an actual SpatialInteractionManager.
+            auto spatialInteractionManager = safe_cast<SpatialInteractionManager^>(reinterpret_cast<Platform::Object^>(spInteractionInteropInspectable.Get()));
+        }
+    }
+
+    if (spatialInteractionManager != nullptr)
+    {
         // Get the current time, in order to create a PerceptionTimestamp. This will be used to get the currently detected spatial sources.
         Windows::Globalization::Calendar^ c = ref new Windows::Globalization::Calendar;
         PerceptionTimestamp^ perceptionTimestamp = PerceptionTimestampHelper::FromHistoricalTargetTime(c->GetDateTime());
