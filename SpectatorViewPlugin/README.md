@@ -6,7 +6,7 @@
 - Navigate to a folder in which you would like to store your repositories (ex: c:\git)
 - git clone <https://github.com/Microsoft/vcpkg>
 - cd vcpkg
-- git checkout 56ea0dca4098754cee6dba7766c9e38d1fe40165
+- git checkout 068032bc548817a04709970f76268a6d7b1767c7
 - .\bootstrap-vcpkg.bat
 - .\vcpkg integrate install
 
