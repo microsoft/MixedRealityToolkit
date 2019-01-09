@@ -13,9 +13,9 @@ static const DirectX::XMFLOAT4X4 XMFloat4x4Zero(
     0, 0, 0, 0);
 
 static const DirectX::XMFLOAT4X3 XMFloat4x3Identity(
-    1, 0, 0, 
-    0, 1, 0, 
-    0, 0, 1, 
+    1, 0, 0,
+    0, 1, 0,
+    0, 0, 1,
     0, 0, 0);
 
 static const DirectX::XMFLOAT4X4 XMFloat4x4Identity(
@@ -26,20 +26,20 @@ static const DirectX::XMFLOAT4X4 XMFloat4x4Identity(
 
 static const DirectX::XMFLOAT4X4 XMFloat4x4YFlip(
     1, 0, 0, 0,
-    0,-1, 0, 0,
+    0, -1, 0, 0,
     0, 0, 1, 0,
     0, 0, 0, 1);
 
 static const DirectX::XMFLOAT4X4 XMFloat4x4ZFlip(
     1, 0, 0, 0,
     0, 1, 0, 0,
-    0, 0,-1, 0,
+    0, 0, -1, 0,
     0, 0, 0, 1);
 
 static const DirectX::XMFLOAT4X4 XMFloat4x4YZFlip(
     1, 0, 0, 0,
-    0,-1, 0, 0,
-    0, 0,-1, 0,
+    0, -1, 0, 0,
+    0, 0, -1, 0,
     0, 0, 0, 1);
 
 static const DirectX::XMUINT2  XMUZero(0, 0);
@@ -59,9 +59,9 @@ static inline bool operator==(const DirectX::XMMATRIX& xmLeft, const DirectX::XM
 
     return
         (DirectX::XMVector4NearEqual(xmLeft.r[0], xmRight.r[0], epsilon) &&
-        DirectX::XMVector4NearEqual(xmLeft.r[1], xmRight.r[1], epsilon) &&
-        DirectX::XMVector4NearEqual(xmLeft.r[2], xmRight.r[2], epsilon) &&
-        DirectX::XMVector4NearEqual(xmLeft.r[3], xmRight.r[3], epsilon));
+            DirectX::XMVector4NearEqual(xmLeft.r[1], xmRight.r[1], epsilon) &&
+            DirectX::XMVector4NearEqual(xmLeft.r[2], xmRight.r[2], epsilon) &&
+            DirectX::XMVector4NearEqual(xmLeft.r[3], xmRight.r[3], epsilon));
 }
 
 static inline bool operator==(const DirectX::XMFLOAT4X4& left, const DirectX::XMFLOAT4X4& right)
@@ -121,7 +121,7 @@ inline DirectX::XMMATRIX ComputeYAlignedRotation(_In_ const DirectX::XMVECTOR& y
     XMFLOAT3 xmGrav;
     XMStoreFloat3(&xmGrav, yVector);
     XMVECTOR ortho = XMVectorSet(1.0f - xmGrav.x * xmGrav.x, -xmGrav.x * xmGrav.y, -xmGrav.x * xmGrav.z, 0);
-    
+
     XMMATRIX result = XMMatrixIdentity();
     result.r[1] = -yVector;
 

@@ -5,11 +5,11 @@
 #include <memory>
 #include "MathHelpers.h"
 
-/*! 
-    Half Edge meshes represent a mesh by using half edges.  There are three of these half edges per triangle.  They are called half because they are 
-    half of a Winged edge representation.  They are an edge with a direction that goes around a single triangle, three to a loop.  Adjacent triangles will 
-    have an edge going the oposite direction.  Together these two half edges make a whole and represent all the data in a Winged edge.  The big 
-    advantage of Half Egde vs Winged Edge representation is that with half edge you don't have to conditionally check which direction you are going.
+/*!
+    Half Edge meshes represent a mesh by using half edges.  There are three of these half edges per triangle.  They are called half because they are
+    half of a Winged edge representation.  They are an edge with a direction that goes around a single triangle, three to a loop.  Adjacent triangles will
+    have an edge going the opposite direction.  Together these two half edges make a whole and represent all the data in a Winged edge.  The big
+    advantage of Half Edge vs Winged Edge representation is that with half edge you don't have to conditionally check which direction you are going.
 */
 
 class HalfEdgeMesh
@@ -46,7 +46,7 @@ public:
             Edge* edge2 = &m_spEdges[faceIndex * VERTICES_PER_TRIANGLE + 1];
             Edge* edge3 = &m_spEdges[faceIndex * VERTICES_PER_TRIANGLE + 2];
 
-            VERIFY(AddTriangle(triangle, edge1, edge2, edge3)); // we should assume that the intial mesh is manifold (two vertices will be shared between at most 2 half-edges)
+            VERIFY(AddTriangle(triangle, edge1, edge2, edge3)); // we should assume that the initial mesh is manifold (two vertices will be shared between at most 2 half-edges)
         }
     }
 
@@ -64,7 +64,7 @@ public:
 
     class VertexNeighborSet
     {
-    private: 
+    private:
         class VertexNeighbor
         {
         public:
@@ -187,7 +187,7 @@ public:
 
     bool IsCoallesced(uint32_t vert)
     {
-        // determines if this is a vertex that should be ignored by algorithms because it was coallesced to another vertex
+        // determines if this is a vertex that should be ignored by algorithms because it was coalesced to another vertex
         return m_spVertices[vert] != nullptr && m_spVertices[vert]->vertex != vert;
     }
 

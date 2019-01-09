@@ -14,7 +14,7 @@
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="ClientUniversalCSharp.rc">
+    <ResourceCompile Include="..\..\Source\Client\Resources\ClientUniversalCSharp.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
   </ItemGroup>

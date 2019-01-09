@@ -52,7 +52,7 @@ zlargest:
 void	Vec4f::Get2OrthoVector(Vec4f &_n1,Vec4f &_n2) const
 {
 	VecFloatBuildOrthoBase3( vec128, _n1.vec128, _n2.vec128 );
-    _n1.w=0.f; // faut voir si c'est n�cessaire �a
+	_n1.w=0.f; // faut voir si c'est n�cessaire �a
 	_n2.w=0.f;
 }
 

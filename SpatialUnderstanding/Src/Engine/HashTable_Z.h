@@ -429,7 +429,7 @@ public:
 					{
 						Resize(NbElem);
 						T	*ElePtr=(T *)Search(Element);
-                        EXCEPTION_Z(ElePtr != NULL);
+						EXCEPTION_Z(ElePtr != NULL);
 						EXCEPTION_Z(*ElePtr==Element);
 						return	ElePtr;
 					}

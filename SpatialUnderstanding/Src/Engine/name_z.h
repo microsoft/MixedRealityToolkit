@@ -36,11 +36,11 @@ struct  Name_Z{
 	U32		ID;
 	Char	Name[ARRAY_CHAR_MAX];
 public:
-	            Name_Z()												{ID = 0; Name[0]=0;}
-	            Name_Z(const Char *_Name)								{SetName(_Name);}
-    explicit    Name_Z(int _ID)											{ID = (U32) _ID; Name[0]=0;}
-	            Name_Z(const Name_Z &_Name)								{ID = _Name.ID; strcpy_s(Name, ARRAY_CHAR_MAX, _Name.Name);}
-	            Name_Z(const String_Z<ARRAY_CHAR_MAX> &_String)			{SetName(_String);}
+				Name_Z()												{ID = 0; Name[0]=0;}
+				Name_Z(const Char *_Name)								{SetName(_Name);}
+	explicit    Name_Z(int _ID)											{ID = (U32) _ID; Name[0]=0;}
+				Name_Z(const Name_Z &_Name)								{ID = _Name.ID; strcpy_s(Name, ARRAY_CHAR_MAX, _Name.Name);}
+				Name_Z(const String_Z<ARRAY_CHAR_MAX> &_String)			{SetName(_String);}
 			void	SetName(const Char *_Name)				            {ID = 0; if(!_Name) { Name[0]=0; return; }ASSERTC_Z(strlen(_Name)<ARRAY_CHAR_MAX,_Name); strcpy_s(Name, ARRAY_CHAR_MAX, _Name); _strupr_s(Name, ARRAY_CHAR_MAX); ID = GetID(Name);}
 	static	U32		GetID(const Char *_Name,U32	ContinueCRC = 0);
 	static	U32		GetID(const U8 *_Data,U32 Len,U32 ContinueCRC = 0);

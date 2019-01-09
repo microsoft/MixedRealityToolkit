@@ -15,11 +15,11 @@ namespace ProfilerX
 
         public bool Recording = true;
 
-        public HoloToolkit.Sharing.ProfilerStreamManager Manager { get; private set; }
+        public MixedRealityToolkit.Sharing.ProfilerStreamManager Manager { get; private set; }
 
         public ProfilerApp()
         {
-            this.Manager = HoloToolkit.Sharing.ProfilerStreamManager.Create();
+            this.Manager = MixedRealityToolkit.Sharing.ProfilerStreamManager.Create();
             this.disposed = false;
         }
 

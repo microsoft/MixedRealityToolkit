@@ -28,8 +28,8 @@ namespace ProfilerX
             get { return this.logs; }
         }
 
-        public HoloToolkit.Sharing.ProfilerStream stream;
-        private HoloToolkit.Sharing.ProfilerStreamAdapter adapter;
+        public MixedRealityToolkit.Sharing.ProfilerStream stream;
+        private MixedRealityToolkit.Sharing.ProfilerStreamAdapter adapter;
         private string remoteSystemName;
         private readonly int MaxFrames = 600; // 10 seconds @ 60fps
 
@@ -45,14 +45,14 @@ namespace ProfilerX
             }
         }
 
-        public StreamData(HoloToolkit.Sharing.ProfilerStream newStream, string remoteName)
+        public StreamData(MixedRealityToolkit.Sharing.ProfilerStream newStream, string remoteName)
         {
             this.remoteSystemName = remoteName;
 
             this.frames = new ObservableCollection<FrameData>();
             this.logs = new ObservableCollection<LogData>();
 
-            this.adapter = new HoloToolkit.Sharing.ProfilerStreamAdapter();
+            this.adapter = new MixedRealityToolkit.Sharing.ProfilerStreamAdapter();
             this.adapter.ConnectedEvent += OnConnected;
             this.adapter.ConnectFailedEvent += OnConnectFailed;
             this.adapter.DisconnectedEvent += OnDisconnected;
@@ -82,7 +82,7 @@ namespace ProfilerX
             this.stream.Connect();
         }
 
-        private void OnReceiveProfileFrame(HoloToolkit.Sharing.ProfileFrame newFrame)
+        private void OnReceiveProfileFrame(MixedRealityToolkit.Sharing.ProfileFrame newFrame)
         {
             if (App.ProfilerApp.Recording)
             {

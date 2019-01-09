@@ -13,12 +13,12 @@ inline Quat::Quat( const Float Angle, const Vec3f& Axis)
 
 inline Quat::Quat(const Mat3x3 &Matrix)
 {
-    SetMatrix(Matrix);
+	SetMatrix(Matrix);
 }
 
 inline Quat::Quat(const Mat4x4 &Matrix)
 {
-    SetMatrix(Matrix);
+	SetMatrix(Matrix);
 }
 
 inline Quat::Quat(const Vec3f &RV)

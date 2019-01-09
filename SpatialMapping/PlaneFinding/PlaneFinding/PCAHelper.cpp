@@ -48,10 +48,10 @@ namespace PlaneFinding
     void PCAHelper::MakeTridiagonal(XMFLOAT3X3 M, _Out_ XMFLOAT3X3 *Q, _Out_ XMFLOAT3X3 *T)
     {
         // Input: M is a symmetric matrix
-        // output: Q is an orthogonal matrix, and T a triagonal symmetric matrix such that Qt*T*Q=M
+        // output: Q is an orthogonal matrix, and T a trigonal symmetric matrix such that Qt*T*Q=M
         if (M._31 == 0)
         {
-            // we are already tridiagonal
+            // We are already tridiagonal
             *Q = { 1, 0, 0,
                 0, 1, 0,
                 0, 0, 1 };
@@ -60,7 +60,7 @@ namespace PlaneFinding
         else
         {
             // We create a Givens rotation matrix for the similarity transform.
-            // See this wikipedia page for an explanation: http://en.wikipedia.org/wiki/Givens_rotation#Triangularization
+            // See this Wikipedia page for an explanation: http://en.wikipedia.org/wiki/Givens_rotation#Triangularization
             float theta = atan2f(-M._31, M._21);
             XMFLOAT3X3 G = { 1, 0, 0,
                 0, cos(theta), -sin(theta),
@@ -77,22 +77,22 @@ namespace PlaneFinding
         // Input: M is a tridiagonal symmetric matrix
         // Output: Q is an orthogonal matrix, and R is an upper triangular matrix so that A=QR.
 
-        // we use the gram-schmidt process to calculate Q:
+        // we use the Gram-Schmidt process to calculate Q:
         //      a b 0
         // M =  b c d
         //      0 d e
 
-        // the first column is the same as M, but normalized
+        // The first column is the same as M, but normalized
         const XMVECTORF32 a1 = { M._11, M._12, 0 };
         const XMVECTOR u1 = a1;
         const XMVECTOR e1 = XMVector3Normalize(u1);
 
-        // the second column is made orthogonal, by subtracting out the projection onto the first column vector
+        // The second column is made orthogonal, by subtracting out the projection onto the first column vector
         const XMVECTORF32 a2 = { M._21, M._22, M._23 };
         const XMVECTOR u2 = a2 - e1 * XMVector3Dot(e1, a2);
         const XMVECTOR e2 = XMVector3Normalize(u2);
 
-        // the third column is again orthogonal by subtracting out the first two columns
+        // The third column is again orthogonal by subtracting out the first two columns
         const XMVECTORF32 a3 = { 0, M._32, M._33 };
         const XMVECTOR u3 = a3 - e1 * XMVector3Dot(e1, a3) - e2 * XMVector3Dot(e2, a3);
         const XMVECTOR e3 = XMVector3Normalize(u3);
@@ -124,10 +124,10 @@ namespace PlaneFinding
             QTotal = QTotal * XMLoadFloat3x3(&Q);
         }
 
-        // eigenvalues are diagonal entries of A
+        // Eigenvalues are diagonal entries of A
         // but we aren't consuming them, so aren't exposing them
 
-        // eigen vectors are columns of QTotal
+        // Eigenvectors are columns of QTotal
         const XMMATRIX Qt = XMMatrixTranspose(QTotal);
         XMStoreFloat3(eig1, Qt.r[0]);
         XMStoreFloat3(eig2, Qt.r[1]);

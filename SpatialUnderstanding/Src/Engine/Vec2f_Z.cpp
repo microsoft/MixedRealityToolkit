@@ -20,7 +20,7 @@ Float	SignedCalcArea2D( Vec2f *Shape, S32 NbPoints)
 	// A l'initialisation, on traite le rebouclage du polygone (A cause de l'optim, diff�rent si pair ou impair).
 
    if (NbPoints & 0x1)
-       //Aire = ((Shape->x + EndPt[1].x) * (Shape->y - EndPt[1].y) - (Shape->y + EndPt[1].y) * (Shape->x - EndPt[1].x)) * 0.5f;
+	   //Aire = ((Shape->x + EndPt[1].x) * (Shape->y - EndPt[1].y) - (Shape->y + EndPt[1].y) * (Shape->x - EndPt[1].x)) * 0.5f;
 	   Aire =  Shape->y*EndPt[1].x - Shape->x*EndPt[1].y;	// Equivalent � ce qu'il y a ci-dessus.
    else
 	   Aire = (EndPt[1].x * (Shape->y - EndPt->y) - EndPt[1].y * (Shape->x - EndPt->x));
@@ -44,14 +44,14 @@ Float	CalcArea2D(  Vec2f *Shape, S32 NbPoints)
 
 void	RotateVector2D(Vec2f &vec, Float Angle)
 { 
-    Vec2f tp;
+	Vec2f tp;
 
-    Vec2f   SC;
-    SinCos(SC,Angle);
+	Vec2f   SC;
+	SinCos(SC,Angle);
 
-    tp.x = SC.y*vec.x - SC.x*vec.y;
-    tp.y = SC.x*vec.x + SC.y*vec.y;
+	tp.x = SC.y*vec.x - SC.x*vec.y;
+	tp.y = SC.x*vec.x + SC.y*vec.y;
 
-    vec.x=tp.x;
-    vec.y=tp.y;
+	vec.x=tp.x;
+	vec.y=tp.y;
 }

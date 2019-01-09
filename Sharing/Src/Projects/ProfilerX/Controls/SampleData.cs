@@ -14,8 +14,8 @@ namespace ProfilerX
     public class SampleData : INotifyPropertyChanged
     {
         private ObservableCollection<SampleData> samples;
-        private HoloToolkit.Sharing.ProfileSample xSample;
-        private HoloToolkit.Sharing.ProfileThread xThread;
+        private MixedRealityToolkit.Sharing.ProfileSample xSample;
+        private MixedRealityToolkit.Sharing.ProfileThread xThread;
         private int sampleIndex;
         bool _isExpanded;
         bool _isSelected;
@@ -89,7 +89,7 @@ namespace ProfilerX
             } 
         }
 
-        public SampleData(HoloToolkit.Sharing.ProfileSample sample, int index, HoloToolkit.Sharing.ProfileThread thread)
+        public SampleData(MixedRealityToolkit.Sharing.ProfileSample sample, int index, MixedRealityToolkit.Sharing.ProfileThread thread)
         {
             this.xSample = sample;
             this.xThread = thread;
@@ -101,7 +101,7 @@ namespace ProfilerX
             this.samples = new ObservableCollection<SampleData>();
             for (int i = 0; i < this.xThread.GetSampleCount(); ++i)
             {
-                HoloToolkit.Sharing.ProfileSample sample = this.xThread.GetSample(i);
+                MixedRealityToolkit.Sharing.ProfileSample sample = this.xThread.GetSample(i);
                 if (sample.GetParentIndex() == this.sampleIndex)
                 {
                     this.samples.Add(new SampleData(sample, i, this.xThread));

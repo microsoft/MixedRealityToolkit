@@ -358,6 +358,7 @@
     <ClInclude Include="Dll_Interface\Dll_Solver.h">
       <Filter>Dll_Interface</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\Mat3x3_Z.inl">
@@ -381,5 +382,8 @@
     <None Include="Engine\Color_Z.inl">
       <Filter>Engine\Math</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SpatialUnderstanding.rc" />
   </ItemGroup>
 </Project>

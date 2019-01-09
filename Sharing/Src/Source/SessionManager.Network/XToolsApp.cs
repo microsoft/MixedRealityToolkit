@@ -3,7 +3,7 @@
 
 using System;
 using System.Collections.Generic;
-using HoloToolkit.Sharing;
+using MixedRealityToolkit.Sharing;
 
 namespace SessionManager.Network
 {
@@ -17,7 +17,7 @@ namespace SessionManager.Network
         private ConsoleLogWriter logWriter;
         private Dictionary<string, string> parsedArguments;
 
-        public HoloToolkit.Sharing.SessionManager SessionManager { get; private set; }
+        public MixedRealityToolkit.Sharing.SessionManager SessionManager { get; private set; }
 
         public SharingManager Manager { get; private set; }
 

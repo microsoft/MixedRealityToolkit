@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{772884be-8bd7-4279-ab23-f6a74ce28c37}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Shaders\PbrGeometryShaderNoVprt.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\PbrPixelShader.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\PbrVertexShaderNoVprt.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\PbrVertexShaderVprt.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="PbrCommon.cpp" />
+    <ClCompile Include="PbrModel.cpp" />
+    <ClCompile Include="PbrResources.cpp" />
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="PbrMaterial.cpp" />
+    <ClCompile Include="PbrPrimitive.cpp" />
+    <ClCompile Include="GltfLoader.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="PbrCommon.h" />
+    <ClInclude Include="PbrModel.h" />
+    <ClInclude Include="PbrResources.h" />
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="PbrMaterial.h" />
+    <ClInclude Include="PbrPrimitive.h" />
+    <ClInclude Include="GltfLoader.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shaders\PbrShared.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\PbrVertexShaderShared.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="brdf_lut.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

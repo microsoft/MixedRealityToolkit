@@ -46,7 +46,7 @@ namespace ProfilerX
 
             if (result.HasValue && result.Value && dialog.RemoteAppName != null && dialog.RemoteAppName.Length > 0)
             {
-                HoloToolkit.Sharing.ProfilerStream xStream = App.ProfilerApp.Manager.CreateStream(dialog.RemoteAppName, dialog.RemoteAppRole);
+                MixedRealityToolkit.Sharing.ProfilerStream xStream = App.ProfilerApp.Manager.CreateStream(dialog.RemoteAppName, dialog.RemoteAppRole);
 
                 StreamData streamData = new StreamData(xStream, dialog.RemoteAppName);
                 this.streams.Add(streamData);

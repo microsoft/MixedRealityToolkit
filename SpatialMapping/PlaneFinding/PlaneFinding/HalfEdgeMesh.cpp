@@ -29,23 +29,23 @@ HalfEdgeMesh::~HalfEdgeMesh()
 
 bool HalfEdgeMesh::AddTriangle(_In_ const TriangleINT32& triangle, _Out_ HalfEdgeMesh::Edge **edge)
 {
-    Edge* edge1 = new Edge{0};
-    Edge* edge2 = new Edge{0};
-    Edge* edge3 = new Edge{0};
+    Edge* edge1 = new Edge{ 0 };
+    Edge* edge2 = new Edge{ 0 };
+    Edge* edge3 = new Edge{ 0 };
 
     m_spNewEdges.push_back(edge1);
     m_spNewEdges.push_back(edge2);
     m_spNewEdges.push_back(edge3);
 
     bool ret = AddTriangle(triangle, edge1, edge2, edge3);
-    
+
 
     *edge = edge1;
     return ret;
 }
 
 bool HalfEdgeMesh::AddTriangle(
-    _In_ const TriangleINT32& triangle, 
+    _In_ const TriangleINT32& triangle,
     _In_ HalfEdgeMesh::Edge* edge1,
     _In_ HalfEdgeMesh::Edge* edge2,
     _In_ HalfEdgeMesh::Edge* edge3)
@@ -61,10 +61,10 @@ bool HalfEdgeMesh::AddTriangle(
 
     edge1->vertex = vertex1;
     Edge *pair = FindExistingEdge(m_spVertices[vertex2], vertex1);
-    if (pair != nullptr && pair->pair == nullptr) 
+    if (pair != nullptr && pair->pair == nullptr)
     {
         edge1->pair = pair;
-        pair->pair = edge1; 
+        pair->pair = edge1;
     }
     else if (pair != nullptr)
     {

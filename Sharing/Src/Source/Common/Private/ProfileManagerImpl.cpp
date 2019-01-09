@@ -46,6 +46,8 @@ ProfileManagerImpl::ProfileManagerImpl(const XSocketManagerPtr& socketMgr, Syste
 	{
 	case XTools::SessionDiscoveryServerRole:
 		port = kProfilingPortServer;
+		// Start the discovery server to allow this instance to be discovered
+		m_discoveryResponseReceipt = m_socketMgr->AcceptDiscoveryPings(kDiscoveryServerPort, role);
 		break;
 	case XTools::SessionServerRole:
 		port = kProfilingPortServer;
@@ -64,9 +66,6 @@ ProfileManagerImpl::ProfileManagerImpl(const XSocketManagerPtr& socketMgr, Syste
 	{
 		LogWarning("Failed to start listening for incoming profiler connections.  This usually means another app is already using the port");
 	}
-
-	// Start the discovery server to allow this instance to be discovered
-	m_discoveryResponseReceipt = m_socketMgr->AcceptDiscoveryPings(kDiscoveryServerPort, role);
 
 	{
 		ScopedLock lock(m_sInstanceMutex);
