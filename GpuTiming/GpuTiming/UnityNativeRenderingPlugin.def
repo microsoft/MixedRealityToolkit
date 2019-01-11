@@ -6,6 +6,7 @@ LIBRARY
 
 EXPORTS
 	GetLastFrameGPUTime
+	GetLastQueriedVramUse
 	GetRenderEventFunc
 	UnityPluginLoad
 	UnityPluginUnload
