@@ -18,13 +18,13 @@ typedef shared_ptr<deque<QueryPtr>> QueryDequePtr;
 typedef shared_ptr<CRITICAL_SECTION> CriticalSectionPtr;
 
 static UnityGfxRenderer s_DeviceType = kUnityGfxRendererNull;
-static IUnityInterfaces* s_UnityInterfaces = NULL;
-static IUnityGraphics* s_Graphics = NULL;
+static IUnityInterfaces* s_UnityInterfaces = nullptr;
+static IUnityGraphics* s_Graphics = nullptr;
 
-static ID3D11Device* s_Device = NULL;
-static ID3D11DeviceContext* s_Context = NULL;
+static ID3D11Device* s_Device = nullptr;
+static ID3D11DeviceContext* s_Context = nullptr;
 
-static ID3DUserDefinedAnnotation* s_Annotation = NULL;
+static ID3DUserDefinedAnnotation* s_Annotation = nullptr;
 
 static const int MaxActiveQueries = 5;
 
@@ -183,7 +183,7 @@ extern "C" void	UNITY_INTERFACE_EXPORT UNITY_INTERFACE_API UnityPluginLoad(IUnit
 
 extern "C" void UNITY_INTERFACE_EXPORT UNITY_INTERFACE_API UnityPluginUnload()
 {
-	if (s_Graphics != NULL)
+	if (s_Graphics != nullptr)
 	{
 		ReleaseResources();
 		s_Graphics->UnregisterDeviceEventCallback(OnGraphicsDeviceEvent);
@@ -192,7 +192,7 @@ extern "C" void UNITY_INTERFACE_EXPORT UNITY_INTERFACE_API UnityPluginUnload()
 
 extern "C" double UNITY_INTERFACE_EXPORT UNITY_INTERFACE_API GetLastFrameGPUTime(int eventId)
 {
-	if (s_Context == NULL)
+	if (s_Context == nullptr)
 	{
 		return 0;
 	}
@@ -268,7 +268,7 @@ static void UNITY_INTERFACE_API OnGraphicsDeviceEvent(UnityGfxDeviceEventType ev
 static void UNITY_INTERFACE_API OnRenderEvent(int eventID)
 {
 	// Unknown / unsupported graphics device type? Do nothing
-	if (s_Context == NULL)
+	if (s_Context == nullptr)
 	{
 		return;
 	}
@@ -325,10 +325,10 @@ static void UNITY_INTERFACE_API OnRenderEvent(int eventID)
 
 static void ReleaseResources()
 {
-	if (s_Annotation != NULL)
+	if (s_Annotation != nullptr)
 	{
 		s_Annotation->Release();
-		s_Annotation = NULL;
+		s_Annotation = nullptr;
 	}
 
 	s_ActiveQueries.clear();
