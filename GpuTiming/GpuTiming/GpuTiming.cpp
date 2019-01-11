@@ -186,6 +186,9 @@ extern "C" void	UNITY_INTERFACE_EXPORT UNITY_INTERFACE_API UnityPluginLoad(IUnit
 	s_Graphics->RegisterDeviceEventCallback(OnGraphicsDeviceEvent);
 
 	InitializeCriticalSection(&updateTimingsSync);
+#ifdef _WIN32_WINNT_WIN10
+	InitializeCriticalSection(&updateMemUseSync);
+#endif
 
 	// Run OnGraphicsDeviceEvent(initialize) manually on plugin load
 	// to not miss the event in case the graphics device is already initialized.
@@ -397,6 +400,9 @@ static void ReleaseResources()
 	s_QueryPool.clear();
 
 	DeleteCriticalSection(&updateTimingsSync);
+#ifdef _WIN32_WINNT_WIN10
+	DeleteCriticalSection(&updateMemUseSync);
+#endif
 }
 
 // GetRenderEventFunc, an example function we export which is used to get a rendering event callback function
