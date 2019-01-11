@@ -49,11 +49,10 @@ private:
 	ID3D11Query* mEnd = nullptr;
 
 public:
-
 	QueryState State = QueryState::Unknown;
 
-	Query() 
-	{ 
+	Query()
+	{
 	}
 
 	~Query()
