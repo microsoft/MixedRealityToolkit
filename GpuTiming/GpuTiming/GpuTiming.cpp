@@ -224,7 +224,7 @@ extern "C" double UNITY_INTERFACE_EXPORT UNITY_INTERFACE_API GetLastFrameGPUTime
 	return time;
 }
 
-extern "C" UINT64 UNITY_INTERFACE_EXPORT UNITY_INTERFACE_API GetLastQueriedVramUse(int eventId)
+extern "C" UINT64 UNITY_INTERFACE_EXPORT UNITY_INTERFACE_API GetLastQueriedVramUse()
 {
 #ifdef _WIN32_WINNT_WIN10
 	if (s_Adapter == nullptr)
