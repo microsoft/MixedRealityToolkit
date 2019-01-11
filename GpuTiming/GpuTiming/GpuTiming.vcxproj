@@ -132,16 +132,16 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <GenerateManifest>false</GenerateManifest>
     <IgnoreImportLibrary>false</IgnoreImportLibrary>
-		<OutDir>$(SolutionDir)\BuildOutput\bin\$(Configuration)\$(Platform.Replace('Win32','x86'))\</OutDir>
-		<IntDir>$(SolutionDir)\BuildOutput\obj\$(Configuration)\$(Platform.Replace('Win32','x86'))\</IntDir>
-		<TargetName>GpuTiming</TargetName>
+    <OutDir>$(SolutionDir)\BuildOutput\bin\$(Configuration)\$(Platform.Replace('Win32','x86'))\</OutDir>
+    <IntDir>$(SolutionDir)\BuildOutput\obj\$(Configuration)\$(Platform.Replace('Win32','x86'))\</IntDir>
+    <TargetName>GpuTiming</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <GenerateManifest>false</GenerateManifest>
     <IgnoreImportLibrary>false</IgnoreImportLibrary>
-		<OutDir>$(SolutionDir)\BuildOutput\bin\$(Configuration)\$(Platform.Replace('Win32','x86'))\</OutDir>
-		<IntDir>$(SolutionDir)\BuildOutput\obj\$(Configuration)\$(Platform.Replace('Win32','x86'))\</IntDir>
-		<TargetName>GpuTiming</TargetName>
+    <OutDir>$(SolutionDir)\BuildOutput\bin\$(Configuration)\$(Platform.Replace('Win32','x86'))\</OutDir>
+    <IntDir>$(SolutionDir)\BuildOutput\obj\$(Configuration)\$(Platform.Replace('Win32','x86'))\</IntDir>
+    <TargetName>GpuTiming</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -182,7 +182,6 @@
       <SubSystem>Console</SubSystem>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
-      <ModuleDefinitionFile>UnityNativeRenderingPlugin.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|arm'">
@@ -196,7 +195,6 @@
       <SubSystem>Console</SubSystem>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
-      <ModuleDefinitionFile>UnityNativeRenderingPlugin.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -210,7 +208,6 @@
       <SubSystem>Console</SubSystem>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
-      <ModuleDefinitionFile>UnityNativeRenderingPlugin.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -224,7 +221,6 @@
       <SubSystem>Console</SubSystem>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
-      <ModuleDefinitionFile>UnityNativeRenderingPlugin.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>

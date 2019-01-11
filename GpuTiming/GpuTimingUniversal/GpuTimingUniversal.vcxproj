@@ -105,44 +105,44 @@
     <GenerateManifest>false</GenerateManifest>
     <IgnoreImportLibrary>false</IgnoreImportLibrary>
     <TargetName>GpuTiming</TargetName>
-		<OutDir>$(SolutionDir)\BuildOutput\bin\$(Configuration)\WSA\$(Platform.Replace('Win32','x86'))\</OutDir>
-		<IntDir>$(SolutionDir)\BuildOutput\obj\$(Configuration)\WSA\$(Platform.Replace('Win32','x86'))\</IntDir>
-	</PropertyGroup>
+    <OutDir>$(SolutionDir)\BuildOutput\bin\$(Configuration)\WSA\$(Platform.Replace('Win32','x86'))\</OutDir>
+    <IntDir>$(SolutionDir)\BuildOutput\obj\$(Configuration)\WSA\$(Platform.Replace('Win32','x86'))\</IntDir>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <GenerateManifest>false</GenerateManifest>
     <IgnoreImportLibrary>false</IgnoreImportLibrary>
     <TargetName>GpuTiming</TargetName>
-		<OutDir>$(SolutionDir)\BuildOutput\bin\$(Configuration)\WSA\$(Platform.Replace('Win32','x86'))\</OutDir>
-		<IntDir>$(SolutionDir)\BuildOutput\obj\$(Configuration)\WSA\$(Platform.Replace('Win32','x86'))\</IntDir>
-	</PropertyGroup>
+    <OutDir>$(SolutionDir)\BuildOutput\bin\$(Configuration)\WSA\$(Platform.Replace('Win32','x86'))\</OutDir>
+    <IntDir>$(SolutionDir)\BuildOutput\obj\$(Configuration)\WSA\$(Platform.Replace('Win32','x86'))\</IntDir>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <GenerateManifest>false</GenerateManifest>
     <IgnoreImportLibrary>false</IgnoreImportLibrary>
     <TargetName>GpuTiming</TargetName>
-		<OutDir>$(SolutionDir)\BuildOutput\bin\$(Configuration)\WSA\$(Platform.Replace('Win32','x86'))\</OutDir>
-		<IntDir>$(SolutionDir)\BuildOutput\obj\$(Configuration)\WSA\$(Platform.Replace('Win32','x86'))\</IntDir>
-	</PropertyGroup>
+    <OutDir>$(SolutionDir)\BuildOutput\bin\$(Configuration)\WSA\$(Platform.Replace('Win32','x86'))\</OutDir>
+    <IntDir>$(SolutionDir)\BuildOutput\obj\$(Configuration)\WSA\$(Platform.Replace('Win32','x86'))\</IntDir>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <GenerateManifest>false</GenerateManifest>
     <IgnoreImportLibrary>false</IgnoreImportLibrary>
     <TargetName>GpuTiming</TargetName>
-		<OutDir>$(SolutionDir)\BuildOutput\bin\$(Configuration)\WSA\$(Platform.Replace('Win32','x86'))\</OutDir>
-		<IntDir>$(SolutionDir)\BuildOutput\obj\$(Configuration)\WSA\$(Platform.Replace('Win32','x86'))\</IntDir>
-	</PropertyGroup>
+    <OutDir>$(SolutionDir)\BuildOutput\bin\$(Configuration)\WSA\$(Platform.Replace('Win32','x86'))\</OutDir>
+    <IntDir>$(SolutionDir)\BuildOutput\obj\$(Configuration)\WSA\$(Platform.Replace('Win32','x86'))\</IntDir>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <GenerateManifest>false</GenerateManifest>
     <IgnoreImportLibrary>false</IgnoreImportLibrary>
     <TargetName>GpuTiming</TargetName>
-		<OutDir>$(SolutionDir)\BuildOutput\bin\$(Configuration)\WSA\$(Platform.Replace('Win32','x86'))\</OutDir>
-		<IntDir>$(SolutionDir)\BuildOutput\obj\$(Configuration)\WSA\$(Platform.Replace('Win32','x86'))\</IntDir>
-	</PropertyGroup>
+    <OutDir>$(SolutionDir)\BuildOutput\bin\$(Configuration)\WSA\$(Platform.Replace('Win32','x86'))\</OutDir>
+    <IntDir>$(SolutionDir)\BuildOutput\obj\$(Configuration)\WSA\$(Platform.Replace('Win32','x86'))\</IntDir>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <GenerateManifest>false</GenerateManifest>
     <IgnoreImportLibrary>false</IgnoreImportLibrary>
     <TargetName>GpuTiming</TargetName>
-		<OutDir>$(SolutionDir)\BuildOutput\bin\$(Configuration)\WSA\$(Platform.Replace('Win32','x86'))\</OutDir>
-		<IntDir>$(SolutionDir)\BuildOutput\obj\$(Configuration)\WSA\$(Platform.Replace('Win32','x86'))\</IntDir>
-	</PropertyGroup>
+    <OutDir>$(SolutionDir)\BuildOutput\bin\$(Configuration)\WSA\$(Platform.Replace('Win32','x86'))\</OutDir>
+    <IntDir>$(SolutionDir)\BuildOutput\obj\$(Configuration)\WSA\$(Platform.Replace('Win32','x86'))\</IntDir>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -179,7 +179,6 @@
       <SubSystem>Console</SubSystem>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
-      <ModuleDefinitionFile>..\GpuTiming\UnityNativeRenderingPlugin.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|arm'">
@@ -192,7 +191,6 @@
       <SubSystem>Console</SubSystem>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
-      <ModuleDefinitionFile>..\GpuTiming\UnityNativeRenderingPlugin.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -205,7 +203,6 @@
       <SubSystem>Console</SubSystem>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
-      <ModuleDefinitionFile>..\GpuTiming\UnityNativeRenderingPlugin.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -218,7 +215,6 @@
       <SubSystem>Console</SubSystem>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
-      <ModuleDefinitionFile>..\GpuTiming\UnityNativeRenderingPlugin.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
