@@ -233,10 +233,13 @@ extern "C" UINT64 UNITY_INTERFACE_EXPORT UNITY_INTERFACE_API GetLastQueriedVramU
 	}
 
 	EnterCriticalSection(&updateMemUseSync);
-	return s_VramUse;
+	UINT64 vramUse = s_VramUse;
 	LeaveCriticalSection(&updateMemUseSync);
-#endif
+
+	return vramUse;
+#else
 	return 0ull;
+#endif
 }
 
 static void UpdateFrameTime()
