@@ -7,6 +7,9 @@
 #include <memory>
 
 #include <d3d11_2.h>
+#ifdef _WIN32_WINNT_WIN10
+#include <dxgi1_4.h>
+#endif
 #include "Unity/IUnityGraphics.h"
 #include "Unity/IUnityGraphicsD3D11.h"
 
