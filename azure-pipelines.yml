@@ -10,7 +10,7 @@ pool:
   vmImage: 'VS2017-Win2016'
 
 variables:
-  solution: 'EditorMotionControllerDLL/EditorMotionController.sln'
+  solution: 'GpuTiming/GpuTiming.sln'
   buildPlatform: 'x64'
   buildConfiguration: 'Release'
 
