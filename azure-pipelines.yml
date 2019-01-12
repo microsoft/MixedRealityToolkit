@@ -11,7 +11,7 @@ pool:
 
 variables:
   solution: 'EditorMotionControllerDLL/EditorMotionController.sln'
-  buildPlatform: 'Any CPU'
+  buildPlatform: ['x86' | 'x64']
   buildConfiguration: 'Release'
 
 steps:
