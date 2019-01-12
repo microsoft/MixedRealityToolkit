@@ -39,8 +39,6 @@ static CRITICAL_SECTION updateTimingsSync;
 
 #ifdef _WIN32_WINNT_WIN10
 static IDXGIAdapter3* s_Adapter = nullptr;
-static UINT64 s_VramUse = 0;
-static CRITICAL_SECTION updateMemUseSync;
 #endif
 
 enum QueryState
@@ -174,9 +172,6 @@ enum RenderEventType
 	kRenderEventTypeBeginFrameEventMax = 1999,
 	kRenderEventTypeEndFrameEventMin = 2000,
 	kRenderEventTypeEndFrameEventMax = 2999,
-#ifdef _WIN32_WINNT_WIN10
-	kRenderEventTypeQueryVideoMemoryEvent = 3000,
-#endif
 };
 
 extern "C" void	UNITY_INTERFACE_EXPORT UNITY_INTERFACE_API UnityPluginLoad(IUnityInterfaces* unityInterfaces)
@@ -186,9 +181,6 @@ extern "C" void	UNITY_INTERFACE_EXPORT UNITY_INTERFACE_API UnityPluginLoad(IUnit
 	s_Graphics->RegisterDeviceEventCallback(OnGraphicsDeviceEvent);
 
 	InitializeCriticalSection(&updateTimingsSync);
-#ifdef _WIN32_WINNT_WIN10
-	InitializeCriticalSection(&updateMemUseSync);
-#endif
 
 	// Run OnGraphicsDeviceEvent(initialize) manually on plugin load
 	// to not miss the event in case the graphics device is already initialized.
@@ -224,7 +216,7 @@ extern "C" double UNITY_INTERFACE_EXPORT UNITY_INTERFACE_API GetLastFrameGPUTime
 	return time;
 }
 
-extern "C" UINT64 UNITY_INTERFACE_EXPORT UNITY_INTERFACE_API GetLastQueriedVramUse()
+extern "C" UINT64 UNITY_INTERFACE_EXPORT UNITY_INTERFACE_API GetVramUse()
 {
 #ifdef _WIN32_WINNT_WIN10
 	if (s_Adapter == nullptr)
@@ -232,11 +224,15 @@ extern "C" UINT64 UNITY_INTERFACE_EXPORT UNITY_INTERFACE_API GetLastQueriedVramU
 		return 0ull;
 	}
 
-	EnterCriticalSection(&updateMemUseSync);
-	UINT64 vramUse = s_VramUse;
-	LeaveCriticalSection(&updateMemUseSync);
-
-	return vramUse;
+	DXGI_QUERY_VIDEO_MEMORY_INFO vramInfo = {};
+	if (s_Adapter->QueryVideoMemoryInfo(0, DXGI_MEMORY_SEGMENT_GROUP_LOCAL, &vramInfo) == S_OK)
+	{
+		return vramInfo.CurrentUsage;
+	}
+	else
+	{
+		return 0ull;
+	}
 #else
 	return 0ull;
 #endif
@@ -364,24 +360,6 @@ static void UNITY_INTERFACE_API OnRenderEvent(int eventID)
 			activeQueriesIt->second->back()->End();
 		}
 	}
-#ifdef _WIN32_WINNT_WIN10
-	else if (eventID == kRenderEventTypeQueryVideoMemoryEvent && s_Adapter != nullptr)
-	{
-		DXGI_QUERY_VIDEO_MEMORY_INFO vramInfo = {};
-		HRESULT hr = s_Adapter->QueryVideoMemoryInfo(0, DXGI_MEMORY_SEGMENT_GROUP_LOCAL, &vramInfo);
-
-		EnterCriticalSection(&updateMemUseSync);
-		if (hr == S_OK)
-		{
-			s_VramUse = vramInfo.CurrentUsage;
-		}
-		else
-		{
-			s_VramUse = 0ull;
-		}
-		LeaveCriticalSection(&updateMemUseSync);
-	}
-#endif
 }
 
 static void ReleaseResources()
@@ -403,9 +381,6 @@ static void ReleaseResources()
 	s_QueryPool.clear();
 
 	DeleteCriticalSection(&updateTimingsSync);
-#ifdef _WIN32_WINNT_WIN10
-	DeleteCriticalSection(&updateMemUseSync);
-#endif
 }
 
 // GetRenderEventFunc, an example function we export which is used to get a rendering event callback function
