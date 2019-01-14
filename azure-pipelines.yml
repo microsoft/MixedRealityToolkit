@@ -6,11 +6,14 @@
 trigger:
 - azure-pipeline
 
+pr: none
+
 pool:
   vmImage: 'VS2017-Win2016'
 
 variables:
-  solution: 'GpuTiming/GpuTiming.sln'
+  editorMotionControllerSolution: 'EditorMotionControllerDLL/EditorMotionController.sln'
+  gpuStatsSolution: 'GpuStats/GpuStats.sln'
   buildPlatform: 'x64'
   buildConfiguration: 'Release'
 
@@ -19,11 +22,11 @@ steps:
 
 - task: NuGetCommand@2
   inputs:
-    restoreSolution: '$(solution)'
-
+    restoreSolution: '$(gpuStatsSolution)'
+     
 - task: VSBuild@1
   inputs:
-    solution: '$(solution)'
+    solution: '$(gpuStatsSolution)'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
