@@ -5,7 +5,7 @@
 LIBRARY
 
 EXPORTS
-	GetLastFrameGPUTime
+	GetGpuTime
 	GetVramUse
 	GetRenderEventFunc
 	UnityPluginLoad

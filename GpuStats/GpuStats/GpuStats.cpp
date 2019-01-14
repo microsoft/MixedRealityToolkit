@@ -196,7 +196,7 @@ extern "C" void UNITY_INTERFACE_EXPORT UNITY_INTERFACE_API UnityPluginUnload()
 	}
 }
 
-extern "C" double UNITY_INTERFACE_EXPORT UNITY_INTERFACE_API GetLastFrameGPUTime(int eventId)
+extern "C" double UNITY_INTERFACE_EXPORT UNITY_INTERFACE_API GetGpuTime(int eventId)
 {
 	if (s_Context == nullptr)
 	{
