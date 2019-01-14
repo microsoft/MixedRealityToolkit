@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|ARM">
       <Configuration>Debug</Configuration>
@@ -27,15 +27,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{0f453287-584a-4346-b49b-fa8349f220a1}</ProjectGuid>
+    <ProjectGuid>{0d55a543-cee9-4929-af37-c16fd6991c8c}</ProjectGuid>
     <Keyword>DynamicLibrary</Keyword>
-    <RootNamespace>GpuTimingUniversal</RootNamespace>
+    <RootNamespace>GpuStats</RootNamespace>
     <DefaultLanguage>en-US</DefaultLanguage>
     <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
-    <AppContainerApplication>true</AppContainerApplication>
-    <ApplicationType>Windows Store</ApplicationType>
+    <AppContainerApplication>false</AppContainerApplication>
+    <ApplicationType>Windows</ApplicationType>
     <WindowsTargetPlatformVersion>10.0.14393.0</WindowsTargetPlatformVersion>
-    <WindowsTargetPlatformMinVersion>10.0.10586.0</WindowsTargetPlatformMinVersion>
+    <WindowsTargetPlatformMinVersion>10.0.14393.0</WindowsTargetPlatformMinVersion>
     <ApplicationTypeRevision>10.0</ApplicationTypeRevision>
     <SccProjectName>SAK</SccProjectName>
     <SccAuxPath>SAK</SccAuxPath>
@@ -46,35 +46,35 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -104,56 +104,58 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <GenerateManifest>false</GenerateManifest>
     <IgnoreImportLibrary>false</IgnoreImportLibrary>
-    <TargetName>GpuTiming</TargetName>
-		<OutDir>$(SolutionDir)\BuildOutput\bin\$(Configuration)\WSA\$(Platform.Replace('Win32','x86'))\</OutDir>
-		<IntDir>$(SolutionDir)\BuildOutput\obj\$(Configuration)\WSA\$(Platform.Replace('Win32','x86'))\</IntDir>
-	</PropertyGroup>
+    <OutDir>$(SolutionDir)\BuildOutput\bin\$(Configuration)\$(Platform.Replace('Win32','x86'))\</OutDir>
+    <IntDir>$(SolutionDir)\BuildOutput\obj\$(Configuration)\$(Platform.Replace('Win32','x86'))\</IntDir>
+    <TargetName>GpuStats</TargetName>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <GenerateManifest>false</GenerateManifest>
     <IgnoreImportLibrary>false</IgnoreImportLibrary>
-    <TargetName>GpuTiming</TargetName>
-		<OutDir>$(SolutionDir)\BuildOutput\bin\$(Configuration)\WSA\$(Platform.Replace('Win32','x86'))\</OutDir>
-		<IntDir>$(SolutionDir)\BuildOutput\obj\$(Configuration)\WSA\$(Platform.Replace('Win32','x86'))\</IntDir>
-	</PropertyGroup>
+    <OutDir>$(SolutionDir)\BuildOutput\bin\$(Configuration)\$(Platform.Replace('Win32','x86'))\</OutDir>
+    <IntDir>$(SolutionDir)\BuildOutput\obj\$(Configuration)\$(Platform.Replace('Win32','x86'))\</IntDir>
+    <TargetName>GpuStats</TargetName>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <GenerateManifest>false</GenerateManifest>
     <IgnoreImportLibrary>false</IgnoreImportLibrary>
-    <TargetName>GpuTiming</TargetName>
-		<OutDir>$(SolutionDir)\BuildOutput\bin\$(Configuration)\WSA\$(Platform.Replace('Win32','x86'))\</OutDir>
-		<IntDir>$(SolutionDir)\BuildOutput\obj\$(Configuration)\WSA\$(Platform.Replace('Win32','x86'))\</IntDir>
-	</PropertyGroup>
+    <OutDir>$(SolutionDir)\BuildOutput\bin\$(Configuration)\$(Platform.Replace('Win32','x86'))\</OutDir>
+    <IntDir>$(SolutionDir)\BuildOutput\obj\$(Configuration)\$(Platform.Replace('Win32','x86'))\</IntDir>
+    <TargetName>GpuStats</TargetName>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <GenerateManifest>false</GenerateManifest>
     <IgnoreImportLibrary>false</IgnoreImportLibrary>
-    <TargetName>GpuTiming</TargetName>
-		<OutDir>$(SolutionDir)\BuildOutput\bin\$(Configuration)\WSA\$(Platform.Replace('Win32','x86'))\</OutDir>
-		<IntDir>$(SolutionDir)\BuildOutput\obj\$(Configuration)\WSA\$(Platform.Replace('Win32','x86'))\</IntDir>
-	</PropertyGroup>
+    <OutDir>$(SolutionDir)\BuildOutput\bin\$(Configuration)\$(Platform.Replace('Win32','x86'))\</OutDir>
+    <IntDir>$(SolutionDir)\BuildOutput\obj\$(Configuration)\$(Platform.Replace('Win32','x86'))\</IntDir>
+    <TargetName>GpuStats</TargetName>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <GenerateManifest>false</GenerateManifest>
     <IgnoreImportLibrary>false</IgnoreImportLibrary>
-    <TargetName>GpuTiming</TargetName>
-		<OutDir>$(SolutionDir)\BuildOutput\bin\$(Configuration)\WSA\$(Platform.Replace('Win32','x86'))\</OutDir>
-		<IntDir>$(SolutionDir)\BuildOutput\obj\$(Configuration)\WSA\$(Platform.Replace('Win32','x86'))\</IntDir>
-	</PropertyGroup>
+    <OutDir>$(SolutionDir)\BuildOutput\bin\$(Configuration)\$(Platform.Replace('Win32','x86'))\</OutDir>
+    <IntDir>$(SolutionDir)\BuildOutput\obj\$(Configuration)\$(Platform.Replace('Win32','x86'))\</IntDir>
+    <TargetName>GpuStats</TargetName>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <GenerateManifest>false</GenerateManifest>
     <IgnoreImportLibrary>false</IgnoreImportLibrary>
-    <TargetName>GpuTiming</TargetName>
-		<OutDir>$(SolutionDir)\BuildOutput\bin\$(Configuration)\WSA\$(Platform.Replace('Win32','x86'))\</OutDir>
-		<IntDir>$(SolutionDir)\BuildOutput\obj\$(Configuration)\WSA\$(Platform.Replace('Win32','x86'))\</IntDir>
-	</PropertyGroup>
+    <OutDir>$(SolutionDir)\BuildOutput\bin\$(Configuration)\$(Platform.Replace('Win32','x86'))\</OutDir>
+    <IntDir>$(SolutionDir)\BuildOutput\obj\$(Configuration)\$(Platform.Replace('Win32','x86'))\</IntDir>
+    <TargetName>GpuStats</TargetName>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <CompileAsWinRT>false</CompileAsWinRT>
       <AdditionalIncludeDirectories>$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories);C:\U5-RS2\Runtime\PluginInterface\Headers</AdditionalIncludeDirectories>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
-      <ModuleDefinitionFile>..\GpuTiming\UnityNativeRenderingPlugin.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>UnityNativeRenderingPlugin.def</ModuleDefinitionFile>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;dxgi.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -161,12 +163,14 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <CompileAsWinRT>false</CompileAsWinRT>
       <AdditionalIncludeDirectories>$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories);C:\U5-RS2\Runtime\PluginInterface\Headers</AdditionalIncludeDirectories>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
-      <ModuleDefinitionFile>..\GpuTiming\UnityNativeRenderingPlugin.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>UnityNativeRenderingPlugin.def</ModuleDefinitionFile>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;dxgi.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|arm'">
@@ -174,12 +178,13 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <CompileAsWinRT>false</CompileAsWinRT>
       <AdditionalIncludeDirectories>$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories);C:\U5-RS2\Runtime\PluginInterface\Headers</AdditionalIncludeDirectories>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
-      <ModuleDefinitionFile>..\GpuTiming\UnityNativeRenderingPlugin.def</ModuleDefinitionFile>
+      <AdditionalDependencies>kernel32.lib;user32.lib;dxgi.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|arm'">
@@ -187,12 +192,13 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <CompileAsWinRT>false</CompileAsWinRT>
       <AdditionalIncludeDirectories>$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories);C:\U5-RS2\Runtime\PluginInterface\Headers</AdditionalIncludeDirectories>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
-      <ModuleDefinitionFile>..\GpuTiming\UnityNativeRenderingPlugin.def</ModuleDefinitionFile>
+      <AdditionalDependencies>kernel32.lib;user32.lib;dxgi.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -200,12 +206,13 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <CompileAsWinRT>false</CompileAsWinRT>
       <AdditionalIncludeDirectories>$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories);C:\U5-RS2\Runtime\PluginInterface\Headers</AdditionalIncludeDirectories>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
-      <ModuleDefinitionFile>..\GpuTiming\UnityNativeRenderingPlugin.def</ModuleDefinitionFile>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;dxgi.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -213,22 +220,26 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <CompileAsWinRT>false</CompileAsWinRT>
       <AdditionalIncludeDirectories>$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories);C:\U5-RS2\Runtime\PluginInterface\Headers</AdditionalIncludeDirectories>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
-      <ModuleDefinitionFile>..\GpuTiming\UnityNativeRenderingPlugin.def</ModuleDefinitionFile>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;dxgi.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\GpuTiming\GpuTiming.h" />
+    <ClInclude Include="GpuStats.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="Unity\IUnityGraphics.h" />
+    <ClInclude Include="Unity\IUnityGraphicsD3D11.h" />
+    <ClInclude Include="Unity\IUnityInterface.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\GpuTiming\GpuTiming.cpp" />
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="GpuStats.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -239,7 +250,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\GpuTiming\UnityNativeRenderingPlugin.def" />
+    <None Include="UnityNativeRenderingPlugin.def" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

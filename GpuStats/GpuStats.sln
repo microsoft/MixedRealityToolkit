@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GpuTiming", "GpuTiming\GpuTiming.vcxproj", "{0D55A543-CEE9-4929-AF37-C16FD6991C8C}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GpuStats", "GpuStats\GpuStats.vcxproj", "{0D55A543-CEE9-4929-AF37-C16FD6991C8C}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GpuTimingUniversal", "GpuTimingUniversal\GpuTimingUniversal.vcxproj", "{0F453287-584A-4346-B49B-FA8349F220A1}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GpuStatsUniversal", "GpuStatsUniversal\GpuStatsUniversal.vcxproj", "{0F453287-584A-4346-B49B-FA8349F220A1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,11 +50,11 @@ Global
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://microsoft.visualstudio.com/
 		SccLocalPath0 = .
-		SccProjectUniqueName1 = GpuTiming\\GpuTiming.vcxproj
-		SccProjectName1 = GpuTiming
-		SccLocalPath1 = GpuTiming
-		SccProjectUniqueName2 = GpuTimingUniversal\\GpuTimingUniversal.vcxproj
-		SccProjectName2 = GpuTimingUniversal
-		SccLocalPath2 = GpuTimingUniversal
+		SccProjectUniqueName1 = GpuStats\\GpuStats.vcxproj
+		SccProjectName1 = GpuStats
+		SccLocalPath1 = GpuStats
+		SccProjectUniqueName2 = GpuStatsUniversal\\GpuStatsUniversal.vcxproj
+		SccProjectName2 = GpuStatsUniversal
+		SccLocalPath2 = GpuStatsUniversal
 	EndGlobalSection
 EndGlobal

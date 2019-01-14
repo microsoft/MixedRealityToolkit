@@ -1,0 +1,12 @@
+; Prevent __stdcall function name mangling in 32-bit x864 builds with Visual Studio
+; (different from the C++ mangling avoided by extern "C")
+; Exclude this from other builds
+
+LIBRARY
+
+EXPORTS
+	GetGpuTime
+	GetVramUse
+	GetRenderEventFunc
+	UnityPluginLoad
+	UnityPluginUnload
