@@ -5,30 +5,18 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tga;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Unity">
-      <UniqueIdentifier>{18481b60-03d1-4ccb-b2c0-2609240a13e4}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="GpuTiming.cpp" />
     <ClCompile Include="pch.cpp" />
+    <ClCompile Include="..\GpuStats\GpuStats.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GpuTiming.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="Unity\IUnityGraphics.h">
-      <Filter>Unity</Filter>
-    </ClInclude>
-    <ClInclude Include="Unity\IUnityGraphicsD3D11.h">
-      <Filter>Unity</Filter>
-    </ClInclude>
-    <ClInclude Include="Unity\IUnityInterface.h">
-      <Filter>Unity</Filter>
-    </ClInclude>
+    <ClInclude Include="..\GpuStats\GpuStats.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="UnityNativeRenderingPlugin.def" />
+    <None Include="..\GpuStats\UnityNativeRenderingPlugin.def" />
   </ItemGroup>
 </Project>
