@@ -128,7 +128,7 @@ public:
 			else
 			{
 				State = QueryState::Unknown;
-				*value = -1;
+				*value = -1.0; // Disjoint
 				return true;
 			}
 		}
@@ -203,7 +203,7 @@ extern "C" double UNITY_INTERFACE_EXPORT UNITY_INTERFACE_API GetGpuTime(int even
 		return 0.0;
 	}
 
-	double time = 0;
+	double time = -2.0; // Not found
 
 	EnterCriticalSection(&updateTimingsSync);
 	auto it = s_FrameTimes.find(eventId);
@@ -251,7 +251,7 @@ static void UpdateFrameTime()
 
 		auto activeQueries = activeQueriesIt->second;
 
-		double frameTime = 0;
+		double frameTime;
 		QueryPtr q = activeQueries->front();
 
 		if (q->Read(&frameTime))
