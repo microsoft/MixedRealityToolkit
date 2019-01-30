@@ -144,7 +144,7 @@
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opencv_aruco341.lib;opencv_core341.lib;opencv_calib3d341.lib;opencv_features2d341.lib;opencv_flann341.lib;opencv_highgui341.lib;opencv_imgcodecs341.lib;opencv_ml341.lib;opencv_videoio341.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opencv_aruco343.lib;opencv_core343.lib;opencv_calib3d343.lib;opencv_features2d343.lib;opencv_flann343.lib;opencv_highgui343.lib;opencv_imgcodecs343.lib;opencv_ml343.lib;opencv_videoio343.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|arm'">
