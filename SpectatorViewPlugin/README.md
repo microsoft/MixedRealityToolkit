@@ -3,6 +3,8 @@
 - The SpectatorViewPlugin solution generates a dll needed for the SpectatorView experience in the MixedRealityToolkit-Unity repo:
   https://github.com/Microsoft/MixedRealityToolkit-Unity/tree/master/Assets/HoloToolkit-Preview/SpectatorView.
   
+- SpectatorViewPlugin.dll utilizes OpenCV libraries for detecting ArUco markers.
+  
 - An example for how to call into this dll exists in the following unity script:
   https://github.com/Microsoft/MixedRealityToolkit-Unity/blob/master/Assets/HoloToolkit-Preview/SpectatorView/Scripts/SpatialSync/MarkerDetector.cs
   
