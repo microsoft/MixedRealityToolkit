@@ -1,21 +1,30 @@
 #pragma once
-#include<vector>
+#include<unordered_map>
 #include <opencv2\core.hpp>
+
+struct Marker
+{
+    int Id;
+    float position[3];
+    float rotation[3];
+};
 
 class MarkerDetector
 {
 public:
-	MarkerDetector(int _markerDictionaryId);
-	~MarkerDetector();
-	void Detect(int _imageWidth, int _imageHeight, unsigned char* _imageData, float _markerSize);
-	
-	inline int GetNumDetectedMarkers() { return m_detectedMarkers.size(); }
-	bool GetDetectedMarkerIds(unsigned int* _detectedMarkerIds);
-	bool GetDetectedMarkerPose(int _markerId, float& _xPos, float& _yPos, float& _zPos, float& _xRot, float& _yRot, float& _zRot);
+    MarkerDetector();
+    ~MarkerDetector();
+    bool DetectMarkers(
+        unsigned char* imageData,
+        int imageWidth,
+        int imageHeight,
+        float* projectionMatrix,
+        float markerSize,
+        int arUcoDictionaryId);
+    inline int GetDetectedMarkersCount() { return _detectedMarkers.size(); }
+    bool GetDetectedMarkerIds(int* _detectedIds, int size);
+    bool GetDetectedMarkerPose(int _detectedId, float* position, float* rotation);
+
 private:
-	std::vector<std::vector<cv::Point2f>> m_markerCorners;
-	std::vector<cv::Vec3d> m_rotationVecs;
-	std::vector<cv::Vec3d> m_translationVecs;
-	std::vector<int> m_detectedMarkers;
-	int m_dictionaryId;
+    std::unordered_map<int, Marker> _detectedMarkers;
 };
