@@ -30,11 +30,11 @@
 
 Copy the following dlls from the directory MixedRealityToolkit\SpectatorViewPlugin\SpectatorViewPlugin\Release\SpectatorViewPlugin to the directory HoloToolkit-Preview\SpectatorView\Plugins\WSA\x86. If that directory doesn't exist please create it.
 
-- opencv_aruco341.dll
-- opencv_calib3d341.dll
-- opencv_core341.dll
-- opencv_features2d341.dll
-- opencv_flann341.dll
-- opencv_imgproc341.dll
+- opencv_aruco343.dll
+- opencv_calib3d343.dll
+- opencv_core343.dll
+- opencv_features2d343.dll
+- opencv_flann343.dll
+- opencv_imgproc343.dll
 - zlib1.dll
 - SpectatorViewPlugin.dll
