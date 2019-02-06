@@ -37,6 +37,7 @@
 #endif
 
 #define _noexcept 
+#define _NOEXCEPT noexcept
 
 #define CASABLANCA_UNREFERENCED_PARAMETER(x) (x)
 
