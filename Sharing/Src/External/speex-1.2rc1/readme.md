@@ -1,0 +1,1 @@
+The sharing service uses Speex. Please visit https://www.speex.org/ for more information and to acquire Speex.

@@ -1,0 +1,1 @@
+The sharing service uses RakNet. If you wish to build the service, please visit https://github.com/facebookarchive/RakNet to acquire the code.

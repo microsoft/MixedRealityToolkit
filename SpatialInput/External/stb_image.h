@@ -969,7 +969,7 @@ static unsigned char *stbi__load_main(stbi__context *s, int *x, int *y, int *com
    #endif
 
    #ifndef STBI_NO_TGA
-   // test tga last because it's a crappy test!
+   // test tga last
    if (stbi__tga_test(s))
       return stbi__tga_load(s,x,y,comp,req_comp);
    #endif

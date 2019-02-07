@@ -1,1 +1,0 @@
-OgreMeshUpgrade.exe -d3d -b -t %1
