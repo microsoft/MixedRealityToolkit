@@ -42,7 +42,7 @@ namespace MicDemoApp
         // can boost input here as desired. 1 is default but almost definitely too quiet. can change during operation without problem.
         private static float inputGain = 1;
 
-        // if keepAllData==false, you'll always get the newest data no matter how long the program hangs for any reason, but will lose some data if the program does hang 
+        // if keepAllData==false, you'll always get the newest data no matter how long the program becomes unresponsive for any reason, but will lose some data if the program does stop responding 
         // can only be set on initialization
         private static bool keepAllData = false;
 
