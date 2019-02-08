@@ -18,9 +18,12 @@ public:
         unsigned char* imageData,
         int imageWidth,
         int imageHeight,
-        float* projectionMatrix,
+        float* focalLength,
+        float* principalPoint,
+        float* radialDistortion,
+        float* tangentialDistortion,
         float markerSize,
-        int arUcoDictionaryId);
+        int arUcoMarkerDictionaryId);
     inline int GetDetectedMarkersCount() { return _detectedMarkers.size(); }
     bool GetDetectedMarkerIds(int* _detectedIds, int size);
     bool GetDetectedMarkerPose(int _detectedId, float* position, float* rotation);

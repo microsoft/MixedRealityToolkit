@@ -18,7 +18,10 @@ extern "C" __declspec(dllexport) bool __stdcall DetectMarkers(
     unsigned char* imageData,
     int imageWidth,
     int imageHeight,
-    float* projectionMatrix,
+    float* focalLength,
+    float* principalPoint,
+    float* radialDistortion,
+    float* tangentialDistortion,
     float markerSize,
     int arUcoMarkerDictionaryId)
 {
@@ -28,7 +31,10 @@ extern "C" __declspec(dllexport) bool __stdcall DetectMarkers(
             imageData,
             imageWidth,
             imageHeight,
-            projectionMatrix,
+            focalLength,
+            principalPoint,
+            radialDistortion,
+            tangentialDistortion,
             markerSize,
             arUcoMarkerDictionaryId);
     }

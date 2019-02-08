@@ -2,6 +2,7 @@
 #include "MarkerDetector.h"
 
 #include <opencv2\aruco.hpp>
+#include <opencv2\imgproc.hpp>
 
 MarkerDetector::MarkerDetector() {}
 
@@ -27,27 +28,30 @@ bool MarkerDetector::DetectMarkers(
     unsigned char* imageData,
     int imageWidth,
     int imageHeight,
-    float* projectionMatrix,
+    float* focalLength,
+    float* principalPoint,
+    float* radialDistortion,
+    float* tangentialDistortion,
     float markerSize,
-    int arUcoDictionaryId)
+    int arUcoMarkerDictionaryId)
 {
-    // Unity's RGB24 Texture will have 3 unsigned chars per pixel which aligns with opencv's CV_8UC3 mat format
-    cv::Mat rawImage(imageHeight, imageWidth, CV_8UC3, imageData);
+    // This dll assumes that its handed pixels in BGRA format
+    cv::Mat image(imageHeight, imageWidth, CV_8UC4, imageData);
 
-    // Unity defines textures bottom to top, but opencv defines matrices top to bottom
-    // So, we flip our imageData vertically for processing
-    cv::Mat image;
-    cv::flip(rawImage, image, 0); // flipCode == 0 results in a vertical flip
+    // ArUco detection with opencv does not support images with alpha channels
+    // So, we convert the image to grayscale for processing
+    cv::Mat grayImage;
+    cv::cvtColor(image, grayImage, CV_BGRA2GRAY);
 
     std::vector<int> arUcoMarkerIds;
     std::vector<std::vector<cv::Point2f>> arUcoMarkers;
     std::vector<std::vector<cv::Point2f>> arUcoRejectedCandidates;
     auto arUcoDetectorParameters = cv::aruco::DetectorParameters::create();
-    auto arUcoDictionary = cv::aruco::getPredefinedDictionary(cv::aruco::PREDEFINED_DICTIONARY_NAME(arUcoDictionaryId));
+    auto arUcoDictionary = cv::aruco::getPredefinedDictionary(cv::aruco::PREDEFINED_DICTIONARY_NAME(arUcoMarkerDictionaryId));
 
     // Detect markers
     cv::aruco::detectMarkers(
-        image,
+        grayImage,
         arUcoDictionary,
         arUcoMarkers,
         arUcoMarkerIds,
@@ -58,15 +62,20 @@ bool MarkerDetector::DetectMarkers(
     OutputDebugString(logText.data());
 
     cv::Mat cameraMatrix(3, 3, CV_64F, cv::Scalar(0));
-    cameraMatrix.at<double>(0, 0) = projectionMatrix[0]; // 0,0 in the unity projection matrix equates to the x focal length
-    cameraMatrix.at<double>(0, 2) = projectionMatrix[2]; // 0,2 in the unity projection matrix equates to the x principal point
-    cameraMatrix.at<double>(1, 1) = projectionMatrix[5]; // 1,1 in the unity projection matrix equates to the y focal length
-    cameraMatrix.at<double>(1, 2) = projectionMatrix[6]; // 1,2 in the unity projection matrix equates to the y principal point
+    cameraMatrix.at<double>(0, 0) = focalLength[0]; // X focal length
+    cameraMatrix.at<double>(0, 2) = principalPoint[0]; // X principal point
+    cameraMatrix.at<double>(1, 1) = focalLength[1]; // Y focal length
+    cameraMatrix.at<double>(1, 2) = principalPoint[1]; // Y principal point
     cameraMatrix.at<double>(2, 2) = 1.0;
     OutputDebugMatrix<double>(L"Camera Matrix: ", cameraMatrix);
 
-    cv::Mat distCoefficientsMatrix(1, 5, CV_64F, cv::Scalar(0));
-    OutputDebugMatrix<double>(L"Distortion Coefficients: ", distCoefficientsMatrix);
+    cv::Mat distCoeffMatrix(1, 5, CV_64F, cv::Scalar(0));
+    distCoeffMatrix.at<double>(0, 0) = radialDistortion[0]; // r1 radial distortion
+    distCoeffMatrix.at<double>(0, 1) = radialDistortion[1]; // r2 radial distortion
+    distCoeffMatrix.at<double>(0, 2) = tangentialDistortion[0]; // t1 tangential distortion
+    distCoeffMatrix.at<double>(0, 3) = tangentialDistortion[1]; // t2 tangential distortion
+    distCoeffMatrix.at<double>(0, 4) = radialDistortion[2]; // r3 radial distortion
+    OutputDebugMatrix<double>(L"Distortion Coefficients: ", distCoeffMatrix);
 
     std::vector<cv::Vec3d> rotationVecs;
     std::vector<cv::Vec3d> translationVecs;
@@ -74,7 +83,7 @@ bool MarkerDetector::DetectMarkers(
         arUcoMarkers,
         markerSize,
         cameraMatrix,
-        distCoefficientsMatrix,
+        distCoeffMatrix,
         rotationVecs,
         translationVecs);
 
