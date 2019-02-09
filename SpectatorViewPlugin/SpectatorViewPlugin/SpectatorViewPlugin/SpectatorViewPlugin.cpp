@@ -1,6 +1,7 @@
 ﻿#include "pch.h"
 #include "SpectatorViewPlugin.h"
 #include "MarkerDetector.h"
+#include <memory>
 
 std::unique_ptr<MarkerDetector> detector;
 
