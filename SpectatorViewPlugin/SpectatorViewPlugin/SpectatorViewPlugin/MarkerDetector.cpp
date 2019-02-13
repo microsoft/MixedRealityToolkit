@@ -1,99 +1,144 @@
 #include "pch.h"
 #include "MarkerDetector.h"
-#include <opencv2\highgui.hpp>
+
 #include <opencv2\aruco.hpp>
+#include <opencv2\imgproc.hpp>
 
-MarkerDetector::MarkerDetector(int _markerDictionaryId)
+MarkerDetector::MarkerDetector() {}
+
+MarkerDetector::~MarkerDetector() {}
+
+template <class T>
+void OutputDebugMatrix(const std::wstring prompt, const cv::Mat mat)
 {
-	m_dictionaryId = _markerDictionaryId;
+    auto output = prompt;
+    for (int m = 0; m < mat.rows; m++)
+    {
+        for (int n = 0; n < mat.cols; n++)
+        {
+            auto value = mat.at<T>(m, n);
+            output += (L", " + std::to_wstring(value));
+        }
+    }
+
+    OutputDebugString(output.data());
 }
 
-MarkerDetector::~MarkerDetector()
+bool MarkerDetector::DetectMarkers(
+    unsigned char* imageData,
+    int imageWidth,
+    int imageHeight,
+    float* focalLength,
+    float* principalPoint,
+    float* radialDistortion,
+    float* tangentialDistortion,
+    float markerSize,
+    int arUcoMarkerDictionaryId)
 {
-	m_markerCorners.clear();
-	m_detectedMarkers.clear();
-	m_rotationVecs.clear();
-	m_translationVecs.clear();
+    // This dll assumes that its handed pixels in BGRA format
+    cv::Mat image(imageHeight, imageWidth, CV_8UC4, imageData);
+
+    // ArUco detection with opencv does not support images with alpha channels
+    // So, we convert the image to grayscale for processing
+    cv::Mat grayImage;
+    cv::cvtColor(image, grayImage, CV_BGRA2GRAY);
+
+    std::vector<int> arUcoMarkerIds;
+    std::vector<std::vector<cv::Point2f>> arUcoMarkers;
+    std::vector<std::vector<cv::Point2f>> arUcoRejectedCandidates;
+    auto arUcoDetectorParameters = cv::aruco::DetectorParameters::create();
+    auto arUcoDictionary = cv::aruco::getPredefinedDictionary(cv::aruco::PREDEFINED_DICTIONARY_NAME(arUcoMarkerDictionaryId));
+
+    // Detect markers
+    cv::aruco::detectMarkers(
+        grayImage,
+        arUcoDictionary,
+        arUcoMarkers,
+        arUcoMarkerIds,
+        arUcoDetectorParameters,
+        arUcoRejectedCandidates);
+
+    auto logText = L"Completed marker detection: " + std::to_wstring(arUcoMarkerIds.size()) + L" ids found";
+    OutputDebugString(logText.data());
+
+    cv::Mat cameraMatrix(3, 3, CV_64F, cv::Scalar(0));
+    cameraMatrix.at<double>(0, 0) = focalLength[0]; // X focal length
+    cameraMatrix.at<double>(0, 2) = principalPoint[0]; // X principal point
+    cameraMatrix.at<double>(1, 1) = focalLength[1]; // Y focal length
+    cameraMatrix.at<double>(1, 2) = principalPoint[1]; // Y principal point
+    cameraMatrix.at<double>(2, 2) = 1.0;
+    OutputDebugMatrix<double>(L"Camera Matrix: ", cameraMatrix);
+
+    cv::Mat distCoeffMatrix(1, 5, CV_64F, cv::Scalar(0));
+    distCoeffMatrix.at<double>(0, 0) = radialDistortion[0]; // r1 radial distortion
+    distCoeffMatrix.at<double>(0, 1) = radialDistortion[1]; // r2 radial distortion
+    distCoeffMatrix.at<double>(0, 2) = tangentialDistortion[0]; // t1 tangential distortion
+    distCoeffMatrix.at<double>(0, 3) = tangentialDistortion[1]; // t2 tangential distortion
+    distCoeffMatrix.at<double>(0, 4) = radialDistortion[2]; // r3 radial distortion
+    OutputDebugMatrix<double>(L"Distortion Coefficients: ", distCoeffMatrix);
+
+    std::vector<cv::Vec3d> rotationVecs;
+    std::vector<cv::Vec3d> translationVecs;
+    cv::aruco::estimatePoseSingleMarkers(
+        arUcoMarkers,
+        markerSize,
+        cameraMatrix,
+        distCoeffMatrix,
+        rotationVecs,
+        translationVecs);
+
+    for (size_t i = 0; i < arUcoMarkerIds.size(); i++)
+    {
+        auto id = arUcoMarkerIds[i];
+
+        auto posText = L"OpenCV Marker Position: " + std::to_wstring(translationVecs[i][0]) + L", " + std::to_wstring(translationVecs[i][1]) + L", " + std::to_wstring(translationVecs[i][2]);
+        OutputDebugString(posText.data());
+
+        auto rotText = L"OpenCV Marker Rotation: " + std::to_wstring(rotationVecs[i][0]) + L", " + std::to_wstring(rotationVecs[i][1]) + L", " + std::to_wstring(rotationVecs[i][2]);
+        OutputDebugString(rotText.data());
+
+        Marker marker;
+        marker.Id = id;
+        marker.position[0] = static_cast<float>(translationVecs[i][0]);
+        marker.position[1] = static_cast<float>(translationVecs[i][1]);
+        marker.position[2] = static_cast<float>(translationVecs[i][2]);
+        marker.rotation[0] = static_cast<float>(rotationVecs[i][0]);
+        marker.rotation[1] = static_cast<float>(rotationVecs[i][1]);
+        marker.rotation[2] = static_cast<float>(rotationVecs[i][2]);
+        _detectedMarkers[id] = marker;
+    }
+
+    return true;
 }
 
-void MarkerDetector::Detect(int _imageWidth, int _imageHeight, unsigned char* _imageData, float _markerSize)
+bool MarkerDetector::GetDetectedMarkerIds(int* _detectedIds, int size)
 {
-	// As unity defines textures bottom to top we need to flip our data here
-	std::vector<unsigned char> flippedData(_imageWidth * _imageHeight * 3);
-	for (int i = 0; i < _imageHeight; i++)
-	{
-		memcpy(&flippedData[(i * _imageWidth * 3)], _imageData + ((_imageHeight - 1 - i) * _imageWidth * 3), sizeof(unsigned char)*_imageWidth * 3);
-	}
+    if (_detectedMarkers.size() > static_cast<size_t>(size))
+    {
+        return false;
+    }
 
-	cv::Mat inputImage(_imageHeight, _imageWidth, CV_8UC3, &flippedData[0]);
+    int index = 0;
+    for (auto markerPair : _detectedMarkers)
+    {
+        markerPair.second.Id;
+        _detectedIds[index] = markerPair.second.Id;
+        index++;
+    }
 
-	std::vector<int> markerIds;
-	std::vector<std::vector<cv::Point2f>> rejectedCandidates;
-	cv::Ptr<cv::aruco::DetectorParameters> parameters = cv::aruco::DetectorParameters::create();
-	cv::Ptr<cv::aruco::Dictionary> dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::PREDEFINED_DICTIONARY_NAME(m_dictionaryId));
-
-	cv::aruco::detectMarkers(inputImage, dictionary, m_markerCorners, m_detectedMarkers, parameters, rejectedCandidates);
-
-	if (m_markerCorners.size() <= 0)
-	{
-		return;
-	}
-
-	cv::Mat cameraMatrix(3, 3, CV_64F);
-	cameraMatrix.at<double>(0, 0) = 1006.224;
-	cameraMatrix.at<double>(0, 1) = 0.0;
-	cameraMatrix.at<double>(0, 2) = 448;
-	cameraMatrix.at<double>(1, 0) = 0.0;
-	cameraMatrix.at<double>(1, 1) = 1006.224;
-	cameraMatrix.at<double>(1, 2) = 252;
-	cameraMatrix.at<double>(2, 0) = 0.0;
-	cameraMatrix.at<double>(2, 1) = 0.0;
-	cameraMatrix.at<double>(2, 2) = 1.0;
-
-	cv::Mat distortionCoefficientsMatrix(1, 5, CV_64F);
-	distortionCoefficientsMatrix.at<double>(0, 0) = -0.005678121;
-	distortionCoefficientsMatrix.at<double>(0, 1) = -1.156654;
-	distortionCoefficientsMatrix.at<double>(0, 2) = 0.0052870559368031209;
-	distortionCoefficientsMatrix.at<double>(0, 3) = 0.016626680853497420;
-	distortionCoefficientsMatrix.at<double>(0, 4) = -0.0000021207464374725242;
-
-	cv::aruco::estimatePoseSingleMarkers(m_markerCorners, _markerSize, cameraMatrix, distortionCoefficientsMatrix, m_rotationVecs, m_translationVecs);
+    return true;
 }
 
-bool MarkerDetector::GetDetectedMarkerIds(unsigned int* _detectedMarkerIds)
+bool MarkerDetector::GetDetectedMarkerPose(int _detectedId, float* position, float* rotation)
 {
-	if (m_detectedMarkers.size() <= 0)
-	{
-		return false;
-	}
+    if (_detectedMarkers.find(_detectedId) == _detectedMarkers.end())
+    {
+        return false;
+    }
 
-	memcpy(_detectedMarkerIds, &m_detectedMarkers[0], sizeof(m_detectedMarkers[0])*m_detectedMarkers.size());
+    auto marker = _detectedMarkers.at(_detectedId);
+    memcpy(position, marker.position, sizeof(marker.position));
+    memcpy(rotation, marker.rotation, sizeof(marker.rotation));
 
-	return true;
-}
-
-bool MarkerDetector::GetDetectedMarkerPose(int _markerId, float& _xPos, float& _yPos, float& _zPos, float& _xRot, float& _yRot, float& _zRot)
-{
-	if (m_detectedMarkers.size() <= 0)
-	{
-		return false;
-	}
-
-	for (int i = 0; i < m_detectedMarkers.size(); i++)
-	{
-		if (m_detectedMarkers[i] == _markerId)
-		{
-			_xPos = m_translationVecs[i][0];
-			_yPos = m_translationVecs[i][1];
-			_zPos = m_translationVecs[i][2];
-
-			_xRot = m_rotationVecs[i][0];
-			_yRot = m_rotationVecs[i][1];
-			_zRot = m_rotationVecs[i][2];
-
-			return true;;
-		}
-	}
-
-	return false;
+    return true;
 }
