@@ -368,7 +368,7 @@ static void ReleaseResources()
 	if (s_Adapter != nullptr)
 	{
 		s_Adapter->Release();
-        s_Adapter = nullptr;
+		s_Adapter = nullptr;
 	}
 #endif
 
