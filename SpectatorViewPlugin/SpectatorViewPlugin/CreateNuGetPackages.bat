@@ -1,0 +1,1 @@
+nuget pack SpectatorViewPlugin.Unity.nuspec
