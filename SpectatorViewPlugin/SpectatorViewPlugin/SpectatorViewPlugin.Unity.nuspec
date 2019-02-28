@@ -16,5 +16,6 @@
 
   <files>
     <file src="Release\SpectatorViewPlugin\*.dll" target="Plugins\WSA\x86" />
+    <file src="Release\SpectatorViewPlugin\*.pdb" target="Plugins\WSA\x86" />
   </files>
 </package>
