@@ -4,8 +4,8 @@
     <id>SpectatorViewPlugin.Unity</id>
     <version>1.0.0</version>
     <description>This is a test package for distributing the SpectatorViewPlugin binary and its dependencies for use in Unity</description>
-    <authors>Microsoft</authors>
-    <owners>Microsoft</owners>
+    <authors>Unknown</authors>
+    <owners>Unknown</owners>
     <licenseUrl>https://github.com/Microsoft/MixedRealityToolkit/blob/master/License.txt</licenseUrl>
     <projectUrl>https://github.com/Microsoft/MixedRealityToolkit</projectUrl>
     <iconUrl>https://www.nuget.org/Content/Images/packageDefaultIcon-50x50.png</iconUrl>
