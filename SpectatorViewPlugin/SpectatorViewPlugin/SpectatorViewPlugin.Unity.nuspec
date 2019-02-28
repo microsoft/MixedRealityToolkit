@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>SpectatorViewPlugin.Unity</id>
-    <version>1.0.0</version>
+    <version>0.0.0</version>
     <description>This is a test package for distributing the SpectatorViewPlugin binary and its dependencies for use in Unity</description>
     <authors>Unknown</authors>
     <owners>Unknown</owners>
@@ -15,7 +15,7 @@
   </metadata>
 
   <files>
-    <file src="Release\SpectatorViewPlugin\*.dll" target="Plugins\WSA\x86" />
-    <file src="Release\SpectatorViewPlugin\*.pdb" target="Plugins\WSA\x86" />
+    <file src="Release\SpectatorViewPlugin\*.dll" target="lib\unity\Plugins\WSA\x86" />
+    <file src="Release\SpectatorViewPlugin\*.pdb" target="lib\unity\Plugins\WSA\x86" />
   </files>
 </package>
