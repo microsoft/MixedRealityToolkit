@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <metadata>
+    <id>Package.Example.SpectatorViewPlugin.Unity</id>
+    <version>0.0.0</version>
+    <description>This is a test NuGet package definition for distributing the SpectatorViewPlugin binary and its dependencies. Binaries will be output into the proper Unity Plugins special folder.</description>
+    <authors>Unknown</authors>
+    <licenseUrl>https://github.com/Microsoft/MixedRealityToolkit/blob/master/License.txt</licenseUrl>
+    <projectUrl>https://github.com/Microsoft/MixedRealityToolkit</projectUrl>
+    <iconUrl>https://www.nuget.org/Content/Images/packageDefaultIcon-50x50.png</iconUrl>
+    <releaseNotes>This is a test release</releaseNotes>
+    <copyright>Copyright 2019</copyright>
+    <tags>MRTK SpectatorView SpectatorViewPlugin</tags>
+  </metadata>
+
+  <files>
+    <file src="Release\SpectatorViewPlugin\*.dll" target="lib\unity\Plugins\WSA\x86" />
+    <file src="Release\SpectatorViewPlugin\*.pdb" target="lib\unity\Plugins\WSA\x86" />
+  </files>
+</package>
