@@ -4,9 +4,9 @@
 
 struct Marker
 {
-    int Id;
-    float position[3];
-    float rotation[3];
+    int id;
+    float position[3]; // vector
+    float rotation[3]; // rodrigues vector
 };
 
 class MarkerDetector

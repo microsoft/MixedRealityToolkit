@@ -9,7 +9,7 @@ MarkerDetector::MarkerDetector() {}
 MarkerDetector::~MarkerDetector() {}
 
 template <class T>
-void OutputDebugMatrix(const std::wstring prompt, const cv::Mat mat)
+void OutputDebugMatrix(const std::wstring& prompt, const cv::Mat& mat)
 {
     auto output = prompt;
     for (int m = 0; m < mat.rows; m++)
@@ -61,12 +61,17 @@ bool MarkerDetector::DetectMarkers(
     auto logText = L"Completed marker detection: " + std::to_wstring(arUcoMarkerIds.size()) + L" ids found";
     OutputDebugString(logText.data());
 
+    // Note: there are some assumed memory sizes for the provided float pointers.
+    // focalLength - float[] with 2 elements
+    // principalPoint - float[] with 2 elements
+    // radialDistortion - float[] with 3 elements
+    // tangentialDistortion - float[] with 2 elements
     cv::Mat cameraMatrix(3, 3, CV_64F, cv::Scalar(0));
     cameraMatrix.at<double>(0, 0) = focalLength[0]; // X focal length
     cameraMatrix.at<double>(0, 2) = principalPoint[0]; // X principal point
     cameraMatrix.at<double>(1, 1) = focalLength[1]; // Y focal length
     cameraMatrix.at<double>(1, 2) = principalPoint[1]; // Y principal point
-    cameraMatrix.at<double>(2, 2) = 1.0;
+    cameraMatrix.at<double>(2, 2) = 1.0; // Default value for camera intrinsic matrix
     OutputDebugMatrix<double>(L"Camera Matrix: ", cameraMatrix);
 
     cv::Mat distCoeffMatrix(1, 5, CV_64F, cv::Scalar(0));
@@ -98,7 +103,7 @@ bool MarkerDetector::DetectMarkers(
         OutputDebugString(rotText.data());
 
         Marker marker;
-        marker.Id = id;
+        marker.id = id;
         marker.position[0] = static_cast<float>(translationVecs[i][0]);
         marker.position[1] = static_cast<float>(translationVecs[i][1]);
         marker.position[2] = static_cast<float>(translationVecs[i][2]);
@@ -121,8 +126,8 @@ bool MarkerDetector::GetDetectedMarkerIds(int* _detectedIds, int size)
     int index = 0;
     for (auto markerPair : _detectedMarkers)
     {
-        markerPair.second.Id;
-        _detectedIds[index] = markerPair.second.Id;
+        markerPair.second.id;
+        _detectedIds[index] = markerPair.second.id;
         index++;
     }
 
@@ -137,6 +142,10 @@ bool MarkerDetector::GetDetectedMarkerPose(int _detectedId, float* position, flo
     }
 
     auto marker = _detectedMarkers.at(_detectedId);
+
+    // Note: this isn't the safest memory copy.
+    // There's an assumption that the dll caller will provide arrays of length 3 for position and rotation.
+    // If the caller fails to do so, this copy will corrupt memory or throw an access violation.
     memcpy(position, marker.position, sizeof(marker.position));
     memcpy(rotation, marker.rotation, sizeof(marker.rotation));
 
