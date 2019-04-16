@@ -108,7 +108,7 @@ If you did a default setup, you might want to know how many channels are in your
 ---
 
 # Useful resources on the Mixed Reality Dev Center
-| ![Discover](External/ReadMeImages/mrdevcenter/icon-discover.png) [Discover](https://docs.microsoft.com/en-us/windows/mixed-reality/)| ![Design](External/ReadMeImages/mrdevcenter/icon-design.png) [Design](https://docs.microsoft.com/en-us/windows/mixed-reality/design)| ![Develop](External/ReadMeImages/mrdevcenter/icon-develop.png) [Develop](https://docs.microsoft.com/en-us/windows/mixed-reality/development)| ![Distribute)](External/ReadMeImages/mrdevcenter/icon-distribute.png) [Distribute](https://docs.microsoft.com/en-us/windows/mixed-reality/implementing-3d-app-launchers)|
+| ![Discover](External/ReadMeImages/mrdevcenter/icon-discover.png) [Discover](https://docs.microsoft.com/en-us/windows/mixed-reality/)| ![Design](External/ReadMeImages/mrdevcenter/icon-design.png) [Design](https://docs.microsoft.com/en-us/windows/mixed-reality/design)| ![Develop](External/ReadMeImages/mrdevcenter/icon-develop.png) [Develop](https://docs.microsoft.com/en-us/windows/mixed-reality/development)| ![Distribute](External/ReadMeImages/mrdevcenter/icon-distribute.png) [Distribute](https://docs.microsoft.com/en-us/windows/mixed-reality/implementing-3d-app-launchers)|
 | :--------------------- | :----------------- | :------------------ | :------------------------ |
 | Learn to build mixed reality experiences for HoloLens and immersive headsets (VR).          | Get design guides. Build user interface. Learn interactions and input.     | Get development guides. Learn the technology. Understand the science.       | Get your app ready for others and consider creating a 3D launcher. |
 
