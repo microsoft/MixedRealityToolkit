@@ -1,12 +1,12 @@
 # Overview
 
 - The SpectatorViewPlugin solution generates a dll needed for the SpectatorView experience in the MixedRealityToolkit-Unity repo:
-  https://github.com/Microsoft/MixedRealityToolkit-Unity/tree/master/Assets/HoloToolkit-Preview/SpectatorView.
+  https://github.com/Microsoft/MixedRealityToolkit-Unity/tree/htk_development/Assets/HoloToolkit-Preview/SpectatorView.
   
 - SpectatorViewPlugin.dll utilizes OpenCV libraries for detecting ArUco markers.
   
 - An example for how to call into this dll exists in the following unity script:
-  https://github.com/Microsoft/MixedRealityToolkit-Unity/blob/master/Assets/HoloToolkit-Preview/SpectatorView/Scripts/SpatialSync/MarkerDetector.cs
+  https://github.com/Microsoft/MixedRealityToolkit-Unity/blob/htk_development/Assets/HoloToolkit-Preview/SpectatorView/Scripts/SpatialSync/MarkerDetector.cs
   
 - Logic within SpectatorViewPlugin.dll will only be executed on the HoloLens. It is not used on the mobile device, so you will only need to build x86 Release binaries. This can all be done on a PC in visual studio.
 
