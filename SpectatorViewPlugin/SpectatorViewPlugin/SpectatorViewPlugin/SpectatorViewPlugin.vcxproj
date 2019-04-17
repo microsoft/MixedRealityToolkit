@@ -192,12 +192,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Calibration.h" />
     <ClInclude Include="MarkerDetector.h" />
     <ClInclude Include="SpectatorViewPlugin.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Calibration.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="MarkerDetector.cpp" />
     <ClCompile Include="SpectatorViewPlugin.cpp" />

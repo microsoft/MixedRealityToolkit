@@ -1,16 +1,6 @@
 #include "pch.h"
 #include "Calibration.h"
 
-
-Calibration::Calibration()
-{
-}
-
-
-Calibration::~Calibration()
-{
-}
-
 bool Calibration::ProcessImage(
     unsigned char* image,
     int imageWidth,

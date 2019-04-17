@@ -11,11 +11,13 @@
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="MarkerDetector.cpp" />
     <ClCompile Include="SpectatorViewPlugin.cpp" />
+    <ClCompile Include="Calibration.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="MarkerDetector.h" />
     <ClInclude Include="SpectatorViewPlugin.h" />
+    <ClInclude Include="Calibration.h" />
   </ItemGroup>
 </Project>

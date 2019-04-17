@@ -148,7 +148,7 @@ extern "C" __declspec(dllexport) bool __stdcall ProcessImage(
 // 2 floats - principal point
 // 3 floats - radial distortion
 // 2 floats - tangential distortion
-extern "C" __declspec(dllexport) bool __stdcall ProcessImage(
+extern "C" __declspec(dllexport) bool __stdcall ProcessIntrinsics(
     float* intrinsics,
     int length)
 {
