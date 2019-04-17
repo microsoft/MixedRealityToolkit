@@ -1,9 +1,10 @@
 ﻿#include "pch.h"
 #include "SpectatorViewPlugin.h"
 #include "MarkerDetector.h"
-#include <memory>
+#include "Calibration.h"
 
 std::unique_ptr<MarkerDetector> detector;
+std::unique_ptr<Calibration> calibration;
 
 // Returns True to signal that this dll has been accessed correctly by its caller.
 extern "C" __declspec(dllexport) bool __stdcall Initialize()
@@ -94,6 +95,68 @@ extern "C" __declspec(dllexport) bool __stdcall GetDetectedMarkerPose(
     if (detector)
     {
         return detector->GetDetectedMarkerPose(detectedId, position, rotation);
+    }
+
+    return false;
+}
+
+// Returns True to signal that this dll has been accessed correctly by its caller.
+extern "C" __declspec(dllexport) bool __stdcall InitializeCalibration()
+{
+    if (!calibration)
+    {
+        calibration = std::make_unique<Calibration>();
+    }
+
+    return true;
+}
+
+// Processes a BGRA image for calibration
+// image array size should be equal to 4 * image width * image height
+// markerIds array size should be equal to numMarkers
+// markerCornersInWorld array size should be equal to 3 * numTotalCorners
+// numTotalCorners should be equal to markerIds * 4
+// orientation should contain 7 floats (3 for position, 4 for rotation (quaternion))
+extern "C" __declspec(dllexport) bool __stdcall ProcessImage(
+    unsigned char* image,
+    int imageWidth,
+    int imageHeight,
+    int* markerIds,
+    int numMarkers,
+    float* markerCornersInWorld,
+    int numTotalCorners,
+    float* orientation)
+{
+    if (calibration)
+    {
+        return calibration->ProcessImage(
+            image,
+            imageWidth,
+            imageHeight,
+            markerIds,
+            numMarkers,
+            markerCornersInWorld,
+            numTotalCorners,
+            orientation);
+    }
+
+    return false;
+}
+
+// intrinsics should be large enough for the following:
+// 2 floats - focal length
+// 2 floats - principal point
+// 3 floats - radial distortion
+// 2 floats - tangential distortion
+extern "C" __declspec(dllexport) bool __stdcall ProcessImage(
+    float* intrinsics,
+    int length)
+{
+    if (calibration)
+    {
+        return calibration->ProcessIntrinsics(
+            intrinsics,
+            length);
     }
 
     return false;

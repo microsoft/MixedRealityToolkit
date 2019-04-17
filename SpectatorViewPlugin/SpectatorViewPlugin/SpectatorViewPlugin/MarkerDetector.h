@@ -1,6 +1,4 @@
 #pragma once
-#include <unordered_map>
-#include <opencv2\core.hpp>
 
 struct Marker
 {

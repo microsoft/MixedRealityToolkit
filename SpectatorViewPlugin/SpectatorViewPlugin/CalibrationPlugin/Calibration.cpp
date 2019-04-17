@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Calibration.h"
 
-using namespace CalibrationPlugin;
+using namespace CalibrationPlugin::Native;
 
 bool Calibration::ProcessImage(
     const Platform::Array<byte>^ image,
