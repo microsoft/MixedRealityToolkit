@@ -8,7 +8,7 @@ public:
     // image array size should be equal to 4 * image width * image height
     // markerIds array size should be equal to numMarkers
     // markerCornersInWorld array size should be equal to 3 * numTotalCorners
-    // numTotalCorners should be equal to markerIds * 4
+    // numMarkerCornerValues should be equal to markerIds * 4 * 3
     // orientation should contain 7 floats (3 for position, 4 for rotation (quaternion))
     bool ProcessImage(
         unsigned char* image,
@@ -17,17 +17,21 @@ public:
         int* markerIds,
         int numMarkers,
         float* markerCornersInWorld,
-        int numTotalCorners,
+        int numMarkerCornerValues,
         float* orientation);
 
+    // numIntrinsics should reflect the number of intrinsics that can be stored in the provided float array
     // intrinsics should be large enough for the following:
     // 2 floats - focal length
     // 2 floats - principal point
     // 3 floats - radial distortion
     // 2 floats - tangential distortion
+    // 1 float - image width
+    // 1 float - image height
+    // 1 float - reprojection error
     bool ProcessIntrinsics(
         float* intrinsics,
-        int length);
+        int numIntrinsics);
 
 private:
     struct float3

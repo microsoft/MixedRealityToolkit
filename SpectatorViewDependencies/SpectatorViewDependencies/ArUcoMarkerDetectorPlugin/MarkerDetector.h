@@ -22,7 +22,7 @@ public:
         float* tangentialDistortion,
         float markerSize,
         int arUcoMarkerDictionaryId);
-    inline int GetDetectedMarkersCount() { return _detectedMarkers.size(); }
+    inline int GetDetectedMarkersCount() { return static_cast<int>(_detectedMarkers.size()); }
     bool GetDetectedMarkerIds(int* _detectedIds, int size);
     bool GetDetectedMarkerPose(int _detectedId, float* position, float* rotation);
 

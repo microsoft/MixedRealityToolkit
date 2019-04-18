@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <metadata>
+    <id>Package.Example.SpectatorViewDependencies.Unity</id>
+    <version>0.0.5</version>
+    <description>This is a test NuGet package definition for distributing the Spectator View binaries and their dependencies. Binaries will be output into the proper Unity Plugins special folder.</description>
+    <authors>Unknown</authors>
+    <licenseUrl>https://github.com/Microsoft/MixedRealityToolkit/blob/master/License.txt</licenseUrl>
+    <projectUrl>https://github.com/Microsoft/MixedRealityToolkit</projectUrl>
+    <iconUrl>https://www.nuget.org/Content/Images/packageDefaultIcon-50x50.png</iconUrl>
+    <releaseNotes>This is a test release</releaseNotes>
+    <copyright>Copyright 2019</copyright>
+    <tags>MRTK SpectatorView SpectatorViewDependencies</tags>
+  </metadata>
+
+  <files>
+    <file src="Release\ArUcoMarkerDetectorPlugin\*.dll" target="lib\unity\Plugins\WSA\x86" />
+    <file src="Release\ArUcoMarkerDetectorPlugin\*.pdb" target="lib\unity\Plugins\WSA\x86" />
+    <file src="MetaFiles\WSAx86\*.meta" target="lib\unity\Plugins\WSA\x86" />
+    <file src="x64\Release\*.dll" target="lib\unity\Plugins\x64" />
+    <file src="x64\Release\*.pdb" target="lib\unity\Plugins\x64" />
+  </files>
+</package>

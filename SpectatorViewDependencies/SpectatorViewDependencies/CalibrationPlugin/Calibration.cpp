@@ -1,4 +1,4 @@
-#include "pch.h"
+#include "stdafx.h"
 #include "Calibration.h"
 
 bool Calibration::ProcessImage(
@@ -117,10 +117,20 @@ bool Calibration::ProcessImage(
     return true;
 }
 
-bool Calibration::ProcessIntrinsics(float* intrinsics, int length)
+bool Calibration::ProcessIntrinsics(float* intrinsics, int numIntrinsics)
 {
-    if (length != 10 * 2)
+    const size_t intrinsicSize = 12;
+    if (numIntrinsics != 2)
+    {
+        OutputDebugString(L"Calibration expects to return two intrinsics values");
         return false;
+    }
+
+    if (worldPointObservations.size() < 1)
+    {
+        OutputDebugString(L"Images must be processed before conducting calibration");
+        return false;
+    }
 
     std::vector<float> output;
 
@@ -142,7 +152,7 @@ bool Calibration::ProcessIntrinsics(float* intrinsics, int length)
     // TODO - standardized world points (updated based on camera position/orientation)
     // TODO - planar world points
 
-    return memcpy(intrinsics, output.data(), length);
+    return memcpy(intrinsics, output.data(), numIntrinsics * intrinsicSize);
     return true;
 }
 
@@ -152,7 +162,6 @@ void Calibration::CreateIntrinsics(
     cv::Mat distCoeff,
     std::vector<float>& intrinsics)
 {
-    intrinsics.push_back(static_cast<float>(reprojectionError)); // Reprojection error
     intrinsics.push_back(static_cast<float>(cameraMat.at<double>(0, 0))); // X Focal length
     intrinsics.push_back(static_cast<float>(cameraMat.at<double>(1, 1))); // Y Focal length
     intrinsics.push_back(static_cast<float>(cameraMat.at<double>(0, 2))); // X Principal point
@@ -162,4 +171,7 @@ void Calibration::CreateIntrinsics(
     intrinsics.push_back(static_cast<float>(distCoeff.at<double>(0, 4))); // 3rd Radial distortion coefficient
     intrinsics.push_back(static_cast<float>(distCoeff.at<double>(0, 2))); // 1st Tangential distortion coefficient
     intrinsics.push_back(static_cast<float>(distCoeff.at<double>(0, 3))); // 2nd Tsangential distortion coefficient
+    intrinsics.push_back(static_cast<float>(width)); // Image width
+    intrinsics.push_back(static_cast<float>(height)); // Image height
+    intrinsics.push_back(static_cast<float>(reprojectionError)); // Reprojection error
 }
