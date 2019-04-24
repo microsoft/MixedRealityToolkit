@@ -5,6 +5,8 @@ class Calibration sealed
 public:
     Calibration() {}
 
+    bool Initialize();
+
     // image array size should be equal to 4 * image width * image height
     // markerIds array size should be equal to numMarkers
     // markerCornersInWorld array size should be equal to 3 * numTotalCorners
@@ -33,30 +35,40 @@ public:
         float* intrinsics,
         int numIntrinsics);
 
-private:
-    struct float3
-    {
-        float x;
-        float y;
-        float z;
-    };
+    bool ProcessExtrinsics(
+        float* intrinsics,
+        float* extrinsics,
+        int numExtrinsics);
 
+    bool GetLastErrorMessage(
+        char* buff,
+        int size);
+
+private:
     struct corners
     {
-        float3 topLeft;
-        float3 topRight;
-        float3 bottomRight;
-        float3 bottomLeft;
+        cv::Point3f topLeft;
+        cv::Point3f topRight;
+        cv::Point3f bottomRight;
+        cv::Point3f bottomLeft;
     };
 
-    void CreateIntrinsics(
+    void StoreIntrinsics(
         double reprojectionError,
         cv::Mat cameraMat,
         cv::Mat distCoeff,
-        std::vector<float>& intrinsics);
+        float* intrinsics);
+
+    void StoreExtrinsics(
+        double reprojectionError,
+        cv::Mat rvec,
+        cv::Mat tvec,
+        float* extrinsics,
+        int offset);
 
     int width = 0;
     int height = 0;
-    std::vector<std::vector<cv::Vec3f>> worldPointObservations;
-    std::vector<std::vector<cv::Vec2f>> imagePointObservations;
+    std::vector<std::vector<cv::Point3f>> worldPointObservations;
+    std::vector<std::vector<cv::Point2f>> imagePointObservations;
+    std::string lastError;
 };

@@ -11,7 +11,7 @@ extern "C" __declspec(dllexport) bool __stdcall InitializeCalibration()
         calibration = std::make_unique<Calibration>();
     }
 
-    return true;
+    return calibration->Initialize();
 }
 
 // Processes a BGRA image for calibration
@@ -63,6 +63,35 @@ extern "C" __declspec(dllexport) bool __stdcall ProcessIntrinsics(
         return calibration->ProcessIntrinsics(
             intrinsics,
             numIntrinsics);
+    }
+
+    return false;
+}
+
+extern "C" __declspec(dllexport) bool __stdcall ProcessExtrinsics(
+    float* intrinsics,
+    float* extrinsics,
+    int numExtrinsics)
+{
+    if (calibration)
+    {
+        return calibration->ProcessExtrinsics(
+            intrinsics,
+            extrinsics,
+            numExtrinsics);
+    }
+
+    return false;
+}
+
+// Gets the last error message associated with calibration
+extern "C" __declspec(dllexport) bool __stdcall GetLastErrorMessage(
+    char* buff,
+    int size)
+{
+    if (calibration)
+    {
+        return calibration->GetLastErrorMessage(buff, size);
     }
 
     return false;
