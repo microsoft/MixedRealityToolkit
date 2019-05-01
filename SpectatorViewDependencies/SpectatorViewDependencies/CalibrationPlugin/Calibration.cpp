@@ -5,6 +5,15 @@ bool Calibration::Initialize()
 {
     worldPointObservations.clear();
     imagePointObservations.clear();
+    pointObservationsRelativeToCamera.clear();
+    planarPointObservations.clear();
+    width = 0;
+    height = 0;
+    chessboardImageWidth = 0;
+    chessboardImageHeight = 0;
+    chessboardWidth = 0;
+    chessboardHeight = 0;
+    chessboardImagePointObservations.clear();
     return true;
 }
 
@@ -15,6 +24,8 @@ bool Calibration::ProcessImage(
     int* markerIds,
     int numMarkers,
     float* markerCornersInWorld,
+    float* markerCornersRelativeToCamera,
+    float* planarCorners,
     int numMarkerCornerValues,
     float* orientation)
 {
@@ -67,22 +78,69 @@ bool Calibration::ProcessImage(
         worldCornersMap[markerId] = currCorners;
     }
 
-    // Unity textures default to ARGB, so we convert to RGBA
-    cv::Mat rgbaImage(height, width, CV_8UC4, image);
-    for (int i = 0; i < rgbaImage.rows; i++)
+    std::unordered_map<int, corners> cornerRelativeToCameraMap;
+    for (int i = 0; i < numMarkers; i++)
     {
-        for (int j = 0; j < rgbaImage.cols; j++)
-        {
-            unsigned char alpha = rgbaImage.at<cv::Vec4b>(i, j)[0];
-            rgbaImage.at<cv::Vec4b>(i, j)[0] = rgbaImage.at<cv::Vec4b>(i, j)[3];
-            rgbaImage.at<cv::Vec4b>(i, j)[3] = alpha;
-        }
+        auto markerId = markerIds[i];
+        corners currCorners{
+            cv::Point3f{
+                markerCornersRelativeToCamera[floatsPerMarker * i],
+                markerCornersRelativeToCamera[floatsPerMarker * i + 1],
+                markerCornersRelativeToCamera[floatsPerMarker * i + 2]
+            },
+            cv::Point3f{
+                markerCornersRelativeToCamera[floatsPerMarker * i + 3],
+                markerCornersRelativeToCamera[floatsPerMarker * i + 4],
+                markerCornersRelativeToCamera[floatsPerMarker * i + 5]
+            },
+            cv::Point3f{
+                markerCornersRelativeToCamera[floatsPerMarker * i + 6],
+                markerCornersRelativeToCamera[floatsPerMarker * i + 7],
+                markerCornersRelativeToCamera[floatsPerMarker * i + 8]
+            },
+            cv::Point3f{
+                markerCornersRelativeToCamera[floatsPerMarker * i + 9],
+                markerCornersRelativeToCamera[floatsPerMarker * i + 10],
+                markerCornersRelativeToCamera[floatsPerMarker * i + 11]
+            },
+        };
+        cornerRelativeToCameraMap[markerId] = currCorners;
     }
 
-    // ArUco detection with opencv does not support images with alpha channels
-    // So, we convert the image to grayscale for processing
+    std::unordered_map<int, corners> planarCornersMap;
+    for (int i = 0; i < numMarkers; i++)
+    {
+        auto markerId = markerIds[i];
+        corners currCorners{
+            cv::Point3f{
+                planarCorners[floatsPerMarker * i],
+                planarCorners[floatsPerMarker * i + 1],
+                planarCorners[floatsPerMarker * i + 2]
+            },
+            cv::Point3f{
+                planarCorners[floatsPerMarker * i + 3],
+                planarCorners[floatsPerMarker * i + 4],
+                planarCorners[floatsPerMarker * i + 5]
+            },
+            cv::Point3f{
+                planarCorners[floatsPerMarker * i + 6],
+                planarCorners[floatsPerMarker * i + 7],
+                planarCorners[floatsPerMarker * i + 8]
+            },
+            cv::Point3f{
+                planarCorners[floatsPerMarker * i + 9],
+                planarCorners[floatsPerMarker * i + 10],
+                planarCorners[floatsPerMarker * i + 11]
+            },
+        };
+        planarCornersMap[markerId] = currCorners;
+    }
+
+    cv::Mat rgbImage(height, width, CV_8UC3, image);
+
+    // Convert the image to grayscale for processing
     cv::Mat upsideDownGrayImage;
-    cv::cvtColor(rgbaImage, upsideDownGrayImage, CV_RGBA2GRAY);
+    cv::cvtColor(rgbImage, upsideDownGrayImage, CV_RGB2GRAY);
 
     // The obtained image data needs to be flipped vertically for processing
     cv::Mat grayImage;
@@ -108,12 +166,18 @@ bool Calibration::ProcessImage(
 
     std::vector<cv::Point3f> worldPoints;
     std::vector<cv::Point2f> imagePoints;
+    std::vector<cv::Point3f> pointsRelativeToCamera;
+    std::vector<cv::Point3f> planarPoints;
     for (size_t i = 0; i < arUcoMarkerIds.size(); i++)
     {
         auto id = arUcoMarkerIds.at(i);
-        if (worldCornersMap.find(id) != worldCornersMap.end())
+        if (worldCornersMap.find(id) != worldCornersMap.end() &&
+            cornerRelativeToCameraMap.find(id) != cornerRelativeToCameraMap.end() &&
+            planarCornersMap.find(id) != planarCornersMap.end())
         {
             auto worldCorners = worldCornersMap.at(id);
+            auto cornersRelativeToCamera = cornerRelativeToCameraMap.at(id);
+            auto currPlanarCorners = planarCornersMap.at(id);
             auto imageCorners = arUcoMarkerCorners.at(i);
 
             // OpenCV reports ArUco marker corners in a clockwise manner
@@ -121,6 +185,16 @@ bool Calibration::ProcessImage(
             worldPoints.push_back(worldCorners.topRight);
             worldPoints.push_back(worldCorners.bottomRight);
             worldPoints.push_back(worldCorners.bottomLeft);
+
+            pointsRelativeToCamera.push_back(cornersRelativeToCamera.topLeft);
+            pointsRelativeToCamera.push_back(cornersRelativeToCamera.topRight);
+            pointsRelativeToCamera.push_back(cornersRelativeToCamera.bottomRight);
+            pointsRelativeToCamera.push_back(cornersRelativeToCamera.bottomLeft);
+
+            planarPoints.push_back(currPlanarCorners.topLeft);
+            planarPoints.push_back(currPlanarCorners.topRight);
+            planarPoints.push_back(currPlanarCorners.bottomRight);
+            planarPoints.push_back(currPlanarCorners.bottomLeft);
 
             imagePoints.push_back(imageCorners.at(0));
             imagePoints.push_back(imageCorners.at(1));
@@ -139,6 +213,8 @@ bool Calibration::ProcessImage(
     {
         worldPointObservations.push_back(worldPoints);
         imagePointObservations.push_back(imagePoints);
+        pointObservationsRelativeToCamera.push_back(pointsRelativeToCamera);
+        planarPointObservations.push_back(planarPoints);
     }
     else
     {
@@ -152,9 +228,9 @@ bool Calibration::ProcessImage(
 bool Calibration::ProcessIntrinsics(float* intrinsics, int numIntrinsics)
 {
     const size_t intrinsicSize = 12;
-    if (numIntrinsics != 2)
+    if (numIntrinsics != 5)
     {
-        lastError = "Calibration expects to return two intrinsics values";
+        lastError = "Calibration expects to return five intrinsics values";
         throw std::exception();
         return false;
     }
@@ -166,29 +242,281 @@ bool Calibration::ProcessIntrinsics(float* intrinsics, int numIntrinsics)
         return false;
     }
 
-    // precalculated camera mat - 0.5 principal points, equal focal points
-    cv::Mat cameraMat(3, 3, CV_64F, cv::Scalar(0));
-    cv::Mat distCoeffMat(1, 5, CV_64F, cv::Scalar(0));
-    cv::Mat rvecsMat, tvecsMat;
-    cameraMat.at<double>(0, 0) = 1.0f* width; // X focal length
-    cameraMat.at<double>(0, 2) = 0.5f * width; // X principal point
-    cameraMat.at<double>(1, 1) = 1.0f * height; // Y focal length
-    cameraMat.at<double>(1, 2) = 0.5f * height; // Y principal point
-    cameraMat.at<double>(2, 2) = 1.0; // Default value for camera intrinsic matrix
+    {
+        // precalculated camera mat - 0.5 principal points, equal focal points
+        cv::Mat cameraMat(3, 3, CV_64F, cv::Scalar(0));
+        cv::Mat distCoeffMat(1, 5, CV_64F, cv::Scalar(0));
+        cv::Mat rvecsMat, tvecsMat;
+        cameraMat.at<double>(0, 0) = 1.0f* width; // X focal length
+        cameraMat.at<double>(0, 2) = 0.5f * width; // X principal point
+        cameraMat.at<double>(1, 1) = 1.0f * height; // Y focal length
+        cameraMat.at<double>(1, 2) = 0.5f * height; // Y principal point
+        cameraMat.at<double>(2, 2) = 1.0; // Default value for camera intrinsic matrix
+        double reprojectionError = cv::calibrateCamera(
+            worldPointObservations,
+            imagePointObservations,
+            cv::Size(width, height),
+            cameraMat,
+            distCoeffMat,
+            rvecsMat,
+            tvecsMat,
+            CV_CALIB_USE_INTRINSIC_GUESS);
+        StoreIntrinsics(
+            reprojectionError,
+            cameraMat,
+            distCoeffMat,
+            width,
+            height,
+            intrinsics);
+    }
+
+    {
+        cv::Mat cameraMatCamera(3, 3, CV_64F, cv::Scalar(0));
+        cv::Mat distCoeffMatCamera(1, 5, CV_64F, cv::Scalar(0));
+        cv::Mat rvecsMatCamera, tvecsMatCamera;
+        cameraMatCamera.at<double>(0, 0) = 1.0f* width; // X focal length
+        cameraMatCamera.at<double>(0, 2) = 0.5f * width; // X principal point
+        cameraMatCamera.at<double>(1, 1) = 1.0f * height; // Y focal length
+        cameraMatCamera.at<double>(1, 2) = 0.5f * height; // Y principal point
+        cameraMatCamera.at<double>(2, 2) = 1.0; // Default value for camera intrinsic matrix
+        double reprojectionErrorCamera = cv::calibrateCamera(
+            pointObservationsRelativeToCamera,
+            imagePointObservations,
+            cv::Size(width, height),
+            cameraMatCamera,
+            distCoeffMatCamera,
+            rvecsMatCamera,
+            tvecsMatCamera,
+            CV_CALIB_USE_INTRINSIC_GUESS);
+        StoreIntrinsics(
+            reprojectionErrorCamera,
+            cameraMatCamera,
+            distCoeffMatCamera,
+            width,
+            height,
+            &(intrinsics[intrinsicSize]));
+    }
+
+    {
+        cv::Mat cameraMatPlanar = cv::initCameraMatrix2D(planarPointObservations, imagePointObservations, cv::Size(width, height));
+        cv::Mat distCoeffMatPlanar;
+        cv::Mat rvecsMatPlanar, tvecsMatPlanar;
+        double reprojectionErrorPlanar = cv::calibrateCamera(
+            planarPointObservations,
+            imagePointObservations,
+            cv::Size(width, height),
+            cameraMatPlanar,
+            distCoeffMatPlanar,
+            rvecsMatPlanar,
+            tvecsMatPlanar,
+            CV_CALIB_USE_INTRINSIC_GUESS);
+        StoreIntrinsics(
+            reprojectionErrorPlanar,
+            cameraMatPlanar,
+            distCoeffMatPlanar,
+            width,
+            height,
+            &(intrinsics[2 * intrinsicSize]));
+    }
+
+    {
+        cv::Mat cameraMatPlanarWorld = cv::initCameraMatrix2D(planarPointObservations, imagePointObservations, cv::Size(width, height));
+        cv::Mat distCoeffMatPlanarWorld;
+        cv::Mat rvecsMatPlanarWorld, tvecsMatPlanarWorld;
+        double reprojectionErrorPlanar = cv::calibrateCamera(
+            planarPointObservations,
+            imagePointObservations,
+            cv::Size(width, height),
+            cameraMatPlanarWorld,
+            distCoeffMatPlanarWorld,
+            rvecsMatPlanarWorld,
+            tvecsMatPlanarWorld,
+            CV_CALIB_USE_INTRINSIC_GUESS);
+        StoreIntrinsics(
+            reprojectionErrorPlanar,
+            cameraMatPlanarWorld,
+            distCoeffMatPlanarWorld,
+            width,
+            height,
+            &(intrinsics[3 * intrinsicSize]));
+    }
+
+    {
+        cv::Mat cameraMatPlanarCamera = cv::initCameraMatrix2D(planarPointObservations, imagePointObservations, cv::Size(width, height));
+        cv::Mat distCoeffMatPlanarCamera;
+        cv::Mat rvecsMatPlanarWorld, tvecsMatPlanarWorld;
+        double reprojectionErrorPlanar = cv::calibrateCamera(
+            planarPointObservations,
+            imagePointObservations,
+            cv::Size(width, height),
+            cameraMatPlanarCamera,
+            distCoeffMatPlanarCamera,
+            rvecsMatPlanarWorld,
+            tvecsMatPlanarWorld,
+            CV_CALIB_USE_INTRINSIC_GUESS);
+        StoreIntrinsics(
+            reprojectionErrorPlanar,
+            cameraMatPlanarCamera,
+            distCoeffMatPlanarCamera,
+            width,
+            height,
+            &(intrinsics[4 * intrinsicSize]));
+    }
+
+    return true;
+}
+
+bool Calibration::ProcessChessboardImage(
+    unsigned char* image,
+    int imageWidth,
+    int imageHeight,
+    int boardWidth,
+    int boardHeight,
+    unsigned char* cornersImage,
+    unsigned char* heatmapImage,
+    int cornerImageRadias,
+    int heatmapWidth)
+{
+    if ((chessboardImageWidth != imageWidth && chessboardImageWidth != 0) ||
+        (chessboardImageHeight != imageHeight && chessboardImageHeight != 0) ||
+        (chessboardWidth != boardWidth && chessboardWidth != 0) ||
+        (chessboardHeight != boardHeight && chessboardHeight != 0))
+    {
+        lastError = "Calibration does not support different image dimensions/different chessboard dimensions";
+        throw std::exception();
+        return false;
+    }
+
+    chessboardImageWidth = imageWidth;
+    chessboardImageHeight = imageHeight;
+    chessboardWidth = boardWidth;
+    chessboardHeight = boardHeight;
+
+    cv::Mat rgbImage(chessboardImageHeight, chessboardImageWidth, CV_8UC3, image);
+
+    // Convert the image to grayscale for processing
+    cv::Mat upsideDownGrayImage;
+    cv::cvtColor(rgbImage, upsideDownGrayImage, CV_RGB2GRAY);
+
+    // The obtained image data needs to be flipped vertically for processing
+    cv::Mat grayImage;
+    cv::flip(upsideDownGrayImage, grayImage, 0);
+
+    std::vector<cv::Point2f> chessboardImagePoints;
+    cv::Size patternSize = cv::Size(boardWidth - 1, boardHeight - 1);
+    bool locatedBoard = cv::findChessboardCorners(
+        grayImage,
+        patternSize,
+        chessboardImagePoints,
+        cv::CALIB_CB_ADAPTIVE_THRESH + cv::CALIB_CB_NORMALIZE_IMAGE + cv::CALIB_CB_FAST_CHECK);
+
+    if (locatedBoard)
+    {
+        chessboardImagePointObservations.push_back(chessboardImagePoints);
+
+        cv::Mat rgbImageHelper;
+        cv::flip(rgbImage, rgbImageHelper, 0);
+        cv::drawChessboardCorners(rgbImageHelper, patternSize, chessboardImagePoints, true);
+        cv::flip(rgbImageHelper, rgbImage, 0);
+
+        cv::Mat cornersHelper;
+        cv::Mat corners(chessboardImageHeight, chessboardImageWidth, CV_8UC3, cornersImage);
+        cv::flip(corners, cornersHelper, 0);
+        for (auto corner : chessboardImagePoints)
+        {
+            cv::circle(cornersHelper, corner, cornerImageRadias, cv::Scalar(255, 255, 255), CV_FILLED);
+        }
+        cv::flip(cornersHelper, corners, 0);
+
+        cv::imwrite("C:\\Users\\chriba\\Documents\\Calibration\\testCorners.png", corners);
+
+        cv::Mat heatmap(chessboardImageHeight, chessboardImageWidth, CV_8UC3, heatmapImage);
+        cv::Mat heatmapHelper;
+        cv::flip(heatmap, heatmapHelper, 0);
+
+        int heatmapHeight = static_cast<int>(heatmapWidth * heatmap.rows / static_cast<double>(heatmap.cols));
+        double xPixels = static_cast<double>(heatmap.cols) / heatmapWidth;
+        double yPixels = static_cast<double>(heatmap.rows) / heatmapHeight;
+
+        cv::Mat currHeatmap(heatmapWidth, heatmapHeight, CV_8U, cv::Scalar(0));
+        for (auto corner : chessboardImagePoints)
+        {
+            int x = static_cast<int>(corner.x / xPixels);
+            x = (x >= heatmapWidth) ? x - 1 : x;
+            int y = static_cast<int>(corner.y / yPixels);
+            y = (y >= heatmapHeight) ? y - 1 : y;
+            cv::Point2i loc = cv::Point2i(x, y);
+
+            currHeatmap.at<unsigned char>(loc)++;
+        }
+
+        for (int i = 0; i < heatmapHelper.rows; i++)
+        {
+            for (int j = 0; j < heatmapHelper.cols; j++)
+            {
+                int x = static_cast<int>(j / xPixels);
+                x = (x >= heatmapWidth) ? x - 1 : x;
+                int y = static_cast<int>(i / yPixels);
+                y = (y >= heatmapHeight) ? y - 1 : y;
+                cv::Point2i loc = cv::Point2i(x, y);
+
+                int value = static_cast<int>(heatmapHelper.at<cv::Vec3b>(i, j)[0]) + currHeatmap.at<unsigned char>(y, x);
+                value = (value > 255) ? 255 : value;
+
+                heatmapHelper.at<cv::Vec3b>(i, j)[0] = value;
+                heatmapHelper.at<cv::Vec3b>(i, j)[1] = value;
+                heatmapHelper.at<cv::Vec3b>(i, j)[2] = value;
+            }
+        }
+
+        cv::imwrite("C:\\Users\\chriba\\Documents\\Calibration\\testheatmap.png", heatmapHelper);
+        cv::flip(heatmapHelper, heatmap, 0);
+    }
+
+    return locatedBoard;
+}
+
+bool Calibration::ProcessChessboardIntrinsics(
+    float squareSize,
+    float* intrinsics,
+    int numIntrinsics)
+{
+    std::vector<cv::Point3f> boardDimensions;
+    for (int i = 0; i < chessboardHeight - 1; i++)
+    {
+        for (int j = 0; j < chessboardWidth - 1; j++)
+        {
+            boardDimensions.push_back(
+                cv::Point3f(
+                (float)(j * squareSize),
+                    (float)(i * squareSize),
+                    0.0f));
+        }
+    }
+
+    std::vector<std::vector<cv::Point3f>> boardPointObservations;
+    for (int i = 0; i < chessboardImagePointObservations.size(); i++)
+    {
+        boardPointObservations.push_back(boardDimensions);
+    }
+
+    cv::Mat cameraMat = cv::initCameraMatrix2D(
+        boardPointObservations,
+        chessboardImagePointObservations,
+        cv::Size(chessboardImageWidth, chessboardImageHeight),
+        chessboardImageWidth / static_cast<double>(chessboardImageHeight));
+    cv::Mat distCoeff, rvec, tvec;
     double reprojectionError = cv::calibrateCamera(
-        worldPointObservations,
-        imagePointObservations,
-        cv::Size(width, height),
+        boardPointObservations,
+        chessboardImagePointObservations,
+        cv::Size(chessboardImageWidth, chessboardImageHeight),
         cameraMat,
-        distCoeffMat,
-        rvecsMat,
-        tvecsMat,
+        distCoeff,
+        rvec,
+        tvec,
         CV_CALIB_USE_INTRINSIC_GUESS);
-    StoreIntrinsics(reprojectionError, cameraMat, distCoeffMat, intrinsics);
 
-    // TODO - standardized world points (updated based on camera position/orientation)
-    // TODO - planar world points
-
+    StoreIntrinsics(reprojectionError, cameraMat, distCoeff, chessboardImageWidth, chessboardImageHeight, intrinsics);
     return true;
 }
 
@@ -197,13 +525,13 @@ bool Calibration::ProcessExtrinsics(
     float* extrinsics,
     int numExtrinsics)
 {
-    if (numExtrinsics != 3)
+    if (numExtrinsics < worldPointObservations.size())
     {
-        lastError = "Three output extrinsics should be provided";
+        lastError = "Provide at least as many extrinsics as images that were processed";
         return false;
     }
 
-    if (worldPointObservations.size() < 1 ||
+    if (pointObservationsRelativeToCamera.size() < 1 ||
         imagePointObservations.size() < 1)
     {
         lastError = "Image processing must succeed before conducting calibration";
@@ -211,70 +539,137 @@ bool Calibration::ProcessExtrinsics(
     }
 
     const size_t extrinsicsSize = 7;
-    cv::Mat cameraMat(3, 3, CV_64F, cv::Scalar(0));
-    cv::Mat distCoeffMat(1, 5, CV_64F, cv::Scalar(0));
 
-    cameraMat.at<double>(0, 0) = intrinsics[0]; // X Focal length
-    cameraMat.at<double>(1, 1) = intrinsics[1]; // Y Focal length
-    cameraMat.at<double>(0, 2) = intrinsics[2]; // X Principal point
-    cameraMat.at<double>(1, 2) = intrinsics[3]; // Y Principal point
-    cameraMat.at<double>(2, 2) = 1.0;
-    distCoeffMat.at<double>(0, 0) = intrinsics[4]; // 1st Radial distortion coefficient
-    distCoeffMat.at<double>(0, 1) = intrinsics[5]; // 2nd Radial distortion coefficient
-    distCoeffMat.at<double>(0, 4) = intrinsics[6]; // 3rd Radial distortion coefficient
-    distCoeffMat.at<double>(0, 2) = intrinsics[7]; // 1st Tangential distortion coefficient
-    distCoeffMat.at<double>(0, 3) = intrinsics[8]; // 2nd Tangential distortion coefficient
+	for (int i = 0; i < worldPointObservations.size() && i < imagePointObservations.size(); i++)
+	{
+		{
+			cv::Mat cameraMat(3, 3, CV_64F, cv::Scalar(0));
+			cv::Mat distCoeffMat(1, 5, CV_64F, cv::Scalar(0));
 
-    cv::Mat rvecsMatIterative, tvecsMatIterative;
-    auto iterativeError = cv::solvePnP(
-        worldPointObservations,
-        imagePointObservations,
-        cameraMat,
-        distCoeffMat,
-        rvecsMatIterative,
-        tvecsMatIterative,
-        false,
-        CV_ITERATIVE);
-    StoreExtrinsics(
-        iterativeError,
-        rvecsMatIterative,
-        tvecsMatIterative,
-        extrinsics,
-        0);
+			cameraMat.at<double>(0, 0) = intrinsics[0]; // X Focal length
+			cameraMat.at<double>(1, 1) = intrinsics[1]; // Y Focal length
+			cameraMat.at<double>(0, 2) = intrinsics[2]; // X Principal point
+			cameraMat.at<double>(1, 2) = intrinsics[3]; // Y Principal point
+			cameraMat.at<double>(2, 2) = 1.0;
+			distCoeffMat.at<double>(0, 0) = intrinsics[4]; // 1st Radial distortion coefficient
+			distCoeffMat.at<double>(0, 1) = intrinsics[5]; // 2nd Radial distortion coefficient
+			distCoeffMat.at<double>(0, 4) = intrinsics[6]; // 3rd Radial distortion coefficient
+			distCoeffMat.at<double>(0, 2) = intrinsics[7]; // 1st Tangential distortion coefficient
+			distCoeffMat.at<double>(0, 3) = intrinsics[8]; // 2nd Tangential distortion coefficient
 
-    cv::Mat rvecsMatP3P, tvecsMatP3P;
-    auto p3pError = cv::solvePnP(
-        worldPointObservations,
-        imagePointObservations,
-        cameraMat,
-        distCoeffMat,
-        rvecsMatP3P,
-        tvecsMatP3P,
-        false,
-        CV_P3P);
-    StoreExtrinsics(
-        p3pError,
-        rvecsMatP3P,
-        tvecsMatP3P,
-        extrinsics,
-        extrinsicsSize);
+			cv::Mat rvecsMatIterative, tvecsMatIterative;
+			auto iterativeError = cv::solvePnP(
+				worldPointObservations[i],
+				imagePointObservations[i],
+				cameraMat,
+				distCoeffMat,
+				rvecsMatIterative,
+				tvecsMatIterative,
+				false,
+				CV_ITERATIVE);
+			StoreExtrinsics(
+				iterativeError,
+				rvecsMatIterative,
+				tvecsMatIterative,
+				&(extrinsics[i * extrinsicsSize]));
+		}
 
-    cv::Mat rvecsMatEPNP, tvecsMatEPNP;
-    auto EPNPError = cv::solvePnP(
-        worldPointObservations,
-        imagePointObservations,
-        cameraMat,
-        distCoeffMat,
-        rvecsMatEPNP,
-        tvecsMatEPNP,
-        false,
-        CV_EPNP);
-    StoreExtrinsics(
-        EPNPError,
-        rvecsMatEPNP,
-        tvecsMatEPNP,
-        extrinsics,
-        2 * extrinsicsSize);
+		/*{
+			cv::Mat cameraMat(3, 3, CV_64F, cv::Scalar(0));
+			cv::Mat distCoeffMat(1, 5, CV_64F, cv::Scalar(0));
+
+			cameraMat.at<double>(0, 0) = intrinsics[0]; // X Focal length
+			cameraMat.at<double>(1, 1) = intrinsics[1]; // Y Focal length
+			cameraMat.at<double>(0, 2) = intrinsics[2]; // X Principal point
+			cameraMat.at<double>(1, 2) = intrinsics[3]; // Y Principal point
+			cameraMat.at<double>(2, 2) = 1.0;
+			distCoeffMat.at<double>(0, 0) = intrinsics[4]; // 1st Radial distortion coefficient
+			distCoeffMat.at<double>(0, 1) = intrinsics[5]; // 2nd Radial distortion coefficient
+			distCoeffMat.at<double>(0, 4) = intrinsics[6]; // 3rd Radial distortion coefficient
+			distCoeffMat.at<double>(0, 2) = intrinsics[7]; // 1st Tangential distortion coefficient
+			distCoeffMat.at<double>(0, 3) = intrinsics[8]; // 2nd Tangential distortion coefficient
+
+			cv::Mat rvecsMatEPNP, tvecsMatEPNP;
+			auto EPNPError = cv::solvePnP(
+				worldPointObservations[i],
+				imagePointObservations[i],
+				cameraMat,
+				distCoeffMat,
+				rvecsMatEPNP,
+				tvecsMatEPNP,
+				false,
+				CV_EPNP);
+			StoreExtrinsics(
+				EPNPError,
+				rvecsMatEPNP,
+				tvecsMatEPNP,
+				&(extrinsics[1 * extrinsicsSize]));
+		}
+
+		{
+			cv::Mat cameraMat(3, 3, CV_64F, cv::Scalar(0));
+			cv::Mat distCoeffMat(1, 5, CV_64F, cv::Scalar(0));
+
+			cameraMat.at<double>(0, 0) = intrinsics[0]; // X Focal length
+			cameraMat.at<double>(1, 1) = intrinsics[1]; // Y Focal length
+			cameraMat.at<double>(0, 2) = intrinsics[2]; // X Principal point
+			cameraMat.at<double>(1, 2) = intrinsics[3]; // Y Principal point
+			cameraMat.at<double>(2, 2) = 1.0;
+			distCoeffMat.at<double>(0, 0) = intrinsics[4]; // 1st Radial distortion coefficient
+			distCoeffMat.at<double>(0, 1) = intrinsics[5]; // 2nd Radial distortion coefficient
+			distCoeffMat.at<double>(0, 4) = intrinsics[6]; // 3rd Radial distortion coefficient
+			distCoeffMat.at<double>(0, 2) = intrinsics[7]; // 1st Tangential distortion coefficient
+			distCoeffMat.at<double>(0, 3) = intrinsics[8]; // 2nd Tangential distortion coefficient
+
+			cv::Mat rvecs, tvecs;
+			auto error = cv::solvePnPRansac(
+				worldPointObservations[i],
+				imagePointObservations[i],
+				cameraMat,
+				distCoeffMat,
+				rvecs,
+				tvecs,
+				false,
+				CV_ITERATIVE);
+			StoreExtrinsics(
+				error,
+				rvecs,
+				tvecs,
+				&(extrinsics[2 * extrinsicsSize]));
+		}
+
+		{
+			cv::Mat cameraMat(3, 3, CV_64F, cv::Scalar(0));
+			cv::Mat distCoeffMat(1, 5, CV_64F, cv::Scalar(0));
+
+			cameraMat.at<double>(0, 0) = intrinsics[0]; // X Focal length
+			cameraMat.at<double>(1, 1) = intrinsics[1]; // Y Focal length
+			cameraMat.at<double>(0, 2) = intrinsics[2]; // X Principal point
+			cameraMat.at<double>(1, 2) = intrinsics[3]; // Y Principal point
+			cameraMat.at<double>(2, 2) = 1.0;
+			distCoeffMat.at<double>(0, 0) = intrinsics[4]; // 1st Radial distortion coefficient
+			distCoeffMat.at<double>(0, 1) = intrinsics[5]; // 2nd Radial distortion coefficient
+			distCoeffMat.at<double>(0, 4) = intrinsics[6]; // 3rd Radial distortion coefficient
+			distCoeffMat.at<double>(0, 2) = intrinsics[7]; // 1st Tangential distortion coefficient
+			distCoeffMat.at<double>(0, 3) = intrinsics[8]; // 2nd Tangential distortion coefficient
+
+			cv::Mat rvecs, tvecs;
+			auto error = cv::solvePnPRansac(
+				worldPointObservations[i],
+				imagePointObservations[i],
+				cameraMat,
+				distCoeffMat,
+				rvecs,
+				tvecs,
+				false,
+				CV_EPNP);
+			StoreExtrinsics(
+				error,
+				rvecs,
+				tvecs,
+				&(extrinsics[3 * extrinsicsSize]));
+		}*/
+	}
 
     return true;
 }
@@ -283,6 +678,8 @@ void Calibration::StoreIntrinsics(
     double reprojectionError,
     cv::Mat cameraMat,
     cv::Mat distCoeff,
+    int width,
+    int height,
     float* intrinsics)
 {
     intrinsics[0] = static_cast<float>(cameraMat.at<double>(0, 0)); // X Focal length
@@ -303,16 +700,15 @@ void Calibration::StoreExtrinsics(
     double reprojectionError,
     cv::Mat rvec,
     cv::Mat tvec,
-    float* extrinsics,
-    int offset)
+    float* extrinsics)
 {
-    extrinsics[offset] = static_cast<float>(reprojectionError);
-    extrinsics[offset + 1] = static_cast<float>(tvec.at<double>(0, 0));
-    extrinsics[offset + 2] = static_cast<float>(tvec.at<double>(0, 1));
-    extrinsics[offset + 3] = static_cast<float>(tvec.at<double>(0, 2));
-    extrinsics[offset + 4] = static_cast<float>(rvec.at<double>(0, 0));
-    extrinsics[offset + 5] = static_cast<float>(rvec.at<double>(0, 1));
-    extrinsics[offset + 6] = static_cast<float>(rvec.at<double>(0, 2));
+    extrinsics[0] = static_cast<float>(reprojectionError);
+    extrinsics[1] = static_cast<float>(tvec.at<double>(0, 0));
+    extrinsics[2] = static_cast<float>(tvec.at<double>(0, 1));
+    extrinsics[3] = static_cast<float>(tvec.at<double>(0, 2));
+    extrinsics[4] = static_cast<float>(rvec.at<double>(0, 0));
+    extrinsics[5] = static_cast<float>(rvec.at<double>(0, 1));
+    extrinsics[6] = static_cast<float>(rvec.at<double>(0, 2));
 }
 
 bool Calibration::GetLastErrorMessage(

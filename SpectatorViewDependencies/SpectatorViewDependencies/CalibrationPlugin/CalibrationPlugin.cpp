@@ -27,6 +27,8 @@ extern "C" __declspec(dllexport) bool __stdcall ProcessImage(
     int* markerIds,
     int numMarkers,
     float* markerCornersInWorld,
+    float* markerCornersRelativeToCamera,
+    float* planarCorners,
     int numTotalCorners,
     float* orientation)
 {
@@ -39,6 +41,8 @@ extern "C" __declspec(dllexport) bool __stdcall ProcessImage(
             markerIds,
             numMarkers,
             markerCornersInWorld,
+            markerCornersRelativeToCamera,
+            planarCorners,
             numTotalCorners,
             orientation);
     }
@@ -92,6 +96,50 @@ extern "C" __declspec(dllexport) bool __stdcall GetLastErrorMessage(
     if (calibration)
     {
         return calibration->GetLastErrorMessage(buff, size);
+    }
+
+    return false;
+}
+
+extern "C" __declspec(dllexport) bool __stdcall ProcessChessboardImage(
+    unsigned char* image,
+    int imageWidth,
+    int imageHeight,
+    int boardWidth,
+    int boardHeight,
+    unsigned char* cornersImage,
+    unsigned char* heatmapImage,
+    int cornerImageRadias,
+    int heatmapWidth)
+{
+    if (calibration)
+    {
+        return calibration->ProcessChessboardImage(
+            image,
+            imageWidth,
+            imageHeight,
+            boardWidth,
+            boardHeight,
+            cornersImage,
+            heatmapImage,
+            cornerImageRadias,
+            heatmapWidth);
+    }
+
+    return false;
+}
+
+extern "C" __declspec(dllexport) bool __stdcall ProcessChessboardIntrinsics(
+    float squareSize,
+    float* intrinsics,
+    int numIntrinsics)
+{
+    if (calibration)
+    {
+        return calibration->ProcessChessboardIntrinsics(
+            squareSize,
+            intrinsics,
+            numIntrinsics);
     }
 
     return false;

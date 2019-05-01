@@ -19,6 +19,8 @@ public:
         int* markerIds,
         int numMarkers,
         float* markerCornersInWorld,
+        float* markerCornersRelativeToCamera,
+        float* planarCorners,
         int numMarkerCornerValues,
         float* orientation);
 
@@ -32,6 +34,22 @@ public:
     // 1 float - image height
     // 1 float - reprojection error
     bool ProcessIntrinsics(
+        float* intrinsics,
+        int numIntrinsics);
+
+    bool ProcessChessboardImage(
+        unsigned char* image,
+        int imageWidth,
+        int imageHeight,
+        int boardWidth,
+        int boardHeight,
+        unsigned char* cornersImage,
+        unsigned char* heatmapImage,
+        int cornerImageRadias,
+        int heatmapWidth);
+
+    bool ProcessChessboardIntrinsics(
+        float squareSize,
         float* intrinsics,
         int numIntrinsics);
 
@@ -57,18 +75,27 @@ private:
         double reprojectionError,
         cv::Mat cameraMat,
         cv::Mat distCoeff,
+        int width,
+        int height,
         float* intrinsics);
 
     void StoreExtrinsics(
         double reprojectionError,
         cv::Mat rvec,
         cv::Mat tvec,
-        float* extrinsics,
-        int offset);
+        float* extrinsics);
 
     int width = 0;
     int height = 0;
     std::vector<std::vector<cv::Point3f>> worldPointObservations;
     std::vector<std::vector<cv::Point2f>> imagePointObservations;
+    std::vector<std::vector<cv::Point3f>> pointObservationsRelativeToCamera;
+    std::vector<std::vector<cv::Point3f>> planarPointObservations;
+
+    int chessboardImageWidth = 0;
+    int chessboardImageHeight = 0;
+    int chessboardWidth = 0;
+    int chessboardHeight = 0;
+    std::vector<std::vector<cv::Point2f>> chessboardImagePointObservations;
     std::string lastError;
 };
