@@ -3,7 +3,6 @@
 
 std::unique_ptr<Calibration> calibration;
 
-// Returns True to signal that this dll has been accessed correctly by its caller.
 extern "C" __declspec(dllexport) bool __stdcall InitializeCalibration()
 {
     if (!calibration)
@@ -14,13 +13,7 @@ extern "C" __declspec(dllexport) bool __stdcall InitializeCalibration()
     return calibration->Initialize();
 }
 
-// Processes a BGRA image for calibration
-// image array size should be equal to 4 * image width * image height
-// markerIds array size should be equal to numMarkers
-// markerCornersInWorld array size should be equal to 3 * numTotalCorners
-// numTotalCorners should be equal to markerIds * 4
-// orientation should contain 7 floats (3 for position, 4 for rotation (quaternion))
-extern "C" __declspec(dllexport) bool __stdcall ProcessImage(
+extern "C" __declspec(dllexport) bool __stdcall ProcessArUcoData(
     unsigned char* image,
     int imageWidth,
     int imageHeight,
@@ -34,7 +27,7 @@ extern "C" __declspec(dllexport) bool __stdcall ProcessImage(
 {
     if (calibration)
     {
-        return calibration->ProcessImage(
+        return calibration->ProcessArUcoData(
             image,
             imageWidth,
             imageHeight,
@@ -50,21 +43,13 @@ extern "C" __declspec(dllexport) bool __stdcall ProcessImage(
     return false;
 }
 
-// numIntrinsics should reflect the number of intrinsics that can be stored in the provided float array
-// intrinsics should be large enough for the following:
-// 2 floats - focal length
-// 2 floats - principal point
-// 3 floats - radial distortion
-// 2 floats - tangential distortion
-// 1 float - image width
-// 1 float - image height
-extern "C" __declspec(dllexport) bool __stdcall ProcessIntrinsics(
+extern "C" __declspec(dllexport) bool __stdcall ProcessArUcoIntrinsics(
     float* intrinsics,
     int numIntrinsics)
 {
     if (calibration)
     {
-        return calibration->ProcessIntrinsics(
+        return calibration->ProcessArUcoIntrinsics(
             intrinsics,
             numIntrinsics);
     }
@@ -72,14 +57,14 @@ extern "C" __declspec(dllexport) bool __stdcall ProcessIntrinsics(
     return false;
 }
 
-extern "C" __declspec(dllexport) bool __stdcall ProcessExtrinsics(
+extern "C" __declspec(dllexport) bool __stdcall ProcessIndividualArUcoExtrinsics(
     float* intrinsics,
     float* extrinsics,
     int numExtrinsics)
 {
     if (calibration)
     {
-        return calibration->ProcessExtrinsics(
+        return calibration->ProcessIndividualArUcoExtrinsics(
             intrinsics,
             extrinsics,
             numExtrinsics);
@@ -88,7 +73,22 @@ extern "C" __declspec(dllexport) bool __stdcall ProcessExtrinsics(
     return false;
 }
 
-// Gets the last error message associated with calibration
+extern "C" __declspec(dllexport) bool __stdcall ProcessGlobalArUcoExtrinsics(
+    float* intrinsics,
+    float* extrinsics,
+    int numExtrinsics)
+{
+    if (calibration)
+    {
+        return calibration->ProcessGlobalArUcoExtrinsics(
+            intrinsics,
+            extrinsics,
+            numExtrinsics);
+    }
+
+    return false;
+}
+
 extern "C" __declspec(dllexport) bool __stdcall GetLastErrorMessage(
     char* buff,
     int size)

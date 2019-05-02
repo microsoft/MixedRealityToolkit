@@ -7,36 +7,6 @@ public:
 
     bool Initialize();
 
-    // image array size should be equal to 4 * image width * image height
-    // markerIds array size should be equal to numMarkers
-    // markerCornersInWorld array size should be equal to 3 * numTotalCorners
-    // numMarkerCornerValues should be equal to markerIds * 4 * 3
-    // orientation should contain 7 floats (3 for position, 4 for rotation (quaternion))
-    bool ProcessImage(
-        unsigned char* image,
-        int imageWidth,
-        int imageHeight,
-        int* markerIds,
-        int numMarkers,
-        float* markerCornersInWorld,
-        float* markerCornersRelativeToCamera,
-        float* planarCorners,
-        int numMarkerCornerValues,
-        float* orientation);
-
-    // numIntrinsics should reflect the number of intrinsics that can be stored in the provided float array
-    // intrinsics should be large enough for the following:
-    // 2 floats - focal length
-    // 2 floats - principal point
-    // 3 floats - radial distortion
-    // 2 floats - tangential distortion
-    // 1 float - image width
-    // 1 float - image height
-    // 1 float - reprojection error
-    bool ProcessIntrinsics(
-        float* intrinsics,
-        int numIntrinsics);
-
     bool ProcessChessboardImage(
         unsigned char* image,
         int imageWidth,
@@ -53,7 +23,28 @@ public:
         float* intrinsics,
         int numIntrinsics);
 
-    bool ProcessExtrinsics(
+    bool ProcessArUcoData(
+        unsigned char* image,
+        int imageWidth,
+        int imageHeight,
+        int* markerIds,
+        int numMarkers,
+        float* markerCornersInWorld,
+        float* markerCornersRelativeToCamera,
+        float* planarCorners,
+        int numMarkerCornerValues,
+        float* orientation);
+
+    bool ProcessArUcoIntrinsics(
+        float* intrinsics,
+        int numIntrinsics);
+
+    bool ProcessIndividualArUcoExtrinsics(
+        float* intrinsics,
+        float* extrinsics,
+        int numExtrinsics);
+
+    bool ProcessGlobalArUcoExtrinsics(
         float* intrinsics,
         float* extrinsics,
         int numExtrinsics);
@@ -80,7 +71,7 @@ private:
         float* intrinsics);
 
     void StoreExtrinsics(
-        double reprojectionError,
+        float succeeded,
         cv::Mat rvec,
         cv::Mat tvec,
         float* extrinsics);
