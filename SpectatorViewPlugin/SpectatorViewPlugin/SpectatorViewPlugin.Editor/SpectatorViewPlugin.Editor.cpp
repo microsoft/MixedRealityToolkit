@@ -98,7 +98,7 @@ extern "C" __declspec(dllexport) bool __stdcall GetDetectedMarkerPose(
     return false;
 }
 
-// Returns True to signal that this dll has been accessed correctly by its caller.
+// Returns True to signal that this dll has been accessed correctly for calibration
 extern "C" __declspec(dllexport) bool __stdcall InitializeCalibration()
 {
     if (!calibration)
@@ -109,6 +109,14 @@ extern "C" __declspec(dllexport) bool __stdcall InitializeCalibration()
     return calibration->Initialize();
 }
 
+// Returns True if ArUco markers were found in the provided image. Said markers should also have corresponding coordinates in world space provided.
+// image - byte data for RGB image frame
+// imageWidth - image width in pixels
+// imageHeight - image height in pixels
+// numMarkers - the number of ArUco markers detected in world space
+// markerCornersInWorld - corners for the detected ArUco markers in world space
+// markerCornersRelativeToCamera - corners for the detected ArUco markers in world space corrected for the unity camera offset
+// numTotalCorners - total number of corners provided
 extern "C" __declspec(dllexport) bool __stdcall ProcessArUcoData(
     unsigned char* image,
     int imageWidth,
@@ -117,9 +125,7 @@ extern "C" __declspec(dllexport) bool __stdcall ProcessArUcoData(
     int numMarkers,
     float* markerCornersInWorld,
     float* markerCornersRelativeToCamera,
-    float* planarCorners,
-    int numTotalCorners,
-    float* orientation)
+    int numTotalCorners)
 {
     if (calibration)
     {
@@ -131,73 +137,22 @@ extern "C" __declspec(dllexport) bool __stdcall ProcessArUcoData(
             numMarkers,
             markerCornersInWorld,
             markerCornersRelativeToCamera,
-            planarCorners,
-            numTotalCorners,
-            orientation);
+            numTotalCorners);
     }
 
     return false;
 }
 
-extern "C" __declspec(dllexport) bool __stdcall ProcessArUcoIntrinsics(
-    float* intrinsics,
-    int numIntrinsics)
-{
-    if (calibration)
-    {
-        return calibration->ProcessArUcoIntrinsics(
-            intrinsics,
-            numIntrinsics);
-    }
-
-    return false;
-}
-
-extern "C" __declspec(dllexport) bool __stdcall ProcessIndividualArUcoExtrinsics(
-    float* intrinsics,
-    float* extrinsics,
-    int numExtrinsics)
-{
-    if (calibration)
-    {
-        return calibration->ProcessIndividualArUcoExtrinsics(
-            intrinsics,
-            extrinsics,
-            numExtrinsics);
-    }
-
-    return false;
-}
-
-extern "C" __declspec(dllexport) bool __stdcall ProcessGlobalArUcoExtrinsics(
-    float* intrinsics,
-    float* extrinsics,
-    int numExtrinsics)
-{
-    if (calibration)
-    {
-        return calibration->ProcessGlobalArUcoExtrinsics(
-            intrinsics,
-            extrinsics,
-            numExtrinsics);
-    }
-
-    return false;
-}
-
-// Gets the last error message associated with calibration
-extern "C" __declspec(dllexport) bool __stdcall GetLastErrorMessage(
-    char* buff,
-    int size)
-{
-    if (calibration)
-    {
-        return calibration->GetLastErrorMessage(buff, size);
-    }
-
-    return false;
-}
-
+// Processes chessboard images in order to calculate camera intrinsics
+// image - byte data for the image. This data should be in the RGB24 format
+// imageWidth - width of image in pixels
+// imageHeight - height of image in pixels
+// boardWidth - width of the chessboard used
+// boardHeight - height of the chessboard used
+// cornersImage - helper image byte data for displaying where chessboard corners were detected, should be same format and dimensions as main image
+// heatmapImage - helper image byte data for displaying a heatmap of detected chessboard corners, should be same format and dimensions as main image
+// cornerImageRadias - radias of circles to draw at chessboard corners in the cornersImage
+// heatmapWidth - width of heatmap regions to draw in the heatmapImage
 extern "C" __declspec(dllexport) bool __stdcall ProcessChessboardImage(
     unsigned char* image,
     int imageWidth,
@@ -226,6 +181,10 @@ extern "C" __declspec(dllexport) bool __stdcall ProcessChessboardImage(
     return false;
 }
 
+// Calculates the camera intrinsics based on the provided chessboard images
+// squareSize - size of a chessboard square in meteres
+// intrinsis - output intrinsics
+// numIntrinsics - number of intrinsics to output
 extern "C" __declspec(dllexport) bool __stdcall ProcessChessboardIntrinsics(
     float squareSize,
     float* intrinsics,
@@ -237,6 +196,61 @@ extern "C" __declspec(dllexport) bool __stdcall ProcessChessboardIntrinsics(
             squareSize,
             intrinsics,
             numIntrinsics);
+    }
+
+    return false;
+}
+
+// Calculates extrinsics for each provided data series. This helps with visualizing/debugging.
+// Returns True if ArUco marker data was available for processing and enough output extrinsics values were provided
+// intrinsics - camera intrinsics to use for extrinsics calculations
+// extrinsics - output camera extrinsics
+// numExtrinsics - the number of extrinsics available for output
+extern "C" __declspec(dllexport) bool __stdcall ProcessIndividualArUcoExtrinsics(
+    float* intrinsics,
+    float* extrinsics,
+    int numExtrinsics)
+{
+    if (calibration)
+    {
+        return calibration->ProcessIndividualArUcoExtrinsics(
+            intrinsics,
+            extrinsics,
+            numExtrinsics);
+    }
+
+    return false;
+}
+
+// Calculates camera extrinsics using all of the provided ArUco data series.
+// Returns True if ArUco marker data was available for processing and enough output extrinsics values were provided
+// intrinsics - camera intrinsics to use for extrinsics calculations
+// extrinsics - output camera extrinsics
+// numExtrinsics - the number of extrinsics available for output
+extern "C" __declspec(dllexport) bool __stdcall ProcessGlobalArUcoExtrinsics(
+    float* intrinsics,
+    float* extrinsics,
+    int numExtrinsics)
+{
+    if (calibration)
+    {
+        return calibration->ProcessGlobalArUcoExtrinsics(
+            intrinsics,
+            extrinsics,
+            numExtrinsics);
+    }
+
+    return false;
+}
+
+// Gets the last error message associated with calibration
+extern "C" __declspec(dllexport) bool __stdcall GetLastErrorMessage(
+    char* buff,
+    int size)
+{
+    if (calibration)
+    {
+        return calibration->GetLastErrorMessage(buff, size);
     }
 
     return false;

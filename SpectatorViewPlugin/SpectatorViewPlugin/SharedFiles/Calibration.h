@@ -32,13 +32,7 @@ public:
         int numMarkers,
         float* markerCornersInWorld,
         float* markerCornersRelativeToCamera,
-        float* planarCorners,
-        int numMarkerCornerValues,
-        float* orientation);
-
-    bool ProcessArUcoIntrinsics(
-        float* intrinsics,
-        int numIntrinsics);
+        int numMarkerCornerValues);
 
     bool ProcessIndividualArUcoExtrinsics(
         float* intrinsics,
@@ -82,7 +76,6 @@ private:
     std::vector<std::vector<cv::Point3f>> worldPointObservations;
     std::vector<std::vector<cv::Point2f>> imagePointObservations;
     std::vector<std::vector<cv::Point3f>> pointObservationsRelativeToCamera;
-    std::vector<std::vector<cv::Point3f>> planarPointObservations;
 
     int chessboardImageWidth = 0;
     int chessboardImageHeight = 0;

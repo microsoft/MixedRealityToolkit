@@ -5,7 +5,6 @@ bool Calibration::Initialize()
     worldPointObservations.clear();
     imagePointObservations.clear();
     pointObservationsRelativeToCamera.clear();
-    planarPointObservations.clear();
     width = 0;
     height = 0;
     chessboardImageWidth = 0;
@@ -141,7 +140,7 @@ bool Calibration::ProcessChessboardIntrinsics(
     }
 
     std::vector<std::vector<cv::Point3f>> boardPointObservations;
-    for (int i = 0; i < chessboardImagePointObservations.size(); i++)
+    for (size_t i = 0; i < chessboardImagePointObservations.size(); i++)
     {
         boardPointObservations.push_back(boardDimensions);
     }
@@ -174,9 +173,7 @@ bool Calibration::ProcessArUcoData(
     int numMarkers,
     float* markerCornersInWorld,
     float* markerCornersRelativeToCamera,
-    float* planarCorners,
-    int numMarkerCornerValues,
-    float* orientation)
+    int numMarkerCornerValues)
 {
     if (numMarkerCornerValues != numMarkers * 4 * 3)
     {
@@ -256,35 +253,6 @@ bool Calibration::ProcessArUcoData(
         cornerRelativeToCameraMap[markerId] = currCorners;
     }
 
-    std::unordered_map<int, corners> planarCornersMap;
-    for (int i = 0; i < numMarkers; i++)
-    {
-        auto markerId = markerIds[i];
-        corners currCorners{
-            cv::Point3f{
-                planarCorners[floatsPerMarker * i],
-                planarCorners[floatsPerMarker * i + 1],
-                planarCorners[floatsPerMarker * i + 2]
-            },
-            cv::Point3f{
-                planarCorners[floatsPerMarker * i + 3],
-                planarCorners[floatsPerMarker * i + 4],
-                planarCorners[floatsPerMarker * i + 5]
-            },
-            cv::Point3f{
-                planarCorners[floatsPerMarker * i + 6],
-                planarCorners[floatsPerMarker * i + 7],
-                planarCorners[floatsPerMarker * i + 8]
-            },
-            cv::Point3f{
-                planarCorners[floatsPerMarker * i + 9],
-                planarCorners[floatsPerMarker * i + 10],
-                planarCorners[floatsPerMarker * i + 11]
-            },
-        };
-        planarCornersMap[markerId] = currCorners;
-    }
-
     cv::Mat rgbImage(height, width, CV_8UC3, image);
 
     // Convert the image to grayscale for processing
@@ -321,12 +289,10 @@ bool Calibration::ProcessArUcoData(
     {
         auto id = arUcoMarkerIds.at(i);
         if (worldCornersMap.find(id) != worldCornersMap.end() &&
-            cornerRelativeToCameraMap.find(id) != cornerRelativeToCameraMap.end() &&
-            planarCornersMap.find(id) != planarCornersMap.end())
+            cornerRelativeToCameraMap.find(id) != cornerRelativeToCameraMap.end())
         {
             auto worldCorners = worldCornersMap.at(id);
             auto cornersRelativeToCamera = cornerRelativeToCameraMap.at(id);
-            auto currPlanarCorners = planarCornersMap.at(id);
             auto imageCorners = arUcoMarkerCorners.at(i);
 
             // OpenCV reports ArUco marker corners in a clockwise manner
@@ -339,11 +305,6 @@ bool Calibration::ProcessArUcoData(
             pointsRelativeToCamera.push_back(cornersRelativeToCamera.topRight);
             pointsRelativeToCamera.push_back(cornersRelativeToCamera.bottomRight);
             pointsRelativeToCamera.push_back(cornersRelativeToCamera.bottomLeft);
-
-            planarPoints.push_back(currPlanarCorners.topLeft);
-            planarPoints.push_back(currPlanarCorners.topRight);
-            planarPoints.push_back(currPlanarCorners.bottomRight);
-            planarPoints.push_back(currPlanarCorners.bottomLeft);
 
             imagePoints.push_back(imageCorners.at(0));
             imagePoints.push_back(imageCorners.at(1));
@@ -371,7 +332,6 @@ bool Calibration::ProcessArUcoData(
         worldPointObservations.push_back(worldPoints);
         imagePointObservations.push_back(imagePoints);
         pointObservationsRelativeToCamera.push_back(pointsRelativeToCamera);
-        planarPointObservations.push_back(planarPoints);
     }
     else
     {
@@ -382,153 +342,12 @@ bool Calibration::ProcessArUcoData(
     return true;
 }
 
-bool Calibration::ProcessArUcoIntrinsics(float* intrinsics, int numIntrinsics)
-{
-    const size_t intrinsicSize = 12;
-    if (numIntrinsics != 5)
-    {
-        lastError = "Calibration expects to return five intrinsics values";
-        throw std::exception();
-        return false;
-    }
-
-    if (worldPointObservations.size() < 1 ||
-        imagePointObservations.size() < 1)
-    {
-        lastError = "Image processing must succeed before conducting calibration";
-        return false;
-    }
-
-    {
-        // precalculated camera mat - 0.5 principal points, equal focal points
-        cv::Mat cameraMat(3, 3, CV_64F, cv::Scalar(0));
-        cv::Mat distCoeffMat(1, 5, CV_64F, cv::Scalar(0));
-        cv::Mat rvecsMat, tvecsMat;
-        cameraMat.at<double>(0, 0) = 1.0f* width; // X focal length
-        cameraMat.at<double>(0, 2) = 0.5f * width; // X principal point
-        cameraMat.at<double>(1, 1) = 1.0f * height; // Y focal length
-        cameraMat.at<double>(1, 2) = 0.5f * height; // Y principal point
-        cameraMat.at<double>(2, 2) = 1.0; // Default value for camera intrinsic matrix
-        double reprojectionError = cv::calibrateCamera(
-            worldPointObservations,
-            imagePointObservations,
-            cv::Size(width, height),
-            cameraMat,
-            distCoeffMat,
-            rvecsMat,
-            tvecsMat,
-            CV_CALIB_USE_INTRINSIC_GUESS);
-        StoreIntrinsics(
-            reprojectionError,
-            cameraMat,
-            distCoeffMat,
-            width,
-            height,
-            intrinsics);
-    }
-
-    {
-        cv::Mat cameraMatCamera(3, 3, CV_64F, cv::Scalar(0));
-        cv::Mat distCoeffMatCamera(1, 5, CV_64F, cv::Scalar(0));
-        cv::Mat rvecsMatCamera, tvecsMatCamera;
-        cameraMatCamera.at<double>(0, 0) = 1.0f* width; // X focal length
-        cameraMatCamera.at<double>(0, 2) = 0.5f * width; // X principal point
-        cameraMatCamera.at<double>(1, 1) = 1.0f * height; // Y focal length
-        cameraMatCamera.at<double>(1, 2) = 0.5f * height; // Y principal point
-        cameraMatCamera.at<double>(2, 2) = 1.0; // Default value for camera intrinsic matrix
-        double reprojectionErrorCamera = cv::calibrateCamera(
-            pointObservationsRelativeToCamera,
-            imagePointObservations,
-            cv::Size(width, height),
-            cameraMatCamera,
-            distCoeffMatCamera,
-            rvecsMatCamera,
-            tvecsMatCamera,
-            CV_CALIB_USE_INTRINSIC_GUESS);
-        StoreIntrinsics(
-            reprojectionErrorCamera,
-            cameraMatCamera,
-            distCoeffMatCamera,
-            width,
-            height,
-            &(intrinsics[intrinsicSize]));
-    }
-
-    {
-        cv::Mat cameraMatPlanar = cv::initCameraMatrix2D(planarPointObservations, imagePointObservations, cv::Size(width, height));
-        cv::Mat distCoeffMatPlanar;
-        cv::Mat rvecsMatPlanar, tvecsMatPlanar;
-        double reprojectionErrorPlanar = cv::calibrateCamera(
-            planarPointObservations,
-            imagePointObservations,
-            cv::Size(width, height),
-            cameraMatPlanar,
-            distCoeffMatPlanar,
-            rvecsMatPlanar,
-            tvecsMatPlanar,
-            CV_CALIB_USE_INTRINSIC_GUESS);
-        StoreIntrinsics(
-            reprojectionErrorPlanar,
-            cameraMatPlanar,
-            distCoeffMatPlanar,
-            width,
-            height,
-            &(intrinsics[2 * intrinsicSize]));
-    }
-
-    {
-        cv::Mat cameraMatPlanarWorld = cv::initCameraMatrix2D(planarPointObservations, imagePointObservations, cv::Size(width, height));
-        cv::Mat distCoeffMatPlanarWorld;
-        cv::Mat rvecsMatPlanarWorld, tvecsMatPlanarWorld;
-        double reprojectionErrorPlanar = cv::calibrateCamera(
-            planarPointObservations,
-            imagePointObservations,
-            cv::Size(width, height),
-            cameraMatPlanarWorld,
-            distCoeffMatPlanarWorld,
-            rvecsMatPlanarWorld,
-            tvecsMatPlanarWorld,
-            CV_CALIB_USE_INTRINSIC_GUESS);
-        StoreIntrinsics(
-            reprojectionErrorPlanar,
-            cameraMatPlanarWorld,
-            distCoeffMatPlanarWorld,
-            width,
-            height,
-            &(intrinsics[3 * intrinsicSize]));
-    }
-
-    {
-        cv::Mat cameraMatPlanarCamera = cv::initCameraMatrix2D(planarPointObservations, imagePointObservations, cv::Size(width, height));
-        cv::Mat distCoeffMatPlanarCamera;
-        cv::Mat rvecsMatPlanarWorld, tvecsMatPlanarWorld;
-        double reprojectionErrorPlanar = cv::calibrateCamera(
-            planarPointObservations,
-            imagePointObservations,
-            cv::Size(width, height),
-            cameraMatPlanarCamera,
-            distCoeffMatPlanarCamera,
-            rvecsMatPlanarWorld,
-            tvecsMatPlanarWorld,
-            CV_CALIB_USE_INTRINSIC_GUESS);
-        StoreIntrinsics(
-            reprojectionErrorPlanar,
-            cameraMatPlanarCamera,
-            distCoeffMatPlanarCamera,
-            width,
-            height,
-            &(intrinsics[4 * intrinsicSize]));
-    }
-
-    return true;
-}
-
 bool Calibration::ProcessIndividualArUcoExtrinsics(
     float* intrinsics,
     float* extrinsics,
     int numExtrinsics)
 {
-    if (numExtrinsics < worldPointObservations.size())
+    if (numExtrinsics < static_cast<int>(worldPointObservations.size()))
     {
         lastError = "Provide at least as many extrinsics as images that were processed";
         return false;
@@ -543,7 +362,7 @@ bool Calibration::ProcessIndividualArUcoExtrinsics(
 
     const size_t extrinsicsSize = 7;
 
-    for (int i = 0; i < worldPointObservations.size() && i < imagePointObservations.size(); i++)
+    for (size_t i = 0; i < worldPointObservations.size() && i < imagePointObservations.size(); i++)
     {
         {
             cv::Mat cameraMat(3, 3, CV_64F, cv::Scalar(0));
