@@ -3,18 +3,12 @@
 #include <opencv2\aruco.hpp>
 #include <opencv2\highgui.hpp>
 
-// TODO REMOVE
-#include <opencv2\calib3d.hpp>
-#include <opencv2\core.hpp>
-#include <opencv2\imgproc.hpp>
-#include <opencv2\highgui.hpp>
-
 const int markerSize = 300;
 const int qrCodePixelBorder = 34;
 const int width = 3;
 const int height = 6;
 
-/*int main()
+int main()
 {
     cv::Mat calibrationBoard = cv::Mat(height * markerSize, 2 * width * markerSize, CV_8U, cv::Scalar(255));
     auto dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::DICT_6X6_250);
@@ -49,29 +43,4 @@ const int height = 6;
     }
 
     cv::imwrite("CalibrationBoard.png", calibrationBoard);
-}*/
-
-
-int main()
-{
-    cv::Mat image = cv::imread("C:/Users/chriba/Documents/Calibration/DSLR/0.png");
-	cv::Mat grayImage;
-	cv::cvtColor(image, grayImage, CV_RGB2GRAY);
-
-	std::vector<int> arUcoMarkerIds;
-	std::vector<std::vector<cv::Point2f>> arUcoMarkerCorners;
-	std::vector<std::vector<cv::Point2f>> arUcoRejectedCandidates;
-	auto arUcoDetectorParameters = cv::aruco::DetectorParameters::create();
-	auto arUcoDictionary = cv::aruco::getPredefinedDictionary(cv::aruco::PREDEFINED_DICTIONARY_NAME(cv::aruco::DICT_6X6_250));
-
-	// Detect markers
-	cv::aruco::detectMarkers(
-		grayImage,
-		arUcoDictionary,
-		arUcoMarkerCorners,
-		arUcoMarkerIds,
-		arUcoDetectorParameters,
-		arUcoRejectedCandidates);
-
-	return arUcoMarkerIds.size();
 }
