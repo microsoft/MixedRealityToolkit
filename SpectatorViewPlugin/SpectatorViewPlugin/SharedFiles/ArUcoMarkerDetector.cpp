@@ -1,9 +1,8 @@
-#include "pch.h"
-#include "MarkerDetector.h"
+#include "ArUcoMarkerDetector.h"
 
-MarkerDetector::MarkerDetector() {}
+ArUcoMarkerDetector::ArUcoMarkerDetector() {}
 
-MarkerDetector::~MarkerDetector() {}
+ArUcoMarkerDetector::~ArUcoMarkerDetector() {}
 
 template <class T>
 void OutputDebugMatrix(const std::wstring& prompt, const cv::Mat& mat)
@@ -21,7 +20,7 @@ void OutputDebugMatrix(const std::wstring& prompt, const cv::Mat& mat)
     OutputDebugString(output.data());
 }
 
-bool MarkerDetector::DetectMarkers(
+bool ArUcoMarkerDetector::DetectMarkers(
     unsigned char* imageData,
     int imageWidth,
     int imageHeight,
@@ -113,7 +112,7 @@ bool MarkerDetector::DetectMarkers(
     return true;
 }
 
-bool MarkerDetector::GetDetectedMarkerIds(int* _detectedIds, int size)
+bool ArUcoMarkerDetector::GetDetectedMarkerIds(int* _detectedIds, int size)
 {
     if (_detectedMarkers.size() > static_cast<size_t>(size))
     {
@@ -131,7 +130,7 @@ bool MarkerDetector::GetDetectedMarkerIds(int* _detectedIds, int size)
     return true;
 }
 
-bool MarkerDetector::GetDetectedMarkerPose(int _detectedId, float* position, float* rotation)
+bool ArUcoMarkerDetector::GetDetectedMarkerPose(int _detectedId, float* position, float* rotation)
 {
     if (_detectedMarkers.find(_detectedId) == _detectedMarkers.end())
     {

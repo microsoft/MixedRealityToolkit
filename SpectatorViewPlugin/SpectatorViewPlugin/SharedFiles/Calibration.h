@@ -1,4 +1,5 @@
 #pragma once
+#include "SharedInclude.h"
 
 class Calibration sealed
 {

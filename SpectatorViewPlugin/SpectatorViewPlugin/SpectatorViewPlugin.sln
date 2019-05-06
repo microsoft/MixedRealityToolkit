@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ArUcoMarkerDetectorPlugin", "ArUcoMarkerDetectorPlugin\ArUcoMarkerDetectorPlugin.vcxproj", "{40A65FA5-46F2-4E86-92B9-CD61A6BED4DB}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SpectatorViewPlugin", "SpectatorViewPlugin\SpectatorViewPlugin.vcxproj", "{40A65FA5-46F2-4E86-92B9-CD61A6BED4DB}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CalibrationBoardGenerator", "CalibrationBoardGenerator\CalibrationBoardGenerator.vcxproj", "{31F0E0B7-8120-4B73-898F-B74F10089D99}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CalibrationPlugin", "CalibrationPlugin\CalibrationPlugin.vcxproj", "{D8ECBA6D-7895-4ABA-879C-E18E18DFCB3C}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SpectatorViewPlugin.Editor", "SpectatorViewPlugin.Editor\SpectatorViewPlugin.Editor.vcxproj", "{D8ECBA6D-7895-4ABA-879C-E18E18DFCB3C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

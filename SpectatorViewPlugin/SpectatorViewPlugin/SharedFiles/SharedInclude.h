@@ -1,6 +1,6 @@
-﻿#pragma once
+#pragma once
 
-#include "targetver.h"
+#include <SDKDDKVer.h>
 
 #ifndef WIN32_LEAN_AND_MEAN
 #define WIN32_LEAN_AND_MEAN
@@ -12,6 +12,7 @@
 #include <opencv2\calib3d.hpp>
 #include <opencv2\core.hpp>
 #include <opencv2\imgproc.hpp>
+#include <opencv2\highgui.hpp>
 
 #include <unordered_map>
 #include <memory>

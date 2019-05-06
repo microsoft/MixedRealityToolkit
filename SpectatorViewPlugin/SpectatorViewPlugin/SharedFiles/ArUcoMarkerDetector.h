@@ -1,4 +1,5 @@
 #pragma once
+#include "SharedInclude.h"
 
 struct Marker
 {
@@ -7,11 +8,11 @@ struct Marker
     float rotation[3]; // rodrigues vector
 };
 
-class MarkerDetector
+class ArUcoMarkerDetector
 {
 public:
-    MarkerDetector();
-    ~MarkerDetector();
+    ArUcoMarkerDetector();
+    ~ArUcoMarkerDetector();
     bool DetectMarkers(
         unsigned char* imageData,
         int imageWidth,
