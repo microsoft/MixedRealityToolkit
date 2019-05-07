@@ -185,18 +185,18 @@ extern "C" __declspec(dllexport) bool __stdcall ProcessChessboardImage(
 // Calculates the camera intrinsics based on the provided chessboard images
 // squareSize - size of a chessboard square in meteres
 // intrinsis - output intrinsics
-// numIntrinsics - number of intrinsics to output
+// sizeIntrinsics - size of the intrinsics array for outputting data
 extern "C" __declspec(dllexport) bool __stdcall ProcessChessboardIntrinsics(
     float squareSize,
     float* intrinsics,
-    int numIntrinsics)
+    int sizeIntrinsics)
 {
     if (calibration)
     {
         return calibration->ProcessChessboardIntrinsics(
             squareSize,
             intrinsics,
-            numIntrinsics);
+            sizeIntrinsics);
     }
 
     return false;
@@ -206,10 +206,12 @@ extern "C" __declspec(dllexport) bool __stdcall ProcessChessboardIntrinsics(
 // Returns True if ArUco marker data was available for processing and enough output extrinsics values were provided
 // intrinsics - camera intrinsics to use for extrinsics calculations
 // extrinsics - output camera extrinsics
+// sizeExtrinsics - size of extrinsics element in array in floats
 // numExtrinsics - the number of extrinsics available for output
 extern "C" __declspec(dllexport) bool __stdcall ProcessIndividualArUcoExtrinsics(
     float* intrinsics,
     float* extrinsics,
+    int sizeExtrinsics,
     int numExtrinsics)
 {
     if (calibration)
@@ -217,6 +219,7 @@ extern "C" __declspec(dllexport) bool __stdcall ProcessIndividualArUcoExtrinsics
         return calibration->ProcessIndividualArUcoExtrinsics(
             intrinsics,
             extrinsics,
+            sizeExtrinsics,
             numExtrinsics);
     }
 
@@ -227,32 +230,32 @@ extern "C" __declspec(dllexport) bool __stdcall ProcessIndividualArUcoExtrinsics
 // Returns True if ArUco marker data was available for processing and enough output extrinsics values were provided
 // intrinsics - camera intrinsics to use for extrinsics calculations
 // extrinsics - output camera extrinsics
-// numExtrinsics - the number of extrinsics available for output
+// sizeExtrinsics - size of extrinsics element in array in floats
 extern "C" __declspec(dllexport) bool __stdcall ProcessGlobalArUcoExtrinsics(
     float* intrinsics,
-	float* extrinsics,
-	int numExtrinsics)
+    float* extrinsics,
+    int sizeExtrinsics)
 {
-	if (calibration)
-	{
-		return calibration->ProcessGlobalArUcoExtrinsics(
-			intrinsics,
-			extrinsics,
-			numExtrinsics);
-	}
+    if (calibration)
+    {
+        return calibration->ProcessGlobalArUcoExtrinsics(
+            intrinsics,
+            extrinsics,
+            sizeExtrinsics);
+    }
 
-	return false;
+    return false;
 }
 
 // Gets the last error message associated with calibration
 extern "C" __declspec(dllexport) bool __stdcall GetLastErrorMessage(
-	char* buff,
-	int size)
+    char* buff,
+    int size)
 {
-	if (calibration)
-	{
-		return calibration->GetLastErrorMessage(buff, size);
-	}
+    if (calibration)
+    {
+        return calibration->GetLastErrorMessage(buff, size);
+    }
 
-	return false;
+    return false;
 }

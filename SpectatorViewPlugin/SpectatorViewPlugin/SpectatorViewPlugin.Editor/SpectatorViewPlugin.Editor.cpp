@@ -184,18 +184,18 @@ extern "C" __declspec(dllexport) bool __stdcall ProcessChessboardImage(
 // Calculates the camera intrinsics based on the provided chessboard images
 // squareSize - size of a chessboard square in meteres
 // intrinsis - output intrinsics
-// numIntrinsics - number of intrinsics to output
+// sizeExtrinsics - size of extrinsics element in array in floats
 extern "C" __declspec(dllexport) bool __stdcall ProcessChessboardIntrinsics(
     float squareSize,
     float* intrinsics,
-    int numIntrinsics)
+    int sizeIntrinsics)
 {
     if (calibration)
     {
         return calibration->ProcessChessboardIntrinsics(
             squareSize,
             intrinsics,
-            numIntrinsics);
+            sizeIntrinsics);
     }
 
     return false;
@@ -205,10 +205,12 @@ extern "C" __declspec(dllexport) bool __stdcall ProcessChessboardIntrinsics(
 // Returns True if ArUco marker data was available for processing and enough output extrinsics values were provided
 // intrinsics - camera intrinsics to use for extrinsics calculations
 // extrinsics - output camera extrinsics
+// sizeExtrinsics - size of extrinsics element in array in floats
 // numExtrinsics - the number of extrinsics available for output
 extern "C" __declspec(dllexport) bool __stdcall ProcessIndividualArUcoExtrinsics(
     float* intrinsics,
     float* extrinsics,
+    int sizeExtrinsics,
     int numExtrinsics)
 {
     if (calibration)
@@ -216,6 +218,7 @@ extern "C" __declspec(dllexport) bool __stdcall ProcessIndividualArUcoExtrinsics
         return calibration->ProcessIndividualArUcoExtrinsics(
             intrinsics,
             extrinsics,
+            sizeExtrinsics,
             numExtrinsics);
     }
 

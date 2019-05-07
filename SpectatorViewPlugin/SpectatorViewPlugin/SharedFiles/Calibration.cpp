@@ -1,5 +1,8 @@
 #include "Calibration.h"
 
+const int intrinsicsSize = 12;
+const int extrinsicsSize = 7;
+
 bool Calibration::Initialize()
 {
     worldPointObservations.clear();
@@ -124,8 +127,14 @@ bool Calibration::ProcessChessboardImage(
 bool Calibration::ProcessChessboardIntrinsics(
     float squareSize,
     float* intrinsics,
-    int numIntrinsics)
+    int sizeIntrinsics)
 {
+    if (sizeIntrinsics != intrinsicsSize)
+    {
+        lastError = "Intrinsics should have " + std::to_string(intrinsicsSize) + " float values";
+        return false;
+    }
+
     std::vector<cv::Point3f> boardDimensions;
     for (int i = 0; i < chessboardHeight - 1; i++)
     {
@@ -345,8 +354,15 @@ bool Calibration::ProcessArUcoData(
 bool Calibration::ProcessIndividualArUcoExtrinsics(
     float* intrinsics,
     float* extrinsics,
+    int sizeExtrinsics,
     int numExtrinsics)
 {
+    if (sizeExtrinsics != extrinsicsSize)
+    {
+        lastError = "Extrinsics should have " + std::to_string(extrinsicsSize) + " float values";
+        return false;
+    }
+
     if (numExtrinsics < static_cast<int>(worldPointObservations.size()))
     {
         lastError = "Provide at least as many extrinsics as images that were processed";
@@ -359,8 +375,6 @@ bool Calibration::ProcessIndividualArUcoExtrinsics(
         lastError = "Image processing must succeed before conducting calibration";
         return false;
     }
-
-    const size_t extrinsicsSize = 7;
 
     for (size_t i = 0; i < worldPointObservations.size() && i < imagePointObservations.size(); i++)
     {
@@ -403,11 +417,11 @@ bool Calibration::ProcessIndividualArUcoExtrinsics(
 bool Calibration::ProcessGlobalArUcoExtrinsics(
     float* intrinsics,
     float* extrinsics,
-    int numExtrinsics)
+    int sizeExtrinsics)
 {
-    if (numExtrinsics < 1)
+    if (sizeExtrinsics != extrinsicsSize)
     {
-        lastError = "Number of provided extrinsics didn't match the expected value";
+        lastError = "Extrinsics should have " + std::to_string(extrinsicsSize) + " float values";
         return false;
     }
 

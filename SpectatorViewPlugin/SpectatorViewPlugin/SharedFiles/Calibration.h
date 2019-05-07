@@ -22,7 +22,7 @@ public:
     bool ProcessChessboardIntrinsics(
         float squareSize,
         float* intrinsics,
-        int numIntrinsics);
+        int sizeIntrinsics);
 
     bool ProcessArUcoData(
         unsigned char* image,
@@ -37,12 +37,13 @@ public:
     bool ProcessIndividualArUcoExtrinsics(
         float* intrinsics,
         float* extrinsics,
+        int sizeExtrinsics,
         int numExtrinsics);
 
     bool ProcessGlobalArUcoExtrinsics(
         float* intrinsics,
         float* extrinsics,
-        int numExtrinsics);
+        int sizeExtrinsics);
 
     bool GetLastErrorMessage(
         char* buff,
