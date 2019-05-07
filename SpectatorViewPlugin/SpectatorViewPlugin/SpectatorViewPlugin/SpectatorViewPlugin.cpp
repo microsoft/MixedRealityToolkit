@@ -105,9 +105,21 @@ extern "C" __declspec(dllexport) bool __stdcall InitializeCalibration()
     if (!calibration)
     {
         calibration = std::make_unique<Calibration>();
+        return calibration->Initialize();
     }
 
-    return calibration->Initialize();
+    return true;
+}
+
+// Returns True if the calibration data was reset
+extern "C" __declspec(dllexport) bool __stdcall ResetCalibration()
+{
+    if (calibration)
+    {
+        return calibration->Initialize();
+    }
+
+    return false;
 }
 
 // Returns True if ArUco markers were found in the provided image. Said markers should also have corresponding coordinates in world space provided.
