@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>Microsoft.SpectatorViewPlugin.Unity</id>
-    <version>0.0.0</version>
+    <version>0.0.1</version>
     <description>This is a test NuGet package definition for distributing the Spectator View binaries and their dependencies. Binaries will be output into the proper Unity Plugins special folder.</description>
     <authors>Unknown</authors>
     <licenseUrl>https://github.com/Microsoft/MixedRealityToolkit/blob/master/License.txt</licenseUrl>
