@@ -1,5 +1,3 @@
-#include "pch.h"
-
 #include <opencv2\aruco.hpp>
 #include <opencv2\highgui.hpp>
 
@@ -16,7 +14,7 @@ int main()
     {
         for (int n = 0; n < width; n++)
         {
-            int markerId = (m * width) + n;
+            const int markerId = (m * width) + n;
 
             auto qrCodeImageName = "QRCodes\\sv" + std::to_string(markerId) + ".png";
             cv::Mat qrCodeMat = cv::imread(qrCodeImageName, CV_8U);

@@ -1,12 +1,12 @@
 #pragma once
-#include "SharedInclude.h"
+#include "..\SharedFiles\pch.h"
 
 class Calibration sealed
 {
 public:
     Calibration() {}
 
-    bool Initialize();
+    void Initialize();
 
     bool ProcessChessboardImage(
         unsigned char* image,
@@ -50,14 +50,6 @@ public:
         int size);
 
 private:
-    struct corners
-    {
-        cv::Point3f topLeft;
-        cv::Point3f topRight;
-        cv::Point3f bottomRight;
-        cv::Point3f bottomLeft;
-    };
-
     void StoreIntrinsics(
         double reprojectionError,
         cv::Mat cameraMat,

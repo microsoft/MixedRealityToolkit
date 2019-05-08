@@ -1,4 +1,4 @@
-#include "..\SharedFiles\SharedInclude.h"
+#include "..\SharedFiles\pch.h"
 
 // dllmain.cpp : Defines the entry point for the DLL application.
 BOOL APIENTRY DllMain( HMODULE hModule,

@@ -1,3 +1,5 @@
+#include "..\SharedFiles\pch.h"
+
 #include "..\SharedFiles\ArUcoMarkerDetector.h"
 #include "..\SharedFiles\Calibration.h"
 
@@ -104,7 +106,8 @@ extern "C" __declspec(dllexport) bool __stdcall InitializeCalibration()
     if (!calibration)
     {
         calibration = std::make_unique<Calibration>();
-        return calibration->Initialize();
+        calibration->Initialize();
+        return true;
     }
 
     return true;
@@ -115,7 +118,8 @@ extern "C" __declspec(dllexport) bool __stdcall ResetCalibration()
 {
     if (calibration)
     {
-        return calibration->Initialize();
+        calibration->Initialize();
+        return true;
     }
 
     return false;

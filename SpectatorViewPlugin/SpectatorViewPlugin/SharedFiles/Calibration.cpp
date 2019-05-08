@@ -1,9 +1,20 @@
+#include "..\SharedFiles\pch.h"
+
 #include "Calibration.h"
+#include "strsafe.h"
 
 const int intrinsicsSize = 12;
 const int extrinsicsSize = 7;
 
-bool Calibration::Initialize()
+struct corners
+{
+    cv::Point3f topLeft;
+    cv::Point3f topRight;
+    cv::Point3f bottomRight;
+    cv::Point3f bottomLeft;
+};
+
+void Calibration::Initialize()
 {
     worldPointObservations.clear();
     imagePointObservations.clear();
@@ -15,7 +26,6 @@ bool Calibration::Initialize()
     chessboardWidth = 0;
     chessboardHeight = 0;
     chessboardImagePointObservations.clear();
-    return true;
 }
 
 bool Calibration::ProcessChessboardImage(
@@ -490,8 +500,10 @@ bool Calibration::GetLastErrorMessage(
     if (!lastError.empty() &&
         size >= static_cast<int>(lastError.length()))
     {
-        memcpy(buff, lastError.c_str(), lastError.length() * sizeof(char));
-        return true;
+        if (0 == strncpy_s(buff, size, lastError.c_str(), lastError.size()))
+        {
+            return true;
+        }
     }
 
     return false;

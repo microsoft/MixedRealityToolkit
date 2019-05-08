@@ -7,10 +7,10 @@
     <ClInclude Include="..\SharedFiles\Calibration.h">
       <Filter>Shared Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\SharedFiles\SharedInclude.h">
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="..\SharedFiles\pch.h">
       <Filter>Shared Files</Filter>
     </ClInclude>
-    <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />

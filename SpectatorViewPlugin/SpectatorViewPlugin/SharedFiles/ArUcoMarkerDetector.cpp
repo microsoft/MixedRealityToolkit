@@ -1,3 +1,5 @@
+#include "..\SharedFiles\pch.h"
+
 #include "ArUcoMarkerDetector.h"
 
 ArUcoMarkerDetector::ArUcoMarkerDetector() {}
