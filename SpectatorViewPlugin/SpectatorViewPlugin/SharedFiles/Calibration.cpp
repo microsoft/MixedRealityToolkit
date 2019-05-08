@@ -45,7 +45,6 @@ bool Calibration::ProcessChessboardImage(
         (chessboardHeight != boardHeight && chessboardHeight != 0))
     {
         lastError = "Calibration does not support different image dimensions/different chessboard dimensions";
-        throw std::exception();
         return false;
     }
 
@@ -54,48 +53,45 @@ bool Calibration::ProcessChessboardImage(
     chessboardWidth = boardWidth;
     chessboardHeight = boardHeight;
 
+    // Unity textures have image data flipped vertically, so we process flipped images with opencv
     cv::Mat rgbImage(chessboardImageHeight, chessboardImageWidth, CV_8UC3, image);
+    cv::Mat flippedRgbImage;
+    cv::flip(rgbImage, flippedRgbImage, 0);
 
-    // Convert the image to grayscale for processing
-    cv::Mat upsideDownGrayImage;
-    cv::cvtColor(rgbImage, upsideDownGrayImage, CV_RGB2GRAY);
-
-    // The obtained image data needs to be flipped vertically for processing
-    cv::Mat grayImage;
-    cv::flip(upsideDownGrayImage, grayImage, 0);
+    cv::Mat flippedGrayImage;
+    cv::cvtColor(flippedRgbImage, flippedGrayImage, CV_RGB2GRAY);
 
     std::vector<cv::Point2f> chessboardImagePoints;
     cv::Size patternSize = cv::Size(boardWidth - 1, boardHeight - 1);
     bool locatedBoard = cv::findChessboardCorners(
-        grayImage,
+        flippedGrayImage,
         patternSize,
         chessboardImagePoints,
         cv::CALIB_CB_ADAPTIVE_THRESH + cv::CALIB_CB_NORMALIZE_IMAGE + cv::CALIB_CB_FAST_CHECK);
 
     if (locatedBoard)
     {
+        // Save the found image points for the chessboard
         chessboardImagePointObservations.push_back(chessboardImagePoints);
 
-        cv::Mat rgbImageHelper;
-        cv::flip(rgbImage, rgbImageHelper, 0);
-        cv::drawChessboardCorners(rgbImageHelper, patternSize, chessboardImagePoints, true);
-        cv::flip(rgbImageHelper, rgbImage, 0);
+        // Draw the located chessboard corners on the flipped original image
+        cv::drawChessboardCorners(flippedRgbImage, patternSize, chessboardImagePoints, true);
 
-        cv::Mat cornersHelper;
+        // Draw the located chessboard corners on an image containing all observed chessboard corners across all datasets
         cv::Mat corners(chessboardImageHeight, chessboardImageWidth, CV_8UC3, cornersImage);
-        cv::flip(corners, cornersHelper, 0);
+        cv::Mat flippedCorners;
+        cv::flip(corners, flippedCorners, 0);
         for (auto corner : chessboardImagePoints)
         {
-            cv::circle(cornersHelper, corner, cornerImageRadias, cv::Scalar(255, 255, 255), CV_FILLED);
+            cv::circle(flippedCorners, corner, cornerImageRadias, cv::Scalar(255, 255, 255), CV_FILLED);
         }
-        cv::flip(cornersHelper, corners, 0);
 
+        // Create a 2D heatmap for this dataset
         cv::Mat heatmap(chessboardImageHeight, chessboardImageWidth, CV_8UC3, heatmapImage);
-        cv::Mat heatmapHelper;
-        cv::flip(heatmap, heatmapHelper, 0);
+        cv::Mat flippedHeatmap;
+        cv::flip(heatmap, flippedHeatmap, 0);
 
         int heatmapHeight = static_cast<int>(heatmapWidth * heatmap.rows / static_cast<double>(heatmap.cols));
-
         cv::Mat currHeatmap(heatmapHeight, heatmapWidth, CV_8U, cv::Scalar(0));
         for (auto corner : chessboardImagePoints)
         {
@@ -108,9 +104,10 @@ bool Calibration::ProcessChessboardImage(
             currHeatmap.at<unsigned char>(loc)++;
         }
 
-        for (int i = 0; i < heatmapHelper.rows; i++)
+        // Increment the flipped heatmap image based on data in the current heatmap
+        for (int i = 0; i < flippedHeatmap.rows; i++)
         {
-            for (int j = 0; j < heatmapHelper.cols; j++)
+            for (int j = 0; j < flippedHeatmap.cols; j++)
             {
                 int x = static_cast<int>(j / static_cast<double>(heatmap.cols) * heatmapWidth);
                 x = (x > heatmapWidth - 1) ? heatmapWidth - 1 : x;
@@ -118,17 +115,19 @@ bool Calibration::ProcessChessboardImage(
                 y = (y > heatmapHeight - 1) ? heatmapHeight - 1 : y;
                 cv::Point2i loc = cv::Point2i(x, y);
 
-                int value = static_cast<int>(heatmapHelper.at<cv::Vec3b>(i, j)[0]) + currHeatmap.at<unsigned char>(loc);
+                int value = static_cast<int>(flippedHeatmap.at<cv::Vec3b>(i, j)[0]) + currHeatmap.at<unsigned char>(loc);
                 value = (value > 255) ? 255 : value;
 
-                heatmapHelper.at<cv::Vec3b>(i, j)[0] = static_cast<unsigned char>(value);
-                heatmapHelper.at<cv::Vec3b>(i, j)[1] = static_cast<unsigned char>(value);
-                heatmapHelper.at<cv::Vec3b>(i, j)[2] = static_cast<unsigned char>(value);
+                flippedHeatmap.at<cv::Vec3b>(i, j)[0] = static_cast<unsigned char>(value);
+                flippedHeatmap.at<cv::Vec3b>(i, j)[1] = static_cast<unsigned char>(value);
+                flippedHeatmap.at<cv::Vec3b>(i, j)[2] = static_cast<unsigned char>(value);
             }
         }
 
-        cv::flip(heatmapHelper, heatmap, 0);
-        memcpy(heatmapImage, heatmap.data, heatmap.cols * heatmap.rows * 3 * sizeof(unsigned char));
+        // Flip all helper images vertically to get them back into the Unity texture image data order
+        cv::flip(flippedRgbImage, rgbImage, 0);
+        cv::flip(flippedCorners, corners, 0);
+        cv::flip(flippedHeatmap, heatmap, 0);
     }
 
     return locatedBoard;
@@ -197,7 +196,6 @@ bool Calibration::ProcessArUcoData(
     if (numMarkerCornerValues != numMarkers * 4 * 3)
     {
         lastError = "The number of total corners did not equal what was expected";
-        throw std::exception();
         return false;
     }
 
@@ -205,7 +203,6 @@ bool Calibration::ProcessArUcoData(
         (height != imageHeight && height != 0))
     {
         lastError = "Calibration does not support different image dimensions";
-        throw std::exception();
         return false;
     }
 
@@ -297,9 +294,6 @@ bool Calibration::ProcessArUcoData(
         arUcoDetectorParameters,
         arUcoRejectedCandidates);
 
-    auto text = "Detected " + std::to_string(arUcoMarkerIds.size()) + " markers in the provided image";
-    lastError = text.data();
-
     std::vector<cv::Point3f> worldPoints;
     std::vector<cv::Point2f> imagePoints;
     std::vector<cv::Point3f> pointsRelativeToCamera;
@@ -332,8 +326,7 @@ bool Calibration::ProcessArUcoData(
         }
         else
         {
-            text = "Marker " + std::to_string(arUcoMarkerIds.size()) + " was detected in image but did not have known world coordinates";
-            lastError = text.data();
+            lastError = "Marker " + std::to_string(arUcoMarkerIds.size()) + " was detected in image but did not have known world coordinates";
         }
     }
 
@@ -375,7 +368,7 @@ bool Calibration::ProcessIndividualArUcoExtrinsics(
 
     if (numExtrinsics < static_cast<int>(worldPointObservations.size()))
     {
-        lastError = "Provide at least as many extrinsics as images that were processed";
+        lastError = std::to_string(worldPointObservations.size()) + " aruco data sets were succesfully processed, but only " + std::to_string(numExtrinsics) + " output extrinsics were provided";
         return false;
     }
 

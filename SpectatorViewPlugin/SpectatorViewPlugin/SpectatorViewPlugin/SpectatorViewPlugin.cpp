@@ -264,6 +264,8 @@ extern "C" __declspec(dllexport) bool __stdcall ProcessGlobalArUcoExtrinsics(
 }
 
 // Gets the last error message associated with calibration
+// buff - output character buffer
+// size - size of buffer in characters, not memory size
 extern "C" __declspec(dllexport) bool __stdcall GetLastErrorMessage(
     char* buff,
     int size)
