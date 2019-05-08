@@ -155,7 +155,6 @@
     <ClInclude Include="..\SharedFiles\ArUcoMarkerDetector.h" />
     <ClInclude Include="..\SharedFiles\Calibration.h" />
     <ClInclude Include="..\SharedFiles\pch.h" />
-    <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\SharedFiles\ArUcoMarkerDetector.cpp" />

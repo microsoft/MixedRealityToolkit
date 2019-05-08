@@ -7,7 +7,6 @@
     <ClInclude Include="..\SharedFiles\Calibration.h">
       <Filter>Shared Files</Filter>
     </ClInclude>
-    <ClInclude Include="targetver.h" />
     <ClInclude Include="..\SharedFiles\pch.h">
       <Filter>Shared Files</Filter>
     </ClInclude>
