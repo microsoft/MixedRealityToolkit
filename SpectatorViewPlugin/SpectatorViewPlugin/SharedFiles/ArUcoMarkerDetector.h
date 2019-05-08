@@ -1,6 +1,5 @@
 #pragma once
-#include <unordered_map>
-#include <opencv2\core.hpp>
+#include "pch.h"
 
 struct Marker
 {
@@ -9,11 +8,11 @@ struct Marker
     float rotation[3]; // rodrigues vector
 };
 
-class MarkerDetector
+class ArUcoMarkerDetector
 {
 public:
-    MarkerDetector();
-    ~MarkerDetector();
+    ArUcoMarkerDetector();
+    ~ArUcoMarkerDetector();
     bool DetectMarkers(
         unsigned char* imageData,
         int imageWidth,
@@ -24,7 +23,7 @@ public:
         float* tangentialDistortion,
         float markerSize,
         int arUcoMarkerDictionaryId);
-    inline int GetDetectedMarkersCount() { return _detectedMarkers.size(); }
+    inline int GetDetectedMarkersCount() { return static_cast<int>(_detectedMarkers.size()); }
     bool GetDetectedMarkerIds(int* _detectedIds, int size);
     bool GetDetectedMarkerPose(int _detectedId, float* position, float* rotation);
 

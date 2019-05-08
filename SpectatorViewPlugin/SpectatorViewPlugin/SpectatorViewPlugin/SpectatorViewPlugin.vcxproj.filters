@@ -5,17 +5,30 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tga;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Shared Files">
+      <UniqueIdentifier>{f2e0214a-1f6e-4e79-9743-c883ff9b7aef}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="pch.cpp" />
-    <ClCompile Include="MarkerDetector.cpp" />
     <ClCompile Include="SpectatorViewPlugin.cpp" />
+    <ClCompile Include="..\SharedFiles\ArUcoMarkerDetector.cpp">
+      <Filter>Shared Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\SharedFiles\Calibration.cpp">
+      <Filter>Shared Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="pch.h" />
-    <ClInclude Include="targetver.h" />
-    <ClInclude Include="MarkerDetector.h" />
     <ClInclude Include="SpectatorViewPlugin.h" />
+    <ClInclude Include="..\SharedFiles\ArUcoMarkerDetector.h">
+      <Filter>Shared Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SharedFiles\Calibration.h">
+      <Filter>Shared Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SharedFiles\pch.h">
+      <Filter>Shared Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

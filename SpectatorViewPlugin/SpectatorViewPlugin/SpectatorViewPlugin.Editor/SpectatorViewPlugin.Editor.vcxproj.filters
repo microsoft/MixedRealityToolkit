@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="..\SharedFiles\ArUcoMarkerDetector.h">
+      <Filter>Shared Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SharedFiles\Calibration.h">
+      <Filter>Shared Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SharedFiles\pch.h">
+      <Filter>Shared Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="..\SharedFiles\ArUcoMarkerDetector.cpp">
+      <Filter>Shared Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\SharedFiles\Calibration.cpp">
+      <Filter>Shared Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SpectatorViewPlugin.Editor.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Shared Files">
+      <UniqueIdentifier>{7f7b0f1d-78dd-49d2-8a05-798a3bbc236b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
