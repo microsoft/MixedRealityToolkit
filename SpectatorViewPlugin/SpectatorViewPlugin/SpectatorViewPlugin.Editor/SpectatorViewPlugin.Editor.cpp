@@ -70,7 +70,7 @@ extern "C" __declspec(dllexport) int __stdcall GetDetectedMarkersCount()
 // Returns False if the array size is less than the number of detected markers
 // detectedIds - int[] populated with ids
 // size - size of the int[]
-extern "C" __declspec(dllexport) bool __stdcall GetDetectedMarkerids(
+extern "C" __declspec(dllexport) bool __stdcall GetDetectedMarkerIds(
     int* detectedIds,
     int size)
 {
