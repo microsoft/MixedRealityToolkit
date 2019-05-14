@@ -5,6 +5,7 @@
 #include <deque>
 #include <unordered_map>
 #include <memory>
+#include <mutex>
 
 #include <d3d11_2.h>
 #ifdef _WIN32_WINNT_WIN10
@@ -18,7 +19,6 @@ using namespace std;
 class Query;
 using QueryPtr = shared_ptr<Query>;
 using QueryDequePtr = shared_ptr<deque<QueryPtr>> ;
-using CriticalSectionPtr = shared_ptr<CRITICAL_SECTION>;
 
 static UnityGfxRenderer s_DeviceType = kUnityGfxRendererNull;
 static IUnityInterfaces* s_UnityInterfaces = nullptr;
@@ -35,7 +35,8 @@ static unordered_map<int, QueryDequePtr> s_ActiveQueries;
 static vector<QueryPtr> s_QueryPool;
 static unordered_map<int, double> s_FrameTimes;
 
-static CRITICAL_SECTION updateTimingsSync;
+static mutex updateTimingsSync;
+static mutex memInfoAdapterSync;
 
 #ifdef _WIN32_WINNT_WIN10
 static IDXGIAdapter3* s_Adapter = nullptr;
@@ -164,8 +165,6 @@ public:
 
 static void UNITY_INTERFACE_API OnGraphicsDeviceEvent(UnityGfxDeviceEventType eventType);
 
-static void ReleaseResources();
-
 enum RenderEventType
 {
 	kRenderEventTypeBeginFrameEventMin = 1000,
@@ -180,8 +179,6 @@ extern "C" void	UNITY_INTERFACE_EXPORT UNITY_INTERFACE_API UnityPluginLoad(IUnit
 	s_Graphics = s_UnityInterfaces->Get<IUnityGraphics>();
 	s_Graphics->RegisterDeviceEventCallback(OnGraphicsDeviceEvent);
 
-	InitializeCriticalSection(&updateTimingsSync);
-
 	// Run OnGraphicsDeviceEvent(initialize) manually on plugin load
 	// to not miss the event in case the graphics device is already initialized.
 	OnGraphicsDeviceEvent(kUnityGfxDeviceEventInitialize);
@@ -191,27 +188,25 @@ extern "C" void UNITY_INTERFACE_EXPORT UNITY_INTERFACE_API UnityPluginUnload()
 {
 	if (s_Graphics != nullptr)
 	{
-		ReleaseResources();
 		s_Graphics->UnregisterDeviceEventCallback(OnGraphicsDeviceEvent);
 	}
 }
 
 extern "C" double UNITY_INTERFACE_EXPORT UNITY_INTERFACE_API GetGpuDuration(int eventId)
 {
+	lock_guard<mutex> lock(updateTimingsSync);
+
 	if (s_Context == nullptr)
 	{
 		return 0.0;
 	}
 
 	double time = -2.0; // Not found
-
-	EnterCriticalSection(&updateTimingsSync);
 	auto it = s_FrameTimes.find(eventId);
 	if (it != s_FrameTimes.end())
 	{
 		time = it->second;
 	}
-	LeaveCriticalSection(&updateTimingsSync);
 
 	return time;
 }
@@ -219,6 +214,8 @@ extern "C" double UNITY_INTERFACE_EXPORT UNITY_INTERFACE_API GetGpuDuration(int 
 extern "C" UINT64 UNITY_INTERFACE_EXPORT UNITY_INTERFACE_API GetVramUse()
 {
 #ifdef _WIN32_WINNT_WIN10
+	lock_guard<mutex> lock(memInfoAdapterSync); // h
+
 	if (s_Adapter == nullptr)
 	{
 		return 0ull;
@@ -259,9 +256,8 @@ static void UpdateFrameTime()
 			activeQueries->pop_front();
 			s_QueryPool.push_back(q);
 
-			EnterCriticalSection(&updateTimingsSync);
+			lock_guard<mutex> lock(updateTimingsSync);
 			s_FrameTimes[activeQueriesIt->first] = frameTime;
-			LeaveCriticalSection(&updateTimingsSync);
 		}
 	}
 }
@@ -277,7 +273,10 @@ static void UNITY_INTERFACE_API OnGraphicsDeviceEvent(UnityGfxDeviceEventType ev
 			// D3D11 is the only API supported
 			IUnityGraphicsD3D11* d3d = s_UnityInterfaces->Get<IUnityGraphicsD3D11>();
 			s_Device = d3d->GetDevice();
-			s_Device->GetImmediateContext(&s_Context);
+			{
+				lock_guard<mutex> lock(updateTimingsSync);
+				s_Device->GetImmediateContext(&s_Context);
+			}
 
 			// Annotations allow events to be logged so that they are visible in GPUView when profiling
 			s_Context->QueryInterface(__uuidof(s_Annotation), reinterpret_cast<void**>(&s_Annotation));
@@ -289,7 +288,10 @@ static void UNITY_INTERFACE_API OnGraphicsDeviceEvent(UnityGfxDeviceEventType ev
 				IDXGIAdapter* adapter;
 				if (device->GetAdapter(&adapter) == S_OK)
 				{
-					adapter->QueryInterface(IID_PPV_ARGS(&s_Adapter));
+					{
+						lock_guard<mutex> lock(memInfoAdapterSync);
+						adapter->QueryInterface(IID_PPV_ARGS(&s_Adapter));
+					}
 					adapter->Release();
 				}
 				device->Release();
@@ -297,11 +299,29 @@ static void UNITY_INTERFACE_API OnGraphicsDeviceEvent(UnityGfxDeviceEventType ev
 #endif
 		}
 	}
-
-	if (eventType == kUnityGfxDeviceEventShutdown)
+	else if (eventType == kUnityGfxDeviceEventShutdown)
 	{
-		ReleaseResources();
 		s_DeviceType = kUnityGfxRendererNull;
+#ifdef _WIN32_WINNT_WIN10
+		if (s_Adapter != nullptr)
+		{
+			lock_guard<mutex> lock(memInfoAdapterSync);
+			s_Adapter->Release();
+			s_Adapter = nullptr;
+		}
+#endif
+
+		if (s_Annotation != nullptr)
+		{
+			s_Annotation->Release();
+			s_Annotation = nullptr;
+		}
+
+		s_ActiveQueries.clear();
+		s_QueryPool.clear();
+
+		lock_guard<mutex> lock(updateTimingsSync);
+		s_Device = nullptr;
 	}
 }
 
@@ -360,28 +380,6 @@ static void UNITY_INTERFACE_API OnRenderEvent(int eventID)
 			activeQueriesIt->second->back()->End();
 		}
 	}
-}
-
-static void ReleaseResources()
-{
-#ifdef _WIN32_WINNT_WIN10
-	if (s_Adapter != nullptr)
-	{
-		s_Adapter->Release();
-		s_Adapter = nullptr;
-	}
-#endif
-
-	if (s_Annotation != nullptr)
-	{
-		s_Annotation->Release();
-		s_Annotation = nullptr;
-	}
-
-	s_ActiveQueries.clear();
-	s_QueryPool.clear();
-
-	DeleteCriticalSection(&updateTimingsSync);
 }
 
 // GetRenderEventFunc, an example function we export which is used to get a rendering event callback function
