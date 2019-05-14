@@ -214,7 +214,7 @@ extern "C" double UNITY_INTERFACE_EXPORT UNITY_INTERFACE_API GetGpuDuration(int 
 extern "C" UINT64 UNITY_INTERFACE_EXPORT UNITY_INTERFACE_API GetVramUse()
 {
 #ifdef _WIN32_WINNT_WIN10
-	lock_guard<mutex> lock(memInfoAdapterSync); // h
+	lock_guard<mutex> lock(memInfoAdapterSync);
 
 	if (s_Adapter == nullptr)
 	{
