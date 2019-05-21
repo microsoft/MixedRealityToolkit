@@ -90,6 +90,7 @@ bool ArUcoMarkerDetector::DetectMarkers(
         rotationVecs,
         translationVecs);
 
+    _detectedMarkers.clear();
     for (size_t i = 0; i < arUcoMarkerIds.size(); i++)
     {
         auto id = arUcoMarkerIds[i];
