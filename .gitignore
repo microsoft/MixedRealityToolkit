@@ -148,3 +148,6 @@ UpgradeLog*.htm
 /SpatialMapping/PlaneFinding/Release
 /SpatialMapping/PlaneFinding/PlaneFinding/PlaneFinding.UAP/Debug
 /SpatialMapping/PlaneFinding/PlaneFinding/PlaneFinding.UAP/Release
+
+# C++/WinRT Generated Files
+Generated Files/
