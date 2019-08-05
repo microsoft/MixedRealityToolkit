@@ -1,3 +1,5 @@
+># NOTE: The Spectator View code within this repository has been deprecated. To use Spectator View, migrate to the [MixedReality-SpectatorView repository](https://github.com/microsoft/MixedReality-SpectatorView).
+
 # Overview
 
 - The SpectatorViewPlugin solution generates a dll needed for the SpectatorView experience in the MixedRealityToolkit-Unity repo:
