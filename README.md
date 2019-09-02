@@ -91,7 +91,7 @@ sb returns the full path on disk to the wav file you just recorded.
 Releases everything -- call when closing application or not using Microphone for long period of time. 
 
 * MicPause();
-Literally pauses everthing happening -- useful for minimizing or backgrounding. 
+Literally pauses everything happening -- useful for minimizing or backgrounding. 
 
 * MicResume();
 Resumes from paused state.
