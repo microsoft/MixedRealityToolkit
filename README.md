@@ -7,9 +7,11 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
 # MixedRealityToolkit for Unity
+![](https://github.com/microsoft/MixedRealityToolkit-Unity/blob/mrtk_development/Documentation/Images/Logo_MRTK_Unity_Banner.png)
 If you are developing your app using Unity - please visit [MixedRealityToolkit-Unity](https://github.com/Microsoft/MixedRealityToolkit-Unity).
 
 # MixedRealityToolkit for Unreal
+![](https://github.com/microsoft/MixedRealityToolkit-Unreal/blob/master/Documentation/Images/MRTK_Unreal_Badge_Rounded.png)
 If you are developing your app using Unreal - please visit [MixedRealityToolkit-Unreal](https://github.com/microsoft/MixedRealityToolkit-Unreal).
 
 ---
@@ -111,7 +113,7 @@ If you did a default setup, you might want to know how many channels are in your
 ---
 
 # Useful resources on Microsoft Windows Dev Center
-| ![Academy](https://github.com/Microsoft/MixedRealityToolkit-Unity/blob/master/External/ReadMeImages/icon_academy.png) [Academy](https://developer.microsoft.com/en-us/windows/mixed-reality/academy)| ![Design](https://github.com/Microsoft/MixedRealityToolkit-Unity/blob/master/External/ReadMeImages/icon_design.png) [Design](https://developer.microsoft.com/en-us/windows/mixed-reality/design)| ![Development](https://github.com/Microsoft/MixedRealityToolkit-Unity/blob/master/External/ReadMeImages/icon_development.png) [Development](https://developer.microsoft.com/en-us/windows/mixed-reality/development)| ![Community)](https://github.com/Microsoft/MixedRealityToolkit-Unity/blob/master/External/ReadMeImages/icon_community.png) [Community](https://developer.microsoft.com/en-us/windows/mixed-reality/community)|
+| ![Discover](https://github.com/microsoft/MixedRealityToolkit-Unity/blob/mrtk_development/Documentation/Images/mrdevcenter/icon-discover.png) [Discover](https://docs.microsoft.com/windows/mixed-reality/)| ![Design](https://github.com/microsoft/MixedRealityToolkit-Unity/blob/mrtk_development/Documentation/Images/mrdevcenter/icon-design.png) [Design](https://docs.microsoft.com/windows/mixed-reality/design)| ![Develop](https://github.com/microsoft/MixedRealityToolkit-Unity/blob/mrtk_development/Documentation/Images/mrdevcenter/icon-develop.png) [Develop](https://docs.microsoft.com/windows/mixed-reality/development)| ![Distribute)](https://github.com/microsoft/MixedRealityToolkit-Unity/blob/mrtk_development/Documentation/Images/mrdevcenter/icon-distribute.png) [Distribute](https://docs.microsoft.com/windows/mixed-reality/implementing-3d-app-launchers)|
 | :--------------------- | :----------------- | :------------------ | :------------------------ |
-| See code examples. Do a coding tutorial. Watch guest lectures.          | Get design guides. Build user interface. Learn interactions and input.     | Get development guides. Learn the technology. Understand the science.       | Join open source projects. Ask questions on forums. Attend events and meetups. |
+| Learn to build mixed reality experiences for HoloLens and immersive headsets (VR).          | Get design guides. Build user interface. Learn interactions and input.     | Get development guides. Learn the technology. Understand the science.       | Get your app ready for others and consider creating a 3D launcher. |
 
