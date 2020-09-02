@@ -30,20 +30,20 @@ namespace MixedRealityToolkit.SpatialMapping.SpatialProcessing
 
         /// <summary>
         /// PlaneFinding is an expensive task that should not be run from Unity's main thread as it
-        /// will stall the thread and cause a frame rate dip.  Instead, the PlaneFinding APIs should be
-        /// exclusively called from background threads.  Unfortunately, Unity's built-in data types
+        /// will stall the thread and cause a frame rate dip. Instead, the PlaneFinding APIs should be
+        /// exclusively called from background threads. Unfortunately, Unity's built-in data types
         /// (such as MeshFilter) are not thread safe and cannot be accessed from background threads.
-        /// The MeshData struct exists to work-around this limitation.  When you want to find planes
+        /// The MeshData struct exists to work-around this limitation. When you want to find planes
         /// in a collection of MeshFilter objects, start by constructing a list of MeshData structs
         /// from those MeshFilters. You can then take the resulting list of MeshData structs, and
         /// safely pass it to the FindPlanes() API from a background thread.
         /// </summary>
-        public struct MeshData
+        public readonly struct MeshData
         {
-            public Matrix4x4 Transform;
-            public Vector3[] Verts;
-            public Vector3[] Normals;
-            public Int32[] Indices;
+            public Matrix4x4 Transform { get; }
+            public Vector3[] Verts { get; }
+            public Vector3[] Normals { get; }
+            public int[] Indices { get; }
 
             public MeshData(MeshFilter meshFilter)
             {
@@ -88,9 +88,9 @@ namespace MixedRealityToolkit.SpatialMapping.SpatialProcessing
         }
 
         /// <summary>
-        /// Takes the subplanes returned by one or more previous calls to FindSubPlanes() and merges
+        /// Takes the sub-planes returned by one or more previous calls to FindSubPlanes() and merges
         /// them together into larger planes that can potentially span across multiple meshes.
-        /// Overlapping subplanes that have similar plane equations will be merged together to form
+        /// Overlapping sub-planes that have similar plane equations will be merged together to form
         /// larger planes.
         /// </summary>
         /// <param name="subPlanes">
@@ -104,7 +104,7 @@ namespace MixedRealityToolkit.SpatialMapping.SpatialProcessing
         /// logic.
         /// </param>
         /// <param name="minArea">
-        /// While merging subplanes together, any candidate merged plane whose constituent mesh
+        /// While merging sub-planes together, any candidate merged plane whose constituent mesh
         /// triangles have a total area less than this threshold are ignored.
         /// </param>
         public static BoundedPlane[] MergeSubPlanes(BoundedPlane[] subPlanes, float snapToGravityThreshold = 0.0f, float minArea = 0.0f)
@@ -140,7 +140,7 @@ namespace MixedRealityToolkit.SpatialMapping.SpatialProcessing
         /// logic.
         /// </param>
         /// <param name="minArea">
-        /// While merging subplanes together, any candidate merged plane whose constituent mesh
+        /// While merging sub-planes together, any candidate merged plane whose constituent mesh
         /// triangles have a total area less than this threshold are ignored.
         /// </param>
         public static BoundedPlane[] FindPlanes(List<MeshData> meshes, float snapToGravityThreshold = 0.0f, float minArea = 0.0f)
@@ -165,10 +165,11 @@ namespace MixedRealityToolkit.SpatialMapping.SpatialProcessing
 
         #region Internal
 
+        private static readonly object FindPlanesLock = new object();
+        private static readonly List<GCHandle> ReusedPinnedMemoryHandles = new List<GCHandle>();
+
         private static bool findPlanesRunning = false;
-        private static System.Object findPlanesLock = new System.Object();
         private static DLLImports.MeshData[] reusedMeshesForMarshalling = null;
-        private static List<GCHandle> reusedPinnedMemoryHandles = new List<GCHandle>();
 
         /// <summary>
         /// Validate that no other PlaneFinding API call is currently in progress. As a performance
@@ -178,7 +179,7 @@ namespace MixedRealityToolkit.SpatialMapping.SpatialProcessing
         /// </summary>
         private static void StartPlaneFinding()
         {
-            lock (findPlanesLock)
+            lock (FindPlanesLock)
             {
                 if (findPlanesRunning)
                 {
@@ -203,10 +204,10 @@ namespace MixedRealityToolkit.SpatialMapping.SpatialProcessing
         /// memory handle to the tracking list, and then returns that address of the pinned memory so
         /// that it can be passed into the DLL to be access directly from native code.
         /// </summary>
-        private static IntPtr PinObject(System.Object obj)
+        private static IntPtr PinObject(object obj)
         {
             GCHandle h = GCHandle.Alloc(obj, GCHandleType.Pinned);
-            reusedPinnedMemoryHandles.Add(h);
+            ReusedPinnedMemoryHandles.Add(h);
             return h.AddrOfPinnedObject();
         }
 
@@ -215,15 +216,15 @@ namespace MixedRealityToolkit.SpatialMapping.SpatialProcessing
         /// </summary>
         private static void UnpinAllObjects()
         {
-            for (int i = 0; i < reusedPinnedMemoryHandles.Count; ++i)
+            for (int i = 0; i < ReusedPinnedMemoryHandles.Count; ++i)
             {
-                reusedPinnedMemoryHandles[i].Free();
+                ReusedPinnedMemoryHandles[i].Free();
             }
-            reusedPinnedMemoryHandles.Clear();
+            ReusedPinnedMemoryHandles.Clear();
         }
 
         /// <summary>
-        /// Copies the supplied mesh data into the reusedMeshesForMarhsalling array. All managed arrays
+        /// Copies the supplied mesh data into the reusedMeshesForMarshalling array. All managed arrays
         /// are pinned so that the marshalling only needs to pass a pointer and the native code can
         /// reference the memory in place without needing the marshaller to create a complete copy of
         /// the data.
