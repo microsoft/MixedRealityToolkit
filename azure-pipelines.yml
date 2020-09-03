@@ -60,7 +60,14 @@ jobs:
     displayName: Download built DLLs
     inputs:
       artifactName: $(Project)
-      downloadPath: $(Build.SourcesDirectory)/SpatialMapping/PlaneFinding/UnityAddon/Plugins
+      downloadPath: $(Build.SourcesDirectory)/Temp
+
+  - task: CopyFiles@2
+    displayName: 'Copy DLLs to package directory'
+    inputs:
+      sourceFolder: $(Build.SourcesDirectory)/Temp/PlaneFinding
+      contents: '**/*.dll'
+      targetFolder: $(Build.SourcesDirectory)/SpatialMapping/PlaneFinding/UnityAddon/Plugins
 
   - script: |
       npm pack $(Build.SourcesDirectory)/SpatialMapping/PlaneFinding/UnityAddon
