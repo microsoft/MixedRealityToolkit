@@ -17,7 +17,7 @@ namespace PlaneFindingTestApp
 
             BoundedPlane[] planes = PlaneFinding.FindPlanes(meshes, 0.0f, 0.0f);
 
-            Console.WriteLine("Found {0} meshes", planes.Length);
+            Console.WriteLine($"Found {planes.Length} plane{(planes.Length != 1 ? "s" : "")}");
             for (int i = 0; i < planes.Length; ++i)
             {
                 Console.WriteLine("{0}:", i);
@@ -27,6 +27,7 @@ namespace PlaneFindingTestApp
                 Console.WriteLine("   Normal:  {0}", planes[i].Plane.normal.ToString("0.000"));
                 Console.WriteLine();
             }
+            Console.ReadKey();
         }
     }
 }
