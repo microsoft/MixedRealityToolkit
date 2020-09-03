@@ -40,17 +40,25 @@ namespace MixedRealityToolkit.SpatialMapping.SpatialProcessing
         /// </summary>
         public readonly struct MeshData
         {
-            public Matrix4x4 Transform { get; }
-            public Vector3[] Verts { get; }
-            public Vector3[] Normals { get; }
-            public int[] Indices { get; }
+            internal Matrix4x4 Transform { get; }
+            internal Vector3[] Vertices { get; }
+            internal Vector3[] Normals { get; }
+            internal int[] Indices { get; }
 
             public MeshData(MeshFilter meshFilter)
             {
                 Transform = meshFilter.transform.localToWorldMatrix;
-                Verts = meshFilter.sharedMesh.vertices;
+                Vertices = meshFilter.sharedMesh.vertices;
                 Normals = meshFilter.sharedMesh.normals;
                 Indices = meshFilter.sharedMesh.triangles;
+            }
+
+            internal MeshData(Matrix4x4 transform, Vector3[] vertices, Vector3[] normals, int[] indices)
+            {
+                Transform = transform;
+                Vertices = vertices;
+                Normals = normals;
+                Indices = indices;
             }
         }
 
@@ -242,9 +250,9 @@ namespace MixedRealityToolkit.SpatialMapping.SpatialProcessing
                 reusedMeshesForMarshalling[i] = new DLLImports.MeshData()
                 {
                     transform = meshes[i].Transform,
-                    vertCount = meshes[i].Verts.Length,
+                    vertCount = meshes[i].Vertices.Length,
                     indexCount = meshes[i].Indices.Length,
-                    verts = PinObject(meshes[i].Verts),
+                    verts = PinObject(meshes[i].Vertices),
                     normals = PinObject(meshes[i].Normals),
                     indices = PinObject(meshes[i].Indices),
                 };
