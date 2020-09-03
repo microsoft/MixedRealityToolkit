@@ -20,8 +20,8 @@ public static class Util
         Vector3[] vertices = Enumerable.Range(0, dimension + 1)
             .SelectMany(x => Enumerable.Range(0, dimension + 1)
                 .Select(y => new Vector3(
-                        bounds.x * (2.0f * (float)x / (float)(dimension) - 1.0f),
-                        bounds.y * (2.0f * (float)y / (float)(dimension) - 1.0f),
+                        bounds.x * (2.0f * x / dimension - 1.0f),
+                        bounds.y * (2.0f * y / dimension - 1.0f),
                         bounds.z * (2.0f * (float)r.NextDouble() - 1.0f))
                 )
             )
