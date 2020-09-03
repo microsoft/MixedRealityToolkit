@@ -3,9 +3,8 @@
 # Add steps that publish symbols, save build artifacts, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/apps/windows/dot-net
 
-trigger:
-- master
-
+# Don't automatically run this pipeline
+trigger: none
 pr: none
 
 variables:
@@ -17,8 +16,6 @@ jobs:
 - job: Build
   pool:
     vmImage: 'windows-2019'
-  workspace:
-    clean: all
   strategy:
     matrix:
       x86:
@@ -53,3 +50,36 @@ jobs:
     displayName: 'Publish artifacts'
     inputs:
       artifactName: $(Project)
+
+- job: Package
+  dependsOn: Build
+  pool:
+    vmImage: 'windows-2019'
+  steps:
+  - task: DownloadBuildArtifacts@0
+    displayName: Download built DLLs
+    inputs:
+      artifactName: $(Project)
+      downloadPath: $(Build.SourcesDirectory)/Temp
+
+  - task: CopyFiles@2
+    displayName: 'Copy DLLs to package directory'
+    inputs:
+      sourceFolder: $(Build.SourcesDirectory)/Temp/PlaneFinding
+      contents: '**/*.dll'
+      targetFolder: $(Build.SourcesDirectory)/SpatialMapping/PlaneFinding/UnityAddon/Plugins
+
+  - script: |
+      npm pack $(Build.SourcesDirectory)/SpatialMapping/PlaneFinding/UnityAddon
+    displayName: 'Package $(Project) for UPM'
+
+  - task: CopyFiles@2
+    displayName: 'Copy UPM packages to artifacts staging directory'
+    inputs:
+      contents: '$(Build.SourcesDirectory)/**/*.tgz'
+      targetFolder: $(Build.ArtifactStagingDirectory)
+
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish UPM artifacts'
+    inputs:
+      artifactName: UPM

@@ -1,12 +1,12 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License. See LICENSE in the project root for license information.
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
 
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
 
-namespace MixedRealityToolkit.SpatialMapping.SpatialProcessing
+namespace Microsoft.MixedReality.Toolkit.SpatialAwareness.Processing
 {
     [StructLayout(LayoutKind.Sequential)]
     public struct OrientedBoundingBox
@@ -256,20 +256,14 @@ namespace MixedRealityToolkit.SpatialMapping.SpatialProcessing
         /// Marshals BoundedPlane data returned from a DLL API call into a managed BoundedPlane array
         /// and then frees the memory that was allocated within the DLL.
         /// </summary>
-        /// <remarks>Disabling warning 618 when calling Marshal.SizeOf(), because
-        /// Unity does not support .Net 4.5.1+ for using the preferred Marshal.SizeOf(T) method."/>, </remarks>
         private static BoundedPlane[] MarshalBoundedPlanesFromIntPtr(IntPtr outArray, int size)
         {
             BoundedPlane[] resArray = new BoundedPlane[size];
-#pragma warning disable 618
             int structsize = Marshal.SizeOf(typeof(BoundedPlane));
-#pragma warning restore 618
             IntPtr current = outArray;
             for (int i = 0; i < size; i++)
             {
-#pragma warning disable 618
                 resArray[i] = (BoundedPlane)Marshal.PtrToStructure(current, typeof(BoundedPlane));
-#pragma warning restore 618
                 current = (IntPtr)((long)current + structsize);
             }
             Marshal.FreeCoTaskMem(outArray);

@@ -1,0 +1,24 @@
+{
+    "name": "com.microsoft.mixedreality.toolkit.planefinding",
+    "displayName": "Mixed Reality Toolkit Plane Finding",
+    "version": "1.0.0-preview.1",
+    "unity": "2019.4",
+    "description": "Provides utilities to calculate planes based on a mesh.",
+    "keywords": [
+        "mrtk",
+        "microsoft",
+        "mixed",
+        "reality",
+        "xr",
+        "hololens"
+    ],
+    "author": "Microsoft",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/microsoft/MixedRealityToolkit.git"
+    },
+    "bugs": {
+        "url": "https://github.com/microsoft/MixedRealityToolkit/issues"
+     }
+}

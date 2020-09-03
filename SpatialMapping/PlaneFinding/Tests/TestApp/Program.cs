@@ -1,7 +1,7 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License. See LICENSE in the project root for license information.
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
 
-using MixedRealityToolkit.SpatialMapping.SpatialProcessing;
+using Microsoft.MixedReality.Toolkit.SpatialAwareness.Processing;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,7 +17,7 @@ namespace PlaneFindingTestApp
 
             BoundedPlane[] planes = PlaneFinding.FindPlanes(meshes, 0.0f, 0.0f);
 
-            Console.WriteLine("Found {0} meshes", planes.Length);
+            Console.WriteLine($"Found {planes.Length} plane{(planes.Length != 1 ? "s" : "")}");
             for (int i = 0; i < planes.Length; ++i)
             {
                 Console.WriteLine("{0}:", i);
@@ -27,6 +27,7 @@ namespace PlaneFindingTestApp
                 Console.WriteLine("   Normal:  {0}", planes[i].Plane.normal.ToString("0.000"));
                 Console.WriteLine();
             }
+            Console.ReadKey();
         }
     }
 }
