@@ -30,12 +30,6 @@ jobs:
       ARM64:
         BuildPlatform: ARM64
   steps:
-  - task: NuGetToolInstaller@0
-
-  - task: NuGetCommand@2
-    inputs:
-      restoreSolution: '$(SolutionPath)'
-      
   - task: VSBuild@1
     inputs:
       solution: '$(SolutionPath)'
