@@ -86,7 +86,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\..\$(Configuration)\PlaneFinding.Editor\PlaneFinding.dll">
+    <Content Include="..\..\$(Configuration)\x86\PlaneFinding.dll">
       <Link>PlaneFinding.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
