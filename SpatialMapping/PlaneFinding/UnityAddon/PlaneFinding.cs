@@ -177,7 +177,7 @@ namespace MixedRealityToolkit.SpatialMapping.SpatialProcessing
         private static readonly List<GCHandle> ReusedPinnedMemoryHandles = new List<GCHandle>();
 
         private static bool findPlanesRunning = false;
-        private static DLLImports.MeshData[] reusedMeshesForMarshalling = null;
+        private static DLLImports.ImportedMeshData[] reusedImportedMeshesForMarshalling = null;
 
         /// <summary>
         /// Validate that no other PlaneFinding API call is currently in progress. As a performance
@@ -240,14 +240,14 @@ namespace MixedRealityToolkit.SpatialMapping.SpatialProcessing
         private static IntPtr PinMeshDataForMarshalling(List<MeshData> meshes)
         {
             // if we have a big enough array reuse it, otherwise create new
-            if (reusedMeshesForMarshalling == null || reusedMeshesForMarshalling.Length < meshes.Count)
+            if (reusedImportedMeshesForMarshalling == null || reusedImportedMeshesForMarshalling.Length < meshes.Count)
             {
-                reusedMeshesForMarshalling = new DLLImports.MeshData[meshes.Count];
+                reusedImportedMeshesForMarshalling = new DLLImports.ImportedMeshData[meshes.Count];
             }
 
             for (int i = 0; i < meshes.Count; ++i)
             {
-                reusedMeshesForMarshalling[i] = new DLLImports.MeshData()
+                reusedImportedMeshesForMarshalling[i] = new DLLImports.ImportedMeshData()
                 {
                     transform = meshes[i].Transform,
                     vertCount = meshes[i].Vertices.Length,
@@ -258,7 +258,7 @@ namespace MixedRealityToolkit.SpatialMapping.SpatialProcessing
                 };
             }
 
-            return PinObject(reusedMeshesForMarshalling);
+            return PinObject(reusedImportedMeshesForMarshalling);
         }
 
         /// <summary>
@@ -291,7 +291,7 @@ namespace MixedRealityToolkit.SpatialMapping.SpatialProcessing
         private class DLLImports
         {
             [StructLayout(LayoutKind.Sequential)]
-            public struct MeshData
+            public struct ImportedMeshData
             {
                 public Matrix4x4 transform;
                 public Int32 vertCount;
