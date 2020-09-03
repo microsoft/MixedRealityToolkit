@@ -8,29 +8,54 @@ trigger:
 
 pr: none
 
-pool:
-  vmImage: 'VS2017-Win2016'
-
 variables:
-  editorMotionControllerSolution: 'EditorMotionControllerDLL/EditorMotionController.sln'
-  gpuStatsSolution: 'GpuStats/GpuStats.sln'
-  buildPlatform: 'x64'
-  buildConfiguration: 'Release'
+  Project: 'PlaneFinding'
+  SolutionPath: 'SpatialMapping/PlaneFinding/PlaneFinding.sln'
+  BuildConfiguration: 'Release'
 
-steps:
-- task: NuGetToolInstaller@0
+jobs:
+- job: Build
+  pool:
+    vmImage: 'windows-2019'
+  workspace:
+    clean: all
+  strategy:
+    matrix:
+      x86:
+        BuildPlatform: x86
+      x64:
+        BuildPlatform: x64
+      ARM:
+        BuildPlatform: ARM
+      ARM64:
+        BuildPlatform: ARM64
+  steps:
+  - task: NuGetToolInstaller@0
 
-- task: NuGetCommand@2
-  inputs:
-    restoreSolution: '$(gpuStatsSolution)'
-     
-- task: VSBuild@1
-  inputs:
-    solution: '$(gpuStatsSolution)'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+  - task: NuGetCommand@2
+    inputs:
+      restoreSolution: '$(SolutionPath)'
+      
+  - task: VSBuild@1
+    inputs:
+      solution: '$(SolutionPath)'
+      platform: '$(BuildPlatform)'
+      configuration: '$(BuildConfiguration)'
 
-- task: VSTest@2
-  inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+  - task: VSTest@2
+    condition: and(succeeded(), eq(variables['BuildPlatform'], 'x86'))
+    inputs:
+      platform: '$(BuildPlatform)'
+      configuration: '$(BuildConfiguration)'
+
+  - task: CopyFiles@2
+    displayName: 'Copy binaries to artifacts staging directory'
+    inputs:
+      sourceFolder: $(Build.SourcesDirectory)/SpatialMapping/PlaneFinding/Release
+      contents: '**/*.dll'
+      targetFolder: $(Build.ArtifactStagingDirectory)
+
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish artifacts'
+    inputs:
+      artifactName: $(Project)
