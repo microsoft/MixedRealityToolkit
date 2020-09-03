@@ -63,8 +63,8 @@ namespace PlaneFinding
             // See this Wikipedia page for an explanation: http://en.wikipedia.org/wiki/Givens_rotation#Triangularization
             float theta = atan2f(-M._31, M._21);
             XMFLOAT3X3 G = { 1, 0, 0,
-                0, cos(theta), -sin(theta),
-                0, sin(theta), cos(theta) };
+                0, cosf(theta), -sinf(theta),
+                0, sinf(theta), cosf(theta) };
 
             XMMATRIX xmG = XMLoadFloat3x3(&G);
             XMStoreFloat3x3(Q, XMMatrixTranspose(xmG));

@@ -219,10 +219,10 @@ namespace PlaneFinding
 
                 UINT32* boundIndices[4] = { &current.minx, &current.maxx, &current.miny, &current.maxy };
                 float angles[4] = {
-                    atan2(vectForXmin.x, vectForXmin.y),
-                    atan2(-vectForXmax.x, -vectForXmax.y),
-                    atan2(vectForYmin.y, -vectForYmin.x),
-                    atan2(-vectForYmax.y, vectForYmax.x) };
+                    atan2f(vectForXmin.x, vectForXmin.y),
+                    atan2f(-vectForXmax.x, -vectForXmax.y),
+                    atan2f(vectForYmin.y, -vectForYmin.x),
+                    atan2f(-vectForYmax.y, vectForYmax.x) };
 
                 int index = 0;
                 float minAngle = XM_PI * 4 + angle;

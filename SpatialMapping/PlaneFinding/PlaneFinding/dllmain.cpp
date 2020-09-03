@@ -21,9 +21,9 @@ void _MarshalPlanes(
     _Out_ INT32* count,
     _Out_ PlaneFinding::BoundedPlane** buffer)
 {
-    int bufferSize = sizeof(PlaneFinding::BoundedPlane) * planes.size();
+    size_t bufferSize = sizeof(PlaneFinding::BoundedPlane) * planes.size();
 
-    *count = planes.size();
+    *count = static_cast<INT32>(planes.size());
     *buffer = (PlaneFinding::BoundedPlane*)CoTaskMemAlloc(bufferSize);
     memcpy(*buffer, planes.data(), bufferSize);
 }
@@ -61,6 +61,6 @@ EXTERN_C __declspec(dllexport) void FindPlanes(
     _Outptr_result_buffer_(planeCount) PlaneFinding::BoundedPlane** planes)
 {
     vector<PlaneFinding::BoundedPlane> subPlanes = PlaneFinding::FindPlanes(meshCount, meshes, snapToGravityThreshold);
-    vector<PlaneFinding::BoundedPlane> vPlanes = PlaneFinding::MergePlanes(subPlanes.size(), subPlanes.data(), minArea, snapToGravityThreshold);
+    vector<PlaneFinding::BoundedPlane> vPlanes = PlaneFinding::MergePlanes(static_cast<INT32>(subPlanes.size()), subPlanes.data(), minArea, snapToGravityThreshold);
     _MarshalPlanes(vPlanes, planeCount, planes);
 }
