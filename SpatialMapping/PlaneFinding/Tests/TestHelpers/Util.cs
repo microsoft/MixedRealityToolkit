@@ -45,11 +45,13 @@ public static class Util
                 })
             ).ToArray();
 
-        PlaneFinding.MeshData mesh = new PlaneFinding.MeshData();
-        mesh.Transform = meshTransform;
-        mesh.Verts = vertices;
-        mesh.Normals = normals;
-        mesh.Indices = indices;
+        PlaneFinding.MeshData mesh = new PlaneFinding.MeshData
+        (
+            transform: meshTransform,
+            vertices: vertices,
+            normals: normals,
+            indices: indices
+        );
         return mesh;
     }
 
