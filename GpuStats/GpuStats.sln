@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GpuStats", "GpuStats\GpuStats.vcxproj", "{0D55A543-CEE9-4929-AF37-C16FD6991C8C}"
 EndProject
@@ -10,33 +10,41 @@ EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM = Debug|ARM
+		Debug|ARM64 = Debug|ARM64
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
 		Release|ARM = Release|ARM
+		Release|ARM64 = Release|ARM64
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{0D55A543-CEE9-4929-AF37-C16FD6991C8C}.Debug|ARM.ActiveCfg = Debug|ARM
 		{0D55A543-CEE9-4929-AF37-C16FD6991C8C}.Debug|ARM.Build.0 = Debug|ARM
+		{0D55A543-CEE9-4929-AF37-C16FD6991C8C}.Debug|ARM64.ActiveCfg = Debug|Win32
 		{0D55A543-CEE9-4929-AF37-C16FD6991C8C}.Debug|x64.ActiveCfg = Debug|x64
 		{0D55A543-CEE9-4929-AF37-C16FD6991C8C}.Debug|x64.Build.0 = Debug|x64
 		{0D55A543-CEE9-4929-AF37-C16FD6991C8C}.Debug|x86.ActiveCfg = Debug|Win32
 		{0D55A543-CEE9-4929-AF37-C16FD6991C8C}.Debug|x86.Build.0 = Debug|Win32
 		{0D55A543-CEE9-4929-AF37-C16FD6991C8C}.Release|ARM.ActiveCfg = Release|ARM
 		{0D55A543-CEE9-4929-AF37-C16FD6991C8C}.Release|ARM.Build.0 = Release|ARM
+		{0D55A543-CEE9-4929-AF37-C16FD6991C8C}.Release|ARM64.ActiveCfg = Release|Win32
 		{0D55A543-CEE9-4929-AF37-C16FD6991C8C}.Release|x64.ActiveCfg = Release|x64
 		{0D55A543-CEE9-4929-AF37-C16FD6991C8C}.Release|x64.Build.0 = Release|x64
 		{0D55A543-CEE9-4929-AF37-C16FD6991C8C}.Release|x86.ActiveCfg = Release|Win32
 		{0D55A543-CEE9-4929-AF37-C16FD6991C8C}.Release|x86.Build.0 = Release|Win32
 		{0F453287-584A-4346-B49B-FA8349F220A1}.Debug|ARM.ActiveCfg = Debug|ARM
 		{0F453287-584A-4346-B49B-FA8349F220A1}.Debug|ARM.Build.0 = Debug|ARM
+		{0F453287-584A-4346-B49B-FA8349F220A1}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{0F453287-584A-4346-B49B-FA8349F220A1}.Debug|ARM64.Build.0 = Debug|ARM64
 		{0F453287-584A-4346-B49B-FA8349F220A1}.Debug|x64.ActiveCfg = Debug|x64
 		{0F453287-584A-4346-B49B-FA8349F220A1}.Debug|x64.Build.0 = Debug|x64
 		{0F453287-584A-4346-B49B-FA8349F220A1}.Debug|x86.ActiveCfg = Debug|Win32
 		{0F453287-584A-4346-B49B-FA8349F220A1}.Debug|x86.Build.0 = Debug|Win32
 		{0F453287-584A-4346-B49B-FA8349F220A1}.Release|ARM.ActiveCfg = Release|ARM
 		{0F453287-584A-4346-B49B-FA8349F220A1}.Release|ARM.Build.0 = Release|ARM
+		{0F453287-584A-4346-B49B-FA8349F220A1}.Release|ARM64.ActiveCfg = Release|ARM64
+		{0F453287-584A-4346-B49B-FA8349F220A1}.Release|ARM64.Build.0 = Release|ARM64
 		{0F453287-584A-4346-B49B-FA8349F220A1}.Release|x64.ActiveCfg = Release|x64
 		{0F453287-584A-4346-B49B-FA8349F220A1}.Release|x64.Build.0 = Release|x64
 		{0F453287-584A-4346-B49B-FA8349F220A1}.Release|x86.ActiveCfg = Release|Win32
@@ -45,16 +53,7 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 3
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://microsoft.visualstudio.com/
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = GpuStats\\GpuStats.vcxproj
-		SccProjectName1 = GpuStats
-		SccLocalPath1 = GpuStats
-		SccProjectUniqueName2 = GpuStatsUniversal\\GpuStatsUniversal.vcxproj
-		SccProjectName2 = GpuStatsUniversal
-		SccLocalPath2 = GpuStatsUniversal
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4D4DCD8C-00E0-4121-A714-E5303B6CD5EE}
 	EndGlobalSection
 EndGlobal
