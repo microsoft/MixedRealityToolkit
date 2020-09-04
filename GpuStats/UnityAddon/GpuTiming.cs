@@ -17,7 +17,7 @@ namespace Microsoft.MixedReality.Toolkit.Utilities
         private static extern IntPtr GetRenderEventFunc();
 
         [DllImport("GpuStats")]
-        private static extern double GetLastFrameGPUTime(int eventId);
+        private static extern double GetGpuTime(int eventId);
 
         private const int BaseBeginEventId = 1000;
         private const int BaseEndEventId = 2000;
@@ -37,7 +37,7 @@ namespace Microsoft.MixedReality.Toolkit.Utilities
             int eventValue;
             if (EventIds.TryGetValue(eventId, out eventValue))
             {
-                return GetLastFrameGPUTime(eventValue);
+                return GetGpuTime(eventValue);
             }
 
             return -1;
