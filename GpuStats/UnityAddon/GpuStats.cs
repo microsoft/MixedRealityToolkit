@@ -19,6 +19,9 @@ namespace Microsoft.MixedReality.Toolkit.Utilities
         [DllImport("GpuStats")]
         private static extern double GetGpuTime(int eventId);
 
+        [DllImport("GpuStats")]
+        private static extern ulong GetVramUse();
+
         private const int BaseBeginEventId = 1000;
         private const int BaseEndEventId = 2000;
 
@@ -88,5 +91,10 @@ namespace Microsoft.MixedReality.Toolkit.Utilities
                 GL.IssuePluginEvent(GetRenderEventFunc(), eventId);
             }
         }
+
+        /// <summary>
+        /// Provides the current VRAM usage according to DXGI_QUERY_VIDEO_MEMORY_INFO.
+        /// </summary>
+        public static ulong GetVramUsage() => GetVramUse();
     }
 }
