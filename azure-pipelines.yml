@@ -54,7 +54,7 @@ jobs:
 - job: Package
   dependsOn: Build
   pool:
-    vmImage: 'windows-2019'
+    name: Package ES Lab E
   steps:
   - task: DownloadBuildArtifacts@0
     displayName: Download built DLLs
@@ -62,12 +62,28 @@ jobs:
       artifactName: $(Project)
       downloadPath: $(Build.SourcesDirectory)/Temp
 
-  - task: CopyFiles@2
-    displayName: 'Copy DLLs to package directory'
+  # required for code signing
+  - task: ComponentGovernanceComponentDetection@0
     inputs:
-      sourceFolder: $(Build.SourcesDirectory)/Temp/PlaneFinding
-      contents: '**/*.dll'
-      targetFolder: $(Build.SourcesDirectory)/SpatialMapping/PlaneFinding/UnityAddon/Plugins
+      scanType: 'Register'
+      failOnAlert: true
+
+  - task: PkgESCodeSign@10
+    displayName: Sign binaries
+    inputs:
+      signConfigXml: $(Build.SourcesDirectory)/SpatialMapping/PlaneFinding/SignConfig.xml
+      inPathRoot: $(Build.SourcesDirectory)/Temp/PlaneFinding
+      outPathRoot: $(Build.SourcesDirectory)/SpatialMapping/PlaneFinding/UnityAddon/Plugins
+    env:
+      SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+
+  # PkgESCodeSign should output the DLLs to the correct folder
+  # - task: CopyFiles@2
+  #   displayName: 'Copy DLLs to package directory'
+  #   inputs:
+  #     sourceFolder: $(Build.SourcesDirectory)/Temp/PlaneFinding
+  #     contents: '**/*.dll'
+  #     targetFolder: $(Build.SourcesDirectory)/SpatialMapping/PlaneFinding/UnityAddon/Plugins
 
   - script: |
       npm pack $(Build.SourcesDirectory)/SpatialMapping/PlaneFinding/UnityAddon
