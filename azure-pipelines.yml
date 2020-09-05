@@ -1,19 +1,14 @@
-# .NET Desktop
-# Build and run tests for .NET Desktop or Windows classic desktop solutions.
-# Add steps that publish symbols, save build artifacts, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/apps/windows/dot-net
-
 # Don't automatically run this pipeline
 trigger: none
 pr: none
 
 variables:
-  Project: 'PlaneFinding'
-  SolutionPath: 'SpatialMapping/PlaneFinding/PlaneFinding.sln'
+  PlaneFinding: '$(Build.SourcesDirectory)/SpatialMapping/PlaneFinding'
+  GpuStats: '$(Build.SourcesDirectory)/GpuStats'
   BuildConfiguration: 'Release'
 
 jobs:
-- job: Build
+- job: Build_PlaneFinding
   pool:
     vmImage: 'windows-2019'
   strategy:
@@ -29,7 +24,7 @@ jobs:
   steps:
   - task: VSBuild@1
     inputs:
-      solution: '$(SolutionPath)'
+      solution: '$(PlaneFinding)/PlaneFinding.sln'
       platform: '$(BuildPlatform)'
       configuration: '$(BuildConfiguration)'
 
@@ -42,24 +37,58 @@ jobs:
   - task: CopyFiles@2
     displayName: 'Copy binaries to artifacts staging directory'
     inputs:
-      sourceFolder: $(Build.SourcesDirectory)/SpatialMapping/PlaneFinding/Release
-      contents: '**/*.dll'
+      sourceFolder: $(PlaneFinding)/Release
+      contents: '**/PlaneFinding.dll'
       targetFolder: $(Build.ArtifactStagingDirectory)
 
   - task: PublishBuildArtifacts@1
     displayName: 'Publish artifacts'
     inputs:
-      artifactName: $(Project)
+      artifactName: PlaneFinding
 
-- job: Package
-  dependsOn: Build
+- job: Build_GpuStats
+  pool:
+    vmImage: 'vs2017-win2016'
+  strategy:
+    matrix:
+      x86:
+        BuildPlatform: x86
+      x64:
+        BuildPlatform: x64
+      ARM:
+        BuildPlatform: ARM
+      ARM64:
+        BuildPlatform: ARM64
+  steps:
+  - task: VSBuild@1
+    inputs:
+      solution: '$(GpuStats)/GpuStats.sln'
+      platform: '$(BuildPlatform)'
+      configuration: '$(BuildConfiguration)'
+
+  - task: CopyFiles@2
+    displayName: 'Copy binaries to artifacts staging directory'
+    inputs:
+      sourceFolder: $(GpuStats)/BuildOutput/bin/Release
+      contents: '**/GpuStats.dll'
+      targetFolder: $(Build.ArtifactStagingDirectory)
+
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish artifacts'
+    inputs:
+      artifactName: GpuStats
+
+- job: Sign
+  dependsOn:
+    - Build_PlaneFinding
+    - Build_GpuStats
   pool:
     name: Package ES Lab E
   steps:
   - task: DownloadBuildArtifacts@0
     displayName: Download built DLLs
     inputs:
-      artifactName: $(Project)
+      downloadType: specific
       downloadPath: $(Build.SourcesDirectory)/Temp
 
   # required for code signing
@@ -68,34 +97,73 @@ jobs:
       scanType: 'Register'
       failOnAlert: true
 
-  - task: PkgESCodeSign@10
-    displayName: Sign binaries
-    inputs:
-      signConfigXml: $(Build.SourcesDirectory)/SpatialMapping/PlaneFinding/SignConfig.xml
-      inPathRoot: $(Build.SourcesDirectory)/Temp/PlaneFinding
-      outPathRoot: $(Build.SourcesDirectory)/SpatialMapping/PlaneFinding/UnityAddon/Plugins
-    env:
-      SYSTEM_ACCESSTOKEN: $(System.AccessToken)
-
-  # PkgESCodeSign should output the DLLs to the correct folder
-  # - task: CopyFiles@2
-  #   displayName: 'Copy DLLs to package directory'
+  # - task: PkgESCodeSign@10
+  #   displayName: Sign binaries
   #   inputs:
-  #     sourceFolder: $(Build.SourcesDirectory)/Temp/PlaneFinding
-  #     contents: '**/*.dll'
-  #     targetFolder: $(Build.SourcesDirectory)/SpatialMapping/PlaneFinding/UnityAddon/Plugins
+  #     signConfigXml: $(PlaneFinding)/SignConfig.xml
+  #     inPathRoot: $(Build.SourcesDirectory)/Temp/PlaneFinding
+  #     outPathRoot: $(PlaneFinding)/UnityAddon/Plugins
+  #   env:
+  #     SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+
+  - task: CopyFiles@2
+    displayName: 'Copy PlaneFinding DLLs to package directory'
+    inputs:
+      sourceFolder: $(Build.SourcesDirectory)/Temp/PlaneFinding
+      contents: '**/*.dll'
+      targetFolder: $(PlaneFinding)/UnityAddon/Plugins
+
+  - task: CopyFiles@2
+    displayName: 'Copy PlaneFinding DLLs to package directory'
+    inputs:
+      sourceFolder: $(Build.SourcesDirectory)/Temp/GpuStats
+      contents: '**/*.dll'
+      targetFolder: $(GpuStats)/UnityAddon/Plugins
+
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish PlaneFinding UPM folder'
+    inputs:
+      pathToPublish: $(PlaneFinding)/UnityAddon
+      artifactName: UPMFolder_PlaneFinding
+
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish GpuStats UPM folder'
+    inputs:
+      pathToPublish: $(GpuStats)/UnityAddon
+      artifactName: UPMFolder_GpuStats
+
+- job: Package
+  dependsOn: Sign
+  pool:
+    vmImage: 'windows-2019'
+  steps:
+  - task: DownloadBuildArtifacts@0
+    displayName: Download built DLLs
+    inputs:
+      artifactName: UPMFolder_PlaneFinding
+      downloadPath: $(Build.SourcesDirectory)
+
+  - task: DownloadBuildArtifacts@0
+    displayName: Download built DLLs
+    inputs:
+      artifactName: UPMFolder_GpuStats
+      downloadPath: $(Build.SourcesDirectory)
 
   - script: |
-      npm pack $(Build.SourcesDirectory)/SpatialMapping/PlaneFinding/UnityAddon
-    displayName: 'Package $(Project) for UPM'
+      npm pack $(Build.SourcesDirectory)/UPMFolder_PlaneFinding
+    displayName: 'Package PlaneFinding for UPM'
+
+  - script: |
+      npm pack $(Build.SourcesDirectory)/UPMFolder_GpuStats
+    displayName: 'Package GpuStats for UPM'
 
   - task: CopyFiles@2
     displayName: 'Copy UPM packages to artifacts staging directory'
     inputs:
-      contents: '$(Build.SourcesDirectory)/**/*.tgz'
+      contents: '$(Build.SourcesDirectory)/*.tgz'
       targetFolder: $(Build.ArtifactStagingDirectory)
 
   - task: PublishBuildArtifacts@1
     displayName: 'Publish UPM artifacts'
     inputs:
-      artifactName: UPM
+      artifactName: UPMTarballs
