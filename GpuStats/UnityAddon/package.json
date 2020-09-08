@@ -1,0 +1,24 @@
+{
+    "name": "com.microsoft.mixedreality.toolkit.gpustats",
+    "displayName": "Mixed Reality Toolkit GPU Stats",
+    "version": "1.0.0-preview.1",
+    "unity": "2019.4",
+    "description": "Provides utilities for accessing stats about the GPU, like frame timing and VRAM usage.",
+    "keywords": [
+        "mrtk",
+        "microsoft",
+        "mixed",
+        "reality",
+        "xr",
+        "hololens"
+    ],
+    "author": "Microsoft",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/microsoft/MixedRealityToolkit.git"
+    },
+    "bugs": {
+        "url": "https://github.com/microsoft/MixedRealityToolkit/issues"
+     }
+}
