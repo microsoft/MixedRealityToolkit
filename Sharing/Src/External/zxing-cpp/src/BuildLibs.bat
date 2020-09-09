@@ -15,6 +15,12 @@ IF NOT %ERRORLEVEL% == 0 goto BuildError
 call MSBuild Project/zxing.sln /p:Configuration=Release;Platform=ARM /m %*
 IF NOT %ERRORLEVEL% == 0 goto BuildError
 
+call MSBuild Project/zxing.sln /p:Configuration=Debug;Platform=ARM64 /m %*
+IF NOT %ERRORLEVEL% == 0 goto BuildError
+
+call MSBuild Project/zxing.sln /p:Configuration=Release;Platform=ARM64 /m %*
+IF NOT %ERRORLEVEL% == 0 goto BuildError
+
 call MSBuild Project/zxing.sln /p:Configuration=Debug;Platform=Win32 /m %*
 IF NOT %ERRORLEVEL% == 0 goto BuildError
 

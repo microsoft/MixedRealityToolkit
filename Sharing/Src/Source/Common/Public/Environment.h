@@ -31,7 +31,7 @@
 #endif
 
 // Define macros for 32 or 64 bit
-#if defined(_M_X64) || defined(__LP64__)
+#if defined(_M_X64) || defined(__LP64__) || defined(_M_ARM64)
 # define XTOOLS_64BIT
 #elif defined(_M_IX86) || defined(_M_ARM)
 # define XTOOLS_32BIT
