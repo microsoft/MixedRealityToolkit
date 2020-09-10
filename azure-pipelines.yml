@@ -21,11 +21,13 @@ extends:
     ProjectFriendlyName: ${{ parameters.Project }}
     Sign: ${{ parameters.Sign }}
     ${{ if eq(parameters.Project, 'PlaneFinding') }}:
-      SolutionPath: $(Build.SourcesDirectory)/SpatialMapping/PlaneFinding/PlaneFinding.sln
-      BuildOutputPath: $(Build.SourcesDirectory)/SpatialMapping/PlaneFinding/Release
-      UnityFolderPath: $(Build.SourcesDirectory)/SpatialMapping/PlaneFinding/UnityAddon
+      SolutionPath: SpatialMapping/PlaneFinding/PlaneFinding.sln
+      BuildOutputPath: SpatialMapping/PlaneFinding/Release
+      UnityFolderPath: SpatialMapping/PlaneFinding/UnityAddon
+      SignConfigPath: SpatialMapping/PlaneFinding/SignConfig.xml
     ${{ if eq(parameters.Project, 'GpuStats') }}:
-      SolutionPath: $(Build.SourcesDirectory)/GpuStats/GpuStats.sln
-      BuildOutputPath: $(Build.SourcesDirectory)/GpuStats/BuildOutput/bin/Release
-      UnityFolderPath: $(Build.SourcesDirectory)/GpuStats/UnityAddon
+      SolutionPath: GpuStats/GpuStats.sln
+      BuildOutputPath: GpuStats/BuildOutput/bin/Release
+      UnityFolderPath: GpuStats/UnityAddon
+      SignConfigPath: GpuStats/SignConfig.xml
       BuildVmImage: 'vs2017-win2016'

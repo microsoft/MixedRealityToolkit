@@ -17,6 +17,9 @@ parameters:
 - name: Sign
   type: boolean
   default: false
+- name: SignConfigPath
+  type: string
+  default: ''
 
 variables:
   BuildConfiguration: Release
@@ -52,6 +55,7 @@ jobs:
       ArtifactName: ${{ parameters.ProjectFriendlyName }}
       UnityFolderPath: ${{ parameters.UnityFolderPath }}
       Sign: ${{ parameters.Sign }}
+      SignConfigPath: ${{ parameters.SignConfigPath }}
 
 - job: Pack
   dependsOn: Sign_${{ parameters.Sign }}
