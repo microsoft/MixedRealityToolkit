@@ -19,6 +19,7 @@ steps:
     configuration: $(BuildConfiguration)
 
 - task: VSTest@2
+  condition: and(succeeded(), eq(variables['BuildPlatform'], 'x86'), eq('${{ parameters.ArtifactName }}', 'PlaneFinding'))
   inputs:
     platform: $(BuildPlatform)
     configuration: $(BuildConfiguration)
