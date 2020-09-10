@@ -38,7 +38,7 @@ steps:
     SYSTEM_ACCESSTOKEN: $(System.AccessToken)
 
 - task: CopyFiles@2
-  displayName: Copy PlaneFinding DLLs to package directory
+  displayName: Copy DLLs to package directory
   condition: not(${{ parameters.Sign }})
   inputs:
     sourceFolder: $(Agent.TempDirectory)/${{ parameters.ArtifactName }}
@@ -46,7 +46,7 @@ steps:
     targetFolder: ${{ parameters.UnityFolderPath }}/Plugins
 
 - task: PublishBuildArtifacts@1
-  displayName: Publish PlaneFinding UPM folder
+  displayName: Publish UPM folder
   inputs:
     pathToPublish: ${{ parameters.UnityFolderPath }}
     artifactName: UPMFolder_${{ parameters.ArtifactName }}
