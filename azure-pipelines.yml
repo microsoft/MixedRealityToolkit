@@ -1,3 +1,5 @@
+name: '$(date:yyMM).$(date:dd)$(rev:rr)-${{ parameters.Project }}'
+
 parameters:
 - name: Sign
   type: boolean

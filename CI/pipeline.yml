@@ -22,7 +22,7 @@ variables:
   BuildConfiguration: Release
 
 jobs:
-- job: Build
+- job: Build_${{ parameters.ProjectFriendlyName }}
   pool:
     vmImage: ${{ parameters.BuildVmImage }}
   strategy:
@@ -43,7 +43,7 @@ jobs:
       BuildOutputPath: ${{ parameters.BuildOutputPath }}
 
 - job: Sign_${{ parameters.Sign }}
-  dependsOn: Build
+  dependsOn: Build_${{ parameters.ProjectFriendlyName }}
   pool:
     name: Package ES Lab E
   steps:
