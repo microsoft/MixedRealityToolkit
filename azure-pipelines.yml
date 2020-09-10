@@ -1,0 +1,29 @@
+parameters:
+- name: Sign
+  type: boolean
+  default: false
+- name: Project
+  type: string
+  default: PlaneFinding
+  values:
+    - PlaneFinding
+    - GpuStats
+
+# Don't automatically run this pipeline
+trigger: none
+pr: none
+
+extends:
+  template: CI/pipeline.yml
+  parameters:
+    ProjectFriendlyName: ${{ parameters.Project }}
+    Sign: ${{ parameters.Sign }}
+    ${{ if eq(parameters.Project, 'PlaneFinding') }}:
+      SolutionPath: $(Build.SourcesDirectory)/SpatialMapping/PlaneFinding/PlaneFinding.sln
+      BuildOutputPath: $(Build.SourcesDirectory)/SpatialMapping/PlaneFinding/Release
+      UnityFolderPath: $(Build.SourcesDirectory)/SpatialMapping/PlaneFinding/UnityAddon
+    ${{ if eq(parameters.Project, 'GpuStats') }}:
+      SolutionPath: $(Build.SourcesDirectory)/GpuStats/GpuStats.sln
+      BuildOutputPath: $(Build.SourcesDirectory)/GpuStats/BuildOutput/bin/Release
+      UnityFolderPath: $(Build.SourcesDirectory)/GpuStats/UnityAddon
+      BuildVmImage: 'vs2017-win2016'
