@@ -1,88 +1,17 @@
+parameters:
+- name: Sign
+  type: boolean
+  default: false
+
 # Don't automatically run this pipeline
 trigger: none
 pr: none
 
-variables:
-  BuildConfiguration: 'Release'
-
-jobs:
-- job: Build
-  pool:
-    vmImage: 'vs2017-win2016'
-  strategy:
-    matrix:
-      x86:
-        BuildPlatform: x86
-      x64:
-        BuildPlatform: x64
-      ARM:
-        BuildPlatform: ARM
-      ARM64:
-        BuildPlatform: ARM64
-  steps:
-  - template: build.yml
-    parameters:
-      ArtifactName: 'GpuStats'
-      SolutionPath: '$(Build.SourcesDirectory)/GpuStats/GpuStats.sln'
-      BuildOutputPath: '$(Build.SourcesDirectory)/GpuStats/BuildOutput/bin/Release'
-
-- job: Sign
-  dependsOn: Build
-  pool:
-    name: Package ES Lab E
-  steps:
-  - task: DownloadBuildArtifacts@0
-    displayName: Download built DLLs
-    inputs:
-      downloadType: specific
-      downloadPath: $(Build.SourcesDirectory)/Temp
-
-  # required for code signing
-  - task: ComponentGovernanceComponentDetection@0
-    inputs:
-      scanType: 'Register'
-      failOnAlert: true
-
-  # - task: PkgESCodeSign@10
-  #   displayName: Sign binaries
-  #   inputs:
-  #     signConfigXml: $(PlaneFinding)/SignConfig.xml
-  #     inPathRoot: $(Build.SourcesDirectory)/Temp/PlaneFinding
-  #     outPathRoot: $(PlaneFinding)/UnityAddon/Plugins
-  #   env:
-  #     SYSTEM_ACCESSTOKEN: $(System.AccessToken)
-
-  - task: CopyFiles@2
-    displayName: 'Copy PlaneFinding DLLs to package directory'
-    inputs:
-      sourceFolder: $(Build.SourcesDirectory)/Temp/PlaneFinding
-      contents: '**/*.dll'
-      targetFolder: $(PlaneFinding)/UnityAddon/Plugins
-
-  - task: CopyFiles@2
-    displayName: 'Copy PlaneFinding DLLs to package directory'
-    inputs:
-      sourceFolder: $(Build.SourcesDirectory)/Temp/GpuStats
-      contents: '**/*.dll'
-      targetFolder: $(GpuStats)/UnityAddon/Plugins
-
-  - task: PublishBuildArtifacts@1
-    displayName: 'Publish PlaneFinding UPM folder'
-    inputs:
-      pathToPublish: $(PlaneFinding)/UnityAddon
-      artifactName: UPMFolder_PlaneFinding
-
-  - task: PublishBuildArtifacts@1
-    displayName: 'Publish GpuStats UPM folder'
-    inputs:
-      pathToPublish: $(GpuStats)/UnityAddon
-      artifactName: UPMFolder_GpuStats
-
-- job: Pack
-  dependsOn: Sign
-  pool:
-    vmImage: 'windows-2019'
-  steps:
-  - template: pack.yml
-    parameters:
-      ArtifactName: UPMFolder_PlaneFinding
+extends:
+  template: ../CI/pipeline.yml
+  parameters:
+    ProjectFriendlyName: GpuStats
+    SolutionPath: $(Build.SourcesDirectory)/GpuStats/GpuStats.sln
+    BuildOutputPath: $(Build.SourcesDirectory)/GpuStats/BuildOutput/bin/Release
+    UnityFolderPath: $(Build.SourcesDirectory)/GpuStats/UnityAddon
+    BuildVmImage: 'vs2017-win2016'

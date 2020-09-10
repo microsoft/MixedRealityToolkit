@@ -1,0 +1,59 @@
+parameters:
+- name: ProjectFriendlyName
+  type: string
+  default: ''
+- name: SolutionPath
+  type: string
+  default: ''
+- name: BuildOutputPath
+  type: string
+  default: ''
+- name: UnityFolderPath
+  type: string
+  default: ''
+- name: BuildVmImage
+  type: string
+  default: 'windows-2019'
+
+variables:
+  BuildConfiguration: Release
+
+jobs:
+- job: Build
+  pool:
+    vmImage: ${{ parameters.BuildVmImage }}
+  strategy:
+    matrix:
+      x86:
+        BuildPlatform: x86
+      x64:
+        BuildPlatform: x64
+      ARM:
+        BuildPlatform: ARM
+      ARM64:
+        BuildPlatform: ARM64
+  steps:
+  - template: build.yml
+    parameters:
+      ArtifactName: ${{ parameters.ProjectFriendlyName }}
+      SolutionPath: ${{ parameters.SolutionPath }}
+      BuildOutputPath: ${{ parameters.BuildOutputPath }}
+
+- job: Sign
+  dependsOn: Build
+  pool:
+    name: Package ES Lab E
+  steps:
+  - template: sign.yml
+    parameters:
+      ArtifactName: ${{ parameters.ProjectFriendlyName }}
+      UnityFolderPath: ${{ parameters.UnityFolderPath }}
+
+- job: Pack
+  dependsOn: Sign
+  pool:
+    vmImage: 'windows-2019'
+  steps:
+  - template: pack.yml
+    parameters:
+      ArtifactName: UPMFolder_${{ parameters.ProjectFriendlyName }}

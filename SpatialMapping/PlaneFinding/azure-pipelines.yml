@@ -1,0 +1,11 @@
+# Don't automatically run this pipeline
+trigger: none
+pr: none
+
+extends:
+  template: CI/pipeline.yml
+  parameters:
+    ProjectFriendlyName: PlaneFinding
+    SolutionPath: $(Build.SourcesDirectory)/SpatialMapping/PlaneFinding/PlaneFinding.sln
+    BuildOutputPath: $(Build.SourcesDirectory)/SpatialMapping/PlaneFinding/Release
+    UnityFolderPath: $(Build.SourcesDirectory)/SpatialMapping/PlaneFinding/UnityAddon
