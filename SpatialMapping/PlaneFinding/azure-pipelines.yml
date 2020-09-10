@@ -1,11 +1,17 @@
+parameters:
+- name: Sign
+  type: boolean
+  default: false
+
 # Don't automatically run this pipeline
 trigger: none
 pr: none
 
 extends:
-  template: CI/pipeline.yml
+  template: ../CI/pipeline.yml
   parameters:
     ProjectFriendlyName: PlaneFinding
     SolutionPath: $(Build.SourcesDirectory)/SpatialMapping/PlaneFinding/PlaneFinding.sln
     BuildOutputPath: $(Build.SourcesDirectory)/SpatialMapping/PlaneFinding/Release
     UnityFolderPath: $(Build.SourcesDirectory)/SpatialMapping/PlaneFinding/UnityAddon
+    Sign: ${{ parameters.Sign }}

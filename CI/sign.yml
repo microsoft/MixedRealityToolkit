@@ -3,6 +3,7 @@
 parameters:
   ArtifactName: ''
   UnityFolderPath: ''
+  Sign: false
 
 steps:
 - task: DownloadBuildArtifacts@0
@@ -17,17 +18,19 @@ steps:
     scanType: 'Register'
     failOnAlert: true
 
-# - task: PkgESCodeSign@10
-#   displayName: Sign binaries
-#   inputs:
-#     signConfigXml: $(PlaneFinding)/SignConfig.xml
-#     inPathRoot: $(Build.SourcesDirectory)/Temp/${{ parameters.ArtifactName }}
-#     outPathRoot: ${{ parameters.UnityFolderPath }}/Plugins
-#   env:
-#     SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+- task: PkgESCodeSign@10
+  displayName: Sign binaries
+  condition: ${{ parameters.Sign }}
+  inputs:
+    signConfigXml: $(PlaneFinding)/SignConfig.xml
+    inPathRoot: $(Build.SourcesDirectory)/Temp/${{ parameters.ArtifactName }}
+    outPathRoot: ${{ parameters.UnityFolderPath }}/Plugins
+  env:
+    SYSTEM_ACCESSTOKEN: $(System.AccessToken)
 
 - task: CopyFiles@2
   displayName: Copy PlaneFinding DLLs to package directory
+  condition: not(${{ parameters.Sign }})
   inputs:
     sourceFolder: $(Build.SourcesDirectory)/Temp/${{ parameters.ArtifactName }}
     contents: '**/*.dll'
