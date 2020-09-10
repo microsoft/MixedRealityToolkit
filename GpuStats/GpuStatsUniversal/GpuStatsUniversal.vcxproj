@@ -130,22 +130,22 @@
     <GenerateManifest>false</GenerateManifest>
     <IgnoreImportLibrary>false</IgnoreImportLibrary>
     <TargetName>GpuStats</TargetName>
-    <OutDir>$(SolutionDir)\BuildOutput\bin\$(Configuration)\WSA\$(Platform.Replace('Win32','x86'))\</OutDir>
-    <IntDir>$(SolutionDir)\BuildOutput\obj\$(Configuration)\WSA\$(Platform.Replace('Win32','x86'))\</IntDir>
+    <OutDir>$(SolutionDir)\BuildOutput\bin\$(Configuration)\uap_$(PlatformShortName)\</OutDir>
+    <IntDir>$(SolutionDir)\BuildOutput\obj\$(Configuration)\uap_$(PlatformShortName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <GenerateManifest>false</GenerateManifest>
     <IgnoreImportLibrary>false</IgnoreImportLibrary>
     <TargetName>GpuStats</TargetName>
-    <OutDir>$(SolutionDir)\BuildOutput\bin\$(Configuration)\WSA\$(Platform.Replace('Win32','x86'))\</OutDir>
-    <IntDir>$(SolutionDir)\BuildOutput\obj\$(Configuration)\WSA\$(Platform.Replace('Win32','x86'))\</IntDir>
+    <OutDir>$(SolutionDir)\BuildOutput\bin\$(Configuration)\uap_$(PlatformShortName)\</OutDir>
+    <IntDir>$(SolutionDir)\BuildOutput\obj\$(Configuration)\uap_$(PlatformShortName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <GenerateManifest>false</GenerateManifest>
     <IgnoreImportLibrary>false</IgnoreImportLibrary>
     <TargetName>GpuStats</TargetName>
-    <OutDir>$(SolutionDir)\BuildOutput\bin\$(Configuration)\WSA\$(Platform.Replace('Win32','x86'))\</OutDir>
-    <IntDir>$(SolutionDir)\BuildOutput\obj\$(Configuration)\WSA\$(Platform.Replace('Win32','x86'))\</IntDir>
+    <OutDir>$(SolutionDir)\BuildOutput\bin\$(Configuration)\uap_$(PlatformShortName)\</OutDir>
+    <IntDir>$(SolutionDir)\BuildOutput\obj\$(Configuration)\uap_$(PlatformShortName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
     <GenerateManifest>false</GenerateManifest>
@@ -158,8 +158,8 @@
     <GenerateManifest>false</GenerateManifest>
     <IgnoreImportLibrary>false</IgnoreImportLibrary>
     <TargetName>GpuStats</TargetName>
-    <OutDir>$(SolutionDir)\BuildOutput\bin\$(Configuration)\WSA\$(Platform.Replace('Win32','x86'))\</OutDir>
-    <IntDir>$(SolutionDir)\BuildOutput\obj\$(Configuration)\WSA\$(Platform.Replace('Win32','x86'))\</IntDir>
+    <OutDir>$(SolutionDir)\BuildOutput\bin\$(Configuration)\uap_$(PlatformShortName)\</OutDir>
+    <IntDir>$(SolutionDir)\BuildOutput\obj\$(Configuration)\uap_$(PlatformShortName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
     <GenerateManifest>false</GenerateManifest>
@@ -172,15 +172,15 @@
     <GenerateManifest>false</GenerateManifest>
     <IgnoreImportLibrary>false</IgnoreImportLibrary>
     <TargetName>GpuStats</TargetName>
-    <OutDir>$(SolutionDir)\BuildOutput\bin\$(Configuration)\WSA\$(Platform.Replace('Win32','x86'))\</OutDir>
-    <IntDir>$(SolutionDir)\BuildOutput\obj\$(Configuration)\WSA\$(Platform.Replace('Win32','x86'))\</IntDir>
+    <OutDir>$(SolutionDir)\BuildOutput\bin\$(Configuration)\uap_$(PlatformShortName)\</OutDir>
+    <IntDir>$(SolutionDir)\BuildOutput\obj\$(Configuration)\uap_$(PlatformShortName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <GenerateManifest>false</GenerateManifest>
     <IgnoreImportLibrary>false</IgnoreImportLibrary>
     <TargetName>GpuStats</TargetName>
-    <OutDir>$(SolutionDir)\BuildOutput\bin\$(Configuration)\WSA\$(Platform.Replace('Win32','x86'))\</OutDir>
-    <IntDir>$(SolutionDir)\BuildOutput\obj\$(Configuration)\WSA\$(Platform.Replace('Win32','x86'))\</IntDir>
+    <OutDir>$(SolutionDir)\BuildOutput\bin\$(Configuration)\uap_$(PlatformShortName)\</OutDir>
+    <IntDir>$(SolutionDir)\BuildOutput\obj\$(Configuration)\uap_$(PlatformShortName)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
