@@ -1,85 +1,33 @@
-# .NET Desktop
-# Build and run tests for .NET Desktop or Windows classic desktop solutions.
-# Add steps that publish symbols, save build artifacts, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/apps/windows/dot-net
+name: '$(date:yyMM).$(date:dd)$(rev:rr)-${{ parameters.Project }}'
+
+parameters:
+- name: Sign
+  type: boolean
+  default: false
+- name: Project
+  type: string
+  default: PlaneFinding
+  values:
+    - PlaneFinding
+    - GpuStats
 
 # Don't automatically run this pipeline
 trigger: none
 pr: none
 
-variables:
-  Project: 'PlaneFinding'
-  SolutionPath: 'SpatialMapping/PlaneFinding/PlaneFinding.sln'
-  BuildConfiguration: 'Release'
-
-jobs:
-- job: Build
-  pool:
-    vmImage: 'windows-2019'
-  strategy:
-    matrix:
-      x86:
-        BuildPlatform: x86
-      x64:
-        BuildPlatform: x64
-      ARM:
-        BuildPlatform: ARM
-      ARM64:
-        BuildPlatform: ARM64
-  steps:
-  - task: VSBuild@1
-    inputs:
-      solution: '$(SolutionPath)'
-      platform: '$(BuildPlatform)'
-      configuration: '$(BuildConfiguration)'
-
-  - task: VSTest@2
-    condition: and(succeeded(), eq(variables['BuildPlatform'], 'x86'))
-    inputs:
-      platform: '$(BuildPlatform)'
-      configuration: '$(BuildConfiguration)'
-
-  - task: CopyFiles@2
-    displayName: 'Copy binaries to artifacts staging directory'
-    inputs:
-      sourceFolder: $(Build.SourcesDirectory)/SpatialMapping/PlaneFinding/Release
-      contents: '**/*.dll'
-      targetFolder: $(Build.ArtifactStagingDirectory)
-
-  - task: PublishBuildArtifacts@1
-    displayName: 'Publish artifacts'
-    inputs:
-      artifactName: $(Project)
-
-- job: Package
-  dependsOn: Build
-  pool:
-    vmImage: 'windows-2019'
-  steps:
-  - task: DownloadBuildArtifacts@0
-    displayName: Download built DLLs
-    inputs:
-      artifactName: $(Project)
-      downloadPath: $(Build.SourcesDirectory)/Temp
-
-  - task: CopyFiles@2
-    displayName: 'Copy DLLs to package directory'
-    inputs:
-      sourceFolder: $(Build.SourcesDirectory)/Temp/PlaneFinding
-      contents: '**/*.dll'
-      targetFolder: $(Build.SourcesDirectory)/SpatialMapping/PlaneFinding/UnityAddon/Plugins
-
-  - script: |
-      npm pack $(Build.SourcesDirectory)/SpatialMapping/PlaneFinding/UnityAddon
-    displayName: 'Package $(Project) for UPM'
-
-  - task: CopyFiles@2
-    displayName: 'Copy UPM packages to artifacts staging directory'
-    inputs:
-      contents: '$(Build.SourcesDirectory)/**/*.tgz'
-      targetFolder: $(Build.ArtifactStagingDirectory)
-
-  - task: PublishBuildArtifacts@1
-    displayName: 'Publish UPM artifacts'
-    inputs:
-      artifactName: UPM
+extends:
+  template: CI/pipeline.yml
+  parameters:
+    ProjectFriendlyName: ${{ parameters.Project }}
+    Sign: ${{ parameters.Sign }}
+    ${{ if eq(parameters.Project, 'PlaneFinding') }}:
+      SolutionPath: SpatialMapping/PlaneFinding/PlaneFinding.sln
+      BuildOutputPath: SpatialMapping/PlaneFinding/Release
+      UnityFolderPath: SpatialMapping/PlaneFinding/UnityAddon
+      SignConfigPath: SpatialMapping/PlaneFinding/SignConfig.xml
+    ${{ if eq(parameters.Project, 'GpuStats') }}:
+      SolutionPath: GpuStats/GpuStats.sln
+      BuildOutputPath: GpuStats/BuildOutput/bin/Release
+      UnityFolderPath: GpuStats/UnityAddon
+      SignConfigPath: GpuStats/SignConfig.xml
+      BuildVmImage: 'vs2017-win2016'

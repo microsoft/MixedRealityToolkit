@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<SignConfigXML>
+    <!-- x86 Release sign job -->
+    <job platform="" certSubject="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" configuration="" dest="__OUTPATHROOT__" jobname="GpuStats x86" approvers="">
+        <file src="__INPATHROOT__\x86\GpuStats.dll" signType="400" dest="__OUTPATHROOT__\x86\GpuStats.dll" />
+    </job>
+    <!-- x64 Release sign job -->
+    <job platform="" certSubject="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" configuration="" dest="__OUTPATHROOT__" jobname="GpuStats x64" approvers="">
+        <file src="__INPATHROOT__\x64\GpuStats.dll" signType="400" dest="__OUTPATHROOT__\x64\GpuStats.dll" />
+    </job>
+    <!-- uap_x86 Release sign job -->
+    <job platform="" certSubject="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" configuration="" dest="__OUTPATHROOT__" jobname="GpuStats uap_x86" approvers="">
+        <file src="__INPATHROOT__\uap_x86\GpuStats.dll" signType="400" dest="__OUTPATHROOT__\uap_x86\GpuStats.dll" />
+    </job>
+    <!-- uap_x64 Release sign job -->
+    <job platform="" certSubject="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" configuration="" dest="__OUTPATHROOT__" jobname="GpuStats uap_x64" approvers="">
+        <file src="__INPATHROOT__\uap_x64\GpuStats.dll" signType="400" dest="__OUTPATHROOT__\uap_x64\GpuStats.dll" />
+    </job>
+    <!-- uap_ARM Release sign job -->
+    <job platform="" certSubject="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" configuration="" dest="__OUTPATHROOT__" jobname="GpuStats uap_ARM" approvers="">
+        <file src="__INPATHROOT__\uap_ARM\GpuStats.dll" signType="400" dest="__OUTPATHROOT__\uap_ARM\GpuStats.dll" />
+    </job>
+    <!-- uap_ARM64 Release sign job -->
+    <job platform="" certSubject="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" configuration="" dest="__OUTPATHROOT__" jobname="GpuStats uap_ARM64" approvers="">
+        <file src="__INPATHROOT__\uap_ARM64\GpuStats.dll" signType="400" dest="__OUTPATHROOT__\uap_ARM64\GpuStats.dll" />
+    </job>
+</SignConfigXML>

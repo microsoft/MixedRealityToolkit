@@ -1,0 +1,37 @@
+# [Template] Build a solution, run tests, and publish as Azure Artifacts
+
+parameters:
+- name: ArtifactName
+  type: string
+  default: ''
+- name: SolutionPath
+  type: string
+  default: ''
+- name: BuildOutputPath
+  type: string
+  default: ''
+
+steps:
+- task: VSBuild@1
+  inputs:
+    solution: ${{ parameters.SolutionPath }}
+    platform: $(BuildPlatform)
+    configuration: $(BuildConfiguration)
+
+- task: VSTest@2
+  condition: and(succeeded(), eq(variables['BuildPlatform'], 'x86'), eq('${{ parameters.ArtifactName }}', 'PlaneFinding'))
+  inputs:
+    platform: $(BuildPlatform)
+    configuration: $(BuildConfiguration)
+
+- task: CopyFiles@2
+  displayName: Copy binaries to artifacts staging directory
+  inputs:
+    sourceFolder: ${{ parameters.BuildOutputPath }}
+    contents: '**/*.dll'
+    targetFolder: $(Build.ArtifactStagingDirectory)
+
+- task: PublishBuildArtifacts@1
+  displayName: Publish artifacts
+  inputs:
+    artifactName: ${{ parameters.ArtifactName }}
