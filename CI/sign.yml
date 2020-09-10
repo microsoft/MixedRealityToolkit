@@ -1,9 +1,15 @@
 # [Template] Download built DLL artifacts, sign them, copy to UnityFolderPath folder, upload folder as Azure Artifact
 
 parameters:
-  ArtifactName: ''
-  UnityFolderPath: ''
-  Sign: false
+- name: ArtifactName
+  type: string
+  default: ''
+- name: UnityFolderPath
+  type: string
+  default: ''
+- name: Sign
+  type: boolean
+  default: false
 
 steps:
 - task: DownloadBuildArtifacts@0

@@ -1,9 +1,15 @@
 # [Template] Build a solution, run tests, and publish as Azure Artifacts
 
 parameters:
-  ArtifactName: ''
-  SolutionPath: ''
-  BuildOutputPath: ''
+- name: ArtifactName
+  type: string
+  default: ''
+- name: SolutionPath
+  type: string
+  default: ''
+- name: BuildOutputPath
+  type: string
+  default: ''
 
 steps:
 - task: VSBuild@1

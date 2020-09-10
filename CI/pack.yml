@@ -1,7 +1,9 @@
 # [Template] Download DLL artifacts and npm pack
 
 parameters:
-  ArtifactName: ''
+- name: ArtifactName
+  type: string
+  default: ''
 
 steps:
 - task: DownloadBuildArtifacts@0
