@@ -16,7 +16,7 @@ steps:
   displayName: Download built DLLs
   inputs:
     downloadType: specific
-    downloadPath: $(Build.SourcesDirectory)/Temp
+    downloadPath: $(Agent.TempDirectory)
 
 # required for code signing
 - task: ComponentGovernanceComponentDetection@0
@@ -29,7 +29,7 @@ steps:
   condition: ${{ parameters.Sign }}
   inputs:
     signConfigXml: $(PlaneFinding)/SignConfig.xml
-    inPathRoot: $(Build.SourcesDirectory)/Temp/${{ parameters.ArtifactName }}
+    inPathRoot: $(Agent.TempDirectory)/${{ parameters.ArtifactName }}
     outPathRoot: ${{ parameters.UnityFolderPath }}/Plugins
   env:
     SYSTEM_ACCESSTOKEN: $(System.AccessToken)
@@ -38,7 +38,7 @@ steps:
   displayName: Copy PlaneFinding DLLs to package directory
   condition: not(${{ parameters.Sign }})
   inputs:
-    sourceFolder: $(Build.SourcesDirectory)/Temp/${{ parameters.ArtifactName }}
+    sourceFolder: $(Agent.TempDirectory)/${{ parameters.ArtifactName }}
     contents: '**/*.dll'
     targetFolder: ${{ parameters.UnityFolderPath }}/Plugins
 
