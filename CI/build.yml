@@ -1,0 +1,30 @@
+# [Template] Build a solution, run tests, and publish as Azure Artifacts
+
+parameters:
+  ArtifactName: ''
+  SolutionPath: ''
+  BuildOutputPath: ''
+
+steps:
+- task: VSBuild@1
+  inputs:
+    solution: ${{ parameters.SolutionPath }}
+    platform: $(BuildPlatform)
+    configuration: $(BuildConfiguration)
+
+- task: VSTest@2
+  inputs:
+    platform: $(BuildPlatform)
+    configuration: $(BuildConfiguration)
+
+- task: CopyFiles@2
+  displayName: Copy binaries to artifacts staging directory
+  inputs:
+    sourceFolder: ${{ parameters.BuildOutputPath }}
+    contents: '**/*.dll'
+    targetFolder: $(Build.ArtifactStagingDirectory)
+
+- task: PublishBuildArtifacts@1
+  displayName: Publish artifacts
+  inputs:
+    artifactName: ${{ parameters.ArtifactName }}
