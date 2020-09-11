@@ -49,4 +49,4 @@ steps:
   displayName: Publish UPM folder
   inputs:
     pathToPublish: ${{ parameters.UnityFolderPath }}
-    artifactName: UPMFolder_${{ parameters.ArtifactName }}
+    artifactName: UPMFolder
