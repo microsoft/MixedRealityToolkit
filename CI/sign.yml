@@ -33,7 +33,7 @@ steps:
   inputs:
     signConfigXml: ${{ parameters.SignConfigPath }}
     inPathRoot: $(Agent.TempDirectory)/${{ parameters.ArtifactName }}
-    outPathRoot: ${{ parameters.UnityFolderPath }}/Plugins
+    outPathRoot: $(Build.SourcesDirectory)/${{ parameters.UnityFolderPath }}/Plugins
   env:
     SYSTEM_ACCESSTOKEN: $(System.AccessToken)
 
