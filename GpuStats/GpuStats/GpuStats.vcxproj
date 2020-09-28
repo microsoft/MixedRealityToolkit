@@ -232,6 +232,7 @@
   <ItemGroup>
     <ClInclude Include="GpuStats.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Unity\IUnityGraphics.h" />
     <ClInclude Include="Unity\IUnityGraphicsD3D11.h" />
@@ -251,6 +252,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="UnityNativeRenderingPlugin.def" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="GpuStats.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

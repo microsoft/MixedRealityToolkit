@@ -15,8 +15,14 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="..\GpuStats\GpuStats.h" />
+    <ClInclude Include="..\GpuStats\resource.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\GpuStats\UnityNativeRenderingPlugin.def" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\GpuStats\GpuStats.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>
