@@ -52,7 +52,7 @@ jobs:
   steps:
   - template: sign.yml
     parameters:
-      ArtifactName: ${{ parameters.ProjectFriendlyName }}
+      DownloadArtifactName: ${{ parameters.ProjectFriendlyName }}
       UnityFolderPath: ${{ parameters.UnityFolderPath }}
       Sign: ${{ parameters.Sign }}
       SignConfigPath: ${{ parameters.SignConfigPath }}
@@ -63,5 +63,3 @@ jobs:
     vmImage: 'windows-2019'
   steps:
   - template: pack.yml
-    parameters:
-      ArtifactName: UPMFolder_${{ parameters.ProjectFriendlyName }}

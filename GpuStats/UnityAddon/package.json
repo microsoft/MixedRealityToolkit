@@ -1,8 +1,8 @@
 {
     "name": "com.microsoft.mixedreality.toolkit.gpustats",
     "displayName": "Mixed Reality Toolkit GPU Stats",
-    "version": "1.0.0-preview.1",
-    "unity": "2019.4",
+    "version": "1.0.0",
+    "unity": "2018.4",
     "description": "Provides utilities for accessing stats about the GPU, like frame timing and VRAM usage.",
     "keywords": [
         "mrtk",

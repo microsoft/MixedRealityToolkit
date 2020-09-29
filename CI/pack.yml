@@ -1,19 +1,22 @@
 # [Template] Download DLL artifacts and npm pack
 
 parameters:
-- name: ArtifactName
+- name: DownloadArtifactName
   type: string
-  default: ''
+  default: 'UPMFolder'
+- name: UploadArtifactName
+  type: string
+  default: 'UPMTarball'
 
 steps:
 - task: DownloadBuildArtifacts@0
   displayName: Download built DLLs
   inputs:
-    artifactName: ${{ parameters.ArtifactName }}
+    artifactName: ${{ parameters.DownloadArtifactName }}
     downloadPath: $(Build.SourcesDirectory)
 
 - script: |
-    npm pack $(Build.SourcesDirectory)/${{ parameters.ArtifactName }}
+    npm pack $(Build.SourcesDirectory)/${{ parameters.DownloadArtifactName }}
   displayName: Package for UPM
 
 - task: CopyFiles@2
@@ -25,4 +28,4 @@ steps:
 - task: PublishBuildArtifacts@1
   displayName: Publish UPM artifacts
   inputs:
-    artifactName: UPMTarball
+    artifactName: ${{ parameters.UploadArtifactName }}

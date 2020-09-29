@@ -17,7 +17,7 @@ namespace Microsoft.MixedReality.Toolkit.Utilities
         private static extern IntPtr GetRenderEventFunc();
 
         [DllImport("GpuStats")]
-        private static extern double GetGpuTime(int eventId);
+        private static extern double GetGpuDuration(int eventId);
 
         [DllImport("GpuStats")]
         private static extern ulong GetVramUse();
@@ -31,26 +31,49 @@ namespace Microsoft.MixedReality.Toolkit.Utilities
         private static int nextAvailableEventId = 0;
 
         /// <summary>
-        /// Gets the latest available sample time for the given event.
+        /// Gets the latest available sample duration for the given event.
         /// </summary>
         /// <param name="eventId">Name of the event.</param>
-        /// <returns>Time in milliseconds.</returns>
-        public static double GetTime(string eventId)
+        /// <param name="duration">The sample duration in seconds.</param>
+        /// <returns>Whether the query result is valid, the query was disjoint, or the event ID was not found.</returns>
+        public static GpuDurationResult GetSampleDuration(string eventId, out double duration)
         {
             int eventValue;
             if (EventIds.TryGetValue(eventId, out eventValue))
             {
-                return GetGpuTime(eventValue);
+                var result = GetGpuDuration(eventValue);
+                if (result < -1.0)
+                {
+                    duration = double.NaN;
+                    return GpuDurationResult.NotFound;
+                }
+
+                if (result < 0.0)
+                {
+                    duration = double.NaN;
+                    return GpuDurationResult.Disjoint;
+                }
+
+                duration = result;
+                return GpuDurationResult.Valid;
             }
 
-            return -1;
+            duration = double.NaN;
+            return GpuDurationResult.NotFound;
         }
+
+        /// <summary>
+        /// Gets the latest queried VRAM usage.
+        /// </summary>
+        /// <remarks>Uses DXGI_QUERY_VIDEO_MEMORY_INFO for this data.</remarks>
+        /// <returns>The VRAM usage in bytes.</returns>
+        public static ulong GetVideoMemoryUsage() => GetVramUse();
 
         /// <summary>
         /// Begins sampling GPU time.
         /// </summary>
         /// <param name="eventId">Name of the event.</param>
-        /// <returns>Returns true if a BeginSample with the same event name was last added.</returns>
+        /// <returns>Whether a <see cref="BeginSample"/> with the same event name was added.</returns>
         public static bool BeginSample(string eventId)
         {
             int eventValue;
@@ -67,7 +90,7 @@ namespace Microsoft.MixedReality.Toolkit.Utilities
 
             if (CurrentEventId.Contains(eventValue))
             {
-                Debug.LogWarning("BeginSample() is being called without a corresponding EndSample() call.");
+                Debug.LogWarning("BeginSample() is being called again without a corresponding EndSample() call.");
                 return false;
             }
 
@@ -91,10 +114,5 @@ namespace Microsoft.MixedReality.Toolkit.Utilities
                 GL.IssuePluginEvent(GetRenderEventFunc(), eventId);
             }
         }
-
-        /// <summary>
-        /// Provides the current VRAM usage according to DXGI_QUERY_VIDEO_MEMORY_INFO.
-        /// </summary>
-        public static ulong GetVramUsage() => GetVramUse();
     }
 }

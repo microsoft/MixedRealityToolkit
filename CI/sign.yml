@@ -1,7 +1,7 @@
 # [Template] Download built DLL artifacts, sign them, copy to UnityFolderPath folder, upload folder as Azure Artifact
 
 parameters:
-- name: ArtifactName
+- name: DownloadArtifactName
   type: string
   default: ''
 - name: UnityFolderPath
@@ -13,6 +13,9 @@ parameters:
 - name: SignConfigPath
   type: string
   default: ''
+- name: UploadArtifactName
+  type: string
+  default: 'UPMFolder'
 
 steps:
 - task: DownloadBuildArtifacts@0
@@ -32,7 +35,7 @@ steps:
   condition: ${{ parameters.Sign }}
   inputs:
     signConfigXml: ${{ parameters.SignConfigPath }}
-    inPathRoot: $(Agent.TempDirectory)/${{ parameters.ArtifactName }}
+    inPathRoot: $(Agent.TempDirectory)/${{ parameters.DownloadArtifactName }}
     outPathRoot: $(Build.SourcesDirectory)/${{ parameters.UnityFolderPath }}/Plugins
   env:
     SYSTEM_ACCESSTOKEN: $(System.AccessToken)
@@ -41,7 +44,7 @@ steps:
   displayName: Copy DLLs to package directory
   condition: not(${{ parameters.Sign }})
   inputs:
-    sourceFolder: $(Agent.TempDirectory)/${{ parameters.ArtifactName }}
+    sourceFolder: $(Agent.TempDirectory)/${{ parameters.DownloadArtifactName }}
     contents: '**/*.dll'
     targetFolder: ${{ parameters.UnityFolderPath }}/Plugins
 
@@ -49,4 +52,4 @@ steps:
   displayName: Publish UPM folder
   inputs:
     pathToPublish: ${{ parameters.UnityFolderPath }}
-    artifactName: UPMFolder
+    artifactName: ${{ parameters.UploadArtifactName }}
