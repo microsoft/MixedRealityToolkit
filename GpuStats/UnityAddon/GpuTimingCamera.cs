@@ -1,7 +1,9 @@
 ﻿// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+using System;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Rendering;
 using UnityEngine.XR;
 
@@ -13,8 +15,16 @@ namespace Microsoft.MixedReality.Toolkit.Utilities
     /// </summary>
     public class GpuTimingCamera : MonoBehaviour
     {
-        [SerializeField]
+        [SerializeField, Tooltip("The tag to use with GpuStats.BeginSample.")]
         private string timingTag = "Frame";
+
+        [SerializeField, Tooltip("Fires in OnPreRender with the data from the previous frame.")]
+        private UnityGpuFrameDurationEvent newGpuFrameDuration = null;
+
+        /// <summary>
+        /// Fires in OnPreRender with the data from the previous frame.
+        /// </summary>
+        public UnityGpuFrameDurationEvent NewGpuFrameDuration => newGpuFrameDuration;
 
         private Camera timingCamera;
 
@@ -26,6 +36,9 @@ namespace Microsoft.MixedReality.Toolkit.Utilities
 
         protected void OnPreRender()
         {
+            GpuDurationResult durationResult = GpuStats.GetSampleDuration(timingTag, out double duration);
+            newGpuFrameDuration?.Invoke(durationResult, (float)duration);
+
             if (timingCamera.stereoActiveEye != Camera.MonoOrStereoscopicEye.Right)
             {
                 GpuStats.BeginSample(timingTag);
@@ -43,4 +56,10 @@ namespace Microsoft.MixedReality.Toolkit.Utilities
             }
         }
     }
+
+    /// <summary>
+    /// A custom UnityEvent providing a GpuDurationResult and a float duration.
+    /// </summary>
+    [Serializable]
+    public class UnityGpuFrameDurationEvent : UnityEvent<GpuDurationResult, float> { }
 }
