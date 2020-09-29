@@ -36,8 +36,10 @@ namespace Microsoft.MixedReality.Toolkit.Utilities
 
         protected void OnPreRender()
         {
-            GpuDurationResult durationResult = GpuStats.GetSampleDuration(timingTag, out double duration);
-            newGpuFrameDuration?.Invoke(durationResult, (float)duration);
+            if (newGpuFrameDuration?.GetPersistentEventCount() > 0)
+            {
+                newGpuFrameDuration.Invoke(GpuStats.GetSampleDuration(timingTag, out double duration), (float)duration);
+            }
 
             if (timingCamera.stereoActiveEye != Camera.MonoOrStereoscopicEye.Right)
             {

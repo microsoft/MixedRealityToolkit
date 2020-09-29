@@ -38,8 +38,7 @@ namespace Microsoft.MixedReality.Toolkit.Utilities
         /// <returns>Whether the query result is valid, the query was disjoint, or the event ID was not found.</returns>
         public static GpuDurationResult GetSampleDuration(string eventId, out double duration)
         {
-            int eventValue;
-            if (EventIds.TryGetValue(eventId, out eventValue))
+            if (EventIds.TryGetValue(eventId, out int eventValue))
             {
                 var result = GetGpuDuration(eventValue);
                 if (result < -1.0)
@@ -76,8 +75,7 @@ namespace Microsoft.MixedReality.Toolkit.Utilities
         /// <returns>Whether a <see cref="BeginSample"/> with the same event name was added.</returns>
         public static bool BeginSample(string eventId)
         {
-            int eventValue;
-            if (!EventIds.TryGetValue(eventId, out eventValue))
+            if (!EventIds.TryGetValue(eventId, out int eventValue))
             {
                 if (nextAvailableEventId == BaseEndEventId)
                 {
