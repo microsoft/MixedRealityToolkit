@@ -18,6 +18,9 @@ parameters:
   default: 'UPMFolder'
 
 steps:
+- checkout: self
+  clean: true
+
 - task: DownloadBuildArtifacts@0
   displayName: Download built DLLs
   inputs:
