@@ -9,6 +9,8 @@ parameters:
   default: 'UPMTarball'
 
 steps:
+- checkout: none # This step doesn't need the repo
+
 - task: DownloadBuildArtifacts@0
   displayName: Download built DLLs
   inputs:
