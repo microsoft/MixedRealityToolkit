@@ -1,4 +1,4 @@
-# [Template] Download built DLL artifacts, sign them, copy to UnityFolderPath folder, upload folder as Azure Artifact
+# [Template] Download built DLL artifacts, sign them, copy to UnityFolderPath folder, organize UnityFolderPath for packing, upload folder as Azure Artifact
 
 parameters:
 - name: DownloadArtifactName
@@ -47,6 +47,24 @@ steps:
     sourceFolder: $(Agent.TempDirectory)/${{ parameters.DownloadArtifactName }}
     contents: '**/*.dll'
     targetFolder: ${{ parameters.UnityFolderPath }}/Plugins
+
+- task: CopyFiles@2
+  displayName: Copy LICENSE to UnityFolderPath
+  inputs:
+    contents: LICENSE.md
+    targetFolder: ${{ parameters.UnityFolderPath }}
+
+- task: CopyFiles@2
+  displayName: Copy README to Documents~
+  inputs:
+    sourceFolder: ${{ parameters.UnityFolderPath }}
+    contents: README.md*
+    targetFolder: ${{ parameters.UnityFolderPath }}/Documentation~
+
+- task: DeleteFiles@1
+  displayName: Delete README from UnityFolderPath
+  inputs:
+    contents: ${{ parameters.UnityFolderPath }}/README.md*
 
 - task: PublishBuildArtifacts@1
   displayName: Publish UPM folder
