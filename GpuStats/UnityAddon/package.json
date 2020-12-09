@@ -1,8 +1,9 @@
 {
     "name": "com.microsoft.mixedreality.toolkit.gpustats",
     "displayName": "Mixed Reality Toolkit GPU Stats",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "unity": "2018.4",
+    "msftFeatureCategory": "Mixed Reality Toolkit",
     "description": "Provides utilities for accessing stats about the GPU, like frame timing and VRAM usage.",
     "keywords": [
         "mrtk",
@@ -20,5 +21,5 @@
     },
     "bugs": {
         "url": "https://github.com/microsoft/MixedRealityToolkit/issues"
-     }
+    }
 }
