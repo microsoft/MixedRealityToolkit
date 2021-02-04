@@ -43,7 +43,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{2E563EFB-6B7D-43D5-90EE-455924EDC1B5}</ProjectGuid>
     <Keyword>DynamicLibrary</Keyword>
-    <ProjectName>PlaneFinding.UAP</ProjectName>
+    <ProjectName>PlaneFinding.UWP</ProjectName>
     <RootNamespace>PlaneFinding_UAP</RootNamespace>
     <DefaultLanguage>en-US</DefaultLanguage>
     <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>

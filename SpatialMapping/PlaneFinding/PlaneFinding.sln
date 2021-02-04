@@ -9,7 +9,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PlaneFinding", "PlaneFindin
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PlaneFinding.Editor", "PlaneFinding\PlaneFinding.Editor\PlaneFinding.Editor.vcxproj", "{C656849B-7572-451D-BF74-73F78FE50D37}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PlaneFinding.UAP", "PlaneFinding\PlaneFinding.UAP\PlaneFinding.UAP.vcxproj", "{2E563EFB-6B7D-43D5-90EE-455924EDC1B5}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PlaneFinding.UWP", "PlaneFinding\PlaneFinding.UWP\PlaneFinding.UWP.vcxproj", "{2E563EFB-6B7D-43D5-90EE-455924EDC1B5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{391FA9C5-4555-461F-9DB0-6B7027443FDA}"
 EndProject
