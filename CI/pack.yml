@@ -17,6 +17,11 @@ steps:
     artifactName: ${{ parameters.DownloadArtifactName }}
     downloadPath: $(Build.SourcesDirectory)
 
+- task: DeleteFiles@1
+  displayName: Delete signing logs (if present)
+  inputs:
+    contents: '**/CodeSignSummary*.md'
+
 - script: |
     npm pack $(Build.SourcesDirectory)/${{ parameters.DownloadArtifactName }}
   displayName: Package for UPM
