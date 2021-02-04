@@ -83,10 +83,8 @@ namespace Microsoft.MixedReality.Toolkit.SpatialAwareness.Processing
 
             try
             {
-                int planeCount;
-                IntPtr planesPtr;
                 IntPtr pinnedMeshData = PinMeshDataForMarshalling(meshes);
-                DLLImports.FindSubPlanes(meshes.Count, pinnedMeshData, snapToGravityThreshold, out planeCount, out planesPtr);
+                DLLImports.FindSubPlanes(meshes.Count, pinnedMeshData, snapToGravityThreshold, out int planeCount, out IntPtr planesPtr);
                 return MarshalBoundedPlanesFromIntPtr(planesPtr, planeCount);
             }
             finally
@@ -121,9 +119,7 @@ namespace Microsoft.MixedReality.Toolkit.SpatialAwareness.Processing
 
             try
             {
-                int planeCount;
-                IntPtr planesPtr;
-                DLLImports.MergeSubPlanes(subPlanes.Length, PinObject(subPlanes), minArea, snapToGravityThreshold, out planeCount, out planesPtr);
+                DLLImports.MergeSubPlanes(subPlanes.Length, PinObject(subPlanes), minArea, snapToGravityThreshold, out int planeCount, out IntPtr planesPtr);
                 return MarshalBoundedPlanesFromIntPtr(planesPtr, planeCount);
             }
             finally
@@ -157,10 +153,8 @@ namespace Microsoft.MixedReality.Toolkit.SpatialAwareness.Processing
 
             try
             {
-                int planeCount;
-                IntPtr planesPtr;
                 IntPtr pinnedMeshData = PinMeshDataForMarshalling(meshes);
-                DLLImports.FindPlanes(meshes.Count, pinnedMeshData, minArea, snapToGravityThreshold, out planeCount, out planesPtr);
+                DLLImports.FindPlanes(meshes.Count, pinnedMeshData, minArea, snapToGravityThreshold, out int planeCount, out IntPtr planesPtr);
                 return MarshalBoundedPlanesFromIntPtr(planesPtr, planeCount);
             }
             finally

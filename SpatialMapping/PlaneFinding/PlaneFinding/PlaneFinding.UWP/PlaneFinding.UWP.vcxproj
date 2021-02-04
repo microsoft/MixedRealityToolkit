@@ -43,7 +43,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{2E563EFB-6B7D-43D5-90EE-455924EDC1B5}</ProjectGuid>
     <Keyword>DynamicLibrary</Keyword>
-    <ProjectName>PlaneFinding.UAP</ProjectName>
+    <ProjectName>PlaneFinding.UWP</ProjectName>
     <RootNamespace>PlaneFinding_UAP</RootNamespace>
     <DefaultLanguage>en-US</DefaultLanguage>
     <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
@@ -134,49 +134,49 @@
     <GenerateManifest>false</GenerateManifest>
     <IgnoreImportLibrary>false</IgnoreImportLibrary>
     <TargetName>PlaneFinding</TargetName>
-    <OutDir>$(SolutionDir)\$(Configuration)\uap_$(PlatformShortName)\</OutDir>
+    <OutDir>$(SolutionDir)\$(Configuration)\UWP\$(PlatformShortName)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <GenerateManifest>false</GenerateManifest>
     <IgnoreImportLibrary>false</IgnoreImportLibrary>
     <TargetName>PlaneFinding</TargetName>
-    <OutDir>$(SolutionDir)\$(Configuration)\uap_$(PlatformShortName)\</OutDir>
+    <OutDir>$(SolutionDir)\$(Configuration)\UWP\$(PlatformShortName)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <GenerateManifest>false</GenerateManifest>
     <IgnoreImportLibrary>false</IgnoreImportLibrary>
     <TargetName>PlaneFinding</TargetName>
-    <OutDir>$(SolutionDir)\$(Configuration)\uap_$(PlatformShortName)\</OutDir>
+    <OutDir>$(SolutionDir)\$(Configuration)\UWP\$(PlatformShortName)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
     <GenerateManifest>false</GenerateManifest>
     <IgnoreImportLibrary>false</IgnoreImportLibrary>
     <TargetName>PlaneFinding</TargetName>
-    <OutDir>$(SolutionDir)\$(Configuration)\uap_$(PlatformShortName)\</OutDir>
+    <OutDir>$(SolutionDir)\$(Configuration)\UWP\$(PlatformShortName)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <GenerateManifest>false</GenerateManifest>
     <IgnoreImportLibrary>false</IgnoreImportLibrary>
     <TargetName>PlaneFinding</TargetName>
-    <OutDir>$(SolutionDir)\$(Configuration)\uap_$(PlatformShortName)\</OutDir>
+    <OutDir>$(SolutionDir)\$(Configuration)\UWP\$(PlatformShortName)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <GenerateManifest>false</GenerateManifest>
     <IgnoreImportLibrary>false</IgnoreImportLibrary>
     <TargetName>PlaneFinding</TargetName>
-    <OutDir>$(SolutionDir)\$(Configuration)\uap_$(PlatformShortName)\</OutDir>
+    <OutDir>$(SolutionDir)\$(Configuration)\UWP\$(PlatformShortName)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <GenerateManifest>false</GenerateManifest>
     <IgnoreImportLibrary>false</IgnoreImportLibrary>
     <TargetName>PlaneFinding</TargetName>
-    <OutDir>$(SolutionDir)\$(Configuration)\uap_$(PlatformShortName)\</OutDir>
+    <OutDir>$(SolutionDir)\$(Configuration)\UWP\$(PlatformShortName)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
     <GenerateManifest>false</GenerateManifest>
     <IgnoreImportLibrary>false</IgnoreImportLibrary>
     <TargetName>PlaneFinding</TargetName>
-    <OutDir>$(SolutionDir)\$(Configuration)\uap_$(PlatformShortName)\</OutDir>
+    <OutDir>$(SolutionDir)\$(Configuration)\UWP\$(PlatformShortName)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
