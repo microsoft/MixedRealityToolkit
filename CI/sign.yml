@@ -10,9 +10,6 @@ parameters:
 - name: Sign
   type: boolean
   default: false
-- name: SignConfigPath
-  type: string
-  default: ''
 - name: UploadArtifactName
   type: string
   default: 'UPMFolder'
@@ -27,29 +24,55 @@ steps:
     downloadType: specific
     downloadPath: $(Agent.TempDirectory)
 
-# required for code signing
-- task: ComponentGovernanceComponentDetection@0
-  inputs:
-    scanType: 'Register'
-    failOnAlert: true
-
-- task: PkgESCodeSign@10
-  displayName: Sign binaries
-  condition: ${{ parameters.Sign }}
-  inputs:
-    signConfigXml: ${{ parameters.SignConfigPath }}
-    inPathRoot: $(Agent.TempDirectory)/${{ parameters.DownloadArtifactName }}
-    outPathRoot: $(Build.SourcesDirectory)/${{ parameters.UnityFolderPath }}/Plugins
-  env:
-    SYSTEM_ACCESSTOKEN: $(System.AccessToken)
-
 - task: CopyFiles@2
   displayName: Copy DLLs to package directory
-  condition: not(${{ parameters.Sign }})
   inputs:
     sourceFolder: $(Agent.TempDirectory)/${{ parameters.DownloadArtifactName }}
     contents: '**/*.dll'
     targetFolder: ${{ parameters.UnityFolderPath }}/Plugins
+
+# Required for code signing
+- task: ComponentGovernanceComponentDetection@0
+  # Only run during when explicitly marked to sign
+  condition: and(succeeded(), ${{ parameters.Sign }})
+  inputs:
+    scanType: 'Register'
+    alertWarningLevel: 'Medium'
+    failOnAlert: true
+
+- task: EsrpCodeSigning@1
+  # Only codesign during when explicitly marked to sign
+  condition: and(succeeded(), ${{ parameters.Sign }})
+  inputs:
+    connectedServiceName: 'MRTK Codesign'
+    folderPath: '$(Build.SourcesDirectory)/${{ parameters.UnityFolderPath }}/Plugins'
+    signConfigType: 'inlineSignParams'
+    inlineOperation: |
+      [
+          {
+              "KeyCode" : "CP-230012",
+              "OperationCode" : "SigntoolSign",
+              "Parameters" : {
+                  "OpusName" : "Microsoft",
+                  "OpusInfo" : "http://www.microsoft.com",
+                  "FileDigest" : "/fd \"SHA256\"",
+                  "PageHash" : "/NPH",
+                  "TimeStamp" : "/tr \"http://rfc3161.gtm.corp.microsoft.com/TSS/HttpTspServer\" /td sha256"
+              },
+              "ToolName" : "sign",
+              "ToolVersion" : "1.0"
+          },
+          {
+              "KeyCode" : "CP-230012",
+              "OperationCode" : "SigntoolVerify",
+              "Parameters" : {},
+              "ToolName" : "sign",
+              "ToolVersion" : "1.0"
+          }
+      ]
+    sessionTimeout: '60'
+    maxConcurrency: '50'
+    maxRetryAttempts: '5'
 
 - task: CopyFiles@2
   displayName: Copy LICENSE to UnityFolderPath
