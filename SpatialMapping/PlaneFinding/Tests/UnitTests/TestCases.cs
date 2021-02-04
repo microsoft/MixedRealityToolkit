@@ -43,8 +43,10 @@ namespace PlaneFindingUnitTests
 
         private static void TestSimplePlane(int dimension, Vector3 bounds, Matrix4x4 vertDataTransform, Matrix4x4 meshTransform)
         {
-            List<PlaneFinding.MeshData> meshes = new List<PlaneFinding.MeshData>();
-            meshes.Add(Util.CreateSimpleMesh(dimension, bounds, vertDataTransform, meshTransform));
+            List<PlaneFinding.MeshData> meshes = new List<PlaneFinding.MeshData>
+            {
+                Util.CreateSimpleMesh(dimension, bounds, vertDataTransform, meshTransform)
+            };
 
             BoundedPlane[] planes = PlaneFinding.FindPlanes(meshes, 0.0f, 0.0f);
             Assert.AreEqual(1, planes.Length);

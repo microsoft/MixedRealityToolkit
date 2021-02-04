@@ -10,10 +10,12 @@ namespace PlaneFindingTestApp
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            List<PlaneFinding.MeshData> meshes = new List<PlaneFinding.MeshData>();
-            meshes.Add(Util.CreateSimpleMesh(10, new Vector3(5, 5, 0)));
+            List<PlaneFinding.MeshData> meshes = new List<PlaneFinding.MeshData>
+            {
+                Util.CreateSimpleMesh(10, new Vector3(5, 5, 0))
+            };
 
             BoundedPlane[] planes = PlaneFinding.FindPlanes(meshes, 0.0f, 0.0f);
 
