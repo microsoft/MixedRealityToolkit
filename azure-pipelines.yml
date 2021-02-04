@@ -24,10 +24,8 @@ extends:
       SolutionPath: SpatialMapping/PlaneFinding/PlaneFinding.sln
       BuildOutputPath: SpatialMapping/PlaneFinding/Release
       UnityFolderPath: SpatialMapping/PlaneFinding/UnityAddon
-      SignConfigPath: SpatialMapping/PlaneFinding/SignConfig.xml
     ${{ if eq(parameters.Project, 'GpuStats') }}:
       SolutionPath: GpuStats/GpuStats.sln
       BuildOutputPath: GpuStats/BuildOutput/bin/Release
       UnityFolderPath: GpuStats/UnityAddon
-      SignConfigPath: GpuStats/SignConfig.xml
       BuildVmImage: 'vs2017-win2016'
