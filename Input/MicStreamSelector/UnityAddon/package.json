@@ -4,7 +4,7 @@
     "version": "1.0.0",
     "unity": "2019.4",
     "msftFeatureCategory": "Mixed Reality Toolkit",
-    "description": "Provides support for selecting a specific HoloLens microphone.",
+    "description": "Provides support for selecting the HoloLens microphone for capture and monitoring.",
     "keywords": [
         "mrtk",
         "microsoft",
