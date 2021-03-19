@@ -1,0 +1,27 @@
+{
+    "name": "com.microsoft.mixedreality.toolkit.micstream",
+    "displayName": "Mixed Reality Toolkit Microphone Stream Selector",
+    "version": "1.0.0",
+    "unity": "2019.4",
+    "msftFeatureCategory": "Mixed Reality Toolkit",
+    "description": "Provides support for selecting the HoloLens microphone for capture and monitoring.",
+    "keywords": [
+        "mrtk",
+        "microsoft",
+        "mixed",
+        "reality",
+        "xr",
+        "hololens",
+        "micstream",
+        "microphone"
+    ],
+    "author": "Microsoft",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/microsoft/MixedRealityToolkit.git"
+    },
+    "bugs": {
+        "url": "https://github.com/microsoft/MixedRealityToolkit/issues"
+    }
+}
