@@ -308,7 +308,7 @@ namespace Microsoft.MixedReality.Toolkit.Audio
         [DllImport("MicStreamSelector", ExactSpelling = true)]
         private static extern int MicStopStream();
 
-    #endregion MicStream.dll methods
+        #endregion MicStream.dll methods
     }
 
 #endif // UNITY_STANDALONE_WIN || UNITY_WSA || UNITY_EDITOR_WIN
