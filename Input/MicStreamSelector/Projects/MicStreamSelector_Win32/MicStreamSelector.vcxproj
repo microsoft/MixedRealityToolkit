@@ -174,28 +174,30 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <CompileAsWinRT>true</CompileAsWinRT>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalUsingDirectories>C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\VC\vcpackages;$(WindowsSDKDir)UnionMetadata\$(TargetPlatformVersion);$(WindowsSDKDir)References\Windows.Foundation.FoundationContract\2.0.0.0;$(WindowsSDKDir)References\Windows.Foundation.UniversalApiContract\3.0.0.0</AdditionalUsingDirectories>
+      <AdditionalUsingDirectories>$(VCIDEInstallDir)\vcpackages;$(WindowsSDKDir)UnionMetadata\$(TargetPlatformVersion);$(WindowsSDKDir)References\Windows.Foundation.FoundationContract\2.0.0.0;$(WindowsSDKDir)References\Windows.Foundation.UniversalApiContract\3.0.0.0</AdditionalUsingDirectories>
       <AdditionalIncludeDirectories>
       </AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
-      <AdditionalLibraryDirectories>$(DevEnvDir)VC\vcpackages;</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <CompileAsWinRT>true</CompileAsWinRT>
-      <AdditionalUsingDirectories>C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\VC\vcpackages;$(WindowsSDKDir)UnionMetadata\$(TargetPlatformVersion);$(WindowsSDKDir)References\Windows.Foundation.FoundationContract\2.0.0.0;$(WindowsSDKDir)References\Windows.Foundation.UniversalApiContract\3.0.0.0</AdditionalUsingDirectories>
+      <AdditionalUsingDirectories>$(VCIDEInstallDir)\vcpackages;$(WindowsSDKDir)UnionMetadata\$(TargetPlatformVersion);$(WindowsSDKDir)References\Windows.Foundation.FoundationContract\2.0.0.0;$(WindowsSDKDir)References\Windows.Foundation.UniversalApiContract\3.0.0.0</AdditionalUsingDirectories>
       <AdditionalIncludeDirectories>
       </AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
-      <AdditionalLibraryDirectories>$(DevEnvDir)VC\vcpackages;</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|arm'">
@@ -203,7 +205,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <CompileAsWinRT>true</CompileAsWinRT>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalUsingDirectories>C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\VC\vcpackages;$(WindowsSDKDir)UnionMetadata\$(TargetPlatformVersion);$(WindowsSDKDir)References\Windows.Foundation.FoundationContract\2.0.0.0;$(WindowsSDKDir)References\Windows.Foundation.UniversalApiContract\3.0.0.0</AdditionalUsingDirectories>
+      <AdditionalUsingDirectories>$(VCIDEInstallDir)\vcpackages;$(WindowsSDKDir)UnionMetadata\$(TargetPlatformVersion);$(WindowsSDKDir)References\Windows.Foundation.FoundationContract\2.0.0.0;$(WindowsSDKDir)References\Windows.Foundation.UniversalApiContract\3.0.0.0</AdditionalUsingDirectories>
       <AdditionalIncludeDirectories>
       </AdditionalIncludeDirectories>
     </ClCompile>
@@ -215,7 +217,7 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <CompileAsWinRT>true</CompileAsWinRT>
-      <AdditionalUsingDirectories>C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\VC\vcpackages;$(WindowsSDKDir)UnionMetadata\$(TargetPlatformVersion);$(WindowsSDKDir)References\Windows.Foundation.FoundationContract\2.0.0.0;$(WindowsSDKDir)References\Windows.Foundation.UniversalApiContract\3.0.0.0</AdditionalUsingDirectories>
+      <AdditionalUsingDirectories>$(VCIDEInstallDir)\vcpackages;$(WindowsSDKDir)UnionMetadata\$(TargetPlatformVersion);$(WindowsSDKDir)References\Windows.Foundation.FoundationContract\2.0.0.0;$(WindowsSDKDir)References\Windows.Foundation.UniversalApiContract\3.0.0.0</AdditionalUsingDirectories>
       <AdditionalIncludeDirectories>
       </AdditionalIncludeDirectories>
     </ClCompile>
@@ -228,7 +230,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <CompileAsWinRT>true</CompileAsWinRT>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalUsingDirectories>C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\VC\vcpackages;$(WindowsSDKDir)UnionMetadata\$(TargetPlatformVersion);$(WindowsSDKDir)References\Windows.Foundation.FoundationContract\2.0.0.0;$(WindowsSDKDir)References\Windows.Foundation.UniversalApiContract\3.0.0.0</AdditionalUsingDirectories>
+      <AdditionalUsingDirectories>$(VCIDEInstallDir)\vcpackages;$(WindowsSDKDir)UnionMetadata\$(TargetPlatformVersion);$(WindowsSDKDir)References\Windows.Foundation.FoundationContract\2.0.0.0;$(WindowsSDKDir)References\Windows.Foundation.UniversalApiContract\3.0.0.0</AdditionalUsingDirectories>
       <AdditionalIncludeDirectories>
       </AdditionalIncludeDirectories>
     </ClCompile>
@@ -240,7 +242,7 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <CompileAsWinRT>true</CompileAsWinRT>
-      <AdditionalUsingDirectories>C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\VC\vcpackages;$(WindowsSDKDir)UnionMetadata\$(TargetPlatformVersion);$(WindowsSDKDir)References\Windows.Foundation.FoundationContract\2.0.0.0;$(WindowsSDKDir)References\Windows.Foundation.UniversalApiContract\3.0.0.0</AdditionalUsingDirectories>
+      <AdditionalUsingDirectories>$(VCIDEInstallDir)\vcpackages;$(WindowsSDKDir)UnionMetadata\$(TargetPlatformVersion);$(WindowsSDKDir)References\Windows.Foundation.FoundationContract\2.0.0.0;$(WindowsSDKDir)References\Windows.Foundation.UniversalApiContract\3.0.0.0</AdditionalUsingDirectories>
       <AdditionalIncludeDirectories>
       </AdditionalIncludeDirectories>
     </ClCompile>
@@ -250,13 +252,13 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
     <ClCompile>
-      <AdditionalUsingDirectories>C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\VC\vcpackages;$(WindowsSDKDir)UnionMetadata\$(TargetPlatformVersion);$(WindowsSDKDir)References\Windows.Foundation.FoundationContract\2.0.0.0;$(WindowsSDKDir)References\Windows.Foundation.UniversalApiContract\3.0.0.0</AdditionalUsingDirectories>
+      <AdditionalUsingDirectories>$(VCIDEInstallDir)\vcpackages;$(WindowsSDKDir)UnionMetadata\$(TargetPlatformVersion);$(WindowsSDKDir)References\Windows.Foundation.FoundationContract\2.0.0.0;$(WindowsSDKDir)References\Windows.Foundation.UniversalApiContract\3.0.0.0</AdditionalUsingDirectories>
       <CompileAsWinRT>true</CompileAsWinRT>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
     <ClCompile>
-      <AdditionalUsingDirectories>C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\VC\vcpackages;$(WindowsSDKDir)UnionMetadata\$(TargetPlatformVersion);$(WindowsSDKDir)References\Windows.Foundation.FoundationContract\2.0.0.0;$(WindowsSDKDir)References\Windows.Foundation.UniversalApiContract\3.0.0.0</AdditionalUsingDirectories>
+      <AdditionalUsingDirectories>$(VCIDEInstallDir)\vcpackages;$(WindowsSDKDir)UnionMetadata\$(TargetPlatformVersion);$(WindowsSDKDir)References\Windows.Foundation.FoundationContract\2.0.0.0;$(WindowsSDKDir)References\Windows.Foundation.UniversalApiContract\3.0.0.0</AdditionalUsingDirectories>
       <CompileAsWinRT>true</CompileAsWinRT>
     </ClCompile>
   </ItemDefinitionGroup>
