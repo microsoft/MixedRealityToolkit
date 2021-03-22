@@ -131,49 +131,41 @@
   <PropertyGroup />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <GenerateManifest>false</GenerateManifest>
-    <IgnoreImportLibrary>false</IgnoreImportLibrary>
     <OutDir>$(SolutionDir)\$(Configuration)\$(PlatformShortName)\</OutDir>
     <TargetName>MicStreamSelector</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <GenerateManifest>false</GenerateManifest>
-    <IgnoreImportLibrary>false</IgnoreImportLibrary>
     <OutDir>$(SolutionDir)\$(Configuration)\$(PlatformShortName)\</OutDir>
     <TargetName>MicStreamSelector</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <GenerateManifest>false</GenerateManifest>
-    <IgnoreImportLibrary>false</IgnoreImportLibrary>
     <OutDir>$(SolutionDir)\$(Configuration)\$(PlatformShortName)\</OutDir>
     <TargetName>MicStreamSelector</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
     <GenerateManifest>false</GenerateManifest>
-    <IgnoreImportLibrary>false</IgnoreImportLibrary>
     <OutDir>$(SolutionDir)\$(Configuration)\$(PlatformShortName)\</OutDir>
     <TargetName>MicStreamSelector</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <GenerateManifest>false</GenerateManifest>
-    <IgnoreImportLibrary>false</IgnoreImportLibrary>
     <OutDir>$(SolutionDir)\$(Configuration)\$(PlatformShortName)\</OutDir>
     <TargetName>MicStreamSelector</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
     <GenerateManifest>false</GenerateManifest>
-    <IgnoreImportLibrary>false</IgnoreImportLibrary>
     <OutDir>$(SolutionDir)\$(Configuration)\$(PlatformShortName)\</OutDir>
     <TargetName>MicStreamSelector</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <GenerateManifest>false</GenerateManifest>
-    <IgnoreImportLibrary>false</IgnoreImportLibrary>
     <OutDir>$(SolutionDir)\$(Configuration)\$(PlatformShortName)\</OutDir>
     <TargetName>MicStreamSelector</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <GenerateManifest>false</GenerateManifest>
-    <IgnoreImportLibrary>false</IgnoreImportLibrary>
     <OutDir>$(SolutionDir)\$(Configuration)\$(PlatformShortName)\</OutDir>
     <TargetName>MicStreamSelector</TargetName>
   </PropertyGroup>
@@ -182,7 +174,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <CompileAsWinRT>true</CompileAsWinRT>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalUsingDirectories>$(DevEnvDir)VC\vcpackages;C:\Program Files (x86)\Windows Kits\10\UnionMetadata\$(TargetPlatformVersion);C:\Program Files (x86)\Windows Kits\10\References\Windows.Foundation.FoundationContract\2.0.0.0;C:\Program Files (x86)\Windows Kits\10\References\Windows.Foundation.UniversalApiContract\3.0.0.0</AdditionalUsingDirectories>
+      <AdditionalUsingDirectories>$(DevEnvDir)VC\vcpackages;$(WindowsSDKDir)UnionMetadata\$(TargetPlatformVersion);$(WindowsSDKDir)References\Windows.Foundation.FoundationContract\2.0.0.0;$(WindowsSDKDir)References\Windows.Foundation.UniversalApiContract\3.0.0.0</AdditionalUsingDirectories>
       <AdditionalIncludeDirectories>
       </AdditionalIncludeDirectories>
     </ClCompile>
@@ -196,7 +188,7 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <CompileAsWinRT>true</CompileAsWinRT>
-      <AdditionalUsingDirectories>$(DevEnvDir)VC\vcpackages;C:\Program Files (x86)\Windows Kits\10\UnionMetadata\$(TargetPlatformVersion);C:\Program Files (x86)\Windows Kits\10\References\Windows.Foundation.FoundationContract\2.0.0.0;C:\Program Files (x86)\Windows Kits\10\References\Windows.Foundation.UniversalApiContract\3.0.0.0</AdditionalUsingDirectories>
+      <AdditionalUsingDirectories>$(DevEnvDir)VC\vcpackages;$(WindowsSDKDir)UnionMetadata\$(TargetPlatformVersion);$(WindowsSDKDir)References\Windows.Foundation.FoundationContract\2.0.0.0;$(WindowsSDKDir)References\Windows.Foundation.UniversalApiContract\3.0.0.0</AdditionalUsingDirectories>
       <AdditionalIncludeDirectories>
       </AdditionalIncludeDirectories>
     </ClCompile>
@@ -211,26 +203,24 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <CompileAsWinRT>true</CompileAsWinRT>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalUsingDirectories>$(DevEnvDir)VC\vcpackages;C:\Program Files (x86)\Windows Kits\10\UnionMetadata\$(TargetPlatformVersion);C:\Program Files (x86)\Windows Kits\10\References\Windows.Foundation.FoundationContract\2.0.0.0;C:\Program Files (x86)\Windows Kits\10\References\Windows.Foundation.UniversalApiContract\3.0.0.0</AdditionalUsingDirectories>
+      <AdditionalUsingDirectories>$(DevEnvDir)VC\vcpackages;$(WindowsSDKDir)UnionMetadata\$(TargetPlatformVersion);$(WindowsSDKDir)References\Windows.Foundation.FoundationContract\2.0.0.0;$(WindowsSDKDir)References\Windows.Foundation.UniversalApiContract\3.0.0.0</AdditionalUsingDirectories>
       <AdditionalIncludeDirectories>
       </AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-      <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|arm'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <CompileAsWinRT>true</CompileAsWinRT>
-      <AdditionalUsingDirectories>$(DevEnvDir)VC\vcpackages;C:\Program Files (x86)\Windows Kits\10\UnionMetadata\$(TargetPlatformVersion);C:\Program Files (x86)\Windows Kits\10\References\Windows.Foundation.FoundationContract\2.0.0.0;C:\Program Files (x86)\Windows Kits\10\References\Windows.Foundation.UniversalApiContract\3.0.0.0</AdditionalUsingDirectories>
+      <AdditionalUsingDirectories>$(DevEnvDir)VC\vcpackages;$(WindowsSDKDir)UnionMetadata\$(TargetPlatformVersion);$(WindowsSDKDir)References\Windows.Foundation.FoundationContract\2.0.0.0;$(WindowsSDKDir)References\Windows.Foundation.UniversalApiContract\3.0.0.0</AdditionalUsingDirectories>
       <AdditionalIncludeDirectories>
       </AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-      <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -238,37 +228,35 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <CompileAsWinRT>true</CompileAsWinRT>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalUsingDirectories>$(DevEnvDir)VC\vcpackages;C:\Program Files (x86)\Windows Kits\10\UnionMetadata\$(TargetPlatformVersion);C:\Program Files (x86)\Windows Kits\10\References\Windows.Foundation.FoundationContract\2.0.0.0;C:\Program Files (x86)\Windows Kits\10\References\Windows.Foundation.UniversalApiContract\3.0.0.0</AdditionalUsingDirectories>
+      <AdditionalUsingDirectories>$(DevEnvDir)VC\vcpackages;$(WindowsSDKDir)UnionMetadata\$(TargetPlatformVersion);$(WindowsSDKDir)References\Windows.Foundation.FoundationContract\2.0.0.0;$(WindowsSDKDir)References\Windows.Foundation.UniversalApiContract\3.0.0.0</AdditionalUsingDirectories>
       <AdditionalIncludeDirectories>
       </AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-      <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <CompileAsWinRT>true</CompileAsWinRT>
-      <AdditionalUsingDirectories>$(DevEnvDir)VC\vcpackages;C:\Program Files (x86)\Windows Kits\10\UnionMetadata\$(TargetPlatformVersion);C:\Program Files (x86)\Windows Kits\10\References\Windows.Foundation.FoundationContract\2.0.0.0;C:\Program Files (x86)\Windows Kits\10\References\Windows.Foundation.UniversalApiContract\3.0.0.0</AdditionalUsingDirectories>
+      <AdditionalUsingDirectories>$(DevEnvDir)VC\vcpackages;$(WindowsSDKDir)UnionMetadata\$(TargetPlatformVersion);$(WindowsSDKDir)References\Windows.Foundation.FoundationContract\2.0.0.0;$(WindowsSDKDir)References\Windows.Foundation.UniversalApiContract\3.0.0.0</AdditionalUsingDirectories>
       <AdditionalIncludeDirectories>
       </AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-      <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
     <ClCompile>
-      <AdditionalUsingDirectories>$(DevEnvDir)VC\vcpackages;C:\Program Files (x86)\Windows Kits\10\UnionMetadata\$(TargetPlatformVersion);C:\Program Files (x86)\Windows Kits\10\References\Windows.Foundation.FoundationContract\2.0.0.0;C:\Program Files (x86)\Windows Kits\10\References\Windows.Foundation.UniversalApiContract\3.0.0.0</AdditionalUsingDirectories>
+      <AdditionalUsingDirectories>$(DevEnvDir)VC\vcpackages;$(WindowsSDKDir)UnionMetadata\$(TargetPlatformVersion);$(WindowsSDKDir)References\Windows.Foundation.FoundationContract\2.0.0.0;$(WindowsSDKDir)References\Windows.Foundation.UniversalApiContract\3.0.0.0</AdditionalUsingDirectories>
       <CompileAsWinRT>true</CompileAsWinRT>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
     <ClCompile>
-      <AdditionalUsingDirectories>$(DevEnvDir)VC\vcpackages;C:\Program Files (x86)\Windows Kits\10\UnionMetadata\$(TargetPlatformVersion);C:\Program Files (x86)\Windows Kits\10\References\Windows.Foundation.FoundationContract\2.0.0.0;C:\Program Files (x86)\Windows Kits\10\References\Windows.Foundation.UniversalApiContract\3.0.0.0</AdditionalUsingDirectories>
+      <AdditionalUsingDirectories>$(DevEnvDir)VC\vcpackages;$(WindowsSDKDir)UnionMetadata\$(TargetPlatformVersion);$(WindowsSDKDir)References\Windows.Foundation.FoundationContract\2.0.0.0;$(WindowsSDKDir)References\Windows.Foundation.UniversalApiContract\3.0.0.0</AdditionalUsingDirectories>
       <CompileAsWinRT>true</CompileAsWinRT>
     </ClCompile>
   </ItemDefinitionGroup>
