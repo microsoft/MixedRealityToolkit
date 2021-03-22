@@ -23,7 +23,7 @@ extends:
     Sign: ${{ parameters.Sign }}
     ${{ if eq(parameters.Project, 'MicStreamSelector') }}:
       SolutionPath: Input/MicStreamSelector/Solutions/MicStreamSelector.sln
-      BuildOutputPath: Input/MicStreamSelector/Release
+      BuildOutputPath: Input/MicStreamSelector/Solutions/Release
       UnityFolderPath: Input/MicStreamSelector/UnityAddon
     ${{ if eq(parameters.Project, 'PlaneFinding') }}:
       SolutionPath: SpatialMapping/PlaneFinding/PlaneFinding.sln
