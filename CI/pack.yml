@@ -1,4 +1,5 @@
-# [Template] Download built DLL artifacts, sign them, copy to UnityFolderPath folder, organize UnityFolderPath for packing, upload folder as Azure Artifact
+# [Template] Download built DLL artifacts, sign them, copy to UnityFolderPath folder, organize UnityFolderPath
+# for packing, upload folder as Azure Artifact, npm pack, and upload tarball as Azure Artifact
 
 parameters:
 - name: DownloadArtifactName

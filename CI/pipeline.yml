@@ -42,12 +42,12 @@ jobs:
       SolutionPath: ${{ parameters.SolutionPath }}
       BuildOutputPath: ${{ parameters.BuildOutputPath }}
 
-- job: Sign_${{ parameters.Sign }}
+- job: Pack_and_Sign_${{ parameters.Sign }}
   dependsOn: Build_${{ parameters.ProjectFriendlyName }}
   pool:
     name: Package ES Lab E
   steps:
-  - template: sign.yml
+  - template: pack.yml
     parameters:
       DownloadArtifactName: ${{ parameters.ProjectFriendlyName }}
       UnityFolderPath: ${{ parameters.UnityFolderPath }}
