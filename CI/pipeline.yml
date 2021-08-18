@@ -42,20 +42,13 @@ jobs:
       SolutionPath: ${{ parameters.SolutionPath }}
       BuildOutputPath: ${{ parameters.BuildOutputPath }}
 
-- job: Sign_${{ parameters.Sign }}
+- job: Pack_and_Sign_${{ parameters.Sign }}
   dependsOn: Build_${{ parameters.ProjectFriendlyName }}
   pool:
-    name: Package ES Lab E
+    name: Analog-1ES-WindowsLatest
   steps:
-  - template: sign.yml
+  - template: pack.yml
     parameters:
       DownloadArtifactName: ${{ parameters.ProjectFriendlyName }}
       UnityFolderPath: ${{ parameters.UnityFolderPath }}
       Sign: ${{ parameters.Sign }}
-
-- job: Pack
-  dependsOn: Sign_${{ parameters.Sign }}
-  pool:
-    vmImage: 'windows-2019'
-  steps:
-  - template: pack.yml
