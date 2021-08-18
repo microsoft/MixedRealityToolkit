@@ -52,10 +52,3 @@ jobs:
       DownloadArtifactName: ${{ parameters.ProjectFriendlyName }}
       UnityFolderPath: ${{ parameters.UnityFolderPath }}
       Sign: ${{ parameters.Sign }}
-
-- job: Pack
-  dependsOn: Sign_${{ parameters.Sign }}
-  pool:
-    vmImage: 'windows-2019'
-  steps:
-  - template: pack.yml
