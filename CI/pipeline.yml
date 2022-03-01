@@ -13,7 +13,7 @@ parameters:
   default: ''
 - name: BuildVmImage
   type: string
-  default: 'windows-2019'
+  default: 'Analog-1ES-WindowsLatest'
 - name: Sign
   type: boolean
   default: false
