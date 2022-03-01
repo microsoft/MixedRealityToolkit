@@ -13,7 +13,7 @@ parameters:
   default: ''
 - name: BuildVmImage
   type: string
-  default: 'Analog-1ES-WindowsLatest'
+  default: 'windows-2019'
 - name: Sign
   type: boolean
   default: false
@@ -24,7 +24,7 @@ variables:
 jobs:
 - job: Build_${{ parameters.ProjectFriendlyName }}
   pool:
-    vmImage: ${{ parameters.BuildVmImage }}
+    name: Analog-1ES-WindowsLatest
   strategy:
     matrix:
       x86:
