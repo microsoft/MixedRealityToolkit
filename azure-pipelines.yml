@@ -10,7 +10,7 @@ parameters:
   values:
     - MicStreamSelector
     - PlaneFinding
-    - GpuStats
+    # - GpuStats
 
 # Don't automatically run this pipeline
 trigger: none
