@@ -17,7 +17,7 @@ trigger: none
 pr: none
 
 extends:
-  template: CI/pipeline.yml
+  template: Templates/pipeline.yml
   parameters:
     ProjectFriendlyName: ${{ parameters.Project }}
     Sign: ${{ parameters.Sign }}
@@ -33,4 +33,3 @@ extends:
       SolutionPath: GpuStats/GpuStats.sln
       BuildOutputPath: GpuStats/BuildOutput/bin/Release
       UnityFolderPath: GpuStats/UnityAddon
-      BuildVmImage: 'vs2017-win2016'

@@ -12,6 +12,9 @@ parameters:
   default: ''
 
 steps:
+- checkout: self
+  clean: true
+
 - task: VSBuild@1
   inputs:
     solution: ${{ parameters.SolutionPath }}
