@@ -11,9 +11,6 @@ parameters:
 - name: UnityFolderPath
   type: string
   default: ''
-- name: BuildVmImage
-  type: string
-  default: 'windows-2019'
 - name: Sign
   type: boolean
   default: false
@@ -24,7 +21,7 @@ variables:
 jobs:
 - job: Build_${{ parameters.ProjectFriendlyName }}
   pool:
-    name: Analog-1ES-WindowsLatest
+    name: EDT-1ES-WindowsLatest
   strategy:
     matrix:
       x86:
@@ -36,7 +33,7 @@ jobs:
       ARM64:
         BuildPlatform: ARM64
   steps:
-  - template: build.yml
+  - template: Tasks/build.yml
     parameters:
       ArtifactName: ${{ parameters.ProjectFriendlyName }}
       SolutionPath: ${{ parameters.SolutionPath }}
@@ -45,9 +42,9 @@ jobs:
 - job: Pack_and_Sign_${{ parameters.Sign }}
   dependsOn: Build_${{ parameters.ProjectFriendlyName }}
   pool:
-    name: Analog-1ES-WindowsLatest
+    name: EDT-1ES-WindowsLatest
   steps:
-  - template: pack.yml
+  - template: Tasks/pack.yml
     parameters:
       DownloadArtifactName: ${{ parameters.ProjectFriendlyName }}
       UnityFolderPath: ${{ parameters.UnityFolderPath }}

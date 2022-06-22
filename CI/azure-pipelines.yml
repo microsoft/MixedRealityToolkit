@@ -1,0 +1,35 @@
+name: '$(date:yyMM).$(date:dd)$(rev:rr)-${{ parameters.Project }}'
+
+parameters:
+- name: Sign
+  type: boolean
+  default: false
+- name: Project
+  type: string
+  default: PlaneFinding
+  values:
+    - MicStreamSelector
+    - PlaneFinding
+    # - GpuStats
+
+# Don't automatically run this pipeline
+trigger: none
+pr: none
+
+extends:
+  template: Templates/pipeline.yml
+  parameters:
+    ProjectFriendlyName: ${{ parameters.Project }}
+    Sign: ${{ parameters.Sign }}
+    ${{ if eq(parameters.Project, 'MicStreamSelector') }}:
+      SolutionPath: $(Build.SourcesDirectory)/Input/MicStreamSelector/Solutions/MicStreamSelector.sln
+      BuildOutputPath: $(Build.SourcesDirectory)/Input/MicStreamSelector/Solutions/Release
+      UnityFolderPath: $(Build.SourcesDirectory)/Input/MicStreamSelector/UnityAddon
+    ${{ if eq(parameters.Project, 'PlaneFinding') }}:
+      SolutionPath: $(Build.SourcesDirectory)/SpatialMapping/PlaneFinding/PlaneFinding.sln
+      BuildOutputPath: $(Build.SourcesDirectory)/SpatialMapping/PlaneFinding/Release
+      UnityFolderPath: $(Build.SourcesDirectory)/SpatialMapping/PlaneFinding/UnityAddon
+    ${{ if eq(parameters.Project, 'GpuStats') }}:
+      SolutionPath: $(Build.SourcesDirectory)/GpuStats/GpuStats.sln
+      BuildOutputPath: $(Build.SourcesDirectory)/GpuStats/BuildOutput/bin/Release
+      UnityFolderPath: $(Build.SourcesDirectory)/GpuStats/UnityAddon
