@@ -21,7 +21,7 @@ variables:
 jobs:
 - job: Build_${{ parameters.ProjectFriendlyName }}
   pool:
-    name: windows-latest
+    vmImage: windows-latest
   strategy:
     matrix:
       x86:
