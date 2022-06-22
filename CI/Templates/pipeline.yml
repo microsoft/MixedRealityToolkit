@@ -21,7 +21,7 @@ variables:
 jobs:
 - job: Build_${{ parameters.ProjectFriendlyName }}
   pool:
-    name: EDT-1ES-WindowsLatest
+    name: windows-latest
   strategy:
     matrix:
       x86:
