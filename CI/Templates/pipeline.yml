@@ -21,7 +21,7 @@ variables:
 jobs:
 - job: Build_${{ parameters.ProjectFriendlyName }}
   pool:
-    name: Analog-1ES-WindowsLatest
+    name: EDT-1ES-WindowsLatest
   strategy:
     matrix:
       x86:
@@ -42,7 +42,7 @@ jobs:
 - job: Pack_and_Sign_${{ parameters.Sign }}
   dependsOn: Build_${{ parameters.ProjectFriendlyName }}
   pool:
-    name: Analog-1ES-WindowsLatest
+    name: EDT-1ES-WindowsLatest
   steps:
   - template: Tasks/pack.yml
     parameters:
