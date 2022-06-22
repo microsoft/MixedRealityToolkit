@@ -22,14 +22,14 @@ extends:
     ProjectFriendlyName: ${{ parameters.Project }}
     Sign: ${{ parameters.Sign }}
     ${{ if eq(parameters.Project, 'MicStreamSelector') }}:
-      SolutionPath: Input/MicStreamSelector/Solutions/MicStreamSelector.sln
-      BuildOutputPath: Input/MicStreamSelector/Solutions/Release
-      UnityFolderPath: Input/MicStreamSelector/UnityAddon
+      SolutionPath: $(Build.SourcesDirectory)/Input/MicStreamSelector/Solutions/MicStreamSelector.sln
+      BuildOutputPath: $(Build.SourcesDirectory)/Input/MicStreamSelector/Solutions/Release
+      UnityFolderPath: $(Build.SourcesDirectory)/Input/MicStreamSelector/UnityAddon
     ${{ if eq(parameters.Project, 'PlaneFinding') }}:
-      SolutionPath: SpatialMapping/PlaneFinding/PlaneFinding.sln
-      BuildOutputPath: SpatialMapping/PlaneFinding/Release
-      UnityFolderPath: SpatialMapping/PlaneFinding/UnityAddon
+      SolutionPath: $(Build.SourcesDirectory)/SpatialMapping/PlaneFinding/PlaneFinding.sln
+      BuildOutputPath: $(Build.SourcesDirectory)/SpatialMapping/PlaneFinding/Release
+      UnityFolderPath: $(Build.SourcesDirectory)/SpatialMapping/PlaneFinding/UnityAddon
     ${{ if eq(parameters.Project, 'GpuStats') }}:
-      SolutionPath: GpuStats/GpuStats.sln
-      BuildOutputPath: GpuStats/BuildOutput/bin/Release
-      UnityFolderPath: GpuStats/UnityAddon
+      SolutionPath: $(Build.SourcesDirectory)/GpuStats/GpuStats.sln
+      BuildOutputPath: $(Build.SourcesDirectory)/GpuStats/BuildOutput/bin/Release
+      UnityFolderPath: $(Build.SourcesDirectory)/GpuStats/UnityAddon
