@@ -49,7 +49,7 @@ steps:
   condition: and(succeeded(), ${{ parameters.Sign }})
   inputs:
     connectedServiceName: 'MRTK Codesign'
-    folderPath: '{{ parameters.UnityFolderPath }}/Plugins'
+    folderPath: '${{ parameters.UnityFolderPath }}/Plugins'
     signConfigType: 'inlineSignParams'
     inlineOperation: |
       [
