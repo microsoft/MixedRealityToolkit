@@ -49,7 +49,7 @@ steps:
   condition: and(succeeded(), ${{ parameters.Sign }})
   inputs:
     connectedServiceName: 'MRTK Codesign'
-    folderPath: '$(Build.SourcesDirectory)/${{ parameters.UnityFolderPath }}/Plugins'
+    folderPath: '{{ parameters.UnityFolderPath }}/Plugins'
     signConfigType: 'inlineSignParams'
     inlineOperation: |
       [
@@ -108,7 +108,7 @@ steps:
     contents: '**/CodeSignSummary*.md'
 
 - script: |
-    npm pack $(Build.SourcesDirectory)/${{ parameters.UnityFolderPath }}
+    npm pack ${{ parameters.UnityFolderPath }}
   displayName: Package for UPM
 
 - task: CopyFiles@2
