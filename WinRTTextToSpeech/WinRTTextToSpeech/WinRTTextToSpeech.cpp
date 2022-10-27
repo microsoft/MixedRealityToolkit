@@ -29,7 +29,7 @@ EXTERN_C
 /// <param name="buffer"></param>
 /// <param name="bufferLength"></param>
 /// <returns></returns>
-DLLEXPORT bool __stdcall TrySynthesize(
+DLLEXPORT bool __stdcall TrySynthesizePhrase(
 	const char* phrase,
 	BYTE* data,
 	uint32_t& dataLength)
@@ -76,14 +76,17 @@ DLLEXPORT bool __stdcall TrySynthesize(
 		dataLength = 0;
 		return false;
 	}
+
 	reader.LoadAsync(dataLength).get();
+
 	Windows::Foundation::MemoryBuffer buffer = reader.ReadBuffer(dataLength).as<Windows::Foundation::MemoryBuffer>();
 	// todo: error check?
 	Windows::Foundation::IMemoryBufferReference bufferReference = buffer.CreateReference();
-	auto bufferAccess = bufferReference.as<IMemoryBufferByteAccess>();
+	impl::com_ref<IMemoryBufferByteAccess> bufferAccess = bufferReference.as<IMemoryBufferByteAccess>();
 	// todo: error check?
-	// todo - bufferAccess.GetBuffer(&data, dataLength);
+	bufferAccess->GetBuffer(&data, &dataLength);
 
+	bufferAccess->Release();
 	buffer.Close();
 	reader.Close();
 	inputStream.Close();
