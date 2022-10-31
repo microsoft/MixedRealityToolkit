@@ -73,8 +73,7 @@ DLLEXPORT bool __stdcall TrySynthesizePhrase(
 	// Read the syntesized data and pass it back to the caller.
 	reader.LoadAsync(dataLength).get();
 	std::vector<uint8_t>* temp = new std::vector<uint8_t>(dataLength);
-	array_view<uint8_t>* tempView = new array_view<uint8_t>(*temp);
-	reader.ReadBytes(*tempView);
+	reader.ReadBytes(array_view<uint8_t>(*temp));
 	*data = temp->data();
 
 	reader.Close();
