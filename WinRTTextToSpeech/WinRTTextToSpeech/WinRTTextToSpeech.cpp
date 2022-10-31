@@ -31,7 +31,7 @@ EXTERN_C
 /// <returns></returns>
 DLLEXPORT bool __stdcall TrySynthesizePhrase(
 	const char* phrase,
-	BYTE* data,
+	BYTE** data,
 	uint32_t& dataLength)
 {
 	// Create the synthesizer on first use.
@@ -77,17 +77,13 @@ DLLEXPORT bool __stdcall TrySynthesizePhrase(
 		return false;
 	}
 
+	// Read the syntesized data and pass it back to the caller.
 	reader.LoadAsync(dataLength).get();
+	std::vector<uint8_t>* temp = new std::vector<uint8_t>(dataLength);
+	array_view<uint8_t>* tempView =new array_view<uint8_t>(*temp);
+	reader.ReadBytes(*tempView);
+	*data = temp->data();
 
-	Windows::Foundation::MemoryBuffer buffer = reader.ReadBuffer(dataLength).as<Windows::Foundation::MemoryBuffer>();
-	// todo: error check?
-	Windows::Foundation::IMemoryBufferReference bufferReference = buffer.CreateReference();
-	impl::com_ref<IMemoryBufferByteAccess> bufferAccess = bufferReference.as<IMemoryBufferByteAccess>();
-	// todo: error check?
-	bufferAccess->GetBuffer(&data, &dataLength);
-
-	bufferAccess->Release();
-	buffer.Close();
 	reader.Close();
 	inputStream.Close();
 	
@@ -97,12 +93,12 @@ DLLEXPORT bool __stdcall TrySynthesizePhrase(
 /// <summary>
 /// 
 /// </summary>
-/// <param name="buffer"></param>
+/// <param name="data"></param>
 /// <returns></returns>
-DLLEXPORT void FreeBuffer(BYTE* buffer)
+DLLEXPORT void __stdcall FreeNativeMemory(BYTE* data)
 {
-	if (buffer == NULL) { return; }
-	free(buffer);
+	if (!data) { return; }
+	// todo
 }
 
 }
