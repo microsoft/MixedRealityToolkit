@@ -20,7 +20,7 @@ EXTERN_C
 /// </summary>
 /// <param name="phrase">The phrase to be synthesized.</param>
 /// <param name="data">Will receive the audio data in wave format.</param>
-/// <param name="bufferLength">The length of the data being returned.</param>
+/// <param name="dataLength">The length of the data being returned.</param>
 /// <returns>True if the synthesis is successful, or false.</returns>
 DLLEXPORT bool __stdcall TrySynthesizePhrase(
 	const char* phrase,
