@@ -3,16 +3,9 @@
 
 #include "pch.h"
 
-#include <winrt/Windows.Foundation.h>
 #include <winrt/Windows.Foundation.Collections.h>
 #include <winrt/Windows.Media.SpeechSynthesis.h>
 #include <winrt/Windows.Storage.Streams.h>
-
-// Define the interface needed to access the byte data from an IBuffer.
-struct __declspec(uuid("5b0d3235-4dba-4d44-865e-8f1d0e4fd04d")) __declspec(novtable) IMemoryBufferByteAccess : ::IUnknown
-{
-	virtual HRESULT __stdcall GetBuffer(uint8_t** value, uint32_t* capacity) = 0;
-};
 
 using namespace winrt;
 using namespace Windows::Media::SpeechSynthesis;
@@ -23,12 +16,12 @@ EXTERN_C
 {
 
 /// <summary>
-/// 
+/// Synthesizes the provided text into wave format.
 /// </summary>
-/// <param name="phrase"></param>
-/// <param name="buffer"></param>
-/// <param name="bufferLength"></param>
-/// <returns></returns>
+/// <param name="phrase">The phrase to be synthesized.</param>
+/// <param name="buffer">The audio data in wave format.</param>
+/// <param name="bufferLength">The length of the data being returned.</param>
+/// <returns>True of the synthesis is successful, or false.</returns>
 DLLEXPORT bool __stdcall TrySynthesizePhrase(
 	const char* phrase,
 	BYTE** data,
@@ -88,17 +81,6 @@ DLLEXPORT bool __stdcall TrySynthesizePhrase(
 	inputStream.Close();
 	
 	return true;
-}
-
-/// <summary>
-/// 
-/// </summary>
-/// <param name="data"></param>
-/// <returns></returns>
-DLLEXPORT void __stdcall FreeNativeMemory(BYTE* data)
-{
-	if (!data) { return; }
-	// todo
 }
 
 }
