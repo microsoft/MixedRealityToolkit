@@ -10,7 +10,7 @@
 using namespace winrt;
 using namespace Windows::Media::SpeechSynthesis;
 
-SpeechSynthesizer synthesizer = NULL;
+SpeechSynthesizer synthesizer = nullptr;
 
 EXTERN_C
 {
@@ -24,7 +24,7 @@ EXTERN_C
 /// <returns>True of the synthesis is successful, or false.</returns>
 DLLEXPORT bool __stdcall TrySynthesizePhrase(
 	const char* phrase,
-	BYTE** data,
+	uint8_t** data,
 	uint32_t& dataLength)
 {
 	// Create the synthesizer on first use.
@@ -35,7 +35,7 @@ DLLEXPORT bool __stdcall TrySynthesizePhrase(
 		// Confirm one was created successfully.
 		if (!synthesizer)
 		{
-			data = NULL;
+			data = nullptr;
 			dataLength = 0;
 			return false;
 		}
@@ -45,7 +45,7 @@ DLLEXPORT bool __stdcall TrySynthesizePhrase(
 	SpeechSynthesisStream speechStream = synthesizer.SynthesizeTextToStreamAsync(to_hstring(phrase)).get();
 	if (!speechStream)
 	{
-		data = NULL;
+		data = nullptr;
 		dataLength = 0;
 		return false;
 	}
@@ -56,7 +56,7 @@ DLLEXPORT bool __stdcall TrySynthesizePhrase(
 	speechStream.Close();
 	if (!inputStream)
 	{
-		data = NULL;
+		data = nullptr;
 		dataLength = 0;
 		return false;
 	}
@@ -65,7 +65,7 @@ DLLEXPORT bool __stdcall TrySynthesizePhrase(
 	if (!reader)
 	{
 		inputStream.Close();
-		data = NULL;
+		data = nullptr;
 		dataLength = 0;
 		return false;
 	}
@@ -73,7 +73,7 @@ DLLEXPORT bool __stdcall TrySynthesizePhrase(
 	// Read the syntesized data and pass it back to the caller.
 	reader.LoadAsync(dataLength).get();
 	std::vector<uint8_t>* temp = new std::vector<uint8_t>(dataLength);
-	array_view<uint8_t>* tempView =new array_view<uint8_t>(*temp);
+	array_view<uint8_t>* tempView = new array_view<uint8_t>(*temp);
 	reader.ReadBytes(*tempView);
 	*data = temp->data();
 
