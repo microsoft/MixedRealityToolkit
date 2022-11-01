@@ -35,7 +35,7 @@ DLLEXPORT bool __stdcall TrySynthesizePhrase(
 		// Confirm one was created successfully.
 		if (!synthesizer)
 		{
-			data = nullptr;
+			*data = nullptr;
 			dataLength = 0;
 			return false;
 		}
@@ -45,7 +45,7 @@ DLLEXPORT bool __stdcall TrySynthesizePhrase(
 	SpeechSynthesisStream speechStream = synthesizer.SynthesizeTextToStreamAsync(to_hstring(phrase)).get();
 	if (!speechStream)
 	{
-		data = nullptr;
+		*data = nullptr;
 		dataLength = 0;
 		return false;
 	}
@@ -56,7 +56,7 @@ DLLEXPORT bool __stdcall TrySynthesizePhrase(
 	speechStream.Close();
 	if (!inputStream)
 	{
-		data = nullptr;
+		*data = nullptr;
 		dataLength = 0;
 		return false;
 	}
@@ -65,21 +65,31 @@ DLLEXPORT bool __stdcall TrySynthesizePhrase(
 	if (!reader)
 	{
 		inputStream.Close();
-		data = nullptr;
+		*data = nullptr;
 		dataLength = 0;
 		return false;
 	}
 
 	// Read the syntesized data and pass it back to the caller.
 	reader.LoadAsync(dataLength).get();
-	std::vector<uint8_t>* temp = new std::vector<uint8_t>(dataLength);
-	reader.ReadBytes(array_view<uint8_t>(*temp));
-	*data = temp->data();
+	*data = new uint8_t[dataLength];
+	reader.ReadBytes(array_view<uint8_t>(*data, *data + dataLength));
 
 	reader.Close();
 	inputStream.Close();
 	
 	return true;
+}
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="data"></param>
+/// <returns></returns>
+DLLEXPORT void __stdcall FreeSynthesizedData(void* data)
+{
+	if (!data) { return; }
+	delete[] data;
 }
 
 }
