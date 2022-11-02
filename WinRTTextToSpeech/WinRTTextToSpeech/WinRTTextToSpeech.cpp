@@ -82,11 +82,10 @@ DLLEXPORT bool __stdcall TrySynthesizePhrase(
 }
 
 /// <summary>
-/// 
+/// Frees the memory allocated during synthesis.
 /// </summary>
-/// <param name="data"></param>
-/// <returns></returns>
-DLLEXPORT void __stdcall FreeSynthesizedData(void* data)
+/// <param name="data">Pointer to the data to be freed.</param>
+DLLEXPORT void __stdcall FreeSynthesizedData(uint8_t* data)
 {
 	if (!data) { return; }
 	delete[] data;
