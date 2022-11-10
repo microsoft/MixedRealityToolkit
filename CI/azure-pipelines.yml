@@ -10,7 +10,8 @@ parameters:
   values:
     - MicStreamSelector
     - PlaneFinding
-    # - GpuStats
+    - WinRTTextToSpeech
+  # - GpuStats
 
 # Don't automatically run this pipeline
 trigger: none
@@ -33,3 +34,7 @@ extends:
       SolutionPath: $(Build.SourcesDirectory)/GpuStats/GpuStats.sln
       BuildOutputPath: $(Build.SourcesDirectory)/GpuStats/BuildOutput/bin/Release
       UnityFolderPath: $(Build.SourcesDirectory)/GpuStats/UnityAddon
+    ${{ if eq(parameters.Project, 'WinRTTextToSpeech') }}:
+      SolutionPath: $(Build.SourcesDirectory)/WinRTTextToSpeech/WinRTTextToSpeech.sln
+      BuildOutputPath: $(Build.SourcesDirectory)/WinRTTextToSpeech/BuildOutput/bin/Release
+      UnityFolderPath: $(Build.SourcesDirectory)/WinRTTextToSpeech/UnityAddon
