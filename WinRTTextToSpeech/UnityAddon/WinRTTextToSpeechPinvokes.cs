@@ -2,14 +2,15 @@
 // Licensed under the MIT License.
 
 #if (UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN)                                           
-
 using System;
 using System.Runtime.InteropServices;
+#endif
 
 namespace Microsoft.MixedReality.Toolkit.Speech.Windows
 {
     public static class WinRTTextToSpeechPInvokes
     {
+#if (UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN)                                           
         [DllImport(
             "WinRTTextToSpeech.dll",
             EntryPoint = "TrySynthesizePhrase",
@@ -25,7 +26,10 @@ namespace Microsoft.MixedReality.Toolkit.Speech.Windows
             EntryPoint = "FreeSynthesizedData",
             CallingConvention = CallingConvention.StdCall)]
         public static extern bool FreeSynthesizedData(IntPtr data);
+#else
+        // This class is unused on non-Windows platforms.
+#endif
     }
 }
 
-#endif
+
