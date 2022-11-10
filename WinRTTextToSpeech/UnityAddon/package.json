@@ -1,0 +1,28 @@
+
+{
+    "name": "com.microsoft.mrtk.tts.windows",
+    "displayName": "MRTK Windows Text-to-Speech Plugin",
+    "version": "1.0.0",
+    "unity": "2020.3",
+    "msftFeatureCategory": "MRTK3",
+    "description": "Enables synthesizing text phrases into audio in standalone Windows projects.",
+    "keywords": [
+        "mrtk",
+        "microsoft",
+        "mixed",
+        "reality",
+        "xr",
+        "hololens",
+        "text to speech",
+        "tts"
+    ],
+    "author": "Microsoft",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/microsoft/MixedRealityToolkit.git"
+    },
+    "bugs": {
+        "url": "https://github.com/microsoft/MixedRealityToolkit/issues"
+    }
+}
