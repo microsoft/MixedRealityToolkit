@@ -36,5 +36,5 @@ extends:
       UnityFolderPath: $(Build.SourcesDirectory)/GpuStats/UnityAddon
     ${{ if eq(parameters.Project, 'WinRTTextToSpeech') }}:
       SolutionPath: $(Build.SourcesDirectory)/WinRTTextToSpeech/WinRTTextToSpeech.sln
-      BuildOutputPath: $(Build.SourcesDirectory)/WinRTTextToSpeech/BuildOutput/bin/Release
+      BuildOutputPath: $(Build.SourcesDirectory)/WinRTTextToSpeech/Release
       UnityFolderPath: $(Build.SourcesDirectory)/WinRTTextToSpeech/UnityAddon
