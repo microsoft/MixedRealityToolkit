@@ -24,14 +24,18 @@ jobs:
     vmImage: windows-2019
   strategy:
     matrix:
-      x86:
-        BuildPlatform: x86
-      x64:
-        BuildPlatform: x64
-      ARM:
-        BuildPlatform: ARM
-      ARM64:
-        BuildPlatform: ARM64
+      ${{ if contains(parameters.BuildPlatforms, 'x86' )}}
+        x86:
+          BuildPlatform: x86
+      ${{ if contains(parameters.BuildPlatforms, 'x64' )}}
+        x64:
+          BuildPlatform: x64
+      ${{ if contains(parameters.BuildPlatforms, 'ARM' )}}
+        ARM:
+          BuildPlatform: ARM
+      ${{ if contains(parameters.BuildPlatforms, 'ARM64' )}}
+        ARM64:
+          BuildPlatform: ARM64
   steps:
   - template: Tasks/build.yml
     parameters:
