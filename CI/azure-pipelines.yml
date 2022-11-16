@@ -38,3 +38,4 @@ extends:
       SolutionPath: $(Build.SourcesDirectory)/WinRTTextToSpeech/WinRTTextToSpeech.sln
       BuildOutputPath: $(Build.SourcesDirectory)/WinRTTextToSpeech/Release
       UnityFolderPath: $(Build.SourcesDirectory)/WinRTTextToSpeech/UnityAddon
+      Platforms: 'x86 x64'

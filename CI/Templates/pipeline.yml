@@ -11,6 +11,9 @@ parameters:
 - name: UnityFolderPath
   type: string
   default: ''
+- name: Platforms
+  type: string
+  default: 'x86 x64 ARM ARM64'
 - name: Sign
   type: boolean
   default: false
@@ -24,14 +27,18 @@ jobs:
     vmImage: windows-2019
   strategy:
     matrix:
-      x86:
-        BuildPlatform: x86
-      x64:
-        BuildPlatform: x64
-      ARM:
-        BuildPlatform: ARM
-      ARM64:
-        BuildPlatform: ARM64
+      ${{ if contains(parameters.Platforms, 'x86') }}:
+        x86:
+          BuildPlatform: x86
+      ${{ if contains(parameters.Platforms, 'x64') }}:
+        x64:
+          BuildPlatform: x64
+      ${{ if contains(parameters.Platforms, 'ARM') }}:
+        ARM:
+          BuildPlatform: ARM
+      ${{ if contains(parameters.Platforms, 'ARM64') }}:
+        ARM64:
+          BuildPlatform: ARM64
   steps:
   - template: Tasks/build.yml
     parameters:
