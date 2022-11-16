@@ -1,6 +1,9 @@
 name: '$(date:yyMM).$(date:dd)$(rev:rr)-${{ parameters.Project }}'
 
 parameters:
+- name: BuildPlatforms
+  type: string
+  default: x86 x64 ARM ARM64
 - name: Sign
   type: boolean
   default: false
@@ -38,3 +41,4 @@ extends:
       SolutionPath: $(Build.SourcesDirectory)/WinRTTextToSpeech/WinRTTextToSpeech.sln
       BuildOutputPath: $(Build.SourcesDirectory)/WinRTTextToSpeech/Release
       UnityFolderPath: $(Build.SourcesDirectory)/WinRTTextToSpeech/UnityAddon
+      parameters.BuildPlatforms: x64 x64
