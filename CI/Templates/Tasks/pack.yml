@@ -42,6 +42,8 @@ steps:
     packageType: runtime
     version: 2.1.x
 
+- pwsh: dir "C:\hostedtoolcache\windows/dotnet"
+
 # Required for code signing
 - task: ComponentGovernanceComponentDetection@0
   # Only run during when explicitly marked to sign
