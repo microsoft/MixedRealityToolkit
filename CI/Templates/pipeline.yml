@@ -11,9 +11,12 @@ parameters:
 - name: UnityFolderPath
   type: string
   default: ''
-- name: Platforms
+- name: BuildVmImage
   type: string
-  default: 'x86 x64 ARM ARM64'
+  default: windows-2022
+- name: Architectures
+  type: object
+  default: [x86,x64,ARM,ARM64]
 - name: Sign
   type: boolean
   default: false
@@ -24,21 +27,12 @@ variables:
 jobs:
 - job: Build_${{ parameters.ProjectFriendlyName }}
   pool:
-    vmImage: windows-2019
+    vmImage: ${{ parameters.BuildVmImage }}
   strategy:
     matrix:
-      ${{ if contains(parameters.Platforms, 'x86') }}:
-        x86:
-          BuildPlatform: x86
-      ${{ if contains(parameters.Platforms, 'x64') }}:
-        x64:
-          BuildPlatform: x64
-      ${{ if contains(parameters.Platforms, 'ARM') }}:
-        ARM:
-          BuildPlatform: ARM
-      ${{ if contains(parameters.Platforms, 'ARM64') }}:
-        ARM64:
-          BuildPlatform: ARM64
+      ${{ each arch in parameters.Architectures }}:
+        ${{ arch }}:
+          BuildPlatform: ${{ arch }}
   steps:
   - template: Tasks/build.yml
     parameters:

@@ -35,6 +35,14 @@ steps:
     contents: '**/*.dll'
     targetFolder: ${{ parameters.UnityFolderPath }}/Plugins
 
+- task: DotNetCoreInstaller@1
+  displayName: Install .NET Core 2.1 runtime
+  condition: and(succeeded(), ${{ parameters.Sign }})
+  inputs:
+    packageType: runtime
+    version: 2.1.x
+    installationPath: "C:/Program Files/dotnet"
+
 # Required for code signing
 - task: ComponentGovernanceComponentDetection@0
   # Only run during when explicitly marked to sign
