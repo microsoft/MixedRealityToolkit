@@ -26,10 +26,12 @@ extends:
       SolutionPath: $(Build.SourcesDirectory)/Input/MicStreamSelector/Solutions/MicStreamSelector.sln
       BuildOutputPath: $(Build.SourcesDirectory)/Input/MicStreamSelector/Solutions/Release
       UnityFolderPath: $(Build.SourcesDirectory)/Input/MicStreamSelector/UnityAddon
+      BuildVmImage: windows-2019
     ${{ if eq(parameters.Project, 'PlaneFinding') }}:
       SolutionPath: $(Build.SourcesDirectory)/SpatialMapping/PlaneFinding/PlaneFinding.sln
       BuildOutputPath: $(Build.SourcesDirectory)/SpatialMapping/PlaneFinding/Release
       UnityFolderPath: $(Build.SourcesDirectory)/SpatialMapping/PlaneFinding/UnityAddon
+      BuildVmImage: windows-2019
     ${{ if eq(parameters.Project, 'GpuStats') }}:
       SolutionPath: $(Build.SourcesDirectory)/GpuStats/GpuStats.sln
       BuildOutputPath: $(Build.SourcesDirectory)/GpuStats/BuildOutput/bin/Release
@@ -39,3 +41,4 @@ extends:
       BuildOutputPath: $(Build.SourcesDirectory)/WinRTTextToSpeech/Release
       UnityFolderPath: $(Build.SourcesDirectory)/WinRTTextToSpeech/UnityAddon
       Architectures: [x86,x64]
+      BuildVmImage: windows-2019

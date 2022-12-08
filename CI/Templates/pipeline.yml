@@ -11,6 +11,9 @@ parameters:
 - name: UnityFolderPath
   type: string
   default: ''
+- name: BuildVmImage
+  type: string
+  default: windows-2022
 - name: Architectures
   type: object
   default: [x86,x64,ARM,ARM64]
@@ -24,7 +27,7 @@ variables:
 jobs:
 - job: Build_${{ parameters.ProjectFriendlyName }}
   pool:
-    vmImage: windows-latest
+    vmImage: ${{ parameters.BuildVmImage }}
   strategy:
     matrix:
       ${{ each arch in parameters.Architectures }}:
