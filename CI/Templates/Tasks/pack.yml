@@ -41,8 +41,7 @@ steps:
   inputs:
     packageType: runtime
     version: 2.1.x
-
-- pwsh: dir "C:\hostedtoolcache\windows/dotnet"
+    installationPath: "C:/Program Files/dotnet"
 
 # Required for code signing
 - task: ComponentGovernanceComponentDetection@0
