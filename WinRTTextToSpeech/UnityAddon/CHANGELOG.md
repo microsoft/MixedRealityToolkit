@@ -1,7 +1,7 @@
 # Changelog
 
 ## 1.0.1
-* Adds support for custom voice name in TrySynthesizePhrase
+* Adds TrySynthesizePhraseWithCustomVoice for synthesis with custom voice
 
 ## 1.0.0
 
