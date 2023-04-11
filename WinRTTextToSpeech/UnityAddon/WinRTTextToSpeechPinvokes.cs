@@ -18,6 +18,7 @@ namespace Microsoft.MixedReality.Toolkit.Speech.Windows
             CallingConvention = CallingConvention.StdCall)]
         public static extern bool TrySynthesizePhrase(
             string phrase,
+            string voiceName,
             out IntPtr data,
             out int length);
 
