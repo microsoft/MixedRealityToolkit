@@ -23,6 +23,17 @@ namespace Microsoft.MixedReality.Toolkit.Speech.Windows
 
         [DllImport(
             "WinRTTextToSpeech.dll",
+            EntryPoint = "TrySynthesizePhraseWithCustomVoice",
+            CharSet = CharSet.Ansi,
+            CallingConvention = CallingConvention.StdCall)]
+        public static extern bool TrySynthesizePhraseWithCustomVoice(
+            string phrase,
+            string voiceName,
+            out IntPtr data,
+            out int length);
+
+        [DllImport(
+            "WinRTTextToSpeech.dll",
             EntryPoint = "FreeSynthesizedData",
             CallingConvention = CallingConvention.StdCall)]
         public static extern bool FreeSynthesizedData(IntPtr data);

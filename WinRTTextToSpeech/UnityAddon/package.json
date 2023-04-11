@@ -2,7 +2,7 @@
 {
     "name": "com.microsoft.mrtk.tts.windows",
     "displayName": "MRTK Windows Text-to-Speech Plugin",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "unity": "2020.3",
     "msftFeatureCategory": "MRTK3",
     "description": "Enables synthesizing text phrases into audio in standalone Windows projects.",
