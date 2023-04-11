@@ -24,6 +24,7 @@ EXTERN_C
 /// <returns>True if the synthesis is successful, or false.</returns>
 DLLEXPORT bool __stdcall TrySynthesizePhrase(
 	const char* phrase,
+	const char* voiceName,
 	uint8_t** data,
 	uint32_t& dataLength)
 {
@@ -38,6 +39,19 @@ DLLEXPORT bool __stdcall TrySynthesizePhrase(
 			*data = nullptr;
 			dataLength = 0;
 			return false;
+		}
+	}
+	
+	// Search for the input voice name
+	auto voices = synthesizer.AllVoices();
+	for (auto it = begin(voices); it != end(voices); ++it) {
+		std::string displayName = to_string((*it).DisplayName());
+		std::string voiceString = voiceName;
+
+		if (displayName.find(voiceString) != std::string::npos)
+		{
+			synthesizer.Voice(*it);
+			break;
 		}
 	}
 
