@@ -2,7 +2,7 @@
 {
     "name": "com.microsoft.mrtk.tts.windows",
     "displayName": "MRTK Windows Text-to-Speech Plugin",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "unity": "2021.3",
     "unityRelease": "26f1",
     "msftFeatureCategory": "MRTK3",

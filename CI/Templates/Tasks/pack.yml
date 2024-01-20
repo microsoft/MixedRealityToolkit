@@ -96,7 +96,7 @@ steps:
   displayName: Copy README to Documents~
   inputs:
     sourceFolder: ${{ parameters.UnityFolderPath }}
-    contents: README.md*
+    contents: README.md
     targetFolder: ${{ parameters.UnityFolderPath }}/Documentation~
 
 - task: DeleteFiles@1
