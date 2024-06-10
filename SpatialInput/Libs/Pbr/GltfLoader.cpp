@@ -214,7 +214,7 @@ namespace Gltf
                         data.NormalScale = material.NormalScale;
                     });
 
-                    loadTexture(Pbr::ShaderSlots::BaseColor, material.BaseColorTexture, false /* sRGB */, XMVECTORF32{ 1, 1, 1, 1 });
+                    loadTexture(Pbr::ShaderSlots::BaseColor, material.BaseColorTexture, true /* sRGB */, XMVECTORF32{ 1, 1, 1, 1 });
                     loadTexture(Pbr::ShaderSlots::MetallicRoughness, material.MetallicRoughnessTexture, false /* sRGB */, XMVECTORF32{ 1, 1, 1, 1 });
                     loadTexture(Pbr::ShaderSlots::Emissive, material.EmissiveTexture, true /* sRGB */, XMVECTORF32{ 1, 1, 1, 1 });
                     loadTexture(Pbr::ShaderSlots::Normal, material.NormalTexture, false /* sRGB */, XMVECTORF32{ 0.5f, 0.5f, 1, 1 });
