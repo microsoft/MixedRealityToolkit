@@ -52,11 +52,16 @@ steps:
     alertWarningLevel: 'Medium'
     failOnAlert: true
 
-- task: EsrpCodeSigning@1
+- task: EsrpCodeSigning@5
   # Only codesign during when explicitly marked to sign
   condition: and(succeeded(), ${{ parameters.Sign }})
   inputs:
-    connectedServiceName: 'MRTK Codesign'
+    ConnectedServiceName: 'MixedRealityToolkit Codesign'
+    AppRegistrationClientId: '85be2e6a-8d13-4072-8ff6-f982d6e6e77d'
+    AppRegistrationTenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47'
+    AuthAKVName: 'MixedRealityToolkit-kv'
+    AuthCertName: 'mrtk-esrp-auth-cert'
+    AuthSignCertName: 'mrtk-esrp-sign-cert'
     folderPath: '${{ parameters.UnityFolderPath }}/Plugins'
     signConfigType: 'inlineSignParams'
     inlineOperation: |
