@@ -35,7 +35,7 @@ steps:
     contents: '**/*.dll'
     targetFolder: ${{ parameters.UnityFolderPath }}/Plugins
 
-- task: DotNetCoreInstaller@1
+- task: UseDotNet@2
   displayName: Install .NET Core 2.1 runtime
   condition: and(succeeded(), ${{ parameters.Sign }})
   inputs:
