@@ -1,6 +1,5 @@
-# This Yaml Document has been converted by ESAI Yaml Pipeline Conversion Tool.
-# Please make sure to check all the converted content, it is your team's responsibility to make sure that the pipeline is still valid and functions as expected.
-# The Task 'PublishBuildArtifacts@1' has been converted to an output named 'Publish artifacts' in the templateContext section.
+# [Template] Build a solution, run tests, and publish as Azure Artifacts
+
 parameters:
 - name: ArtifactName
   type: string
@@ -11,22 +10,31 @@ parameters:
 - name: BuildOutputPath
   type: string
   default: ''
+
 steps:
 - checkout: self
   clean: true
+
 - task: VSBuild@1
   inputs:
     solution: ${{ parameters.SolutionPath }}
     platform: $(BuildPlatform)
     configuration: $(BuildConfiguration)
+
 - task: VSTest@2
   condition: and(succeeded(), eq(variables['BuildPlatform'], 'x86'), eq('${{ parameters.ArtifactName }}', 'PlaneFinding'))
   inputs:
     platform: $(BuildPlatform)
     configuration: $(BuildConfiguration)
+
 - task: CopyFiles@2
   displayName: Copy binaries to artifacts staging directory
   inputs:
     sourceFolder: ${{ parameters.BuildOutputPath }}
     contents: '**/*.dll'
     targetFolder: $(Build.ArtifactStagingDirectory)
+
+- task: PublishBuildArtifacts@1
+  displayName: Publish artifacts
+  inputs:
+    artifactName: ${{ parameters.ArtifactName }}

@@ -1,6 +1,5 @@
-# This Yaml Document has been converted by ESAI Yaml Pipeline Conversion Tool.
-# Please make sure to check all the converted content, it is your team's responsibility to make sure that the pipeline is still valid and functions as expected.
 name: '$(date:yyMM).$(date:dd)$(rev:rr)-${{ parameters.Project }}'
+
 parameters:
 - name: Sign
   type: boolean
@@ -9,13 +8,17 @@ parameters:
   type: string
   default: PlaneFinding
   values:
-  - MicStreamSelector
-  - PlaneFinding
-  - WinRTTextToSpeech
+    - MicStreamSelector
+    - PlaneFinding
+    - WinRTTextToSpeech
+  # - GpuStats
+
+# Don't automatically run this pipeline
 trigger: none
 pr: none
+
 extends:
-  template: /CI/Templates/pipeline.yml@self
+  template: Templates/pipeline.yml
   parameters:
     ProjectFriendlyName: ${{ parameters.Project }}
     Sign: ${{ parameters.Sign }}
@@ -37,5 +40,5 @@ extends:
       SolutionPath: $(Build.SourcesDirectory)/WinRTTextToSpeech/WinRTTextToSpeech.sln
       BuildOutputPath: $(Build.SourcesDirectory)/WinRTTextToSpeech/Release
       UnityFolderPath: $(Build.SourcesDirectory)/WinRTTextToSpeech/UnityAddon
-      Architectures: [x86, x64]
+      Architectures: [x86,x64]
       BuildVmImage: windows-2019
