@@ -1,0 +1,82 @@
+
+name: '$(date:yyMM).$(date:dd)$(rev:rr)-WinRTTextToSpeech'
+parameters:
+- name: Sign
+  type: boolean
+  default: false
+
+trigger: none
+pr: none
+
+variables:
+  BuildConfiguration: Release
+  ProjectFriendlyName: WinRTTextToSpeech
+  Sign: ${{ parameters.Sign }}
+
+
+resources:
+  repositories:
+  - repository: 1ESPipelineTemplates
+    type: git
+    name: 1ESPipelineTemplates/1ESPipelineTemplates
+    ref: refs/tags/release
+extends:
+  template: v1/1ES.Official.PipelineTemplate.yml@1ESPipelineTemplates
+  parameters:
+    pool:
+      name: EDT-1ES-WindowsLatest
+      os: windows
+    
+    stages:
+    - stage: 'Build'
+      jobs:
+      - job: Build_WinRTTextToSpeech
+
+        templateContext:
+          outputs:
+          - output: pipelineArtifact
+            displayName: 'Publish artifacts'
+            artifactName: 'WinRTTextToSpeech'
+            targetPath: '$(Build.ArtifactStagingDirectory)/WinRTTextToSpeech'
+
+        steps:
+        - checkout: self
+          clean: true
+        - task: VSBuild@1
+          displayName: 'Build WinRTTextToSpeech x86'
+          inputs:
+            solution: '$(Build.SourcesDirectory)/WinRTTextToSpeech/WinRTTextToSpeech.sln'
+            platform: 'x86'
+            configuration: $(BuildConfiguration)
+        - task: VSBuild@1
+          displayName: 'Build WinRTTextToSpeech x64'
+          inputs:
+            solution: '$(Build.SourcesDirectory)/WinRTTextToSpeech/WinRTTextToSpeech.sln'
+            platform: 'x64'
+            configuration: $(BuildConfiguration)
+        - task: CopyFiles@2
+          displayName: Copy binaries to artifacts staging directory
+          inputs:
+            sourceFolder: '$(Build.SourcesDirectory)/WinRTTextToSpeech/Release'
+            contents: '**/*.dll'
+            targetFolder: '$(Build.ArtifactStagingDirectory)/WinRTTextToSpeech'
+
+
+      - job: Pack_and_Sign_${{ parameters.Sign }}
+        dependsOn: Build_WinRTTextToSpeech
+        templateContext:
+          outputs:
+          - output: pipelineArtifact
+            displayName: 'Publish UPM folder'
+            targetPath: '$(Build.SourcesDirectory)/WinRTTextToSpeech/UnityAddon'
+            artifactName: 'UPMFolder'
+          - output: pipelineArtifact
+            displayName: 'Publish UPM artifacts'
+            targetPath: $(Build.ArtifactStagingDirectory)
+            artifactName: 'UPMTarball'
+        steps:
+        - template: /CI/Templates/Tasks/pack.yml@self
+          parameters:
+            DownloadArtifactName: 'WinRTTextToSpeech'
+            UnityFolderPath: '$(Build.SourcesDirectory)/WinRTTextToSpeech/UnityAddon'
+            Sign: ${{ parameters.Sign }}
