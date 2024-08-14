@@ -1,0 +1,105 @@
+# [Template] Download built DLL artifacts, sign them, copy to UnityFolderPath folder, organize UnityFolderPath
+# for packing, upload folder as Azure Artifact, npm pack, and upload tarball as Azure Artifact
+
+parameters:
+- name: DownloadArtifactName
+  type: string
+  default: ''
+- name: UnityFolderPath
+  type: string
+  default: ''
+- name: Sign
+  type: boolean
+  default: false
+- name: UploadFolderArtifactName
+  type: string
+  default: 'UPMFolder'
+- name: UploadTarballArtifactName
+  type: string
+  default: 'UPMTarball'
+steps:
+- checkout: self
+  clean: true
+- task: DownloadPipelineArtifact@2
+  displayName: Download built DLLs
+  inputs:
+    buildType: current
+    targetPath: $(Agent.TempDirectory)
+- task: CopyFiles@2
+  displayName: Copy DLLs to package directory
+  inputs:
+    sourceFolder: $(Agent.TempDirectory)/${{ parameters.DownloadArtifactName }}
+    contents: '**/*.dll'
+    targetFolder: ${{ parameters.UnityFolderPath }}/Plugins
+- task: UseDotNet@2
+  displayName: Install .NET Core 2.1 runtime
+  condition: and(succeeded(), ${{ parameters.Sign }})
+  inputs:
+    packageType: runtime
+    version: 2.1.x
+    installationPath: "C:/Program Files/dotnet"
+
+- task: EsrpCodeSigning@5
+  condition: and(succeeded(), ${{ parameters.Sign }})
+  inputs:
+    ConnectedServiceName: 'MixedRealityToolkit Codesign'
+    AppRegistrationClientId: '85be2e6a-8d13-4072-8ff6-f982d6e6e77d'
+    AppRegistrationTenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47'
+    AuthAKVName: 'MixedRealityToolkit-kv'
+    AuthCertName: 'mrtk-esrp-auth-cert'
+    AuthSignCertName: 'mrtk-esrp-sign-cert'
+    folderPath: '${{ parameters.UnityFolderPath }}/Plugins'
+    signConfigType: 'inlineSignParams'
+    inlineOperation: |
+      [
+          {
+              "KeyCode" : "CP-230012",
+              "OperationCode" : "SigntoolSign",
+              "Parameters" : {
+                  "OpusName" : "Microsoft",
+                  "OpusInfo" : "http://www.microsoft.com",
+                  "FileDigest" : "/fd \"SHA256\"",
+                  "PageHash" : "/NPH",
+                  "TimeStamp" : "/tr \"http://rfc3161.gtm.corp.microsoft.com/TSS/HttpTspServer\" /td sha256"
+              },
+              "ToolName" : "sign",
+              "ToolVersion" : "1.0"
+          },
+          {
+              "KeyCode" : "CP-230012",
+              "OperationCode" : "SigntoolVerify",
+              "Parameters" : {},
+              "ToolName" : "sign",
+              "ToolVersion" : "1.0"
+          }
+      ]
+    sessionTimeout: '60'
+    maxConcurrency: '50'
+    maxRetryAttempts: '5'
+- task: CopyFiles@2
+  displayName: Copy LICENSE to UnityFolderPath
+  inputs:
+    contents: LICENSE.md
+    targetFolder: ${{ parameters.UnityFolderPath }}
+- task: CopyFiles@2
+  displayName: Copy README to Documents~
+  inputs:
+    sourceFolder: ${{ parameters.UnityFolderPath }}
+    contents: README.md
+    targetFolder: ${{ parameters.UnityFolderPath }}/Documentation~
+- task: DeleteFiles@1
+  displayName: Delete README from UnityFolderPath
+  inputs:
+    contents: ${{ parameters.UnityFolderPath }}/README.md*
+- task: DeleteFiles@1
+  displayName: Delete signing logs (if present)
+  inputs:
+    contents: '**/CodeSignSummary*.md'
+- script: |
+    npm pack ${{ parameters.UnityFolderPath }}
+  displayName: Package for UPM
+- task: CopyFiles@2
+  displayName: Copy UPM packages to artifacts staging directory
+  inputs:
+    contents: $(Build.SourcesDirectory)/*.tgz
+    targetFolder: $(Build.ArtifactStagingDirectory)
