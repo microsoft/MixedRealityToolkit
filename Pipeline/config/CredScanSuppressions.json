@@ -1,0 +1,23 @@
+{
+  "tool": "Credential Scanner",
+  "suppressions": [
+    {
+      "file": [
+        "SpatialUnderstanding/Src/TestApp/TestApp_TemporaryKey.pfx"
+      ],
+      "_justification": "Test app signing"
+    },
+    {
+      "file": [
+        "Sharing/Src/Projects/SessionManagerUniversal.UI/SessionManagerUniversal.UI_TemporaryKey.pfx"
+      ],
+      "_justification": "Test app signing"
+    },
+    {
+      "file": [
+        "Sharing/Src/External/zxing-cpp/src/core/src/zxing/pdf417/decoder/Decoder.cpp"
+      ],
+      "_justification": "External project"
+    }
+  ]
+}
