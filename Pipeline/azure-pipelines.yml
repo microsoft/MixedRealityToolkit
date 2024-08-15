@@ -23,6 +23,10 @@ resources:
 extends:
   template: v1/1ES.Official.PipelineTemplate.yml@1ESPipelineTemplates
   parameters:
+    sdl:
+      credscan:
+        suppressionsFile: $(Build.SourcesDirectory)\Pipeline\config\CredScanSuppressions.json
+
     pool:
       name: EDT-1ES-WindowsLatest
       os: windows
@@ -75,7 +79,7 @@ extends:
             targetPath: $(Build.ArtifactStagingDirectory)
             artifactName: 'UPMTarball'
         steps:
-        - template: /CI/Templates/Tasks/pack.yml@self
+        - template: /Pipeline/Templates/Tasks/pack.yml@self
           parameters:
             DownloadArtifactName: 'WinRTTextToSpeech'
             UnityFolderPath: '$(Build.SourcesDirectory)/WinRTTextToSpeech/UnityAddon'
