@@ -75,7 +75,7 @@ extends:
             targetPath: $(Build.ArtifactStagingDirectory)
             artifactName: 'UPMTarball'
         steps:
-        - template: /CI/Templates/Tasks/pack.yml@self
+        - template: /Pipeline/Templates/Tasks/pack.yml@self
           parameters:
             DownloadArtifactName: 'WinRTTextToSpeech'
             UnityFolderPath: '$(Build.SourcesDirectory)/WinRTTextToSpeech/UnityAddon'
