@@ -26,6 +26,9 @@ extends:
     sdl:
       credscan:
         suppressionsFile: $(Build.SourcesDirectory)\Pipeline\config\CredScanSuppressions.json
+      tsa:
+        enabled: true
+        configFile: '$(Build.SourcesDirectory)\Pipeline\config\TSAOptions.json'
 
     pool:
       name: EDT-1ES-WindowsLatest
