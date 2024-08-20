@@ -1,0 +1,15 @@
+{
+    "codebaseName": "mixedrealitytoolkit",
+    "ppe": false,
+    "notificationAliases": [
+        "holodevex@microsoft.com"
+    ],
+    "codebaseAdmins": [
+        "REDMOND\\shaynie"
+    ],
+    "instanceUrl": "https://microsoft.visualstudio.com/defaultcollection",
+    "projectName": "OS",
+    "areaPath": "OS\\MixedReality\\IME\\CSE\\MR Developer Experience\\MRTK",
+    "iterationPath": "OS\\Future",
+    "repositoryName": "mixedrealitytoolkit"
+}

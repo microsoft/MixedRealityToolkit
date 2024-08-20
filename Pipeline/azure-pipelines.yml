@@ -5,6 +5,15 @@ parameters:
   type: boolean
   default: false
 
+schedules:
+- cron: "0 2 1,15 * *"
+  displayName: Run At 02:00 on the 1st and 15th of each month
+  # run even when there are no code changes
+  always: true
+  branches:
+    include:
+    - main
+    
 trigger: none
 pr: none
 
@@ -26,6 +35,9 @@ extends:
     sdl:
       credscan:
         suppressionsFile: $(Build.SourcesDirectory)\Pipeline\config\CredScanSuppressions.json
+      tsa:
+        enabled: true
+        configFile: '$(Build.SourcesDirectory)\Pipeline\config\TSAOptions.json'
 
     pool:
       name: EDT-1ES-WindowsLatest
