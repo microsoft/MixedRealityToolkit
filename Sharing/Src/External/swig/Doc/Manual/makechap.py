@@ -72,11 +72,11 @@ name = ""
 
 # Regexs for <h1>,... <h5> sections
 
-h1 = re.compile(r".*?<H1>(<a.*?>\s*[\d\s]*(.*?)</a>)*[\d\s]*(.*?)</H1>", re.IGNORECASE)
-h2 = re.compile(r".*?<H2>(<a.*?>\s*[\d\.\s]*(.*?)</a>)*[\d\.\s]*(.*?)</H2>", re.IGNORECASE)
-h3 = re.compile(r".*?<H3>(<a.*?>\s*[\d\.\s]*(.*?)</a>)*[\d\.\s]*(.*?)</H3>", re.IGNORECASE)
-h4 = re.compile(r".*?<H4>(<a.*?>\s*[\d\.\s]*(.*?)</a>)*[\d\.\s]*(.*?)</H4>", re.IGNORECASE)
-h5 = re.compile(r".*?<H5>(<a.*?>\s*[\d\.\s]*(.*?)</a>)*[\d\.\s]*(.*?)</H5>", re.IGNORECASE)
+h1 = re.compile(r"^.*?<H1>(<a[^>]*>\s*[\d\s]*[^<]*</a>)*[\d\s]*[^<]*</H1>$", re.IGNORECASE)
+h2 = re.compile(r"^.*?<H2>(<a[^>]*>\s*[\d\s]*[^<]*</a>)*[\d\s]*[^<]*</H2>$", re.IGNORECASE)
+h3 = re.compile(r"^.*?<H3>(<a[^>]*>\s*[\d\s]*[^<]*</a>)*[\d\s]*[^<]*</H3>$", re.IGNORECASE)
+h4 = re.compile(r"^.*?<H4>(<a[^>]*>\s*[\d\s]*[^<]*</a>)*[\d\s]*[^<]*</H4>$", re.IGNORECASE)
+h5 = re.compile(r"^.*?<H5>(<a[^>]*>\s*[\d\s]*[^<]*</a>)*[\d\s]*[^<]*</H5>$", re.IGNORECASE)
 
 data = open(filename).read()            # Read data
 open(filename+".bak","w").write(data)   # Make backup
