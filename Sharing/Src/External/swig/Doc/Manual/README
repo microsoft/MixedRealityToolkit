@@ -1,3 +1,17 @@
+****  NOTE 10/16/24
+****  The python scripts mentioned below have been renamed in this repository.
+****  maketoc.py calls makechap.py which contains regex that triggers codeql alerts.
+****  Since the SWIG documentation is already generated and checked in, there is no reason to include the tools
+****  to regenerate the docs.
+****
+****  renamed:
+****      Makefile            Makefile.bak
+****      maketoc.py          makefile.py.bak
+****      makechap.py         makechap.py.bak
+****     
+
+
+
 This directory contains the HTML for the SWIG users manual.
 
 All of this HTML is hand-written.  However, section numbering, indices,
