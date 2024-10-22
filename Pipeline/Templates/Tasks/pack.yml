@@ -43,7 +43,7 @@ steps:
   condition: and(succeeded(), ${{ parameters.Sign }})
   inputs:
     ConnectedServiceName: 'MixedRealityDeveloperExperiences(PME)'
-    AppRegistrationClientId: '6076da76-5450-49bf-9499-5bc9a1d7f978'
+    AppRegistrationClientId: '5ad55f25-99da-469f-a25c-7783c4ddc5d6'
     AppRegistrationTenantId: '975f013f-7f24-47e8-a7d3-abc4752bf346'
     AuthAKVName: 'HolodevExSupportVault'
     AuthCertName: 'MRTK-TTS-Auth'
