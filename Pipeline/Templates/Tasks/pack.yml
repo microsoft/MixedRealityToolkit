@@ -46,8 +46,8 @@ steps:
     AppRegistrationClientId: '5ad55f25-99da-469f-a25c-7783c4ddc5d6'
     AppRegistrationTenantId: '975f013f-7f24-47e8-a7d3-abc4752bf346'
     AuthAKVName: 'HolodevExSupportVault'
-    AuthCertName: 'MRTK-TTS-Sign'
-    AuthSignCertName: 'MRTK-TTS-Auth'
+    AuthCertName: 'MRTK-TTS-Auth'
+    AuthSignCertName: 'MRTK-TTS-Sign'
     folderPath: '${{ parameters.UnityFolderPath }}/Plugins'
     signConfigType: 'inlineSignParams'
     inlineOperation: |
