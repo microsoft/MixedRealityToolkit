@@ -102,7 +102,9 @@ namespace Microsoft.MixedReality.Toolkit.Audio
                 return WindowsMicrophoneStreamErrorCode.Success;
             }
 
-           return (WindowsMicrophoneStreamErrorCode)MicInitializeCustomRate((int)streamType, AudioSettings.outputSampleRate);
+            initialized = true;
+
+            return (WindowsMicrophoneStreamErrorCode)MicInitializeCustomRate((int)streamType, AudioSettings.outputSampleRate);
         }
 
         private bool paused = false;
@@ -121,6 +123,8 @@ namespace Microsoft.MixedReality.Toolkit.Audio
                 // The microphone stream is already paused, no need to alarm the calling code.
                 return WindowsMicrophoneStreamErrorCode.Success;
             }
+
+            paused = true;
 
             return (WindowsMicrophoneStreamErrorCode)MicPause();
         }
@@ -154,6 +158,8 @@ namespace Microsoft.MixedReality.Toolkit.Audio
                 return WindowsMicrophoneStreamErrorCode.Success;
             }
 
+            paused = false;
+
             return (WindowsMicrophoneStreamErrorCode)MicResume();
         }
 
@@ -181,6 +187,8 @@ namespace Microsoft.MixedReality.Toolkit.Audio
                 // The microphone stream is already recording, no need to alarm the calling code.
                 return WindowsMicrophoneStreamErrorCode.Success;
             }
+
+            recording = true;
 
             return (WindowsMicrophoneStreamErrorCode)MicStartRecording(fileName, preview);
         }
@@ -214,6 +222,8 @@ namespace Microsoft.MixedReality.Toolkit.Audio
                 // The microphone stream is already streaming, no need to alarm the calling code.
                 return WindowsMicrophoneStreamErrorCode.Success;
             }
+
+            streaming = true;
 
             return (WindowsMicrophoneStreamErrorCode)MicStartStream(keepData, preview);
         }
@@ -252,6 +262,8 @@ namespace Microsoft.MixedReality.Toolkit.Audio
                 return WindowsMicrophoneStreamErrorCode.Success;
             }
 
+            streaming = false;
+
             return (WindowsMicrophoneStreamErrorCode)MicStopStream();
         }
 
@@ -269,6 +281,8 @@ namespace Microsoft.MixedReality.Toolkit.Audio
                 // The microphone stream is not initialized, no need to alarm the calling code.
                 return WindowsMicrophoneStreamErrorCode.Success;
             }
+
+            initialized = false;
 
             return (WindowsMicrophoneStreamErrorCode)MicDestroy();
         }
