@@ -220,7 +220,7 @@ namespace Microsoft.MixedReality.Toolkit.Audio
             if (streaming)
             {
                 // The microphone stream is already streaming, no need to alarm the calling code.
-                return WindowsMicrophoneStreamErrorCode.NotStreaming;
+                return WindowsMicrophoneStreamErrorCode.AlreadyStreaming;
             }
 
             streaming = true;
@@ -259,7 +259,7 @@ namespace Microsoft.MixedReality.Toolkit.Audio
             if (!streaming)
             {
                 // The microphone stream is already stopped, no need to alarm the calling code.
-                return WindowsMicrophoneStreamErrorCode.AlreadyStoppedStream;
+                return WindowsMicrophoneStreamErrorCode.NotStreaming;
             }
 
             streaming = false;
