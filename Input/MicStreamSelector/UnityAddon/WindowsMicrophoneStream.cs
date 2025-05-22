@@ -99,7 +99,7 @@ namespace Microsoft.MixedReality.Toolkit.Audio
             if (initialized)
             {
                 // The microphone stream is already initialized, no need to alarm the calling code.
-                return WindowsMicrophoneStreamErrorCode.Success;
+                return WindowsMicrophoneStreamErrorCode.AlreadyRunning;
             }
 
             initialized = true;
@@ -185,7 +185,7 @@ namespace Microsoft.MixedReality.Toolkit.Audio
             if (recording)
             {
                 // The microphone stream is already recording, no need to alarm the calling code.
-                return WindowsMicrophoneStreamErrorCode.Success;
+                return WindowsMicrophoneStreamErrorCode.AlreadyRecording;
             }
 
             recording = true;
