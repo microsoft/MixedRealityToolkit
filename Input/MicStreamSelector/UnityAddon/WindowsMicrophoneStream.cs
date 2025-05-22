@@ -121,7 +121,7 @@ namespace Microsoft.MixedReality.Toolkit.Audio
             if (paused)
             {
                 // The microphone stream is already paused, no need to alarm the calling code.
-                return WindowsMicrophoneStreamErrorCode.Success;
+                return WindowsMicrophoneStreamErrorCode.AlreadyPaused;
             }
 
             paused = true;
@@ -155,7 +155,7 @@ namespace Microsoft.MixedReality.Toolkit.Audio
             if (!paused)
             {
                 // The microphone stream is already resumed, no need to alarm the calling code.
-                return WindowsMicrophoneStreamErrorCode.Success;
+                return WindowsMicrophoneStreamErrorCode.AlreadyResumed;
             }
 
             paused = false;
@@ -220,7 +220,7 @@ namespace Microsoft.MixedReality.Toolkit.Audio
             if (streaming)
             {
                 // The microphone stream is already streaming, no need to alarm the calling code.
-                return WindowsMicrophoneStreamErrorCode.Success;
+                return WindowsMicrophoneStreamErrorCode.NotStreaming;
             }
 
             streaming = true;
@@ -259,7 +259,7 @@ namespace Microsoft.MixedReality.Toolkit.Audio
             if (!streaming)
             {
                 // The microphone stream is already stopped, no need to alarm the calling code.
-                return WindowsMicrophoneStreamErrorCode.Success;
+                return WindowsMicrophoneStreamErrorCode.AlreadyStoppedStream;
             }
 
             streaming = false;
@@ -279,7 +279,7 @@ namespace Microsoft.MixedReality.Toolkit.Audio
             if (!initialized)
             {
                 // The microphone stream is not initialized, no need to alarm the calling code.
-                return WindowsMicrophoneStreamErrorCode.Success;
+                return WindowsMicrophoneStreamErrorCode.NotRunning;
             }
 
             initialized = false;
