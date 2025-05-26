@@ -14,6 +14,31 @@ namespace Microsoft.MixedReality.Toolkit.Audio
         Success = 0,
 
         /// <summary>
+        /// The microphone stream has already been paused.
+        /// </summary>
+        AlreadyPaused = -15,
+
+        /// <summary>
+        /// The microphone stream has already been resumed.
+        /// </summary>
+        AlreadyResumed = -14,
+
+        /// <summary>
+        /// The microphone stream has already been started.
+        /// </summary>
+        AlreadyStreaming = -13,
+
+        /// <summary>
+        /// The microphone stream has already been stopped.
+        /// </summary>
+        NotStreaming = -12,
+
+        /// <summary>
+        /// The microphone is already uninitialized.
+        /// </summary>
+        NotRunning = -11,
+
+        /// <summary>
         /// The microphone has already been initialized.
         /// </summary>
         AlreadyRunning = -10,

@@ -47,9 +47,12 @@ static  char                    filepath_char[MAX_PATH];        // stores the fu
 static  std::queue<Windows::Media::AudioFrame^> audioqueue;     // stores our microphone data to hand back to the app
 
 // error codes to hand back to engine with nice printed output
-private enum ErrorCodes { ALREADY_RUNNING = -10, NO_AUDIO_DEVICE, NO_INPUT_DEVICE, ALREADY_RECORDING, GRAPH_NOT_EXIST, CHANNEL_COUNT_MISMATCH, FILE_CREATION_PERMISSION_ERROR, NOT_ENOUGH_DATA, NEED_ENABLED_MIC_CAPABILITY };
+private enum ErrorCodes { ALREADY_PAUSED = -15, ALREADY_RESUMED = -14, ALREADY_STREAMING = -13, NOT_STREAMING = -12, NOT_RUNNING = -11, ALREADY_RUNNING = -10, NO_AUDIO_DEVICE, NO_INPUT_DEVICE, ALREADY_RECORDING, GRAPH_NOT_EXIST, CHANNEL_COUNT_MISMATCH, FILE_CREATION_PERMISSION_ERROR, NOT_ENOUGH_DATA, NEED_ENABLED_MIC_CAPABILITY };
 
+bool    initialized;
 bool    recording;
+bool    streaming;
+bool    paused;
 int     appExpectedBufferLength;
 int     dataInBuffer;
 int     samplesPerQuantum;  // preferred sample size per chunk of data from the audio driver. usually you want system default.
@@ -57,7 +60,10 @@ int     numChannels;
 int     indexInFrame;       // keeps track of copying data out of the plug-in and into the application
 
 void resetToDefaults() {    // used on init to reset state of the plug-in
+    initialized = false;
     recording = false;
+    streaming = false;
+    paused = false;
     appExpectedBufferLength = -1; // By making negative, we won't output data until we get at least one app call.
     dataInBuffer = 0;
     samplesPerQuantum = 256;
@@ -204,6 +210,8 @@ extern "C"
         // Make a callback at the end of every frame to store our data until the app wants it.
         graph->QuantumProcessed += ref new Windows::Foundation::TypedEventHandler<Windows::Media::Audio::AudioGraph ^, Platform::Object ^>(&OnQuantumProcessed);
 
+        initialized = true;
+
         return 0;
     }
 
@@ -224,6 +232,10 @@ extern "C"
 
     API int MicStartStream(bool keepData, bool previewOnDevice, CallbackIntoHost cb)
     {
+        if (streaming)
+        {
+            return ErrorCodes::ALREADY_STREAMING;
+        }
         if (!graph)
         {
             int err = MicInitializeDefault(0);
@@ -243,17 +255,23 @@ extern "C"
         }
         hostCallback = cb;
         graph->Start();
+        streaming = true;
         return 0;
     }
 
     API int MicStopStream()
     {
+        if (!streaming)
+        {
+            return ErrorCodes::NOT_STREAMING;
+        }
         if (!graph)
         {
             return ErrorCodes::GRAPH_NOT_EXIST;
         }
         graph->Stop();
         hostCallback = nullptr;
+        streaming = false;
         return 0;
     }
 
@@ -384,20 +402,30 @@ extern "C"
     }
 
     API int MicPause() {
+        if (paused)
+        {
+            return ErrorCodes::ALREADY_PAUSED;
+        }
         if (!graph)
         {
             return ErrorCodes::GRAPH_NOT_EXIST;
         }
         graph->Stop();
+        paused = true;
         return 0;
     }
 
     API int MicResume() {
+        if (!paused)
+        {
+            return ErrorCodes::ALREADY_RESUMED;
+        }
         if (!graph)
         {
             return ErrorCodes::GRAPH_NOT_EXIST;
         }
         graph->Start();
+        paused = false;
         return 0;
     }
 
@@ -415,6 +443,10 @@ extern "C"
 
     API int MicDestroy()
     {
+        if (!initialized)
+        {
+            return ErrorCodes::NOT_RUNNING;
+        }
         if (!graph) // If there isn't a graph, there is nothing to stop, so just return
         {
             return ErrorCodes::GRAPH_NOT_EXIST;
@@ -443,6 +475,7 @@ extern "C"
 #ifdef MEMORYLEAKDETECT
         _CrtDumpMemoryLeaks(); // output our memory stats if desired
 #endif // MEMORYLEAKDETECT
+        initialized = false;
         return 0;
     }
 
